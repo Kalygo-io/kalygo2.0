@@ -1,4 +1,6 @@
 import Head from "next/head";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -12,6 +14,7 @@ const navigation = [
 ];
 
 export default function Home() {
+  const router = useRouter();
   const { state, dispatch } = useAppContext();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -28,8 +31,7 @@ export default function Home() {
         <meta name="theme-color" content="#000000" />
         <meta
           name="description"
-          content="Kalygo is a platform for managing your contracts with
-          unprecedented insight and ease."
+          content="Kalygo is a platform for managing your contracts with unprecedented insight and ease."
         />
         <meta property="og:title" content="Kalygo" />
         <meta
@@ -151,13 +153,12 @@ export default function Home() {
                   >
                     Get started
                   </a>
-                  <a
-                    href="/email.html"
+                  <Link
+                    href="/email"
                     className="text-sm font-semibold leading-6 text-gray-900"
                   >
-                    Join the Kalygo mailing list&nbsp;
-                    <span aria-hidden="true">→</span>
-                  </a>
+                    Join the Kalygo mailing list
+                  </Link>
                 </div>
               </div>
               <img
@@ -170,7 +171,7 @@ export default function Home() {
           <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32" />
         </div>
 
-        <ExampleUseCases />
+        {/* <ExampleUseCases /> */}
       </div>
     </>
   );

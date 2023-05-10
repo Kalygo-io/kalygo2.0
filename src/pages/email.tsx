@@ -15,7 +15,7 @@ export default function Email() {
         <title>Kalygo Mailing List</title>
         <meta
           name="description"
-          content="We would love your feedback as we develop the Kalygo platform"
+          content="We would love your feedback as we develop the Kalygo platform."
         />
       </Head>
       <div className="bg-white py-16 sm:py-24">
@@ -27,7 +27,14 @@ export default function Email() {
             <p className="mx-auto mt-2 max-w-xl text-center text-lg leading-8 text-gray-300">
               Feedback is essential.
             </p>
-            <form className="mx-auto mt-10 flex max-w-md gap-x-4">
+            <form
+              className="mx-auto mt-10 flex max-w-md gap-x-4"
+              onSubmit={(evt) => {
+                evt.preventDefault();
+
+                console.log("email is + ", evt);
+              }}
+            >
               <label htmlFor="email-address" className="sr-only">
                 Email address
               </label>
