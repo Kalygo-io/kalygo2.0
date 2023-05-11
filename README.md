@@ -1,4 +1,4 @@
-# Kalygo 2.5
+# Kalygo 2.0
 
 Contracts redefined for the masses...
 
