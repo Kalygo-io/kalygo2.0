@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const navigation = [
   { name: "Use Cases", href: "/use-cases" },
-  { name: "Contracts", href: "#" },
+  { name: "Contracts", href: "/contracts" },
 ];
 
 export function Navbar() {
@@ -18,7 +18,7 @@ export function Navbar() {
       >
         {/* <nav> */}
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Kalygo</span>
             <img className="h-8 w-auto" src="/logo192.png" alt="" />
           </a>

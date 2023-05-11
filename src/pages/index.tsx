@@ -18,21 +18,6 @@ export default function Home() {
     <>
       <Head>
         <title>Kalygo Landing Page</title>
-        <meta name="description" content="Contracts for the Masses" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <meta
-          name="description"
-          content="Kalygo is a platform for managing your contracts with unprecedented insight and ease."
-        />
-        <meta property="og:title" content="Kalygo" />
-        <meta
-          property="og:description"
-          content="Kalygo 2.0 is a low-code contract management platform. All code on the platform is open source, reusable, and free. Enjoy Kalygo's library of contracts, reusable widgets, and A.I. assitance features today!"
-        />
-        <meta property="og:image" content="/logo540.png" />
-        <link rel="apple-touch-icon" href="/logo192.png" />
       </Head>
 
       <Layout1>
@@ -53,7 +38,7 @@ export default function Home() {
                 </p>
                 <div className="mt-10 flex items-center gap-x-6">
                   <a
-                    href="#"
+                    href="/signup"
                     className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     Get started
