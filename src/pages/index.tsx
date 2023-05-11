@@ -52,7 +52,7 @@ export default function Home() {
                 </div>
               </div>
               <Image
-                src="/logo512.png"
+                src="/logo.svg"
                 width={512}
                 height={512}
                 alt="Kalygo's logo"
