@@ -1,5 +1,6 @@
 import Layout1 from "@/layout/layout1";
 import Head from "next/head";
+import Link from "next/link";
 
 export default function Signup() {
   return (
@@ -82,12 +83,12 @@ export default function Signup() {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Not Ready?{" "}
-            <a
+            <Link
               href="/"
               className="font-semibold leading-6 text-blue-600 hover:text-blue-500"
             >
               Back to home
-            </a>
+            </Link>
           </p>
         </div>
       </div>
