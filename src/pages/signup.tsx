@@ -6,6 +6,7 @@ import Head from "next/head";
 import Link from "next/link";
 import ErrorBoundary from "@/components/shared/errorBoundary";
 import { useEffect } from "react";
+import Image from "next/image";
 
 export default function Signup() {
   const {
@@ -42,7 +43,7 @@ export default function Signup() {
       </Head>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
+          <Image
             className="mx-auto h-10 w-auto"
             src="/logo192.png"
             alt="Kalygo logo"

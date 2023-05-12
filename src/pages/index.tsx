@@ -6,7 +6,6 @@ import { useAppContext } from "@/context/AppContext";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
-import { ExampleUseCases } from "@/components/homePage/exampleUseCases";
 import Layout1 from "@/layout/layout1";
 
 export default function Home() {

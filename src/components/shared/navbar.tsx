@@ -1,11 +1,12 @@
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 const navigation = [
   { name: "Use Cases", href: "/use-cases" },
-  { name: "Contracts", href: "/contracts" },
+  { name: "Contracts", href: "/" },
 ];
 
 export function Navbar() {
@@ -17,11 +18,14 @@ export function Navbar() {
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"
       >
-        {/* <nav> */}
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Kalygo</span>
-            <img className="h-8 w-auto" src="/logo192.png" alt="" />
+            <Image
+              className="h-8 w-auto"
+              src="/logo192.png"
+              alt="Kalygo logo"
+            />
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -62,7 +66,11 @@ export function Navbar() {
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Kalygo</span>
-              <img className="h-8 w-auto" src="/logo192.png" alt="" />
+              <Image
+                className="h-8 w-auto"
+                src="/logo192.png"
+                alt="Kalygo logo"
+              />
             </Link>
             <button
               type="button"
