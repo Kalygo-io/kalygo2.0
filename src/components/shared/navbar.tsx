@@ -25,6 +25,8 @@ export function Navbar() {
               className="h-8 w-auto"
               src="/logo192.png"
               alt="Kalygo logo"
+              width={192}
+              height={192}
             />
           </Link>
         </div>
@@ -70,6 +72,8 @@ export function Navbar() {
                 className="h-8 w-auto"
                 src="/logo192.png"
                 alt="Kalygo logo"
+                width={192}
+                height={192}
               />
             </Link>
             <button
