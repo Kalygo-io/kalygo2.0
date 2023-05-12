@@ -9,7 +9,7 @@ export default function Layout1({ children }: P) {
   return (
     <>
       <Navbar />
-      <main style={{ paddingTop: 0, marginTop: 0, top: 0 }}>{children}</main>
+      <main>{children}</main>
       {/* <Footer /> */}
     </>
   );

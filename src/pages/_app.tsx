@@ -1,3 +1,5 @@
+"use client";
+
 import "@/styles/globals.css";
 
 import type { AppProps } from "next/app";
@@ -7,6 +9,7 @@ import React from "react";
 
 import { AppWrapper } from "@/context/AppContext";
 import Head from "next/head";
+import ErrorBoundary from "@/components/shared/errorBoundary";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -31,9 +34,12 @@ export default function App({ Component, pageProps }: AppProps) {
           content="Kalygo is a platform for managing your contracts with unprecedented insight and ease."
         />
       </Head>
-      <AppWrapper>
-        <Component {...pageProps} />
-      </AppWrapper>
+
+      <ErrorBoundary>
+        <AppWrapper>
+          <Component {...pageProps} />
+        </AppWrapper>
+      </ErrorBoundary>
     </>
   );
 }

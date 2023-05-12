@@ -78,7 +78,7 @@ export default function Email() {
               onSubmit={handleSubmit(onSubmit)}
               className="mx-auto mt-10 flex max-w-md gap-x-4"
             >
-              <label htmlFor="email-address" className="sr-only">
+              <label htmlFor="email" className="sr-only">
                 Email address
               </label>
               <input

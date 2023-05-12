@@ -1,14 +1,45 @@
+"use client";
+
+import { useForm } from "react-hook-form";
 import Layout1 from "@/layout/layout1";
 import Head from "next/head";
 import Link from "next/link";
+import ErrorBoundary from "@/components/shared/errorBoundary";
+import { useEffect } from "react";
 
 export default function Signup() {
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    formState: { errors },
+    setValue,
+    watch,
+  } = useForm({
+    defaultValues: {
+      email: "thadduval.lavud@gmail.com",
+    },
+  });
+
+  const onSubmit = async (data: any) => {
+    const { email } = data;
+
+    console.log("email", email);
+
+    // throw new Error("___ _!_!_ ___");
+
+    // try {
+    //   console.log("___ ___ ___");
+    // } catch (e) {
+    //   console.error(e);
+    // }
+  };
+
   return (
     <>
       <Head>
         <title>Kalygo Sign up Page</title>
       </Head>
-
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
@@ -22,58 +53,31 @@ export default function Signup() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+              <label htmlFor="email" className="sr-only">
                 Email address
               </label>
-              <div className="mt-2">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
+              <input
+                {...register("email", {
+                  required: true,
+                  pattern: new RegExp(
+                    /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+                  ),
+                })}
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                autoComplete="email"
+                className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
+                  errors["email"] && "ring-red-700 focus:ring-red-500"
+                }`}
+              />
             </div>
-
-            {/* <div>
-              <div className="flex items-center justify-between">
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Password
-                </label>
-                <div className="text-sm">
-                  <a
-                    href="#"
-                    className="font-semibold text-indigo-600 hover:text-indigo-500"
-                  >
-                    Forgot password?
-                  </a>
-                </div>
-              </div>
-              <div className="mt-2">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
-                  required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div> */}
-
             <div>
               <button
-                type="submit"
+                // type="submit"
+                onClick={() => {}}
                 className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               >
                 Sign up
