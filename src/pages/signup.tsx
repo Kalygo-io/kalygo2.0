@@ -4,9 +4,10 @@ import { useForm } from "react-hook-form";
 import Layout1 from "@/layout/layout1";
 import Head from "next/head";
 import Link from "next/link";
-import ErrorBoundary from "@/components/shared/errorBoundary";
 import { useEffect } from "react";
 import Image from "next/image";
+
+import { toast } from "react-toastify";
 
 export default function Signup() {
   const {
@@ -26,6 +27,8 @@ export default function Signup() {
     const { email } = data;
 
     console.log("email", email);
+
+    toast("Wow so easy!");
 
     // throw new Error("___ _!_!_ ___");
 
