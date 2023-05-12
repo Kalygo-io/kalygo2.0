@@ -39,7 +39,8 @@ export default function Signup() {
   return (
     <>
       <Head>
-        <title>Kalygo Sign up Page</title>
+        <title>Kalygo Sign Up Page</title>
+        <meta name="description" content="Sign up and experience Kalygo." />
       </Head>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
