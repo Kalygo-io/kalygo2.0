@@ -17,7 +17,7 @@ export default function Signup() {
     watch,
   } = useForm({
     defaultValues: {
-      email: "thadduval.lavud@gmail.com",
+      email: "",
     },
   });
 
