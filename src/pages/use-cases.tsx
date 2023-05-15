@@ -86,7 +86,7 @@ export default function UseCases() {
                   </a>
                 </h3>
                 <p aria-hidden="true" className="mt-1 text-sm text-white">
-                  All the fun with zero counterparty risk
+                  Unbiased outcomes
                 </p>
               </div>
             </div>

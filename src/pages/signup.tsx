@@ -4,11 +4,13 @@ import { useForm } from "react-hook-form";
 import Layout1 from "@/layout/layout1";
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 // import { useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
 
-import { toast } from "react-toastify";
+import { errorReporter } from "@/utility/error/reporter";
+import { infoToast } from "@/utility/toasts";
 
 export default function Signup() {
   const {
@@ -24,6 +26,8 @@ export default function Signup() {
       password: "",
     },
   });
+
+  const router = useRouter();
 
   const onSubmit = async (data: any) => {
     try {
@@ -50,9 +54,11 @@ export default function Signup() {
 
       console.log(resp);
 
-      toast("Wow so easy!");
+      infoToast("Check your email for verification!");
+
+      router.push("/");
     } catch (e) {
-      console.error(e);
+      errorReporter(e);
     }
   };
 
