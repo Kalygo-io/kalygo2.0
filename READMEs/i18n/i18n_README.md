@@ -1,0 +1,1 @@
+https://dev.to/adrai/static-html-export-with-i18n-compatibility-in-nextjs-8cd

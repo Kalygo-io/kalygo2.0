@@ -46,7 +46,7 @@ export default function Home() {
                     href="/email"
                     className="text-sm font-semibold leading-6 text-gray-900"
                   >
-                    Join the Kalygo mailing list
+                    Join the mailing list
                   </Link>
                 </div>
               </div>
