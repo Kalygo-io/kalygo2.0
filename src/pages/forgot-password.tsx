@@ -12,7 +12,7 @@ import Image from "next/image";
 import { errorReporter } from "@/utility/error/reporter";
 import { infoToast } from "@/utility/toasts";
 
-export default function Signin() {
+export default function ForgotPassword() {
   const {
     register,
     handleSubmit,
@@ -23,7 +23,6 @@ export default function Signin() {
   } = useForm({
     defaultValues: {
       email: "",
-      password: "",
     },
   });
 
@@ -31,30 +30,30 @@ export default function Signin() {
 
   const onSubmit = async (data: any) => {
     try {
-      const { email, password } = data;
+      const { email } = data;
       console.log("data", data);
 
-      var config = {
-        method: "post",
-        url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/sign-up`,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: {
-          email,
-          password,
-        },
-      };
+      //   var config = {
+      //     method: "post",
+      //     url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/sign-up`,
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     data: {
+      //       email,
+      //       password,
+      //     },
+      //   };
 
       // debugger;
 
-      let resp = await axios(config);
+      //   let resp = await axios(config);
 
       // debugger;
 
-      console.log(resp);
+      //   console.log(resp);
 
-      infoToast("Check your email for verification!");
+      infoToast("We will be in touch!");
 
       router.push("/");
     } catch (e) {
@@ -65,8 +64,11 @@ export default function Signin() {
   return (
     <>
       <Head>
-        <title>Kalygo Sign In Page</title>
-        <meta name="description" content="Sign in to experience Kalygo." />
+        <title>Kalygo Forgot Password Page</title>
+        <meta
+          name="description"
+          content="The 'Forgot Password' form for Kalygo."
+        />
       </Head>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -78,7 +80,7 @@ export default function Signin() {
             height={192}
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Log in
+            Forgot password
           </h2>
         </div>
 
@@ -112,48 +114,12 @@ export default function Signin() {
             </div>
 
             <div>
-              <div className="flex items-center justify-between">
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Password
-                </label>
-                <div className="text-sm">
-                  <Link
-                    href="/forgot-password"
-                    className="font-semibold text-blue-600 hover:text-blue-500"
-                  >
-                    Forgot password?
-                  </Link>
-                </div>
-              </div>
-              <div className="mt-2">
-                <input
-                  {...register("password", {
-                    required: true,
-                    minLength: 7,
-                  })}
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
-                  placeholder="Enter password"
-                  // className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                  className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
-                    errors["password"] && "ring-red-700 focus:ring-red-500"
-                  }`}
-                />
-              </div>
-            </div>
-
-            <div>
               <button
                 // type="submit"
                 // onClick={() => onSubmit(getValues())}
                 className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               >
-                Log in
+                Send reset
               </button>
             </div>
           </form>

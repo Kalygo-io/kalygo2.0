@@ -6,7 +6,7 @@ export default function UseCases() {
   return (
     <>
       <Head>
-        <title>Kalygo's Use Cases</title>
+        <title>Kalygo&apos;s Use Cases</title>
         <meta
           name="description"
           content="An overview of the use cases for Kalygo."

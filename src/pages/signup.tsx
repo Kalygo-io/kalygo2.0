@@ -120,12 +120,12 @@ export default function Signup() {
                   Password
                 </label>
                 <div className="text-sm">
-                  <a
-                    href="#"
+                  <Link
+                    href="/forgot-password"
                     className="font-semibold text-blue-600 hover:text-blue-500"
                   >
                     Forgot password?
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="mt-2">
