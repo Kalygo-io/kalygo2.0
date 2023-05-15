@@ -12,7 +12,7 @@ import Image from "next/image";
 import { errorReporter } from "@/utility/error/reporter";
 import { infoToast } from "@/utility/toasts";
 
-export default function Signup() {
+export default function Signin() {
   const {
     register,
     handleSubmit,
@@ -65,8 +65,8 @@ export default function Signup() {
   return (
     <>
       <Head>
-        <title>Kalygo Sign Up Page</title>
-        <meta name="description" content="Sign up and experience Kalygo." />
+        <title>Kalygo Sign In Page</title>
+        <meta name="description" content="Sign in to experience Kalygo." />
       </Head>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -78,7 +78,7 @@ export default function Signup() {
             height={192}
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Sign up
+            Log in
           </h2>
         </div>
 
@@ -138,7 +138,7 @@ export default function Signup() {
                   name="password"
                   type="password"
                   autoComplete="current-password"
-                  placeholder="Minimum 7 characters"
+                  placeholder="Enter password"
                   // className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                   className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
                     errors["password"] && "ring-red-700 focus:ring-red-500"
@@ -153,7 +153,7 @@ export default function Signup() {
                 // onClick={() => onSubmit(getValues())}
                 className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               >
-                Sign up
+                Log in
               </button>
             </div>
           </form>

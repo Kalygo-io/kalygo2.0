@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AiOutlineCheck } from "react-icons/ai";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export default function VerifyEmail() {
   const router = useRouter();
@@ -13,14 +14,14 @@ export default function VerifyEmail() {
 
   return (
     <>
-      {/*
-            This example requires updating your template:
-    
-            ```
-            <html class="h-full">
-            <body class="h-full">
-            ```
-          */}
+      <Head>
+        <title>Kalygo Email Verification</title>
+        <meta
+          name="description"
+          content="This is the confirmation page after successfully verifying your email."
+        />
+      </Head>
+
       <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
         <div className="text-center">
           {/* <Image></Image> */}

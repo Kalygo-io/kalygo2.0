@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const navigation = [
   { name: "Use Cases", href: "/use-cases" },
-  { name: "Contracts", href: "/" },
+  { name: "Contracts", href: "/use-cases" },
 ];
 
 export function Navbar() {
@@ -52,9 +52,12 @@ export function Navbar() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <Link
+            href="/signin"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             Log in <span aria-hidden="true">&rarr;</span>
-          </a>
+          </Link>
         </div>
       </nav>
       <Dialog
@@ -100,7 +103,7 @@ export function Navbar() {
               </div>
               <div className="py-6">
                 <Link
-                  href="/"
+                  href="/signin"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Log in
