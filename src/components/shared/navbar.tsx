@@ -7,6 +7,7 @@ import { useState } from "react";
 const navigation = [
   { name: "Use Cases", href: "/use-cases" },
   { name: "Contracts", href: "/use-cases" },
+  { name: "Feedback", href: "/feedback" },
 ];
 
 export function Navbar() {
