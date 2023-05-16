@@ -51,7 +51,10 @@ export default function ContractList() {
     <>
       <div className="container mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {contracts.map((contract) => (
-          <li className="col-span-1 flex flex-col bg-white border-1 p-4 rounded-lg shadow">
+          <li
+            key={contract.name}
+            className="col-span-1 flex flex-col bg-white border-1 p-4 rounded-lg shadow"
+          >
             <h2 className="mb-2 font-bold text-2xl text-gray-900">
               {contract.name}
             </h2>
@@ -59,7 +62,10 @@ export default function ContractList() {
             <div className="flex flex-wrap mt-auto pt-3 text-xs">
               {contract.attributes.map((attr) => {
                 return (
-                  <span className="inline-flex flex-shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 mx-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                  <span
+                    key={attr}
+                    className="inline-flex flex-shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 mx-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20"
+                  >
                     {attr}
                   </span>
                 );

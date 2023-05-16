@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="apple-touch-icon" href="/logo192.png" />
         <meta
           name="description"
-          content="Kalygo is a platform for managing your contracts with unprecedented insight and ease."
+          content="Kalygo is a platform for managing your contracts with insight and ease."
         />
       </Head>
 
