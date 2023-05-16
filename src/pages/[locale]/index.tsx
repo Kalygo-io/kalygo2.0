@@ -11,13 +11,17 @@ import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 // import Link from "next/link";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
 
-const getStaticProps = makeStaticProps(["common", "footer"]);
-export { getStaticPaths, getStaticProps };
-
-export default function Home() {
+export default function Home(props: any) {
   const { state, dispatch } = useAppContext();
 
-  const { t } = useTranslation("common");
+  const { t, ready } = useTranslation("common");
+
+  console.log("t", t);
+  console.log("ready", ready);
+  console.log('t("landing-page-headline")', t("landing-page-headline"));
+  console.log("props", props);
+
+  debugger;
 
   return (
     <>
@@ -34,7 +38,8 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
             <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
               <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:col-span-2 xl:col-auto">
-                Contracts for the Masses
+                {/* Contracts for the Masses */}
+                {t("landing-page-headline")}
               </h1>
               <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
                 <p className="text-lg leading-8 text-gray-600">
@@ -71,3 +76,6 @@ export default function Home() {
     </>
   );
 }
+
+const getStaticProps = makeStaticProps(["common"]);
+export { getStaticPaths, getStaticProps };

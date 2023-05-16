@@ -10,3 +10,6 @@ https://mortenbarklund.com/blog/react-typescript-props-spread/
 <!-- vvv IMPORTANT vvv -->
 
 --- Testing on index.tsx but need to do remaining pages ---
+
+--- also needed this https://github.com/i18next/next-i18next#appwithtranslation ---
+

@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
 import type { ComponentProps } from "react";
+
 interface NextLinkProps extends ComponentProps<"a"> {
   skipLocaleHandling?: boolean;
 }

@@ -24,6 +24,9 @@ export async function getI18nProps(ctx: any, ns = ["common"]) {
   let props = {
     ...(await serverSideTranslations(locale, ns)),
   };
+
+  console.log("props ->", props);
+
   return props;
 }
 
