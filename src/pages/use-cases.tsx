@@ -18,13 +18,13 @@ export default function UseCases() {
             <h2 className="text-2xl font-bold tracking-tight text-gray-900">
               Use cases
             </h2>
-            <a
-              href="#"
+            <Link
+              href="/browse-contracts"
               className="hidden text-sm font-semibold text-blue-600 hover:text-blue-500 sm:block"
             >
               Browse Contracts
               <span aria-hidden="true"> &rarr;</span>
-            </a>
+            </Link>
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
@@ -41,10 +41,10 @@ export default function UseCases() {
               <div className="flex items-end p-6">
                 <div>
                   <h3 className="font-semibold text-white">
-                    <a href="#">
+                    <Link href="/browse-contracts">
                       <span className="absolute inset-0" />
                       Escrow
-                    </a>
+                    </Link>
                   </h3>
                   <p aria-hidden="true" className="mt-1 text-sm text-white">
                     Deploy Now
@@ -65,10 +65,10 @@ export default function UseCases() {
               <div className="flex items-end p-6 sm:absolute sm:inset-0">
                 <div>
                   <h3 className="font-semibold text-white">
-                    <a href="#">
+                    <Link href="/browse-contracts">
                       <span className="absolute inset-0" />
                       Membership
-                    </a>
+                    </Link>
                   </h3>
                   <p aria-hidden="true" className="mt-1 text-sm text-white">
                     Manage Powerful Groups
@@ -89,10 +89,10 @@ export default function UseCases() {
               <div className="flex items-end p-6 sm:absolute sm:inset-0">
                 <div>
                   <h3 className="font-semibold text-white">
-                    <a href="#">
+                    <Link href="/browse-contracts">
                       <span className="absolute inset-0" />
                       Lottery
-                    </a>
+                    </Link>
                   </h3>
                   <p aria-hidden="true" className="mt-1 text-sm text-white">
                     Unbiased outcomes

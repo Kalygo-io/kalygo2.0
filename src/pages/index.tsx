@@ -11,8 +11,6 @@ import Layout1 from "@/layout/layout1";
 export default function Home() {
   const { state, dispatch } = useAppContext();
 
-  console.log("state", state);
-
   return (
     <>
       <Head>
@@ -32,8 +30,8 @@ export default function Home() {
               </h1>
               <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
                 <p className="text-lg leading-8 text-gray-600">
-                  Kalygo is a platform for managing your contracts with
-                  unprecedented insight and ease...
+                  Kalygo is a platform for managing your contracts with insight
+                  and ease
                 </p>
                 <div className="mt-10 flex items-center gap-x-6">
                   <Link
@@ -42,12 +40,12 @@ export default function Home() {
                   >
                     Get started
                   </Link>
-                  <Link
+                  {/* <Link
                     href="/email"
                     className="text-sm font-semibold leading-6 text-gray-900"
                   >
                     Join the mailing list
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
               <Image
