@@ -1,0 +1,1 @@
+https://nextjs.org/docs/pages/building-your-application/routing/authenticating#authenticating-statically-generated-pages
