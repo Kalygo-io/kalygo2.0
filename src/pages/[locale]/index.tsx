@@ -19,6 +19,7 @@ const getStaticProps = makeStaticProps([
   "navbar",
   "common",
   "error",
+  "footer",
 ]);
 export { getStaticPaths, getStaticProps };
 
