@@ -27,6 +27,7 @@ const getStaticProps = makeStaticProps([
   "forms",
   "error",
   "info",
+  "toast-messages",
 ]);
 export { getStaticPaths, getStaticProps };
 
