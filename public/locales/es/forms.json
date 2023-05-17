@@ -1,9 +1,9 @@
 {
-  "email-address": "Email address",
-  "enter-email": "Enter email",
-  "password": "Password",
-  "enter-password": "Enter password",
-  "forgot-password": "Forgot password?",
-  "minimum-7-characters": "Minimum 7 characters",
-  "sign-up": "Sign up"
+  "email-address": "Email",
+  "enter-email": "Ingrese correo electrónico",
+  "password": "Contraseña",
+  "enter-password": "Introducir la contraseña",
+  "forgot-password": "¿Has olvidado tu contraseña?",
+  "minimum-7-characters": "Mínimo 7 caracteres",
+  "sign-up": "Inscribirse"
 }

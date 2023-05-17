@@ -1,10 +1,10 @@
 {
-  "use-cases": "Use cases",
-  "browse-contracts": "Browse Contracts",
-  "escrow": "Escrow",
-  "deploy-now": "Deploy Now",
-  "membership": "Membership",
-  "manage-powerful-groups": "Manage Powerful Groups",
-  "lottery": "Lottery",
-  "unbiased-outcomes": "Unbiased outcomes"
+  "use-cases": "Casos de uso",
+  "browse-contracts": "Explorar contratos",
+  "escrow": "Depósito",
+  "deploy-now": "Implementar ahora",
+  "membership": "Afiliación",
+  "manage-powerful-groups": "Administrar grupos poderosos",
+  "lottery": "Lotería",
+  "unbiased-outcomes": "Resultados imparciales"
 }
