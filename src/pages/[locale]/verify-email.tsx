@@ -1,4 +1,5 @@
-import Link from "next/link";
+"use client";
+
 import { AiOutlineCheck } from "react-icons/ai";
 import { useRouter } from "next/router";
 import Head from "next/head";
@@ -6,12 +7,16 @@ import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 
+// import Link from "next/link";
+import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
+
 const getStaticProps = makeStaticProps([
   "seo",
   "navbar",
   "common",
   "verify-email-page",
   "image-alt-tags",
+  "error",
 ]);
 export { getStaticPaths, getStaticProps };
 

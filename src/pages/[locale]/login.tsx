@@ -3,17 +3,20 @@
 import { useForm } from "react-hook-form";
 import Layout1 from "@/layout/layout1";
 import Head from "next/head";
-import Link from "next/link";
+
 import { useRouter } from "next/router";
 // import { useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
 
 import { errorReporter } from "@/utility/error/reporter";
-import { infoToast } from "@/utility/toasts";
 
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
+
+// import Link from "next/link";
+import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
+import languageDetector from "@/lib/languageDetector";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -22,6 +25,7 @@ const getStaticProps = makeStaticProps([
   "log-in-page",
   "image-alt-tags",
   "forms",
+  "error",
 ]);
 export { getStaticPaths, getStaticProps };
 
@@ -51,7 +55,7 @@ export default function Signin() {
 
       var config = {
         method: "post",
-        url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/sign-up`,
+        url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/log-in`,
         headers: {
           "Content-Type": "application/json",
         },
@@ -65,9 +69,9 @@ export default function Signin() {
 
       console.log(resp);
 
-      infoToast("Check your email for verification!");
+      const detectedLng = languageDetector.detect();
 
-      router.push("/");
+      router.push(`/${detectedLng}/`);
     } catch (e) {
       errorReporter(e);
     }

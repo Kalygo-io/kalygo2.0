@@ -8,5 +8,11 @@
   "log-in-page-seo-title": "Kalygo Log In Page",
   "log-in-page-seo-meta-description": "Sign in to experience Kalygo.",
   "email-verification-page-seo-title": "Kalygo Email Verification",
-  "email-verification-page-seo-meta-description": "This is the confirmation page after successfully verifying your email."
+  "email-verification-page-seo-meta-description": "This is the confirmation page after successfully verifying your email.",
+  "forgot-password-page-seo-title": "Kalygo Forgot Password Page",
+  "forgot-password-page-seo-meta-description": "The 'Forgot Password' form for Kalygo.",
+  "feedback-page-seo-title": "Kalygo General Feedback Form",
+  "feedback-page-seo-meta-description": "General feedback form for Kalygo.",
+  "email-page-seo-title": "Kalygo Mailing List",
+  "email-page-seo-meta-description": "We would love your feedback as we develop the Kalygo platform."
 }

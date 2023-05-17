@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import Layout1 from "@/layout/layout1";
 import Head from "next/head";
-import Link from "next/link";
+
 import { useRouter } from "next/router";
 // import { useEffect } from "react";
 import axios from "axios";
@@ -12,8 +12,13 @@ import Image from "next/image";
 import { errorReporter } from "@/utility/error/reporter";
 import { infoToast } from "@/utility/toasts";
 
+import languageDetector from "@/lib/languageDetector";
+
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
+
+// import Link from "next/link";
+import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -22,6 +27,8 @@ const getStaticProps = makeStaticProps([
   "sign-up-page",
   "image-alt-tags",
   "forms",
+  "error",
+  "toast-messages",
 ]);
 export { getStaticPaths, getStaticProps };
 
@@ -65,11 +72,11 @@ export default function Signup() {
 
       console.log(resp);
 
-      infoToast(
-        "Check your email inbox for verification. If you don't see the email then check your spam folder."
-      );
+      infoToast(t("toast-messages:sign-up-success"));
 
-      router.push("/");
+      const detectedLng = languageDetector.detect();
+
+      router.push(`/${detectedLng}/`);
     } catch (e) {
       errorReporter(e);
     }
@@ -79,7 +86,10 @@ export default function Signup() {
     <>
       <Head>
         <title>{t("seo:sign-up-page-seo-title")}</title>
-        <meta name="description" content="Sign up and experience Kalygo." />
+        <meta
+          name="description"
+          content={t("seo:sign-up-page-seo-meta-description")!}
+        />
       </Head>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">

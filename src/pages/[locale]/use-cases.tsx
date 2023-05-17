@@ -1,9 +1,13 @@
+"use client";
+
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
+
+// import Link from "next/link";
+import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -11,6 +15,7 @@ const getStaticProps = makeStaticProps([
   "common",
   "use-cases-page",
   "image-alt-tags",
+  "error",
 ]);
 export { getStaticPaths, getStaticProps };
 

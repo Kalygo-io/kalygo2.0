@@ -7,7 +7,7 @@ class ErrorBoundary extends React.Component {
     children: ReactNode;
   };
 
-  constructor(props: { children: any }) {
+  constructor(props: { children: any; t: any }) {
     super(props);
 
     // Define a state variable to track whether is an error or not

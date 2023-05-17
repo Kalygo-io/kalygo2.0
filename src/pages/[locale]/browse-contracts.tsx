@@ -1,5 +1,7 @@
+"use client";
+
 import Head from "next/head";
-import Link from "next/link";
+
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
@@ -12,11 +14,15 @@ import ContractList from "@/components/browseContractsComponents/contractList";
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 
+// import Link from "next/link";
+import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
+
 const getStaticProps = makeStaticProps([
   "seo",
   "navbar",
   "common",
   "contract-list",
+  "error",
 ]);
 export { getStaticPaths, getStaticProps };
 

@@ -1,3 +1,5 @@
+"use client";
+
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -16,6 +18,7 @@ const getStaticProps = makeStaticProps([
   "seo",
   "navbar",
   "common",
+  "error",
 ]);
 export { getStaticPaths, getStaticProps };
 
