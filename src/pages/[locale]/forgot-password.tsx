@@ -17,7 +17,9 @@ import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 
 // import Link from "next/link";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
-import languageDetector from "@/lib/languageDetector";
+import languageDetector, {
+  navigatorLangDetector,
+} from "@/lib/languageDetector";
 
 const getStaticProps = makeStaticProps([
   "forgot-password-page",
@@ -74,7 +76,8 @@ export default function ForgotPassword() {
 
       infoToast(t("toast-message:forgot-password-success"));
 
-      const detectedLng = languageDetector.detect();
+      // const detectedLng = languageDetector.detect();
+      const detectedLng = navigatorLangDetector();
 
       router.push(`/${detectedLng}/`);
     } catch (e) {

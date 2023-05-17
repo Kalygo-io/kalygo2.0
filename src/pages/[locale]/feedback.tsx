@@ -16,7 +16,8 @@ import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 
 // import Link from "next/link";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
-import languageDetector from "@/lib/languageDetector";
+import { navigatorLangDetector } from "@/lib/languageDetector";
+// import languageDetector from "@/lib/languageDetector";
 
 const getStaticProps = makeStaticProps([
   "feedback-page",
@@ -69,7 +70,8 @@ export default function Feedback() {
 
       infoToast(t("toast-messages:the-feedback-is-appreciated"));
 
-      const detectedLng = languageDetector.detect();
+      // const detectedLng = languageDetector.detect();
+      const detectedLng = navigatorLangDetector();
 
       router.push(`/${detectedLng}/`);
     } catch (e) {

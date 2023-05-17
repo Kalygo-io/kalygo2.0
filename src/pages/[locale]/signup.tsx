@@ -12,7 +12,9 @@ import Image from "next/image";
 import { errorReporter } from "@/utility/error/reporter";
 import { infoToast } from "@/utility/toasts";
 
-import languageDetector from "@/lib/languageDetector";
+import languageDetector, {
+  navigatorLangDetector,
+} from "@/lib/languageDetector";
 
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
@@ -74,7 +76,8 @@ export default function Signup() {
 
       infoToast(t("toast-messages:sign-up-success"));
 
-      const detectedLng = languageDetector.detect();
+      // const detectedLng = languageDetector.detect();
+      const detectedLng = navigatorLangDetector();
 
       router.push(`/${detectedLng}/`);
     } catch (e) {

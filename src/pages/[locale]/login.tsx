@@ -16,7 +16,9 @@ import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 
 // import Link from "next/link";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
-import languageDetector from "@/lib/languageDetector";
+import languageDetector, {
+  navigatorLangDetector,
+} from "@/lib/languageDetector";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -69,7 +71,8 @@ export default function Signin() {
 
       console.log(resp);
 
-      const detectedLng = languageDetector.detect();
+      // const detectedLng = languageDetector.detect();
+      const detectedLng = navigatorLangDetector();
 
       router.push(`/${detectedLng}/`);
     } catch (e) {
