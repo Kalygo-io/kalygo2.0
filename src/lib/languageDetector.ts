@@ -7,5 +7,11 @@ export default languageDetector({
 });
 
 export function navigatorLangDetector() {
-  return navigator.language.substring(0, 2) || "en";
+  let lng = navigator?.language?.substring(0, 2) || "en";
+
+  if (["en", "es"].includes(lng)) {
+    return lng;
+  } else {
+    return "en";
+  }
 }
