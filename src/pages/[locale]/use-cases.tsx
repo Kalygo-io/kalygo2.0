@@ -2,37 +2,53 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
+import { useTranslation } from "next-i18next";
+import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
+
+const getStaticProps = makeStaticProps([
+  "seo",
+  "navbar",
+  "common",
+  "use-cases-page",
+  "image-alt-tags",
+]);
+export { getStaticPaths, getStaticProps };
+
 export default function UseCases() {
+  const { t } = useTranslation();
+
   return (
     <>
       <Head>
-        <title>Kalygo&apos;s Use Cases</title>
+        <title>{t("seo:use-cases-page-seo-title")}</title>
         <meta
           name="description"
-          content="An overview of the use cases for Kalygo."
+          content={t("seo:use-cases-page-seo-meta-description")!}
         />
       </Head>
-      <div className="bg-gray-50">
+      <div className="bg-gray-50 h-full">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
           <div className="sm:flex sm:items-baseline sm:justify-between">
             <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-              Use cases
+              {t("use-cases-page:use-cases")}
             </h2>
             <Link
               href="/browse-contracts"
               className="hidden text-sm font-semibold text-blue-600 hover:text-blue-500 sm:block"
             >
-              Browse Contracts
+              {t("use-cases-page:browse-contracts")}
               <span aria-hidden="true"> &rarr;</span>
             </Link>
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
-            <div className="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2">
+            <div className="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2 border-1 shadow">
               <Image
                 src="/money.svg"
-                alt="Two models wearing women's black cotton crewneck tee and off-white cotton crewneck tee."
-                className="object-cover object-center group-hover:opacity-75"
+                width={1000}
+                height={1000}
+                alt={t("image-alt-tags:money.svg")}
+                className="object-fit object-center opacity-25 group-hover:opacity-50"
               />
               <div
                 aria-hidden="true"
@@ -43,20 +59,22 @@ export default function UseCases() {
                   <h3 className="font-semibold text-white">
                     <Link href="/browse-contracts">
                       <span className="absolute inset-0" />
-                      Escrow
+                      {t("use-cases-page:escrow")}
                     </Link>
                   </h3>
                   <p aria-hidden="true" className="mt-1 text-sm text-white">
-                    Deploy Now
+                    {t("use-cases-page:deploy-now")}
                   </p>
                 </div>
               </div>
             </div>
-            <div className="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full">
+            <div className="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full border-1 shadow">
               <Image
                 src="/club.svg"
-                alt="Wooden shelf with gray and olive drab green baseball caps, next to wooden clothes hanger with sweaters."
-                className="object-cover object-center group-hover:opacity-75 sm:absolute sm:inset-0 sm:h-full sm:w-full"
+                width={1000}
+                height={1000}
+                alt={t("image-alt-tags:club.svg")}
+                className="object-fit object-center opacity-25 group-hover:opacity-50 sm:absolute sm:inset-0 sm:h-full sm:w-full"
               />
               <div
                 aria-hidden="true"
@@ -67,20 +85,23 @@ export default function UseCases() {
                   <h3 className="font-semibold text-white">
                     <Link href="/browse-contracts">
                       <span className="absolute inset-0" />
-                      Membership
+                      {t("use-cases-page:membership")}
                     </Link>
                   </h3>
                   <p aria-hidden="true" className="mt-1 text-sm text-white">
-                    Manage Powerful Groups
+                    {t("use-cases-page:manage-powerful-groups")}
                   </p>
                 </div>
               </div>
             </div>
-            <div className="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full">
+            <div className="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full border-1 shadow">
               <Image
+                priority
                 src="/luck.svg"
-                alt="Walnut desk organizer set with white modular trays, next to porcelain mug on wooden desk."
-                className="object-cover object-center group-hover:opacity-75 sm:absolute sm:inset-0 sm:h-full sm:w-full"
+                width={1000}
+                height={1000}
+                alt={t("image-alt-tags:luck.svg")!}
+                className="object-fit object-center opacity-25 group-hover:opacity-50 sm:absolute sm:inset-0 sm:h-full sm:w-full"
               />
               <div
                 aria-hidden="true"
@@ -91,11 +112,11 @@ export default function UseCases() {
                   <h3 className="font-semibold text-white">
                     <Link href="/browse-contracts">
                       <span className="absolute inset-0" />
-                      Lottery
+                      {t("use-cases-page:lottery")}
                     </Link>
                   </h3>
                   <p aria-hidden="true" className="mt-1 text-sm text-white">
-                    Unbiased outcomes
+                    {t("use-cases-page:unbiased-outcomes")}
                   </p>
                 </div>
               </div>
@@ -104,10 +125,10 @@ export default function UseCases() {
 
           <div className="mt-6 sm:hidden">
             <Link
-              href="/"
+              href="/browse-contracts"
               className="block text-sm font-semibold text-blue-600 hover:text-blue-500"
             >
-              Browse Contracts
+              {t("use-cases-page:browse-contracts")}
               <span aria-hidden="true"> &rarr;</span>
             </Link>
           </div>

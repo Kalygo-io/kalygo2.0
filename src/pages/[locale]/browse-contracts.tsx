@@ -9,13 +9,25 @@ import { useState } from "react";
 import Layout1 from "@/layout/layout1";
 import ContractList from "@/components/browseContractsComponents/contractList";
 
+import { useTranslation } from "next-i18next";
+import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
+
+const getStaticProps = makeStaticProps([
+  "seo",
+  "navbar",
+  "common",
+  "contract-list",
+]);
+export { getStaticPaths, getStaticProps };
+
 export default function Home() {
   const { state, dispatch } = useAppContext();
+  const { t } = useTranslation();
 
   return (
     <>
       <Head>
-        <title>Browse Contracts</title>
+        <title>{t("seo:browse-contracts-page-seo-title")}</title>
       </Head>
 
       <Layout1>

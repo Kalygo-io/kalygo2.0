@@ -18,7 +18,7 @@ export const getStaticPaths = () => {
   };
 };
 
-export async function getI18nProps(ctx: any, ns = ["common"]) {
+export async function getI18nProps(ctx: any, ns = ["general"]) {
   const locale = (ctx?.params as any)?.locale;
 
   let props = {
