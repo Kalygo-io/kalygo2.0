@@ -2,6 +2,10 @@
 
 npx serve@latest out
 
+or
+
+npx serve@latest -p 3001 out
+
 ## Error Boundaries don't work how you expected
 
 https://legacy.reactjs.org/docs/error-boundaries.html#introducing-error-boundaries
@@ -9,3 +13,4 @@ https://legacy.reactjs.org/docs/error-boundaries.html#introducing-error-boundari
 ## Exclude package-lock.json from git diff
 
 git diff -- . ':(exclude)package-lock.json'
+
