@@ -12,7 +12,22 @@ import Image from "next/image";
 import { errorReporter } from "@/utility/error/reporter";
 import { infoToast } from "@/utility/toasts";
 
+import { useTranslation } from "next-i18next";
+import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
+
+const getStaticProps = makeStaticProps([
+  "seo",
+  "navbar",
+  "common",
+  "sign-up-page",
+  "image-alt-tags",
+  "forms",
+]);
+export { getStaticPaths, getStaticProps };
+
 export default function Signup() {
+  const { t } = useTranslation();
+
   const {
     register,
     handleSubmit,
@@ -46,15 +61,13 @@ export default function Signup() {
         },
       };
 
-      // debugger;
-
       let resp = await axios(config);
-
-      // debugger;
 
       console.log(resp);
 
-      infoToast("Check your email for verification!");
+      infoToast(
+        "Check your email inbox for verification. If you don't see the email then check your spam folder."
+      );
 
       router.push("/");
     } catch (e) {
@@ -65,7 +78,7 @@ export default function Signup() {
   return (
     <>
       <Head>
-        <title>Kalygo Sign Up Page</title>
+        <title>{t("seo:sign-up-page-seo-title")}</title>
         <meta name="description" content="Sign up and experience Kalygo." />
       </Head>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -73,12 +86,12 @@ export default function Signup() {
           <Image
             className="mx-auto h-10 w-auto"
             src="/logo192.png"
-            alt="Kalygo logo"
+            alt={t("image-alt-tags:logo192.png")}
             width={192}
             height={192}
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Sign up
+            {t("sign-up-page:sign-up")}
           </h2>
         </div>
 
@@ -89,7 +102,7 @@ export default function Signup() {
                 htmlFor="email"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                Email address
+                {t("forms:email-address")}
               </label>
               <div className="mt-2">
                 <input
@@ -103,7 +116,7 @@ export default function Signup() {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  placeholder="Enter email"
+                  placeholder={t("forms:enter-email")!}
                   className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
                     errors["email"] && "ring-red-700 focus:ring-red-500"
                   }`}
@@ -117,14 +130,14 @@ export default function Signup() {
                   htmlFor="password"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Password
+                  {t("forms:password")!}
                 </label>
                 <div className="text-sm">
                   <Link
                     href="/forgot-password"
                     className="font-semibold text-blue-600 hover:text-blue-500"
                   >
-                    Forgot password?
+                    {t("forms:forgot-password")!}
                   </Link>
                 </div>
               </div>
@@ -138,8 +151,7 @@ export default function Signup() {
                   name="password"
                   type="password"
                   autoComplete="current-password"
-                  placeholder="Minimum 7 characters"
-                  // className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                  placeholder={t("forms:minimum-7-characters")!}
                   className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
                     errors["password"] && "ring-red-700 focus:ring-red-500"
                   }`}
@@ -153,7 +165,7 @@ export default function Signup() {
                 // onClick={() => onSubmit(getValues())}
                 className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               >
-                Sign up
+                {t("forms:sign-up")!}
               </button>
             </div>
           </form>
@@ -163,7 +175,7 @@ export default function Signup() {
               href="/"
               className="font-semibold leading-6 text-blue-600 hover:text-blue-500"
             >
-              Back to home
+              {t("sign-up-page:back-to-home")}
             </Link>
           </p>
         </div>
