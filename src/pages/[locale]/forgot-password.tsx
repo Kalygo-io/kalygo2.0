@@ -153,7 +153,7 @@ export default function ForgotPassword() {
               href="/"
               className="font-semibold leading-6 text-blue-600 hover:text-blue-500"
             >
-              Back to home
+              {t("forgot-password-page:back-to-home")}
             </Link>
           </p>
         </div>

@@ -27,7 +27,7 @@ export function Navbar() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
+          <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">{t("common:company-name")}</span>
             <Image
               className="h-8 w-auto"
@@ -36,7 +36,7 @@ export function Navbar() {
               width={192}
               height={192}
             />
-          </Link>
+          </a>
         </div>
         <div className="flex lg:hidden">
           <button
