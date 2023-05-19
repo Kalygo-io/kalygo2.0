@@ -5,11 +5,11 @@ export function Stats() {
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             We approach justice as something that should be accesible to
-            everyone.
+            everyone
           </h2>
           <p className="mt-6 text-base leading-7 text-gray-600">
             The traditional legal system is obtuse, convoluted, and expensive
-            which is where Kalygo comes into the picture.
+            which is where Kalygo comes into the picture
           </p>
         </div>
         <div className="mx-auto mt-16 flex max-w-2xl flex-col gap-8 lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:items-end">
