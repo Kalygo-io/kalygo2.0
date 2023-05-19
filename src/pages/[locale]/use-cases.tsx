@@ -53,23 +53,29 @@ export default function UseCases() {
                 width={1000}
                 height={1000}
                 alt={t("image-alt-tags:money.svg")}
-                className="object-fit object-center opacity-25 group-hover:opacity-50"
+                className="object-fit object-center opacity-100 group-hover:opacity-50"
               />
               <div
                 aria-hidden="true"
-                className="bg-gradient-to-bl from-transparent to-blue-700"
+                // className="bg-gradient-to-bl from-transparent to-blue-700"
+                className="hover:bg-orange-400"
               />
-              <div className="flex items-end p-6">
+              <div className="flex items-start p-6">
                 <div>
-                  <h3 className="font-semibold text-white">
-                    <Link href="/browse-contracts">
-                      <span className="absolute inset-0" />
-                      {t("use-cases-page:escrow")}
-                    </Link>
+                  <h3>
+                    <span className="inline-flex flex-shrink-0 items-center rounded-md bg-white px-4 py-2 mx-1 text-2xl font-bold text-orange-400 ring-2 ring-inset ring-orange-600/20">
+                      <Link href="/browse-contracts">
+                        <span className="absolute inset-0" />
+                        {t("use-cases-page:escrow")}
+                      </Link>
+                    </span>
                   </h3>
-                  <p aria-hidden="true" className="mt-1 text-sm text-white">
+                  {/* <p
+                    aria-hidden="true"
+                    className="mt-1 text-sm text-black font-semibold"
+                  >
                     {t("use-cases-page:deploy-now")}
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>
@@ -79,23 +85,29 @@ export default function UseCases() {
                 width={1000}
                 height={1000}
                 alt={t("image-alt-tags:club.svg")}
-                className="object-fit object-center opacity-25 group-hover:opacity-50 sm:absolute sm:inset-0 sm:h-full sm:w-full"
+                className="object-fit object-right opacity-100 group-hover:opacity-50 sm:absolute sm:inset-0 sm:h-full sm:w-full"
               />
               <div
                 aria-hidden="true"
-                className="bg-gradient-to-bl from-transparent to-blue-700 opacity-50 sm:absolute sm:inset-0"
+                // className="bg-gradient-to-bl from-transparent to-blue-700 opacity-50 sm:absolute sm:inset-0"
+                className=""
               />
-              <div className="flex items-end p-6 sm:absolute sm:inset-0">
+              <div className="flex items-start p-6 sm:absolute sm:inset-0">
                 <div>
-                  <h3 className="font-semibold text-white">
-                    <Link href="/browse-contracts">
-                      <span className="absolute inset-0" />
-                      {t("use-cases-page:membership")}
-                    </Link>
+                  <h3>
+                    <span className="inline-flex flex-shrink-0 items-center rounded-md bg-white px-4 py-2 mx-1 text-2xl font-bold text-orange-400 ring-2 ring-inset ring-orange-600/20">
+                      <Link href="/browse-contracts">
+                        <span className="absolute inset-0" />
+                        {t("use-cases-page:membership")}
+                      </Link>
+                    </span>
                   </h3>
-                  <p aria-hidden="true" className="mt-1 text-sm text-white">
+                  {/* <p
+                    aria-hidden="true"
+                    className="mt-1 text-sm text-black font-semibold"
+                  >
                     {t("use-cases-page:manage-powerful-groups")}
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>
@@ -106,23 +118,29 @@ export default function UseCases() {
                 width={1000}
                 height={1000}
                 alt={t("image-alt-tags:luck.svg")!}
-                className="object-fit object-center opacity-25 group-hover:opacity-50 sm:absolute sm:inset-0 sm:h-full sm:w-full"
+                className="object-fit object-center opacity-100 group-hover:opacity-50 sm:absolute sm:inset-0 sm:h-full sm:w-full"
               />
               <div
                 aria-hidden="true"
-                className="bg-gradient-to-bl from-transparent to-blue-700 opacity-50 sm:absolute sm:inset-0"
+                // className="bg-gradient-to-bl from-transparent to-blue-700 opacity-50 sm:absolute sm:inset-0"
+                className=""
               />
-              <div className="flex items-end p-6 sm:absolute sm:inset-0">
+              <div className="flex items-start p-6 sm:absolute sm:inset-0">
                 <div>
-                  <h3 className="font-semibold text-white">
-                    <Link href="/browse-contracts">
-                      <span className="absolute inset-0" />
-                      {t("use-cases-page:lottery")}
-                    </Link>
+                  <h3>
+                    <span className="inline-flex flex-shrink-0 items-center rounded-md bg-white px-4 py-2 mx-1 text-2xl font-bold text-orange-400 ring-2 ring-inset ring-orange-600/20">
+                      <Link href="/browse-contracts">
+                        <span className="absolute inset-0" />
+                        {t("use-cases-page:lottery")}
+                      </Link>
+                    </span>
                   </h3>
-                  <p aria-hidden="true" className="mt-1 text-sm text-white">
+                  {/* <p
+                    aria-hidden="true"
+                    className="mt-1 text-sm text-black font-semibold"
+                  >
                     {t("use-cases-page:unbiased-outcomes")}
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>
