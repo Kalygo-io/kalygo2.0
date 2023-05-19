@@ -24,7 +24,7 @@ export function Stats() {
               <p className="mt-2 text-base leading-7 text-gray-600">
                 In cases where you have issues finding appropriate legal
                 partners for your deal, Kalygo members can securely move your
-                case forward.
+                case forward
               </p>
             </div>
           </div>
