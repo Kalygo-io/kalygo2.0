@@ -35,7 +35,7 @@ export function Stats() {
             <div className="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
               <p className="text-lg font-semibold tracking-tight text-white">
                 Kalygo prides itself on customers and users being satisfied in a
-                quick and meaningful way.
+                quick and meaningful way
               </p>
               <p className="mt-2 text-base leading-7 text-gray-400">
                 Satisfaction is our priority
