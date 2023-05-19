@@ -19,7 +19,7 @@ export function Stats() {
             </p>
             <div className="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
               <p className="text-lg font-semibold tracking-tight text-white">
-                Visitors to Kalygo's site
+                Visitors to Kalygo&apos;s site
               </p>
               <p className="mt-2 text-base leading-7 text-white">
                 If you have issues finding legal partners, Kalygo can securely
