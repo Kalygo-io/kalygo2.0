@@ -28,6 +28,7 @@ const getStaticProps = makeStaticProps([
   "common",
   "forms",
   "error",
+  "image-alt-tags",
 ]);
 export { getStaticPaths, getStaticProps };
 
