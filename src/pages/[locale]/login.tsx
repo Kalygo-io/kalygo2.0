@@ -65,16 +65,17 @@ export default function Signin() {
           email,
           password,
         },
+        withCredentials: true,
       };
 
       let resp = await axios(config);
 
-      console.log(resp);
+      console.log("resp", resp);
 
       // const detectedLng = languageDetector.detect();
       const detectedLng = navigatorLangDetector();
 
-      router.push(`/${detectedLng}/`);
+      router.push(`/${detectedLng}/dashboard`);
     } catch (e) {
       errorReporter(e);
     }

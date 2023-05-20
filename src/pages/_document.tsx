@@ -7,9 +7,9 @@ export default function Document(this: any) {
     this?.props.__NEXT_DATA__.query.locale || i18nextConfig.i18n.defaultLocale;
 
   return (
-    <Html lang={currentLocale}>
+    <Html lang={currentLocale} className="h-full">
       <Head />
-      <body>
+      <body className="h-full">
         <Main />
         <NextScript />
         <Script

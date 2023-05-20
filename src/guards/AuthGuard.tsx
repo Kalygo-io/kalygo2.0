@@ -1,5 +1,4 @@
 // AuthGuard.tsx
-// import { useAuth } from "@/context/AuthProvider";
 
 import { useAppContext } from "@/context/AppContext";
 import { useRouter } from "next/router";
