@@ -14,8 +14,16 @@ import React from "react";
 import { AppWrapper } from "@/context/AppContext";
 import Head from "next/head";
 import ErrorBoundary from "@/components/shared/errorBoundary";
+import { AuthGuard } from "@/guards/AuthGuard";
 
-const App = function ({ Component, pageProps }: AppProps) {
+import type { NextComponentType } from "next"; //Import Component type
+
+// Add custom appProp type then use union to add it
+type CustomAppProps = AppProps & {
+  Component: NextComponentType & { requireAuth?: boolean }; // add auth type
+};
+
+const App = function ({ Component, pageProps }: CustomAppProps) {
   return (
     <>
       <Head>
@@ -41,7 +49,14 @@ const App = function ({ Component, pageProps }: AppProps) {
 
       <ErrorBoundary>
         <AppWrapper>
-          <Component {...pageProps} />
+          {Component.requireAuth ? (
+            <AuthGuard>
+              <Component {...pageProps} />
+            </AuthGuard>
+          ) : (
+            // public page
+            <Component {...pageProps} />
+          )}
         </AppWrapper>
         <ToastContainer />
       </ErrorBoundary>

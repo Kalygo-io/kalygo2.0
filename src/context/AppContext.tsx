@@ -18,6 +18,9 @@ type Props = {
 type appContextType = {
   state: {
     number: number;
+    auth: boolean;
+    authLoading: boolean;
+    authRedirect: string;
   };
   dispatch: Dispatch<Action>;
 };
@@ -25,6 +28,9 @@ type appContextType = {
 const appContextDefaultValues: appContextType = {
   state: {
     number: 0,
+    auth: false,
+    authLoading: false,
+    authRedirect: "",
   },
   dispatch: () => {},
 };
