@@ -1,6 +1,5 @@
 export const initialState = {
   number: 0,
-  user: null,
   authLoading: false,
   authRedirect: "",
   auth: false,
@@ -12,8 +11,9 @@ export type Action =
       type: "init_stored";
       payload: {
         number: number;
-        user: any;
-        authInitializing: boolean;
+        auth: boolean;
+        authLoading: boolean;
+        authRedirect: string;
       };
     }
   | {
@@ -28,8 +28,9 @@ export type Action =
 export const AppReducer = (
   state: {
     number: number;
-    user: any;
+    auth: boolean;
     authLoading: boolean;
+    authRedirect: string;
   },
   action: Action
 ) => {
