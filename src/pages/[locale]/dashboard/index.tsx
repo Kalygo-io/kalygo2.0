@@ -13,6 +13,14 @@ import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 
 // import Link from "next/link";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
+import { Dialog, Menu, Transition } from "@headlessui/react";
+import {
+  CalendarIcon,
+  ChartPieIcon,
+  FolderIcon,
+  HomeIcon,
+} from "@heroicons/react/24/outline";
+import { Fragment, useState } from "react";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -34,7 +42,7 @@ export default function Dashboard() {
         <title>{t("seo:dashboard-page-seo-meta-description")}</title>
       </Head>
       <LayoutDashboard>
-        <div className="px-4 sm:px-6 lg:px-8">{/* Your content */}</div>
+        <div className="px-4 sm:px-6 lg:px-8">Overview</div>
       </LayoutDashboard>
     </>
   );
