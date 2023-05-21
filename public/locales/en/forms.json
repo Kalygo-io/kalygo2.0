@@ -5,5 +5,7 @@
   "enter-password": "Enter password",
   "forgot-password": "Forgot password?",
   "minimum-7-characters": "Minimum 7 characters",
-  "sign-up": "Sign up"
+  "sign-up": "Sign up",
+  "reset-token": "Reset token",
+  "enter-reset-token": "Enter reset token"
 }

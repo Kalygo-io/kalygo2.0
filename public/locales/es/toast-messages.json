@@ -2,5 +2,6 @@
   "the-feedback-is-appreciated": "¡Se agradecen los comentarios!",
   "sign-up-success": "Revise su bandeja de entrada de correo electrónico para verificar. Si no ve el correo electrónico, verifique su carpeta de correo no deseado o comuníquese con el soporte.",
   "forgot-password-success": "¡Estamos enviando un enlace de reinicio!",
-  "sign-out-success": "Salió con éxito"
+  "sign-out-success": "Salió con éxito",
+  "reset-password-success": "Has restablecido correctamente tu contraseña."
 }
