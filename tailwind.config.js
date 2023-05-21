@@ -4,9 +4,11 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+
     // "./public/locales/en/*.{js,ts,jsx,tsx,mdx}",
     // "./public/locales/es/*.{js,ts,jsx,tsx,mdx}",
   ],
+  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   theme: {
     extend: {
       backgroundImage: {
