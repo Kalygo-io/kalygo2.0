@@ -36,7 +36,9 @@ export default function Dashboard() {
         <title>{t("seo:dashboard-page-seo-meta-description")}</title>
       </Head>
       <LayoutDashboard>
-        <div className="px-4 sm:px-6 lg:px-8">Templates</div>
+        <div className="px-4 sm:px-6 lg:px-8">
+          <ContractList />
+        </div>
       </LayoutDashboard>
     </>
   );
