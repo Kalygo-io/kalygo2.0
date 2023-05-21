@@ -29,6 +29,7 @@ const getStaticProps = makeStaticProps([
   "contract-list",
   "error",
   "dashboard-page",
+  "toast-messages",
 ]);
 export { getStaticPaths, getStaticProps };
 

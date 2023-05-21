@@ -3,7 +3,7 @@
 import { ReactNode } from "react";
 
 import { Fragment, useState } from "react";
-import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
+import { Dialog, Menu, Transition } from "@headlessui/react";
 
 import Image from "next/image";
 
@@ -11,25 +11,22 @@ import Image from "next/image";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
 
 import { useRouter } from "next/router";
-import { useParams } from "next/navigation";
 
 import {
   Bars3Icon,
   BellIcon,
-  CalendarIcon,
-  ChartPieIcon,
   ChevronDownIcon,
-  ChevronRightIcon,
   Cog6ToothIcon,
   DocumentDuplicateIcon,
-  FolderIcon,
   HomeIcon,
-  MagnifyingGlassIcon,
   UsersIcon,
   XMarkIcon,
   LifebuoyIcon,
+  UserCircleIcon,
 } from "@heroicons/react/24/outline";
-import LinkComponent from "@/components/shared/Link";
+
+import { signOut } from "@/services/signOut";
+import { useTranslation } from "next-i18next";
 
 const navigation = [
   { name: "Overview", href: "/dashboard", icon: HomeIcon },
@@ -49,7 +46,6 @@ const ecosystem = [
   { id: 1, name: "Mock Jury", href: "#", initial: "J", current: false },
   { id: 2, name: "Tokenize", href: "#", initial: "T", current: false },
 ];
-const userNavigation = [{ name: "Sign out", href: "#" }];
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -62,15 +58,21 @@ interface P {
 export default function LayoutDashboard({ children }: P) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
+  const { t } = useTranslation();
   const { pathname, query } = router;
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const segments = pathname.split("/");
   const current = segments[segments.length - 1];
 
-  // debugger;
-
-  console.log("current", current);
+  const userNavigation = [
+    {
+      name: "Sign out",
+      onClick: () => {
+        signOut(router, t);
+      },
+    },
+  ];
 
   return (
     <>
@@ -130,11 +132,13 @@ export default function LayoutDashboard({ children }: P) {
                   {/* Sidebar component, swap this element with another sidebar if you like */}
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-blue-600 px-6 pb-4">
                     <div className="flex h-16 shrink-0 items-center">
-                      <img
-                        className="h-8 w-auto"
-                        src="/logo192.png"
-                        alt="Kalygo logo"
-                      />
+                      <Link href="/">
+                        <img
+                          className="h-8 w-auto"
+                          src="/logo192.png"
+                          alt="Kalygo logo"
+                        />
+                      </Link>
                     </div>
                     <nav className="flex flex-1 flex-col">
                       <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -354,17 +358,13 @@ export default function LayoutDashboard({ children }: P) {
                 <Menu as="div" className="relative">
                   <Menu.Button className="-m-1.5 flex items-center p-1.5">
                     <span className="sr-only">Open user menu</span>
-                    <img
-                      className="h-8 w-8 rounded-full bg-gray-50"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
-                    />
+                    <UserCircleIcon className="h-8 w-8 rounded-full bg-gray-50" />
                     <span className="hidden lg:flex lg:items-center">
                       <span
                         className="ml-4 text-sm font-semibold leading-6 text-gray-900"
                         aria-hidden="true"
                       >
-                        Tom Cook
+                        Welcome
                       </span>
                       <ChevronDownIcon
                         className="ml-2 h-5 w-5 text-gray-400"
@@ -385,15 +385,15 @@ export default function LayoutDashboard({ children }: P) {
                       {userNavigation.map((item) => (
                         <Menu.Item key={item.name}>
                           {({ active }) => (
-                            <a
-                              href={item.href}
+                            <span
+                              onClick={item.onClick}
                               className={classNames(
                                 active ? "bg-gray-50" : "",
-                                "block px-3 py-1 text-sm leading-6 text-gray-900"
+                                "block px-3 py-1 text-sm leading-6 text-gray-900 cursor-pointer"
                               )}
                             >
                               {item.name}
-                            </a>
+                            </span>
                           )}
                         </Menu.Item>
                       ))}
