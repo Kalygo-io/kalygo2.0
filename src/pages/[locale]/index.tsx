@@ -12,8 +12,8 @@ import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 
 // import Link from "next/link";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
-// import { Stats } from "@/components/indexComponents/stats";
-import { StatsV2 } from "@/components/indexComponents/statsV2";
+import { Stats } from "@/components/indexComponents/stats";
+// import { StatsV2 } from "@/components/indexComponents/statsV2";
 import { Pricing } from "@/components/indexComponents/pricing";
 
 const getStaticProps = makeStaticProps([
@@ -78,7 +78,7 @@ export default function Home(props: any) {
           </div>
           <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32" />
         </div>
-        <StatsV2 />
+        <Stats />
         <Pricing />
       </Layout1>
     </>
