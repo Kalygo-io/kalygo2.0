@@ -13,43 +13,43 @@ export function Stats() {
           </p>
         </div>
         <div className="mx-auto mt-16 flex max-w-2xl flex-col gap-8 lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:items-end">
-          <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-blue-600 p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start">
-            <p className="flex-none text-3xl font-bold tracking-tight text-white">
+          <div className="shadow flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-white p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start">
+            <p className="flex-none text-3xl font-bold tracking-tight text-blue-600">
               387
             </p>
             <div className="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
-              <p className="text-lg font-semibold tracking-tight text-white">
+              <p className="text-lg font-semibold tracking-tight text-blue-600">
                 Visitors to Kalygo&apos;s site
               </p>
-              <p className="mt-2 text-base leading-7 text-white">
+              <p className="mt-2 text-base leading-7 text-blue-600">
                 If you have issues finding legal partners, Kalygo can securely
                 move your case forward
               </p>
             </div>
           </div>
-          <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-blue-600 p-8 sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-sm lg:flex-auto lg:flex-col lg:items-start lg:gap-y-44">
-            <p className="flex-none text-3xl font-bold tracking-tight text-white">
+          <div className="shadow flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-white p-8 sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-sm lg:flex-auto lg:flex-col lg:items-start lg:gap-y-44">
+            <p className="flex-none text-3xl font-bold tracking-tight text-blue-600">
               100%
             </p>
             <div className="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
-              <p className="text-lg font-semibold tracking-tight text-white">
+              <p className="text-lg font-semibold tracking-tight text-blue-600">
                 Kalygo prides itself on members being satisfied in a quick and
                 meaningful way
               </p>
-              <p className="mt-2 text-base leading-7 text-white">
+              <p className="mt-2 text-base leading-7 text-blue-600">
                 Satisfaction is our priority
               </p>
             </div>
           </div>
-          <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-blue-600 p-8 sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start lg:gap-y-28">
-            <p className="flex-none text-3xl font-bold tracking-tight text-white">
+          <div className="shadow flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-white p-8 sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start lg:gap-y-28">
+            <p className="flex-none text-3xl font-bold tracking-tight text-blue-600">
               $1Bn+
             </p>
             <div className="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
-              <p className="text-lg font-semibold tracking-tight text-white">
+              <p className="text-lg font-semibold tracking-tight text-blue-600">
                 Anticipated savings for members of the Kalygo platform
               </p>
-              <p className="mt-2 text-base leading-7 text-white">
+              <p className="mt-2 text-base leading-7 text-blue-600">
                 Transparency is key to how Kalygo works
               </p>
             </div>
