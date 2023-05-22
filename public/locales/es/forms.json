@@ -5,5 +5,6 @@
   "enter-password": "Introducir la contraseña",
   "forgot-password": "¿Has olvidado tu contraseña?",
   "minimum-7-characters": "Mínimo 7 caracteres",
-  "sign-up": "Inscribirse"
+  "sign-up": "Inscribirse",
+  "reset-token": "Restablecer token"
 }

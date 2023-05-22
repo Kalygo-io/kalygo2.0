@@ -29,6 +29,7 @@ const getStaticProps = makeStaticProps([
   "forms",
   "error",
   "image-alt-tags",
+  "toast-messages",
 ]);
 export { getStaticPaths, getStaticProps };
 
@@ -55,29 +56,22 @@ export default function ForgotPassword() {
       const { email } = data;
       console.log("data", data);
 
-      //   var config = {
-      //     method: "post",
-      //     url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/reset-password`,
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     data: {
-      //       email,
-      //       password,
-      //     },
-      //   };
+      var config = {
+        method: "post",
+        url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/request-password-reset`,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: {
+          email,
+        },
+      };
 
-      // debugger;
-
-      //   let resp = await axios(config);
-
-      // debugger;
-
+      let resp = await axios(config);
       //   console.log(resp);
 
-      infoToast(t("toast-message:forgot-password-success"));
+      infoToast(t("toast-messages:forgot-password-success"));
 
-      // const detectedLng = languageDetector.detect();
       const detectedLng = navigatorLangDetector();
 
       router.push(`/${detectedLng}/`);

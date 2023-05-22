@@ -43,7 +43,7 @@ export default function Dashboard() {
       title: "NDA with Lindsay",
     },
     {
-      name: "NDA",
+      name: "Lease",
       title: "Lease on 302 Meridian Ave.",
     },
   ];
