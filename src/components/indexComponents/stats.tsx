@@ -13,7 +13,7 @@ export function Stats() {
           </p>
         </div>
         <div className="mx-auto mt-16 flex max-w-2xl flex-col gap-8 lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:items-end">
-          <div className="shadow flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-white p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start">
+          <div className="shadow flex flex-col-reverse justify-between gap-x-16  rounded-2xl bg-white p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start">
             <p className="flex-none text-3xl font-bold tracking-tight text-blue-600">
               387
             </p>
@@ -27,7 +27,7 @@ export function Stats() {
               </p>
             </div>
           </div>
-          <div className="shadow flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-white p-8 sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-sm lg:flex-auto lg:flex-col lg:items-start lg:gap-y-44">
+          <div className="shadow flex flex-col-reverse justify-between gap-x-16 rounded-2xl bg-white p-8 sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-sm lg:flex-auto lg:flex-col lg:items-start">
             <p className="flex-none text-3xl font-bold tracking-tight text-blue-600">
               100%
             </p>
@@ -41,7 +41,7 @@ export function Stats() {
               </p>
             </div>
           </div>
-          <div className="shadow flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-white p-8 sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start lg:gap-y-28">
+          <div className="shadow flex flex-col-reverse justify-between gap-x-16 rounded-2xl bg-white p-8 sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start">
             <p className="flex-none text-3xl font-bold tracking-tight text-blue-600">
               $1Bn+
             </p>
