@@ -37,7 +37,7 @@ export default function ResetPassword() {
 
   const router = useRouter();
 
-  debugger;
+  const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
 
   const {
     register,
@@ -48,24 +48,27 @@ export default function ResetPassword() {
     watch,
   } = useForm({
     defaultValues: {
-      email: "",
-      resetToken: "",
+      email: searchParams.get("email") || "",
+      resetPasswordToken: "",
+      newPassword: "",
     },
   });
 
   const onSubmit = async (data: any) => {
     try {
-      const { email } = data;
+      const { email, resetPasswordToken, newPassword } = data;
       console.log("data", data);
 
       var config = {
         method: "post",
-        url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/request-password-reset`,
+        url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/reset-password`,
         headers: {
           "Content-Type": "application/json",
         },
         data: {
           email,
+          resetPasswordToken,
+          newPassword,
         },
       };
 
@@ -81,6 +84,8 @@ export default function ResetPassword() {
       errorReporter(e);
     }
   };
+
+  console.log("errors", errors);
 
   return (
     <>
@@ -138,7 +143,7 @@ export default function ResetPassword() {
               <div>
                 <div className="flex items-center justify-between">
                   <label
-                    htmlFor="password"
+                    htmlFor="resetPasswordtoken"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
                     {t("forms:reset-token")}
@@ -146,17 +151,43 @@ export default function ResetPassword() {
                 </div>
                 <div className="mt-2">
                   <input
-                    {...register("resetToken", {
+                    {...register("resetPasswordToken", {
+                      required: true,
+                    })}
+                    id="resetPasswordToken"
+                    name="resetPasswordToken"
+                    autoComplete="resetPasswordToken"
+                    placeholder={t("forms:enter-reset-token")!}
+                    className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
+                      errors["resetPasswordToken"] &&
+                      "ring-red-700 focus:ring-red-500"
+                    }`}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between">
+                  <label
+                    htmlFor="newPassword"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    {t("forms:new-password")!}
+                  </label>
+                </div>
+                <div className="mt-2">
+                  <input
+                    {...register("newPassword", {
                       required: true,
                       minLength: 7,
                     })}
-                    id="password"
-                    name="password"
+                    id="newPassword"
+                    name="newPassword"
                     type="password"
-                    autoComplete="current-password"
-                    placeholder={t("forms:enter-reset-token")!}
+                    autoComplete="newPassword"
+                    placeholder={t("forms:minimum-7-characters")!}
                     className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
-                      errors["resetToken"] && "ring-red-700 focus:ring-red-500"
+                      errors["newPassword"] && "ring-red-700 focus:ring-red-500"
                     }`}
                   />
                 </div>

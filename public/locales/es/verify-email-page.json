@@ -1,5 +1,7 @@
 {
-  "you-are-verified": "You're verified",
-  "we-will-be-in-touch": "We'll be in touch",
-  "back-to-home": "Back to home"
+  "you-are-verified": "Estás verificado",
+  "we-will-be-in-touch": "Nosotros estaremos en contacto",
+  "back-to-home": "Página de inicio",
+  "error-occurred": "Ocurrió un error",
+  "if-issues-persists": "Si el problema persiste, póngase en contacto con el soporte."
 }
