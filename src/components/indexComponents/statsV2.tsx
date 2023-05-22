@@ -23,9 +23,9 @@ export function StatsV2() {
       {items.map((item) => (
         <li
           key={item.id}
-          className="col-span-1 flex flex-col bg-white border border-blue-100 p-4 m-8 rounded-lg shadow"
+          className="col-span-1 flex flex-col bg-white border-0 border-blue-100 p-4 m-8 rounded-lg shadow"
         >
-          <h2 className="mb-2 font-bold text-2xl text-gray-900">{item.stat}</h2>
+          <h2 className="mb-2 font-bold text-2xl text-blue-600">{item.stat}</h2>
           <p className="text-md text-justify">{item.blurb}</p>
           {/* <div className="flex flex-wrap mt-auto pt-3 text-xs">
             <button
