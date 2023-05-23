@@ -21,7 +21,7 @@ const tiers = [
     price: { monthly: "$4.99", annually: "$2.99" },
     description:
       "Everything in Free, plus essential tools for growing your business.",
-    features: ["Up to 50 collaborators", "Advanced analytics"],
+    features: ["Up to 20 collaborators", "Advanced analytics"],
   },
   {
     name: "God Mode",
@@ -31,7 +31,7 @@ const tiers = [
     description:
       "Everything in Standard, plus more collaboration tools and deeper insights.",
     features: [
-      "Unlimited collaborators",
+      "40 collaborators",
       "Even more analytics",
       "Custom reporting tools",
     ],
