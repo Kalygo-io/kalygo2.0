@@ -27,7 +27,7 @@ const tiers = [
     description:
       "Everything in Standard, plus more collaboration tools and deeper insights.",
     features: [
-      "40 collaborators",
+      "Up to 40 collaborators",
       "Even more analytics",
       "Custom reporting tools",
     ],
