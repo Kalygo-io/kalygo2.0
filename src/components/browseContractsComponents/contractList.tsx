@@ -1,3 +1,4 @@
+import { infoToast } from "@/utility/toasts";
 import { useTranslation } from "next-i18next";
 
 export default function ContractList() {
@@ -83,6 +84,9 @@ export default function ContractList() {
             <div className="flex flex-wrap mt-auto pt-3 text-xs">
               <button
                 type="button"
+                onClick={() => {
+                  infoToast(t("contract-list:sign-up-to-try"));
+                }}
                 disabled={!contract.enabled}
                 className="w-full focus:outline-none text-white bg-orange-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 m-auto dark:focus:ring-yellow-900 disabled:opacity-50"
               >
