@@ -8,11 +8,7 @@ const tiers = [
     href: "/signup",
     price: { monthly: "$0", annually: "$0" },
     description: "Everything necessary to get started.",
-    features: [
-      "Up to 10 collaborators",
-      "Basic analytics",
-      "Automated support",
-    ],
+    features: ["Up to 4 collaborators", "Basic analytics", "Automated support"],
   },
   {
     name: "Standard",
