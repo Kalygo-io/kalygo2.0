@@ -15,8 +15,7 @@ const tiers = [
     id: "tier-essential",
     href: "/signup",
     price: { monthly: "$4.99", annually: "$2.99" },
-    description:
-      "Everything in Free, plus essential tools for growing your business.",
+    description: "Everything in Free, plus more.",
     features: ["Up to 20 collaborators", "Advanced analytics"],
   },
   {
@@ -24,8 +23,7 @@ const tiers = [
     id: "tier-growth",
     href: "/signup",
     price: { monthly: "$9.99", annually: "$5.99" },
-    description:
-      "Everything in Standard, plus more collaboration tools and deeper insights.",
+    description: "Everything in Standard, plus more.",
     features: [
       "Up to 40 collaborators",
       "Even more analytics",
