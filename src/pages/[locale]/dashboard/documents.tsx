@@ -27,7 +27,7 @@ const getStaticProps = makeStaticProps([
 ]);
 export { getStaticPaths, getStaticProps };
 
-export default function Dashboard() {
+export default function Document() {
   const { state, dispatch } = useAppContext();
   const { t } = useTranslation();
 
@@ -285,4 +285,4 @@ export default function Dashboard() {
   );
 }
 
-Dashboard.requireAuth = true;
+Document.requireAuth = true;

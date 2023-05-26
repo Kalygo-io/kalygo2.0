@@ -31,14 +31,19 @@ import { useTranslation } from "next-i18next";
 const navigation = [
   { name: "Overview", href: "/dashboard", icon: HomeIcon },
   {
+    name: "Summarize",
+    href: "/dashboard/summarize",
+    icon: DocumentDuplicateIcon,
+  },
+  {
+    name: "Document",
+    href: "/dashboard/documents",
+    icon: DocumentDuplicateIcon,
+  },
+  {
     name: "Templates",
     href: "/dashboard/templates",
     icon: UsersIcon,
-  },
-  {
-    name: "Documents",
-    href: "/dashboard/documents",
-    icon: DocumentDuplicateIcon,
   },
   { name: "A.I.", href: "/dashboard/ai", icon: LifebuoyIcon },
 ];
