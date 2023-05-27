@@ -1,5 +1,7 @@
+import { uploadFiles } from "@/services/uploadFiles";
 import { XCircleIcon, PhotoIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
+import { infoToast } from "@/utility/toasts";
 
 // drag drop file component
 export function DragDropFile() {
@@ -15,7 +17,13 @@ export function DragDropFile() {
   const handleDrag = function (e: any) {
     e.preventDefault();
     e.stopPropagation();
-    if (e.type === "dragenter" || e.type === "dragover") {
+
+    if (
+      (e.type === "dragenter" || e.type === "dragover") &&
+      ["application/pdf", "text/plain"].includes(
+        e.dataTransfer?.items["0"]?.type
+      )
+    ) {
       setDragActive(true);
     } else if (e.type === "dragleave") {
       setDragActive(false);
@@ -23,35 +31,31 @@ export function DragDropFile() {
   };
 
   // triggers when file is dropped
-  const handleDrop = function (e: any) {
+  const handleDrop = async function (e: any) {
     e.preventDefault();
     e.stopPropagation();
     setDragActive(false);
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+    if (
+      e.dataTransfer.files &&
+      e.dataTransfer.files[0] &&
+      ["application/pdf", "text/plain"].includes(
+        e.dataTransfer?.items["0"]?.type
+      )
+    ) {
       // at least one file has been dropped so do something
-      // handleFiles(e.dataTransfer.files);
-
+      setFileList(e.dataTransfer.files);
       console.log("handleDrop");
     }
   };
 
   // triggers when file is selected with click
-  const handleChange = function (e: any) {
+  const handleChange = async function (e: any) {
     e.preventDefault();
     if (e.target.files && e.target.files[0]) {
       // at least one file has been selected so do something
-      // handleFiles(e.target.files);
-
       setFileList(e.target.files);
-
-      // console.log("e.target.files", e.target.files);
       console.log("* handleChange *");
     }
-  };
-
-  // triggers the input when the button is clicked
-  const onButtonClick = () => {
-    inputRef.current!.click();
   };
 
   console.log("fileList", fileList);
@@ -61,25 +65,24 @@ export function DragDropFile() {
       {fileList ? (
         <div className="flex flex-col items-center justify-center">
           <ul className="p-4 sm:p-6 lg:p-8">
-            {
-              Object.keys(fileList).map((value: string, index: number) => {
-                return (
-                  <li key={index}>
-                    {index} - {fileList[index].name}
-                  </li>
-                );
-              })
-              // (Object.keys(fileList).forEach(key => {
-              //   // console.log(key, obj[key]);
-              //   <>key</>
-              // }))
-            }
+            {Object.keys(fileList).map((value: string, index: number) => {
+              return (
+                <li key={index}>
+                  {index} - {fileList[index].name}
+                </li>
+              );
+            })}
           </ul>
           <div>
             <button
               onClick={() => {
-                // setFileList(null);
                 console.log("upload");
+
+                uploadFiles(fileList, () => {
+                  setFileList(null);
+
+                  infoToast("Succesfully uploaded file");
+                });
               }}
               type="button"
               className="inline-flex items-center gap-x-2 rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
@@ -131,6 +134,7 @@ export function DragDropFile() {
                         id="input-file-upload"
                         multiple={true}
                         onChange={handleChange}
+                        accept=".pdf,.txt,.docx"
                         className="sr-only"
                       />
                     </label>
