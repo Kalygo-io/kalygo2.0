@@ -1,4 +1,5 @@
 import axios from "axios";
+import { errorToast } from "@/utility/toasts";
 
 export async function uploadFiles(fileList: any, cb: any) {
   try {
@@ -31,5 +32,6 @@ export async function uploadFiles(fileList: any, cb: any) {
     cb();
   } catch (e) {
     console.error(e);
+    errorToast("Error occurred when performing summarization");
   }
 }

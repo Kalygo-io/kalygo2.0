@@ -15,6 +15,4 @@
     "files.exclude": {
         "**/.git": false
     },
-    "react-i18n.i18nPaths": "READMEs/i18n,public/locales,out/locales",
-    "i18next.i18nPaths": "/Users/a/src/actual_projects/kalygo2.0/READMEs/i18n,/Users/a/src/actual_projects/kalygo2.0/out/locales,/Users/a/src/actual_projects/kalygo2.0/public/locales"
 }
