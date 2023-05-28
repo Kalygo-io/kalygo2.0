@@ -1,7 +1,7 @@
 import axios from "axios";
 import { errorToast } from "@/utility/toasts";
 
-export async function uploadFiles(fileList: any, cb: any) {
+export async function uploadFile(fileList: any, cb: any) {
   try {
     const formData = new FormData();
 
@@ -27,9 +27,9 @@ export async function uploadFiles(fileList: any, cb: any) {
       },
     };
 
-    await axios(config);
+    const resp = await axios(config);
 
-    cb();
+    cb(resp);
   } catch (e) {
     console.error(e);
     errorToast("Error occurred when performing summarization");

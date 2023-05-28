@@ -1,16 +1,13 @@
 export const initialState = {
-  number: 0,
   authLoading: false,
   authRedirect: "",
   auth: false,
 };
 
 export type Action =
-  | { type: "add_number"; payload: number }
   | {
       type: "init_stored";
       payload: {
-        number: number;
         auth: boolean;
         authLoading: boolean;
         authRedirect: string;
@@ -27,7 +24,6 @@ export type Action =
 
 export const AppReducer = (
   state: {
-    number: number;
     auth: boolean;
     authLoading: boolean;
     authRedirect: string;
@@ -37,13 +33,6 @@ export const AppReducer = (
   switch (action.type) {
     case "init_stored": {
       return action.payload;
-    }
-
-    case "add_number": {
-      return {
-        ...state,
-        number: action.payload + state.number,
-      };
     }
 
     case "set_auth": {
