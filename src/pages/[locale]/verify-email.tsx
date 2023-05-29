@@ -48,21 +48,13 @@ export default function VerifyEmail() {
     searchParams.get("email-verification-token") || "";
 
   useEffect(() => {
-    // setTimeout(() => {
-    //   setState({
-    //     loading: false,
-    //     val: true,
-    //     error: null,
-    //   });
-    // }, 2000);
-
     async function fetch() {
       try {
-        setState({
-          loading: true,
-          val: null,
-          error: null,
-        });
+        // setState({
+        //   loading: true,
+        //   val: null,
+        //   error: null,
+        // });
 
         const res = await axios.post(
           `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/verify-account`,

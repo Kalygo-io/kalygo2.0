@@ -23,6 +23,7 @@ import {
   XMarkIcon,
   LifebuoyIcon,
   UserCircleIcon,
+  RectangleGroupIcon,
 } from "@heroicons/react/24/outline";
 
 import { signOut } from "@/services/signOut";
@@ -33,19 +34,19 @@ const navigation = [
   {
     name: "Summarize",
     href: "/dashboard/summarize",
-    icon: DocumentDuplicateIcon,
+    icon: LifebuoyIcon,
   },
   {
-    name: "Document",
+    name: "Documents",
     href: "/dashboard/documents",
     icon: DocumentDuplicateIcon,
   },
   {
     name: "Templates",
     href: "/dashboard/templates",
-    icon: UsersIcon,
+    icon: RectangleGroupIcon,
   },
-  { name: "A.I.", href: "/dashboard/ai", icon: LifebuoyIcon },
+  // { name: "A.I.", href: "/dashboard/ai", icon: LifebuoyIcon },
 ];
 const ecosystem = [
   { id: 1, name: "Mock Jury", href: "#", initial: "J", current: false },
