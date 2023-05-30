@@ -118,7 +118,7 @@ export default function Document() {
                           <p className="pl-1">or drag and drop</p>
                         </div>
                         <p className="text-xs leading-5 text-gray-600">
-                          PDF, DOCX, TXT
+                          PDF, TXT
                         </p>
                       </div>
                     </div>

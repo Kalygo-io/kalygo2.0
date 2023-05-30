@@ -36,11 +36,11 @@ const navigation = [
     href: "/dashboard/summarize",
     icon: LifebuoyIcon,
   },
-  {
-    name: "Documents",
-    href: "/dashboard/documents",
-    icon: DocumentDuplicateIcon,
-  },
+  // {
+  //   name: "Documents",
+  //   href: "/dashboard/documents",
+  //   icon: DocumentDuplicateIcon,
+  // },
   {
     name: "Templates",
     href: "/dashboard/templates",

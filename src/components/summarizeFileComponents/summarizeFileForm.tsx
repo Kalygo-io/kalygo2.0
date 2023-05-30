@@ -11,9 +11,13 @@ interface Props {
   onSuccess: ({
     summary,
     fileName,
+    originalLength,
+    condensedLength,
   }: {
-    summary: string;
+    summary: string[];
     fileName: string;
+    originalLength: number;
+    condensedLength: number;
   }) => void;
   onError: () => void;
 }
@@ -92,10 +96,19 @@ export function SummarizeFileForm(props: Props) {
 
                 uploadFile(fileList, (resp: any) => {
                   setFileList(null);
-                  const summary = get(resp, "data.summary.text", null);
+                  const summary = get(resp, "data.summary", null);
+                  const originalLength = get(resp, "data.originalLength", null);
+                  const condensedLength = get(
+                    resp,
+                    "data.condensedLength",
+                    null
+                  );
+
                   onSuccess({
                     summary,
                     fileName: fileList[0].name,
+                    originalLength: originalLength,
+                    condensedLength: condensedLength,
                   });
                 });
               }}
@@ -167,7 +180,7 @@ export function SummarizeFileForm(props: Props) {
                     ></div>
                   )}
                   <p className="text-xs leading-5 text-gray-600">
-                    PDF, DOCX, TXT up to 100KB
+                    PDF, TXT up to 100KB
                   </p>
                 </div>
               </div>

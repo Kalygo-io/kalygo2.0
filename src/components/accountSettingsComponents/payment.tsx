@@ -8,10 +8,12 @@ import {
 } from "@heroicons/react/24/outline";
 import axios from "axios";
 import { useTranslation } from "next-i18next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useForm } from "react-hook-form";
 import { NewCardModal } from "./paymentComponents/newCardModal";
+import { getStripeCards } from "@/services/getStripeCards";
+import { deleteStripeCard } from "@/services/deleteStripeCard";
 
 interface P {
   // account: { email: string; firstName: string; lastName: string };
@@ -20,38 +22,21 @@ interface P {
 export function Payment(p: P) {
   const { t } = useTranslation();
 
-  //   const {
-  //     account: { email, firstName, lastName },
-  //   } = p;
-
-  //   const onSubmit = async (data: any) => {
-  //     try {
-  //       const { email, firstName, lastName } = data;
-  //       console.log("data", data);
-
-  //       var config = {
-  //         method: "patch",
-  //         url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account`,
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         data: {
-  //           email,
-  //           firstName,
-  //           lastName,
-  //         },
-  //         withCredentials: true,
-  //       };
-
-  //       let resp = await axios(config);
-
-  //       console.log("resp", resp);
-  //     } catch (e) {
-  //       errorReporter(e);
-  //     }
-  //   };
+  const [cards, setCards] = useState<any[]>([]);
 
   const [newCardOpen, setNewCardOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    console.log("_!_ _!_");
+
+    getStripeCards((payload: any) => {
+      //   debugger;
+
+      setCards(payload);
+    });
+  }, []);
+
+  console.log("cards", cards);
 
   return (
     <>
@@ -61,86 +46,73 @@ export function Payment(p: P) {
             Payment
           </h2>
         </div>
-        {false ? (
-          <div className="space-y-16">
-            <div className="w-96 h-56 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110">
-              <img
-                className="relative object-cover w-full h-full rounded-xl"
-                src="https://i.imgur.com/kGkSg1v.png"
-              />
-
-              <div className="w-full px-8 absolute top-8">
-                <div className="flex justify-between">
-                  <div>
-                    <p className="font-light">Name</p>
-                    <p className="font-medium tracking-widest">Karthik P</p>
-                  </div>
-                </div>
-                <div className="pt-1">
-                  <p className="font-light">Card Number</p>
-                  <p className="font-medium tracking-more-wider">
-                    4642 3489 9867 7632
-                  </p>
-                </div>
-                <div className="pt-6 pr-6">
-                  <div className="flex justify-between">
-                    <div className="">
-                      <p className="font-light text-xs">Valid</p>
-                      <p className="font-medium tracking-wider text-sm">
-                        11/15
-                      </p>
-                    </div>
-                    <div className="">
-                      <p className="font-light text-xs">Expiry</p>
-                      <p className="font-medium tracking-wider text-sm">
-                        03/25
-                      </p>
-                    </div>
-
-                    <div className="">
-                      <p className="font-light text-xs">CVV</p>
-                      <p className="font-bold tracking-more-wider text-sm">
-                        ···
-                      </p>
-                    </div>
-                  </div>
+        <div>
+          {cards.length > 0 ? (
+            <>
+              <ul
+                role="list"
+                className="mt-6 divide-y divide-gray-100 border-t border-gray-200 text-sm leading-6"
+              >
+                {cards.map((i: any, idx) => {
+                  return (
+                    <li key={idx} className="flex justify-between gap-x-6 py-6">
+                      <div className="font-medium text-gray-900">{i.last4}</div>
+                      <button
+                        type="button"
+                        className="font-semibold text-blue-600 hover:text-blue-500"
+                        onClick={() => {
+                          deleteStripeCard(i.id, (val: any, err: any) => {
+                            if (err) {
+                            } else {
+                              setCards(cards.filter((_, i) => i !== idx));
+                            }
+                          });
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
+          ) : (
+            <>
+              <div className="text-center">
+                <CreditCardIcon className="mx-auto h-12 w-12 text-gray-400" />
+                <h3 className="mt-2 text-sm font-semibold text-gray-900">
+                  No Card
+                </h3>
+                <p className="mt-1 text-sm text-gray-500">
+                  Get started by saving your card with Stripe
+                </p>
+                <div className="mt-6">
+                  <button
+                    type="button"
+                    className="inline-flex items-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                    onClick={() => {
+                      setNewCardOpen(true);
+                    }}
+                  >
+                    <PlusIcon
+                      className="-ml-0.5 mr-1.5 h-5 w-5"
+                      aria-hidden="true"
+                    />
+                    New Card
+                  </button>
                 </div>
               </div>
-            </div>
-          </div>
-        ) : (
-          <>
-            <div className="text-center">
-              <CreditCardIcon className="mx-auto h-12 w-12 text-gray-400" />
-              <h3 className="mt-2 text-sm font-semibold text-gray-900">
-                No Card
-              </h3>
-              <p className="mt-1 text-sm text-gray-500">
-                Get started by saving your card with Stripe
-              </p>
-              <div className="mt-6">
-                <button
-                  type="button"
-                  className="inline-flex items-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                  onClick={() => {
-                    setNewCardOpen(true);
-                  }}
-                >
-                  <PlusIcon
-                    className="-ml-0.5 mr-1.5 h-5 w-5"
-                    aria-hidden="true"
-                  />
-                  New Card
-                </button>
-              </div>
-            </div>
-          </>
-        )}
+            </>
+          )}
+        </div>
       </div>
 
       <NewCardModal
         open={newCardOpen}
-        setOpen={(isOpen: boolean) => setNewCardOpen(isOpen)}
+        setOpen={(isOpen: boolean, newCard: object) => {
+          newCard && setCards([...cards, newCard]);
+          setNewCardOpen(isOpen);
+        }}
       />
     </>
   );

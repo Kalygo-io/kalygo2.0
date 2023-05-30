@@ -37,7 +37,12 @@ export default function Summarize() {
   const { t } = useTranslation();
 
   const [summary, setSummaryState] = useState<{
-    val: { summary: string; fileName: string } | null;
+    val: {
+      summary: string[];
+      fileName: string;
+      originalLength: number;
+      condensedLength: number;
+    } | null;
     loading: boolean;
     err: Error | null;
   }>({
@@ -55,7 +60,9 @@ export default function Summarize() {
     jsx = (
       <SummarySuccess
         fileName={summary.val?.fileName}
-        summary={summary.val?.summary}
+        summary={summary.val.summary}
+        originalLength={summary.val.originalLength}
+        condensedLength={summary.val.condensedLength}
         reset={() => {
           setSummaryState({
             val: null,
@@ -68,7 +75,12 @@ export default function Summarize() {
   } else {
     jsx = (
       <SummarizeFileForm
-        onSuccess={(resp: { summary: string; fileName: string }) => {
+        onSuccess={(resp: {
+          summary: string[];
+          fileName: string;
+          originalLength: number;
+          condensedLength: number;
+        }) => {
           console.log("onSuccess");
           infoToast("Summary returned successfully");
           setSummaryState({

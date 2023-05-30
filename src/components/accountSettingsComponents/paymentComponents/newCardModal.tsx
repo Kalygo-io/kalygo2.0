@@ -1,20 +1,85 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon, LockClosedIcon } from "@heroicons/react/24/outline";
+import { addStripeCard } from "@/services/addStripeCard";
+import { useTranslation } from "next-i18next";
+
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import { errorReporter } from "@/utility/error/reporter";
 
 interface P {
   open: boolean;
-  setOpen: (isOpen: boolean) => void;
+  setOpen: (isOpen: boolean, newCard: any) => void;
 }
 
 export function NewCardModal(p: P) {
-  //   const [open, setOpen] = useState(true);
+  const { t } = useTranslation();
+
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    formState: { errors, isValid },
+    setValue,
+    watch,
+  } = useForm({
+    defaultValues: {
+      cardNumber: "4242424242424242",
+      expDate: "11/24",
+      cvc: "123",
+    },
+  });
 
   const { open, setOpen } = p;
 
+  const onSubmit = async (data: any) => {
+    try {
+      const { feedback } = data;
+      console.log("data", data);
+
+      await addStripeCard(
+        {
+          exp_month: "12",
+          exp_year: "2023",
+          cvc: data.cvc,
+          card_number: data.cardNumber,
+        },
+        (newCard: any) => {
+          setOpen(false, newCard);
+        }
+      );
+
+      //   var config = {
+      //     method: "post",
+      //     url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/feedback/general`,
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     data: {
+      //       feedback,
+      //     },
+      //   };
+
+      //   let resp = await axios(config);
+
+      //   console.log(resp);
+      //   infoToast(t("toast-messages:the-feedback-is-appreciated"));
+      // const detectedLng = languageDetector.detect();
+      //   const detectedLng = navigatorLangDetector();
+      //   router.push(`/${detectedLng}/`);
+    } catch (e) {
+      errorReporter(e);
+    }
+  };
+
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={setOpen}>
+      <Dialog
+        as="div"
+        className="relative z-10"
+        onClose={() => setOpen(false, null)}
+      >
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -55,14 +120,21 @@ export function NewCardModal(p: P) {
                     </Dialog.Title>
                   </div>
                 </div>
-                <form className="flex flex-wrap gap-3 w-full p-5">
+                <form
+                  onSubmit={handleSubmit(onSubmit)}
+                  className="flex flex-wrap gap-3 w-full p-5"
+                >
                   <label className="relative w-full flex flex-col">
                     <span className="mb-3">Card number</span>
                     <input
+                      {...register("cardNumber", {
+                        required: true,
+                        pattern: new RegExp(/^[0-9]+$/),
+                      })}
                       className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
                       type="text"
-                      name="card_number"
-                      placeholder="0000 0000 0000"
+                      name="cardNumber"
+                      placeholder="0000 0000 0000 0000"
                     />
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -72,9 +144,9 @@ export function NewCardModal(p: P) {
                       stroke="currentColor"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
                       />
                     </svg>
@@ -83,9 +155,13 @@ export function NewCardModal(p: P) {
                   <label className="relative flex-1 flex flex-col">
                     <span className="mb-3">Expiration date</span>
                     <input
+                      {...register("expDate", {
+                        required: true,
+                        pattern: new RegExp(/[0-9]{2}\/[0-9]{2}/),
+                      })}
                       className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
                       type="text"
-                      name="expire_date"
+                      name="expDate"
                       placeholder="MM/YY"
                     />
                     <svg
@@ -96,9 +172,9 @@ export function NewCardModal(p: P) {
                       stroke="currentColor"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                       />
                     </svg>
@@ -120,18 +196,22 @@ export function NewCardModal(p: P) {
                           stroke="currentColor"
                         >
                           <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                             d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                           />
                         </svg>
                       </span>
                     </span>
                     <input
+                      {...register("cvc", {
+                        required: true,
+                        pattern: new RegExp(/^[0-9]+$/),
+                      })}
                       className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
                       type="text"
-                      name="card_cvc"
+                      name="cvc"
                       placeholder="&bull;&bull;&bull;"
                     />
                     <svg
@@ -142,36 +222,27 @@ export function NewCardModal(p: P) {
                       stroke="currentColor"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
                       />
                     </svg>
                   </label>
                 </form>
-                {/* <div className="mt-5 sm:mt-6">
-                  <button
-                    type="button"
-                    className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                    onClick={() => setOpen(false)}
-                  >
-                    Go back
-                  </button>
-                </div> */}
                 <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
                   <button
+                    disabled={!isValid}
+                    onClick={() => onSubmit(getValues())}
                     type="button"
                     className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:col-start-2"
-                    onClick={() => setOpen(false)}
                   >
                     Save
                   </button>
                   <button
                     type="button"
                     className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:col-start-1 sm:mt-0"
-                    onClick={() => setOpen(false)}
-                    // ref={cancelButtonRef}
+                    onClick={() => setOpen(false, null)}
                   >
                     Cancel
                   </button>

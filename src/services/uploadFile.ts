@@ -25,6 +25,7 @@ export async function uploadFile(fileList: any, cb: any) {
       onUploadProgress: (e: any) => {
         console.log("onUploadProgress", e);
       },
+      withCredentials: true,
     };
 
     const resp = await axios(config);
