@@ -1,38 +1,49 @@
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import LinkComponent from "../shared/Link";
+import { useRouter } from "next/router";
 
 const tiers = [
   {
     name: "Free",
     id: "tier-free",
     href: "/signup",
-    price: { monthly: "$0", annually: "$0" },
+    price: { summary: "$0", monthly: "$0" },
     description: "Everything necessary to get started.",
-    features: ["Up to 4 collaborators", "Basic analytics", "Automated support"],
+    features: ["Account are free", "Automated support"],
+    enabled: true,
   },
   {
     name: "Standard",
     id: "tier-essential",
     href: "/signup",
-    price: { monthly: "$4.99", annually: "$2.99" },
+    price: { summary: "+50¢", monthly: "Coming Soon" },
     description: "Everything in Free, plus more.",
-    features: ["Up to 20 collaborators", "Advanced analytics"],
+    features: [
+      "Pay per summary",
+      "TXT files supported",
+      "Basic analytics",
+      "24hr support",
+    ],
+    enabled: true,
   },
   {
     name: "God Mode",
     id: "tier-growth",
     href: "/signup",
-    price: { monthly: "$9.99", annually: "$5.99" },
+    price: { summary: "ø", monthly: "Coming Soon" },
     description: "Everything in Standard, plus more.",
     features: [
-      "Up to 40 collaborators",
-      "Even more analytics",
+      "Collaboration Features",
+      "More analytics",
       "Custom reporting tools",
     ],
+    enabled: false,
   },
 ];
 
 export function Pricing() {
+  const router = useRouter();
+
   return (
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -57,13 +68,13 @@ export function Pricing() {
                 </h3>
                 <p className="mt-6 flex items-baseline gap-x-1">
                   <span className="text-5xl font-bold tracking-tight text-gray-900">
-                    {tier.price.monthly}
+                    {tier.price.summary}
                   </span>
                   {tier.id === "tier-free" ? (
                     <></>
                   ) : (
                     <span className="text-sm font-semibold leading-6 text-gray-600">
-                      /month
+                      /summary
                     </span>
                   )}
                 </p>
@@ -73,16 +84,20 @@ export function Pricing() {
                   </p>
                 ) : (
                   <p className="mt-3 text-sm leading-6 text-gray-500">
-                    {tier.price.annually} per month if paid annually
+                    {tier.price.monthly}
                   </p>
                 )}
-                <LinkComponent
-                  href={tier.href}
+                <button
+                  // href={tier.href}
+                  disabled={!tier.enabled}
+                  onClick={() => {
+                    router.push("/signup");
+                  }}
                   aria-describedby={tier.id}
-                  className="mt-10 block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                  className="mt-10 block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:opacity-50"
                 >
                   Sign Up
-                </LinkComponent>
+                </button>
                 <p className="mt-10 text-sm font-semibold leading-6 text-gray-900">
                   {tier.description}
                 </p>
