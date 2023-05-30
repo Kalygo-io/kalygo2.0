@@ -4,7 +4,7 @@ export function Stats() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            We approach UX as something that should be accesible to everyone
+            We approach UX as something that should be accessible to everyone
           </h2>
           <p className="mt-6 text-base leading-7 text-gray-600">
             Great UI/UX is where Kalygo comes into the picture.
