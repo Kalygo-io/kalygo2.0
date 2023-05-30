@@ -21,6 +21,8 @@ import { Personal } from "@/components/accountSettingsComponents/personal";
 // import DeleteAccount from "@/components/accountSettingsComponents/deleteAccount";
 import { getAccount } from "@/services/getAccount";
 import { Payment } from "@/components/accountSettingsComponents/payment";
+import { SectionLoader } from "@/components/shared/SectionLoader";
+import { WindowLoader } from "@/components/shared/WindowLoader";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -79,7 +81,7 @@ export default function Settings() {
 
   let jsx = null;
   if (account.loading) {
-    jsx = <>Account Loading</>;
+    jsx = <WindowLoader></WindowLoader>;
   } else if (account.err) {
     jsx = <>Error</>;
   } else if (account.val) {

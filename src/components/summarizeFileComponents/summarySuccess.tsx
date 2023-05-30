@@ -26,8 +26,7 @@ export function SummarySuccess(p: P) {
             type="button"
             className="inline-flex items-center gap-x-2 rounded-md bg-orange-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
           >
-            Clear
-            <XCircleIcon className="-mr-0.5 h-5 w-5" aria-hidden="true" />
+            <XCircleIcon className="h-5 w-5" aria-hidden="true" />
           </button>
         </div>
       </div>
@@ -61,7 +60,7 @@ export function SummarySuccess(p: P) {
           <h3 className="text-xl font-semibold leading-7 text-blue-600">
             Summary
           </h3>
-          {summary.map((i, idx) => {
+          {summary?.map((i, idx) => {
             return (
               <p key={idx} className="mt-6 text-xl leading-8">
                 {i}

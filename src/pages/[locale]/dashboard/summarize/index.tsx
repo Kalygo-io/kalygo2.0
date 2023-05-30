@@ -20,7 +20,8 @@ import {
   SummarySuccess,
   SummaryError,
 } from "@/components/summarizeFileComponents";
-import { Loader } from "@/components/shared/Loader";
+import { SectionLoader } from "@/components/shared/SectionLoader";
+import { WindowLoader } from "@/components/shared/WindowLoader";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -54,9 +55,9 @@ export default function Summarize() {
 
   let jsx = null;
   if (summary.loading) {
-    jsx = <Loader></Loader>;
+    jsx = <WindowLoader></WindowLoader>;
   } else if (summary.err) {
-    jsx = <>Error</>;
+    jsx = <SummaryError />;
   } else if (summary.val) {
     jsx = (
       <SummarySuccess
@@ -91,9 +92,14 @@ export default function Summarize() {
           });
         }}
         setSummaryState={setSummaryState}
-        onError={() => {
+        onError={(err) => {
+          setSummaryState({
+            val: null,
+            loading: false,
+            err: err,
+          });
+
           console.log("onError");
-          errorToast("Summary returned successfully");
         }}
       />
     );

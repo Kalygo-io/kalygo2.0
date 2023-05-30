@@ -2,15 +2,19 @@
 
 import { useAppContext } from "@/context/AppContext";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import { WindowLoader } from "@/components/shared/WindowLoader";
 
 export function AuthGuard({ children }: { children: JSX.Element }) {
   const { state, dispatch } = useAppContext();
   const { authLoading, auth } = state;
   const router = useRouter();
+  const [renderCount, setRenderCount] = useState<number>(0);
 
   useEffect(() => {
+    setRenderCount(1);
+
     async function fetch() {
       try {
         dispatch({
@@ -27,6 +31,7 @@ export function AuthGuard({ children }: { children: JSX.Element }) {
           { withCredentials: true }
         );
 
+        // setTimeout(() => {
         dispatch({
           type: "set_auth",
           payload: {
@@ -35,6 +40,7 @@ export function AuthGuard({ children }: { children: JSX.Element }) {
             auth: true,
           },
         });
+        // }, 3000);
       } catch (e) {
         dispatch({
           type: "set_auth",
@@ -52,13 +58,15 @@ export function AuthGuard({ children }: { children: JSX.Element }) {
     fetch();
   }, []);
 
+  // debugger;
+
   /* show loading indicator while the auth provider is still initializing */
   if (authLoading) {
-    return <h1>Application Loading</h1>;
+    return <WindowLoader></WindowLoader>;
   }
 
   // if auth initialized with a valid user show protected page
-  if (!authLoading && auth) {
+  if (!authLoading && auth && renderCount > 0) {
     return <>{children}</>;
   }
 

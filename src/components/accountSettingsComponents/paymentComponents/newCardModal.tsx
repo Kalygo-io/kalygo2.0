@@ -10,7 +10,7 @@ import { errorReporter } from "@/utility/error/reporter";
 
 interface P {
   open: boolean;
-  setOpen: (isOpen: boolean, newCard: any) => void;
+  cb: (isOpen: boolean, newCard: any) => void;
 }
 
 export function NewCardModal(p: P) {
@@ -31,7 +31,7 @@ export function NewCardModal(p: P) {
     },
   });
 
-  const { open, setOpen } = p;
+  const { open, cb } = p;
 
   const onSubmit = async (data: any) => {
     try {
@@ -46,7 +46,7 @@ export function NewCardModal(p: P) {
           card_number: data.cardNumber,
         },
         (newCard: any) => {
-          setOpen(false, newCard);
+          cb(false, newCard);
         }
       );
 
@@ -78,7 +78,7 @@ export function NewCardModal(p: P) {
       <Dialog
         as="div"
         className="relative z-10"
-        onClose={() => setOpen(false, null)}
+        onClose={() => cb(false, null)}
       >
         <Transition.Child
           as={Fragment}
@@ -242,7 +242,7 @@ export function NewCardModal(p: P) {
                   <button
                     type="button"
                     className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:col-start-1 sm:mt-0"
-                    onClick={() => setOpen(false, null)}
+                    onClick={() => cb(false, null)}
                   >
                     Cancel
                   </button>

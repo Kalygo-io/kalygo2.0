@@ -1,19 +1,18 @@
 import axios from "axios";
 import { errorToast } from "@/utility/toasts";
 
-export async function uploadFile(fileList: any, cb: any) {
+export async function uploadFile(filePath: string, quote: number, cb: any) {
   try {
-    const formData = new FormData();
+    // const formData = new FormData();
+    // const fileListKeys = Object.keys(fileList);
 
-    const fileListKeys = Object.keys(fileList);
+    // for (let i = 0; i < fileListKeys.length; i++) {
+    //   console.log(fileList, fileList[i]);
+    //   formData.append("file", fileList[i]);
+    // }
 
-    for (let i = 0; i < fileListKeys.length; i++) {
-      console.log(fileList, fileList[i]);
-      formData.append("file", fileList[i]);
-    }
-
-    console.log("formData", formData);
-    console.log("formData", formData.get("file"));
+    // console.log("formData", formData);
+    // console.log("formData", formData.get("file"));
 
     var config = {
       method: "post",
@@ -21,7 +20,11 @@ export async function uploadFile(fileList: any, cb: any) {
       headers: {
         "Content-Type": "multipart/form-data",
       },
-      data: formData,
+      data: {
+        // ...formData,
+        filePath,
+        amount: quote,
+      },
       onUploadProgress: (e: any) => {
         console.log("onUploadProgress", e);
       },
@@ -30,8 +33,9 @@ export async function uploadFile(fileList: any, cb: any) {
 
     const resp = await axios(config);
 
-    cb(resp);
+    cb(resp, null);
   } catch (e) {
+    cb(null, e);
     console.error(e);
     errorToast("Error occurred when performing summarization");
   }

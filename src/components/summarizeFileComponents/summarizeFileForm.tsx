@@ -6,6 +6,8 @@ import {
 } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 import get from "lodash.get";
+import { infoToast } from "@/utility/toasts";
+import { getSummarizationQuote } from "@/services/getSummarizationQuote";
 
 interface Props {
   onSuccess: ({
@@ -20,7 +22,7 @@ interface Props {
     condensedLength: number;
   }) => void;
   setSummaryState: (state: any) => void;
-  onError: () => void;
+  onError: (err: any) => void;
 }
 
 export function SummarizeFileForm(props: Props) {
@@ -28,6 +30,10 @@ export function SummarizeFileForm(props: Props) {
 
   const [dragActive, setDragActive] = useState(false);
   const [fileList, setFileList] = useState<FileList | null>();
+  const [quoteForFile, setQuoteForFile] = useState<{
+    quote: number;
+    filePath: string;
+  } | null>();
 
   // ref
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -63,7 +69,17 @@ export function SummarizeFileForm(props: Props) {
     ) {
       // at least one file has been dropped so do something
       setFileList(e.dataTransfer.files);
-      console.log("handleDrop");
+
+      getSummarizationQuote(
+        e.dataTransfer.files,
+        (quote: number, filePath: string) => {
+          setQuoteForFile({
+            quote,
+            filePath,
+          });
+          infoToast(`Received quote ($${quote})`);
+        }
+      );
     }
   };
 
@@ -73,12 +89,19 @@ export function SummarizeFileForm(props: Props) {
     if (e.target.files && e.target.files[0]) {
       // at least one file has been selected so do something
       setFileList(e.target.files);
-      console.log("* handleChange *");
+
+      getSummarizationQuote(
+        e.target.files,
+        (quote: number, filePath: string) => {
+          setQuoteForFile({ quote, filePath });
+          infoToast(`Received quote ($${quote})`);
+        }
+      );
     }
   };
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
+    <div className="px-4 sm:px-6 lg:px-8 ">
       {fileList ? (
         <div className="flex flex-col items-center justify-center">
           <ul className="p-4 sm:p-6 lg:p-8">
@@ -101,39 +124,52 @@ export function SummarizeFileForm(props: Props) {
                   err: null,
                 });
 
-                uploadFile(fileList, (resp: any) => {
-                  setFileList(null);
-                  const summary = get(resp, "data.summary", null);
-                  const originalLength = get(resp, "data.originalLength", null);
-                  const condensedLength = get(
-                    resp,
-                    "data.condensedLength",
-                    null
-                  );
+                uploadFile(
+                  quoteForFile?.filePath!,
+                  quoteForFile?.quote! * 100,
+                  (resp: any, err: any) => {
+                    if (err) {
+                      onError(err);
+                      return;
+                    }
 
-                  onSuccess({
-                    summary,
-                    fileName: fileList[0].name,
-                    originalLength: originalLength,
-                    condensedLength: condensedLength,
-                  });
-                });
+                    setFileList(null);
+                    const summary = get(resp, "data.summary", null);
+                    const originalLength = get(
+                      resp,
+                      "data.originalLength",
+                      null
+                    );
+                    const condensedLength = get(
+                      resp,
+                      "data.condensedLength",
+                      null
+                    );
+
+                    onSuccess({
+                      summary,
+                      fileName: fileList[0].name,
+                      originalLength: originalLength,
+                      condensedLength: condensedLength,
+                    });
+                  }
+                );
               }}
               type="button"
-              className="inline-flex items-center gap-x-2 rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+              className="inline-flex items-center gap-x-2 rounded-md bg-blue-600 m-1 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
             >
-              Summarize
+              Summarize ({`$${quoteForFile?.quote}`})
               <ArrowUpOnSquareIcon
                 className="-mr-0.5 h-5 w-5"
                 aria-hidden="true"
               />
-            </button>{" "}
+            </button>
             <button
               onClick={() => {
                 setFileList(null);
               }}
               type="button"
-              className="inline-flex items-center gap-x-2 rounded-md bg-orange-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
+              className="inline-flex items-center gap-x-2 rounded-md bg-orange-400 m-1 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
             >
               Clear
               <XCircleIcon className="-mr-0.5 h-5 w-5" aria-hidden="true" />
@@ -187,7 +223,7 @@ export function SummarizeFileForm(props: Props) {
                     ></div>
                   )}
                   <p className="text-xs leading-5 text-gray-600">
-                    PDF, TXT up to 100KB
+                    TXT up to 1MB
                   </p>
                 </div>
               </div>
