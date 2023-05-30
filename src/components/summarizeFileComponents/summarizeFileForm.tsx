@@ -19,11 +19,12 @@ interface Props {
     originalLength: number;
     condensedLength: number;
   }) => void;
+  setSummaryState: (state: any) => void;
   onError: () => void;
 }
 
 export function SummarizeFileForm(props: Props) {
-  const { onSuccess, onError } = props;
+  const { onSuccess, onError, setSummaryState } = props;
 
   const [dragActive, setDragActive] = useState(false);
   const [fileList, setFileList] = useState<FileList | null>();
@@ -93,6 +94,12 @@ export function SummarizeFileForm(props: Props) {
             <button
               onClick={() => {
                 console.log("upload");
+
+                setSummaryState({
+                  val: null,
+                  loading: true,
+                  err: null,
+                });
 
                 uploadFile(fileList, (resp: any) => {
                   setFileList(null);
