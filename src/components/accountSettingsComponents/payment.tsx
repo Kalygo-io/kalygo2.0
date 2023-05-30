@@ -149,7 +149,7 @@ export function Payment(p: P) {
         open={newCardOpen}
         cb={(isOpen: boolean, newCard: object) => {
           console.log("cards", cards);
-          debugger;
+          // debugger;
           newCard &&
             setCards({
               val: [...cards.val, newCard],
