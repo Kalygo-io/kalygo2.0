@@ -47,7 +47,7 @@ export function Payment(p: P) {
           </h2>
         </div>
         <div>
-          {cards.length > 0 ? (
+          {cards?.length > 0 ? (
             <>
               <ul
                 role="list"
