@@ -37,7 +37,7 @@
       "no-card": "No Card",
       "get-started": "Get started by saving your card with Stripe",
       "new-card": "New card",
-      "delete-card": "Delete card",
+      "delete-card": "Delete",
       "new-card-modal": {
         "card-details": "Card details",
         "card-number": "Card number",

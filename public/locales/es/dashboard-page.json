@@ -37,7 +37,7 @@
       "no-card": "Sin tarjeta",
       "get-started": "Comience guardando su tarjeta con Stripe",
       "new-card": "Nueva tarjeta",
-      "delete-card": "Borrar tarjeta",
+      "delete-card": "Borrar",
       "new-card-modal": {
         "card-details": "Detalles de tarjeta",
         "card-number": "Número de tarjeta",
