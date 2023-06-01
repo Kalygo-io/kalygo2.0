@@ -51,14 +51,14 @@ export default function Dashboard() {
   return (
     <>
       <Head>
-        <title>{t("seo:dashboard-page-seo-meta-description")}</title>
+        <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
       <LayoutDashboard>
         <div className="px-8 sm:px-6 lg:px-8">
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
               <h1 className="text-base font-semibold leading-6 text-gray-900">
-                Contracts
+                {t("dashboard-page:index.title")}
               </h1>
             </div>
             {/* <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
@@ -81,13 +81,13 @@ export default function Dashboard() {
                           scope="col"
                           className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
                         >
-                          Name
+                          Id
                         </th>
                         <th
                           scope="col"
                           className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                         >
-                          Title
+                          Hash
                         </th>
                         <th
                           scope="col"
@@ -120,7 +120,7 @@ export default function Dashboard() {
                     </tbody>
                   </table>
                 ) : (
-                  <>No Documents Yet!</>
+                  <>{t("dashboard-page:index.no-documents-yet")}</>
                 )}
               </div>
             </div>

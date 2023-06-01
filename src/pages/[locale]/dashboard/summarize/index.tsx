@@ -83,8 +83,7 @@ export default function Summarize() {
           originalLength: number;
           condensedLength: number;
         }) => {
-          console.log("onSuccess");
-          infoToast("Summary returned successfully");
+          infoToast(t("toast-messages:summary-returned-successfully"));
           setSummaryState({
             val: resp,
             loading: false,
@@ -108,7 +107,7 @@ export default function Summarize() {
   return (
     <>
       <Head>
-        <title>{t("seo:dashboard-page-seo-meta-description")}</title>
+        <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
       <LayoutDashboard>{jsx}</LayoutDashboard>
     </>

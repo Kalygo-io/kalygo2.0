@@ -29,25 +29,6 @@ import {
 import { signOut } from "@/services/signOut";
 import { useTranslation } from "next-i18next";
 
-const navigation = [
-  { name: "Overview", href: "/dashboard", icon: HomeIcon },
-  {
-    name: "Summarize",
-    href: "/dashboard/summarize",
-    icon: LifebuoyIcon,
-  },
-  // {
-  //   name: "Documents",
-  //   href: "/dashboard/documents",
-  //   icon: DocumentDuplicateIcon,
-  // },
-  {
-    name: "Templates",
-    href: "/dashboard/templates",
-    icon: RectangleGroupIcon,
-  },
-  // { name: "A.I.", href: "/dashboard/ai", icon: LifebuoyIcon },
-];
 const ecosystem = [
   { id: 1, name: "Mock Jury", href: "#", initial: "J", current: false },
   { id: 2, name: "Tokenize", href: "#", initial: "T", current: false },
@@ -71,9 +52,33 @@ export default function LayoutDashboard({ children }: P) {
   const segments = pathname.split("/");
   const current = segments[segments.length - 1];
 
+  const navigation = [
+    {
+      name: t("dashboard-page:navigation.overview"),
+      href: "/dashboard",
+      icon: HomeIcon,
+    },
+    {
+      name: t("dashboard-page:navigation.summarize"),
+      href: "/dashboard/summarize",
+      icon: LifebuoyIcon,
+    },
+    // {
+    //   name: "Documents",
+    //   href: "/dashboard/documents",
+    //   icon: DocumentDuplicateIcon,
+    // },
+    {
+      name: t("dashboard-page:navigation.templates"),
+      href: "/dashboard/templates",
+      icon: RectangleGroupIcon,
+    },
+    // { name: "A.I.", href: "/dashboard/ai", icon: LifebuoyIcon },
+  ];
+
   const userNavigation = [
     {
-      name: "Sign out",
+      name: t("dashboard-page:sign-out"),
       onClick: () => {
         signOut(router, t);
       },
@@ -319,7 +324,7 @@ export default function LayoutDashboard({ children }: P) {
                       className="h-6 w-6 shrink-0 text-blue-200 group-hover:text-white"
                       aria-hidden="true"
                     />
-                    Settings
+                    {t("dashboard-page:navigation.settings")}
                   </Link>
                 </li>
               </ul>

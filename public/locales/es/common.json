@@ -1,6 +1,36 @@
 {
   "company-name": "Kalygo",
   "log-in": "Acceso",
-  "close-menu": "Close Menu",
-  "open-main-menu": "Open main menu"
+  "close-menu": "Cerrar Menú",
+  "open-main-menu": "Abrir menú principal",
+  "stats": {
+    "headline": "Nos acercamos a UX como algo que debería ser accesible para todos",
+    "subheadline": "Gran UI/UX es donde Kalygo entra en escena",
+    "stat1_headline": "Usuarios de Kalygo",
+    "stat1_subheadline": "Controlado por datos en cada paso del camino",
+    "stat2_headline": "La satisfacción es nuestra prioridad",
+    "stat2_subheadline": "Kalygo se enorgullece de que los miembros estén satisfechos de una manera rápida y significativa",
+    "stat3_headline": "Ahorros previstos para miembros de la plataforma Kalygo",
+    "stat3_subheadline": "La transparencia es clave para el funcionamiento de Kalygo"
+  },
+  "pricing": {
+    "title": "Precios",
+    "tier1_name": "Gratis",
+    "tier1_description": "Todo lo necesario para empezar",
+    "tier1_feature1": "Cuentas son gratis",
+    "tier1_feature2": "Soporte automatizado",
+    "tier2_name": "Estándar",
+    "tier2_description": "Todo en Gratis, y más",
+    "tier2_feature1": "Pago por resumen",
+    "tier2_feature2": "Archivos TXT compatibles",
+    "tier2_feature3": "Analítica básica",
+    "tier2_feature4": "Soporte las 24 horas",
+    "tier3_name": "Modo Premium",
+    "tier3_description": "Todo en Estándar, y más.",
+    "tier3_feature1": "Funciones de colaboración",
+    "tier3_feature2": "Mas analítica",
+    "tier3_feature3": "Herramientas de informes personalizados",
+    "summary": "resumen",
+    "sign-up": "Inscribirse"
+  }
 }

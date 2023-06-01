@@ -1,4 +1,5 @@
 import { XCircleIcon } from "@heroicons/react/24/outline";
+import { useTranslation } from "next-i18next";
 
 interface P {
   fileName: string;
@@ -11,7 +12,7 @@ interface P {
 export function SummarySuccess(p: P) {
   const { fileName, summary, reset, originalLength, condensedLength } = p;
 
-  // debugger;
+  const { t } = useTranslation();
 
   return (
     <div className="px-4 sm:px-6 lg:px-8 flex flex-col flex-center justify-center">
@@ -34,9 +35,16 @@ export function SummarySuccess(p: P) {
       <div className="mx-auto my-2">
         <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
           {[
-            { name: "Original Length", stat: originalLength },
             {
-              name: "Condensed Length",
+              name: t(
+                "dashboard-page:summarize.summary-success.original-length"
+              ),
+              stat: originalLength,
+            },
+            {
+              name: t(
+                "dashboard-page:summarize.summary-success.condensed-length"
+              ),
               stat: condensedLength,
             },
           ].map((item) => (
@@ -58,7 +66,7 @@ export function SummarySuccess(p: P) {
       <div className="bg-white px-6 py-16 lg:px-8">
         <div className="mx-auto max-w-3xl text-base leading-7 text-gray-700">
           <h3 className="text-xl font-semibold leading-7 text-blue-600">
-            Summary
+            {t("dashboard-page:summarize.summary-success.summary")}
           </h3>
           {summary?.map((i, idx) => {
             return (

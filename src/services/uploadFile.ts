@@ -18,7 +18,7 @@ export async function uploadFile(filePath: string, quote: number, cb: any) {
       method: "post",
       url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/summarize`,
       headers: {
-        "Content-Type": "multipart/form-data",
+        "Content-Type": "application/json",
       },
       data: {
         // ...formData,

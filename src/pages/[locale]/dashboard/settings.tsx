@@ -113,7 +113,7 @@ export default function Settings() {
   return (
     <>
       <Head>
-        <title>{t("seo:dashboard-page-seo-meta-description")}</title>
+        <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
       <LayoutDashboard>{jsx}</LayoutDashboard>
     </>

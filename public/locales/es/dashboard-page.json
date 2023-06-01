@@ -1,3 +1,27 @@
 {
-  "protected": "Protegida"
+  "dashboard": "Dashboard",
+  "protected": "Protegida",
+  "navigation": {
+    "overview": "General",
+    "summarize": "Resumir",
+    "templates": "Plantillas",
+    "settings": "Ajustes"
+  },
+  "sign-out": "Desconectar",
+  "index": {
+    "title": "Resúmenes",
+    "no-documents-yet": "¡No hay documentos todavía!"
+  },
+  "summarize": {
+    "upload-a-file": "Cargar un archivo",
+    "upload-limits": "Archivos TXT de hasta 1 MB",
+    "clear": "Reiniciar",
+    "summarize": "Resumir",
+    "received-quote": "Cotización recibida",
+    "summary-success": {
+      "original-length": "Longitud original",
+      "condensed-length": "Longitud condensada",
+      "summary": "Resumen"
+    }
+  }
 }

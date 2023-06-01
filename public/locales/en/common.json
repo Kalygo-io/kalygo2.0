@@ -2,5 +2,35 @@
   "company-name": "Kalygo",
   "log-in": "Log in",
   "close-menu": "Close Menu",
-  "open-main-menu": "Open main menu"
+  "open-main-menu": "Open main menu",
+  "stats": {
+    "headline": "We approach UX as something that should be accessible to everyone",
+    "subheadline": "Great UI/UX is where Kalygo comes into the picture",
+    "stat1_headline": "Kalygo users",
+    "stat1_subheadline": "Data-driven every step of the way",
+    "stat2_headline": "Satisfaction is our priority",
+    "stat2_subheadline": "Kalygo prides itself on members being satisfied in a quick and meaningful way",
+    "stat3_headline": "Anticipated savings for members of the Kalygo platform",
+    "stat3_subheadline": "Transparency is key to how Kalygo works"
+  },
+  "pricing": {
+    "title": "Pricing",
+    "tier1_name": "Free",
+    "tier1_description": "Everything necessary to get started",
+    "tier1_feature1": "Accounts are free",
+    "tier1_feature2": "Automated support",
+    "tier2_name": "Standard",
+    "tier2_description": "Everything in Free, plus more",
+    "tier2_feature1": "Pay per summary",
+    "tier2_feature2": "TXT files supported",
+    "tier2_feature3": "Basic analytics",
+    "tier2_feature4": "24hr support",
+    "tier3_name": "Premium",
+    "tier3_description": "Everything in Standard, plus more.",
+    "tier3_feature1": "Collaboration Features",
+    "tier3_feature2": "More analytics",
+    "tier3_feature3": "Custom reporting tools",
+    "summary": "summary",
+    "sign-up": "Sign up"
+  }
 }

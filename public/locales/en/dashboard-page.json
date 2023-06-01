@@ -1,4 +1,27 @@
 {
   "dashboard": "Dashboard",
-  "protected": "Protected"
+  "protected": "Protected",
+  "navigation": {
+    "overview": "Overview",
+    "summarize": "Summarize",
+    "templates": "Templates",
+    "settings": "Settings"
+  },
+  "sign-out": "Sign out",
+  "index": {
+    "title": "Summaries",
+    "no-documents-yet": "No Documents Yet!"
+  },
+  "summarize": {
+    "upload-a-file": "Upload a file",
+    "upload-limits": "TXT files up to 1MB",
+    "clear": "Clear",
+    "summarize": "Summarize",
+    "received-quote": "Received quote",
+    "summary-success": {
+      "original-length": "Original Length",
+      "condensed-length": "Condensed Length",
+      "summary": "Summary"
+    }
+  }
 }

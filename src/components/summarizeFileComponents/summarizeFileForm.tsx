@@ -6,6 +6,9 @@ import {
 } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 import get from "lodash.get";
+
+import { useTranslation } from "next-i18next";
+
 import { infoToast } from "@/utility/toasts";
 import { getSummarizationQuote } from "@/services/getSummarizationQuote";
 
@@ -34,6 +37,8 @@ export function SummarizeFileForm(props: Props) {
     quote: number;
     filePath: string;
   } | null>();
+
+  const { t } = useTranslation();
 
   // ref
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -77,7 +82,9 @@ export function SummarizeFileForm(props: Props) {
             quote,
             filePath,
           });
-          infoToast(`Received quote ($${quote})`);
+          infoToast(
+            `${t("dashboard-page:summarize.received-quote")} ($${quote})`
+          );
         }
       );
     }
@@ -94,7 +101,9 @@ export function SummarizeFileForm(props: Props) {
         e.target.files,
         (quote: number, filePath: string) => {
           setQuoteForFile({ quote, filePath });
-          infoToast(`Received quote ($${quote})`);
+          infoToast(
+            `${t("dashboard-page:summarize.received-quote")} ($${quote})`
+          );
         }
       );
     }
@@ -158,7 +167,8 @@ export function SummarizeFileForm(props: Props) {
               type="button"
               className="inline-flex items-center gap-x-2 rounded-md bg-blue-600 m-1 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
             >
-              Summarize {quoteForFile?.quote && `$${quoteForFile?.quote}`}
+              {t("dashboard-page:summarize.summarize")}{" "}
+              {quoteForFile?.quote && `($${quoteForFile?.quote})`}
               <ArrowUpOnSquareIcon
                 className="-mr-0.5 h-5 w-5"
                 aria-hidden="true"
@@ -171,7 +181,7 @@ export function SummarizeFileForm(props: Props) {
               type="button"
               className="inline-flex items-center gap-x-2 rounded-md bg-orange-400 m-1 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
             >
-              Clear
+              {t("dashboard-page:summarize.clear")}
               <XCircleIcon className="-mr-0.5 h-5 w-5" aria-hidden="true" />
             </button>
           </div>
@@ -201,7 +211,7 @@ export function SummarizeFileForm(props: Props) {
                       htmlFor="input-file-upload"
                       className="relative cursor-pointer rounded-md font-semibold text-blue-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-2 hover:text-blue-500"
                     >
-                      <span>Upload a file</span>
+                      <span>{t("dashboard-page:summarize.upload-a-file")}</span>
                       <input
                         ref={inputRef}
                         type="file"
@@ -223,7 +233,7 @@ export function SummarizeFileForm(props: Props) {
                     ></div>
                   )}
                   <p className="text-xs leading-5 text-gray-600">
-                    TXT up to 1MB
+                    {t("dashboard-page:summarize.upload-limits")}
                   </p>
                 </div>
               </div>
