@@ -116,7 +116,9 @@ export function NewCardModal(p: P) {
                       as="h3"
                       className="text-base font-semibold leading-6 text-gray-900"
                     >
-                      Card Details
+                      {t(
+                        "dashboard-page:settings.payment.new-card-modal.card-details"
+                      )}
                     </Dialog.Title>
                   </div>
                 </div>
@@ -125,7 +127,11 @@ export function NewCardModal(p: P) {
                   className="flex flex-wrap gap-3 w-full p-5"
                 >
                   <label className="relative w-full flex flex-col">
-                    <span className="mb-3">Card number</span>
+                    <span className="mb-3">
+                      {t(
+                        "dashboard-page:settings.payment.new-card-modal.card-number"
+                      )}
+                    </span>
                     <input
                       {...register("cardNumber", {
                         required: true,
@@ -153,7 +159,11 @@ export function NewCardModal(p: P) {
                   </label>
 
                   <label className="relative flex-1 flex flex-col">
-                    <span className="mb-3">Expiration date</span>
+                    <span className="mb-3">
+                      {t(
+                        "dashboard-page:settings.payment.new-card-modal.expiration-date"
+                      )}
+                    </span>
                     <input
                       {...register("expDate", {
                         required: true,
@@ -182,11 +192,14 @@ export function NewCardModal(p: P) {
 
                   <label className="relative flex-1 flex flex-col">
                     <span className="flex items-center gap-3 mb-3">
-                      CVC/CVV
+                      {/* CVC/CVV */}
+                      {t("dashboard-page:settings.payment.new-card-modal.cvv")}
                       <span className="relative group">
                         <span className="hidden group-hover:flex justify-center items-center px-2 py-1 text-xs absolute -right-2 transform translate-x-full -translate-y-1/2 w-max top-1/2 bg-black text-white">
                           {" "}
-                          Security Code
+                          {t(
+                            "dashboard-page:settings.payment.new-card-modal.security-code"
+                          )}
                         </span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

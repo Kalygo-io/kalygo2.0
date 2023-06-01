@@ -1,5 +1,5 @@
 {
-  "dashboard": "Dashboard",
+  "dashboard": "Panel",
   "protected": "Protegida",
   "navigation": {
     "overview": "General",
@@ -23,5 +23,32 @@
       "condensed-length": "Longitud condensada",
       "summary": "Resumen"
     }
-  }
+  },
+  "settings": {
+    "personal": {
+      "title": "Personal",
+      "first-name": "Nombre de pila",
+      "last-name": "Apellido",
+      "email": "Email",
+      "save": "Ahorrar"
+    },
+    "payment": {
+      "title": "Pago",
+      "no-card": "Sin tarjeta",
+      "get-started": "Comience guardando su tarjeta con Stripe",
+      "new-card": "Nueva tarjeta",
+      "delete-card": "Borrar tarjeta",
+      "new-card-modal": {
+        "card-details": "Detalles de tarjeta",
+        "card-number": "Número de tarjeta",
+        "expiration-date": "Fecha de caducidad",
+        "cvv": "CVV/CVC",
+        "security-code": "Código de seguridad",
+        "save": "Ahorrar",
+        "cancel": "Cancelar"
+      }
+    },
+    "error": "Ocurrió un error al cargar la configuración"
+  },
+  "unknown-error": "Error desconocido"
 }

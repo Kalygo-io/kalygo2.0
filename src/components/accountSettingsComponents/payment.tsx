@@ -36,8 +36,6 @@ export function Payment(p: P) {
   const [newCardOpen, setNewCardOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log("_!_ _!_");
-
     setCards({
       val: [],
       loading: true,
@@ -61,12 +59,9 @@ export function Payment(p: P) {
     });
   }, []);
 
-  console.log("cards", cards);
-
   let jsx = null;
   if (cards.loading) {
-    jsx = <></>;
-    // jsx = <SectionLoader></SectionLoader>;
+    jsx = <div className="text-center">...</div>;
   } else if (cards.err) {
     jsx = (
       <>
@@ -74,10 +69,10 @@ export function Payment(p: P) {
           <div className="text-center">
             <CreditCardIcon className="mx-auto h-12 w-12 text-gray-400" />
             <h3 className="mt-2 text-sm font-semibold text-gray-900">
-              No Card
+              {t("dashboard-page:settings.payment.no-card")}
             </h3>
             <p className="mt-1 text-sm text-gray-500">
-              Get started by saving your card with Stripe
+              {t("dashboard-page:settings.payment.get-started")}
             </p>
             <div className="mt-6">
               <button
@@ -91,7 +86,7 @@ export function Payment(p: P) {
                   className="-ml-0.5 mr-1.5 h-5 w-5"
                   aria-hidden="true"
                 />
-                New Card
+                {t("dashboard-page:settings.payment.new-card")}
               </button>
             </div>
           </div>
@@ -131,7 +126,7 @@ export function Payment(p: P) {
                         });
                       }}
                     >
-                      Delete
+                      {t("dashboard-page:settings.payment.delete-card")}
                     </button>
                   </li>
                 );
@@ -143,10 +138,10 @@ export function Payment(p: P) {
             <div className="text-center">
               <CreditCardIcon className="mx-auto h-12 w-12 text-gray-400" />
               <h3 className="mt-2 text-sm font-semibold text-gray-900">
-                No Card
+                {t("dashboard-page:settings.payment.no-card")}
               </h3>
               <p className="mt-1 text-sm text-gray-500">
-                Get started by saving your card with Stripe
+                {t("dashboard-page:settings.payment.get-started")}
               </p>
               <div className="mt-6">
                 <button
@@ -160,7 +155,7 @@ export function Payment(p: P) {
                     className="-ml-0.5 mr-1.5 h-5 w-5"
                     aria-hidden="true"
                   />
-                  New Card
+                  {t("dashboard-page:settings.payment.new-card")}
                 </button>
               </div>
             </div>
@@ -176,7 +171,7 @@ export function Payment(p: P) {
       <div className="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8">
         <div>
           <h2 className="text-base font-semibold leading-7 text-black">
-            Payment
+            {t("dashboard-page:settings.personal.title")}
           </h2>
         </div>
         {jsx}
@@ -185,8 +180,6 @@ export function Payment(p: P) {
       <NewCardModal
         open={newCardOpen}
         cb={(isOpen: boolean, newCard: object) => {
-          console.log("cards", cards);
-          // debugger;
           newCard &&
             setCards({
               val: [...cards.val, newCard],

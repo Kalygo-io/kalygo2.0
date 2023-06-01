@@ -32,6 +32,7 @@ const getStaticProps = makeStaticProps([
   "error",
   "dashboard-page",
   "toast-messages",
+  "image-alt-tags",
 ]);
 export { getStaticPaths, getStaticProps };
 
@@ -54,8 +55,6 @@ export default function Settings() {
   });
 
   useEffect(() => {
-    console.log("Settings");
-
     async function fetch() {
       getAccount(t, (val: any, err: any) => {
         if (err) {
@@ -83,7 +82,11 @@ export default function Settings() {
   if (account.loading) {
     jsx = <WindowLoader></WindowLoader>;
   } else if (account.err) {
-    jsx = <>Error</>;
+    jsx = (
+      <div className="text-center text-red-500">
+        {t("dashboard-page:settings.error")}
+      </div>
+    );
   } else if (account.val) {
     jsx = (
       <>
@@ -107,7 +110,9 @@ export default function Settings() {
       </>
     );
   } else {
-    jsx = <>Unknown Error</>;
+    jsx = (
+      <div className="text-center">{t("dashboard-page:unknown-error")}</div>
+    );
   }
 
   return (

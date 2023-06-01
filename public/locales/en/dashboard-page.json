@@ -23,5 +23,32 @@
       "condensed-length": "Condensed Length",
       "summary": "Summary"
     }
-  }
+  },
+  "settings": {
+    "personal": {
+      "title": "Personal",
+      "first-name": "First name",
+      "last-name": "Last name",
+      "email": "Email",
+      "save": "Save"
+    },
+    "payment": {
+      "title": "Payment",
+      "no-card": "No Card",
+      "get-started": "Get started by saving your card with Stripe",
+      "new-card": "New card",
+      "delete-card": "Delete card",
+      "new-card-modal": {
+        "card-details": "Card details",
+        "card-number": "Card number",
+        "expiration-date": "Expiration date",
+        "cvv": "CVV/CVC",
+        "security-code": "Security code",
+        "save": "Save",
+        "cancel": "Cancel"
+      }
+    },
+    "error": "Error occurred while loading settings"
+  },
+  "unknown-error": "Unknown Error"
 }

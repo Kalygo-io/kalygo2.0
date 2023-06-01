@@ -36,7 +36,6 @@ export function Personal(p: P) {
   const onSubmit = async (data: any) => {
     try {
       const { email, firstName, lastName } = data;
-      console.log("data", data);
 
       var config = {
         method: "patch",
@@ -53,8 +52,6 @@ export function Personal(p: P) {
       };
 
       let resp = await axios(config);
-
-      console.log("resp", resp);
     } catch (e) {
       errorReporter(e);
     }
@@ -65,7 +62,7 @@ export function Personal(p: P) {
       <div className="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8">
         <div>
           <h2 className="text-base font-semibold leading-7 text-black">
-            Personal
+            {t("dashboard-page:settings.personal.title")}
           </h2>
         </div>
 
@@ -91,7 +88,7 @@ export function Personal(p: P) {
                 htmlFor="first-name"
                 className="block text-sm font-medium leading-6 text-black"
               >
-                First name
+                {t("dashboard-page:settings.personal.first-name")}
               </label>
               <div className="mt-2">
                 <input
@@ -110,7 +107,7 @@ export function Personal(p: P) {
                 htmlFor="last-name"
                 className="block text-sm font-medium leading-6 text-black"
               >
-                Last name
+                {t("dashboard-page:settings.personal.last-name")}
               </label>
               <div className="mt-2">
                 <input
@@ -129,7 +126,7 @@ export function Personal(p: P) {
                 htmlFor="email"
                 className="block text-sm font-medium leading-6 text-black"
               >
-                Email
+                {t("dashboard-page:settings.personal.email")}
               </label>
               <div className="mt-2">
                 <input
@@ -158,7 +155,7 @@ export function Personal(p: P) {
               type="submit"
               className="rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
             >
-              Save
+              {t("dashboard-page:settings.personal.save")}
             </button>
           </div>
         </form>
