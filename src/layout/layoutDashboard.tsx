@@ -144,10 +144,12 @@ export default function LayoutDashboard({ children }: P) {
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-blue-600 px-6 pb-4">
                     <div className="flex h-16 shrink-0 items-center">
                       <Link href="/">
-                        <img
+                        <Image
                           className="h-8 w-auto"
                           src="/logo192.png"
                           alt="Kalygo logo"
+                          width={16}
+                          height={16}
                         />
                       </Link>
                     </div>
@@ -225,7 +227,7 @@ export default function LayoutDashboard({ children }: P) {
                               className="h-6 w-6 shrink-0 text-blue-200 group-hover:text-white"
                               aria-hidden="true"
                             />
-                            Settings
+                            {t("dashboard-page:navigation.settings")}
                           </Link>
                         </li>
                       </ul>

@@ -112,7 +112,7 @@ export default function VerifyEmail() {
             </div>
           </div>
         ) : state.loading ? (
-          <div className="text-center">Loading...</div>
+          <div className="text-center">{t("verify-email-page:loading")}</div>
         ) : (
           <div className="text-center">
             <div className="flex items-center justify-center">
