@@ -24,6 +24,7 @@ import {
   LifebuoyIcon,
   UserCircleIcon,
   RectangleGroupIcon,
+  DocumentMagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 
 import { signOut } from "@/services/signOut";
@@ -62,6 +63,12 @@ export default function LayoutDashboard({ children }: P) {
       name: t("dashboard-page:navigation.summarize"),
       href: "/dashboard/summarize",
       icon: LifebuoyIcon,
+    },
+
+    {
+      name: t("dashboard-page:navigation.ai-search"),
+      href: "/dashboard/ai-search",
+      icon: DocumentMagnifyingGlassIcon,
     },
     // {
     //   name: "Documents",
