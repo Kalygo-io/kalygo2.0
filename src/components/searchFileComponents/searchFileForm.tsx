@@ -46,15 +46,8 @@ export function SearchFileForm(props: Props) {
 
   const [dragActive, setDragActive] = useState(false);
   const [fileList, setFileList] = useState<FileList | null>();
-  // const [quoteForFile, setQuoteForFile] = useState<{
-  //   quote: number;
-  //   filePath: string;
-  // } | null>();
 
   const { t } = useTranslation();
-
-  // ref
-  // const inputRef = React.useRef<HTMLInputElement>(null);
 
   // handle drag events
   const handleDrag = function (e: any) {
@@ -73,55 +66,6 @@ export function SearchFileForm(props: Props) {
     }
   };
 
-  // triggers when file is dropped
-  const handleDrop = async function (e: any) {
-    e.preventDefault();
-    e.stopPropagation();
-    setDragActive(false);
-    if (
-      e.dataTransfer.files &&
-      e.dataTransfer.files[0] &&
-      ["application/pdf", "text/plain"].includes(
-        e.dataTransfer?.items["0"]?.type
-      )
-    ) {
-      // at least one file has been dropped so do something
-      setFileList(e.dataTransfer.files);
-
-      getSummarizationQuote(
-        e.dataTransfer.files,
-        (quote: number, filePath: string) => {
-          // setQuoteForFile({
-          //   quote,
-          //   filePath,
-          // });
-          infoToast(
-            `${t("dashboard-page:summarize.received-quote")} ($${quote})`
-          );
-        }
-      );
-    }
-  };
-
-  // triggers when file is selected with click
-  const handleChange = async function (e: any) {
-    e.preventDefault();
-    if (e.target.files && e.target.files[0]) {
-      // at least one file has been selected so do something
-      setFileList(e.target.files);
-
-      // getSummarizationQuote(
-      //   e.target.files,
-      //   (quote: number, filePath: string) => {
-      //     setQuoteForFile({ quote, filePath });
-      //     infoToast(
-      //       `${t("dashboard-page:summarize.received-quote")} ($${quote})`
-      //     );
-      //   }
-      // );
-    }
-  };
-
   const onSubmit = async (data: any) => {
     console.log("onSubmit", data);
 
@@ -133,15 +77,23 @@ export function SearchFileForm(props: Props) {
       err: null,
     });
 
-    similaritySearchInFile(data.query, data.file, (results: string[]) => {
-      onSuccess({
-        results,
-        query: data.query,
-      });
+    similaritySearchInFile(
+      data.query,
+      data.file,
+      (results: string[], err: any) => {
+        if (err) {
+          onError(err);
+        } else {
+          onSuccess({
+            results,
+            query: data.query,
+          });
+        }
 
-      // setQuoteForFile({ quote, filePath });
-      // infoToast(`${t("dashboard-page:summarize.received-quote")} ($${quote})`);
-    });
+        // setQuoteForFile({ quote, filePath });
+        // infoToast(`${t("dashboard-page:summarize.received-quote")} ($${quote})`);
+      }
+    );
   };
 
   return (

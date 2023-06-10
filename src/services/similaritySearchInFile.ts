@@ -42,6 +42,7 @@ export async function similaritySearchInFile(
 
     cb(get(resp, "data.results"));
   } catch (e) {
+    cb(null, e);
     console.error(e);
     errorToast(
       "Error occurred when retrieving performing similarity search quote"
