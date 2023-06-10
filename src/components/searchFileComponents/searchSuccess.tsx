@@ -20,24 +20,23 @@ export function SearchSuccess(p: P) {
 
   return (
     <div className="px-4 sm:px-6 lg:px-8 flex flex-col flex-center justify-center">
-      <div className="mx-auto my-2">
+      <div className="min-w-0 flex-1">
+        <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:tracking-tight">
+          {query}
+        </h2>
+      </div>
+
+      <div className="my-2">
         <div>
           <span
             onClick={reset}
             // type="button"
-            className="cursor-pointer inline-flex gap-x-2 rounded-md  px-3.5 py-2.5 text-sm font-semibold text-blue-700 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            className="cursor-pointer gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-blue-700 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
           >
             {/* <XCircleIcon className="h-5 w-5" aria-hidden="true" /> */}
             Clear
           </span>
         </div>
-      </div>
-
-      {/* <h3 className="text-xl font-semibold leading-7 text-blue-600">{query}</h3> */}
-      <div className="min-w-0 flex-1">
-        <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:tracking-tight">
-          {query}
-        </h2>
       </div>
 
       <div className="bg-white px-6 pt-8 pb-16 lg:px-8">
