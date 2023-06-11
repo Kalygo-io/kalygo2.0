@@ -157,6 +157,7 @@ export function SearchFileForm(props: Props) {
                     required: true,
                   })}
                   multiple
+                  accept=".pdf,.txt"
                   type="file"
                   id="file"
                 />
