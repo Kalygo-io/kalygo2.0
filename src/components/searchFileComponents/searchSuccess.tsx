@@ -18,6 +18,10 @@ export function SearchSuccess(p: P) {
 
   // debugger;
 
+  const documents = get(results, "documents.0", []);
+  const distances = get(results, "distances.0", []);
+  const metadatas = get(results, "metadatas.0", []);
+
   return (
     <div className="px-4 sm:px-6 lg:px-8 flex flex-col flex-center justify-center">
       <div className="min-w-0 flex-1">
@@ -49,11 +53,48 @@ export function SearchSuccess(p: P) {
                 </p>
                 <span>{get(i, "1", null)}</span> */}
           {/* <pre> */}
-          {JSON.stringify(results, null, 2)}
+          {/* {JSON.stringify(results, null, 2)} */}
           {/* </pre>
               </>
             );
           })} */}
+          {/* <ul>
+            {documents.map((i, idx) => {
+              return (
+                <li>
+                  <span className="font-bold">{idx + 1}.</span>
+                  <br />
+                  {i}
+                </li>
+              );
+            })}
+          </ul> */}
+
+          <ul role="list" className="divide-y divide-gray-100">
+            {documents.map((i, idx) => (
+              <li key={idx} className="flex gap-x-4 py-5">
+                {/* <img
+                  className="h-12 w-12 flex-none rounded-full bg-gray-50"
+                  src={comment.imageUrl}
+                  alt=""
+                /> */}
+                <div className="flex-auto">
+                  <div className="flex items-baseline justify-between gap-x-4">
+                    <p className="text-sm font-semibold leading-6 text-gray-900">
+                      Chunk {get(metadatas, `${idx}.index`)}
+                    </p>
+                    <p className="flex-none text-xs text-gray-600">
+                      <span>{distances[idx]}</span>
+                      {/* <time dateTime={comment.dateTime}>{comment.date}</time> */}
+                    </p>
+                  </div>
+                  <p className="mt-1 line-clamp-2 text-sm leading-6 text-gray-600">
+                    {i}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

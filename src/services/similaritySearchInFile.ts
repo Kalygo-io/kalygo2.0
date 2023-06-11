@@ -44,8 +44,6 @@ export async function similaritySearchInFile(
   } catch (e) {
     cb(null, e);
     console.error(e);
-    errorToast(
-      "Error occurred when retrieving performing similarity search quote"
-    );
+    errorToast("Error occurred when performing similarity search");
   }
 }
