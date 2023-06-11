@@ -101,44 +101,60 @@ export function SearchFileForm(props: Props) {
       <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
         <div className="col-span-full flex justify-center">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
+            {/* <div>
               <label
-                htmlFor="query"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                htmlFor="default-search"
+                className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
               >
-                Query
+                Search
               </label>
+              <div className="relative">
+                <div className="absolute  flex items-start pl-3 pt-4 pointer-events-none">
+                  <svg
+                    aria-hidden="true"
+                    className="w-5 h-5 text-gray-500 dark:text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <textarea
+                  {...register("query", { required: "Query is required" })}
+                  rows={1}
+                  id="query"
+                  className={`block w-full rounded-md border-0 p-4 pl-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
+                    errors["query"] && "ring-red-700 focus:ring-red-500"
+                  }`}
+                  placeholder="Similarity search..."
+                />
+              </div>
+            </div> */}
+
+            <div>
               <textarea
-                {...register("query", { required: "Query is required" })}
-                // type="text"
+                {...register("query", { required: true })}
                 rows={3}
                 id="query"
-                placeholder="What would you like to know about your document?"
+                placeholder="Perform a similarity search..."
                 className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
-                  errors["email"] && "ring-red-700 focus:ring-red-500"
+                  errors["query"] && "ring-red-700 focus:ring-red-500"
                 }`}
               />
             </div>
             <div className="col-span-full">
-              {/* <div className="col-span-full">
-              <label htmlFor="photo" className="block text-sm font-medium leading-6 text-gray-900">
-                Photo
-              </label>
-              <div className="mt-2 flex items-center gap-x-3">
-                <UserCircleIcon className="h-12 w-12 text-gray-300" aria-hidden="true" />
-                <button
-                  type="button"
-                  className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                >
-                  Change
-                </button>
-              </div>
-            </div> */}
               <div className="mt-2 flex items-center gap-x-3">
                 <input
-                  className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-50"
+                  className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900"
                   {...register("file", {
-                    required: "File is required",
+                    required: true,
                   })}
                   multiple
                   type="file"

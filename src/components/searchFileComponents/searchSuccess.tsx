@@ -3,11 +3,8 @@ import { useTranslation } from "next-i18next";
 import get from "lodash.get";
 
 interface P {
-  // fileName: string;
   results: string[];
   query: string;
-  // originalLength: number;
-  // condensedLength: number;
   reset: () => void;
 }
 
@@ -15,8 +12,6 @@ export function SearchSuccess(p: P) {
   const { results, reset, query } = p;
 
   const { t } = useTranslation();
-
-  // debugger;
 
   const documents = get(results, "documents.0", []);
   const distances = get(results, "distances.0", []);
@@ -35,7 +30,7 @@ export function SearchSuccess(p: P) {
           <span
             onClick={reset}
             // type="button"
-            className="cursor-pointer gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-blue-700 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            className="cursor-pointer gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
           >
             {/* <XCircleIcon className="h-5 w-5" aria-hidden="true" /> */}
             Clear
