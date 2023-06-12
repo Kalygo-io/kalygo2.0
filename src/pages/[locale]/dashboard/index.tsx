@@ -20,7 +20,8 @@ import {
   FolderIcon,
   HomeIcon,
 } from "@heroicons/react/24/outline";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
+import axios from "axios";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -36,6 +37,47 @@ export { getStaticPaths, getStaticProps };
 export default function Dashboard() {
   const { state, dispatch } = useAppContext();
   const { t } = useTranslation();
+
+  const [summaries, setSummaries] = useState<{
+    val: any[];
+    loading: boolean;
+    err: any;
+  }>({
+    val: [],
+    loading: true,
+    err: null,
+  });
+
+  useEffect(() => {
+    async function fetch() {
+      try {
+        const res = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account-summaries`,
+          {
+            withCredentials: true,
+          }
+        );
+
+        // debugger;
+
+        setSummaries({
+          loading: false,
+          val: res.data,
+          err: null,
+        });
+      } catch (e) {
+        setSummaries({
+          loading: false,
+          val: [],
+          err: e,
+        });
+      }
+    }
+
+    console.log("useEffect");
+
+    fetch();
+  }, []);
 
   const contracts: any[] = [
     // {
@@ -73,7 +115,7 @@ export default function Dashboard() {
           <div className="mt-8 flow-root">
             <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                {contracts.length > 0 ? (
+                {summaries.val.length > 0 ? (
                   <table className="min-w-full divide-y divide-gray-300">
                     <thead>
                       <tr>
@@ -87,7 +129,13 @@ export default function Dashboard() {
                           scope="col"
                           className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                         >
-                          Hash
+                          Original Length
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                        >
+                          Condensed Length
                         </th>
                         <th
                           scope="col"
@@ -98,21 +146,24 @@ export default function Dashboard() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">
-                      {contracts.map((person) => (
-                        <tr key={person.name}>
+                      {summaries.val.map((summary) => (
+                        <tr key={summary.id}>
                           <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                            {person.name}
+                            {summary.id}
                           </td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                            {person.title}
+                            {summary.originalCharCount}
+                          </td>
+                          <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                            {summary.condensedCharCount}
                           </td>
                           <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                             <a
                               href="#"
                               className="text-blue-600 hover:text-blue-900"
                             >
-                              Edit
-                              <span className="sr-only">, {person.name}</span>
+                              View
+                              <span className="sr-only">, {summary.id}</span>
                             </a>
                           </td>
                         </tr>
