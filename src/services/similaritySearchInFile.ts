@@ -4,24 +4,22 @@ import get from "lodash.get";
 
 export async function similaritySearchInFile(
   query: string,
-  fileList: any,
+  file: File,
   cb: any
 ) {
   try {
     const formData = new FormData();
 
-    const fileListKeys = Object.keys(fileList);
-    for (let i = 0; i < fileListKeys.length; i++) {
-      console.log(fileList, fileList[i]);
-      formData.append("file", fileList[i]);
-    }
+    // const fileListKeys = Object.keys(fileList);
+    // for (let i = 0; i < fileListKeys.length; i++) {
+    //   console.log(fileList, fileList[i]);
+    //   formData.append("file", fileList[i]);
+    // }
 
+    formData.append("file", file);
     formData.append("query", query);
 
-    // console.log("formData", formData);
-    // console.log("formData", formData.get("file"));
-
-    var config = {
+    const config = {
       method: "post",
       url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/similarity-search`,
       headers: {
@@ -35,8 +33,6 @@ export async function similaritySearchInFile(
     };
 
     const resp = await axios(config);
-
-    // debugger;
 
     console.log("similaritySearch", resp);
 

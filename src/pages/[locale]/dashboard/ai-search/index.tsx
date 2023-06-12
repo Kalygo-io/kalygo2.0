@@ -16,7 +16,8 @@ import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang
 import { Fragment, useState } from "react";
 import { infoToast, errorToast } from "@/utility/toasts";
 import {
-  SearchFileForm,
+  //   SearchFileForm,
+  SearchFileWizard,
   SearchSuccess,
   SearchError,
 } from "@/components/searchFileComponents";
@@ -42,9 +43,6 @@ export default function Summarize() {
     val: {
       results: string[];
       query: string;
-      //   fileName: string;
-      //   originalLength: number;
-      //   condensedLength: number;
     } | null;
     loading: boolean;
     err: Error | null;
@@ -65,8 +63,6 @@ export default function Summarize() {
         // fileName={summary.val?.fileName}
         query={searchResults.val.query}
         results={searchResults.val.results}
-        // originalLength={summary.val.originalLength}
-        // condensedLength={summary.val.condensedLength}
         reset={() => {
           setSearchResultsState({
             val: null,
@@ -76,38 +72,35 @@ export default function Summarize() {
         }}
       />
     );
-    // jsx =
   } else {
     jsx = (
-      <SearchFileForm
-        onSuccess={(resp: {
-          results: string[];
-          query: string;
-          //   fileName: string;
-          //   originalLength: number;
-          //   condensedLength: number;
-        }) => {
-          infoToast("Successfully performed similarity search");
+      <SearchFileWizard />
+      //   <SearchFileForm
+      //     onSuccess={(resp: {
+      //       results: string[];
+      //       query: string;
+      //     }) => {
+      //       infoToast("Successfully performed similarity search");
 
-          console.log("RESULTS", resp);
+      //       console.log("RESULTS", resp);
 
-          setSearchResultsState({
-            val: resp,
-            loading: false,
-            err: null,
-          });
-        }}
-        setSearchResultsState={setSearchResultsState}
-        onError={(err) => {
-          setSearchResultsState({
-            val: null,
-            loading: false,
-            err: err,
-          });
+      //       setSearchResultsState({
+      //         val: resp,
+      //         loading: false,
+      //         err: null,
+      //       });
+      //     }}
+      //     setSearchResultsState={setSearchResultsState}
+      //     onError={(err) => {
+      //       setSearchResultsState({
+      //         val: null,
+      //         loading: false,
+      //         err: err,
+      //       });
 
-          console.log("onError");
-        }}
-      />
+      //       console.log("onError");
+      //     }}
+      //   />
     );
   }
 

@@ -14,7 +14,7 @@
     "no-documents-yet": "No Documents Yet!"
   },
   "summarize": {
-    "upload-a-file": "Upload a file",
+    "upload-a-file": "Select file",
     "upload-limits": "TXT files up to 1MB",
     "clear": "Clear",
     "summarize": "Summarize",

@@ -426,7 +426,8 @@ export default function LayoutDashboard({ children }: P) {
             </div>
           </div>
 
-          <main className="py-10">{children}</main>
+          {/* <main className="py-10">{children}</main> */}
+          <main>{children}</main>
         </div>
       </div>
     </>

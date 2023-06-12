@@ -54,7 +54,7 @@ export default function Dashboard() {
         <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
       <LayoutDashboard>
-        <div className="px-8 sm:px-6 lg:px-8">
+        <div className="p-4 sm:p-6 lg:p-8">
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
               <h1 className="text-base font-semibold leading-6 text-gray-900">

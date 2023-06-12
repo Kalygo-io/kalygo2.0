@@ -110,7 +110,7 @@ export function SummarizeFileForm(props: Props) {
   };
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8 ">
+    <div className="p-4 sm:p-6 lg:p-8">
       {fileList ? (
         <div className="flex flex-col items-center justify-center">
           <ul className="p-4 sm:p-6 lg:p-8">
@@ -187,7 +187,7 @@ export function SummarizeFileForm(props: Props) {
           </div>
         </div>
       ) : (
-        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div className="col-span-full flex justify-center">
             <form
               id="form-file-upload"
