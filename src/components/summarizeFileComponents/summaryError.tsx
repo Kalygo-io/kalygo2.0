@@ -6,7 +6,7 @@ export function SummaryError() {
         Error
       </h1>
       <p className="mt-6 text-base leading-7 text-gray-600">
-        An error occurred. Is your credit card linked?
+        An error occurred.
       </p>
       <div className="mt-10 flex items-center justify-center gap-x-6">
         <button
