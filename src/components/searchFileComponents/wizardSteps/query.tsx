@@ -23,6 +23,8 @@ import { similaritySearchInFile } from "@/services/similaritySearchInFile";
 
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import { WindowLoader } from "@/components/shared/WindowLoader";
+import { PreviewTextFile } from "@/components/shared/PreviewTextFile";
+import { fileURLToPath } from "url";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.js`;
 
@@ -31,34 +33,17 @@ const options = {
   standardFontDataUrl: "standard_fonts/",
 };
 
-type PDFFile = string | File | null;
+// type PDFFile = string | File | null;
 
 interface Props {
   file: File | null;
   wizardStepsRef: RefObject<HTMLElement>;
-  onSuccess: ({
-    results,
-    query,
-  }: // fileName,
-  // originalLength,
-  // condensedLength,
-  {
-    results: string[];
-    query: string;
-    // fileName: string;
-    // originalLength: number;
-    // condensedLength: number;
-  }) => void;
-  //   setSearchResultsState: (state: any) => void;
-  onError: (err: any) => void;
 }
 
 export function Query(props: Props) {
-  const { file, wizardStepsRef, onSuccess, onError } = props;
+  const { file, wizardStepsRef } = props;
 
   const [numPages, setNumPages] = useState<number>();
-  const [dragActive, setDragActive] = useState(false);
-  const [fileList, setFileList] = useState<FileList | null>();
   const { t } = useTranslation();
 
   const {
@@ -76,7 +61,7 @@ export function Query(props: Props) {
       query: string;
     } | null;
     loading: boolean;
-    err: Error | null;
+    err: any;
   }>({
     val: null,
     loading: false,
@@ -84,34 +69,124 @@ export function Query(props: Props) {
   });
 
   const onSubmit = async (data: any) => {
-    console.log("onSubmit", data);
-    console.log("file", file);
+    try {
+      console.log("onSubmit", data);
+      console.log("file", file);
 
-    setSearchResultsState({
-      val: null,
-      loading: true,
-      err: null,
-    });
+      setSearchResultsState({
+        val: null,
+        loading: true,
+        err: null,
+      });
 
-    similaritySearchInFile(data.query, file!, (results: string[], err: any) => {
-      if (err) {
-        onError(err);
-      } else {
-        // onSuccess({
-        //   results,
-        //   query: data.query,
-        // });
+      if (file && file.type === "application/pdf") {
+        const reader = new FileReader();
+        reader.addEventListener("loadend", async () => {
+          const loadingTask = pdfjs.getDocument(reader.result as ArrayBuffer);
 
-        setSearchResultsState({
-          val: {
-            results,
-            query: data.query,
-          },
-          loading: false,
-          err: null,
+          loadingTask.promise.then(async function (pdf) {
+            // you can now use *pdf* here
+
+            // const maxPages = pdf.pdfInfo.numPages;
+
+            const maxPages = pdf.numPages;
+            var countPromises = []; // collecting all page promises
+            for (var j = 1; j <= maxPages; j++) {
+              var page = pdf.getPage(j);
+
+              var txt = "";
+              countPromises.push(
+                page.then(function (page) {
+                  // add page promise
+                  var textContent = page.getTextContent();
+                  return textContent.then(function (text) {
+                    // return content promise
+                    return text.items
+                      .map(function (s: any) {
+                        return s.str;
+                      })
+                      .join(""); // value page text
+                  });
+                })
+              );
+            }
+
+            const finalText = await Promise.all(countPromises).then(function (
+              texts
+            ) {
+              return texts.join("");
+            });
+
+            var blob = new Blob([finalText], { type: "text/plain" });
+            var pdf2txtFile = new File([blob], "pdf2txt.txt", {
+              type: "text/plain",
+            });
+
+            similaritySearchInFile(
+              data.query,
+              pdf2txtFile,
+              (results: string[], err: any) => {
+                if (err) {
+                  setSearchResultsState({
+                    val: null,
+                    loading: false,
+                    err: err,
+                  });
+                } else {
+                  infoToast("Successfully performed similarity search");
+
+                  console.log("RESULTS", results);
+
+                  setSearchResultsState({
+                    val: {
+                      results,
+                      query: data.query,
+                    },
+                    loading: false,
+                    err: null,
+                  });
+                }
+              }
+            );
+          });
         });
+
+        reader.readAsDataURL(file as Blob);
+      } else {
+        similaritySearchInFile(
+          data.query,
+          file!,
+          (results: string[], err: any) => {
+            if (err) {
+              setSearchResultsState({
+                val: null,
+                loading: false,
+                err: err,
+              });
+            } else {
+              infoToast("Successfully performed similarity search");
+
+              console.log("RESULTS", results);
+
+              setSearchResultsState({
+                val: {
+                  results,
+                  query: data.query,
+                },
+                loading: false,
+                err: null,
+              });
+            }
+          }
+        );
       }
-    });
+    } catch (e) {
+      setSearchResultsState({
+        val: null,
+        loading: false,
+        err: e,
+      });
+    }
   };
 
   //   function onFileChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -143,11 +218,6 @@ export function Query(props: Props) {
       <ul role="list" className="divide-y divide-gray-100">
         {documents.map((i, idx) => (
           <li key={idx} className="flex gap-x-4 py-5">
-            {/* <img
-                  className="h-12 w-12 flex-none rounded-full bg-gray-50"
-                  src={comment.imageUrl}
-                  alt=""
-                /> */}
             <div className="flex-auto">
               <div className="flex items-baseline justify-between gap-x-4">
                 <p className="text-sm font-semibold leading-6 text-gray-900">
@@ -168,6 +238,43 @@ export function Query(props: Props) {
     );
   }
 
+  let viewer = null;
+  switch (file && file.type) {
+    case "application/pdf":
+      viewer = (
+        <div
+          className={`px-4 py-2 sm:px-6 lg:pl-8 xl:pl-6 overflow-scroll mx-1 flex flex-col justify-start items-center w-full shadow-sm rounded-md border-2`}
+        >
+          <Document
+            file={file}
+            onLoadSuccess={onDocumentLoadSuccess}
+            options={options}
+          >
+            {Array.from(new Array(numPages), (el, index) => (
+              <Page key={`page_${index + 1}`} pageNumber={index + 1} />
+            ))}
+          </Document>
+        </div>
+      );
+      break;
+    case "text/plain":
+      //   debugger;
+
+      viewer = (
+        <div
+          className={`px-4 py-2 sm:px-6 lg:pl-8 xl:pl-6 overflow-scroll mx-1 flex w-full shadow-sm rounded-md border-2`}
+        >
+          <PreviewTextFile file={file} />
+        </div>
+      );
+
+      break;
+
+    default:
+      viewer = <>Unsupported file type</>;
+      break;
+  }
+
   return (
     <>
       <div
@@ -184,20 +291,8 @@ export function Query(props: Props) {
             Left column area
           </div> */}
 
-          <div
-            className={`px-4 py-2 sm:px-6 lg:pl-8 xl:pl-6 overflow-scroll mx-1 flex flex-col justify-center items-center w-full`}
-          >
-            {/* Main area */}
-            <Document
-              file={file}
-              onLoadSuccess={onDocumentLoadSuccess}
-              options={options}
-            >
-              {Array.from(new Array(numPages), (el, index) => (
-                <Page key={`page_${index + 1}`} pageNumber={index + 1} />
-              ))}
-            </Document>
-          </div>
+          {/* Main area */}
+          {viewer}
         </div>
 
         <div className="shrink-0 border-b lg:border-gray-200 px-4 lg:border-l lg:border-b-0 lg:pr-8 xl:pr-4 lg:order-2 order-1 col-span-1 overflow-scroll">

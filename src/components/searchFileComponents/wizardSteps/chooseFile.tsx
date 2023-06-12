@@ -60,8 +60,6 @@ export function ChooseFile(props: Props) {
   } = props;
 
   //   const [file, setFile] = useState<PDFFile>();
-  const [numPages, setNumPages] = useState<number>();
-
   //   const {
   //     register,
   //     handleSubmit,
@@ -71,51 +69,154 @@ export function ChooseFile(props: Props) {
   //     watch,
   //   } = useForm({});
 
-  const [dragActive, setDragActive] = useState(false);
+  // const [dragActive, setDragActive] = useState(false);
   //   const [fileList, setFileList] = useState<FileList | null>();
 
   const { t } = useTranslation();
 
-  function onFileChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const { files } = event.target;
+  // function onFileChange(event: React.ChangeEvent<HTMLInputElement>) {
+  //   const { files } = event.target;
 
-    // debugger;
+  //   // debugger;
 
-    if (files && files[0]) {
-      setFile(files[0] || null);
+  //   if (files && files[0]) {
+  //     setFile(files[0] || null);
+  //     setStep(2);
+  //   }
+  // }
+
+  const [dragActive, setDragActive] = useState(false);
+  const [fileList, setFileList] = useState<FileList | null>();
+  const [quoteForFile, setQuoteForFile] = useState<{
+    quote: number;
+    filePath: string;
+  } | null>();
+
+  // ref
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  // handle drag events
+  const handleDrag = function (e: any) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (
+      (e.type === "dragenter" || e.type === "dragover") &&
+      ["application/pdf", "text/plain"].includes(
+        e.dataTransfer?.items["0"]?.type
+      )
+    ) {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+
+  // triggers when file is dropped
+  const handleDrop = async function (e: any) {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    if (
+      e.dataTransfer.files &&
+      e.dataTransfer.files[0] &&
+      ["application/pdf", "text/plain"].includes(
+        e.dataTransfer?.items["0"]?.type
+      )
+    ) {
+      // at least one file has been dropped so do something
+      setFile(e.dataTransfer.files[0] || null);
       setStep(2);
     }
-  }
+  };
 
-  //   function onDocumentLoadSuccess({ numPages: nextNumPages }: PDFDocumentProxy) {
-  //     setNumPages(nextNumPages);
-  //   }
+  // triggers when file is selected with click
+  const handleChange = async function (e: any) {
+    e.preventDefault();
+    if (e.target.files && e.target.files[0]) {
+      // at least one file has been selected so do something
+      // setFileList(e.target.files);
+
+      setFile(e.target.files[0] || null);
+      setStep(2);
+    }
+  };
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8 ">
-      <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-        {/* <header>
-          <h2>Choose file</h2>
-        </header> */}
+    <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+      <div className="col-span-full flex justify-center">
+        <form
+          id="form-file-upload"
+          onDragEnter={handleDrag}
+          onSubmit={(e) => e.preventDefault()}
+        >
+          <div
+            id="label-file-upload"
+            className={`mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 ${
+              dragActive ? "drag-active" : ""
+            }`}
+          >
+            <div>
+              <PhotoIcon
+                className="mx-auto h-12 w-12 text-gray-300"
+                aria-hidden="true"
+              />
 
-        <div className="Example__container">
-          <div className="Example__container__load">
-            <label htmlFor="file">Select file:</label>{" "}
-            <input accept=".pdf,.txt" onChange={onFileChange} type="file" />
+              <div className="mt-4 flex items-center justify-center text-sm leading-6 text-gray-600">
+                <label
+                  htmlFor="input-file-upload"
+                  className="relative cursor-pointer rounded-md font-semibold text-blue-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-2 hover:text-blue-500"
+                >
+                  <span>{t("dashboard-page:summarize.upload-a-file")}</span>
+                  <input
+                    ref={inputRef}
+                    type="file"
+                    id="input-file-upload"
+                    multiple={true}
+                    onChange={handleChange}
+                    accept=".pdf,.txt"
+                    className="sr-only"
+                  />
+                </label>
+              </div>
+              {dragActive && (
+                <div
+                  id="drag-file-element"
+                  onDragEnter={handleDrag}
+                  onDragLeave={handleDrag}
+                  onDragOver={handleDrag}
+                  onDrop={handleDrop}
+                ></div>
+              )}
+              <p className="text-xs leading-5 text-gray-600">
+                {t("dashboard-page:summarize.upload-limits")}
+              </p>
+            </div>
           </div>
-          {/* <div className="Example__container__document">
-            <Document
-              file={file}
-              onLoadSuccess={onDocumentLoadSuccess}
-              options={options}
-            >
-              {Array.from(new Array(numPages), (el, index) => (
-                <Page key={`page_${index + 1}`} pageNumber={index + 1} />
-              ))}
-            </Document>
-          </div> */}
-        </div>
+        </form>
       </div>
     </div>
+
+    // <div className="px-4 sm:px-6 lg:px-8 ">
+    //   <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+    //     <div className="Example__container">
+    //       <div className="Example__container__load">
+    //         <label htmlFor="file">Select file:</label>{" "}
+    //         <input accept=".pdf,.txt" onChange={onFileChange} type="file" />
+    //       </div>
+    //       {/* <div className="Example__container__document">
+    //         <Document
+    //           file={file}
+    //           onLoadSuccess={onDocumentLoadSuccess}
+    //           options={options}
+    //         >
+    //           {Array.from(new Array(numPages), (el, index) => (
+    //             <Page key={`page_${index + 1}`} pageNumber={index + 1} />
+    //           ))}
+    //         </Document>
+    //       </div> */}
+    //     </div>
+    //   </div>
+    // </div>
   );
 }

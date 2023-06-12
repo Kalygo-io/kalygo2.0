@@ -15,7 +15,7 @@
   },
   "summarize": {
     "upload-a-file": "Cargar un archivo",
-    "upload-limits": "Archivos TXT de hasta 1 MB",
+    "upload-limits": "Archivos TXT & PDF de hasta 1 MB",
     "clear": "Reiniciar",
     "summarize": "Resumir",
     "received-quote": "Cotización recibida",

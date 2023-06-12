@@ -55,32 +55,7 @@ export function SearchFileWizard(props: Props) {
       jsx = <ChooseFile file={file} setFile={setFile} setStep={setStep} />;
       break;
     case 2:
-      jsx = (
-        <Query
-          file={file}
-          wizardStepsRef={wizardStepsRef}
-          onSuccess={(resp: { results: string[]; query: string }) => {
-            infoToast("Successfully performed similarity search");
-
-            console.log("RESULTS", resp);
-
-            // setSearchResultsState({
-            //   val: resp,
-            //   loading: false,
-            //   err: null,
-            // });
-          }}
-          //   setSearchResultsState={setSearchResultsState}
-          onError={(err) => {
-            // setSearchResultsState({
-            //   val: null,
-            //   loading: false,
-            //   err: err,
-            // });
-            // console.log("onError");
-          }}
-        />
-      );
+      jsx = <Query file={file} wizardStepsRef={wizardStepsRef} />;
       break;
     default:
       jsx = <Error />;

@@ -15,7 +15,7 @@
   },
   "summarize": {
     "upload-a-file": "Select file",
-    "upload-limits": "TXT files up to 1MB",
+    "upload-limits": "TXT & PDF files up to 1MB",
     "clear": "Clear",
     "summarize": "Summarize",
     "received-quote": "Received quote",
