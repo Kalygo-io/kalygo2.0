@@ -10,7 +10,7 @@
   },
   "sign-out": "Sign out",
   "index": {
-    "title": "Summaries",
+    "title": "Dashboard",
     "no-documents-yet": "No Documents Yet!"
   },
   "summarize": {
@@ -24,6 +24,9 @@
       "condensed-length": "Condensed Length",
       "summary": "Summary"
     }
+  },
+  "summary": {
+    "title": "Summary"
   },
   "settings": {
     "personal": {

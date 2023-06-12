@@ -218,7 +218,7 @@ export function SummarizeFileForm(props: Props) {
                         id="input-file-upload"
                         multiple={true}
                         onChange={handleChange}
-                        accept=".txt"
+                        accept=".pdf,.txt"
                         className="sr-only"
                       />
                     </label>

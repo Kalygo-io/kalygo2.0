@@ -10,7 +10,7 @@
   },
   "sign-out": "Desconectar",
   "index": {
-    "title": "Resúmenes",
+    "title": "Panel",
     "no-documents-yet": "¡No hay documentos todavía!"
   },
   "summarize": {
@@ -24,6 +24,9 @@
       "condensed-length": "Longitud condensada",
       "summary": "Resumen"
     }
+  },
+  "summary": {
+    "title": "Resumen"
   },
   "settings": {
     "personal": {
