@@ -1,6 +1,6 @@
 export function SummaryError() {
   return (
-    <div className="text-center">
+    <div className="p-4 sm:p-6 lg:p-8 text-center">
       <p className="text-base font-semibold text-red-600">500</p>
       <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
         Error

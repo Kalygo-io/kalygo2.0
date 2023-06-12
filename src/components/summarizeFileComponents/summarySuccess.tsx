@@ -15,7 +15,7 @@ export function SummarySuccess(p: P) {
   const { t } = useTranslation();
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8 flex flex-col flex-center justify-center">
+    <div className="p-4 sm:p-6 lg:p-8 flex flex-col flex-center justify-center">
       <h3 className="mx-auto text-base font-semibold leading-6 text-gray-900">
         {fileName}
       </h3>
