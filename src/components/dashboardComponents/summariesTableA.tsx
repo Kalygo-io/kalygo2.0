@@ -65,6 +65,7 @@ export const SummariesTableA = (p: P) => {
       </tbody>
     </table>
   ) : (
-    <>{t("dashboard-page:index.no-documents-yet")}</>
+    // <>{t("dashboard-page:index.no-documents-yet")}</>
+    <>No documents yet!</>
   );
 };
