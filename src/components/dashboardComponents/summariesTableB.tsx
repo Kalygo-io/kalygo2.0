@@ -24,7 +24,7 @@ export const SummariesTableB = (p: P) => {
             Summaries
           </h1>
           <p className="mt-2 text-sm text-gray-700">
-            An overview of the summaries you've requested
+            An overview of your summaries
           </p>
         </div>
         {/* <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
@@ -85,7 +85,6 @@ export const SummariesTableB = (p: P) => {
                       <button
                         className="text-blue-600 hover:text-blue-900"
                         onClick={() => {
-                          // debugger;
                           dispatch({
                             type: "set_summary",
                             payload: {
