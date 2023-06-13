@@ -1,11 +1,5 @@
 import { uploadFile } from "@/services/uploadFile";
-import {
-  XCircleIcon,
-  PhotoIcon,
-  ArrowUpOnSquareIcon,
-  DocumentMagnifyingGlassIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 import { pdfjs, Document, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
@@ -86,9 +80,6 @@ export function Query(props: Props) {
 
           loadingTask.promise.then(async function (pdf) {
             // you can now use *pdf* here
-
-            // const maxPages = pdf.pdfInfo.numPages;
-
             const maxPages = pdf.numPages;
             var countPromises = []; // collecting all page promises
             for (var j = 1; j <= maxPages; j++) {

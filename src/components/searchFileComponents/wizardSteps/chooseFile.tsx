@@ -15,7 +15,6 @@ import get from "lodash.get";
 import { useTranslation } from "next-i18next";
 
 import { infoToast } from "@/utility/toasts";
-import { getSummarizationQuote } from "@/services/getSummarizationQuote";
 import { useForm, Controller } from "react-hook-form";
 import { similaritySearchInFile } from "@/services/similaritySearchInFile";
 

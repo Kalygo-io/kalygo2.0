@@ -60,7 +60,6 @@ export default function Summarize() {
   } else if (searchResults.val) {
     jsx = (
       <SearchSuccess
-        // fileName={summary.val?.fileName}
         query={searchResults.val.query}
         results={searchResults.val.results}
         reset={() => {
@@ -73,35 +72,7 @@ export default function Summarize() {
       />
     );
   } else {
-    jsx = (
-      <SearchFileWizard />
-      //   <SearchFileForm
-      //     onSuccess={(resp: {
-      //       results: string[];
-      //       query: string;
-      //     }) => {
-      //       infoToast("Successfully performed similarity search");
-
-      //       console.log("RESULTS", resp);
-
-      //       setSearchResultsState({
-      //         val: resp,
-      //         loading: false,
-      //         err: null,
-      //       });
-      //     }}
-      //     setSearchResultsState={setSearchResultsState}
-      //     onError={(err) => {
-      //       setSearchResultsState({
-      //         val: null,
-      //         loading: false,
-      //         err: err,
-      //       });
-
-      //       console.log("onError");
-      //     }}
-      //   />
-    );
+    jsx = <SearchFileWizard />;
   }
 
   return (

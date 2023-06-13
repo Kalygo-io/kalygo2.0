@@ -67,7 +67,7 @@ export default function LayoutDashboard({ children }: P) {
 
     {
       name: t("dashboard-page:navigation.vector-search"),
-      href: "/dashboard/ai-search",
+      href: "/dashboard/vector-search",
       icon: DocumentMagnifyingGlassIcon,
     },
     // {

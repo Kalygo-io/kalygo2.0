@@ -2,21 +2,21 @@ import axios from "axios";
 import { errorToast } from "@/utility/toasts";
 import get from "lodash.get";
 
-export async function getSummarizationQuote(fileList: any, cb: any) {
+export async function getSummarizationQuote(file: File, cb: any) {
   try {
     const formData = new FormData();
 
-    const fileListKeys = Object.keys(fileList);
+    formData.append("file", file);
 
-    for (let i = 0; i < fileListKeys.length; i++) {
-      console.log(fileList, fileList[i]);
-      formData.append("file", fileList[i]);
-    }
+    // const fileListKeys = Object.keys(fileList);
+    // for (let i = 0; i < fileListKeys.length; i++) {
+    //   console.log(fileList, fileList[i]);
+    //   formData.append("file", fileList[i]);
+    // }
+    // console.log("formData", formData);
+    // console.log("formData", formData.get("file"));
 
-    console.log("formData", formData);
-    console.log("formData", formData.get("file"));
-
-    var config = {
+    const config = {
       method: "post",
       url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/get-summarization-quote`,
       headers: {
