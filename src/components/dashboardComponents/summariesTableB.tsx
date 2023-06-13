@@ -10,12 +10,14 @@ interface P {
 }
 
 export const SummariesTableB = (p: P) => {
-  const { summaries } = p;
+  let { summaries } = p;
 
   const { state, dispatch } = useAppContext();
 
   const router = useRouter();
   const { t } = useTranslation();
+
+  summaries = summaries.slice(0, 10);
 
   return summaries.length > 0 ? (
     <div className="px-4 sm:px-6 lg:px-8">
@@ -28,14 +30,15 @@ export const SummariesTableB = (p: P) => {
             An overview of your summaries
           </p>
         </div>
-        {/* <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+        <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
           <button
+            disabled
             type="button"
-            className="block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            className="opacity-50 block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
           >
-            New summary
+            View all
           </button>
-        </div> */}
+        </div>
       </div>
       <div className="mt-8 flow-root">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
