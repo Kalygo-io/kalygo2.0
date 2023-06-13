@@ -3,6 +3,7 @@ import LinkComponent from "../shared/Link";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
+import { round } from "@/utility/Math/round";
 
 interface P {
   summaries: any[];
@@ -75,7 +76,16 @@ export const SummariesTableB = (p: P) => {
                       {summary.originalCharCount}
                     </td>
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                      {summary.condensedCharCount}
+                      {summary.condensedCharCount}&nbsp;
+                      <span className="text-green-600">
+                        (
+                        {round(
+                          summary.originalCharCount /
+                            summary.condensedCharCount,
+                          1
+                        )}
+                        x)
+                      </span>
                     </td>
                     <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3">
                       {/* <LinkComponent

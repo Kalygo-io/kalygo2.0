@@ -9,6 +9,8 @@ import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
 import ContractList from "@/components/browseContractsComponents/contractList";
 
+import { Error } from "../../../../components/shared/error";
+
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 
@@ -25,6 +27,7 @@ import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import LinkComponent from "@/components/shared/Link";
 import Summary from "@/components/dashboardComponents/summary";
+import { WindowLoader } from "@/components/shared/WindowLoader";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -87,6 +90,15 @@ export default function Page() {
 
   console.log("state --->", state);
 
+  let jsx = null;
+  if (summary.loading) {
+    jsx = <WindowLoader></WindowLoader>;
+  } else if (summary.val) {
+    jsx = <Summary summary={summary.val} />;
+  } else {
+    jsx = <Error />;
+  }
+
   return (
     <>
       <Head>
@@ -104,7 +116,7 @@ export default function Page() {
           <div className="mt-8 flow-root">
             <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                <Summary summary={summary.val} />
+                {jsx}
               </div>
             </div>
           </div>
