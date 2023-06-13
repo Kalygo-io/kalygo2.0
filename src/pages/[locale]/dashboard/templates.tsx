@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
 import ContractList from "@/components/browseContractsComponents/contractList";
+import PromptTemplateList from "@/components/promptTemplateComponents/promptTemplateList";
 
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
@@ -19,7 +20,8 @@ const getStaticProps = makeStaticProps([
   "seo",
   "navbar",
   "common",
-  "contract-list",
+  // "contract-list",
+  "prompt-template-list",
   "error",
   "dashboard-page",
   "toast-messages",
@@ -37,7 +39,8 @@ export default function Dashboard() {
       </Head>
       <LayoutDashboard>
         <div className="p-4 sm:p-6 lg:p-8">
-          <ContractList />
+          {/* <ContractList /> */}
+          <PromptTemplateList />
         </div>
       </LayoutDashboard>
     </>

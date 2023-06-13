@@ -54,5 +54,6 @@
     },
     "error": "Ocurrió un error al cargar la configuración"
   },
-  "unknown-error": "Error desconocido"
+  "unknown-error": "Error desconocido",
+  "coming-soon": "Muy pronto!"
 }
