@@ -39,7 +39,7 @@ export function Pricing() {
       name: t("common:pricing.tier3_name"),
       id: "tier-growth",
       href: "/signup",
-      price: { summary: "ø", monthly: "Coming Soon" },
+      price: { summary: "ø", monthly: "$9.99" },
       description: t("common:pricing.tier3_description"),
       features: [
         t("common:pricing.tier3_feature1"),
@@ -69,27 +69,61 @@ export function Pricing() {
                   {tier.name}
                 </h3>
                 <p className="mt-6 flex items-baseline gap-x-1">
-                  <span className="text-5xl font-bold tracking-tight text-gray-900">
-                    {tier.price.summary}
-                  </span>
-                  {tier.id === "tier-free" ? (
-                    <></>
-                  ) : (
-                    <span className="text-sm font-semibold leading-6 text-gray-600">
-                      /{t("common:pricing.summary")}
-                    </span>
+                  {tier.id === "tier-free" && (
+                    <>
+                      <span className="text-5xl font-bold tracking-tight text-gray-900">
+                        {tier.price.summary}
+                      </span>
+                    </>
+                  )}
+                  {tier.id === "tier-essential" && (
+                    <>
+                      <span className="text-5xl font-bold tracking-tight text-gray-900">
+                        {tier.price.summary}
+                      </span>
+                      <span className="text-sm font-semibold leading-6 text-gray-600">
+                        /{t("common:pricing.summary")}
+                      </span>
+                    </>
+                  )}
+                  {tier.id === "tier-growth" && (
+                    <>
+                      <span className="text-5xl font-bold tracking-tight text-gray-900">
+                        {tier.price.monthly}
+                      </span>
+                      <span className="text-sm font-semibold leading-6 text-gray-600">
+                        /{t("common:pricing.month")}
+                      </span>
+                    </>
                   )}
                 </p>
-                <button
-                  disabled={!tier.enabled}
-                  onClick={() => {
-                    router.push("/signup");
-                  }}
-                  aria-describedby={tier.id}
-                  className="mt-10 block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:opacity-50"
-                >
-                  {t("common:pricing.sign-up")}
-                </button>
+
+                {["tier-free", "tier-essential"].includes(tier.id) && (
+                  <button
+                    disabled={!tier.enabled}
+                    onClick={() => {
+                      router.push("/signup");
+                    }}
+                    aria-describedby={tier.id}
+                    className="mt-10 block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:opacity-50"
+                  >
+                    {t("common:pricing.sign-up")}
+                  </button>
+                )}
+
+                {["tier-growth"].includes(tier.id) && (
+                  <button
+                    disabled={!tier.enabled}
+                    onClick={() => {
+                      router.push("/signup");
+                    }}
+                    aria-describedby={tier.id}
+                    className="mt-10 block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:opacity-50"
+                  >
+                    {t("common:pricing.coming-soon")}
+                  </button>
+                )}
+
                 <p className="mt-10 text-sm font-semibold leading-6 text-gray-900">
                   {tier.description}
                 </p>

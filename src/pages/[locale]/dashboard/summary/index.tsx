@@ -83,12 +83,8 @@ export default function Page() {
       }
     }
 
-    console.log("useEffect");
-
     fetch();
   }, []);
-
-  console.log("state --->", state);
 
   let jsx = null;
   if (summary.loading) {

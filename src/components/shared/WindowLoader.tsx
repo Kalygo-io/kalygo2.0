@@ -41,7 +41,7 @@ export const WindowLoader = () => {
                 dur="0.7575757575757576s"
               ></animateTransform>
               <path
-                fill-opacity="0.8"
+                fillOpacity="0.8"
                 fill="#5fdbfb"
                 d="M50 50L50 0A50 50 0 0 1 100 50Z"
               ></path>
@@ -56,7 +56,7 @@ export const WindowLoader = () => {
                 dur="1.0101010101010102s"
               ></animateTransform>
               <path
-                fill-opacity="0.8"
+                fillOpacity="0.8"
                 fill="#2563eb"
                 d="M50 50L50 0A50 50 0 0 1 100 50Z"
                 transform="rotate(90 50 50)"
@@ -72,7 +72,7 @@ export const WindowLoader = () => {
                 dur="1.5151515151515151s"
               ></animateTransform>
               <path
-                fill-opacity="0.8"
+                fillOpacity="0.8"
                 fill="#ffffff"
                 d="M50 50L50 0A50 50 0 0 1 100 50Z"
                 transform="rotate(180 50 50)"
@@ -88,7 +88,7 @@ export const WindowLoader = () => {
                 dur="3.0303030303030303s"
               ></animateTransform>
               <path
-                fill-opacity="0.8"
+                fillOpacity="0.8"
                 fill="#403d56"
                 d="M50 50L50 0A50 50 0 0 1 100 50Z"
                 transform="rotate(270 50 50)"

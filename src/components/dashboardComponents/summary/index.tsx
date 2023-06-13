@@ -14,7 +14,9 @@ export default function Summary(p: P) {
     <div>
       <div className="px-4 sm:px-0">
         <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-          Requested: {d.toLocaleString()}
+          {summary?.createdAt
+            ? `Requested: ${new Date(summary.createdAt)}`
+            : `Time summary was requested is unknown`}
         </p>
       </div>
       <div className="mt-6 border-t border-gray-100">
@@ -52,10 +54,10 @@ export default function Summary(p: P) {
 
               {summary?.content.split("\n\n").map((i: any, idx: any) => {
                 return (
-                  <>
+                  <div key={idx}>
                     <p>{i}</p>
                     <br />
-                  </>
+                  </div>
                 );
               })}
             </dd>
