@@ -9,6 +9,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Head from "next/head";
 import Layout1 from "@/layout/layout1";
+import Layout1a from "@/layout/layout1a";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -29,7 +30,7 @@ export default function About() {
         <meta name="description" content={t("seo:about-page-description")!} />
       </Head>
 
-      <Layout1>
+      <Layout1a>
         <div className="relative isolate overflow-hidden bg-white px-6 py-24 pt-48 lg:overflow-visible lg:px-0">
           {/* <div className="absolute inset-0 -z-10 overflow-hidden">
             <svg
@@ -140,7 +141,7 @@ export default function About() {
             </div>
           </div>
         </div>
-      </Layout1>
+      </Layout1a>
     </>
   );
 }

@@ -4,7 +4,7 @@ import { Context } from "react";
 import { NextPageContext } from "next";
 
 export const getI18nPaths = (args: any) => {
-  console.log("args", args);
+  // console.log("args", args);
 
   return i18nextConfig.i18n.locales.map((lng: string) => ({
     params: {

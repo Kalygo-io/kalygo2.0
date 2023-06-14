@@ -16,7 +16,7 @@ export function Navbar() {
 
   const navigation = [
     { name: t("navbar:navbar-use-cases"), href: "/use-cases" },
-    // { name: t("navbar:navbar-contracts"), href: "/use-cases" },
+    { name: t("navbar:navbar-about"), href: "/about" },
     { name: t("navbar:navbar-feedback"), href: "/feedback" },
   ];
 
