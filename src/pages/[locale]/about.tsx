@@ -74,13 +74,13 @@ export default function About() {
                     Introducing Kalygo, your document processing companion. With
                     the world generating an ocean of information daily,
                     it&apos;s easy to get lost in the waves. Kalygo sails in as
-                    the game-changing solution that enables you to securely
-                    upload your documents and create streamlined, abridged
-                    versions of them according to your preferences. Whether
-                    you&apos;re a student trying to grasp the essence of an
-                    overwhelming amount of study material or a professional
-                    seeking to extract the core points from a pile of documents
-                    on your virtual desk, Kalygo has got you covered.
+                    the game-changing solution allowing you to securely upload
+                    your documents and create streamlined, abridged versions of
+                    them according to your preferences. Whether you&apos;re a
+                    student trying to grasp the essence of an overwhelming
+                    amount of material or a professional seeking to extract the
+                    core points from a pile of documents on your virtual desk,
+                    Kalygo has got you covered.
                   </p>
                 </div>
               </div>
@@ -98,23 +98,22 @@ export default function About() {
                   <p>
                     Our open-source and cutting-edge technology is tailored to
                     make your life easier and more productive. Kalygo employs
-                    advanced tooling that maintains the integrity and critical
-                    information of your documents while presenting them in their
-                    most digestible formats. It&apos;s a revolution in how you
+                    advanced tooling that maintains the integrity of your
+                    original documents while presenting them in their most
+                    digestible formats. It&apos;s a revolution in how you
                     interact with your data. Say goodbye to endless scrolling
                     and hello to focused, concise information extraction that
                     propels you towards your goals.
                   </p>
                   <p className="mt-8">
-                    Security and privacy are at the core of Kalygo. We
-                    understand that your documents are precious and often
-                    sensitive so our robust security measures ensure that your
-                    data remains safeguarded at all times. When you use Kalygo,
-                    you&apos;re not just accessing a world-class document
-                    processing tool; you&apos;re joining a community that values
-                    and protects your data as much as you do. Kalygo does
-                    monetize user data but all the manners in which it does so
-                    are made transparent via the term of use and privacy policy.
+                    Security is at the core of Kalygo and we understand that
+                    your documents are precious and oftentimes sensitive so our
+                    security measures ensure that your data remains safeguarded.
+                    When you use Kalygo, you&apos;re joining an ecosystem that
+                    values and protects your data as much as you do. While
+                    Kalygo does monetize user data, all the manners in which it
+                    does so are made transparent via user controls and the terms
+                    of use.
                   </p>
                   <h2 className="mt-8 text-2xl font-bold tracking-tight text-gray-900">
                     Ready to get started?
@@ -128,13 +127,13 @@ export default function About() {
                     </a>
                   </div>
                   <p className="mt-8">
-                    For just $9.99 per month, unlock the power to transform your
-                    relationship with documents. There&apos;s no reason not to
-                    give Kalygo a try. Take the reins, and experience the magic
-                    of concise information at your fingertips. We are confident
-                    that once you try Kalygo, it will become an indispensable
-                    part of your daily life. Step into the future of document
-                    processing with Kalygo and never look back!
+                    For just $9.99 per month, you can unlock the power to
+                    transform your relationship with documents today. Take the
+                    reins, and experience the magic of concise information at
+                    your fingertips. We&apos;re confident that once you try
+                    Kalygo, it&apos;ll become an indispensable part of your
+                    daily life. Step into the future of document processing with
+                    Kalygo and never look back!
                   </p>
                 </div>
               </div>
