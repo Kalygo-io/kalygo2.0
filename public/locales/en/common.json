@@ -34,5 +34,14 @@
     "month": "month",
     "sign-up": "Sign up",
     "coming-soon": "Coming soon"
+  },
+  "about": {
+    "header": "About"
+  },
+  "terms-of-service": {
+    "header": "Terms of service"
+  },
+  "privacy-policy": {
+    "header": "Privacy policy"
   }
 }
