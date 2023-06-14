@@ -1,8 +1,8 @@
 const navigation = {
   main: [
     { name: "About", href: "/about" },
-    { name: "Terms of service", href: "/terms-of-service" },
-    { name: "Privacy policy", href: "/privacy-policy" },
+    { name: "Terms of Service", href: "/terms-of-service" },
+    // { name: "Privacy policy", href: "/privacy-policy" },
   ],
   social: [
     {
@@ -61,7 +61,7 @@ export function Footer() {
     <footer className="bg-white">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
         <nav
-          className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12"
+          className="-mb-6 flex justify-center flex-col items-center sm:flex-row sm:flex sm:justify-center sm:space-x-12"
           aria-label="Footer"
         >
           {navigation.main.map((item) => (
