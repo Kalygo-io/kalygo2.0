@@ -51,7 +51,7 @@ export default function TermsOfService() {
                     </strong>{" "}
                     When you visit, use, or navigate our Services, we may
                     process personal information depending on how you interact
-                    with CMD Software, Inc. product such as Kalygo and Kalygo
+                    with CMD Software, Inc. products such as Kalygo and Kalygo
                     2.0. View our privacy for more information regarding how
                     personal information in stored and processed.
                   </span>
