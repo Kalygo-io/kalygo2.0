@@ -78,7 +78,7 @@ export default function TermsOfService() {
                     <strong className="font-semibold text-gray-900">
                       Do we receive any information from third parties?
                     </strong>{" "}
-                    We may receive information from public database, marketing
+                    We may receive information from public databases, marketing
                     partners, social media platforms, and other outside sources.
                   </span>
                 </li>
