@@ -201,7 +201,7 @@ export default function TermsOfService() {
                 <li>5. Purchases and Payment</li>
                 <li>6. Free Trial</li>
                 <li>7. Cancellation</li>
-                <li>8. Prohibited Activites</li>
+                <li>8. Prohibited Activities</li>
                 {/* <li>9. User Generated Contributions</li>
               <li>10. Contribution License</li>
               <li>11. Guidelines for Reviews</li>
