@@ -112,9 +112,9 @@ export default function TermsOfService() {
                       In what situations and with which parties do we share
                       personal information?
                     </strong>{" "}
-                    We may share information and with specific third parties.
-                    Learn more about when and with whom we share user data in
-                    our privacy policy.
+                    We may share information with specific third parties. Learn
+                    more about when and with whom we share user data in our
+                    privacy policy.
                   </span>
                 </li>
                 <li className="flex gap-x-3">
