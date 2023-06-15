@@ -65,7 +65,7 @@ export default function TermsOfService() {
                     <strong className="font-semibold text-gray-900">
                       Do we process any sensitive personal information?
                     </strong>{" "}
-                    If documents containing sensitive personal infromation are
+                    If documents containing sensitive personal information are
                     uploaded then yes.
                   </span>
                 </li>
