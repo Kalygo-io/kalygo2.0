@@ -21,7 +21,7 @@ export default function TermsOfService() {
         <div className="bg-white px-6 py-32 lg:px-8">
           <div className="mx-auto max-w-3xl text-base leading-7 text-gray-700">
             <p className="text-base font-semibold leading-7 text-blue-600">
-              6-14-2023
+              6-15-2023
             </p>
             <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Terms of Service
@@ -202,11 +202,11 @@ export default function TermsOfService() {
                 <li>6. Free Trial</li>
                 <li>7. Cancellation</li>
                 <li>8. Prohibited Activities</li>
-                {/* <li>9. User Generated Contributions</li>
-              <li>10. Contribution License</li>
-              <li>11. Guidelines for Reviews</li>
-              <li>12. Social Media</li>
-              <li>13. 3rd-party Websites and Content</li>
+                <li>9. User Generated Contributions</li>
+                <li>10. Contribution License</li>
+                <li>11. Guidelines for Reviews</li>
+                <li>12. Social Media</li>
+                {/* <li>13. 3rd-party Websites and Content</li>
               <li>14. Advertisers</li>
               <li>15. Services Management</li>
               <li>16. Privacy Policy</li>
@@ -482,42 +482,252 @@ export default function TermsOfService() {
                   us or otherwise use the Services and/or the Content for any
                   revenue-generating endeavor or commercial enterprise
                 </li>
-                {/* <li className="flex gap-x-3">
-                <CheckCircleIcon
-                  className="mt-1 h-5 w-5 flex-none text-blue-600"
-                  aria-hidden="true"
-                />
-                <span>
-                  <strong className="font-semibold text-gray-900">9.</strong>{" "}
-                </span>
-              </li>
-              <li className="flex gap-x-3">
-                <CheckCircleIcon
-                  className="mt-1 h-5 w-5 flex-none text-blue-600"
-                  aria-hidden="true"
-                />
-                <span>
-                  <strong className="font-semibold text-gray-900">10.</strong>{" "}
-                </span>
-              </li>
-              <li className="flex gap-x-3">
-                <CheckCircleIcon
-                  className="mt-1 h-5 w-5 flex-none text-blue-600"
-                  aria-hidden="true"
-                />
-                <span>
-                  <strong className="font-semibold text-gray-900">11.</strong>{" "}
-                </span>
-              </li>
-              <li className="flex gap-x-3">
-                <CheckCircleIcon
-                  className="mt-1 h-5 w-5 flex-none text-blue-600"
-                  aria-hidden="true"
-                />
-                <span>
-                  <strong className="font-semibold text-gray-900">12.</strong>{" "}
-                </span>
-              </li>
+                <li className="flex gap-x-3">
+                  <CheckCircleIcon
+                    className="mt-1 h-5 w-5 flex-none text-blue-600"
+                    aria-hidden="true"
+                  />
+                  <span>
+                    <strong className="font-semibold text-gray-900">9.</strong>{" "}
+                  </span>
+                  The Services may invite you to chat, contribute to , or
+                  participate in blogs, message boards, online forums, and other
+                  functionality and may provide you with the opportunity to
+                  create, submit, post, display, transmit, perform, publish,
+                  distribute, or broadcast content and materials to us or on the
+                  Services, including but not limited to text, writings, video,
+                  audio, photographs, graphics, comments, suggestions, or
+                  personal information or other material (collectively,
+                  &quot;Contributions&quot;). Contributions may be viewable by
+                  other users of the Services and through third-party website.
+                  As such, any Contributions your transmit may be treated as
+                  non-confidential and non-proprietary. When you create or make
+                  available any Contributions, you thereby represent and warrant
+                  that:
+                  <br />
+                  <br />
+                  - The creation, distribution, transmission, public display, or
+                  performance, and the accessing, downloading, or copying of
+                  your Contributions do not and will not infringe the
+                  proprietary rights, including but not limited to the
+                  copyright, patent, trademark, trade secret, or moral rights of
+                  any third party.
+                  <br />
+                  - You are the creator and owner of or have the necessary
+                  licenses, rights, consents, releases, and permissions to use
+                  and to authorize us, the Services and other users of the
+                  Services to use your Contributions in any manner contemplated
+                  by the Services and these Legal Terms.
+                  <br />
+                  - You have the written consent, release, and/or permission of
+                  each and every identifiable individual person in your
+                  Contributions to use the name or likeness of each and every
+                  such identifiable individual person to enable inclusion and
+                  use of your Contributions in any manner contemplated by the
+                  Services and these Legal Terms.
+                  <br />
+                  - Your Contributions are not false, inaccurate, or misleading.
+                  <br />
+                  - Your Contributions are not unsolicited or unauthorized
+                  advertising, promotional materials, pyramid schemes, chain
+                  letters, spam, mass mailings, or other forms of solicitation.
+                  <br />
+                  - Your Contributions are not obscene, lewd, lascivious,
+                  filthy, violent, harassing, libelous, slanderous, or otherwise
+                  objectionable (as determined by us).
+                  <br />
+                  - Your Contributions do not ridicule, mock, disparage,
+                  intimidate, or abuse anyone.
+                  <br />
+                  - Your Contributions are not used to harass or threaten (in
+                  the legal sense of those terms) any other person and to
+                  promote violence against a specific person or class of people.
+                  <br />
+                  - Your Contributions do not violate any applicable law,
+                  regulation, or rule.
+                  <br />
+                  - Your Contributions do not violate the privacy or publicity
+                  rights of any third party.
+                  <br />
+                  - Your Contributions do not violate any applicable law
+                  concerning child pornography, or otherwise intended to protect
+                  the health or well-being of minors.
+                  <br />
+                  - Your Contributions do not include any offensive comments
+                  that are connected to race, national origin, gender, sexual
+                  preference, or physical handicap.
+                  <br />
+                  - Your Contributions do not otherwise violate, or link to
+                  material that violates, any provision of these Legal Terms, or
+                  any applicable law or regulation.
+                  <br />
+                  Any use of the Services in violation of the foregoing violates
+                  these Legal Terms and may result in, among other things,
+                  termination or suspension of your rights to use the Services.
+                </li>
+                <li className="flex gap-x-3">
+                  <CheckCircleIcon
+                    className="mt-1 h-5 w-5 flex-none text-blue-600"
+                    aria-hidden="true"
+                  />
+                  <span>
+                    <strong className="font-semibold text-gray-900">10.</strong>{" "}
+                  </span>
+                  By posting your Contributions to any part of the Services or
+                  making Contributions accessible to the Services by linking
+                  your account from the Services to any of your social
+                  networking accounts, you automatically grant, and you
+                  represent and warrant that you have the right to grant, to us
+                  an unrestricted, unlimited, irrevocable, perpetual,
+                  non-exclusive, transferable, royalty-free, fully-paid,
+                  worldwide right, and license to host, use, copy, reproduce,
+                  disclose, sell, resell, publish, broadcast, retitle, archive,
+                  store, cache, publicly perform, publicly display, reformat,
+                  translate, transmit, excerpt (in whole or in part), and
+                  distribute such Contributions (including, without limitation,
+                  your image and voice) for any purpose, commercial,
+                  advertising, or otherwise, and to prepare derivative works of,
+                  or incorporate into other works, such Contributions, and grant
+                  and authorize sublicenses of the foregoing. The use and
+                  distribution may occur in any media formats and through any
+                  media channels.
+                  <br />
+                  <br />
+                  This license will apply to any form, media, or technology now
+                  known or hereafter developed, and includes our use of your
+                  name, company name, and franchise name, as applicable, and any
+                  of the trademarks, service marks, trade names, logos, and
+                  personal and commercial images you provide. You waive all
+                  moral rights in your Contributions, and you warrant that moral
+                  rights have not otherwise been asserted in your Contributions.
+                  <br />
+                  <br />
+                  We do not assert any ownership over your Contributions. You
+                  retain full ownership of all of your Contributions and any
+                  intellectual property rights or other proprietary rights
+                  associated with your Contributions. We are not liable for any
+                  statements or representations in your Contributions provided
+                  by you in any area on the Services. You are solely responsible
+                  for your Contributions to the Services and you expressly agree
+                  to exonerate us from any and all responsibility and to refrain
+                  from any legal action against us regarding your Contributions.
+                  <br />
+                  <br />
+                  We have the right, in our sole and absolute discretion, (1) to
+                  edit, redact, or otherwise change any Contributions; (2) to
+                  re-categorize any Contributions to place them in more
+                  appropriate locations on the Services; and (3) to pre-screen
+                  or delete any Contributions at any time and for any reason,
+                  without notice. We have no obligation to monitor your
+                  Contributions.
+                </li>
+
+                <li className="flex gap-x-3">
+                  <CheckCircleIcon
+                    className="mt-1 h-5 w-5 flex-none text-blue-600"
+                    aria-hidden="true"
+                  />
+                  <span>
+                    <strong className="font-semibold text-gray-900">11.</strong>{" "}
+                  </span>
+                  We may provide you areas on the Services to leave review or
+                  ratings. When posting a review, you must comply with the
+                  following criteria: (1) you should have firsthand experience
+                  with the person/entity being reviewed; (2) your reviews should
+                  not contain offensive profanity, or abusive, racist,
+                  offensive, or hateful language; (3) your reviews should not
+                  contain discriminatory references based on religion, race,
+                  gender, national origin, age, marital status, sexual
+                  orientation, or disability; (4) your reviews should not
+                  contain references to illegal activity; (5) you should not be
+                  affiliated with competitors if posting negative reviews; (6)
+                  you should not make any conclusions as to the legality of
+                  conduct; (7) you may not post any false or misleading
+                  statements; and (8) you may not organize a campaign
+                  encouraging others to post reviews, whether positive or
+                  negative.
+                  <br />
+                  <br />
+                  We may accept, reject, or remove reviews in our sole
+                  discretion. We have absolutely no obligation to screen reviews
+                  or to delete reviews, even if anyone considers reviews
+                  objectionable or inaccurate. Reviews are not endorsed by us,
+                  and do not necessarily represent our opinions or the views of
+                  any of our affiliates or partners. We do not assume liability
+                  for any review or for any claims, liabilities, or losses
+                  resulting from any review. By posting a review, you hereby
+                  grant to us a perpetual, non-exclusive, worldwide,
+                  royalty-free, fully paid, assignable, and sublicensable right
+                  and license to reproduce, modify, translate, transmit by any
+                  means, display, perform, and/or distribute all content
+                  relating to review.
+                </li>
+                <li className="flex gap-x-3">
+                  <CheckCircleIcon
+                    className="mt-1 h-5 w-5 flex-none text-blue-600"
+                    aria-hidden="true"
+                  />
+                  <span>
+                    <strong className="font-semibold text-gray-900">12.</strong>{" "}
+                  </span>
+                  As part of the functionality of the Services, you may link
+                  your account with online accounts you have with third-party
+                  service providers (each such account, a &quot;Third-Party
+                  Account&quot;) by either: (1) providing your Third-Party
+                  Account login information through the Services; or (2)
+                  allowing us to access your Third-Party Account, as is
+                  permitted under the applicable terms and conditions that
+                  govern your use of each Third-Party Account. You represent and
+                  warrant that you are entitled to disclose your Third-Party
+                  Account login information to us and/or grant us access to your
+                  Third-Party Account, without breach by you of any of the terms
+                  and conditions that govern your use of the applicable
+                  Third-Party Account, and without obligating us to pay any fees
+                  or making us subject to any usage limitations imposed by the
+                  third-party service provider of the Third-Party Account. By
+                  granting us access to any Third-Party Account, you understand
+                  that (1) we may access, make available, and store (if
+                  applicable) any content that you have provided to and stored
+                  in your Third-Party Account (the &quot;Social Network
+                  Content&quot;) that you have provided to and stored in you
+                  Third-Party Account (the &quot;Social Network Content&quot;)
+                  so that it is available on and through the Services via your
+                  account, including without limitation any friend lists and (2)
+                  we may submit to and recieve from your Third-Party Account
+                  additional information to the extent your are notified when
+                  you link your account with the Third-Party Account. Depending
+                  on the Third-Party Accounts you choose and subject to the
+                  privacy settings that you have set in such Third-Party
+                  Accounts, personally identifiable information that you post to
+                  your Third-Party Account may be avilable on and through your
+                  account on the Serivces. Please note that if a Third-Party
+                  Account or associated service becomes inabailable or our
+                  access to such Third-Party Account is terminated bu the
+                  third-party service provider, then Social Network Content may
+                  no longer be avialble on and through the ervice. You will have
+                  the ability to disable the connection between your account on
+                  the Services and your Thrid-Party Account at any time. PLEASE
+                  NOTE THAT YOUR RELATIONSHIP WITH THE THIRD-PARTY SERVICE
+                  PROVIDERS ASSOCIATED WITH YOUR THIRD-PARTY ACCOUNT IS GOVERNED
+                  SOLELY BY YOUR AGREEMENT(S) WITH SUCH THIRD-PARY SERVICE
+                  PROVIDERS. We make no effort to review any Social Network
+                  Content for any purpose, including but not limited to, for
+                  accuracy, legality or non-infringement, and we are not
+                  responsible for any Social Network Content. You acknowledge
+                  and agree that we may access your email address book
+                  associated with a Third-Party Account and your contact list
+                  stored on your mobile device or table computer solely for
+                  purposes of indentifying and informing you of those contacts
+                  who have also registered to use the services. You can
+                  deactivate the connection between the Services and your
+                  Third-Party Account by contacting us using the contact
+                  information below or through your account settings (if
+                  applicable). We will attempt to delete any information stored
+                  on our servers that was obtained through such Third-Party
+                  Account, except the username and profile picture that become
+                  associated with your account.
+                </li>
+                {/* 
               <li className="flex gap-x-3">
                 <CheckCircleIcon
                   className="mt-1 h-5 w-5 flex-none text-blue-600"
