@@ -5,7 +5,6 @@ import { addStripeCard } from "@/services/addStripeCard";
 import { useTranslation } from "next-i18next";
 
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { errorReporter } from "@/utility/error/reporter";
 
 interface P {
@@ -27,7 +26,7 @@ export function NewCardModal(p: P) {
     defaultValues: {
       cardNumber: "", // 4242424242424242
       expDate: "", // 11/24
-      cvc: "123", // 123
+      cvc: "", // 123
     },
   });
 
@@ -35,13 +34,14 @@ export function NewCardModal(p: P) {
 
   const onSubmit = async (data: any) => {
     try {
-      const { feedback } = data;
       console.log("data", data);
+
+      const [expMonth, expYear] = data.expDate;
 
       await addStripeCard(
         {
-          exp_month: "12",
-          exp_year: "2023",
+          exp_month: expMonth,
+          exp_year: expYear,
           cvc: data.cvc,
           card_number: data.cardNumber,
         },
@@ -49,25 +49,6 @@ export function NewCardModal(p: P) {
           cb(false, newCard);
         }
       );
-
-      //   var config = {
-      //     method: "post",
-      //     url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/feedback/general`,
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     data: {
-      //       feedback,
-      //     },
-      //   };
-
-      //   let resp = await axios(config);
-
-      //   console.log(resp);
-      //   infoToast(t("toast-messages:the-feedback-is-appreciated"));
-      // const detectedLng = languageDetector.detect();
-      //   const detectedLng = navigatorLangDetector();
-      //   router.push(`/${detectedLng}/`);
     } catch (e) {
       errorReporter(e);
     }

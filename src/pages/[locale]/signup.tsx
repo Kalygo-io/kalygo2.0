@@ -21,6 +21,8 @@ import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 
 // import Link from "next/link";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
+import { useState } from "react";
+import { WindowLoader } from "@/components/shared/WindowLoader";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -36,6 +38,16 @@ export { getStaticPaths, getStaticProps };
 
 export default function Signup() {
   const { t } = useTranslation();
+
+  const [signUpState, setSignUpState] = useState<{
+    loading: boolean;
+    error: any;
+    val: any;
+  }>({
+    loading: false,
+    error: null,
+    val: null,
+  });
 
   const {
     register,
@@ -70,17 +82,32 @@ export default function Signup() {
         },
       };
 
+      setSignUpState({
+        error: null,
+        loading: true,
+        val: null,
+      });
+
       let resp = await axios(config);
-
       console.log(resp);
-
       infoToast(t("toast-messages:sign-up-success"));
+
+      setSignUpState({
+        error: null,
+        loading: false,
+        val: null,
+      });
 
       // const detectedLng = languageDetector.detect();
       const detectedLng = navigatorLangDetector();
-
       router.push(`/${detectedLng}/`);
     } catch (e) {
+      setSignUpState({
+        error: e,
+        loading: false,
+        val: null,
+      });
+
       errorReporter(e);
     }
   };
@@ -193,6 +220,7 @@ export default function Signup() {
           </p>
         </div>
       </div>
+      {signUpState.loading && <WindowLoader />}
     </>
   );
 }

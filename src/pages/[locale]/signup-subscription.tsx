@@ -14,15 +14,15 @@ import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
 
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/20/solid";
+import { WindowLoader } from "@/components/shared/WindowLoader";
 
 const products = [
   {
     id: 1,
     name: "Kalygo Premium Subscription",
-    href: "#",
     price: "$9.99",
     detail1: "w/ 14-day FREE trial",
     detail2: "",
@@ -48,61 +48,93 @@ export { getStaticPaths, getStaticProps };
 export default function Signup() {
   const { t } = useTranslation();
 
-  //   const {
-  //     register,
-  //     handleSubmit,
-  //     getValues,
-  //     formState: { errors },
-  //     setValue,
-  //     watch,
-  //   } = useForm({
-  //     defaultValues: {
-  //       email: "",
-  //       password: "",
-  //     },
-  //   });
+  const [signUpState, setSignUpState] = useState<{
+    loading: boolean;
+    error: any;
+    val: any;
+  }>({
+    loading: false,
+    error: null,
+    val: null,
+  });
 
-  //   const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    formState: { errors },
+    setValue,
+    watch,
+  } = useForm({
+    defaultValues: {
+      email: "tad@cmdlabs.io",
+      password: "asdfasdf",
+      card_name: "Tad Duval",
+      card_number: "4242424242424242",
+      card_exp: "12/25",
+      cvc: "123",
+    },
+  });
 
-  //   const onSubmit = async (data: any) => {
-  //     try {
-  //       const { email, password } = data;
-  //       console.log("data", data);
+  const router = useRouter();
 
-  //       var config = {
-  //         method: "post",
-  //         url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/sign-up`,
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         data: {
-  //           email,
-  //           password,
-  //         },
-  //       };
+  const onSubmit = async (data: any) => {
+    try {
+      console.log("data", data);
+      const { email, password, card_number, card_exp, cvc } = data;
+      const [exp_month, exp_year] = card_exp.split("/");
 
-  //       let resp = await axios(config);
+      var config = {
+        method: "post",
+        url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/subscription-sign-up`,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: {
+          email,
+          password,
+          exp_month,
+          exp_year,
+          card_number,
+          cvc,
+        },
+      };
 
-  //       console.log(resp);
+      setSignUpState({
+        error: null,
+        loading: true,
+        val: null,
+      });
 
-  //       infoToast(t("toast-messages:sign-up-success"));
+      let resp = await axios(config);
+      console.log(resp);
+      infoToast(t("toast-messages:sign-up-success"));
+      // const detectedLng = languageDetector.detect();
+      setSignUpState({
+        error: null,
+        loading: false,
+        val: null,
+      });
+      const detectedLng = navigatorLangDetector();
+      router.push(`/${detectedLng}/`);
+    } catch (e) {
+      setSignUpState({
+        error: e,
+        loading: true,
+        val: null,
+      });
 
-  //       // const detectedLng = languageDetector.detect();
-  //       const detectedLng = navigatorLangDetector();
-
-  //       router.push(`/${detectedLng}/`);
-  //     } catch (e) {
-  //       errorReporter(e);
-  //     }
-  //   };
+      errorReporter(e);
+    }
+  };
 
   return (
     <>
       <Head>
-        <title>{t("seo:sign-up-page-seo-title")}</title>
+        <title>{t("seo:subscription-sign-up-page-seo-title")}</title>
         <meta
           name="description"
-          content={t("seo:sign-up-page-seo-meta-description")!}
+          content={t("seo:subscription-sign-up-page-seo-meta-description")!}
         />
       </Head>
       <div className="bg-white">
@@ -163,11 +195,6 @@ export default function Signup() {
                   <dd>$9.99</dd>
                 </div>
 
-                {/* <div className="flex items-center justify-between">
-                  <dt className="text-gray-600">Shipping</dt>
-                  <dd>$15.00</dd>
-                </div> */}
-
                 <div className="flex items-center justify-between">
                   <dt className="text-gray-600">Taxes</dt>
                   <dd>(included)</dd>
@@ -223,11 +250,6 @@ export default function Signup() {
                             <dd>$9.99</dd>
                           </div>
 
-                          {/* <div className="flex items-center justify-between">
-                            <dt className="text-gray-600">Shipping</dt>
-                            <dd>$15.00</dd>
-                          </div> */}
-
                           <div className="flex items-center justify-between">
                             <dt className="text-gray-600">Taxes</dt>
                             <dd>(included)</dd>
@@ -241,7 +263,10 @@ export default function Signup() {
             </div>
           </section>
 
-          <form className="px-4 pb-36 pt-16 sm:px-6 lg:col-start-1 lg:row-start-1 lg:px-0 lg:pb-16">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="px-4 pb-36 pt-16 sm:px-6 lg:col-start-1 lg:row-start-1 lg:px-0 lg:pb-16"
+          >
             <div className="mx-auto max-w-lg lg:max-w-none">
               <section aria-labelledby="contact-info-heading">
                 <h2
@@ -253,36 +278,50 @@ export default function Signup() {
 
                 <div className="mt-6">
                   <label
-                    htmlFor="email-address"
+                    htmlFor="email"
                     className="block text-sm font-medium text-gray-700"
                   >
                     Email address
                   </label>
                   <div className="mt-1">
                     <input
+                      {...register("email", {
+                        required: true,
+                        pattern: new RegExp(
+                          /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/
+                        ),
+                      })}
                       type="email"
-                      id="email-address"
-                      name="email-address"
+                      id="email"
+                      name="email"
                       autoComplete="email"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                      className={`block w-full rounded-md border-0 border-gray-300 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm ${
+                        errors["email"] && "ring-red-700 focus:ring-red-500"
+                      }`}
                     />
                   </div>
                 </div>
 
                 <div className="mt-6">
                   <label
-                    htmlFor="email-address"
+                    htmlFor="password"
                     className="block text-sm font-medium text-gray-700"
                   >
                     Password
                   </label>
                   <div className="mt-1">
                     <input
+                      {...register("password", {
+                        required: true,
+                        minLength: 7,
+                      })}
                       type="password"
                       id="password"
                       name="password"
                       autoComplete="password"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                      className={`block w-full rounded-md border-0 border-gray-300 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm ${
+                        errors["password"] && "ring-red-700 focus:ring-red-500"
+                      }`}
                     />
                   </div>
                 </div>
@@ -299,54 +338,74 @@ export default function Signup() {
                 <div className="mt-6 grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4">
                   <div className="col-span-3 sm:col-span-4">
                     <label
-                      htmlFor="name-on-card"
+                      htmlFor="card_name"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Name on card
                     </label>
                     <div className="mt-1">
                       <input
+                        {...register("card_name", {
+                          required: true,
+                        })}
                         type="text"
-                        id="name-on-card"
-                        name="name-on-card"
-                        autoComplete="cc-name"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                        id="card_name"
+                        name="card_name"
+                        autoComplete="card_name"
+                        className={`block w-full rounded-md border-0 border-gray-300 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm ${
+                          errors["card_name"] &&
+                          "ring-red-700 focus:ring-red-500"
+                        }`}
                       />
                     </div>
                   </div>
 
                   <div className="col-span-3 sm:col-span-4">
                     <label
-                      htmlFor="card-number"
+                      htmlFor="card_number"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Card number
                     </label>
                     <div className="mt-1">
                       <input
+                        {...register("card_number", {
+                          required: true,
+                          pattern: new RegExp(/^[0-9]+$/),
+                        })}
                         type="text"
-                        id="card-number"
-                        name="card-number"
-                        autoComplete="cc-number"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                        id="card_number"
+                        name="card_number"
+                        autoComplete="card_number"
+                        className={`block w-full rounded-md border-0 border-gray-300 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm ${
+                          errors["card_number"] &&
+                          "ring-red-700 focus:ring-red-500"
+                        }`}
                       />
                     </div>
                   </div>
 
                   <div className="col-span-2 sm:col-span-3">
                     <label
-                      htmlFor="expiration-date"
+                      htmlFor="card_exp"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Expiration date (MM/YY)
                     </label>
                     <div className="mt-1">
                       <input
+                        {...register("card_exp", {
+                          required: true,
+                          pattern: new RegExp(/[0-9]{2}\/[0-9]{2}/),
+                        })}
                         type="text"
-                        name="expiration-date"
-                        id="expiration-date"
-                        autoComplete="cc-exp"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                        name="card_exp"
+                        id="card_exp"
+                        autoComplete="card_exp"
+                        className={`block w-full rounded-md border-0 border-gray-300 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm ${
+                          errors["card_exp"] &&
+                          "ring-red-700 focus:ring-red-500"
+                        }`}
                       />
                     </div>
                   </div>
@@ -360,174 +419,37 @@ export default function Signup() {
                     </label>
                     <div className="mt-1">
                       <input
+                        {...register("cvc", {
+                          required: true,
+                          pattern: new RegExp(/^[0-9]+$/),
+                        })}
                         type="text"
                         name="cvc"
                         id="cvc"
-                        autoComplete="csc"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                        autoComplete="cvc"
+                        placeholder="&bull;&bull;&bull;"
+                        className={`block w-full rounded-md border-0 border-gray-300 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm ${
+                          errors["cvc"] && "ring-red-700 focus:ring-red-500"
+                        }`}
                       />
                     </div>
                   </div>
                 </div>
               </section>
 
-              {/* <section aria-labelledby="shipping-heading" className="mt-10">
-                <h2
-                  id="shipping-heading"
-                  className="text-lg font-medium text-gray-900"
-                >
-                  Shipping address
-                </h2>
-
-                <div className="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3">
-                  <div className="sm:col-span-3">
-                    <label
-                      htmlFor="company"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Company
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        id="company"
-                        name="company"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="sm:col-span-3">
-                    <label
-                      htmlFor="address"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Address
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        id="address"
-                        name="address"
-                        autoComplete="street-address"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="sm:col-span-3">
-                    <label
-                      htmlFor="apartment"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Apartment, suite, etc.
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        id="apartment"
-                        name="apartment"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="city"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      City
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        id="city"
-                        name="city"
-                        autoComplete="address-level2"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="region"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      State / Province
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        id="region"
-                        name="region"
-                        autoComplete="address-level1"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="postal-code"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Postal code
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        id="postal-code"
-                        name="postal-code"
-                        autoComplete="postal-code"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </section> */}
-
-              {/* <section aria-labelledby="billing-heading" className="mt-10">
-                <h2
-                  id="billing-heading"
-                  className="text-lg font-medium text-gray-900"
-                >
-                  Billing information
-                </h2>
-
-                <div className="mt-6 flex items-center">
-                  <input
-                    id="same-as-shipping"
-                    name="same-as-shipping"
-                    type="checkbox"
-                    defaultChecked
-                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                  />
-                  <div className="ml-2">
-                    <label
-                      htmlFor="same-as-shipping"
-                      className="text-sm font-medium text-gray-900"
-                    >
-                      Same as shipping information
-                    </label>
-                  </div>
-                </div>
-              </section> */}
-
               <div className="mt-10 border-t border-gray-200 pt-6 sm:flex sm:items-center sm:justify-between">
                 <button
                   type="submit"
-                  disabled
-                  className="w-full rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:order-last sm:ml-6 sm:w-auto opacity-50"
+                  className="w-full rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:order-last sm:ml-6 sm:w-auto"
                 >
-                  Coming soon...
+                  Sign up
                 </button>
               </div>
             </div>
           </form>
         </div>
       </div>
+      {signUpState.loading && <WindowLoader />}
     </>
   );
 }
