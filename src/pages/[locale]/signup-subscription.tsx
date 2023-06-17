@@ -120,7 +120,7 @@ export default function Signup() {
     } catch (e) {
       setSignUpState({
         error: e,
-        loading: true,
+        loading: false,
         val: null,
       });
 
