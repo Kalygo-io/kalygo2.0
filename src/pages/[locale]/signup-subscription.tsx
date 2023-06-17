@@ -248,7 +248,7 @@ export default function Signup() {
                   id="contact-info-heading"
                   className="text-lg font-medium text-gray-900"
                 >
-                  Account information
+                  Account
                 </h2>
 
                 <div className="mt-6">
@@ -293,7 +293,7 @@ export default function Signup() {
                   id="payment-heading"
                   className="text-lg font-medium text-gray-900"
                 >
-                  Payment details
+                  Payment
                 </h2>
 
                 <div className="mt-6 grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4">
