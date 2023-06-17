@@ -34,5 +34,19 @@
     "tier3_feature5": "Todas las funciones habilitadas",
     "summary": "resumen",
     "sign-up": "Inscribirse"
+  },
+  "about": {
+    "header": "Acerca de"
+  },
+  "terms-of-service": {
+    "header": "Términos de servicio"
+  },
+  "privacy-policy": {
+    "header": "Política de privacidad"
+  },
+  "footer": {
+    "about": "Acerca de",
+    "terms-of-service": "Términos de servicio",
+    "copyright": "CMD Software Inc. Todos los derechos reservados."
   }
 }

@@ -45,5 +45,10 @@
   },
   "privacy-policy": {
     "header": "Privacy policy"
+  },
+  "footer": {
+    "about": "About",
+    "terms-of-service": "Terms of Service",
+    "copyright": "CMD Software Inc. All rights reserved."
   }
 }
