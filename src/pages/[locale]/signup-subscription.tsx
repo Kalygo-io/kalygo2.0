@@ -67,12 +67,12 @@ export default function Signup() {
     watch,
   } = useForm({
     defaultValues: {
-      email: "tad@cmdlabs.io",
-      password: "asdfasdf",
-      card_name: "Tad Duval",
-      card_number: "4242424242424242",
-      card_exp: "12/25",
-      cvc: "123",
+      email: "",
+      password: "",
+      card_name: "",
+      card_number: "",
+      card_exp: "",
+      cvc: "",
     },
   });
 
