@@ -13,7 +13,6 @@ import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 // import Link from "next/link";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
 import { Stats } from "@/components/indexComponents/stats";
-// import { StatsV2 } from "@/components/indexComponents/statsV2";
 import { Pricing } from "@/components/indexComponents/pricing";
 
 const getStaticProps = makeStaticProps([
