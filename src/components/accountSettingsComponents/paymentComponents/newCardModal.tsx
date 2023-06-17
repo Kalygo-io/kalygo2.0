@@ -25,9 +25,9 @@ export function NewCardModal(p: P) {
     watch,
   } = useForm({
     defaultValues: {
-      cardNumber: "4242424242424242",
-      expDate: "11/24",
-      cvc: "123",
+      cardNumber: "", // 4242424242424242
+      expDate: "", // 11/24
+      cvc: "123", // 123
     },
   });
 
