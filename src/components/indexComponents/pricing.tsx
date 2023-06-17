@@ -23,7 +23,7 @@ export function Pricing() {
     },
     {
       name: t("common:pricing.tier2_name"),
-      id: "tier-essential",
+      id: "tier-standard",
       href: "/signup",
       price: { summary: "+50¢", monthly: "" },
       description: t("common:pricing.tier2_name"),
@@ -37,16 +37,18 @@ export function Pricing() {
     },
     {
       name: t("common:pricing.tier3_name"),
-      id: "tier-growth",
-      href: "/signup",
+      id: "tier-premium",
+      href: "/signup-subscription",
       price: { summary: "ø", monthly: "$9.99" },
       description: t("common:pricing.tier3_description"),
       features: [
         t("common:pricing.tier3_feature1"),
         t("common:pricing.tier3_feature2"),
         t("common:pricing.tier3_feature3"),
+        t("common:pricing.tier3_feature4"),
+        t("common:pricing.tier3_feature5"),
       ],
-      enabled: false,
+      enabled: true,
     },
   ];
 
@@ -76,7 +78,7 @@ export function Pricing() {
                       </span>
                     </>
                   )}
-                  {tier.id === "tier-essential" && (
+                  {tier.id === "tier-standard" && (
                     <>
                       <span className="text-5xl font-bold tracking-tight text-gray-900">
                         {tier.price.summary}
@@ -86,7 +88,7 @@ export function Pricing() {
                       </span>
                     </>
                   )}
-                  {tier.id === "tier-growth" && (
+                  {tier.id === "tier-premium" && (
                     <>
                       <span className="text-5xl font-bold tracking-tight text-gray-900">
                         {tier.price.monthly}
@@ -98,7 +100,7 @@ export function Pricing() {
                   )}
                 </p>
 
-                {["tier-free", "tier-essential"].includes(tier.id) && (
+                {["tier-free", "tier-standard"].includes(tier.id) && (
                   <button
                     disabled={!tier.enabled}
                     onClick={() => {
@@ -111,16 +113,16 @@ export function Pricing() {
                   </button>
                 )}
 
-                {["tier-growth"].includes(tier.id) && (
+                {["tier-premium"].includes(tier.id) && (
                   <button
                     disabled={!tier.enabled}
                     onClick={() => {
-                      router.push("/signup");
+                      router.push(tier.href);
                     }}
                     aria-describedby={tier.id}
                     className="mt-10 block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:opacity-50"
                   >
-                    {t("common:pricing.coming-soon")}
+                    {t("common:pricing.sign-up")}
                   </button>
                 )}
 
