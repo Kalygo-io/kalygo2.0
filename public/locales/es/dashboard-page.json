@@ -8,7 +8,10 @@
     "settings": "Ajustes",
     "vector-search": "Búsqueda de vectores"
   },
-  "sign-out": "Desconectar",
+  "user-nav": {
+    "settings": "Ajustes",
+    "sign-out": "Desconectar"
+  },
   "index": {
     "title": "Panel",
     "no-documents-yet": "¡No hay documentos todavía!"

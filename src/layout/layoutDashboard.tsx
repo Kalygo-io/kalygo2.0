@@ -85,7 +85,14 @@ export default function LayoutDashboard({ children }: P) {
 
   const userNavigation = [
     {
-      name: t("dashboard-page:sign-out"),
+      name: t("dashboard-page:user-nav.settings"),
+      onClick: () => {
+        // signOut(router, t);
+        router.push("/dashboard/settings");
+      },
+    },
+    {
+      name: t("dashboard-page:user-nav.sign-out"),
       onClick: () => {
         signOut(router, t);
       },

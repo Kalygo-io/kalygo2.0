@@ -8,7 +8,10 @@
     "settings": "Settings",
     "vector-search": "Vector Search"
   },
-  "sign-out": "Sign out",
+  "user-nav": {
+    "settings": "Settings",
+    "sign-out": "Sign out"
+  },
   "index": {
     "title": "Dashboard",
     "no-documents-yet": "No Documents Yet!"
