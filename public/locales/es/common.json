@@ -32,7 +32,9 @@
     "tier3_feature3": "Funciones de colaboración",
     "tier3_feature4": "Todas las funciones habilitadas",
     "summary": "resumen",
-    "sign-up": "Inscribirse"
+    "sign-up": "Inscribirse",
+    "month": "mes",
+    "coming-soon": "Muy pronto"
   },
   "about": {
     "header": "Acerca de"
