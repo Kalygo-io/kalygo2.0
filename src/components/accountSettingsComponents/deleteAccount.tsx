@@ -38,9 +38,11 @@ export function DeleteAccount() {
       </div>
       <DeleteAccountModal
         open={deleteAccountOpen}
-        cb={(isOpen: boolean) => {
-          setDeleteAccountOpen(isOpen);
+        cb={() => {
           router.push("/");
+        }}
+        setIsModalOpen={(isOpen: boolean) => {
+          setDeleteAccountOpen(isOpen);
         }}
       />
     </>

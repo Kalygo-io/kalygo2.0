@@ -10,7 +10,8 @@ import { deleteAccount } from "@/services/deleteAccount";
 
 interface P {
   open: boolean;
-  cb: (isOpen: boolean) => void;
+  cb: () => void;
+  setIsModalOpen: (isOpen: boolean) => void;
 }
 
 export function DeleteAccountModal(p: P) {
@@ -27,14 +28,14 @@ export function DeleteAccountModal(p: P) {
     defaultValues: {},
   });
 
-  const { open, cb } = p;
+  const { open, cb, setIsModalOpen } = p;
 
   const onSubmit = async (data: any) => {
     try {
       console.log("data", data);
 
       await deleteAccount(() => {
-        cb(false);
+        cb();
       });
     } catch (e) {
       errorReporter(e);
@@ -43,7 +44,11 @@ export function DeleteAccountModal(p: P) {
 
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={() => cb(false)}>
+      <Dialog
+        as="div"
+        className="relative z-10"
+        onClose={() => setIsModalOpen(false)}
+      >
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -100,7 +105,7 @@ export function DeleteAccountModal(p: P) {
                   <button
                     type="button"
                     className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:col-start-1 sm:mt-0"
-                    onClick={() => cb(false)}
+                    onClick={() => setIsModalOpen(false)}
                   >
                     Cancel
                   </button>
