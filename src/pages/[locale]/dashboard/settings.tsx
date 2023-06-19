@@ -88,7 +88,7 @@ export default function Settings() {
     jsx = <WindowLoader></WindowLoader>;
   } else if (account.err) {
     jsx = (
-      <div className="text-center text-red-500">
+      <div className="text-center text-red-500 relative mx-4 sm:mx-6 lg:mx-8">
         {t("dashboard-page:settings.error")}
       </div>
     );
