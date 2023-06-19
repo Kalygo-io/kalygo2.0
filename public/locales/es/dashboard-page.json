@@ -55,6 +55,9 @@
         "cancel": "Cancelar"
       }
     },
+    "subscription": {
+      "title": "Suscripción"
+    },
     "error": "Ocurrió un error al cargar la configuración"
   },
   "unknown-error": "Error desconocido",

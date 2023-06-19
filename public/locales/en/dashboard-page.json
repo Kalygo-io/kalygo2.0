@@ -55,6 +55,9 @@
         "cancel": "Cancel"
       }
     },
+    "subscription": {
+      "title": "Subscription"
+    },
     "error": "Error occurred while loading settings"
   },
   "unknown-error": "Unknown Error",

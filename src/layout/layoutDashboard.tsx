@@ -414,15 +414,17 @@ export default function LayoutDashboard({ children }: P) {
                       {userNavigation.map((item) => (
                         <Menu.Item key={item.name}>
                           {({ active }) => (
-                            <span
-                              onClick={item.onClick}
-                              className={classNames(
-                                active ? "bg-gray-50" : "",
-                                "block px-3 py-1 text-sm leading-6 text-gray-900 cursor-pointer"
-                              )}
-                            >
-                              {item.name}
-                            </span>
+                            <>
+                              <span
+                                onClick={item.onClick}
+                                className={classNames(
+                                  active ? "bg-gray-50" : "",
+                                  "block px-3 py-1 text-sm leading-6 text-gray-900 cursor-pointer"
+                                )}
+                              >
+                                {item.name}
+                              </span>
+                            </>
                           )}
                         </Menu.Item>
                       ))}

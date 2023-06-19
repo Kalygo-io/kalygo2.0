@@ -4,5 +4,6 @@
   "forgot-password-success": "We are sending a reset link!",
   "sign-out-success": "Signed out successfully",
   "reset-password-success": "Successfully reset password. Try signing in!",
-  "summary-returned-successfully": "Summary returned successfully"
+  "summary-returned-successfully": "Summary returned successfully",
+  "successfully-changed-plan": "Changed plan successfully"
 }

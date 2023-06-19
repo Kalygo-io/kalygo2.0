@@ -36,12 +36,12 @@ export function NewCardModal(p: P) {
     try {
       console.log("data", data);
 
-      const [expMonth, expYear] = data.expDate;
+      const [exp_month, exp_year] = data.expDate.split("/");
 
       await addStripeCard(
         {
-          exp_month: expMonth,
-          exp_year: expYear,
+          exp_month,
+          exp_year,
           cvc: data.cvc,
           card_number: data.cardNumber,
         },

@@ -2,7 +2,7 @@ import { infoToast } from "@/utility/toasts";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 import { useTranslation } from "next-i18next";
 
-export default function ChangePassword() {
+export function ChangePassword() {
   const { t } = useTranslation();
 
   return (
@@ -77,7 +77,8 @@ export default function ChangePassword() {
           <div className="mt-8 flex">
             <button
               type="submit"
-              className="rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-md hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+              disabled
+              className="rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-md hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 opacity-50"
             >
               Save
             </button>

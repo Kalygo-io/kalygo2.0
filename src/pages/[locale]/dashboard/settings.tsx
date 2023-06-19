@@ -23,6 +23,9 @@ import { getAccount } from "@/services/getAccount";
 import { Payment } from "@/components/accountSettingsComponents/payment";
 import { SectionLoader } from "@/components/shared/SectionLoader";
 import { WindowLoader } from "@/components/shared/WindowLoader";
+import { Plan } from "@/components/accountSettingsComponents/plan";
+import { DeleteAccount } from "@/components/accountSettingsComponents/deleteAccount";
+import { ChangePassword } from "@/components/accountSettingsComponents/changePassword";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -45,6 +48,8 @@ export default function Settings() {
       email: string;
       firstName: string;
       lastName: string;
+      subscriptionPlan: string;
+      subscriptions: any[];
     } | null;
     loading: boolean;
     err: any;
@@ -54,27 +59,27 @@ export default function Settings() {
     err: null,
   });
 
+  async function fetch() {
+    getAccount(t, (val: any, err: any) => {
+      if (err) {
+        setAccount({
+          val: null,
+          loading: false,
+          err: err,
+        });
+      } else {
+        setAccount({
+          val: val,
+          loading: false,
+          err: null,
+        });
+      }
+    });
+
+    console.log("account details", account);
+  }
+
   useEffect(() => {
-    async function fetch() {
-      getAccount(t, (val: any, err: any) => {
-        if (err) {
-          setAccount({
-            val: null,
-            loading: false,
-            err: err,
-          });
-        } else {
-          setAccount({
-            val: val,
-            loading: false,
-            err: null,
-          });
-        }
-      });
-
-      console.log("account details", account);
-    }
-
     fetch();
   }, []);
 
@@ -98,15 +103,40 @@ export default function Settings() {
           >
             <div className="w-full border-t border-gray-300" />
           </div>
-          {/* <div className="relative flex justify-center">
-            <span className="bg-white px-2 text-sm text-gray-500">
-              Continue
-            </span>
-          </div> */}
+        </div>
+        <Plan
+          account={account.val!}
+          cb={() => {
+            fetch();
+          }}
+        />
+        <div className="relative mx-4 sm:mx-6 lg:mx-8">
+          <div
+            className="absolute inset-0 flex items-center"
+            aria-hidden="true"
+          >
+            <div className="w-full border-t border-gray-300" />
+          </div>
         </div>
         <Payment />
-        {/* <ChangePassword /> */}
-        {/* <DeleteAccount /> */}
+        <div className="relative mx-4 sm:mx-6 lg:mx-8">
+          <div
+            className="absolute inset-0 flex items-center"
+            aria-hidden="true"
+          >
+            <div className="w-full border-t border-gray-300" />
+          </div>
+        </div>
+        <ChangePassword />
+        <div className="relative mx-4 sm:mx-6 lg:mx-8">
+          <div
+            className="absolute inset-0 flex items-center"
+            aria-hidden="true"
+          >
+            <div className="w-full border-t border-gray-300" />
+          </div>
+        </div>
+        <DeleteAccount />
       </>
     );
   } else {

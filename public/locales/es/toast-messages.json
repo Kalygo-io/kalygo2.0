@@ -4,5 +4,6 @@
   "forgot-password-success": "¡Estamos enviando un enlace de reinicio!",
   "sign-out-success": "Salió con éxito",
   "reset-password-success": "Has restablecido correctamente tu contraseña.",
-  "summary-returned-successfully": "Resumen devuelto con éxito"
+  "summary-returned-successfully": "Resumen devuelto con éxito",
+  "successfully-changed-plan": "Cambio de plan con éxito"
 }

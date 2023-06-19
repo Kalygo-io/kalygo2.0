@@ -68,9 +68,8 @@ export default function Signup() {
   const onSubmit = async (data: any) => {
     try {
       const { email, password } = data;
-      console.log("data", data);
 
-      var config = {
+      const config = {
         method: "post",
         url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/sign-up`,
         headers: {

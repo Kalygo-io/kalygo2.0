@@ -53,7 +53,6 @@ export default function Signin() {
   const onSubmit = async (data: any) => {
     try {
       const { email, password } = data;
-      console.log("data", data);
 
       var config = {
         method: "post",
