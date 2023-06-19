@@ -295,6 +295,7 @@ export default function Signup() {
                       id="email"
                       name="email"
                       autoComplete="email"
+                      placeholder="Enter email"
                       className={`block w-full rounded-md border-0 border-gray-300 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm ${
                         errors["email"] && "ring-red-700 focus:ring-red-500"
                       }`}
@@ -319,6 +320,7 @@ export default function Signup() {
                       id="password"
                       name="password"
                       autoComplete="password"
+                      placeholder="Minimum 7 characters"
                       className={`block w-full rounded-md border-0 border-gray-300 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm ${
                         errors["password"] && "ring-red-700 focus:ring-red-500"
                       }`}
@@ -352,6 +354,7 @@ export default function Signup() {
                         id="card_name"
                         name="card_name"
                         autoComplete="card_name"
+                        placeholder="Name on card"
                         className={`block w-full rounded-md border-0 border-gray-300 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm ${
                           errors["card_name"] &&
                           "ring-red-700 focus:ring-red-500"
