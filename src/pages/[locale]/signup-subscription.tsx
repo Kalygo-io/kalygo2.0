@@ -377,6 +377,7 @@ export default function Signup() {
                         id="card_number"
                         name="card_number"
                         autoComplete="card_number"
+                        placeholder="0000 0000 0000 0000"
                         className={`block w-full rounded-md border-0 border-gray-300 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm ${
                           errors["card_number"] &&
                           "ring-red-700 focus:ring-red-500"
@@ -402,6 +403,7 @@ export default function Signup() {
                         name="card_exp"
                         id="card_exp"
                         autoComplete="card_exp"
+                        placeholder="MM/YY"
                         className={`block w-full rounded-md border-0 border-gray-300 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm ${
                           errors["card_exp"] &&
                           "ring-red-700 focus:ring-red-500"
