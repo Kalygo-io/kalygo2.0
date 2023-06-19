@@ -105,6 +105,7 @@ export function Plan(p: P) {
                         onClick={() => {
                           cancelSubscription(i.id, () => {
                             cb();
+                            setValue("plan", "STANDARD");
                           });
                         }}
                       >

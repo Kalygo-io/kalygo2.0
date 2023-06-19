@@ -11,8 +11,6 @@ export async function cancelSubscription(
   cb: () => void
 ) {
   try {
-    console.log("___ --- ___");
-
     const config = {
       method: "delete",
       url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account/cancel-subscription`,
