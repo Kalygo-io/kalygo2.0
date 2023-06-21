@@ -67,32 +67,32 @@ export function SearchFileForm(props: Props) {
 
   const { t } = useTranslation();
 
-  const onSubmit = async (data: any) => {
-    console.log("onSubmit", data);
+  // const onSubmit = async (data: any) => {
+  //   console.log("onSubmit", data);
 
-    console.log("data.file", data.file[0]);
+  //   console.log("data.file", data.file[0]);
 
-    setSearchResultsState({
-      val: null,
-      loading: true,
-      err: null,
-    });
+  //   setSearchResultsState({
+  //     val: null,
+  //     loading: true,
+  //     err: null,
+  //   });
 
-    similaritySearchInFile(
-      data.query,
-      data.file,
-      (results: string[], err: any) => {
-        if (err) {
-          onError(err);
-        } else {
-          onSuccess({
-            results,
-            query: data.query,
-          });
-        }
-      }
-    );
-  };
+  //   similaritySearchInFile(
+  //     data.query,
+  //     data.file,
+  //     (results: string[], err: any) => {
+  //       if (err) {
+  //         onError(err);
+  //       } else {
+  //         onSuccess({
+  //           results,
+  //           query: data.query,
+  //         });
+  //       }
+  //     }
+  //   );
+  // };
 
   function onFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { files } = event.target;
