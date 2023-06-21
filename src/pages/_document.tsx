@@ -31,19 +31,18 @@ export default function Document(this: any) {
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-EXRWZ1F1H1"
         />
-            
         <Script
           id="google-analytics"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-EXRWZ1F1H1', {
-            page_path: window.location.pathname,
-          });
-        `,
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-Z5KDKVLDYB', {
+              page_path: window.location.pathname,
+            });
+          `,
           }}
         />
       </body>

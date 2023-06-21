@@ -130,42 +130,6 @@ export function SearchFileForm(props: Props) {
             </Document>
           </div>
         </div>
-
-        {/* <div className="col-span-full flex justify-center">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
-              <textarea
-                {...register("query", { required: true })}
-                rows={3}
-                id="query"
-                placeholder="Perform a similarity search..."
-                className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
-                  errors["query"] && "ring-red-700 focus:ring-red-500"
-                }`}
-              />
-            </div>
-            <div className="col-span-full">
-              <div className="mt-2 flex items-center gap-x-3">
-                <input
-                  className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900"
-                  {...register("file", {
-                    required: true,
-                  })}
-                  multiple
-                  accept=".pdf,.txt"
-                  type="file"
-                  id="file"
-                />
-              </div>
-            </div>
-
-            <div>
-              <button className="inline-flex items-center gap-x-2 rounded-md bg-blue-600 m-2 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
-                Search
-              </button>
-            </div>
-          </form>
-        </div> */}
       </div>
     </div>
   );

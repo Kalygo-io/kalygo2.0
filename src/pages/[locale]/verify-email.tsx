@@ -56,6 +56,9 @@ export default function VerifyEmail() {
         //   error: null,
         // });
 
+        console.log("email", email);
+        console.log("emailVerificationToken", emailVerificationToken);
+
         const res = await axios.post(
           `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/verify-account`,
           {

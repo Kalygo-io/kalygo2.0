@@ -1,5 +1,6 @@
 import { uploadFile } from "@/services/uploadFile";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import { pdfjs, Document, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
@@ -219,9 +220,11 @@ export function Query(props: Props) {
                   {/* <time dateTime={comment.dateTime}>{comment.date}</time> */}
                 </p>
               </div>
-              <p className="mt-1 line-clamp-2 text-sm leading-6 text-gray-600">
-                {i}
-              </p>
+              <CopyToClipboard text={i} onCopy={() => console.log("copied")}>
+                <p className="mt-1 line-clamp-2 text-sm leading-6 text-gray-600 cursor-pointer">
+                  {i}
+                </p>
+              </CopyToClipboard>
             </div>
           </li>
         ))}
