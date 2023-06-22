@@ -6,5 +6,8 @@
   "membership": "Afiliación",
   "manage-powerful-groups": "Administrar grupos poderosos",
   "lottery": "Lotería",
-  "unbiased-outcomes": "Resultados imparciales"
+  "unbiased-outcomes": "Resultados imparciales",
+  "summarization": "Resumen",
+  "vector-search": "Búsqueda de vectores",
+  "prompt-templating": "Pronta ingenieria"
 }
