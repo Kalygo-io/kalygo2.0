@@ -709,7 +709,7 @@ export default function TermsOfService() {
                   the Services and your Thrid-Party Account at any time. PLEASE
                   NOTE THAT YOUR RELATIONSHIP WITH THE THIRD-PARTY SERVICE
                   PROVIDERS ASSOCIATED WITH YOUR THIRD-PARTY ACCOUNT IS GOVERNED
-                  SOLELY BY YOUR AGREEMENT(S) WITH SUCH THIRD-PARY SERVICE
+                  SOLELY BY YOUR AGREEMENT(S) WITH SUCH THIRD-PARTY SERVICE
                   PROVIDERS. We make no effort to review any Social Network
                   Content for any purpose, including but not limited to, for
                   accuracy, legality or non-infringement, and we are not

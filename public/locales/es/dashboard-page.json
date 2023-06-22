@@ -25,7 +25,8 @@
     "summary-success": {
       "original-length": "Longitud original",
       "condensed-length": "Longitud condensada",
-      "summary": "Resumen"
+      "summary": "Resumen",
+      "no-content": "Sin contenido"
     }
   },
   "summary": {

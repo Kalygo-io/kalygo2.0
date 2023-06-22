@@ -127,7 +127,7 @@ export default function Settings() {
             <div className="w-full border-t border-gray-300" />
           </div>
         </div>
-        <ChangePassword />
+        {/* <ChangePassword />
         <div className="relative mx-4 sm:mx-6 lg:mx-8">
           <div
             className="absolute inset-0 flex items-center"
@@ -135,7 +135,7 @@ export default function Settings() {
           >
             <div className="w-full border-t border-gray-300" />
           </div>
-        </div>
+        </div> */}
         <DeleteAccount />
       </>
     );

@@ -39,13 +39,13 @@ export function SummarySuccess(p: P) {
               name: t(
                 "dashboard-page:summarize.summary-success.original-length"
               ),
-              stat: originalLength,
+              stat: originalLength || "ø",
             },
             {
               name: t(
                 "dashboard-page:summarize.summary-success.condensed-length"
               ),
-              stat: condensedLength,
+              stat: condensedLength || "ø",
             },
           ].map((item) => (
             <div
@@ -68,13 +68,15 @@ export function SummarySuccess(p: P) {
           <h3 className="text-xl font-semibold leading-7 text-blue-600">
             {t("dashboard-page:summarize.summary-success.summary")}
           </h3>
-          {summary?.map((i, idx) => {
-            return (
-              <p key={idx} className="mt-6 text-xl leading-8">
-                {i}
-              </p>
-            );
-          })}
+          {summary
+            ? summary.map((i, idx) => {
+                return (
+                  <p key={idx} className="mt-6 text-xl leading-8">
+                    {i}
+                  </p>
+                );
+              })
+            : t("dashboard-page:summarize.summary-success.no-content")}
         </div>
       </div>
     </div>
