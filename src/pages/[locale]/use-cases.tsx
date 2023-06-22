@@ -37,22 +37,22 @@ export default function UseCases() {
             <h2 className="text-2xl font-bold tracking-tight text-gray-900">
               {t("use-cases-page:use-cases")}
             </h2>
-            <Link
+            {/* <Link
               href="/browse-contracts"
               className="hidden text-sm font-semibold text-blue-600 hover:text-blue-500 sm:block"
             >
               {t("use-cases-page:browse-contracts")}
               <span aria-hidden="true"> &rarr;</span>
-            </Link>
+            </Link> */}
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
             <div className="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2 border-1 shadow">
               <Image
-                src="/money.svg"
+                src="/summarize_graphic.svg"
                 width={1000}
                 height={1000}
-                alt={t("image-alt-tags:money.svg")}
+                alt={t("image-alt-tags:summarize_graphic.svg")}
                 className="object-fit object-center opacity-100 group-hover:opacity-50"
               />
               <div
@@ -63,11 +63,9 @@ export default function UseCases() {
               <div className="flex items-start p-6">
                 <div>
                   <h3>
-                    <span className="inline-flex flex-shrink-0 items-center rounded-md bg-white px-4 py-2 mx-1 text-2xl font-bold text-orange-400 ring-2 ring-inset ring-orange-600/20">
-                      <Link href="/browse-contracts">
-                        <span className="absolute inset-0" />
-                        {t("use-cases-page:escrow")}
-                      </Link>
+                    <span className="inline-flex flex-shrink-0 justify-end items-center rounded-md bg-white px-4 py-2 mx-1 text-2xl font-bold text-orange-400 ring-2 ring-inset ring-orange-600/20">
+                      <span className="absolute inset-0" />
+                      {t("use-cases-page:summarization")}
                     </span>
                   </h3>
                   {/* <p
@@ -81,10 +79,10 @@ export default function UseCases() {
             </div>
             <div className="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full border-1 shadow">
               <Image
-                src="/club.svg"
+                src="/vector_search_graphic.svg"
                 width={1000}
                 height={1000}
-                alt={t("image-alt-tags:club.svg")}
+                alt={t("image-alt-tags:vector_search_graphic.svg")}
                 className="object-fit object-right opacity-100 group-hover:opacity-50 sm:absolute sm:inset-0 sm:h-full sm:w-full"
               />
               <div
@@ -96,10 +94,10 @@ export default function UseCases() {
                 <div>
                   <h3>
                     <span className="inline-flex flex-shrink-0 items-center rounded-md bg-white px-4 py-2 mx-1 text-2xl font-bold text-orange-400 ring-2 ring-inset ring-orange-600/20">
-                      <Link href="/browse-contracts">
-                        <span className="absolute inset-0" />
-                        {t("use-cases-page:membership")}
-                      </Link>
+                      {/* <Link href="/browse-contracts"> */}
+                      <span className="absolute inset-0" />
+                      {t("use-cases-page:vector-search")}
+                      {/* </Link> */}
                     </span>
                   </h3>
                   {/* <p
@@ -114,10 +112,10 @@ export default function UseCases() {
             <div className="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full border-1 shadow">
               <Image
                 priority
-                src="/luck.svg"
+                src="/prompt_templating_graphic.svg"
                 width={1000}
                 height={1000}
-                alt={t("image-alt-tags:luck.svg")!}
+                alt={t("image-alt-tags:prompt_templating_graphic.svg")!}
                 className="object-fit object-center opacity-100 group-hover:opacity-50 sm:absolute sm:inset-0 sm:h-full sm:w-full"
               />
               <div
@@ -129,10 +127,10 @@ export default function UseCases() {
                 <div>
                   <h3>
                     <span className="inline-flex flex-shrink-0 items-center rounded-md bg-white px-4 py-2 mx-1 text-2xl font-bold text-orange-400 ring-2 ring-inset ring-orange-600/20">
-                      <Link href="/browse-contracts">
-                        <span className="absolute inset-0" />
-                        {t("use-cases-page:lottery")}
-                      </Link>
+                      {/* <Link href="/browse-contracts"> */}
+                      <span className="absolute inset-0" />
+                      {t("use-cases-page:prompt-templating")}
+                      {/* </Link> */}
                     </span>
                   </h3>
                   {/* <p
@@ -146,7 +144,7 @@ export default function UseCases() {
             </div>
           </div>
 
-          <div className="mt-6 sm:hidden">
+          {/* <div className="mt-6 sm:hidden">
             <Link
               href="/browse-contracts"
               className="block text-sm font-semibold text-blue-600 hover:text-blue-500"
@@ -154,7 +152,7 @@ export default function UseCases() {
               {t("use-cases-page:browse-contracts")}
               <span aria-hidden="true"> &rarr;</span>
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
