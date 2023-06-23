@@ -93,25 +93,12 @@ export function SummarizeFileForm(props: Props) {
 
       console.log("drag_n_drop fileAsTxt ->", fileAsTxt);
 
-      getSummarizationQuote(fileAsTxt, (quote: number, filePath: string) => {
+      getSummarizationQuote([fileAsTxt], (quote: number, filePath: string) => {
         setQuoteForFile({ quote, filePath });
         infoToast(
           `${t("dashboard-page:summarize.received-quote")} ($${quote})`
         );
       });
-
-      // getSummarizationQuote(
-      //   e.dataTransfer.files,
-      //   (quote: number, filePath: string) => {
-      //     setQuoteForFile({
-      //       quote,
-      //       filePath,
-      //     });
-      //     infoToast(
-      //       `${t("dashboard-page:summarize.received-quote")} ($${quote})`
-      //     );
-      //   }
-      // );
     }
   };
 
@@ -126,7 +113,7 @@ export function SummarizeFileForm(props: Props) {
 
       console.log("file input select fileAsTxt ->", fileAsTxt);
 
-      getSummarizationQuote(fileAsTxt, (quote: number, filePath: string) => {
+      getSummarizationQuote([fileAsTxt], (quote: number, filePath: string) => {
         setQuoteForFile({ quote, filePath });
         infoToast(
           `${t("dashboard-page:summarize.received-quote")} ($${quote})`
