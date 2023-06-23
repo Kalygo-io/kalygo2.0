@@ -6,7 +6,8 @@
     "summarize": "Resumir",
     "templates": "Plantilla de solicitud",
     "settings": "Ajustes",
-    "vector-search": "Búsqueda de vectores"
+    "vector-search": "Búsqueda de vectores",
+    "queue": "Cola"
   },
   "user-nav": {
     "settings": "Ajustes",

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { errorToast } from "@/utility/toasts";
 
-export async function uploadFile(filePath: string, quote: number, cb: any) {
+export async function summarizeFiles(filePath: string, quote: number, cb: any) {
   try {
     // const formData = new FormData();
     // const fileListKeys = Object.keys(fileList);

@@ -1,4 +1,4 @@
-import { uploadFile } from "@/services/uploadFile";
+import { summarizeFiles } from "@/services/summarizeFiles";
 import {
   XCircleIcon,
   PhotoIcon,
@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import get from "lodash.get";
 
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 
 import { infoToast } from "@/utility/toasts";
 import { getSummarizationQuote } from "@/services/getSummarizationQuote";
@@ -16,6 +17,7 @@ import { pdfjs, Document, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import { convertFileToTxtFile } from "./convertFileToTxtFile";
+import { navigatorLangDetector } from "@/lib/languageDetector";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.js`;
 
@@ -49,6 +51,8 @@ export function SummarizeFileForm(props: Props) {
     quote: number;
     filePath: string;
   } | null>();
+
+  const router = useRouter();
 
   const { t } = useTranslation();
 
@@ -138,139 +142,45 @@ export function SummarizeFileForm(props: Props) {
           <div>
             <button
               onClick={() => {
-                console.log("upload");
+                console.log("Summarize");
+                console.log("quoteForFile", quoteForFile);
 
-                if (fileList[0] && fileList[0].type === "application/pdf") {
-                  console.log(".pdf");
+                summarizeFiles(
+                  quoteForFile?.filePath!,
+                  quoteForFile?.quote! * 100,
+                  (resp: any, err: any) => {
+                    if (err) {
+                      onError(err);
+                      return;
+                    }
 
-                  const reader = new FileReader();
-
-                  reader.addEventListener("loadend", async () => {
-                    console.log("loadend");
-
-                    const loadingTask = pdfjs.getDocument(
-                      reader.result as ArrayBuffer
+                    const detectedLng = navigatorLangDetector();
+                    router.push(`/${detectedLng}/dashboard/queue`);
+                    infoToast(
+                      t(
+                        "toast-messages:files-uploaded-for-summarization-complete"
+                      )
                     );
 
-                    loadingTask.promise.then(async function (pdf) {
-                      // you can now use *pdf* here
-                      const maxPages = pdf.numPages;
-                      var countPromises = []; // collecting all page promises
-                      for (var j = 1; j <= maxPages; j++) {
-                        var page = pdf.getPage(j);
-
-                        var txt = "";
-                        countPromises.push(
-                          page.then(function (page) {
-                            // add page promise
-                            var textContent = page.getTextContent();
-                            return textContent.then(function (text) {
-                              // return content promise
-                              return text.items
-                                .map(function (s: any) {
-                                  return s.str;
-                                })
-                                .join(""); // value page text
-                            });
-                          })
-                        );
-                      }
-
-                      const finalText = await Promise.all(countPromises).then(
-                        function (texts) {
-                          return texts.join("");
-                        }
-                      );
-
-                      let blob = new Blob([finalText], { type: "text/plain" });
-                      let pdf2txtFile = new File([blob], "pdf2txt.txt", {
-                        type: "text/plain",
-                      });
-
-                      console.log("pdf2txtFile", pdf2txtFile);
-
-                      setSummaryState({
-                        val: null,
-                        loading: true,
-                        err: null,
-                      });
-
-                      uploadFile(
-                        quoteForFile?.filePath!,
-                        quoteForFile?.quote! * 100,
-                        (resp: any, err: any) => {
-                          if (err) {
-                            onError(err);
-                            return;
-                          }
-
-                          setFileList(null);
-                          const summary = get(resp, "data.summary", null);
-                          const originalLength = get(
-                            resp,
-                            "data.originalLength",
-                            null
-                          );
-                          const condensedLength = get(
-                            resp,
-                            "data.condensedLength",
-                            null
-                          );
-
-                          onSuccess({
-                            summary,
-                            fileName: fileList[0].name,
-                            originalLength: originalLength,
-                            condensedLength: condensedLength,
-                          });
-                        }
-                      );
-                    });
-                  });
-
-                  console.log("firing reader.readAsDataURL");
-
-                  reader.readAsDataURL(fileList[0] as Blob);
-                } else {
-                  console.log(".txt");
-
-                  setSummaryState({
-                    val: null,
-                    loading: true,
-                    err: null,
-                  });
-
-                  uploadFile(
-                    quoteForFile?.filePath!,
-                    quoteForFile?.quote! * 100,
-                    (resp: any, err: any) => {
-                      if (err) {
-                        onError(err);
-                        return;
-                      }
-
-                      setFileList(null);
-                      const summary = get(resp, "data.summary", null);
-                      const originalLength = get(
-                        resp,
-                        "data.originalLength",
-                        null
-                      );
-                      const condensedLength = get(
-                        resp,
-                        "data.condensedLength",
-                        null
-                      );
-
-                      onSuccess({
-                        summary,
-                        fileName: fileList[0].name,
-                        originalLength: originalLength,
-                        condensedLength: condensedLength,
-                      });
-                    }
-                  );
-                }
+                    // const summary = get(resp, "data.summary", null);
+                    // const originalLength = get(
+                    //   resp,
+                    //   "data.originalLength",
+                    //   null
+                    // );
+                    // const condensedLength = get(
+                    //   resp,
+                    //   "data.condensedLength",
+                    //   null
+                    // );
+                    // onSuccess({
+                    //   summary,
+                    //   fileName: fileList[0].name,
+                    //   originalLength: originalLength,
+                    //   condensedLength: condensedLength,
+                    // });
+                  }
+                );
               }}
               type="button"
               className="inline-flex items-center gap-x-2 rounded-md bg-blue-600 m-1 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"

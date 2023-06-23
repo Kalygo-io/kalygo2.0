@@ -1,4 +1,3 @@
-import { uploadFile } from "@/services/uploadFile";
 import {
   XCircleIcon,
   PhotoIcon,

@@ -6,7 +6,8 @@
     "summarize": "Summarize",
     "templates": "Prompt Templates",
     "settings": "Settings",
-    "vector-search": "Vector Search"
+    "vector-search": "Vector Search",
+    "queue": "Queue"
   },
   "user-nav": {
     "settings": "Settings",

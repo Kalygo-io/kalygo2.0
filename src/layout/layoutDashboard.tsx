@@ -80,6 +80,11 @@ export default function LayoutDashboard({ children }: P) {
       href: "/dashboard/templates",
       icon: RectangleGroupIcon,
     },
+    {
+      name: t("dashboard-page:navigation.queue"),
+      href: "/dashboard/queue",
+      icon: RectangleGroupIcon,
+    },
     // { name: "A.I.", href: "/dashboard/ai", icon: LifebuoyIcon },
   ];
 

@@ -22,6 +22,7 @@ import {
 } from "@/components/summarizeFileComponents";
 import { SectionLoader } from "@/components/shared/SectionLoader";
 import { WindowLoader } from "@/components/shared/WindowLoader";
+import { navigatorLangDetector } from "@/lib/languageDetector";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -36,6 +37,7 @@ export { getStaticPaths, getStaticProps };
 
 export default function Summarize() {
   const { state, dispatch } = useAppContext();
+  const router = useRouter();
   const { t } = useTranslation();
 
   const [summary, setSummaryState] = useState<{
@@ -59,21 +61,21 @@ export default function Summarize() {
   } else if (summary.err) {
     jsx = <SummaryError />;
   } else if (summary.val) {
-    jsx = (
-      <SummarySuccess
-        fileName={summary.val?.fileName}
-        summary={summary.val.summary}
-        originalLength={summary.val.originalLength}
-        condensedLength={summary.val.condensedLength}
-        reset={() => {
-          setSummaryState({
-            val: null,
-            loading: false,
-            err: null,
-          });
-        }}
-      />
-    );
+    jsx = <div className="text-center">√</div>;
+    //   <SummarySuccess
+    //     fileName={summary.val?.fileName}
+    //     summary={summary.val.summary}
+    //     originalLength={summary.val.originalLength}
+    //     condensedLength={summary.val.condensedLength}
+    //     reset={() => {
+    //       setSummaryState({
+    //         val: null,
+    //         loading: false,
+    //         err: null,
+    //       });
+    //     }}
+    //   />
+    // );
   } else {
     jsx = (
       <SummarizeFileForm
