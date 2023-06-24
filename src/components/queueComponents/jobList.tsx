@@ -1,5 +1,6 @@
 import { removeJobFromQueue } from "@/services/removeJobFromQueue";
 import React from "react";
+import { Divider } from "@/components/shared/Divider";
 
 interface P {
   jobs: any[];
@@ -15,11 +16,32 @@ export const JobList = (p: P) => {
       {jobs.length === 0 && "No jobs found in queue"}
       {jobs.map((i, idx) => {
         return (
-          <div key={idx}>
-            <h4 className="sr-only">Status</h4>
-            <p className="text-sm font-medium text-gray-900">
+          <div key={idx} className="relative mx-4 sm:mx-6 lg:mx-8">
+            <Divider />
+            {/* <h4 className="sr-only">Status</h4>
+            <p className="mt-6 text-sm font-medium text-gray-900">
               {i.data.key} {i.data.originalName}
-            </p>
+            </p> */}
+            <div>
+              <dl>
+                {/* <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                  <dt className="text-sm font-medium leading-6 text-gray-900">
+                    Requested at
+                  </dt>
+                  <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                    {i.data.key}
+                  </dd>
+                </div> */}
+                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                  <dt className="text-sm font-medium leading-6 text-gray-900">
+                    Filename
+                  </dt>
+                  <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                    {i.data.originalName}
+                  </dd>
+                </div>
+              </dl>
+            </div>
             <div className="mt-6" aria-hidden="true">
               <div className="overflow-hidden rounded-full bg-gray-200">
                 <div

@@ -26,6 +26,7 @@ import { WindowLoader } from "@/components/shared/WindowLoader";
 import { Plan } from "@/components/accountSettingsComponents/plan";
 import { DeleteAccount } from "@/components/accountSettingsComponents/deleteAccount";
 import { ChangePassword } from "@/components/accountSettingsComponents/changePassword";
+import { Divider } from "@/components/shared/Divider";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -96,46 +97,17 @@ export default function Settings() {
     jsx = (
       <>
         <Personal account={account.val!} />
-        <div className="relative mx-4 sm:mx-6 lg:mx-8">
-          <div
-            className="absolute inset-0 flex items-center"
-            aria-hidden="true"
-          >
-            <div className="w-full border-t border-gray-300" />
-          </div>
-        </div>
+        <Divider />
         <Plan
           account={account.val!}
           cb={() => {
             fetch();
           }}
         />
-        <div className="relative mx-4 sm:mx-6 lg:mx-8">
-          <div
-            className="absolute inset-0 flex items-center"
-            aria-hidden="true"
-          >
-            <div className="w-full border-t border-gray-300" />
-          </div>
-        </div>
+        <Divider />
         <Payment />
-        <div className="relative mx-4 sm:mx-6 lg:mx-8">
-          <div
-            className="absolute inset-0 flex items-center"
-            aria-hidden="true"
-          >
-            <div className="w-full border-t border-gray-300" />
-          </div>
-        </div>
-        {/* <ChangePassword />
-        <div className="relative mx-4 sm:mx-6 lg:mx-8">
-          <div
-            className="absolute inset-0 flex items-center"
-            aria-hidden="true"
-          >
-            <div className="w-full border-t border-gray-300" />
-          </div>
-        </div> */}
+        <Divider />
+        {/* <ChangePassword /> */}
         <DeleteAccount />
       </>
     );

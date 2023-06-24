@@ -20,8 +20,6 @@ import { WindowLoader } from "@/components/shared/WindowLoader";
 import { PreviewTextFile } from "@/components/shared/PreviewTextFile";
 import { fileURLToPath } from "url";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.js`;
-
 const options = {
   cMapUrl: "cmaps/",
   standardFontDataUrl: "standard_fonts/",

@@ -5,11 +5,8 @@ import "react-toastify/dist/ReactToastify.css";
 import "@/styles/summarizeFileForm.css";
 
 import type { AppProps } from "next/app";
-
 import { appWithTranslation } from "next-i18next";
-
 import { ToastContainer } from "react-toastify";
-
 import React from "react";
 
 import { AppWrapper } from "@/context/AppContext";
@@ -18,6 +15,9 @@ import ErrorBoundary from "@/components/shared/errorBoundary";
 import { AuthGuard } from "@/guards/AuthGuard";
 
 import type { NextComponentType } from "next"; //Import Component type
+
+import { pdfjs } from "react-pdf";
+pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.js`;
 
 // Add custom appProp type then use union to add it
 type CustomAppProps = AppProps & {

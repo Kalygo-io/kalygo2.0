@@ -1,8 +1,4 @@
 import { pdfjs } from "react-pdf";
-// import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-// import "react-pdf/dist/esm/Page/TextLayer.css";
-
-// pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.js`;
 
 export function convertFileToTxtFile(file: File): Promise<File> {
   return new Promise((resolve, reject) => {
@@ -43,8 +39,10 @@ export function convertFileToTxtFile(file: File): Promise<File> {
                 return texts.join("");
               });
 
+              console.log("file", file);
+
               const blob = new Blob([finalText], { type: "text/plain" });
-              const pdf2txtFile = new File([blob], "pdf2txt.txt", {
+              const pdf2txtFile = new File([blob], `${file.name}.txt`, {
                 type: "text/plain",
               });
 

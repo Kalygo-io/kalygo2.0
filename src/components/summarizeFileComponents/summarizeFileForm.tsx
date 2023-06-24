@@ -13,18 +13,10 @@ import { useRouter } from "next/router";
 import { infoToast } from "@/utility/toasts";
 import { getSummarizationQuote } from "@/services/getSummarizationQuote";
 
-import { pdfjs, Document, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import { convertFileToTxtFile } from "./convertFileToTxtFile";
 import { navigatorLangDetector } from "@/lib/languageDetector";
-
-pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.js`;
-
-const options = {
-  cMapUrl: "cmaps/",
-  standardFontDataUrl: "standard_fonts/",
-};
 
 interface Props {
   onSuccess: ({
@@ -171,6 +163,8 @@ export function SummarizeFileForm(props: Props) {
                       onError(err);
                       return;
                     }
+
+                    // debugger;
 
                     const detectedLng = navigatorLangDetector();
                     router.push(`/${detectedLng}/dashboard/queue`);

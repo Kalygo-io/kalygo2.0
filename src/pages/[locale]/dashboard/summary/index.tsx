@@ -14,16 +14,7 @@ import { Error } from "../../../../components/shared/error";
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 
-// import Link from "next/link";
-import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
-import { Dialog, Menu, Transition } from "@headlessui/react";
-import {
-  CalendarIcon,
-  ChartPieIcon,
-  FolderIcon,
-  HomeIcon,
-} from "@heroicons/react/24/outline";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import LinkComponent from "@/components/shared/Link";
 import Summary from "@/components/dashboardComponents/summary";
@@ -44,7 +35,10 @@ export { getStaticPaths, getStaticProps };
 export default function Page() {
   const router = useRouter();
 
-  const { state, dispatch } = useAppContext();
+  const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
+
+  const summaryId = searchParams.get("summary-id") || "";
+  // const { state, dispatch } = useAppContext();
   const { t } = useTranslation();
 
   const [summary, setSummary] = useState<{
@@ -63,7 +57,7 @@ export default function Page() {
         // debugger;
 
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/get-summary/${state.summaryId}`,
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/get-summary/${summaryId}`,
           {
             withCredentials: true,
           }

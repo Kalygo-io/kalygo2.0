@@ -19,8 +19,6 @@ import { similaritySearchInFile } from "@/services/similaritySearchInFile";
 
 import type { PDFDocumentProxy } from "pdfjs-dist";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.js`;
-
 const options = {
   cMapUrl: "cmaps/",
   standardFontDataUrl: "standard_fonts/",
@@ -57,31 +55,7 @@ export function ChooseFile(props: Props) {
     // onSuccess, onError, setSearchResultsState
   } = props;
 
-  //   const [file, setFile] = useState<PDFFile>();
-  //   const {
-  //     register,
-  //     handleSubmit,
-  //     getValues,
-  //     formState: { errors },
-  //     setValue,
-  //     watch,
-  //   } = useForm({});
-
-  // const [dragActive, setDragActive] = useState(false);
-  //   const [fileList, setFileList] = useState<FileList | null>();
-
   const { t } = useTranslation();
-
-  // function onFileChange(event: React.ChangeEvent<HTMLInputElement>) {
-  //   const { files } = event.target;
-
-  //   // debugger;
-
-  //   if (files && files[0]) {
-  //     setFile(files[0] || null);
-  //     setStep(2);
-  //   }
-  // }
 
   const [dragActive, setDragActive] = useState(false);
   const [fileList, setFileList] = useState<FileList | null>();
@@ -194,27 +168,5 @@ export function ChooseFile(props: Props) {
         </form>
       </div>
     </div>
-
-    // <div className="px-4 sm:px-6 lg:px-8 ">
-    //   <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-    //     <div className="Example__container">
-    //       <div className="Example__container__load">
-    //         <label htmlFor="file">Select file:</label>{" "}
-    //         <input accept=".pdf,.txt" onChange={onFileChange} type="file" />
-    //       </div>
-    //       {/* <div className="Example__container__document">
-    //         <Document
-    //           file={file}
-    //           onLoadSuccess={onDocumentLoadSuccess}
-    //           options={options}
-    //         >
-    //           {Array.from(new Array(numPages), (el, index) => (
-    //             <Page key={`page_${index + 1}`} pageNumber={index + 1} />
-    //           ))}
-    //         </Document>
-    //       </div> */}
-    //     </div>
-    //   </div>
-    // </div>
   );
 }

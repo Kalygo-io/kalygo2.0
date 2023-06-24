@@ -107,14 +107,16 @@ export const SummariesTableB = (p: P) => {
                       <button
                         className="text-blue-600 hover:text-blue-900"
                         onClick={() => {
-                          dispatch({
-                            type: "set_summary",
-                            payload: {
-                              summaryId: summary.id,
-                            },
-                          });
+                          // dispatch({
+                          //   type: "set_summary",
+                          //   payload: {
+                          //     summaryId: summary.id,
+                          //   },
+                          // });
 
-                          router.push(`/dashboard/summary`);
+                          router.push(
+                            `/dashboard/summary?summary-id=${summary.id}`
+                          );
                         }}
                       >
                         View<span className="sr-only">, {summary.id}</span>

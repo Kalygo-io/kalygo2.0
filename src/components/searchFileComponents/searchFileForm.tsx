@@ -1,19 +1,11 @@
-import { pdfjs, Document, Page } from "react-pdf";
+import { Document, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
-
 import React, { useState } from "react";
 import get from "lodash.get";
-
 import { useTranslation } from "next-i18next";
-
 import { infoToast } from "@/utility/toasts";
-import { useForm, Controller } from "react-hook-form";
-import { similaritySearchInFile } from "@/services/similaritySearchInFile";
-
 import type { PDFDocumentProxy } from "pdfjs-dist";
-
-pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.js`;
 
 const options = {
   cMapUrl: "cmaps/",
@@ -23,19 +15,7 @@ const options = {
 type PDFFile = string | File | null;
 
 interface Props {
-  onSuccess: ({
-    results,
-    query,
-  }: // fileName,
-  // originalLength,
-  // condensedLength,
-  {
-    results: string[];
-    query: string;
-    // fileName: string;
-    // originalLength: number;
-    // condensedLength: number;
-  }) => void;
+  onSuccess: ({ results, query }: { results: string[]; query: string }) => void;
   setSearchResultsState: (state: any) => void;
   onError: (err: any) => void;
 }
@@ -46,46 +26,10 @@ export function SearchFileForm(props: Props) {
   const [file, setFile] = useState<PDFFile>();
   const [numPages, setNumPages] = useState<number>();
 
-  const {
-    register,
-    handleSubmit,
-    getValues,
-    formState: { errors },
-    setValue,
-    watch,
-  } = useForm({});
-
   const [dragActive, setDragActive] = useState(false);
   const [fileList, setFileList] = useState<FileList | null>();
 
   const { t } = useTranslation();
-
-  // const onSubmit = async (data: any) => {
-  //   console.log("onSubmit", data);
-
-  //   console.log("data.file", data.file[0]);
-
-  //   setSearchResultsState({
-  //     val: null,
-  //     loading: true,
-  //     err: null,
-  //   });
-
-  //   similaritySearchInFile(
-  //     data.query,
-  //     data.file,
-  //     (results: string[], err: any) => {
-  //       if (err) {
-  //         onError(err);
-  //       } else {
-  //         onSuccess({
-  //           results,
-  //           query: data.query,
-  //         });
-  //       }
-  //     }
-  //   );
-  // };
 
   function onFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { files } = event.target;
