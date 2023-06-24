@@ -25,6 +25,7 @@ import {
   UserCircleIcon,
   RectangleGroupIcon,
   DocumentMagnifyingGlassIcon,
+  QueueListIcon,
 } from "@heroicons/react/24/outline";
 
 import { signOut } from "@/services/signOut";
@@ -83,7 +84,7 @@ export default function LayoutDashboard({ children }: P) {
     {
       name: t("dashboard-page:navigation.queue"),
       href: "/dashboard/queue",
-      icon: RectangleGroupIcon,
+      icon: QueueListIcon,
     },
     // { name: "A.I.", href: "/dashboard/ai", icon: LifebuoyIcon },
   ];

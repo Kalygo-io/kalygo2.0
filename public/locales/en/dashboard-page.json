@@ -30,6 +30,9 @@
       "no-content": "No content"
     }
   },
+  "queue": {
+    "title": "Queue"
+  },
   "summary": {
     "title": "Summary"
   },

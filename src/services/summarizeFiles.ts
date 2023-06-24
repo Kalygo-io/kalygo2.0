@@ -1,20 +1,13 @@
 import axios from "axios";
 import { errorToast } from "@/utility/toasts";
 
-export async function summarizeFiles(filePath: string, quote: number, cb: any) {
+export async function summarizeFiles(
+  files: { key: string; originalName: string }[],
+  quote: number,
+  cb: any
+) {
   try {
-    // const formData = new FormData();
-    // const fileListKeys = Object.keys(fileList);
-
-    // for (let i = 0; i < fileListKeys.length; i++) {
-    //   console.log(fileList, fileList[i]);
-    //   formData.append("file", fileList[i]);
-    // }
-
-    // console.log("formData", formData);
-    // console.log("formData", formData.get("file"));
-
-    var config = {
+    const config = {
       method: "post",
       url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/summarize`,
       headers: {
@@ -22,7 +15,7 @@ export async function summarizeFiles(filePath: string, quote: number, cb: any) {
       },
       data: {
         // ...formData,
-        filePath,
+        files,
         amount: quote,
       },
       onUploadProgress: (e: any) => {

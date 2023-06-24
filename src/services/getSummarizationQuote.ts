@@ -7,9 +7,6 @@ export async function getSummarizationQuote(fileList: File[], cb: any) {
     console.log("fileList", fileList);
 
     const formData = new FormData();
-
-    // formData.append("file", file);
-
     const fileListKeys = Object.keys(fileList);
     for (let i = 0; i < fileListKeys.length; i++) {
       console.log(fileList, fileList[i]);
@@ -33,12 +30,9 @@ export async function getSummarizationQuote(fileList: File[], cb: any) {
     };
 
     const resp = await axios(config);
-
-    // debugger;
-
     console.log("getSummarizationQuote", resp);
 
-    cb(get(resp, "data.quote"), get(resp, "data.filePath"));
+    cb(get(resp, "data.quote"), get(resp, "data.files"));
   } catch (e) {
     console.error(e);
     errorToast("Error occurred when retrieving summarization quote");

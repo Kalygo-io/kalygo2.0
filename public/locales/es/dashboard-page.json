@@ -30,6 +30,9 @@
       "no-content": "Sin contenido"
     }
   },
+  "queue": {
+    "title": "Cola"
+  },
   "summary": {
     "title": "Resumen"
   },

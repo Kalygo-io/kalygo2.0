@@ -40,31 +40,6 @@ export function SearchSuccess(p: P) {
 
       <div className="bg-white px-6 pt-8 pb-16 lg:px-8">
         <div className="mx-auto max-w-3xl text-base leading-7 text-gray-700">
-          {/* {results?.map((i: any, idx) => { */}
-          {/* return (
-              <> */}
-          {/* <p key={idx} className="mt-6 text-xl leading-8">
-                  {get(i, "0.pageContent", null)}
-                </p>
-                <span>{get(i, "1", null)}</span> */}
-          {/* <pre> */}
-          {/* {JSON.stringify(results, null, 2)} */}
-          {/* </pre>
-              </>
-            );
-          })} */}
-          {/* <ul>
-            {documents.map((i, idx) => {
-              return (
-                <li>
-                  <span className="font-bold">{idx + 1}.</span>
-                  <br />
-                  {i}
-                </li>
-              );
-            })}
-          </ul> */}
-
           <ul role="list" className="divide-y divide-gray-100">
             {documents.map((i, idx) => (
               <li key={idx} className="flex gap-x-4 py-5">
