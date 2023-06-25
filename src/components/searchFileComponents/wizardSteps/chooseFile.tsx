@@ -31,30 +31,10 @@ interface Props {
   file: File | null;
   setFile: Dispatch<SetStateAction<File | null>>;
   setStep: Dispatch<SetStateAction<number>>;
-  //   onSuccess: ({
-  //     results,
-  //     query,
-  //   }: // fileName,
-  //   // originalLength,
-  //   // condensedLength,
-  //   {
-  //     results: string[];
-  //     query: string;
-  //     // fileName: string;
-  //     // originalLength: number;
-  //     // condensedLength: number;
-  //   }) => void;
-  //   setSearchResultsState: (state: any) => void;
-  //   onError: (err: any) => void;
 }
 
 export function ChooseFile(props: Props) {
-  const {
-    file,
-    setFile,
-    setStep,
-    // onSuccess, onError, setSearchResultsState
-  } = props;
+  const { file, setFile, setStep } = props;
 
   const { t } = useTranslation();
 

@@ -31,12 +31,25 @@
     }
   },
   "queue": {
-    "title": "Cola"
+    "title": "Cola",
+    "no-jobs-found": "No se encontraron trabajos en la cola",
+    "job-status": "Estado del trabajo",
+    "file-name": "Nombre del archivo",
+    "requested-at": "Solicitado en",
+    "remove": "Eliminar",
+    "view": "Ver"
   },
   "summary": {
     "title": "Resumen"
   },
   "settings": {
+    "free-credits": {
+      "title": "Créditos gratis",
+      "summaries": "Resúmenes",
+      "summary": "Resumen",
+      "vector-searches": "Búsquedas de vectores",
+      "vector-search": "Búsqueda de vectores"
+    },
     "personal": {
       "title": "Personal",
       "first-name": "Nombre de pila",

@@ -2,6 +2,7 @@ import { removeJobFromQueue } from "@/services/removeJobFromQueue";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { Divider } from "@/components/shared/Divider";
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
 interface P {
   jobs: any[];
@@ -12,6 +13,7 @@ interface P {
 export const JobList = (p: P) => {
   const { jobs, fetchCounter, triggerFetch } = p;
 
+  const { t } = useTranslation();
   const [counter, setCounter] = useState(0); // for triggering a re-render
   const router = useRouter();
 
@@ -19,17 +21,17 @@ export const JobList = (p: P) => {
 
   return (
     <div className="relative mx-4 sm:mx-6 lg:mx-8">
-      {jobs.length === 0 && "No jobs found in queue"}
+      {jobs.length === 0 && t("dashboard-page:queue.no-jobs-found")}
       {jobs.map((i, idx) => {
         return (
           <div key={idx}>
             <Divider />
-            <h4 className="sr-only">Job Status</h4>
+            <h4 className="sr-only">{t("dashboard-page:queue.job-status")}</h4>
             <div>
               <dl>
                 <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">
-                    Filename
+                    {t("dashboard-page:queue.file-name")}
                   </dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     {i?.data?.originalName}
@@ -37,7 +39,7 @@ export const JobList = (p: P) => {
                 </div>
                 <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">
-                    Requested at
+                    {t("dashboard-page:queue.requested-at")}
                   </dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     {`${new Date(i?.processedOn)}`}
@@ -47,10 +49,17 @@ export const JobList = (p: P) => {
             </div>
             <div className="mt-6" aria-hidden="true">
               <div className="overflow-hidden rounded-full bg-gray-200">
-                <div
-                  className="h-2 rounded-full bg-blue-600"
-                  style={{ width: `${i?.progress}%` }}
-                />
+                {i?.failedReason ? (
+                  <div
+                    className="h-2 rounded-full bg-red-600"
+                    style={{ width: `100%` }}
+                  />
+                ) : (
+                  <div
+                    className="h-2 rounded-full bg-blue-600"
+                    style={{ width: `${i?.progress}%` }}
+                  />
+                )}
               </div>
 
               <span className="mt-2 isolate inline-flex rounded-md">
@@ -64,7 +73,7 @@ export const JobList = (p: P) => {
                       triggerFetch(fetchCounter + 1);
                     }}
                   >
-                    Remove
+                    {t("dashboard-page:queue.remove")}
                   </button>
                 )}
                 {i?.progress === 100 && i?.returnvalue?.summaryId && (
@@ -77,7 +86,7 @@ export const JobList = (p: P) => {
                       );
                     }}
                   >
-                    View
+                    {t("dashboard-page:queue.view")}
                   </button>
                 )}
               </span>

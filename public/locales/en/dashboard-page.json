@@ -31,12 +31,25 @@
     }
   },
   "queue": {
-    "title": "Queue"
+    "title": "Queue",
+    "no-jobs-found": "No jobs found in queue",
+    "job-status": "Job status",
+    "file-name": "File name",
+    "requested-at": "Requested at",
+    "remove": "Remove",
+    "view": "View"
   },
   "summary": {
     "title": "Summary"
   },
   "settings": {
+    "free-credits": {
+      "title": "Free credits",
+      "summaries": "Summaries",
+      "summary": "Summary",
+      "vector-searches": "Vector searches",
+      "vector-search": "Vector search"
+    },
     "personal": {
       "title": "Personal",
       "first-name": "First name",

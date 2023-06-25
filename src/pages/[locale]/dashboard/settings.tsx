@@ -27,6 +27,8 @@ import { Plan } from "@/components/accountSettingsComponents/plan";
 import { DeleteAccount } from "@/components/accountSettingsComponents/deleteAccount";
 import { ChangePassword } from "@/components/accountSettingsComponents/changePassword";
 import { Divider } from "@/components/shared/Divider";
+import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
+import { FreeCredits } from "@/components/accountSettingsComponents/freeCredits";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -88,15 +90,13 @@ export default function Settings() {
   if (account.loading) {
     jsx = <WindowLoader></WindowLoader>;
   } else if (account.err) {
-    jsx = (
-      <div className="text-center text-red-500 relative mx-4 sm:mx-6 lg:mx-8">
-        {t("dashboard-page:settings.error")}
-      </div>
-    );
+    jsx = <ErrorInDashboard />;
   } else if (account.val) {
     jsx = (
       <>
         <Personal account={account.val!} />
+        <Divider />
+        <FreeCredits account={account.val!} />
         <Divider />
         <Plan
           account={account.val!}
