@@ -1,7 +1,8 @@
 {
   "sign-up": "Inscribirse",
   "back-to-home": "Página de inicio",
-  "not-a-member": "¿No es un miembro?",
+  "already-a-member": "¿Ya eres usuario?",
   "or-continue-with": "Muy pronto",
-  "start-a-free-trial": "Prueba gratuita de 14 días"
+  "start-a-free-trial": "Prueba gratuita de 14 días",
+  "log-in": "Acceso"
 }

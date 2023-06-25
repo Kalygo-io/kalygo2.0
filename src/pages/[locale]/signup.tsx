@@ -19,7 +19,6 @@ import languageDetector, {
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 
-// import Link from "next/link";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
 import { useState } from "react";
 import { WindowLoader } from "@/components/shared/WindowLoader";
@@ -251,12 +250,12 @@ export default function Signup() {
           </div>
 
           <p className="mt-10 text-center text-sm text-gray-500">
-            {t("sign-up-page:not-a-member")}{" "}
+            {t("sign-up-page:already-a-member")}{" "}
             <Link
-              href="/signup-subscription"
+              href="/login"
               className="font-semibold leading-6 text-blue-600 hover:text-blue-500"
             >
-              {t("sign-up-page:start-a-free-trial")}
+              {t("sign-up-page:log-in")}
             </Link>
           </p>
 

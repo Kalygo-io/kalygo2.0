@@ -1,7 +1,8 @@
 {
   "sign-up": "Sign up",
   "back-to-home": "Back to home",
-  "not-a-member": "Not a member?",
+  "already-a-member": "Already a member?",
   "or-continue-with": "Coming soon",
-  "start-a-free-trial": "14 day free trial"
+  "start-a-free-trial": "14 day free trial",
+  "log-in": "Log in"
 }
