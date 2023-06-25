@@ -4,7 +4,7 @@
   "navigation": {
     "overview": "Overview",
     "summarize": "Summarize",
-    "templates": "Prompt Templates",
+    "templates": "Prompts",
     "settings": "Settings",
     "vector-search": "Vector Search",
     "queue": "Queue"
