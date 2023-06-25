@@ -17,10 +17,12 @@ import { deleteStripeCard } from "@/services/deleteStripeCard";
 import { SectionLoader } from "../shared/SectionLoader";
 
 interface P {
+  cb: () => void;
   // account: { email: string; firstName: string; lastName: string };
 }
 
 export function Payment(p: P) {
+  const { cb } = p;
   const { t } = useTranslation();
 
   const [cards, setCards] = useState<{
@@ -114,6 +116,7 @@ export function Payment(p: P) {
                       onClick={() => {
                         deleteStripeCard(i.id, (val: any, err: any) => {
                           if (err) {
+                            console.error(err);
                           } else {
                             setCards({
                               val: cards.val?.filter(
@@ -122,6 +125,7 @@ export function Payment(p: P) {
                               loading: false,
                               err: null,
                             });
+                            cb();
                           }
                         });
                       }}
@@ -163,7 +167,6 @@ export function Payment(p: P) {
         )}
       </div>
     );
-  } else {
   }
 
   return (

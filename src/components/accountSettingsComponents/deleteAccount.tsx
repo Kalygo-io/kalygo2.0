@@ -18,10 +18,12 @@ export function DeleteAccount() {
       <div className="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8">
         <div>
           <h2 className="text-base font-semibold leading-7 text-black">
-            Delete account
+            {t("dashboard-page:settings.delete-account.title")}
           </h2>
           <p className="mt-1 text-sm leading-6 text-gray-400">
-            You can mark your account for deletion here.
+            {t(
+              "dashboard-page:settings.delete-account.you-can-mark-your-account"
+            )}
           </p>
         </div>
 
@@ -32,7 +34,7 @@ export function DeleteAccount() {
             }}
             className="rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400"
           >
-            Delete my account
+            {t("dashboard-page:settings.delete-account.delete-my-account")}
           </button>
         </div>
       </div>

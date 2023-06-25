@@ -61,7 +61,21 @@
       }
     },
     "subscription": {
-      "title": "Subscription"
+      "title": "Subscription",
+      "change": "Change",
+      "switch-plan": "Switch plan",
+      "cancel": "Cancel",
+      "you-are-currently-on": "You are currently on: "
+    },
+    "delete-account": {
+      "title": "Delete account",
+      "you-can-mark-your-account": "You can mark your account for deletion here.",
+      "delete-my-account": "Delete my account",
+      "delete-account-modal": {
+        "are-you-sure": "Are you sure you want to delete your account?",
+        "cancel": "Cancel",
+        "delete": "Delete"
+      }
     },
     "error": "Error occurred while loading settings"
   },

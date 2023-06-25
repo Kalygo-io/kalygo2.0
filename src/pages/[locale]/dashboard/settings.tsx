@@ -105,7 +105,11 @@ export default function Settings() {
           }}
         />
         <Divider />
-        <Payment />
+        <Payment
+          cb={() => {
+            fetch();
+          }}
+        />
         <Divider />
         {/* <ChangePassword /> */}
         <DeleteAccount />

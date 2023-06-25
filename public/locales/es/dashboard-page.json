@@ -61,7 +61,20 @@
       }
     },
     "subscription": {
-      "title": "Suscripción"
+      "title": "Suscripción",
+      "change": "Cambiar",
+      "cancel": "Cancelar",
+      "you-are-currently-on": "Usted está actualmente en: "
+    },
+    "delete-account": {
+      "title": "Borrar cuenta",
+      "you-can-mark-your-account": "Puede marcar su cuenta para eliminarla aquí.",
+      "delete-my-account": "Borrar mi cuenta",
+      "delete-account-modal": {
+        "are-you-sure": "¿Estás seguro de que quieres eliminar tu cuenta?",
+        "cancel": "Cancelar",
+        "delete": "Borrar"
+      }
     },
     "error": "Ocurrió un error al cargar la configuración"
   },

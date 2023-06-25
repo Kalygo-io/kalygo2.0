@@ -6,6 +6,7 @@ import { UserCircleIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import get from "lodash.get";
 import { useTranslation } from "next-i18next";
+import { useEffect } from "react";
 
 import { useForm } from "react-hook-form";
 
@@ -41,6 +42,11 @@ export function Plan(p: P) {
     },
   });
 
+  useEffect(() => {
+    console.log("--- !!! ---");
+    setValue("plan", subscriptionPlan);
+  }, [subscriptionPlan]);
+
   const onSubmit = async (data: any) => {
     try {
       const { plan } = data;
@@ -74,6 +80,8 @@ export function Plan(p: P) {
     }
   };
 
+  // console.log("--- ___ ---");
+
   return (
     <>
       <div className="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8">
@@ -84,6 +92,10 @@ export function Plan(p: P) {
         </div>
 
         <div className="md:col-span-2">
+          <h3>
+            {t("dashboard-page:settings.subscription.you-are-currently-on")}{" "}
+            {subscriptionPlan}
+          </h3>
           <div className="pb-16">
             {get(subscriptions, "data", []).map((i: any, idx: number) => {
               const start_date = new Date(i.start_date).getTime() * 1000;
@@ -109,7 +121,7 @@ export function Plan(p: P) {
                           });
                         }}
                       >
-                        Cancel
+                        {t("dashboard-page:settings.subscription.cancel")}
                       </button>
                     </dd>
                   </div>
@@ -119,7 +131,6 @@ export function Plan(p: P) {
               }
             })}
           </div>
-
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
               <div className="col-span-full">
@@ -127,7 +138,7 @@ export function Plan(p: P) {
                   htmlFor="plan"
                   className="block text-sm font-medium leading-6 text-black"
                 >
-                  Plan
+                  {t("dashboard-page:settings.subscription.switch-plan")}
                 </label>
                 <div className="mt-2">
                   <select
@@ -155,7 +166,7 @@ export function Plan(p: P) {
                 type="submit"
                 className="rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
               >
-                {t("dashboard-page:settings.personal.save")}
+                {t("dashboard-page:settings.subscription.change")}
               </button>
             </div>
           </form>
