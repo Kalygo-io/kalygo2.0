@@ -19,6 +19,7 @@ import axios from "axios";
 import LinkComponent from "@/components/shared/Link";
 import Summary from "@/components/dashboardComponents/summary";
 import { WindowLoader } from "@/components/shared/WindowLoader";
+import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -38,7 +39,6 @@ export default function Page() {
   const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
 
   const summaryId = searchParams.get("summary-id") || "";
-  // const { state, dispatch } = useAppContext();
   const { t } = useTranslation();
 
   const [summary, setSummary] = useState<{
@@ -54,8 +54,6 @@ export default function Page() {
   useEffect(() => {
     async function fetch() {
       try {
-        // debugger;
-
         const res = await axios.get(
           `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/get-summary/${summaryId}`,
           {
@@ -86,7 +84,7 @@ export default function Page() {
   } else if (summary.val) {
     jsx = <Summary summary={summary.val} />;
   } else {
-    jsx = <Error />;
+    jsx = <ErrorInDashboard />;
   }
 
   return (

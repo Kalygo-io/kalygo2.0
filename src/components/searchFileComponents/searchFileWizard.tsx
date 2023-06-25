@@ -6,6 +6,7 @@ import { Query } from "./wizardSteps/query";
 import { infoToast } from "@/utility/toasts";
 import { WindowLoader } from "../shared/WindowLoader";
 import { Error } from "../shared/error";
+import { ErrorInDashboard } from "../shared/errorInDashboard";
 
 const steps = [
   { id: 1, name: "Choose file", href: "#", status: "current" },
@@ -58,7 +59,7 @@ export function SearchFileWizard(props: Props) {
       jsx = <Query file={file} wizardStepsRef={wizardStepsRef} />;
       break;
     default:
-      jsx = <Error />;
+      jsx = <ErrorInDashboard />;
   }
 
   return (

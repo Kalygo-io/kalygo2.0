@@ -50,9 +50,7 @@ export default function Summary(p: P) {
               Content
             </dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-              {/* {summary?.content} */}
-
-              {summary?.content.split("\n\n").map((i: any, idx: any) => {
+              {summary?.content?.split("\n\n").map((i: any, idx: any) => {
                 return (
                   <div key={idx}>
                     <p>{i}</p>

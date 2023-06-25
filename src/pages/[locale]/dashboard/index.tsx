@@ -7,24 +7,15 @@ import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
 import ContractList from "@/components/browseContractsComponents/contractList";
+import { Error } from "@/components/shared/error";
 
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
-
-// import Link from "next/link";
-import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
-import { Dialog, Menu, Transition } from "@headlessui/react";
-import {
-  CalendarIcon,
-  ChartPieIcon,
-  FolderIcon,
-  HomeIcon,
-} from "@heroicons/react/24/outline";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import LinkComponent from "@/components/shared/Link";
 import { WindowLoader } from "@/components/shared/WindowLoader";
-import { SummariesTableB } from "@/components/dashboardComponents/summariesTableB";
+import { SummariesTable } from "@/components/dashboardComponents/summariesTable";
+import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -83,9 +74,9 @@ export default function Dashboard() {
   if (summaries.loading) {
     jsx = <WindowLoader></WindowLoader>;
   } else if (summaries.err) {
-    jsx = <>Error loading summaries</>;
+    jsx = <ErrorInDashboard />;
   } else if (summaries.val) {
-    jsx = <SummariesTableB summaries={summaries.val} />;
+    jsx = <SummariesTable summaries={summaries.val} />;
   } else {
     jsx = <>Unknown error</>;
   }

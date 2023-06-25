@@ -2,6 +2,7 @@ import {
   XCircleIcon,
   PhotoIcon,
   ArrowUpOnSquareIcon,
+  DocumentDuplicateIcon,
 } from "@heroicons/react/24/outline";
 
 import { pdfjs, Document, Page } from "react-pdf";
@@ -129,7 +130,7 @@ export function ChooseFile(props: Props) {
             }`}
           >
             <div>
-              <PhotoIcon
+              <DocumentDuplicateIcon
                 className="mx-auto h-12 w-12 text-gray-300"
                 aria-hidden="true"
               />

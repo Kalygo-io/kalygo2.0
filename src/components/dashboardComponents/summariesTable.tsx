@@ -9,7 +9,7 @@ interface P {
   summaries: any[];
 }
 
-export const SummariesTableB = (p: P) => {
+export const SummariesTable = (p: P) => {
   let { summaries } = p;
 
   const { state, dispatch } = useAppContext();

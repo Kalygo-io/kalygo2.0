@@ -3,6 +3,7 @@ import {
   XCircleIcon,
   PhotoIcon,
   ArrowUpOnSquareIcon,
+  DocumentDuplicateIcon,
 } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 import get from "lodash.get";
@@ -213,7 +214,7 @@ export function SummarizeFileForm(props: Props) {
                 }`}
               >
                 <div>
-                  <PhotoIcon
+                  <DocumentDuplicateIcon
                     className="mx-auto h-12 w-12 text-gray-300"
                     aria-hidden="true"
                   />

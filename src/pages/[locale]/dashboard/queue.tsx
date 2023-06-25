@@ -11,7 +11,6 @@ import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { WindowLoader } from "@/components/shared/WindowLoader";
-import { SummariesTableB } from "@/components/dashboardComponents/summariesTableB";
 import { JobList } from "@/components/queueComponents/jobList";
 import { viewSummaryQueue } from "@/services/viewSummaryQueue";
 import get from "lodash.get";
@@ -30,6 +29,8 @@ export { getStaticPaths, getStaticProps };
 export default function Queue() {
   const { state, dispatch } = useAppContext();
   const { t } = useTranslation();
+
+  const [fetchCounter, triggerFetch] = useState(0);
 
   const [jobs, setJobs] = useState<{
     val: any[];
@@ -63,6 +64,8 @@ export default function Queue() {
   }, []);
 
   useEffect(() => {
+    console.log("useEffect viewSummaryQueue");
+
     async function fetch() {
       try {
         const resp = await viewSummaryQueue();
@@ -82,7 +85,7 @@ export default function Queue() {
     }
 
     fetch();
-  }, []);
+  }, [fetchCounter]);
 
   let jsx = null;
 
@@ -91,7 +94,13 @@ export default function Queue() {
   } else if (jobs.err) {
     jsx = <>Error loading summaries</>;
   } else if (jobs.val) {
-    jsx = <JobList jobs={jobs.val} />;
+    jsx = (
+      <JobList
+        fetchCounter={fetchCounter}
+        triggerFetch={triggerFetch}
+        jobs={jobs.val}
+      />
+    );
   } else {
     jsx = <>Unknown error</>;
   }
