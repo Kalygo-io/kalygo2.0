@@ -53,6 +53,8 @@ export default function Settings() {
       lastName: string;
       subscriptionPlan: string;
       subscriptions: any[];
+      summaryCredits: number;
+      vectorSearchCredits: number;
     } | null;
     loading: boolean;
     err: any;
