@@ -52,7 +52,7 @@ export default function Home(props: any) {
               style={{
                 // transform: isInView ? "none" : "translateX(-200px)",
                 opacity: isInView ? 1 : 0,
-                transition: "all 0.5s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+                transition: "all 0.8s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
               }}
               className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8"
             >

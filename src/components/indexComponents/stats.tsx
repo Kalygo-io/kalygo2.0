@@ -81,7 +81,7 @@ export function Stats() {
         style={{
           // transform: isInView ? "none" : "translateX(-200px)",
           opacity: isInView ? 1 : 0,
-          transition: "all 0.5s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+          transition: "all 0.8s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
         }}
       >
         <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
