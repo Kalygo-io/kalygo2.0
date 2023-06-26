@@ -10,6 +10,7 @@ import {
 import Head from "next/head";
 import Layout1 from "@/layout/layout1";
 import Layout1a from "@/layout/layout1a";
+import LinkComponent from "@/components/shared/Link";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -62,12 +63,12 @@ export default function About() {
                     {t("about:ready-to-get-started")}
                   </h2>
                   <div className="mt-4 flex">
-                    <a
+                    <LinkComponent
                       href="/signup"
                       className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                     >
                       {t("about:get-started")}
-                    </a>
+                    </LinkComponent>
                   </div>
                   <p className="mt-8">{t("about:paragraph-4")}</p>
                 </div>
