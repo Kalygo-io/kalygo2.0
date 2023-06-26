@@ -1,6 +1,10 @@
 import { useTranslation } from "next-i18next";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
 
 export function Stats() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   const { t } = useTranslation();
 
   const stats = [
@@ -71,7 +75,15 @@ export function Stats() {
 
   return (
     <div className="bg-white py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div
+        className="mx-auto max-w-7xl px-6 lg:px-8"
+        ref={ref}
+        style={{
+          transform: isInView ? "none" : "translateX(-200px)",
+          opacity: isInView ? 1 : 0,
+          transition: "all 0.7s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+        }}
+      >
         <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
           {stats.map((stat) => (
             <div

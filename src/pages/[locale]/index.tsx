@@ -2,9 +2,7 @@
 
 import Head from "next/head";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
-import { useState } from "react";
 import Layout1 from "@/layout/layout1";
 
 import { useTranslation } from "next-i18next";
@@ -14,6 +12,9 @@ import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
 import { Stats } from "@/components/indexComponents/stats";
 import { Pricing } from "@/components/indexComponents/pricing";
+
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 const getStaticProps = makeStaticProps([
   "landing-page",
@@ -27,6 +28,9 @@ export { getStaticPaths, getStaticProps };
 
 export default function Home(props: any) {
   const { state, dispatch } = useAppContext();
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   const { t } = useTranslation();
 
@@ -43,7 +47,15 @@ export default function Home(props: any) {
             aria-hidden="true"
           />
           <div className="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
-            <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
+            <div
+              ref={ref}
+              style={{
+                transform: isInView ? "none" : "translateX(-200px)",
+                opacity: isInView ? 1 : 0,
+                transition: "all 0.7s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+              }}
+              className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8"
+            >
               <h1 className="max-w-2xl text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:col-span-2 xl:col-auto">
                 {t("landing-page:landing-page-headline")}
               </h1>
