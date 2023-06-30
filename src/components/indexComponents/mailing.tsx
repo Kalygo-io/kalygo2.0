@@ -4,6 +4,7 @@ import { useInView } from "framer-motion";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { errorToast, infoToast } from "@/utility/toasts";
 
 export function Mailing() {
   const { t } = useTranslation();
@@ -42,11 +43,11 @@ export function Mailing() {
         }
       );
 
-      console.log("resp", resp);
+      infoToast("Your joining the mailing list!");
+
+      //   console.log("resp", resp);
     } catch (e) {
-      // showErrorToast(
-      //   "Something unexpected happened. Make sure your wallet is connected."
-      // );
+      errorToast("Something unexpected happened.");
       console.error(e);
     }
   };
@@ -66,7 +67,7 @@ export function Mailing() {
           <h2 className="mx-auto mt-2 max-w-2xl text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
             {t("email-page:stay-in-touch")}
           </h2>
-          <p className="mx-auto mt-2 max-w-xl text-center text-lg leading-8 text-gray-300">
+          <p className="mx-auto mt-2 max-w-xl text-center text-lg leading-8 text-white">
             {t("email-page:feedback-is-essential")}
           </p>
           <form
