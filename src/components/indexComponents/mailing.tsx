@@ -16,6 +16,7 @@ export function Mailing() {
     formState: { errors },
     setValue,
     watch,
+    reset,
   } = useForm({
     defaultValues: {
       email: "",
@@ -29,9 +30,7 @@ export function Mailing() {
       console.log("data", data);
 
       const resp = await axios.post(
-        // "https://2gkm2m6jwf.execute-api.us-east-1.amazonaws.com/email",
-        "https://hooks.zapier.com/hooks/catch/13166575/3dzuxn1/",
-
+        `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/mailingList/join`,
         {
           email,
           name: "not given",
@@ -43,7 +42,9 @@ export function Mailing() {
         }
       );
 
-      infoToast("Your joining the mailing list!");
+      infoToast("You joined the mailing list!");
+
+      reset();
 
       //   console.log("resp", resp);
     } catch (e) {
