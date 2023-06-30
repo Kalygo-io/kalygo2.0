@@ -30,9 +30,15 @@ export function Mailing() {
       const resp = await axios.post(
         // "https://2gkm2m6jwf.execute-api.us-east-1.amazonaws.com/email",
         "https://hooks.zapier.com/hooks/catch/13166575/3dzuxn1/",
+
         {
           email,
           name: "not given",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
 
@@ -48,7 +54,7 @@ export function Mailing() {
   return (
     <div className="bg-white pt-16 sm:pt-24">
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="relative isolate overflow-hidden bg-blue-600 px-6 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:py-32">
+        <div className="relative isolate overflow-hidden bg-blue-600 px-6 py-24 shadow-xl sm:rounded-3xl sm:px-24 xl:py-32">
           <div className="flex w-full justify-center items-center">
             <Image
               alt={t("image-alt-tags:logo192.png")}
