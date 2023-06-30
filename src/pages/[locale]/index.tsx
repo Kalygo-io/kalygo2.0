@@ -15,6 +15,7 @@ import { Pricing } from "@/components/indexComponents/pricing";
 
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { Mailing } from "@/components/indexComponents/mailing";
 
 const getStaticProps = makeStaticProps([
   "landing-page",
@@ -23,6 +24,10 @@ const getStaticProps = makeStaticProps([
   "common",
   "error",
   "footer",
+  "email-page",
+  "common",
+  "image-alt-tags",
+  "forms",
 ]);
 export { getStaticPaths, getStaticProps };
 
@@ -92,6 +97,7 @@ export default function Home(props: any) {
         </div>
         <Stats />
         <Pricing />
+        <Mailing />
       </Layout1>
     </>
   );
