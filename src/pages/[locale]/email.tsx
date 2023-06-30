@@ -49,9 +49,11 @@ export default function Email() {
       console.log("data", data);
 
       const resp = await axios.post(
-        "https://2gkm2m6jwf.execute-api.us-east-1.amazonaws.com/email",
+        // "https://2gkm2m6jwf.execute-api.us-east-1.amazonaws.com/email",
+        "https://hooks.zapier.com/hooks/catch/13166575/3dzuxn1/",
         {
           email,
+          name: "not given",
         }
       );
 
