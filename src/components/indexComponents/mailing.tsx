@@ -33,7 +33,7 @@ export function Mailing() {
         `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/mailingList/join`,
         {
           email,
-          name: "not given",
+          name: "N/A",
         },
         {
           headers: {
@@ -42,13 +42,10 @@ export function Mailing() {
         }
       );
 
-      infoToast("You joined the mailing list!");
-
+      infoToast(t("toast-messages:you-joined-the-mailing-list"));
       reset();
-
-      //   console.log("resp", resp);
     } catch (e) {
-      errorToast("Something unexpected happened.");
+      errorToast(t("toast-messages:error.something-unexpected-happened"));
       console.error(e);
     }
   };
@@ -82,7 +79,7 @@ export function Mailing() {
               {...register("email", {
                 required: true,
                 pattern: new RegExp(
-                  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+                  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/
                 ),
               })}
               id="email"

@@ -6,5 +6,9 @@
   "reset-password-success": "Has restablecido correctamente tu contraseña.",
   "summary-returned-successfully": "Resumen devuelto con éxito",
   "successfully-changed-plan": "Cambio de plan con éxito",
-  "files-uploaded-for-summarization-complete": "Se están generando sus resúmenes. Se le notificará por correo electrónico cuando todos sus archivos hayan sido procesados."
+  "files-uploaded-for-summarization-complete": "Se están generando sus resúmenes. Se le notificará por correo electrónico cuando todos sus archivos hayan sido procesados.",
+  "you-joined-the-mailing-list": "¡Te uniste a la lista de correo!",
+  "error": {
+    "something-unexpected-happened": "Sucedió algo inesperado"
+  }
 }

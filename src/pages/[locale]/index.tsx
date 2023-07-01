@@ -27,6 +27,7 @@ const getStaticProps = makeStaticProps([
   "email-page",
   "common",
   "image-alt-tags",
+  "toast-messages",
   "forms",
 ]);
 export { getStaticPaths, getStaticProps };
