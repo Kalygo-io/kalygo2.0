@@ -1,11 +1,11 @@
 {
   "email-address": "Adresse e-mail",
-  "enter-email": "Entrez votre e-mail",
+  "enter-email": "Entrez l'e-mail",
   "password": "Mot de passe",
   "new-password": "Nouveau mot de passe",
-  "enter-password": "Entrez le mot de passe",
-  "forgot-password": "Mot de passe oublié ?",
-  "minimum-7-characters": "Minimum 7 caractères",
+  "enter-password": "Entrer le mot de passe",
+  "forgot-password": "Mot de passe oublié?",
+  "minimum-7-characters": "7 caractères minimum",
   "sign-up": "S'inscrire",
   "reset-token": "Réinitialiser le jeton",
   "enter-reset-token": "Entrez le jeton de réinitialisation"

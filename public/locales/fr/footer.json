@@ -1,4 +1,4 @@
 {
   "change-locale": "Changer les paramètres régionaux",
-  "description": "Ceci est un composant non-page qui nécessite son propre espace de noms"
+  "description": "Il s'agit d'un composant non page qui nécessite son propre espace de noms"
 }
