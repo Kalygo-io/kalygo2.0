@@ -1,0 +1,97 @@
+{
+  "tableau de bord": "Tableau de bord",
+  "protégé": "Protégé",
+  "la navigation": {
+    "overview": "Aperçu",
+    "résumer": "Résumer",
+    "templates": "Invites",
+    "paramètres": "Paramètres",
+    "vector-search": "Recherche de vecteur",
+    "file d'attente": "file d'attente"
+  },
+  "user-nav": {
+    "paramètres": "Paramètres",
+    "sign-out": "Déconnexion"
+  },
+  "indice": {
+    "title": "Tableau de bord",
+    "no-documents-yet": "Pas encore de documents !"
+  },
+  "résumer": {
+    "upload-a-file": "Sélectionner un fichier",
+    "upload-limits": "Fichiers TXT et PDF jusqu'à 1 Mo",
+    "clear": "Effacer",
+    "résumer": "Résumer",
+    "received-quote": "Devis reçu",
+    "résumé-succès": {
+      "original-length": "Longueur d'origine",
+      "condensed-length": "Longueur condensée",
+      "résumé": "Résumé",
+      "no-content": "Aucun contenu"
+    }
+  },
+  "file d'attente": {
+    "title": "File d'attente",
+    "no-jobs-found": "Aucune tâche trouvée dans la file d'attente",
+    "job-status": "Statut du travail",
+    "file-name": "Nom du fichier",
+    "requested-at": "Demandé à",
+    "remove": "Supprimer",
+    "voir": "Voir"
+  },
+  "résumé": {
+    "title": "Résumé"
+  },
+  "paramètres": {
+    "crédits-gratuits": {
+      "title": "Crédits gratuits",
+      "summaries": "Résumés",
+      "résumé": "Résumé",
+      "vector-searches": "Recherches vectorielles",
+      "vector-search": "Recherche vectorielle"
+    },
+    "personnel": {
+      "title": "Personnel",
+      "Prénom",
+      "Nom de familleNom de famille",
+      "e-mail": "E-mail",
+      "enregistrer": "Enregistrer"
+    },
+    "paiement": {
+      "title": "Paiement",
+      "no-card": "Pas de carte",
+      "get-started": "Commencez par enregistrer votre carte avec Stripe",
+      "new-card": "Nouvelle carte",
+      "delete-card": "Supprimer",
+      "nouvelle-carte-modale": {
+        "card-details": "Détails de la carte",
+        "card-number": "Numéro de carte",
+        "expiration-date": "Date d'expiration",
+        "cvv": "CVV/CVC",
+        "security-code": "Code de sécurité",
+        "save": "Enregistrer",
+        "annuler": "Annuler"
+      }
+    },
+    "abonnement": {
+      "title": "Abonnement",
+      "change": "Modifier",
+      "switch-plan": "Changer de forfait",
+      "annuler": "Annuler",
+      "you-are-currently-on": "Vous êtes actuellement sur : "
+    },
+    "Supprimer le compte": {
+      "title": "Supprimer le compte",
+      "you-can-mark-your-account": "Vous pouvez marquer votre compte pour suppression ici.",
+      "delete-my-account": "Supprimer mon compte",
+      "supprimer-compte-modal": {
+        "are-you-sure": "Êtes-vous sûr de vouloir supprimer votre compte ?",
+        "annuler": "Annuler",
+        "supprimer": "Supprimer"
+      }
+    },
+    "error": "Une erreur s'est produite lors du chargement des paramètres"
+  },
+  "unknown-error": "Erreur inconnue",
+  "coming-soon": "Bientôt disponible !"
+}
