@@ -10,6 +10,9 @@ export const useRedirect = (to: string | undefined) => {
   useEffect(() => {
     // const detectedLng = languageDetector.detect();
     const detectedLng = navigatorLangDetector();
+
+    console.log("DETECTED LANG", detectedLng);
+
     if (to?.startsWith("/" + detectedLng) && router.route === "/404") {
       // prevent endless loop
       router.replace("/" + detectedLng + router.route);

@@ -1,0 +1,12 @@
+{
+  "email-address": "Endereço de email",
+  "enter-email": "Digite o e-mail",
+  "password": "Senha",
+  "new-password": "Nova Senha",
+  "enter-password": "Digite a senha",
+  "forgot-password": "Esqueceu sua senha?",
+  "minimum-7-characters": "Mínimo de 7 caracteres",
+  "sign-up": "Inscrever-se",
+  "reset-token": "Token de redefinição",
+  "enter-reset-token": "Insira o token de redefinição"
+}
