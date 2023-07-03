@@ -1,0 +1,14 @@
+{
+  "the-feedback-is-appreciated": "O feedback é apreciado!",
+  "sign-up-success": "Verifique sua caixa de entrada de e-mail para verificação. Se você não vir o e-mail, verifique sua pasta de spam ou entre em contato com o suporte.",
+  "forgot-password-success": "Estamos enviando um link de redefinição!",
+  "sign-out-success": "Desconectado com sucesso",
+  "reset-password-success": "Redefinir senha com sucesso. Tente fazer login!",
+  "summary-returned-successfully": "Resumo devolvido com sucesso",
+  "successfully-changed-plan": "Plano alterado com sucesso",
+  "files-uploaded-for-summarization-complete": "Seus resumos estão sendo gerados. Você será notificado por e-mail quando todos os seus arquivos forem processados.",
+  "you-joined-the-mailing-list": "Você se juntou à lista de discussão!",
+  "error": {
+    "something-unexpected-happened": "algo inesperado aconteceu"
+  }
+}
