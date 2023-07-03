@@ -1,0 +1,13 @@
+{
+  "use-cases": "Cas d'utilisation",
+  "browse-contracts": "Parcourir les contrats",
+  "escrow": "Entiercement",
+  "deploy-now": "Déployer maintenant",
+  "membership": "Adhésion",
+  "manage-powerful-groups": "Gérer des groupes puissants",
+  "lottery": "Loterie",
+  "unbiased-outcomes": "Impartial",
+  "summarization": "Récapitulation",
+  "vector-search": "Recherche de vecteur",
+  "prompt-templating": "Modèle d'invite"
+}

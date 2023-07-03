@@ -1,0 +1,53 @@
+{
+  "company-name": "Kalygo",
+  "log-in": "Connexion",
+  "close-menu": "Fermer le menu",
+  "open-main-menu": "Ouvrir le menu principal",
+  "stats": {
+    "headline": "Les documents n'ont pas besoin d'être compliqués",
+    "subheadline": "Kalygo vous fait gagner du temps pour que vous puissiez vous concentrer sur l'essentiel",
+    "stat1_headline": "Résumer",
+    "stat1_subheadline": "Obtenez les informations les plus importantes dont vous avez besoin à partir de vos documents",
+    "stat2_headline": "Recherche",
+    "stat2_subheadline": "Parlez à vos documents et allez au-delà de la correspondance des mots clés",
+    "stat3_headline": "Partager",
+    "stat3_subheadline": "Partagez avec les membres de votre équipe ou vos clients"
+  },
+  "pricing": {
+    "title": "Tarification",
+    "tier1_name": "Gratuit",
+    "tier1_description": "Tout le nécessaire pour démarrer",
+    "tier1_feature1": "Les comptes sont gratuits",
+    "tier1_feature2": "Assistance automatisée",
+    "tier2_name": "Standard",
+    "tier2_description": "Tout en gratuit, et plus encore",
+    "tier2_feature1": "Payer par résumé",
+    "tier2_feature2": "Fichiers PDF et TXT pris en charge",
+    "tier2_feature3": "Analyse de base",
+    "tier2_feature4": "Assistance 24h/24",
+    "tier3_name": "Prime",
+    "tier3_description": "Tout en standard, et plus encore.",
+    "tier3_feature1": "Essai GRATUIT de 14 jours",
+    "tier3_feature2": "Plus d'analyses",
+    "tier3_feature3": "Fonctionnalités collaboratives",
+    "tier3_feature4": "Toutes les fonctionnalités activées",
+    "summary": "résumé",
+    "month": "mois",
+    "sign-up": "S'inscrire",
+    "coming-soon": "À venir"
+  },
+  "about": {
+    "header": "À propos"
+  },
+  "terms-of-service": {
+    "header": "Conditions d'utilisation"
+  },
+  "privacy-policy": {
+    "header": "Politique de confidentialité"
+  },
+  "footer": {
+    "about": "À propos",
+    "terms-of-service": "Conditions d'utilisation",
+    "copyright": "CMD Software Inc. Tous droits réservés."
+  }
+}
