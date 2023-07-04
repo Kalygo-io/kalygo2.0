@@ -19,6 +19,9 @@ import type { PDFDocumentProxy } from "pdfjs-dist";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { PreviewTextFile } from "@/components/shared/PreviewTextFile";
 import { fileURLToPath } from "url";
+import { similaritySearchWithQueue } from "@/services/similaritySearchWithQueue";
+import { navigatorLangDetector } from "@/lib/languageDetector";
+import { useRouter } from "next/router";
 
 const options = {
   cMapUrl: "cmaps/",
@@ -32,10 +35,11 @@ interface Props {
   wizardStepsRef: RefObject<HTMLElement>;
 }
 
-export function Query(props: Props) {
+export function Review(props: Props) {
   const { file, wizardStepsRef } = props;
 
   const [numPages, setNumPages] = useState<number>();
+  const router = useRouter();
   const { t } = useTranslation();
 
   const {
@@ -47,11 +51,8 @@ export function Query(props: Props) {
     watch,
   } = useForm({});
 
-  const [searchResults, setSearchResultsState] = useState<{
-    val: {
-      results: string[];
-      query: string;
-    } | null;
+  const [searchState, setSearchState] = useState<{
+    val: any;
     loading: boolean;
     err: any;
   }>({
@@ -65,7 +66,7 @@ export function Query(props: Props) {
       console.log("onSubmit", data);
       console.log("file", file);
 
-      setSearchResultsState({
+      setSearchState({
         val: null,
         loading: true,
         err: null,
@@ -110,66 +111,40 @@ export function Query(props: Props) {
               type: "text/plain",
             });
 
-            similaritySearchInFile(
-              data.query,
-              pdf2txtFile,
-              (results: string[], err: any) => {
-                if (err) {
-                  setSearchResultsState({
-                    val: null,
-                    loading: false,
-                    err: err,
-                  });
-                } else {
-                  infoToast("Successfully performed similarity search");
-
-                  console.log("RESULTS", results);
-
-                  setSearchResultsState({
-                    val: {
-                      results,
-                      query: data.query,
-                    },
-                    loading: false,
-                    err: null,
-                  });
-                }
+            similaritySearchWithQueue(data.query, pdf2txtFile, (err: any) => {
+              if (err) {
+                setSearchState({
+                  val: null,
+                  loading: false,
+                  err: err,
+                });
+              } else {
+                const detectedLng = navigatorLangDetector();
+                router.push(`/${detectedLng}/dashboard/queue`);
+                infoToast(t("toast-messages:vector-search-is-processing"));
               }
-            );
+            });
           });
         });
 
         reader.readAsDataURL(file as Blob);
       } else {
-        similaritySearchInFile(
-          data.query,
-          file!,
-          (results: string[], err: any) => {
-            if (err) {
-              setSearchResultsState({
-                val: null,
-                loading: false,
-                err: err,
-              });
-            } else {
-              infoToast("Successfully performed similarity search");
-
-              console.log("RESULTS", results);
-
-              setSearchResultsState({
-                val: {
-                  results,
-                  query: data.query,
-                },
-                loading: false,
-                err: null,
-              });
-            }
+        similaritySearchWithQueue(data.query, file!, (err: any) => {
+          if (err) {
+            setSearchState({
+              val: null,
+              loading: false,
+              err: err,
+            });
+          } else {
+            const detectedLng = navigatorLangDetector();
+            router.push(`/${detectedLng}/dashboard/queue`);
+            infoToast(t("toast-messages:vector-search-is-processing"));
           }
-        );
+        });
       }
     } catch (e) {
-      setSearchResultsState({
+      setSearchState({
         val: null,
         loading: false,
         err: e,
@@ -177,50 +152,17 @@ export function Query(props: Props) {
     }
   };
 
-  //   function onFileChange(event: React.ChangeEvent<HTMLInputElement>) {
-  //     const { files } = event.target;
-
-  //     if (files && files[0]) {
-  //       setFile(files[0] || null);
-  //     }
-  //   }
-
   function onDocumentLoadSuccess({ numPages: nextNumPages }: PDFDocumentProxy) {
     setNumPages(nextNumPages);
   }
 
-  const documents = get(searchResults, "val.results.documents.0", []);
-  const distances = get(searchResults, "val.results.distances.0", []);
-  const metadatas = get(searchResults, "val.results.metadatas.0", []);
+  const documents = get(searchState, "val.results.documents.0", []);
+  const distances = get(searchState, "val.results.distances.0", []);
+  const metadatas = get(searchState, "val.results.metadatas.0", []);
 
   let jsx = null;
-  if (searchResults.loading) {
+  if (searchState.loading) {
     jsx = <WindowLoader></WindowLoader>;
-  } else if (searchResults.val) {
-    jsx = (
-      <ul role="list" className="divide-y divide-gray-100">
-        {documents.map((i, idx) => (
-          <li key={idx} className="flex gap-x-4 py-5">
-            <div className="flex-auto">
-              <div className="flex items-baseline justify-between gap-x-4">
-                <p className="text-sm font-semibold leading-6 text-gray-900">
-                  Chunk {get(metadatas, `${idx}.index`)}
-                </p>
-                <p className="flex-none text-xs text-gray-600">
-                  <span>{distances[idx]}</span>
-                  {/* <time dateTime={comment.dateTime}>{comment.date}</time> */}
-                </p>
-              </div>
-              <CopyToClipboard text={i} onCopy={() => console.log("copied")}>
-                <p className="mt-1 line-clamp-2 text-sm leading-6 text-gray-600 cursor-pointer">
-                  {i}
-                </p>
-              </CopyToClipboard>
-            </div>
-          </li>
-        ))}
-      </ul>
-    );
   }
 
   let viewer = null;
@@ -263,7 +205,7 @@ export function Query(props: Props) {
   return (
     <>
       <div
-        className="lg:grid grid-cols-3 flex flex-col grid-rows-1 pt-8"
+        className="lg:grid grid-cols-3 flex flex-col grid-rows-1 p-8"
         style={{
           height: `calc(100vh - ${
             wizardStepsRef?.current?.clientHeight! + 88 + 64
@@ -280,7 +222,7 @@ export function Query(props: Props) {
           {viewer}
         </div>
 
-        <div className="shrink-0 border-b lg:border-gray-200 px-4 lg:border-l lg:border-b-0 lg:pr-8 xl:pr-4 lg:order-2 order-1 col-span-1 overflow-scroll">
+        <div className="shrink-0 border-b lg:border-gray-200 px-4 lg:border-l lg:border-b-0 lg:pr-8 xl:pr-4 lg:order-2 order-1 col-span-1">
           {/* Right column area */}
 
           <form

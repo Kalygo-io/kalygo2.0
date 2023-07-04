@@ -37,7 +37,11 @@
     "file-name": "File name",
     "requested-at": "Requested at",
     "remove": "Remove",
-    "view": "View"
+    "view": "View",
+    "job-type": "Type",
+    "vector-search": {
+      "query": "Query"
+    }
   },
   "summary": {
     "title": "Summary"
