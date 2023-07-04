@@ -1,4 +1,3 @@
-import { removeJobFromQueue } from "@/services/removeJobFromQueue";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { Divider } from "@/components/shared/Divider";
 import { useRouter } from "next/router";
@@ -30,10 +29,24 @@ export const JobList = (p: P) => {
         let jobTypeJsx = null;
         switch (i?.data?.jobType) {
           case "Summary":
-            jobTypeJsx = <SummaryJob job={i} />;
+            jobTypeJsx = (
+              <SummaryJob
+                job={i}
+                router={router}
+                triggerFetch={triggerFetch}
+                fetchCounter={fetchCounter}
+              />
+            );
             break;
           case "VectorSearch":
-            jobTypeJsx = <VectorSearch job={i} />;
+            jobTypeJsx = (
+              <VectorSearch
+                job={i}
+                router={router}
+                triggerFetch={triggerFetch}
+                fetchCounter={fetchCounter}
+              />
+            );
             break;
         }
 
@@ -56,35 +69,6 @@ export const JobList = (p: P) => {
                   />
                 )}
               </div>
-
-              <span className="mt-2 isolate inline-flex rounded-md">
-                {i?.finishedOn && (
-                  <button
-                    type="button"
-                    className="relative inline-flex items-center bg-white px-2 py-2 text-sm font-semibold text-red-500 focus:z-10"
-                    onClick={() => {
-                      console.log("!!!");
-                      removeJobFromQueue(i?.id);
-                      triggerFetch(fetchCounter + 1);
-                    }}
-                  >
-                    {t("dashboard-page:queue.remove")}
-                  </button>
-                )}
-                {i?.progress === 100 && i?.returnvalue?.summaryId && (
-                  <button
-                    type="button"
-                    className="relative inline-flex items-center bg-white px-2 py-2 text-sm font-semibold text-blue-500 focus:z-10"
-                    onClick={() => {
-                      router.push(
-                        `/dashboard/summary?summary-id=${i.returnvalue.summaryId}`
-                      );
-                    }}
-                  >
-                    {t("dashboard-page:queue.view")}
-                  </button>
-                )}
-              </span>
             </div>
           </div>
         );

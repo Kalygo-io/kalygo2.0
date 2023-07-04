@@ -30,6 +30,9 @@
       "no-content": "No content"
     }
   },
+  "vector-search": {
+    "title": "Vector Search"
+  },
   "queue": {
     "title": "Queue",
     "no-jobs-found": "No jobs found in queue",
