@@ -31,7 +31,13 @@
     }
   },
   "vector-search": {
-    "title": "Vector Search"
+    "title": "Vector Search",
+    "vector-search-success": {
+      "filename": "Filename",
+      "original-file": "Original file",
+      "download": "Download",
+      "query": "Query"
+    }
   },
   "queue": {
     "title": "Queue",

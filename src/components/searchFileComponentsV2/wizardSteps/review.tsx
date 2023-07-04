@@ -107,7 +107,7 @@ export function Review(props: Props) {
             });
 
             var blob = new Blob([finalText], { type: "text/plain" });
-            var pdf2txtFile = new File([blob], "pdf2txt.txt", {
+            var pdf2txtFile = new File([blob], `${file.name}.txt`, {
               type: "text/plain",
             });
 
@@ -185,8 +185,6 @@ export function Review(props: Props) {
       );
       break;
     case "text/plain":
-      //   debugger;
-
       viewer = (
         <div
           className={`px-4 py-2 sm:px-6 lg:pl-8 xl:pl-6 overflow-scroll mx-1 flex w-full shadow-sm rounded-md border-2`}

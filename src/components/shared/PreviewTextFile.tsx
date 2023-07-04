@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { fileURLToPath } from "url";
 
 interface P {
   file: File | null;

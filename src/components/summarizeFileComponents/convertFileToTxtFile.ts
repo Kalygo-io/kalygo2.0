@@ -46,8 +46,6 @@ export function convertFileToTxtFile(file: File): Promise<File> {
                 type: "text/plain",
               });
 
-              console.log("pdf2TxtFile");
-
               resolve(pdf2txtFile);
             });
           });
