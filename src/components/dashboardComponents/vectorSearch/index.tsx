@@ -1,10 +1,10 @@
-import { round } from "@/utility/Math/round";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
 import axios from "axios";
 import get from "lodash.get";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
+import { saveAs } from "file-saver";
 
 interface P {
   vectorSearch: {
@@ -78,7 +78,11 @@ export default function VectorSearch(p: P) {
         }
       );
 
-      // window.URL.createObjectURL(new Blob([resp.data]));
+      var blob = new Blob(
+        [resp.data]
+        // { type: "text/plain;charset=utf-8" }
+      );
+      saveAs(blob, vectorSearch.filename);
 
       console.log("resp", resp);
     } catch (e) {}
