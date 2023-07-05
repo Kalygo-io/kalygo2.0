@@ -106,11 +106,15 @@ export default function Dashboard() {
     jsx = <WindowLoader></WindowLoader>;
   } else if (summaries.err || vectorSearches.err) {
     jsx = <ErrorInDashboard />;
-  } else if (summaries.val && vectorSearches.val) {
+  } else if (
+    summaries.val &&
+    vectorSearches.val &&
+    (summaries.val.length > 0 || vectorSearches.val.length > 0)
+  ) {
     jsx = (
       <>
         <SummariesTable summaries={summaries.val} />
-        <div className="relative py-24">
+        {/* <div className="relative py-24">
           <div
             className="absolute inset-0 flex items-center"
             aria-hidden="true"
@@ -122,10 +126,20 @@ export default function Dashboard() {
               <PlusIcon className="h-5 w-5 text-gray-500" aria-hidden="true" />
             </span>
           </div>
+        </div> */}
+        <div className="relative px-4 py-24 sm:p-6 lg:p-8">
+          <div
+            className="absolute inset-0 flex items-center"
+            aria-hidden="true"
+          >
+            <div className="w-full border-t border-gray-300" />
+          </div>
         </div>
         <VectorSearchesTable vectorSearches={vectorSearches.val} />
       </>
     );
+  } else if (summaries.val && vectorSearches.val) {
+    jsx = <>{t("dashboard-page:welcome-to-kalygo")}</>;
   } else {
     jsx = <>Unknown error</>;
   }
