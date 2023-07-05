@@ -155,7 +155,7 @@ export default function VectorSearch(p: P) {
             </div>
           </div>
 
-          <div className="shrink-0 border-b lg:border-gray-200 px-4 lg:border-l lg:border-b-0 lg:pr-8 xl:pr-4 lg:order-2 order-1 col-span-1">
+          <div className="shrink-0 border-b lg:border-gray-200 px-4 mb-4 lg:border-l lg:border-b-0 lg:pr-8 xl:pr-4 lg:order-2 order-1 col-span-1">
             {/* Right column area */}
             <form className="flex flex-col justify-center items-center w-full">
               <textarea
