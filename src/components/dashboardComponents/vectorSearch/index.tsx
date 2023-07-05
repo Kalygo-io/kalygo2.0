@@ -93,7 +93,7 @@ export default function VectorSearch(p: P) {
   const metadatas = get(vectorSearch, "results.metadatas.0", []);
 
   return (
-    <div className="w-full">
+    <div>
       <div className="px-4 sm:px-0">
         <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
           {vectorSearch?.createdAt
