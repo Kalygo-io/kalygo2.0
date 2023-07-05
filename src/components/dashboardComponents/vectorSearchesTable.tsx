@@ -20,7 +20,7 @@ export const VectorSearchesTable = (p: P) => {
   vectorSearches = vectorSearches.slice(0, 10);
 
   return vectorSearches.length > 0 ? (
-    <div className="px-4 sm:px-6 lg:px-8">
+    <div className="px-4 pb-16 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-base font-semibold leading-6 text-gray-900">
