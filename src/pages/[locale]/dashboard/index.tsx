@@ -18,6 +18,8 @@ import { SummariesTable } from "@/components/dashboardComponents/summariesTable"
 import { VectorSearchesTable } from "@/components/dashboardComponents/vectorSearchesTable";
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
 import { PlusIcon } from "@heroicons/react/24/outline";
+import get from "lodash.get";
+import { Credits } from "@/components/dashboardComponents/index/credits";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -54,6 +56,16 @@ export default function Dashboard() {
     err: null,
   });
 
+  const [account, setAccount] = useState<{
+    val: any;
+    loading: boolean;
+    err: any;
+  }>({
+    val: null,
+    loading: true,
+    err: null,
+  });
+
   useEffect(() => {
     async function fetch() {
       try {
@@ -66,7 +78,8 @@ export default function Dashboard() {
 
         setSummaries({
           loading: false,
-          val: res1.data,
+          // val: res1.data,
+          val: [],
           err: null,
         });
 
@@ -79,7 +92,22 @@ export default function Dashboard() {
 
         setVectorSearches({
           loading: false,
-          val: res2.data,
+          // val: res2.data,
+          val: [],
+          err: null,
+        });
+
+        const res3 = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account`,
+          {
+            withCredentials: true,
+          }
+        );
+
+        setAccount({
+          loading: false,
+          // val: res2.data,
+          val: res3.data,
           err: null,
         });
       } catch (e) {
@@ -100,11 +128,19 @@ export default function Dashboard() {
     fetch();
   }, []);
 
+  const isWelcomeUI =
+    summaries.val &&
+    vectorSearches.val &&
+    summaries.val.length === 0 &&
+    vectorSearches.val.length === 0
+      ? true
+      : false;
+
   let jsx = null;
 
-  if (summaries.loading || vectorSearches.loading) {
+  if (summaries.loading || vectorSearches.loading || account.loading) {
     jsx = <WindowLoader></WindowLoader>;
-  } else if (summaries.err || vectorSearches.err) {
+  } else if (summaries.err || vectorSearches.err || account.err) {
     jsx = <ErrorInDashboard />;
   } else if (
     summaries.val &&
@@ -114,19 +150,6 @@ export default function Dashboard() {
     jsx = (
       <>
         <SummariesTable summaries={summaries.val} />
-        {/* <div className="relative py-24">
-          <div
-            className="absolute inset-0 flex items-center"
-            aria-hidden="true"
-          >
-            <div className="w-full border-t border-gray-300" />
-          </div>
-          <div className="relative flex justify-center">
-            <span className="bg-white px-2 text-gray-500">
-              <PlusIcon className="h-5 w-5 text-gray-500" aria-hidden="true" />
-            </span>
-          </div>
-        </div> */}
         <div className="relative px-4 py-24 sm:p-6 lg:p-8">
           <div
             className="absolute inset-0 flex items-center"
@@ -138,8 +161,12 @@ export default function Dashboard() {
         <VectorSearchesTable vectorSearches={vectorSearches.val} />
       </>
     );
-  } else if (summaries.val && vectorSearches.val) {
-    jsx = <>{t("dashboard-page:welcome-to-kalygo")}</>;
+  } else if (isWelcomeUI) {
+    jsx = (
+      <>
+        <Credits account={account.val!} />
+      </>
+    );
   } else {
     jsx = <>Unknown error</>;
   }
@@ -153,9 +180,19 @@ export default function Dashboard() {
         <div className="p-4 sm:p-6 lg:p-8">
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
-              <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
-                {t("dashboard-page:index.title")}
-              </h2>
+              {!summaries.loading &&
+                !vectorSearches.loading &&
+                !account.loading &&
+                (isWelcomeUI ? (
+                  <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+                    {t("dashboard-page:welcome-to-kalygo")}{" "}
+                    {`${get(account.val, "email", "")}!`}
+                  </h2>
+                ) : (
+                  <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+                    {t("dashboard-page:index.title")}
+                  </h2>
+                ))}
             </div>
           </div>
           <div className="mt-8 flow-root">
