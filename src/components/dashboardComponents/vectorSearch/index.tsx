@@ -1,4 +1,4 @@
-import { PaperClipIcon } from "@heroicons/react/20/solid";
+import { MagnifyingGlassIcon, PaperClipIcon } from "@heroicons/react/20/solid";
 import axios from "axios";
 import get from "lodash.get";
 import { useTranslation } from "next-i18next";
@@ -108,36 +108,8 @@ export default function VectorSearch(p: P) {
               {t("dashboard-page:vector-search.vector-search-success.filename")}
             </dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-              {vectorSearch?.filename}
-            </dd>
-          </div>
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">
-              {t("dashboard-page:vector-search.vector-search-success.query")}
-            </dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-              {vectorSearch?.query}
-            </dd>
-          </div>
-          {/* <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">
-              Results
-            </dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-              <pre>{JSON.stringify(vectorSearch?.results, undefined, 2)}</pre>
-            </dd>
-          </div> */}
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">
-              {t(
-                "dashboard-page:vector-search.vector-search-success.original-file"
-              )}
-            </dt>
-            <dd className="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-              <ul
-                role="list"
-                className="divide-y divide-gray-100 rounded-md border border-gray-200"
-              >
+              {/* {vectorSearch?.filename} */}
+              <ul role="list" className="divide-y divide-gray-100">
                 <li className="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
                   <div className="flex w-0 flex-1 items-center">
                     <PaperClipIcon
@@ -185,6 +157,23 @@ export default function VectorSearch(p: P) {
 
           <div className="shrink-0 border-b lg:border-gray-200 px-4 lg:border-l lg:border-b-0 lg:pr-8 xl:pr-4 lg:order-2 order-1 col-span-1">
             {/* Right column area */}
+            <form className="flex flex-col justify-center items-center w-full">
+              <textarea
+                rows={1}
+                value={vectorSearch.query}
+                id="query"
+                readOnly
+                placeholder="Similarity search"
+                className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6`}
+              />
+
+              {/* <div>
+                <button className="inline-flex items-center gap-x-2 rounded-md bg-blue-600 m-2 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+                  <MagnifyingGlassIcon className="h-4 w-4" />
+                </button>
+              </div> */}
+            </form>
+
             <ul role="list" className="divide-y divide-gray-100">
               {documents.map((i: any, idx: number) => (
                 <li key={idx} className="flex gap-x-4 py-5">
