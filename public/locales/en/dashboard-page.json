@@ -15,7 +15,31 @@
   },
   "index": {
     "title": "Dashboard",
-    "no-documents-yet": "No Documents Yet!"
+    "no-documents-yet": "No Documents Yet!",
+    "summaries": {
+      "title": "Summaries",
+      "subtitle": "An overview of your summaries",
+      "view-all": "View all",
+      "table": {
+        "id": "Id",
+        "filename": "Filename",
+        "processed-length": "Processed Length",
+        "date": "Date",
+        "edit": "Edit"
+      }
+    },
+    "vector-searches": {
+      "title": "Vector Searches",
+      "subtitle": "An overview of your searches",
+      "view-all": "View all",
+      "table": {
+        "id": "Id",
+        "filename": "Filename",
+        "processed-length": "Processed Length",
+        "date": "Date",
+        "edit": "Edit"
+      }
+    }
   },
   "summarize": {
     "upload-a-file": "Select file",

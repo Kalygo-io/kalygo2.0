@@ -29,7 +29,7 @@ export const VectorSearch = (props: {
               {t("dashboard-page:queue.vector-search.query")}
             </dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-              <i>{job?.data?.params?.query}</i>
+              <code>{job?.data?.params?.query}</code>
             </dd>
           </div>
           <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">

@@ -15,7 +15,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { SummariesTable } from "@/components/dashboardComponents/summariesTable";
+import { VectorSearchesTable } from "@/components/dashboardComponents/vectorSearchesTable";
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
+import { PlusIcon } from "@heroicons/react/24/outline";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -42,10 +44,20 @@ export default function Dashboard() {
     err: null,
   });
 
+  const [vectorSearches, setVectorSearches] = useState<{
+    val: any[];
+    loading: boolean;
+    err: any;
+  }>({
+    val: [],
+    loading: true,
+    err: null,
+  });
+
   useEffect(() => {
     async function fetch() {
       try {
-        const res = await axios.get(
+        const res1 = await axios.get(
           `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account-summaries`,
           {
             withCredentials: true,
@@ -54,11 +66,30 @@ export default function Dashboard() {
 
         setSummaries({
           loading: false,
-          val: res.data,
+          val: res1.data,
+          err: null,
+        });
+
+        const res2 = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/vector-searches`,
+          {
+            withCredentials: true,
+          }
+        );
+
+        setVectorSearches({
+          loading: false,
+          val: res2.data,
           err: null,
         });
       } catch (e) {
         setSummaries({
+          loading: false,
+          val: [],
+          err: e,
+        });
+
+        setVectorSearches({
           loading: false,
           val: [],
           err: e,
@@ -71,12 +102,30 @@ export default function Dashboard() {
 
   let jsx = null;
 
-  if (summaries.loading) {
+  if (summaries.loading || vectorSearches.loading) {
     jsx = <WindowLoader></WindowLoader>;
-  } else if (summaries.err) {
+  } else if (summaries.err || vectorSearches.err) {
     jsx = <ErrorInDashboard />;
-  } else if (summaries.val) {
-    jsx = <SummariesTable summaries={summaries.val} />;
+  } else if (summaries.val && vectorSearches.val) {
+    jsx = (
+      <>
+        <SummariesTable summaries={summaries.val} />
+        <div className="relative py-24">
+          <div
+            className="absolute inset-0 flex items-center"
+            aria-hidden="true"
+          >
+            <div className="w-full border-t border-gray-300" />
+          </div>
+          <div className="relative flex justify-center">
+            <span className="bg-white px-2 text-gray-500">
+              <PlusIcon className="h-5 w-5 text-gray-500" aria-hidden="true" />
+            </span>
+          </div>
+        </div>
+        <VectorSearchesTable vectorSearches={vectorSearches.val} />
+      </>
+    );
   } else {
     jsx = <>Unknown error</>;
   }
