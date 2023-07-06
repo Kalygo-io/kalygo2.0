@@ -1,5 +1,6 @@
 {
   "dashboard": "Painel",
+  "welcome-to-kalygo": "Bem-vindo",
   "protected": "Protegido",
   "navigation": {
     "overview": "Visão geral",
@@ -15,7 +16,33 @@
   },
   "index": {
     "title": "Painel",
-    "no-documents-yet": "Ainda sem Documentos!"
+    "no-documents-yet": "Ainda sem Documentos!",
+    "summaries": {
+      "title": "Resumos",
+      "subtitle": "Uma visão geral dos seus resumos",
+      "view-all": "Ver tudo",
+      "table": {
+        "id": "Eu ia",
+        "filename": "Nome do arquivo",
+        "processed-length": "Comprimento Processado",
+        "date": "Data",
+        "edit": "Editar",
+        "view": "Visualizar"
+      }
+    },
+    "vector-searches": {
+      "title": "Pesquisas de vetores",
+      "subtitle": "Uma visão geral de suas pesquisas",
+      "view-all": "Ver tudo",
+      "table": {
+        "id": "Eu ia",
+        "filename": "Nome do arquivo",
+        "processed-length": "Comprimento processado",
+        "date": "Data",
+        "edit": "Editar",
+        "view": "Visualizar"
+      }
+    }
   },
   "summarize": {
     "upload-a-file": "Selecione o arquivo",
@@ -30,6 +57,15 @@
       "no-content": "sem conteúdo"
     }
   },
+  "vector-search": {
+    "title": "Pesquisa de vetores",
+    "vector-search-success": {
+      "filename": "Nome do arquivo",
+      "original-file": "arquivo original",
+      "download": "Download",
+      "query": "Consulta"
+    }
+  },
   "queue": {
     "title": "Fila",
     "no-jobs-found": "Nenhum trabalho encontrado na fila",
@@ -37,10 +73,20 @@
     "file-name": "Nome do arquivo",
     "requested-at": "Solicitado em",
     "remove": "Remover",
-    "view": "Visualizar"
+    "view": "Visualizar",
+    "job-type": "Tipo",
+    "vector-search": {
+      "query": "Consulta"
+    }
   },
   "summary": {
-    "title": "Resumo"
+    "title": "Resumo",
+    "requested": "Requeridos",
+    "time-requested-unknown": "A hora em que o resumo foi solicitado é desconhecida",
+    "filename": "Nome do arquivo",
+    "original-length": "Comprimento original",
+    "condensed-length": "Comprimento condensado",
+    "content": "Contente"
   },
   "settings": {
     "free-credits": {

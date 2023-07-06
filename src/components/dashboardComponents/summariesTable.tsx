@@ -102,28 +102,17 @@ export const SummariesTable = (p: P) => {
                       {new Date(summary.createdAt).toLocaleString()}
                     </td>
                     <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3">
-                      {/* <LinkComponent
-                        href={`/dashboard/summary/${summary.id}`}
-                        className="text-blue-600 hover:text-blue-900"
-                      > */}
                       <button
                         className="text-blue-600 hover:text-blue-900"
                         onClick={() => {
-                          // dispatch({
-                          //   type: "set_summary",
-                          //   payload: {
-                          //     summaryId: summary.id,
-                          //   },
-                          // });
-
                           router.push(
                             `/dashboard/summary?summary-id=${summary.id}`
                           );
                         }}
                       >
-                        View<span className="sr-only">, {summary.id}</span>
+                        {t("dashboard-page:index.summaries.table.view")}
+                        <span className="sr-only"> {summary.id}</span>
                       </button>
-                      {/* </LinkComponent> */}
                     </td>
                   </tr>
                 ))}
@@ -134,7 +123,6 @@ export const SummariesTable = (p: P) => {
       </div>
     </div>
   ) : (
-    // <>{t("dashboard-page:index.no-documents-yet")}</>
-    <></>
+    <>{t("dashboard-page:index.no-documents-yet")}</>
   );
 };

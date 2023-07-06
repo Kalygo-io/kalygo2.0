@@ -37,7 +37,7 @@ export default function VectorSearch(p: P) {
     async function downloadFileRequest() {
       try {
         setDownloadFile({
-          val: "Loading...",
+          val: "...",
           loading: true,
           err: null,
         });
@@ -48,8 +48,6 @@ export default function VectorSearch(p: P) {
             withCredentials: true,
           }
         );
-
-        console.log("res", res);
 
         setDownloadFile({
           val: res.data,
@@ -78,13 +76,8 @@ export default function VectorSearch(p: P) {
         }
       );
 
-      var blob = new Blob(
-        [resp.data]
-        // { type: "text/plain;charset=utf-8" }
-      );
+      var blob = new Blob([resp.data]);
       saveAs(blob, vectorSearch.filename);
-
-      console.log("resp", resp);
     } catch (e) {}
   }
 

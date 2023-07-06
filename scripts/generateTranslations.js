@@ -6,7 +6,7 @@ const outputPath = "public/locales";
 // personal credentials, update before pushing to production
 const projectId = "kalygotranslation2";
 const keyFilename = "keyfile.json";
-const targetLanguages = ["fr"];
+const targetLanguages = ["en", "es", "pt", "fr"];
 
 const translate = new Translate({ projectId, keyFilename });
 

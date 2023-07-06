@@ -1,6 +1,6 @@
 {
   "escrow": "Depósito",
-  "escrow-description": "Acuerdo de depósito en garantía cronometrado con pagos en moneda",
+  "escrow-description": "Acuerdo de depósito en garantía cronometrado con pagos en efectivo",
   "tokenization": "Tokenización",
   "tokenization-description": "Representar activos digitalmente",
   "lottery": "Lotería",
@@ -15,10 +15,10 @@
   "marketplace-description": "Un viejo pero bueno",
   "bounty": "Generosidad",
   "bounty-description": "Pago garantizado después de una revisión del trabajo enviado por un jurado de sus pares",
-  "other": "Otra",
+  "other": "Otro",
   "other-description": "Se agradecerán comentarios generales",
-  "badge-audited": "Auditada",
-  "badge-solid": "Sólida",
+  "badge-audited": "auditado",
+  "badge-solid": "Sólido",
   "badge-popular": "Popular",
   "badge-coming-soon": "Muy pronto",
   "sign-up-to-try": "Muy pronto..."

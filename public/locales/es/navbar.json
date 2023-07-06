@@ -1,7 +1,7 @@
 {
-  "navbar-use-cases": "Casos de uso",
+  "navbar-use-cases": "casos de uso",
   "navbar-contracts": "Contratos",
   "navbar-feedback": "Comentario",
-  "navbar-login": "Acceso",
-  "navbar-about": "Acerca de"
+  "navbar-about": "Acerca de",
+  "navbar-login": "Acceso"
 }

@@ -1,14 +1,15 @@
 {
   "the-feedback-is-appreciated": "¡Se agradecen los comentarios!",
-  "sign-up-success": "Revise su bandeja de entrada de correo electrónico para verificar. Si no ve el correo electrónico, verifique su carpeta de correo no deseado o comuníquese con el soporte.",
+  "sign-up-success": "Revise su bandeja de entrada de correo electrónico para verificación. Si no ve el correo electrónico, verifique su carpeta de correo no deseado o comuníquese con el soporte.",
   "forgot-password-success": "¡Estamos enviando un enlace de reinicio!",
   "sign-out-success": "Salió con éxito",
-  "reset-password-success": "Has restablecido correctamente tu contraseña.",
+  "reset-password-success": "Restablecer contraseña con éxito. ¡Intenta iniciar sesión!",
   "summary-returned-successfully": "Resumen devuelto con éxito",
   "successfully-changed-plan": "Cambio de plan con éxito",
   "files-uploaded-for-summarization-complete": "Se están generando sus resúmenes. Se le notificará por correo electrónico cuando todos sus archivos hayan sido procesados.",
   "you-joined-the-mailing-list": "¡Te uniste a la lista de correo!",
+  "vector-search-is-processing": "Su búsqueda se está procesando...",
   "error": {
-    "something-unexpected-happened": "Sucedió algo inesperado"
+    "something-unexpected-happened": "sucedió algo inesperado"
   }
 }

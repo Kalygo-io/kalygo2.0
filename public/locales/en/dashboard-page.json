@@ -26,7 +26,8 @@
         "filename": "Filename",
         "processed-length": "Processed Length",
         "date": "Date",
-        "edit": "Edit"
+        "edit": "Edit",
+        "view": "View"
       }
     },
     "vector-searches": {
@@ -38,7 +39,8 @@
         "filename": "Filename",
         "processed-length": "Processed Length",
         "date": "Date",
-        "edit": "Edit"
+        "edit": "Edit",
+        "view": "View"
       }
     }
   },
@@ -78,7 +80,13 @@
     }
   },
   "summary": {
-    "title": "Summary"
+    "title": "Summary",
+    "requested": "Requested",
+    "time-requested-unknown": "The time the summary was requested is unknown",
+    "filename": "Filename",
+    "original-length": "Original Length",
+    "condensed-length": "Condensed Length",
+    "content": "Content"
   },
   "settings": {
     "free-credits": {

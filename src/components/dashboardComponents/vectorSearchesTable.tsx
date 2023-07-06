@@ -50,23 +50,23 @@ export const VectorSearchesTable = (p: P) => {
                     scope="col"
                     className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
                   >
-                    {t("dashboard-page:index.summaries.table.id")}
+                    {t("dashboard-page:index.vector-searches.table.id")}
                   </th>
                   <th
                     scope="col"
                     className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                   >
-                    {t("dashboard-page:index.summaries.table.filename")}
+                    {t("dashboard-page:index.vector-searches.table.filename")}
                   </th>
                   <th
                     scope="col"
                     className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                   >
-                    {t("dashboard-page:index.summaries.table.date")}
+                    {t("dashboard-page:index.vector-searches.table.date")}
                   </th>
                   <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-0">
                     <span className="sr-only">
-                      {t("dashboard-page:index.summaries.table.edit")}
+                      {t("dashboard-page:index.vector-searches.table.edit")}
                     </span>
                   </th>
                 </tr>
@@ -80,44 +80,21 @@ export const VectorSearchesTable = (p: P) => {
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       {search.filename}
                     </td>
-                    {/* <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                      {summary.condensedCharCount}&nbsp;
-                      <span className="text-green-600">
-                        (
-                        {round(
-                          summary.originalCharCount /
-                            summary.condensedCharCount,
-                          1
-                        )}
-                        x)
-                      </span>
-                    </td> */}
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       {new Date(search.createdAt).toLocaleString()}
                     </td>
                     <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3">
-                      {/* <LinkComponent
-                        href={`/dashboard/summary/${summary.id}`}
-                        className="text-blue-600 hover:text-blue-900"
-                      > */}
                       <button
                         className="text-blue-600 hover:text-blue-900"
                         onClick={() => {
-                          // dispatch({
-                          //   type: "set_summary",
-                          //   payload: {
-                          //     summaryId: summary.id,
-                          //   },
-                          // });
-
                           router.push(
                             `/dashboard/vector-search-result?vector-search-id=${search.id}`
                           );
                         }}
                       >
-                        View<span className="sr-only">, {search.id}</span>
+                        {t("dashboard-page:index.vector-searches.table.view")}
+                        <span className="sr-only"> {search.id}</span>
                       </button>
-                      {/* </LinkComponent> */}
                     </td>
                   </tr>
                 ))}
@@ -128,7 +105,6 @@ export const VectorSearchesTable = (p: P) => {
       </div>
     </div>
   ) : (
-    // <>{t("dashboard-page:index.no-documents-yet")}</>
-    <></>
+    <>{t("dashboard-page:index.no-documents-yet")}</>
   );
 };

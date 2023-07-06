@@ -1,13 +1,13 @@
 {
-  "use-cases": "Casos de uso",
+  "use-cases": "casos de uso",
   "browse-contracts": "Explorar contratos",
   "escrow": "Depósito",
   "deploy-now": "Implementar ahora",
   "membership": "Afiliación",
   "manage-powerful-groups": "Administrar grupos poderosos",
   "lottery": "Lotería",
-  "unbiased-outcomes": "Resultados imparciales",
-  "summarization": "Resumen",
+  "unbiased-outcomes": "Imparcial",
+  "summarization": "resumen",
   "vector-search": "Búsqueda de vectores",
-  "prompt-templating": "Pronta ingenieria"
+  "prompt-templating": "Plantillas rápidas"
 }
