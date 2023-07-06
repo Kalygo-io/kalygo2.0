@@ -3,16 +3,8 @@ import React, { useRef, useState } from "react";
 import { CheckIcon } from "@heroicons/react/24/solid";
 import { ChooseFile } from "./wizardSteps/chooseFile";
 import { Review } from "./wizardSteps/review";
-import { infoToast } from "@/utility/toasts";
-import { WindowLoader } from "../shared/WindowLoader";
-import { Error } from "../shared/error";
 import { ErrorInDashboard } from "../shared/errorInDashboard";
-
-const steps = [
-  { id: 1, name: "Choose file", href: "#", status: "current" },
-  { id: 2, name: "Review", href: "#", status: "upcoming" },
-  //   { id: "03", name: "Results", href: "#", status: "upcoming" },
-];
+import { useTranslation } from "next-i18next";
 
 interface Props {}
 
@@ -32,7 +24,14 @@ export function SearchFileWizard(props: Props) {
     err: null,
   });
 
+  const { t } = useTranslation();
+
   const wizardStepsRef = useRef(null);
+
+  const steps = [
+    { id: 1, name: t("dashboard-page:perform-vector-search.choose-file") },
+    { id: 2, name: t("dashboard-page:perform-vector-search.review") },
+  ];
 
   let jsx = null;
   switch (step) {

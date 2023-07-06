@@ -65,6 +65,10 @@
       "no-content": "Sin contenido"
     }
   },
+  "perform-vector-search": {
+    "choose-file": "Elija el archivo",
+    "review": "Revisar"
+  },
   "vector-search": {
     "title": "Búsqueda de vectores",
     "requested": "Solicitado",

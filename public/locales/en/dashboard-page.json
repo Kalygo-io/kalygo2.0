@@ -65,6 +65,14 @@
       "no-content": "No content"
     }
   },
+  "perform-vector-search": {
+    "choose-file": "Choose file",
+    "review": "Review",
+    "review-widget": {
+      "similarity-search": "Similarity search",
+      "unsupported-file-type": "Unsupported file type"
+    }
+  },
   "vector-search": {
     "title": "Vector Search",
     "requested": "Requested",

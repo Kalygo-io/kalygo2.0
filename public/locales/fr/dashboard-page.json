@@ -65,10 +65,14 @@
       "no-content": "Pas de contenu"
     }
   },
+  "perform-vector-search": {
+    "choose-file": "Choisir le fichier",
+    "review": "Examen"
+  },
   "vector-search": {
     "title": "Recherche de vecteur",
     "requested": "Demandé",
-    "time-requested-unknown": "L'heure à laquelle la recherche vectorielle a été demandée est inconnue",
+    "time-requested-unknown": "L'heure à laquelle la recherche de vecteur a été demandée est inconnue",
     "filename": "Nom de fichier",
     "original-file": "Fichier d'origine",
     "download": "Télécharger",

@@ -59,11 +59,15 @@
     "summarize": "Resumir",
     "received-quote": "Cotação recebida",
     "summary-success": {
-      "original-length": "Comprimento original",
+      "original-length": "Comprimento Original",
       "condensed-length": "Comprimento condensado",
       "summary": "Resumo",
       "no-content": "sem conteúdo"
     }
+  },
+  "perform-vector-search": {
+    "choose-file": "Escolher arquivo",
+    "review": "Análise"
   },
   "vector-search": {
     "title": "Pesquisa de vetores",
@@ -93,7 +97,7 @@
     "requested": "Requeridos",
     "time-requested-unknown": "A hora em que o resumo foi solicitado é desconhecida",
     "filename": "Nome do arquivo",
-    "original-length": "Comprimento Original",
+    "original-length": "Comprimento original",
     "condensed-length": "Comprimento condensado",
     "content": "Contente"
   },
