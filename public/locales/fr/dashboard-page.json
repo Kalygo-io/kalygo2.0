@@ -17,6 +17,14 @@
   "index": {
     "title": "Tableau de bord",
     "no-documents-yet": "Aucun document pour le moment !",
+    "credits": {
+      "free-summarization-credits": "Crédits de synthèse gratuits",
+      "try-free-summarization-credits": "Essayez le résumé",
+      "free-vector-search-credits": "Crédits de recherche de vecteurs gratuits",
+      "try-vector-search-credits": "Essayez la recherche vectorielle",
+      "credit-card-charges": "Des charges",
+      "more-info": "Plus d'informations"
+    },
     "summaries": {
       "title": "Résumés",
       "subtitle": "Un aperçu de vos résumés",
@@ -59,12 +67,13 @@
   },
   "vector-search": {
     "title": "Recherche de vecteur",
-    "vector-search-success": {
-      "filename": "Nom de fichier",
-      "original-file": "Fichier d'origine",
-      "download": "Télécharger",
-      "query": "Mettre en doute"
-    }
+    "requested": "Demandé",
+    "time-requested-unknown": "L'heure à laquelle la recherche vectorielle a été demandée est inconnue",
+    "filename": "Nom de fichier",
+    "original-file": "Fichier d'origine",
+    "download": "Télécharger",
+    "query": "Mettre en doute",
+    "matched-chunk": "Morceau correspondant"
   },
   "queue": {
     "title": "File d'attente",

@@ -23,61 +23,38 @@ export function Credits(p: P) {
 
   const router = useRouter();
 
-  //   const stats = [
-  //     {
-  //       id: 1,
-  //       name:
-  //         summaryCredits === 1
-  //           ? t("dashboard-page:settings.free-credits.summary")
-  //           : t("dashboard-page:settings.free-credits.summaries"),
-  //       value: summaryCredits,
-  //     },
-  //     {
-  //       id: 2,
-  //       name:
-  //         vectorSearchCredits === 1
-  //           ? t("dashboard-page:settings.free-credits.vector-search")
-  //           : t("dashboard-page:settings.free-credits.vector-searches"),
-  //       value: vectorSearchCredits,
-  //     },
-  //   ];
-
   const stats = [
     {
       id: 1,
-      name: "Free Summarization Credits",
+      name: t("dashboard-page:index.credits.free-summarization-credits"),
       stat: summaryCredits,
       icon: LifebuoyIcon,
-      change: "0%",
-      changeType: "neutral",
       onClick: () => {
         router.push("/dashboard/summarize");
       },
-      onClickText: "Try summarization",
+      onClickText: t(
+        "dashboard-page:index.credits.try-free-summarization-credits"
+      ),
     },
     {
       id: 2,
-      name: "Free Vector Search Credits",
+      name: t("dashboard-page:index.credits.free-vector-search-credits"),
       stat: vectorSearchCredits,
       icon: DocumentMagnifyingGlassIcon,
-      change: "0%",
-      changeType: "neutral",
       onClick: () => {
         router.push("/dashboard/vector-search/vector-search-v2");
       },
-      onClickText: "Try vector search",
+      onClickText: t("dashboard-page:index.credits.try-vector-search-credits"),
     },
     {
       id: 3,
-      name: "Charges",
+      name: t("dashboard-page:index.credits.credit-card-charges"),
       stat: "$0.00",
       icon: CreditCardIcon,
-      change: "0%",
-      changeType: "neutral",
       onClick: () => {
         router.push("/dashboard/settings");
       },
-      onClickText: "More info",
+      onClickText: t("dashboard-page:index.credits.more-info"),
     },
   ];
 
@@ -109,36 +86,6 @@ export function Credits(p: P) {
               <p className="text-2xl font-semibold text-gray-900">
                 {item.stat}
               </p>
-              <p
-                className={classNames(
-                  item.changeType === "increase"
-                    ? "text-green-600"
-                    : "text-red-600",
-                  "ml-2 flex items-baseline text-sm font-semibold"
-                )}
-              >
-                {item.changeType === "increase" && (
-                  <ArrowUpIcon
-                    className="h-5 w-5 flex-shrink-0 self-center text-green-500"
-                    aria-hidden="true"
-                  />
-                )}
-
-                {item.changeType === "decrease" && (
-                  <ArrowDownIcon
-                    className="h-5 w-5 flex-shrink-0 self-center text-red-500"
-                    aria-hidden="true"
-                  />
-                )}
-
-                <span className="sr-only">
-                  {" "}
-                  {item.changeType === "increase" && "Increased"}
-                  {item.changeType === "decrease" && "Decreased"}
-                </span>
-                {item.changeType === "increase" ||
-                  (item.changeType === "decrease" && item.change)}
-              </p>
               <div className="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
                 <div className="text-sm">
                   <button
@@ -154,26 +101,5 @@ export function Credits(p: P) {
         ))}
       </dl>
     </div>
-    // <div className="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8">
-    //   <div>
-    //     <h2 className="text-base font-semibold leading-7 text-black">
-    //       {t("dashboard-page:settings.free-credits.title")}
-    //     </h2>
-    //   </div>
-    //   <div className="md:col-span-2">
-    //     <dl className="mt-16 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
-    //       {stats.map((stat) => (
-    //         <div key={stat.id} className="flex flex-col p-8">
-    //           <dt className="text-sm font-semibold leading-6 text-gray-600">
-    //             {stat.name}
-    //           </dt>
-    //           <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900">
-    //             {stat.value}
-    //           </dd>
-    //         </div>
-    //       ))}
-    //     </dl>
-    //   </div>
-    // </div>
   );
 }

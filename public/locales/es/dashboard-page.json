@@ -17,6 +17,14 @@
   "index": {
     "title": "Panel",
     "no-documents-yet": "¡No hay documentos todavía!",
+    "credits": {
+      "free-summarization-credits": "Créditos de resumen gratis",
+      "try-free-summarization-credits": "Prueba el resumen",
+      "free-vector-search-credits": "Créditos de búsqueda de vectores gratis",
+      "try-vector-search-credits": "Pruebe la búsqueda de vectores",
+      "credit-card-charges": "Cargos",
+      "more-info": "Más información"
+    },
     "summaries": {
       "title": "resúmenes",
       "subtitle": "Una visión general de sus resúmenes",
@@ -59,12 +67,13 @@
   },
   "vector-search": {
     "title": "Búsqueda de vectores",
-    "vector-search-success": {
-      "filename": "Nombre del archivo",
-      "original-file": "Archivo original",
-      "download": "Descargar",
-      "query": "Consulta"
-    }
+    "requested": "Solicitado",
+    "time-requested-unknown": "Se desconoce la hora a la que se solicitó la búsqueda vectorial",
+    "filename": "Nombre del archivo",
+    "original-file": "Archivo original",
+    "download": "Descargar",
+    "query": "Consulta",
+    "matched-chunk": "Fragmento coincidente"
   },
   "queue": {
     "title": "Cola",

@@ -90,18 +90,19 @@ export default function VectorSearch(p: P) {
       <div className="px-4 sm:px-0">
         <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
           {vectorSearch?.createdAt
-            ? `Requested: ${new Date(vectorSearch.createdAt)}`
-            : `Time summary was requested is unknown`}
+            ? `${t("dashboard-page:vector-search.requested")}: ${new Date(
+                vectorSearch.createdAt
+              )}`
+            : t("dashboard-page:vector-search.time-requested-unknown")}
         </p>
       </div>
       <div className="mt-6 border-t border-gray-100">
         <dl className="divide-y divide-gray-100">
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">
-              {t("dashboard-page:vector-search.vector-search-success.filename")}
+              {t("dashboard-page:vector-search.filename")}
             </dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-              {/* {vectorSearch?.filename} */}
               <ul role="list" className="divide-y divide-gray-100">
                 <li className="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
                   <div className="flex w-0 flex-1 items-center">
@@ -122,9 +123,7 @@ export default function VectorSearch(p: P) {
                       }}
                       className="font-medium text-blue-600 hover:text-blue-500"
                     >
-                      {t(
-                        "dashboard-page:vector-search.vector-search-success.download"
-                      )}
+                      {t("dashboard-page:vector-search.download")}
                     </button>
                   </div>
                 </li>
@@ -173,7 +172,8 @@ export default function VectorSearch(p: P) {
                   <div className="flex-auto">
                     <div className="flex items-baseline justify-between gap-x-4">
                       <p className="text-sm font-semibold leading-6 text-gray-900">
-                        Matched Chunk {get(metadatas, `${idx}.index`)}
+                        {t("dashboard-page:vector-search.matched-chunk")}&nbsp;
+                        {get(metadatas, `${idx}.index`)}
                       </p>
                       <p className="flex-none text-xs text-gray-600">
                         <span>{distances[idx]}</span>

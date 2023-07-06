@@ -78,8 +78,8 @@ export default function Dashboard() {
 
         setSummaries({
           loading: false,
-          val: res1.data,
-          // val: [],
+          // val: res1.data,
+          val: [],
           err: null,
         });
 
@@ -92,8 +92,8 @@ export default function Dashboard() {
 
         setVectorSearches({
           loading: false,
-          val: res2.data,
-          // val: [],
+          // val: res2.data,
+          val: [],
           err: null,
         });
 

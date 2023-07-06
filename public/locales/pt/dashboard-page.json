@@ -17,6 +17,14 @@
   "index": {
     "title": "Painel",
     "no-documents-yet": "Ainda sem Documentos!",
+    "credits": {
+      "free-summarization-credits": "Créditos de resumo grátis",
+      "try-free-summarization-credits": "Tente resumir",
+      "free-vector-search-credits": "Créditos de pesquisa de vetores gratuitos",
+      "try-vector-search-credits": "Experimente a pesquisa vetorial",
+      "credit-card-charges": "Cobranças",
+      "more-info": "Mais informações"
+    },
     "summaries": {
       "title": "Resumos",
       "subtitle": "Uma visão geral dos seus resumos",
@@ -37,7 +45,7 @@
       "table": {
         "id": "Eu ia",
         "filename": "Nome do arquivo",
-        "processed-length": "Comprimento processado",
+        "processed-length": "Comprimento Processado",
         "date": "Data",
         "edit": "Editar",
         "view": "Visualizar"
@@ -59,12 +67,13 @@
   },
   "vector-search": {
     "title": "Pesquisa de vetores",
-    "vector-search-success": {
-      "filename": "Nome do arquivo",
-      "original-file": "arquivo original",
-      "download": "Download",
-      "query": "Consulta"
-    }
+    "requested": "Requeridos",
+    "time-requested-unknown": "A hora em que a busca do vetor foi solicitada é desconhecida",
+    "filename": "Nome do arquivo",
+    "original-file": "arquivo original",
+    "download": "Download",
+    "query": "Consulta",
+    "matched-chunk": "Pedaço correspondente"
   },
   "queue": {
     "title": "Fila",
@@ -84,7 +93,7 @@
     "requested": "Requeridos",
     "time-requested-unknown": "A hora em que o resumo foi solicitado é desconhecida",
     "filename": "Nome do arquivo",
-    "original-length": "Comprimento original",
+    "original-length": "Comprimento Original",
     "condensed-length": "Comprimento condensado",
     "content": "Contente"
   },
