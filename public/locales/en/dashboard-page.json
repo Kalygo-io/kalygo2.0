@@ -7,8 +7,9 @@
     "templates": "Prompts",
     "settings": "Settings",
     "vector-search": "Vector Search",
-    "queue": "Queue"
-  },
+    "queue": "Queue",
+    "saas-stats": "SaaS Stats"
+  }, 
   "user-nav": {
     "settings": "Settings",
     "sign-out": "Sign out"
@@ -41,6 +42,9 @@
   },
   "summary": {
     "title": "Summary"
+  },
+  "saas-stats": {
+    "title": "SaaS Stats"
   },
   "settings": {
     "free-credits": {

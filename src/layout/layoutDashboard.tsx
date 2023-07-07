@@ -1,9 +1,11 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 
 import { Fragment, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
+
+import axios from "axios";
 
 import Image from "next/image";
 
@@ -26,6 +28,7 @@ import {
   RectangleGroupIcon,
   DocumentMagnifyingGlassIcon,
   QueueListIcon,
+  ChartBarIcon,
 } from "@heroicons/react/24/outline";
 
 import { signOut } from "@/services/signOut";
@@ -50,6 +53,20 @@ export default function LayoutDashboard({ children }: P) {
   const { t } = useTranslation();
   const { pathname, query } = router;
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [ isAdmin, setIsAdmin ] = useState(false);
+
+  // useEffect(() => {
+  //   const checkAdmin = async () => {
+  //     try {
+  //       const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/is-admin`);
+  //       console.log("DATA:", response.data.authorized);
+  //     }
+  //     catch (err) {
+  //       console.log("ERR", err);
+  //     }
+  //   }
+  //   checkAdmin();
+  // }, []);
 
   const segments = pathname.split("/");
   const current = segments[segments.length - 1];
@@ -85,6 +102,11 @@ export default function LayoutDashboard({ children }: P) {
       name: t("dashboard-page:navigation.queue"),
       href: "/dashboard/queue",
       icon: QueueListIcon,
+    },
+    {
+      name: t("dashboard-page:navigation.saas-stats"),
+      href: "/dashboard/saas-stats",
+      icon: ChartBarIcon,
     },
     // { name: "A.I.", href: "/dashboard/ai", icon: LifebuoyIcon },
   ];
@@ -448,3 +470,4 @@ export default function LayoutDashboard({ children }: P) {
     </>
   );
 }
+
