@@ -1,5 +1,6 @@
 {
   "dashboard": "Dashboard",
+  "welcome-to-kalygo": "Welcome",
   "protected": "Protected",
   "navigation": {
     "overview": "Overview",
@@ -16,7 +17,41 @@
   },
   "index": {
     "title": "Dashboard",
-    "no-documents-yet": "No Documents Yet!"
+    "no-documents-yet": "No Documents Yet!",
+    "credits": {
+      "free-summarization-credits": "Free Summarization Credits",
+      "try-free-summarization-credits": "Try summarization",
+      "free-vector-search-credits": "Free Vector Search Credits",
+      "try-vector-search-credits": "Try vector search",
+      "credit-card-charges": "Charges",
+      "more-info": "More info"
+    },
+    "summaries": {
+      "title": "Summaries",
+      "subtitle": "An overview of your summaries",
+      "view-all": "View all",
+      "table": {
+        "id": "Id",
+        "filename": "Filename",
+        "processed-length": "Processed Length",
+        "date": "Date",
+        "edit": "Edit",
+        "view": "View"
+      }
+    },
+    "vector-searches": {
+      "title": "Vector Searches",
+      "subtitle": "An overview of your searches",
+      "view-all": "View all",
+      "table": {
+        "id": "Id",
+        "filename": "Filename",
+        "processed-length": "Processed Length",
+        "date": "Date",
+        "edit": "Edit",
+        "view": "View"
+      }
+    }
   },
   "summarize": {
     "upload-a-file": "Select file",
@@ -31,6 +66,24 @@
       "no-content": "No content"
     }
   },
+  "perform-vector-search": {
+    "choose-file": "Choose file",
+    "review": "Review",
+    "review-widget": {
+      "similarity-search": "Similarity search",
+      "unsupported-file-type": "Unsupported file type"
+    }
+  },
+  "vector-search": {
+    "title": "Vector Search",
+    "requested": "Requested",
+    "time-requested-unknown": "The time the vector search was requested is unknown",
+    "filename": "Filename",
+    "original-file": "Original file",
+    "download": "Download",
+    "query": "Query",
+    "matched-chunk": "Matched Chunk"
+  },
   "queue": {
     "title": "Queue",
     "no-jobs-found": "No jobs found in queue",
@@ -38,10 +91,20 @@
     "file-name": "File name",
     "requested-at": "Requested at",
     "remove": "Remove",
-    "view": "View"
+    "view": "View",
+    "job-type": "Type",
+    "vector-search": {
+      "query": "Query"
+    }
   },
   "summary": {
-    "title": "Summary"
+    "title": "Summary",
+    "requested": "Requested",
+    "time-requested-unknown": "The time the summary was requested is unknown",
+    "filename": "Filename",
+    "original-length": "Original Length",
+    "condensed-length": "Condensed Length",
+    "content": "Content"
   },
   "saas-stats": {
     "title": "SaaS Stats"

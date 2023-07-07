@@ -1,4 +1,4 @@
 {
-  "change-locale": "Change locale",
-  "description": "This is a non-page component that requires its own namespace"
+  "change-locale": "Cambiar configuración regional",
+  "description": "Este es un componente que no es de página y requiere su propio espacio de nombres."
 }

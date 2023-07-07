@@ -1,5 +1,6 @@
 {
   "dashboard": "Tableau de bord",
+  "welcome-to-kalygo": "Accueillir",
   "protected": "Protégé",
   "navigation": {
     "overview": "Aperçu",
@@ -15,7 +16,41 @@
   },
   "index": {
     "title": "Tableau de bord",
-    "no-documents-yet": "Aucun document pour le moment !"
+    "no-documents-yet": "Aucun document pour le moment !",
+    "credits": {
+      "free-summarization-credits": "Crédits de synthèse gratuits",
+      "try-free-summarization-credits": "Essayez le résumé",
+      "free-vector-search-credits": "Crédits de recherche de vecteurs gratuits",
+      "try-vector-search-credits": "Essayez la recherche vectorielle",
+      "credit-card-charges": "Des charges",
+      "more-info": "Plus d'informations"
+    },
+    "summaries": {
+      "title": "Résumés",
+      "subtitle": "Un aperçu de vos résumés",
+      "view-all": "Voir tout",
+      "table": {
+        "id": "Identifiant",
+        "filename": "Nom de fichier",
+        "processed-length": "Longueur traitée",
+        "date": "Date",
+        "edit": "Modifier",
+        "view": "Voir"
+      }
+    },
+    "vector-searches": {
+      "title": "Recherches vectorielles",
+      "subtitle": "Un aperçu de vos recherches",
+      "view-all": "Voir tout",
+      "table": {
+        "id": "Identifiant",
+        "filename": "Nom de fichier",
+        "processed-length": "Longueur traitée",
+        "date": "Date",
+        "edit": "Modifier",
+        "view": "Voir"
+      }
+    }
   },
   "summarize": {
     "upload-a-file": "Choisir le dossier",
@@ -30,6 +65,20 @@
       "no-content": "Pas de contenu"
     }
   },
+  "perform-vector-search": {
+    "choose-file": "Choisir le fichier",
+    "review": "Examen"
+  },
+  "vector-search": {
+    "title": "Recherche de vecteur",
+    "requested": "Demandé",
+    "time-requested-unknown": "L'heure à laquelle la recherche de vecteur a été demandée est inconnue",
+    "filename": "Nom de fichier",
+    "original-file": "Fichier d'origine",
+    "download": "Télécharger",
+    "query": "Mettre en doute",
+    "matched-chunk": "Morceau correspondant"
+  },
   "queue": {
     "title": "File d'attente",
     "no-jobs-found": "Aucune tâche trouvée dans la file d'attente",
@@ -37,10 +86,20 @@
     "file-name": "Nom de fichier",
     "requested-at": "Demandé à",
     "remove": "Retirer",
-    "view": "Voir"
+    "view": "Voir",
+    "job-type": "Taper",
+    "vector-search": {
+      "query": "Mettre en doute"
+    }
   },
   "summary": {
-    "title": "Résumé"
+    "title": "Résumé",
+    "requested": "Demandé",
+    "time-requested-unknown": "L'heure à laquelle le résumé a été demandé est inconnue",
+    "filename": "Nom de fichier",
+    "original-length": "Longueur d'origine",
+    "condensed-length": "Longueur condensée",
+    "content": "Contenu"
   },
   "settings": {
     "free-credits": {

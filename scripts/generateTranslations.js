@@ -6,6 +6,7 @@ const outputPath = "public/locales";
 // personal credentials, update before pushing to production
 const projectId = "kalygotranslation2";
 const keyFilename = "keyfile.json";
+const targetLanguages = ["en", "es", "pt", "fr"];
 
 const translate = new Translate({ projectId, keyFilename });
 
@@ -38,8 +39,8 @@ async function translateJSONValues(json, targetLanguage) {
     return json;
   }
 }
-// function to handle the creation of the folder and files.
-async function translateFiles(targetLanguage) {
+
+async function createFiles(targetLanguage) {
   try {
     const files = fs.readdirSync(sourceFolderPath);
     for (const file of files) {
@@ -66,5 +67,12 @@ async function translateFiles(targetLanguage) {
   }
 }
 
-const targetLanguage = "fr"; // only 1 language at a time, folders created automatically now
-translateFiles(targetLanguage);
+// new function made to handle languages in parallel
+async function translateFilesParallel(targetLanguages) {
+  const promises = targetLanguages.map((targetLanguage) =>
+    createFiles(targetLanguage)
+  );
+  await Promise.all(promises);
+}
+
+translateFilesParallel(targetLanguages);

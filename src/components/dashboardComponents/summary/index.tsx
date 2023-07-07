@@ -1,29 +1,31 @@
 import { round } from "@/utility/Math/round";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
+import { useTranslation } from "next-i18next";
 
 interface P {
   summary: any;
 }
 
 export default function Summary(p: P) {
-  let d = new Date();
-
   const { summary } = p;
+  const { t } = useTranslation();
 
   return (
     <div>
       <div className="px-4 sm:px-0">
         <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
           {summary?.createdAt
-            ? `Requested: ${new Date(summary.createdAt)}`
-            : `Time summary was requested is unknown`}
+            ? `${t("dashboard-page:summary.requested")}: ${new Date(
+                summary.createdAt
+              )}`
+            : t("dashboard-page:summary.time-requested-unknown")}
         </p>
       </div>
       <div className="mt-6 border-t border-gray-100">
         <dl className="divide-y divide-gray-100">
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">
-              Filename
+              {t("dashboard-page:summary.filename")}
             </dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
               {summary?.filename}
@@ -31,7 +33,7 @@ export default function Summary(p: P) {
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">
-              Original Length
+              {t("dashboard-page:summary.original-length")}
             </dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
               {summary?.originalCharCount}
@@ -39,7 +41,7 @@ export default function Summary(p: P) {
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">
-              Condensed Length
+              {t("dashboard-page:summary.condensed-length")}
             </dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
               {summary?.condensedCharCount}&nbsp;
@@ -55,7 +57,7 @@ export default function Summary(p: P) {
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">
-              Content
+              {t("dashboard-page:summary.content")}
             </dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
               {summary?.content?.split("\n\n").map((i: any, idx: any) => {

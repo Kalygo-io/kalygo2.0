@@ -8,6 +8,7 @@
   "successfully-changed-plan": "Plano alterado com sucesso",
   "files-uploaded-for-summarization-complete": "Seus resumos estão sendo gerados. Você será notificado por e-mail quando todos os seus arquivos forem processados.",
   "you-joined-the-mailing-list": "Você se juntou à lista de discussão!",
+  "vector-search-is-processing": "Sua pesquisa está sendo processada...",
   "error": {
     "something-unexpected-happened": "algo inesperado aconteceu"
   }

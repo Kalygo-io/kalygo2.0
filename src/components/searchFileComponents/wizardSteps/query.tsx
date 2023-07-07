@@ -83,7 +83,6 @@ export function Query(props: Props) {
             for (var j = 1; j <= maxPages; j++) {
               var page = pdf.getPage(j);
 
-              var txt = "";
               countPromises.push(
                 page.then(function (page) {
                   // add page promise
@@ -189,11 +188,6 @@ export function Query(props: Props) {
   function onDocumentLoadSuccess({ numPages: nextNumPages }: PDFDocumentProxy) {
     setNumPages(nextNumPages);
   }
-
-  //   console.log(
-  //     "wizardStepsRef.current.clientHeight",
-  //     wizardStepsRef?.current?.clientHeight
-  //   );
 
   const documents = get(searchResults, "val.results.documents.0", []);
   const distances = get(searchResults, "val.results.distances.0", []);

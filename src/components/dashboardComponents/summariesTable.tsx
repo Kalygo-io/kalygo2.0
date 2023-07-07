@@ -24,21 +24,21 @@ export const SummariesTable = (p: P) => {
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-base font-semibold leading-6 text-gray-900">
-            Summaries
+            {t("dashboard-page:index.summaries.title")}
           </h1>
           <p className="mt-2 text-sm text-gray-700">
-            An overview of your summaries
+            {t("dashboard-page:index.summaries.subtitle")}
           </p>
         </div>
-        <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+        {/* <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
           <button
             disabled
             type="button"
             className="opacity-50 block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
           >
-            View all
+            {t("dashboard-page:index.summaries.view-all")}
           </button>
-        </div>
+        </div> */}
       </div>
       <div className="mt-8 flow-root">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -50,35 +50,30 @@ export const SummariesTable = (p: P) => {
                     scope="col"
                     className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
                   >
-                    Id
+                    {t("dashboard-page:index.summaries.table.id")}
                   </th>
                   <th
                     scope="col"
                     className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                   >
-                    Filename
-                  </th>
-                  {/* <th
-                    scope="col"
-                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                  >
-                    Original Length
-                  </th>
-                  */}
-                  <th
-                    scope="col"
-                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                  >
-                    Processed Length
+                    {t("dashboard-page:index.summaries.table.filename")}
                   </th>
                   <th
                     scope="col"
                     className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                   >
-                    Date
+                    {t("dashboard-page:index.summaries.table.processed-length")}
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                  >
+                    {t("dashboard-page:index.summaries.table.date")}
                   </th>
                   <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-0">
-                    <span className="sr-only">Edit</span>
+                    <span className="sr-only">
+                      {t("dashboard-page:index.summaries.table.edit")}
+                    </span>
                   </th>
                 </tr>
               </thead>
@@ -107,28 +102,17 @@ export const SummariesTable = (p: P) => {
                       {new Date(summary.createdAt).toLocaleString()}
                     </td>
                     <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3">
-                      {/* <LinkComponent
-                        href={`/dashboard/summary/${summary.id}`}
-                        className="text-blue-600 hover:text-blue-900"
-                      > */}
                       <button
                         className="text-blue-600 hover:text-blue-900"
                         onClick={() => {
-                          // dispatch({
-                          //   type: "set_summary",
-                          //   payload: {
-                          //     summaryId: summary.id,
-                          //   },
-                          // });
-
                           router.push(
                             `/dashboard/summary?summary-id=${summary.id}`
                           );
                         }}
                       >
-                        View<span className="sr-only">, {summary.id}</span>
+                        {t("dashboard-page:index.summaries.table.view")}
+                        <span className="sr-only"> {summary.id}</span>
                       </button>
-                      {/* </LinkComponent> */}
                     </td>
                   </tr>
                 ))}
