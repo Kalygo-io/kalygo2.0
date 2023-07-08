@@ -43,7 +43,7 @@ export function NavbarCenteredLogo() {
             </button>
           </div>
         </div>
-        <a href="/" className="-m-1.5 p-1.5">
+        <Link href="/" className="-m-1.5 p-1.5">
           <span className="sr-only">{t("common:company-name")}</span>
           <div className="flex items-center">
             <Image
@@ -58,7 +58,7 @@ export function NavbarCenteredLogo() {
               {t("common:company-name")}
             </span>
           </div>
-        </a>
+        </Link>
         <div className="flex flex-1 justify-end">
           <Link
             href="/login"
