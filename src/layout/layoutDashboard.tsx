@@ -264,8 +264,8 @@ export default function LayoutDashboard({ children }: P) {
         <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-blue-600 px-6 pb-4">
-            <div className="flex h-16 shrink-0 items-center">
-              <Link href="/">
+            <Link href="/">
+              <div className="flex h-16 shrink-0 items-center">
                 <Image
                   className="h-8 w-auto"
                   src="/logo192.png"
@@ -273,8 +273,12 @@ export default function LayoutDashboard({ children }: P) {
                   height={16}
                   width={16}
                 />
-              </Link>
-            </div>
+                &nbsp;
+                <span className="text-sm font-semibold leading-6 text-blue-200">
+                  {t("common:company-name")}
+                </span>
+              </div>
+            </Link>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
                 <li>
