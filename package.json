@@ -25,6 +25,7 @@
     "file-saver": "^2.0.5",
     "framer-motion": "^10.12.17",
     "lodash.get": "^4.4.2",
+    "lodash.isnumber": "^3.0.3",
     "next": "13.4.1",
     "next-i18next": "^13.2.2",
     "next-language-detector": "^1.0.2",
@@ -43,6 +44,7 @@
   "devDependencies": {
     "@types/file-saver": "^2.0.5",
     "@types/lodash.get": "^4.4.7",
+    "@types/lodash.isnumber": "^3.0.7",
     "@types/react-copy-to-clipboard": "^5.0.4"
   }
 }

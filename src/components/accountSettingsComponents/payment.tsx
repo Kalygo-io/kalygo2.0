@@ -17,12 +17,13 @@ import { deleteStripeCard } from "@/services/deleteStripeCard";
 import { SectionLoader } from "../shared/SectionLoader";
 
 interface P {
+  id: string;
   cb: () => void;
   // account: { email: string; firstName: string; lastName: string };
 }
 
 export function Payment(p: P) {
-  const { cb } = p;
+  const { cb, id } = p;
   const { t } = useTranslation();
 
   const [cards, setCards] = useState<{
@@ -66,34 +67,27 @@ export function Payment(p: P) {
     jsx = <div className="text-center">...</div>;
   } else if (cards.err) {
     jsx = (
-      <>
-        <>
-          <div className="text-center">
-            <CreditCardIcon className="mx-auto h-12 w-12 text-gray-400" />
-            <h3 className="mt-2 text-sm font-semibold text-gray-900">
-              {t("dashboard-page:settings.payment.no-card")}
-            </h3>
-            <p className="mt-1 text-sm text-gray-500">
-              {t("dashboard-page:settings.payment.get-started")}
-            </p>
-            <div className="mt-6">
-              <button
-                type="button"
-                className="inline-flex items-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                onClick={() => {
-                  setNewCardOpen(true);
-                }}
-              >
-                <PlusIcon
-                  className="-ml-0.5 mr-1.5 h-5 w-5"
-                  aria-hidden="true"
-                />
-                {t("dashboard-page:settings.payment.new-card")}
-              </button>
-            </div>
-          </div>
-        </>
-      </>
+      <div className="text-center">
+        <CreditCardIcon className="mx-auto h-12 w-12 text-gray-400" />
+        <h3 className="mt-2 text-sm font-semibold text-gray-900">
+          {t("dashboard-page:settings.payment.no-card")}
+        </h3>
+        <p className="mt-1 text-sm text-gray-500">
+          {t("dashboard-page:settings.payment.get-started")}
+        </p>
+        <div className="mt-6">
+          <button
+            type="button"
+            className="inline-flex items-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            onClick={() => {
+              setNewCardOpen(true);
+            }}
+          >
+            <PlusIcon className="-ml-0.5 mr-1.5 h-5 w-5" aria-hidden="true" />
+            {t("dashboard-page:settings.payment.new-card")}
+          </button>
+        </div>
+      </div>
     );
   } else if (cards.val) {
     jsx = (
@@ -171,7 +165,10 @@ export function Payment(p: P) {
 
   return (
     <>
-      <div className="grid max-w-full grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8">
+      <div
+        id={id}
+        className="grid max-w-full grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8"
+      >
         <div>
           <h2 className="text-base font-semibold leading-7 text-black">
             {t("dashboard-page:settings.payment.title")}

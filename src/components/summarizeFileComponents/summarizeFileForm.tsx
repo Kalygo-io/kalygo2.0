@@ -1,12 +1,10 @@
 import { summarizeFiles } from "@/services/summarizeFiles";
 import {
   XCircleIcon,
-  PhotoIcon,
   ArrowUpOnSquareIcon,
   DocumentDuplicateIcon,
 } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
-import get from "lodash.get";
 
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
@@ -18,6 +16,9 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import { convertFileToTxtFile } from "./convertFileToTxtFile";
 import { navigatorLangDetector } from "@/lib/languageDetector";
+import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
+import get from "lodash.get";
+import isNumber from "lodash.isnumber";
 
 interface Props {
   onSuccess: ({
@@ -32,11 +33,17 @@ interface Props {
     condensedLength: number;
   }) => void;
   setSummaryState: (state: any) => void;
+  setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
   onError: (err: any) => void;
 }
 
 export function SummarizeFileForm(props: Props) {
-  const { onSuccess, onError, setSummaryState } = props;
+  const {
+    onSuccess,
+    onError,
+    setSummaryState,
+    setShowPaymentMethodRequiredModal,
+  } = props;
 
   const [dragActive, setDragActive] = useState(false);
   const [fileList, setFileList] = useState<FileList | null>();
@@ -82,29 +89,39 @@ export function SummarizeFileForm(props: Props) {
       )
     ) {
       // at least one file has been dropped so do something
-      setFileList(e.dataTransfer.files);
-
-      const fileAsTxt: File = await convertFileToTxtFile(
-        e.dataTransfer.files[0]
-      );
-
-      console.log("drag_n_drop fileAsTxt ->", fileAsTxt);
-
-      getSummarizationQuote(
-        [fileAsTxt],
-        (
-          quote: number,
-          files: {
-            key: string;
-            originalName: string;
-          }[]
-        ) => {
-          setQuoteForFiles({ quote, files });
-          infoToast(
-            `${t("dashboard-page:summarize.received-quote")} ($${quote})`
-          );
-        }
-      );
+      const paymentMethodsRequest = getAccountPaymentMethodsFactory();
+      const paymentMethodsResponse = await paymentMethodsRequest;
+      console.log("paymentMethodsResponse", paymentMethodsResponse);
+      if (
+        (isNumber(get(paymentMethodsResponse, "data.summaryCredits")) &&
+          get(paymentMethodsResponse, "data.summaryCredits") > 0) ||
+        get(paymentMethodsResponse, "data.stripeDefaultSource")
+      ) {
+        // account has a payment method (either credits or stripe default source)
+        setFileList(e.dataTransfer.files);
+        const fileAsTxt: File = await convertFileToTxtFile(
+          e.dataTransfer.files[0]
+        );
+        getSummarizationQuote(
+          [fileAsTxt],
+          (
+            quote: number,
+            files: {
+              key: string;
+              originalName: string;
+            }[]
+          ) => {
+            setQuoteForFiles({ quote, files });
+            infoToast(
+              `${t("dashboard-page:summarize.received-quote")} ($${quote})`
+            );
+          }
+        );
+      } else {
+        // show Payment Required Modal
+        console.log("PAYMENT REQUIRED");
+        setShowPaymentMethodRequiredModal(true);
+      }
     }
   };
 
@@ -112,28 +129,38 @@ export function SummarizeFileForm(props: Props) {
   const handleChange = async function (e: any) {
     e.preventDefault();
     if (e.target.files && e.target.files[0]) {
-      // at least one file has been selected so do something
-      setFileList(e.target.files);
-
-      const fileAsTxt: File = await convertFileToTxtFile(e.target.files[0]);
-
-      console.log("file input select fileAsTxt ->", fileAsTxt);
-
-      getSummarizationQuote(
-        [fileAsTxt],
-        (
-          quote: number,
-          files: {
-            key: string;
-            originalName: string;
-          }[]
-        ) => {
-          setQuoteForFiles({ quote, files });
-          infoToast(
-            `${t("dashboard-page:summarize.received-quote")} ($${quote})`
-          );
-        }
-      );
+      const paymentMethodsRequest = getAccountPaymentMethodsFactory();
+      const paymentMethodsResponse = await paymentMethodsRequest;
+      console.log("paymentMethodsResponse", paymentMethodsResponse);
+      if (
+        (isNumber(get(paymentMethodsResponse, "data.summaryCredits")) &&
+          get(paymentMethodsResponse, "data.summaryCredits") > 0) ||
+        get(paymentMethodsResponse, "data.stripeDefaultSource")
+      ) {
+        // account has a payment method (either credits or stripe default source)
+        // at least one file has been selected so do something
+        setFileList(e.target.files);
+        const fileAsTxt: File = await convertFileToTxtFile(e.target.files[0]);
+        getSummarizationQuote(
+          [fileAsTxt],
+          (
+            quote: number,
+            files: {
+              key: string;
+              originalName: string;
+            }[]
+          ) => {
+            setQuoteForFiles({ quote, files });
+            infoToast(
+              `${t("dashboard-page:summarize.received-quote")} ($${quote})`
+            );
+          }
+        );
+      } else {
+        // show Payment Required Modal
+        console.log("PAYMENT REQUIRED");
+        setShowPaymentMethodRequiredModal(true);
+      }
     }
   };
 

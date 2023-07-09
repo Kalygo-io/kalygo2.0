@@ -23,6 +23,7 @@ import {
 } from "@/components/searchFileComponentsV2";
 import { SectionLoader } from "@/components/shared/SectionLoader";
 import { WindowLoader } from "@/components/shared/WindowLoader";
+import { PaymentRequiredModal } from "@/components/shared/PaymentRequiredModal";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -35,7 +36,7 @@ const getStaticProps = makeStaticProps([
 ]);
 export { getStaticPaths, getStaticProps };
 
-export default function Summarize() {
+export default function VectorSearchV2() {
   const { state, dispatch } = useAppContext();
   const { t } = useTranslation();
 
@@ -52,11 +53,25 @@ export default function Summarize() {
     err: null,
   });
 
+  const [showPaymentMethodRequiredModal, setShowPaymentMethodRequiredModal] =
+    useState<boolean>(false);
+
+  console.log("showPaymentMethodRequiredModal", showPaymentMethodRequiredModal);
+
   let jsx = null;
   if (searchResults.loading) {
     jsx = <WindowLoader></WindowLoader>;
   } else if (searchResults.err) {
     jsx = <SearchError />;
+  } else if (showPaymentMethodRequiredModal) {
+    jsx = (
+      <PaymentRequiredModal
+        isOpen={showPaymentMethodRequiredModal}
+        setIsOpen={(isOpen) => {
+          setShowPaymentMethodRequiredModal(isOpen);
+        }}
+      />
+    );
   } else if (searchResults.val) {
     jsx = (
       <SearchSuccess
@@ -72,7 +87,13 @@ export default function Summarize() {
       />
     );
   } else {
-    jsx = <SearchFileWizard />;
+    jsx = (
+      <SearchFileWizard
+        setShowPaymentMethodRequiredModal={(showModal: boolean) => {
+          setShowPaymentMethodRequiredModal(showModal);
+        }}
+      />
+    );
   }
 
   return (
@@ -85,4 +106,4 @@ export default function Summarize() {
   );
 }
 
-Summarize.requireAuth = true;
+VectorSearchV2.requireAuth = true;

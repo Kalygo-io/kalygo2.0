@@ -20,6 +20,7 @@ import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import get from "lodash.get";
 import { Credits } from "@/components/dashboardComponents/index/credits";
+import { PaymentRequiredModal } from "@/components/shared/PaymentRequiredModal";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -79,7 +80,6 @@ export default function Dashboard() {
         setSummaries({
           loading: false,
           val: res1.data,
-          // val: [],
           err: null,
         });
 
@@ -93,7 +93,6 @@ export default function Dashboard() {
         setVectorSearches({
           loading: false,
           val: res2.data,
-          // val: [],
           err: null,
         });
 

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { Dispatch, SetStateAction, useRef, useState } from "react";
 
 import { CheckIcon } from "@heroicons/react/24/solid";
 import { ChooseFile } from "./wizardSteps/chooseFile";
@@ -6,9 +6,13 @@ import { Review } from "./wizardSteps/review";
 import { ErrorInDashboard } from "../shared/errorInDashboard";
 import { useTranslation } from "next-i18next";
 
-interface Props {}
+interface Props {
+  setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
+}
 
 export function SearchFileWizard(props: Props) {
+  const { setShowPaymentMethodRequiredModal } = props;
+
   const [step, setStep] = useState(1);
   const [file, setFile] = useState<File | null>(null);
   const [searchResults, setSearchResultsState] = useState<{
@@ -36,7 +40,14 @@ export function SearchFileWizard(props: Props) {
   let jsx = null;
   switch (step) {
     case 1:
-      jsx = <ChooseFile file={file} setFile={setFile} setStep={setStep} />;
+      jsx = (
+        <ChooseFile
+          file={file}
+          setFile={setFile}
+          setStep={setStep}
+          setShowPaymentMethodRequiredModal={setShowPaymentMethodRequiredModal}
+        />
+      );
       break;
     case 2:
       jsx = <Review file={file} wizardStepsRef={wizardStepsRef} />;
