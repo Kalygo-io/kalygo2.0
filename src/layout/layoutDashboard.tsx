@@ -86,12 +86,21 @@ export default function LayoutDashboard({ children, account }: P) {
   debugger;
 
   const totalCredits = account ? (
-    <span className="text-sm text-gray-700">
-      {account.vectorSearchCredits + account.summaryCredits} credits
-    </span>
+    <>
+      <span className="text-sm text-gray-700">
+        {account.vectorSearchCredits + account.summaryCredits} credits
+      </span>
+      <CircleStackIcon
+        className="text-black h-6 w-6"
+        aria-label="Usage Credits Icon"
+      />
+    </>
   ) : (
     <></>
   );
+
+  console.log("* CHAVEZ * account * CHAVEZ *", account);
+  console.log("totalCredits", totalCredits);
 
   return (
     <>
@@ -321,12 +330,8 @@ export default function LayoutDashboard({ children, account }: P) {
             />
 
             <div className="flex flex-1 justify-end gap-x-4 self-stretch lg:gap-x-6">
-              <div className="flex items-center gap-x-4 lg:gap-x-4">
+              <div className="flex items-center gap-x-2 lg:gap-x-2">
                 {totalCredits}
-                <CircleStackIcon
-                  className="text-black h-6 w-6"
-                  aria-label="Usage Credits Icon"
-                />
 
                 {/* <button
                   type="button"
@@ -338,7 +343,7 @@ export default function LayoutDashboard({ children, account }: P) {
 
                 {/* Separator */}
                 <div
-                  className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10 mx-2"
+                  className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10 ml-2 mr-2"
                   aria-hidden="true"
                 />
 

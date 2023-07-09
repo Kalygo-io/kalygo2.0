@@ -13,7 +13,7 @@ import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 
 // import Link from "next/link";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { infoToast, errorToast } from "@/utility/toasts";
 import {
   //   SearchFileForm,
@@ -24,6 +24,7 @@ import {
 import { SectionLoader } from "@/components/shared/SectionLoader";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { PaymentRequiredModal } from "@/components/shared/PaymentRequiredModal";
+import axios from "axios";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -39,6 +40,35 @@ export { getStaticPaths, getStaticProps };
 export default function VectorSearchV2() {
   const { state, dispatch } = useAppContext();
   const { t } = useTranslation();
+
+  const [account, setAccount] = useState<{
+    val: any;
+    loading: boolean;
+    err: any;
+  }>({
+    val: null,
+    loading: true,
+    err: null,
+  });
+
+  useEffect(() => {
+    async function fetch() {
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account`,
+        {
+          withCredentials: true,
+        }
+      );
+
+      setAccount({
+        loading: false,
+        val: res.data,
+        err: null,
+      });
+    }
+
+    fetch();
+  }, []);
 
   const [searchResults, setSearchResultsState] = useState<{
     val: {
@@ -101,7 +131,7 @@ export default function VectorSearchV2() {
       <Head>
         <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
-      <LayoutDashboard>{jsx}</LayoutDashboard>
+      <LayoutDashboard account={account.val}>{jsx}</LayoutDashboard>
     </>
   );
 }

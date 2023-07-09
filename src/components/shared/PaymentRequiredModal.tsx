@@ -75,9 +75,9 @@ export function PaymentRequiredModal(p: P) {
                           </h3>
                           <div className="mt-2">
                             <p className="text-sm text-gray-500">
-                              You are accessing one of Kalygo's paid features.
-                              We offer several pricing plans including a
-                              pay-per-use option and a monthly subscription.
+                              You are accessing one of Kalygo&apos;s paid
+                              features. We offer several pricing plans including
+                              a pay-per-use option and a monthly subscription.
                             </p>
                           </div>
                         </div>
