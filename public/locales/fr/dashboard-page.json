@@ -67,7 +67,11 @@
   },
   "perform-vector-search": {
     "choose-file": "Choisir le fichier",
-    "review": "Examen"
+    "review": "Examen",
+    "review-widget": {
+      "similarity-search": "Recherche de similarité",
+      "unsupported-file-type": "Type de fichier non pris en charge"
+    }
   },
   "vector-search": {
     "title": "Recherche de vecteur",

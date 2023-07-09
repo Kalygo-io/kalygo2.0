@@ -1,6 +1,6 @@
 {
   "escrow": "Depósito",
-  "escrow-description": "Acuerdo de depósito en garantía cronometrado con pagos en efectivo",
+  "escrow-description": "Acuerdo de depósito en garantía cronometrado con pagos en moneda",
   "tokenization": "Tokenización",
   "tokenization-description": "Representar activos digitalmente",
   "lottery": "Lotería",

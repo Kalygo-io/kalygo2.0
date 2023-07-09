@@ -67,7 +67,11 @@
   },
   "perform-vector-search": {
     "choose-file": "Elija el archivo",
-    "review": "Revisar"
+    "review": "Revisar",
+    "review-widget": {
+      "similarity-search": "búsqueda de similitud",
+      "unsupported-file-type": "Tipo de archivo no soportado"
+    }
   },
   "vector-search": {
     "title": "Búsqueda de vectores",

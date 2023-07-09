@@ -1,0 +1,7 @@
+{
+  "navbar-use-cases": "Use cases",
+  "navbar-contracts": "Contracts",
+  "navbar-feedback": "Feedback",
+  "navbar-about": "About",
+  "navbar-login": "Log in"
+}
