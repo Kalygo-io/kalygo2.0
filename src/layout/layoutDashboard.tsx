@@ -31,11 +31,6 @@ import {
 import { signOut } from "@/services/signOut";
 import { useTranslation } from "next-i18next";
 
-const ecosystem = [
-  { id: 1, name: "Mock Jury", href: "#", initial: "J", current: false },
-  { id: 2, name: "Tokenize", href: "#", initial: "T", current: false },
-];
-
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
@@ -77,11 +72,11 @@ export default function LayoutDashboard({ children }: P) {
     //   href: "/dashboard/documents",
     //   icon: DocumentDuplicateIcon,
     // },
-    {
-      name: t("dashboard-page:navigation.templates"),
-      href: "/dashboard/templates",
-      icon: RectangleGroupIcon,
-    },
+    // {
+    //   name: t("dashboard-page:navigation.templates"),
+    //   href: "/dashboard/templates",
+    //   icon: RectangleGroupIcon,
+    // },
     {
       name: t("dashboard-page:navigation.queue"),
       href: "/dashboard/queue",
