@@ -148,7 +148,7 @@ export default function Dashboard() {
     jsx = (
       <>
         <SummariesTable summaries={summaries.val} />
-        <div className="relative px-4 py-24 sm:p-6 lg:p-8">
+        <div className="relative px-4 py-24 sm:p-6 lg:p-12">
           <div
             className="absolute inset-0 flex items-center"
             aria-hidden="true"

@@ -88,7 +88,10 @@ export default function LayoutDashboard({ children, account }: P) {
   const totalCredits = account ? (
     <>
       <span className="text-sm text-gray-700">
-        {account.vectorSearchCredits + account.summaryCredits} credits
+        {account.vectorSearchCredits + account.summaryCredits}{" "}
+        {account.vectorSearchCredits + account.summaryCredits === 1
+          ? "credit"
+          : "credits"}
       </span>
       <CircleStackIcon
         className="text-black h-6 w-6"
@@ -234,7 +237,7 @@ export default function LayoutDashboard({ children, account }: P) {
         <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-72 lg:flex-col">
           {/* Sidebar component, swap this element with another sidebar if you like */}
           {/* <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-blue-600 px-6 pb-4"> */}
-          <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4 z-0">
+          <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-blue-600 px-6 pb-4 z-0">
             <Link href="/">
               <div className="flex h-16 shrink-0 items-center">
                 <Image
@@ -245,7 +248,7 @@ export default function LayoutDashboard({ children, account }: P) {
                   width={16}
                 />
                 &nbsp;
-                <span className="text-sm font-semibold leading-6 text-black">
+                <span className="text-sm font-semibold leading-6 text-white">
                   {t("common:company-name")}
                 </span>
               </div>
@@ -263,8 +266,8 @@ export default function LayoutDashboard({ children, account }: P) {
                               item.href.split("/").length - 1
                             ] === current
                               ? "bg-blue-700 text-white"
-                              : // : "text-blue-200 hover:text-white hover:bg-blue-700",
-                                "text-blue-600 hover:text-white hover:bg-blue-700",
+                              : "text-blue-200 hover:text-white hover:bg-blue-700",
+                            // "text-blue-600 hover:text-white hover:bg-blue-700",
                             "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                           )}
                         >
@@ -291,8 +294,8 @@ export default function LayoutDashboard({ children, account }: P) {
                     className={classNames(
                       "settings" === current
                         ? "bg-blue-700 text-white"
-                        : // : "text-blue-200 hover:text-white hover:bg-blue-700",
-                          "text-blue-600 hover:text-white hover:bg-blue-700",
+                        : "text-blue-200 hover:text-white hover:bg-blue-700",
+                      // "text-blue-600 hover:text-white hover:bg-blue-700",
                       "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                     )}
                     // className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-blue-200 hover:bg-blue-700 hover:text-white"
