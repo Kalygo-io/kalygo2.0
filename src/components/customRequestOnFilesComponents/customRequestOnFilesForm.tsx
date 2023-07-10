@@ -1,7 +1,6 @@
 import { summarizeFiles } from "@/services/summarizeFiles";
 import {
   XCircleIcon,
-  ArrowUpOnSquareIcon,
   DocumentDuplicateIcon,
 } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
@@ -9,23 +8,24 @@ import React, { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 
-import { infoToast } from "@/utility/toasts";
+import { errorToast, infoToast } from "@/utility/toasts";
 import { getSummarizationQuote } from "@/services/getSummarizationQuote";
 
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import { convertFileToTxtFile } from "./convertFileToTxtFile";
 import { navigatorLangDetector } from "@/lib/languageDetector";
-import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
+import { customRequestFactory } from "@/serviceFactory/customRequestFactory";
 import get from "lodash.get";
 import isNumber from "lodash.isnumber";
+import { useForm } from "react-hook-form";
 
 interface Props {
   setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
   onError: (err: any) => void;
 }
 
-export function SummarizeFileForm(props: Props) {
+export function CustomRequestOnFilesForm(props: Props) {
   const { onError, setShowPaymentMethodRequiredModal } = props;
 
   const [dragActive, setDragActive] = useState(false);
@@ -34,13 +34,39 @@ export function SummarizeFileForm(props: Props) {
     quote: number;
     files: { key: string; originalName: string }[];
   } | null>();
-
   const router = useRouter();
-
   const { t } = useTranslation();
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    formState: { errors },
+    setValue,
+    watch,
+  } = useForm({
+    defaultValues: {
+      prompt: "",
+      "files-to-upload": null,
+    },
+  });
 
   // ref
   const inputRef = React.useRef<HTMLInputElement>(null);
+
+  const onSubmit = async (data: any) => {
+    try {
+      console.log("customRequest submit", data);
+
+      const customRequest = customRequestFactory(
+        data.prompt,
+        data["files-to-upload"]
+      );
+      const customRequestResponse = await customRequest;
+      console.log("customRequestResponse", customRequestResponse);
+    } catch (e: any) {
+      errorToast(e.toString());
+    }
+  };
 
   // handle drag events
   const handleDrag = function (e: any) {
@@ -82,24 +108,25 @@ export function SummarizeFileForm(props: Props) {
       ) {
         // account has a payment method (either credits or stripe default source)
         setFileList(e.dataTransfer.files);
-        const fileAsTxt: File = await convertFileToTxtFile(
-          e.dataTransfer.files[0]
-        );
-        getSummarizationQuote(
-          [fileAsTxt],
-          (
-            quote: number,
-            files: {
-              key: string;
-              originalName: string;
-            }[]
-          ) => {
-            setQuoteForFiles({ quote, files });
-            infoToast(
-              `${t("dashboard-page:summarize.received-quote")} (${quote})`
-            );
-          }
-        );
+
+        // const fileAsTxt: File = await convertFileToTxtFile(
+        //   e.dataTransfer.files[0]
+        // );
+        // getSummarizationQuote(
+        //   [fileAsTxt],
+        //   (
+        //     quote: number,
+        //     files: {
+        //       key: string;
+        //       originalName: string;
+        //     }[]
+        //   ) => {
+        //     setQuoteForFiles({ quote, files });
+        //     infoToast(
+        //       `${t("dashboard-page:summarize.received-quote")} (${quote})`
+        //     );
+        //   }
+        // );
       } else {
         // show Payment Required Modal
         console.log("PAYMENT REQUIRED");
@@ -123,22 +150,27 @@ export function SummarizeFileForm(props: Props) {
         // account has a payment method (either credits or stripe default source)
         // at least one file has been selected so do something
         setFileList(e.target.files);
-        const fileAsTxt: File = await convertFileToTxtFile(e.target.files[0]);
-        getSummarizationQuote(
-          [fileAsTxt],
-          (
-            quote: number,
-            files: {
-              key: string;
-              originalName: string;
-            }[]
-          ) => {
-            setQuoteForFiles({ quote, files });
-            infoToast(
-              `${t("dashboard-page:summarize.received-quote")} (${quote})`
-            );
-          }
-        );
+
+        setValue("files-to-upload", e.target.files);
+
+        // inputRef.current.value.put(e.target.files);
+
+        // const fileAsTxt: File = await convertFileToTxtFile(e.target.files[0]);
+        // getSummarizationQuote(
+        //   [fileAsTxt],
+        //   (
+        //     quote: number,
+        //     files: {
+        //       key: string;
+        //       originalName: string;
+        //     }[]
+        //   ) => {
+        //     setQuoteForFiles({ quote, files });
+        //     infoToast(
+        //       `${t("dashboard-page:summarize.received-quote")} (${quote})`
+        //     );
+        //   }
+        // );
       } else {
         // show Payment Required Modal
         console.log("PAYMENT REQUIRED");
@@ -149,74 +181,60 @@ export function SummarizeFileForm(props: Props) {
 
   return (
     <div className="p-4 sm:p-6 lg:p-8">
-      {fileList ? (
-        <div className="flex flex-col items-center justify-center">
-          <ul className="p-4 sm:p-6 lg:p-8">
-            {Object.keys(fileList).map((value: string, index: number) => {
-              return (
-                <li key={index}>
-                  {index} - {fileList[index].name}
-                </li>
-              );
-            })}
-          </ul>
-          <div>
-            <button
-              onClick={() => {
-                console.log("Summarize");
-                console.log("quoteForFiles", quoteForFiles);
-
-                summarizeFiles(
-                  quoteForFiles!.files,
-                  quoteForFiles?.quote! * 100,
-                  (resp: any, err: any) => {
-                    if (err) {
-                      onError(err);
-                      return;
-                    }
-
-                    // debugger;
-
-                    const detectedLng = navigatorLangDetector();
-                    router.push(`/${detectedLng}/dashboard/queue`);
-                    infoToast(
-                      t(
-                        "toast-messages:files-uploaded-for-summarization-complete"
-                      )
-                    );
+      <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div className="col-span-full flex justify-center">
+          <form
+            id="custom-request-on-files-form"
+            onDragEnter={handleDrag}
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <div>
+              <label
+                htmlFor="prompt"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                {t("dashboard-page:custom-request.prompt")}
+              </label>
+              <div className="mt-2">
+                <textarea
+                  {...register("prompt", {
+                    required: true,
+                  })}
+                  placeholder={
+                    t("dashboard-page:custom-request.prompt-placeholder-text")!
                   }
-                );
-              }}
-              type="button"
-              className="inline-flex items-center gap-x-2 rounded-md bg-blue-600 m-1 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-            >
-              {t("dashboard-page:summarize.summarize")}{" "}
-              {quoteForFiles?.quote && `(${quoteForFiles?.quote})`}
-              <ArrowUpOnSquareIcon
-                className="-mr-0.5 h-5 w-5"
-                aria-hidden="true"
-              />
-            </button>
-            <button
-              onClick={() => {
-                setFileList(null);
-              }}
-              type="button"
-              className="inline-flex items-center gap-x-2 rounded-md bg-orange-400 m-1 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
-            >
-              {t("dashboard-page:summarize.clear")}
-              <XCircleIcon className="-mr-0.5 h-5 w-5" aria-hidden="true" />
-            </button>
-          </div>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-          <div className="col-span-full flex justify-center">
-            <form
-              id="form-file-upload"
-              onDragEnter={handleDrag}
-              onSubmit={(e) => e.preventDefault()}
-            >
+                  rows={4}
+                  name="prompt"
+                  id="prompt"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            {fileList ? (
+              <>
+                <ul className="p-4 sm:p-6 lg:p-8">
+                  {Object.keys(fileList).map((value: string, index: number) => {
+                    return (
+                      <li key={index}>
+                        {index} - {fileList[index].name}
+                      </li>
+                    );
+                  })}
+                </ul>
+                <button
+                  onClick={() => {
+                    setFileList(null);
+                    setValue("files-to-upload", null);
+                  }}
+                  type="button"
+                  className="inline-flex items-center gap-x-2 rounded-md bg-white m-1 px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
+                >
+                  {t("dashboard-page:summarize.clear")}
+                  <XCircleIcon className="-mr-0.5 h-5 w-5" aria-hidden="true" />
+                </button>
+              </>
+            ) : (
               <div
                 id="label-file-upload"
                 className={`mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 ${
@@ -231,14 +249,19 @@ export function SummarizeFileForm(props: Props) {
 
                   <div className="mt-4 flex items-center justify-center text-sm leading-6 text-gray-600">
                     <label
-                      htmlFor="input-file-upload"
+                      htmlFor="files-to-upload"
                       className="relative cursor-pointer rounded-md font-semibold text-blue-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-2 hover:text-blue-500"
                     >
-                      <span>{t("dashboard-page:summarize.upload-a-file")}</span>
+                      <span>
+                        {t("dashboard-page:custom-request.select-files")}
+                      </span>
                       <input
+                        {...register("files-to-upload", {
+                          required: true,
+                        })}
                         ref={inputRef}
                         type="file"
-                        id="input-file-upload"
+                        id="files-to-upload"
                         multiple={true}
                         onChange={handleChange}
                         accept=".pdf,.txt"
@@ -256,14 +279,21 @@ export function SummarizeFileForm(props: Props) {
                     ></div>
                   )}
                   <p className="text-xs leading-5 text-gray-600">
-                    {t("dashboard-page:summarize.upload-limits")}
+                    {t("dashboard-page:custom-request.upload-limits")}
                   </p>
                 </div>
               </div>
-            </form>
-          </div>
+            )}
+
+            <div>
+              <button className="mt-2 flex w-full justify-center rounded-md bg-orange-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+                {t("dashboard-page:custom-request.run")!}
+              </button>
+            </div>
+          </form>
         </div>
-      )}
+      </div>
+      {/* )} */}
     </div>
   );
 }
