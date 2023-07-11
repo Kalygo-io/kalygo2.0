@@ -19,6 +19,7 @@ import { customRequestFactory } from "@/serviceFactory/customRequestFactory";
 import get from "lodash.get";
 import isNumber from "lodash.isnumber";
 import { useForm } from "react-hook-form";
+import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
 
 interface Props {
   setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
@@ -102,8 +103,8 @@ export function CustomRequestOnFilesForm(props: Props) {
       const paymentMethodsResponse = await paymentMethodsRequest;
       console.log("paymentMethodsResponse", paymentMethodsResponse);
       if (
-        (isNumber(get(paymentMethodsResponse, "data.summaryCredits")) &&
-          get(paymentMethodsResponse, "data.summaryCredits") > 0) ||
+        (isNumber(get(paymentMethodsResponse, "data.customRequestCredits")) &&
+          get(paymentMethodsResponse, "data.customRequestCredits") > 0) ||
         get(paymentMethodsResponse, "data.stripeDefaultSource")
       ) {
         // account has a payment method (either credits or stripe default source)
@@ -143,8 +144,8 @@ export function CustomRequestOnFilesForm(props: Props) {
       const paymentMethodsResponse = await paymentMethodsRequest;
       console.log("paymentMethodsResponse", paymentMethodsResponse);
       if (
-        (isNumber(get(paymentMethodsResponse, "data.summaryCredits")) &&
-          get(paymentMethodsResponse, "data.summaryCredits") > 0) ||
+        (isNumber(get(paymentMethodsResponse, "data.customRequestCredits")) &&
+          get(paymentMethodsResponse, "data.customRequestCredits") > 0) ||
         get(paymentMethodsResponse, "data.stripeDefaultSource")
       ) {
         // account has a payment method (either credits or stripe default source)
