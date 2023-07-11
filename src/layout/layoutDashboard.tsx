@@ -55,18 +55,18 @@ export default function LayoutDashboard({ children }: P) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [ isAdmin, setIsAdmin ] = useState(false);
 
-  // useEffect(() => {
-  //   const checkAdmin = async () => {
-  //     try {
-  //       const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/is-admin`);
-  //       console.log("DATA:", response.data.authorized);
-  //     }
-  //     catch (err) {
-  //       console.log("ERR", err);
-  //     }
-  //   }
-  //   checkAdmin();
-  // }, []);
+  useEffect(() => {
+    const checkAdmin = async () => {
+        try {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/check-admin`, { withCredentials: true });
+            setIsAdmin(response.data.isAdmin);
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+    checkAdmin();
+}, []);
 
   const segments = pathname.split("/");
   const current = segments[segments.length - 1];
@@ -104,11 +104,15 @@ export default function LayoutDashboard({ children }: P) {
       href: "/dashboard/queue",
       icon: QueueListIcon,
     },
-    {
-      name: t("dashboard-page:navigation.saas-stats"),
-      href: "/dashboard/saas-stats",
-      icon: ChartBarIcon,
-    },
+    ...(isAdmin
+      ? [
+          {
+            name: t("dashboard-page:navigation.saas-stats"),
+            href: "/dashboard/saas-stats",
+            icon: ChartBarIcon,
+          },
+        ]
+      : []),
     // { name: "A.I.", href: "/dashboard/ai", icon: LifebuoyIcon },
   ];
 
