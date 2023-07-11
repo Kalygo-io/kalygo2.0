@@ -83,7 +83,7 @@ export default function LayoutDashboard({ children, account }: P) {
     },
   ];
 
-  debugger;
+  // debugger;
 
   const totalCredits = account ? (
     <>

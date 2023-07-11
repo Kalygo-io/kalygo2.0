@@ -86,8 +86,8 @@ export function ChooseFile(props: Props) {
       console.log("paymentMethodsResponse", paymentMethodsResponse);
 
       if (
-        (isNumber(get(paymentMethodsResponse, "data.summaryCredits")) &&
-          get(paymentMethodsResponse, "data.summaryCredits") > 0) ||
+        (isNumber(get(paymentMethodsResponse, "data.vectorSearchCredits")) &&
+          get(paymentMethodsResponse, "data.vectorSearchCredits") > 0) ||
         get(paymentMethodsResponse, "data.stripeDefaultSource")
       ) {
         // account has a payment method (either credits or stripe default source)
@@ -112,8 +112,8 @@ export function ChooseFile(props: Props) {
       console.log("paymentMethodsResponse", paymentMethodsResponse);
 
       if (
-        (isNumber(get(paymentMethodsResponse, "data.summaryCredits")) &&
-          get(paymentMethodsResponse, "data.summaryCredits") > 0) ||
+        (isNumber(get(paymentMethodsResponse, "data.vectorSearchCredits")) &&
+          get(paymentMethodsResponse, "data.vectorSearchCredits") > 0) ||
         get(paymentMethodsResponse, "data.stripeDefaultSource")
       ) {
         // setFileList(e.target.files);
