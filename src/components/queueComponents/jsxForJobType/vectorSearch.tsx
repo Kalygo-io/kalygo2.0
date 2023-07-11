@@ -1,4 +1,8 @@
 import { removeJobFromQueue } from "@/services/removeJobFromQueue";
+import {
+  DocumentMagnifyingGlassIcon,
+  XCircleIcon,
+} from "@heroicons/react/24/outline";
 import { useTranslation } from "next-i18next";
 import { NextRouter } from "next/router";
 import React, { Dispatch } from "react";
@@ -46,20 +50,20 @@ export const VectorSearch = (props: {
         {job?.finishedOn && (
           <button
             type="button"
-            className="relative inline-flex items-center bg-white px-2 py-2 text-sm font-semibold text-red-500 focus:z-10"
+            className="mx-0.5 inline-flex items-center gap-x-2 rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
             onClick={() => {
-              console.log("!!!");
               removeJobFromQueue(job?.id);
               triggerFetch(fetchCounter + 1);
             }}
           >
             {t("dashboard-page:queue.remove")}
+            {/* <XCircleIcon className="-mr-0.5 h-5 w-5" aria-hidden="true" /> */}
           </button>
         )}
         {job?.progress === 100 && job?.returnvalue?.vectorSearchId && (
           <button
             type="button"
-            className="relative inline-flex items-center bg-white px-2 py-2 text-sm font-semibold text-blue-500 focus:z-10"
+            className="mx-0.5 inline-flex items-center gap-x-2 rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
             onClick={() => {
               router.push(
                 `/dashboard/vector-search-result?vector-search-id=${job?.returnvalue?.vectorSearchId}`
@@ -67,6 +71,10 @@ export const VectorSearch = (props: {
             }}
           >
             {t("dashboard-page:queue.view")}
+            {/* <DocumentMagnifyingGlassIcon
+              className="-mr-0.5 h-5 w-5"
+              aria-hidden="true"
+            /> */}
           </button>
         )}
       </span>

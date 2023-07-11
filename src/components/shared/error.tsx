@@ -27,9 +27,14 @@ export function Error() {
           >
             {t("error:back-to-home")}
           </button>
-          <Link href="/" className="text-sm font-semibold text-gray-900">
+          <button
+            className="text-sm font-semibold text-gray-900"
+            onClick={() => {
+              window.location.replace("/");
+            }}
+          >
             {t("error:contact-suppport")} <span aria-hidden="true">&rarr;</span>
-          </Link>
+          </button>
         </div>
       </div>
     </main>

@@ -20,6 +20,7 @@ import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import get from "lodash.get";
 import { Credits } from "@/components/dashboardComponents/index/credits";
+import { PaymentRequiredModal } from "@/components/shared/PaymentRequiredModal";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -79,7 +80,6 @@ export default function Dashboard() {
         setSummaries({
           loading: false,
           val: res1.data,
-          // val: [],
           err: null,
         });
 
@@ -93,7 +93,6 @@ export default function Dashboard() {
         setVectorSearches({
           loading: false,
           val: res2.data,
-          // val: [],
           err: null,
         });
 
@@ -149,7 +148,7 @@ export default function Dashboard() {
     jsx = (
       <>
         <SummariesTable summaries={summaries.val} />
-        <div className="relative px-4 py-24 sm:p-6 lg:p-8">
+        <div className="relative px-4 py-24 sm:p-6 lg:p-12">
           <div
             className="absolute inset-0 flex items-center"
             aria-hidden="true"
@@ -175,7 +174,7 @@ export default function Dashboard() {
       <Head>
         <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
-      <LayoutDashboard>
+      <LayoutDashboard account={account.val}>
         <div className="p-4 sm:p-6 lg:p-8">
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">

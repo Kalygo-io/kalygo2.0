@@ -64,10 +64,6 @@ export function Credits(p: P) {
 
   return (
     <div>
-      <h3 className="text-base font-semibold leading-6 text-gray-900">
-        Usage metrics
-      </h3>
-
       <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {stats.map((item) => (
           <div

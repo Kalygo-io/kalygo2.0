@@ -3,14 +3,14 @@
   "welcome-to-kalygo": "Welcome",
   "protected": "Protected",
   "navigation": {
-    "overview": "Overview",
+    "overview": "Home",
     "summarize": "Summarize",
     "templates": "Prompts",
     "settings": "Settings",
-    "vector-search": "Vector Search",
-    "queue": "Queue",
+    "vector-search": "Smart Search",
+    "queue": "My Documents",
     "saas-stats": "SaaS Stats"
-  }, 
+  },
   "user-nav": {
     "settings": "Settings",
     "sign-out": "Sign out"
@@ -21,10 +21,10 @@
     "credits": {
       "free-summarization-credits": "Free Summarization Credits",
       "try-free-summarization-credits": "Try summarization",
-      "free-vector-search-credits": "Free Vector Search Credits",
-      "try-vector-search-credits": "Try vector search",
-      "credit-card-charges": "Charges",
-      "more-info": "More info"
+      "free-vector-search-credits": "Free Smart Search Credits",
+      "try-vector-search-credits": "Try smart search",
+      "credit-card-charges": "Monthly Charges",
+      "more-info": "More information"
     },
     "summaries": {
       "title": "Summaries",
@@ -40,7 +40,7 @@
       }
     },
     "vector-searches": {
-      "title": "Vector Searches",
+      "title": "Smart Searches",
       "subtitle": "An overview of your searches",
       "view-all": "View all",
       "table": {
@@ -75,9 +75,9 @@
     }
   },
   "vector-search": {
-    "title": "Vector Search",
+    "title": "Smart Search",
     "requested": "Requested",
-    "time-requested-unknown": "The time the vector search was requested is unknown",
+    "time-requested-unknown": "The time the search was requested is unknown",
     "filename": "Filename",
     "original-file": "Original file",
     "download": "Download",
@@ -114,8 +114,8 @@
       "title": "Free credits",
       "summaries": "Summaries",
       "summary": "Summary",
-      "vector-searches": "Vector searches",
-      "vector-search": "Vector search"
+      "vector-searches": "Smart searches",
+      "vector-search": "Smart search"
     },
     "personal": {
       "title": "Personal",

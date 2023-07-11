@@ -10,8 +10,6 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 
 import React, { Dispatch, SetStateAction, useState } from "react";
-import get from "lodash.get";
-
 import { useTranslation } from "next-i18next";
 
 import { infoToast } from "@/utility/toasts";
@@ -19,6 +17,9 @@ import { useForm, Controller } from "react-hook-form";
 import { similaritySearchInFile } from "@/services/similaritySearchInFile";
 
 import type { PDFDocumentProxy } from "pdfjs-dist";
+import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
+import isNumber from "lodash.isnumber";
+import get from "lodash.get";
 
 const options = {
   cMapUrl: "cmaps/",
@@ -31,10 +32,11 @@ interface Props {
   file: File | null;
   setFile: Dispatch<SetStateAction<File | null>>;
   setStep: Dispatch<SetStateAction<number>>;
+  setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
 }
 
 export function ChooseFile(props: Props) {
-  const { file, setFile, setStep } = props;
+  const { file, setFile, setStep, setShowPaymentMethodRequiredModal } = props;
 
   const { t } = useTranslation();
 
@@ -78,8 +80,24 @@ export function ChooseFile(props: Props) {
       )
     ) {
       // at least one file has been dropped so do something
-      setFile(e.dataTransfer.files[0] || null);
-      setStep(2);
+
+      const paymentMethodsRequest = getAccountPaymentMethodsFactory();
+      const paymentMethodsResponse = await paymentMethodsRequest;
+      console.log("paymentMethodsResponse", paymentMethodsResponse);
+
+      if (
+        (isNumber(get(paymentMethodsResponse, "data.vectorSearchCredits")) &&
+          get(paymentMethodsResponse, "data.vectorSearchCredits") > 0) ||
+        get(paymentMethodsResponse, "data.stripeDefaultSource")
+      ) {
+        // account has a payment method (either credits or stripe default source)
+        setFile(e.dataTransfer.files[0] || null);
+        setStep(2);
+      } else {
+        // show Payment Required Modal
+        console.log("PAYMENT REQUIRED");
+        setShowPaymentMethodRequiredModal(true);
+      }
     }
   };
 
@@ -88,10 +106,24 @@ export function ChooseFile(props: Props) {
     e.preventDefault();
     if (e.target.files && e.target.files[0]) {
       // at least one file has been selected so do something
-      // setFileList(e.target.files);
 
-      setFile(e.target.files[0] || null);
-      setStep(2);
+      const paymentMethodsRequest = getAccountPaymentMethodsFactory();
+      const paymentMethodsResponse = await paymentMethodsRequest;
+      console.log("paymentMethodsResponse", paymentMethodsResponse);
+
+      if (
+        (isNumber(get(paymentMethodsResponse, "data.vectorSearchCredits")) &&
+          get(paymentMethodsResponse, "data.vectorSearchCredits") > 0) ||
+        get(paymentMethodsResponse, "data.stripeDefaultSource")
+      ) {
+        // setFileList(e.target.files);
+        setFile(e.target.files[0] || null);
+        setStep(2);
+      } else {
+        // show Payment Required Modal
+        console.log("PAYMENT REQUIRED");
+        setShowPaymentMethodRequiredModal(true);
+      }
     }
   };
 

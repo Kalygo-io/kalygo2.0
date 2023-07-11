@@ -1,17 +1,11 @@
 "use client";
 
 import { ReactNode, useEffect } from "react";
-
 import { Fragment, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
-
 import axios from "axios";
-
 import Image from "next/image";
-
-// import Link from "next/link";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
-
 import { useRouter } from "next/router";
 
 import {
@@ -19,25 +13,17 @@ import {
   BellIcon,
   ChevronDownIcon,
   Cog6ToothIcon,
-  DocumentDuplicateIcon,
   HomeIcon,
-  UsersIcon,
   XMarkIcon,
   LifebuoyIcon,
   UserCircleIcon,
-  RectangleGroupIcon,
   DocumentMagnifyingGlassIcon,
   QueueListIcon,
-  ChartBarIcon,
+  CircleStackIcon,
 } from "@heroicons/react/24/outline";
 
 import { signOut } from "@/services/signOut";
 import { useTranslation } from "next-i18next";
-
-const ecosystem = [
-  { id: 1, name: "Mock Jury", href: "#", initial: "J", current: false },
-  { id: 2, name: "Tokenize", href: "#", initial: "T", current: false },
-];
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -45,10 +31,10 @@ function classNames(...classes: string[]) {
 
 interface P {
   children: ReactNode;
+  account?: any;
 }
 
-export default function LayoutDashboard({ children }: P) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+export default function LayoutDashboard({ children, account }: P) {
   const router = useRouter();
   const { t } = useTranslation();
   const { pathname, query } = router;
@@ -89,16 +75,6 @@ export default function LayoutDashboard({ children }: P) {
       // href: "/dashboard/vector-search",
       icon: DocumentMagnifyingGlassIcon,
     },
-    // {
-    //   name: "Documents",
-    //   href: "/dashboard/documents",
-    //   icon: DocumentDuplicateIcon,
-    // },
-    {
-      name: t("dashboard-page:navigation.templates"),
-      href: "/dashboard/templates",
-      icon: RectangleGroupIcon,
-    },
     {
       name: t("dashboard-page:navigation.queue"),
       href: "/dashboard/queue",
@@ -109,7 +85,7 @@ export default function LayoutDashboard({ children }: P) {
           {
             name: t("dashboard-page:navigation.saas-stats"),
             href: "/dashboard/saas-stats",
-            icon: ChartBarIcon,
+            icon: CircleStackIcon, // chartBar
           },
         ]
       : []),
@@ -131,6 +107,28 @@ export default function LayoutDashboard({ children }: P) {
       },
     },
   ];
+
+  // debugger;
+
+  const totalCredits = account ? (
+    <>
+      <span className="text-sm text-gray-700">
+        {account.vectorSearchCredits + account.summaryCredits}{" "}
+        {account.vectorSearchCredits + account.summaryCredits === 1
+          ? "credit"
+          : "credits"}
+      </span>
+      <CircleStackIcon
+        className="text-black h-6 w-6"
+        aria-label="Usage Credits Icon"
+      />
+    </>
+  ) : (
+    <></>
+  );
+
+  console.log("* CHAVEZ * account * CHAVEZ *", account);
+  console.log("totalCredits", totalCredits);
 
   return (
     <>
@@ -234,35 +232,9 @@ export default function LayoutDashboard({ children }: P) {
                             ))}
                           </ul>
                         </li>
-                        {/* <li>
-                          <div className="text-xs font-semibold leading-6 text-blue-200">
-                            Ecosystem
-                          </div>
-                          <ul role="list" className="-mx-2 mt-2 space-y-1">
-                            {ecosystem.map((team) => (
-                              <li key={team.name}>
-                                <span
-                                  // href={team.href}
-                                  className={classNames(
-                                    team.current
-                                      ? "bg-blue-700 text-white"
-                                      : "text-blue-200 hover:text-white hover:bg-blue-700",
-                                    "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                                  )}
-                                >
-                                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-blue-400 bg-blue-500 text-[0.625rem] font-medium text-white">
-                                    {team.initial}
-                                  </span>
-                                  <span className="truncate">{team.name}</span>
-                                </span>
-                              </li>
-                            ))}
-                          </ul>
-                        </li> */}
                         <li className="mt-auto">
                           <Link
                             href="/dashboard/settings"
-                            // className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-blue-200 hover:bg-blue-700 hover:text-white"
                             className={classNames(
                               "settings" === current
                                 ? "bg-blue-700 text-white"
@@ -287,11 +259,12 @@ export default function LayoutDashboard({ children }: P) {
         </Transition.Root>
 
         {/* Static sidebar for desktop */}
-        <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+        <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-72 lg:flex-col">
           {/* Sidebar component, swap this element with another sidebar if you like */}
-          <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-blue-600 px-6 pb-4">
-            <div className="flex h-16 shrink-0 items-center">
-              <Link href="/">
+          {/* <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-blue-600 px-6 pb-4"> */}
+          <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-blue-600 px-6 pb-4 z-0">
+            <Link href="/">
+              <div className="flex h-16 shrink-0 items-center">
                 <Image
                   className="h-8 w-auto"
                   src="/logo192.png"
@@ -299,8 +272,12 @@ export default function LayoutDashboard({ children }: P) {
                   height={16}
                   width={16}
                 />
-              </Link>
-            </div>
+                &nbsp;
+                <span className="text-sm font-semibold leading-6 text-white">
+                  {t("common:company-name")}
+                </span>
+              </div>
+            </Link>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
                 <li>
@@ -315,6 +292,7 @@ export default function LayoutDashboard({ children }: P) {
                             ] === current
                               ? "bg-blue-700 text-white"
                               : "text-blue-200 hover:text-white hover:bg-blue-700",
+                            // "text-blue-600 hover:text-white hover:bg-blue-700",
                             "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                           )}
                         >
@@ -335,31 +313,6 @@ export default function LayoutDashboard({ children }: P) {
                     ))}
                   </ul>
                 </li>
-                {/* <li>
-                  <div className="text-xs font-semibold leading-6 text-blue-200">
-                    Ecosystem
-                  </div>
-                  <ul role="list" className="-mx-2 mt-2 space-y-1">
-                    {ecosystem.map((team) => (
-                      <li key={team.name}>
-                        <a
-                          href={team.href}
-                          className={classNames(
-                            team.current
-                              ? "bg-blue-700 text-white"
-                              : "text-blue-200 hover:text-white hover:bg-blue-700",
-                            "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                          )}
-                        >
-                          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-blue-400 bg-blue-500 text-[0.625rem] font-medium text-white">
-                            {team.initial}
-                          </span>
-                          <span className="truncate">{team.name}</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </li> */}
                 <li className="mt-auto">
                   <Link
                     href="/dashboard/settings"
@@ -367,6 +320,7 @@ export default function LayoutDashboard({ children }: P) {
                       "settings" === current
                         ? "bg-blue-700 text-white"
                         : "text-blue-200 hover:text-white hover:bg-blue-700",
+                      // "text-blue-600 hover:text-white hover:bg-blue-700",
                       "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                     )}
                     // className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-blue-200 hover:bg-blue-700 hover:text-white"
@@ -384,7 +338,10 @@ export default function LayoutDashboard({ children }: P) {
         </div>
 
         <div className="lg:pl-72">
-          <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-0 border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+          <div
+            id="dashboard-sticky-top-nav"
+            className="sticky top-0 z-10 flex h-16 shrink-0 items-center gap-x-4 border-0 border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8"
+          >
             <button
               type="button"
               className="-m-2.5 p-2.5 text-gray-700 lg:hidden"
@@ -401,18 +358,20 @@ export default function LayoutDashboard({ children }: P) {
             />
 
             <div className="flex flex-1 justify-end gap-x-4 self-stretch lg:gap-x-6">
-              <div className="flex items-center gap-x-4 lg:gap-x-6">
-                <button
+              <div className="flex items-center gap-x-2 lg:gap-x-2">
+                {totalCredits}
+
+                {/* <button
                   type="button"
                   className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500"
                 >
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
+                </button> */}
 
                 {/* Separator */}
                 <div
-                  className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10"
+                  className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10 ml-2 mr-2"
                   aria-hidden="true"
                 />
 

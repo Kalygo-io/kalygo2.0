@@ -59,12 +59,12 @@ export const JobList = (p: P) => {
               <div className="overflow-hidden rounded-full bg-gray-200">
                 {i?.failedReason ? (
                   <div
-                    className="h-2 rounded-full bg-red-600"
+                    className="h-1 rounded-full bg-red-600"
                     style={{ width: `100%` }}
                   />
                 ) : (
                   <div
-                    className="h-2 rounded-full bg-blue-600"
+                    className="h-1 rounded-full bg-blue-600"
                     style={{ width: `${i?.progress}%` }}
                   />
                 )}

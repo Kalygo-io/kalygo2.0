@@ -1,12 +1,10 @@
 import { summarizeFiles } from "@/services/summarizeFiles";
 import {
   XCircleIcon,
-  PhotoIcon,
   ArrowUpOnSquareIcon,
   DocumentDuplicateIcon,
 } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
-import get from "lodash.get";
 
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
@@ -18,6 +16,9 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import { convertFileToTxtFile } from "./convertFileToTxtFile";
 import { navigatorLangDetector } from "@/lib/languageDetector";
+import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
+import get from "lodash.get";
+import isNumber from "lodash.isnumber";
 
 interface Props {
   onSuccess: ({
@@ -32,11 +33,17 @@ interface Props {
     condensedLength: number;
   }) => void;
   setSummaryState: (state: any) => void;
+  setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
   onError: (err: any) => void;
 }
 
 export function SummarizeFileForm(props: Props) {
-  const { onSuccess, onError, setSummaryState } = props;
+  const {
+    onSuccess,
+    onError,
+    setSummaryState,
+    setShowPaymentMethodRequiredModal,
+  } = props;
 
   const [dragActive, setDragActive] = useState(false);
   const [fileList, setFileList] = useState<FileList | null>();
@@ -82,29 +89,39 @@ export function SummarizeFileForm(props: Props) {
       )
     ) {
       // at least one file has been dropped so do something
-      setFileList(e.dataTransfer.files);
-
-      const fileAsTxt: File = await convertFileToTxtFile(
-        e.dataTransfer.files[0]
-      );
-
-      console.log("drag_n_drop fileAsTxt ->", fileAsTxt);
-
-      getSummarizationQuote(
-        [fileAsTxt],
-        (
-          quote: number,
-          files: {
-            key: string;
-            originalName: string;
-          }[]
-        ) => {
-          setQuoteForFiles({ quote, files });
-          infoToast(
-            `${t("dashboard-page:summarize.received-quote")} ($${quote})`
-          );
-        }
-      );
+      const paymentMethodsRequest = getAccountPaymentMethodsFactory();
+      const paymentMethodsResponse = await paymentMethodsRequest;
+      console.log("paymentMethodsResponse", paymentMethodsResponse);
+      if (
+        (isNumber(get(paymentMethodsResponse, "data.summaryCredits")) &&
+          get(paymentMethodsResponse, "data.summaryCredits") > 0) ||
+        get(paymentMethodsResponse, "data.stripeDefaultSource")
+      ) {
+        // account has a payment method (either credits or stripe default source)
+        setFileList(e.dataTransfer.files);
+        const fileAsTxt: File = await convertFileToTxtFile(
+          e.dataTransfer.files[0]
+        );
+        getSummarizationQuote(
+          [fileAsTxt],
+          (
+            quote: number,
+            files: {
+              key: string;
+              originalName: string;
+            }[]
+          ) => {
+            setQuoteForFiles({ quote, files });
+            infoToast(
+              `${t("dashboard-page:summarize.received-quote")} (${quote})`
+            );
+          }
+        );
+      } else {
+        // show Payment Required Modal
+        console.log("PAYMENT REQUIRED");
+        setShowPaymentMethodRequiredModal(true);
+      }
     }
   };
 
@@ -112,28 +129,38 @@ export function SummarizeFileForm(props: Props) {
   const handleChange = async function (e: any) {
     e.preventDefault();
     if (e.target.files && e.target.files[0]) {
-      // at least one file has been selected so do something
-      setFileList(e.target.files);
-
-      const fileAsTxt: File = await convertFileToTxtFile(e.target.files[0]);
-
-      console.log("file input select fileAsTxt ->", fileAsTxt);
-
-      getSummarizationQuote(
-        [fileAsTxt],
-        (
-          quote: number,
-          files: {
-            key: string;
-            originalName: string;
-          }[]
-        ) => {
-          setQuoteForFiles({ quote, files });
-          infoToast(
-            `${t("dashboard-page:summarize.received-quote")} ($${quote})`
-          );
-        }
-      );
+      const paymentMethodsRequest = getAccountPaymentMethodsFactory();
+      const paymentMethodsResponse = await paymentMethodsRequest;
+      console.log("paymentMethodsResponse", paymentMethodsResponse);
+      if (
+        (isNumber(get(paymentMethodsResponse, "data.summaryCredits")) &&
+          get(paymentMethodsResponse, "data.summaryCredits") > 0) ||
+        get(paymentMethodsResponse, "data.stripeDefaultSource")
+      ) {
+        // account has a payment method (either credits or stripe default source)
+        // at least one file has been selected so do something
+        setFileList(e.target.files);
+        const fileAsTxt: File = await convertFileToTxtFile(e.target.files[0]);
+        getSummarizationQuote(
+          [fileAsTxt],
+          (
+            quote: number,
+            files: {
+              key: string;
+              originalName: string;
+            }[]
+          ) => {
+            setQuoteForFiles({ quote, files });
+            infoToast(
+              `${t("dashboard-page:summarize.received-quote")} (${quote})`
+            );
+          }
+        );
+      } else {
+        // show Payment Required Modal
+        console.log("PAYMENT REQUIRED");
+        setShowPaymentMethodRequiredModal(true);
+      }
     }
   };
 
@@ -181,7 +208,7 @@ export function SummarizeFileForm(props: Props) {
               className="inline-flex items-center gap-x-2 rounded-md bg-blue-600 m-1 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
             >
               {t("dashboard-page:summarize.summarize")}{" "}
-              {quoteForFiles?.quote && `($${quoteForFiles?.quote})`}
+              {quoteForFiles?.quote && `(${quoteForFiles?.quote})`}
               <ArrowUpOnSquareIcon
                 className="-mr-0.5 h-5 w-5"
                 aria-hidden="true"

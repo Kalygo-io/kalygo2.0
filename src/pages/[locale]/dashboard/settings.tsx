@@ -1,21 +1,13 @@
 "use client";
 
 import Head from "next/head";
-
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
-import ContractList from "@/components/browseContractsComponents/contractList";
-
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
-
 import { UserCircleIcon } from "@heroicons/react/24/outline";
-
-// import Link from "next/link";
-import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Personal } from "@/components/accountSettingsComponents/personal";
 // import ChangePassword from "@/components/accountSettingsComponents/resetPassword";
 // import DeleteAccount from "@/components/accountSettingsComponents/deleteAccount";
@@ -29,6 +21,7 @@ import { ChangePassword } from "@/components/accountSettingsComponents/changePas
 import { Divider } from "@/components/shared/Divider";
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
 import { FreeCredits } from "@/components/accountSettingsComponents/freeCredits";
+import get from "lodash.get";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -45,6 +38,8 @@ export { getStaticPaths, getStaticProps };
 export default function Settings() {
   const { state, dispatch } = useAppContext();
   const { t } = useTranslation();
+  const router = useRouter();
+  const { asPath } = router;
 
   const [account, setAccount] = useState<{
     val: {
@@ -64,6 +59,22 @@ export default function Settings() {
     err: null,
   });
 
+  useEffect(() => {
+    if (account.val) {
+      const hash = asPath?.split("#")[1];
+      const dashboardStickyTopNavEl = document.getElementById(
+        "dashboard-sticky-top-nav"
+      );
+      const paymentSectionEl = document.getElementById(hash);
+      paymentSectionEl &&
+        window.scrollTo(
+          paymentSectionEl.offsetLeft,
+          paymentSectionEl.offsetTop -
+            get(dashboardStickyTopNavEl, "clientHeight", 0)
+        );
+    }
+  }, [asPath, account.val]);
+
   async function fetch() {
     getAccount(t, (val: any, err: any) => {
       if (err) {
@@ -80,8 +91,6 @@ export default function Settings() {
         });
       }
     });
-
-    console.log("account details", account);
   }
 
   useEffect(() => {
@@ -108,6 +117,7 @@ export default function Settings() {
         />
         <Divider />
         <Payment
+          id="payment-section"
           cb={() => {
             fetch();
           }}

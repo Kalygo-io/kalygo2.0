@@ -1,6 +1,7 @@
 // import { Footer } from "@/components/shared/footer";
 import { Footer } from "@/components/shared/footerV2";
 import { Navbar } from "@/components/shared/navbar";
+import { NavbarCenteredLogo } from "@/components/shared/navbarCenteredLogo";
 import { ReactNode } from "react";
 
 interface P {
@@ -10,7 +11,8 @@ interface P {
 export default function Layout1({ children }: P) {
   return (
     <>
-      <Navbar />
+      <NavbarCenteredLogo />
+      {/* <Navbar /> */}
       <main>{children}</main>
       <Footer />
     </>
