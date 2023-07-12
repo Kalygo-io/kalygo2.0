@@ -1,12 +1,16 @@
 import { useTranslation } from "next-i18next";
 
 interface P {
-  account: { summaryCredits: number; vectorSearchCredits: number };
+  account: {
+    summaryCredits: number;
+    vectorSearchCredits: number;
+    customRequestCredits: number;
+  };
 }
 
 export function FreeCredits(p: P) {
   const {
-    account: { summaryCredits, vectorSearchCredits },
+    account: { summaryCredits, vectorSearchCredits, customRequestCredits },
   } = p;
   const { t } = useTranslation();
 
@@ -26,6 +30,14 @@ export function FreeCredits(p: P) {
           ? t("dashboard-page:settings.free-credits.vector-search")
           : t("dashboard-page:settings.free-credits.vector-searches"),
       value: vectorSearchCredits,
+    },
+    {
+      id: 3,
+      name:
+        customRequestCredits === 1
+          ? t("dashboard-page:settings.free-credits.custom-request-credit")
+          : t("dashboard-page:settings.free-credits.custom-request-credits"),
+      value: customRequestCredits,
     },
   ];
 

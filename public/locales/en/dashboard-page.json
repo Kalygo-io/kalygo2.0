@@ -128,7 +128,9 @@
       "summaries": "Summaries",
       "summary": "Summary",
       "vector-searches": "Smart searches",
-      "vector-search": "Smart search"
+      "vector-search": "Smart search",
+      "custom-request-credit": "Custom Request",
+      "custom-request-credits": "Custom Requests"
     },
     "personal": {
       "title": "Personal",

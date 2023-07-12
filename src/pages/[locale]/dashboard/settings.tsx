@@ -50,6 +50,7 @@ export default function Settings() {
       subscriptions: any[];
       summaryCredits: number;
       vectorSearchCredits: number;
+      customRequestCredits: number;
     } | null;
     loading: boolean;
     err: any;
