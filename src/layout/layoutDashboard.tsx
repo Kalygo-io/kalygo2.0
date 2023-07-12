@@ -348,7 +348,7 @@ export default function LayoutDashboard({ children, account }: P) {
 
                 {/* Separator */}
                 <div
-                  className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10 ml-2 mr-2"
+                  className="block h-6 w-px bg-gray-900/10 ml-2 mr-2"
                   aria-hidden="true"
                 />
 

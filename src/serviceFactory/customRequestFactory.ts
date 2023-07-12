@@ -14,7 +14,7 @@ export async function customRequestFactory(prompt: string, fileList: File[]) {
       formData.append("documents", fileList[i]);
     }
 
-    formData.set("prompt", prompt);
+    formData.set("customPrompt", prompt);
 
     // console.log("formData", formData);
     // console.log("formData", formData.get("documents"));

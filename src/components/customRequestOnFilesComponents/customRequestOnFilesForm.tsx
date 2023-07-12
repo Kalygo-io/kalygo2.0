@@ -64,6 +64,10 @@ export function CustomRequestOnFilesForm(props: Props) {
       );
       const customRequestResponse = await customRequest;
       console.log("customRequestResponse", customRequestResponse);
+
+      const detectedLng = navigatorLangDetector();
+      router.push(`/${detectedLng}/dashboard/queue`);
+      infoToast(t("toast-messages:custom-request-is-processing"));
     } catch (e: any) {
       errorToast(e.toString());
     }
