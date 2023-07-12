@@ -105,7 +105,7 @@ export function CustomRequestOnFilesForm(props: Props) {
       // at least one file has been dropped so do something
       const paymentMethodsRequest = getAccountPaymentMethodsFactory();
       const paymentMethodsResponse = await paymentMethodsRequest;
-      console.log("paymentMethodsResponse", paymentMethodsResponse);
+      console.log("*** paymentMethodsResponse ***", paymentMethodsResponse);
       if (
         (isNumber(get(paymentMethodsResponse, "data.customRequestCredits")) &&
           get(paymentMethodsResponse, "data.customRequestCredits") > 0) ||

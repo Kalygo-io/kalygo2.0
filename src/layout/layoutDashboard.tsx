@@ -93,7 +93,9 @@ export default function LayoutDashboard({ children, account }: P) {
   const totalCredits = account ? (
     <>
       <span className="text-sm text-gray-700">
-        {account.vectorSearchCredits + account.summaryCredits}{" "}
+        {account.vectorSearchCredits +
+          account.summaryCredits +
+          account.customRequestCredits}{" "}
         {account.vectorSearchCredits + account.summaryCredits === 1
           ? "credit"
           : "credits"}
