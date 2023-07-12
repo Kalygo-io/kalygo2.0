@@ -202,6 +202,7 @@ export function CustomRequestOnFilesForm(props: Props) {
               </label>
               <div className="mt-2">
                 <textarea
+                  tabIndex={0}
                   {...register("prompt", {
                     required: true,
                   })}
@@ -261,6 +262,7 @@ export function CustomRequestOnFilesForm(props: Props) {
                         {t("dashboard-page:custom-request.select-files")}
                       </span>
                       <input
+                        tabIndex={1}
                         {...register("files-to-upload", {
                           required: true,
                         })}
@@ -291,7 +293,10 @@ export function CustomRequestOnFilesForm(props: Props) {
             )}
 
             <div>
-              <button className="mt-2 flex w-full justify-center rounded-md bg-orange-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+              <button
+                tabIndex={2}
+                className="mt-2 flex w-full justify-center rounded-md bg-orange-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+              >
                 {t("dashboard-page:custom-request.run")!}
               </button>
             </div>

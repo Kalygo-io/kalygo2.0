@@ -50,8 +50,18 @@ export default function CustomRequest(p: P) {
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
               {customRequest?.completionResponse.map((i: any, idx: any) => {
                 return (
-                  <div key={idx}>
-                    <p>{i}</p>
+                  <div key={i.file}>
+                    <b>{i.file}</b>
+
+                    <ul>
+                      {i?.response?.map((i: any, idx: any) => {
+                        return (
+                          <li className="mt-2" key={i.part}>
+                            (Part {i.part + 1}) {i.completionResponse}
+                          </li>
+                        );
+                      })}
+                    </ul>
                     <br />
                   </div>
                 );

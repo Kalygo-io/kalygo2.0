@@ -44,7 +44,7 @@ export const CustomRequest = (props: {
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
               <ul>
                 {job?.data?.params?.files.map((f: any) => {
-                  return <li>{f.originalname}</li>;
+                  return <li key={f.originalname}>{f.originalname}</li>;
                 })}
               </ul>
             </dd>
