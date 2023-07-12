@@ -3,6 +3,7 @@ import { Divider } from "@/components/shared/Divider";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { SummaryJob } from "./jsxForJobType/summary";
+import { CustomRequest } from "./jsxForJobType/customRequest";
 import { VectorSearch } from "./jsxForJobType/vectorSearch";
 
 interface P {
@@ -22,7 +23,7 @@ export const JobList = (p: P) => {
 
   return (
     <div className="relative mx-4 sm:mx-6 lg:mx-8">
-      {jobs.length === 0 && t("dashboard-page:queue.no-jobs-found")}
+      {jobs.length === 0 && t("dashboard-page:queue.nothing-found")}
       {jobs.map((i, idx) => {
         console.log("i", i?.data?.jobType);
 
@@ -41,6 +42,16 @@ export const JobList = (p: P) => {
           case "VectorSearch":
             jobTypeJsx = (
               <VectorSearch
+                job={i}
+                router={router}
+                triggerFetch={triggerFetch}
+                fetchCounter={fetchCounter}
+              />
+            );
+            break;
+          case "CustomRequest":
+            jobTypeJsx = (
+              <CustomRequest
                 job={i}
                 router={router}
                 triggerFetch={triggerFetch}
