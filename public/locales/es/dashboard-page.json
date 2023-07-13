@@ -12,7 +12,9 @@
   },
   "user-nav": {
     "settings": "Ajustes",
-    "sign-out": "desconectar"
+    "sign-out": "Desconectar",
+    "credit": "Crédito",
+    "credits": "Creditos"
   },
   "index": {
     "title": "Panel",

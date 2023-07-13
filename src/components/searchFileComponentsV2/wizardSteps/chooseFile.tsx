@@ -80,24 +80,8 @@ export function ChooseFile(props: Props) {
       )
     ) {
       // at least one file has been dropped so do something
-
-      const paymentMethodsRequest = getAccountPaymentMethodsFactory();
-      const paymentMethodsResponse = await paymentMethodsRequest;
-      console.log("paymentMethodsResponse", paymentMethodsResponse);
-
-      if (
-        (isNumber(get(paymentMethodsResponse, "data.vectorSearchCredits")) &&
-          get(paymentMethodsResponse, "data.vectorSearchCredits") > 0) ||
-        get(paymentMethodsResponse, "data.stripeDefaultSource")
-      ) {
-        // account has a payment method (either credits or stripe default source)
-        setFile(e.dataTransfer.files[0] || null);
-        setStep(2);
-      } else {
-        // show Payment Required Modal
-        console.log("PAYMENT REQUIRED");
-        setShowPaymentMethodRequiredModal(true);
-      }
+      setFile(e.dataTransfer.files[0] || null);
+      setStep(2);
     }
   };
 
@@ -147,21 +131,29 @@ export function ChooseFile(props: Props) {
                 aria-hidden="true"
               />
 
-              <div className="mt-4 flex items-center justify-center text-sm leading-6 text-gray-600">
+              <div className="mb-2 mt-2 flex items-center justify-center text-sm leading-6 text-gray-600">
                 <label
                   htmlFor="input-file-upload"
                   className="relative cursor-pointer rounded-md font-semibold text-blue-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-2 hover:text-blue-500"
                 >
-                  <span>{t("dashboard-page:summarize.upload-a-file")}</span>
-                  <input
-                    ref={inputRef}
-                    type="file"
-                    id="input-file-upload"
-                    multiple={true}
-                    onChange={handleChange}
-                    accept=".pdf,.txt"
-                    className="sr-only"
-                  />
+                  <button
+                    type="button"
+                    className="rounded bg-blue-600 px-2 py-2 text-xs font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                    onClick={() => {
+                      inputRef.current?.click();
+                    }}
+                  >
+                    {t("dashboard-page:summarize.upload-a-file")}
+                    <input
+                      ref={inputRef}
+                      type="file"
+                      id="input-file-upload"
+                      multiple={true}
+                      onChange={handleChange}
+                      accept=".pdf,.txt"
+                      className="sr-only"
+                    />
+                  </button>
                 </label>
               </div>
               {dragActive && (

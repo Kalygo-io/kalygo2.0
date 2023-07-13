@@ -97,8 +97,8 @@ export default function LayoutDashboard({ children, account }: P) {
           account.summaryCredits +
           account.customRequestCredits}{" "}
         {account.vectorSearchCredits + account.summaryCredits === 1
-          ? "credit"
-          : "credits"}
+          ? t("dashboard-page:user-nav.credit")
+          : t("dashboard-page:user-nav.credits")}
       </span>
       <CircleStackIcon
         className="text-black h-6 w-6"

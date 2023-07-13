@@ -13,7 +13,9 @@
   },
   "user-nav": {
     "settings": "Settings",
-    "sign-out": "Sign out"
+    "sign-out": "Sign out",
+    "credit": "Credit",
+    "credits": "Credits"
   },
   "index": {
     "title": "Dashboard",

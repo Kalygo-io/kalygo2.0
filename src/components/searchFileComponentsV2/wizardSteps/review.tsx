@@ -22,6 +22,8 @@ import { fileURLToPath } from "url";
 import { similaritySearchWithQueue } from "@/services/similaritySearchWithQueue";
 import { navigatorLangDetector } from "@/lib/languageDetector";
 import { useRouter } from "next/router";
+import isNumber from "lodash.isnumber";
+import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
 
 const options = {
   cMapUrl: "cmaps/",
@@ -33,10 +35,11 @@ const options = {
 interface Props {
   file: File | null;
   wizardStepsRef: RefObject<HTMLElement>;
+  setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
 }
 
 export function Review(props: Props) {
-  const { file, wizardStepsRef } = props;
+  const { file, wizardStepsRef, setShowPaymentMethodRequiredModal } = props;
 
   const [numPages, setNumPages] = useState<number>();
   const router = useRouter();
@@ -66,82 +69,95 @@ export function Review(props: Props) {
       console.log("onSubmit", data);
       console.log("file", file);
 
-      setSearchState({
-        val: null,
-        loading: true,
-        err: null,
-      });
+      const paymentMethodsRequest = getAccountPaymentMethodsFactory();
+      const paymentMethodsResponse = await paymentMethodsRequest;
+      console.log("paymentMethodsResponse", paymentMethodsResponse);
+      if (
+        (isNumber(get(paymentMethodsResponse, "data.vectorSearchCredits")) &&
+          get(paymentMethodsResponse, "data.vectorSearchCredits") > 0) ||
+        get(paymentMethodsResponse, "data.stripeDefaultSource")
+      ) {
+        setSearchState({
+          val: null,
+          loading: true,
+          err: null,
+        });
 
-      if (file && file.type === "application/pdf") {
-        const reader = new FileReader();
-        reader.addEventListener("loadend", async () => {
-          const loadingTask = pdfjs.getDocument(reader.result as ArrayBuffer);
+        if (file && file.type === "application/pdf") {
+          const reader = new FileReader();
+          reader.addEventListener("loadend", async () => {
+            const loadingTask = pdfjs.getDocument(reader.result as ArrayBuffer);
 
-          loadingTask.promise.then(async function (pdf) {
-            // you can now use *pdf* here
-            const maxPages = pdf.numPages;
-            var countPromises = []; // collecting all page promises
-            for (var j = 1; j <= maxPages; j++) {
-              var page = pdf.getPage(j);
+            loadingTask.promise.then(async function (pdf) {
+              // you can now use *pdf* here
+              const maxPages = pdf.numPages;
+              var countPromises = []; // collecting all page promises
+              for (var j = 1; j <= maxPages; j++) {
+                var page = pdf.getPage(j);
 
-              countPromises.push(
-                page.then(function (page) {
-                  // add page promise
-                  var textContent = page.getTextContent();
-                  return textContent.then(function (text) {
-                    // return content promise
-                    return text.items
-                      .map(function (s: any) {
-                        return s.str;
-                      })
-                      .join(""); // value page text
-                  });
-                })
-              );
-            }
-
-            const finalText = await Promise.all(countPromises).then(function (
-              texts
-            ) {
-              return texts.join("");
-            });
-
-            var blob = new Blob([finalText], { type: "text/plain" });
-            var pdf2txtFile = new File([blob], `${file.name}.txt`, {
-              type: "text/plain",
-            });
-
-            similaritySearchWithQueue(data.query, pdf2txtFile, (err: any) => {
-              if (err) {
-                setSearchState({
-                  val: null,
-                  loading: false,
-                  err: err,
-                });
-              } else {
-                const detectedLng = navigatorLangDetector();
-                router.push(`/${detectedLng}/dashboard/queue`);
-                infoToast(t("toast-messages:vector-search-is-processing"));
+                countPromises.push(
+                  page.then(function (page) {
+                    // add page promise
+                    var textContent = page.getTextContent();
+                    return textContent.then(function (text) {
+                      // return content promise
+                      return text.items
+                        .map(function (s: any) {
+                          return s.str;
+                        })
+                        .join(""); // value page text
+                    });
+                  })
+                );
               }
+
+              const finalText = await Promise.all(countPromises).then(function (
+                texts
+              ) {
+                return texts.join("");
+              });
+
+              var blob = new Blob([finalText], { type: "text/plain" });
+              var pdf2txtFile = new File([blob], `${file.name}.txt`, {
+                type: "text/plain",
+              });
+
+              similaritySearchWithQueue(data.query, pdf2txtFile, (err: any) => {
+                if (err) {
+                  setSearchState({
+                    val: null,
+                    loading: false,
+                    err: err,
+                  });
+                } else {
+                  const detectedLng = navigatorLangDetector();
+                  router.push(`/${detectedLng}/dashboard/queue`);
+                  infoToast(t("toast-messages:vector-search-is-processing"));
+                }
+              });
             });
           });
-        });
 
-        reader.readAsDataURL(file as Blob);
+          reader.readAsDataURL(file as Blob);
+        } else {
+          similaritySearchWithQueue(data.query, file!, (err: any) => {
+            if (err) {
+              setSearchState({
+                val: null,
+                loading: false,
+                err: err,
+              });
+            } else {
+              const detectedLng = navigatorLangDetector();
+              router.push(`/${detectedLng}/dashboard/queue`);
+              infoToast(t("toast-messages:vector-search-is-processing"));
+            }
+          });
+        }
       } else {
-        similaritySearchWithQueue(data.query, file!, (err: any) => {
-          if (err) {
-            setSearchState({
-              val: null,
-              loading: false,
-              err: err,
-            });
-          } else {
-            const detectedLng = navigatorLangDetector();
-            router.push(`/${detectedLng}/dashboard/queue`);
-            infoToast(t("toast-messages:vector-search-is-processing"));
-          }
-        });
+        // show Payment Required Modal
+        console.log("PAYMENT REQUIRED");
+        setShowPaymentMethodRequiredModal(true);
       }
     } catch (e) {
       setSearchState({

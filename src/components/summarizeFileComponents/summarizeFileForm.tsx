@@ -18,6 +18,7 @@ import { convertFileToTxtFile } from "./convertFileToTxtFile";
 import { navigatorLangDetector } from "@/lib/languageDetector";
 import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
 import get from "lodash.get";
+import cloneDeep from "lodash.clonedeep";
 import isNumber from "lodash.isnumber";
 
 interface Props {
@@ -29,7 +30,7 @@ export function SummarizeFileForm(props: Props) {
   const { onError, setShowPaymentMethodRequiredModal } = props;
 
   const [dragActive, setDragActive] = useState(false);
-  const [fileList, setFileList] = useState<FileList | null>();
+  const [fileList, setFileList] = useState<FileList | File[] | null>();
   const [quoteForFiles, setQuoteForFiles] = useState<{
     quote: number;
     files: { key: string; originalName: string }[];
@@ -62,7 +63,7 @@ export function SummarizeFileForm(props: Props) {
   // triggers when file is dropped
   const handleDrop = async function (e: any) {
     e.preventDefault();
-    e.stopPropagation();
+    // e.stopPropagation();
     setDragActive(false);
     if (
       e.dataTransfer.files &&
@@ -72,19 +73,23 @@ export function SummarizeFileForm(props: Props) {
       )
     ) {
       // at least one file has been dropped so do something
+      const fileAsTxt: File = await convertFileToTxtFile(
+        e.dataTransfer.files[0]
+      );
+
       const paymentMethodsRequest = getAccountPaymentMethodsFactory();
       const paymentMethodsResponse = await paymentMethodsRequest;
       console.log("paymentMethodsResponse", paymentMethodsResponse);
+
       if (
         (isNumber(get(paymentMethodsResponse, "data.summaryCredits")) &&
           get(paymentMethodsResponse, "data.summaryCredits") > 0) ||
         get(paymentMethodsResponse, "data.stripeDefaultSource")
       ) {
         // account has a payment method (either credits or stripe default source)
-        setFileList(e.dataTransfer.files);
-        const fileAsTxt: File = await convertFileToTxtFile(
-          e.dataTransfer.files[0]
-        );
+        // setFileList(e.dataTransfer.files);
+        setFileList([fileAsTxt]);
+
         getSummarizationQuote(
           [fileAsTxt],
           (
@@ -229,21 +234,29 @@ export function SummarizeFileForm(props: Props) {
                     aria-hidden="true"
                   />
 
-                  <div className="mt-4 flex items-center justify-center text-sm leading-6 text-gray-600">
+                  <div className="mb-2 mt-2 flex items-center justify-center text-sm leading-6 text-gray-600">
                     <label
                       htmlFor="input-file-upload"
                       className="relative cursor-pointer rounded-md font-semibold text-blue-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-2 hover:text-blue-500"
                     >
-                      <span>{t("dashboard-page:summarize.upload-a-file")}</span>
-                      <input
-                        ref={inputRef}
-                        type="file"
-                        id="input-file-upload"
-                        multiple={true}
-                        onChange={handleChange}
-                        accept=".pdf,.txt"
-                        className="sr-only"
-                      />
+                      <button
+                        type="button"
+                        className="rounded bg-blue-600 px-2 py-2 text-xs font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                        onClick={() => {
+                          inputRef.current?.click();
+                        }}
+                      >
+                        {t("dashboard-page:summarize.upload-a-file")}
+                        <input
+                          ref={inputRef}
+                          type="file"
+                          id="input-file-upload"
+                          multiple={true}
+                          onChange={handleChange}
+                          accept=".pdf,.txt"
+                          className="sr-only"
+                        />
+                      </button>
                     </label>
                   </div>
                   {dragActive && (

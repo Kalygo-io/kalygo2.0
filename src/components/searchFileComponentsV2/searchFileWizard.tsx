@@ -50,7 +50,13 @@ export function SearchFileWizard(props: Props) {
       );
       break;
     case 2:
-      jsx = <Review file={file} wizardStepsRef={wizardStepsRef} />;
+      jsx = (
+        <Review
+          file={file}
+          wizardStepsRef={wizardStepsRef}
+          setShowPaymentMethodRequiredModal={setShowPaymentMethodRequiredModal}
+        />
+      );
       break;
     default:
       jsx = <ErrorInDashboard />;
