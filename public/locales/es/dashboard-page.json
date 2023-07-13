@@ -8,7 +8,8 @@
     "templates": "Indicaciones",
     "settings": "Ajustes",
     "vector-search": "Búsqueda de vectores",
-    "queue": "Cola"
+    "queue": "Cola",
+    "custom-request": "Solicitud personalizada"
   },
   "user-nav": {
     "settings": "Ajustes",
