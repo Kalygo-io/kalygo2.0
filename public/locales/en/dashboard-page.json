@@ -9,6 +9,7 @@
     "settings": "Settings",
     "vector-search": "Smart Search",
     "queue": "My Documents",
+    "saas-stats": "SaaS Stats",
     "custom-request": "Custom Request"
   },
   "user-nav": {
@@ -123,6 +124,9 @@
     "original-length": "Original Length",
     "condensed-length": "Condensed Length",
     "content": "Content"
+  },
+  "saas-stats": {
+    "title": "SaaS Stats"
   },
   "settings": {
     "free-credits": {

@@ -1,8 +1,9 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { Fragment, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
+import axios from "axios";
 import Image from "next/image";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
 import { useRouter } from "next/router";
@@ -39,6 +40,20 @@ export default function LayoutDashboard({ children, account }: P) {
   const { t } = useTranslation();
   const { pathname, query } = router;
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [ isAdmin, setIsAdmin ] = useState(false);
+
+  useEffect(() => {
+    const checkAdmin = async () => {
+        try {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/check-admin`, { withCredentials: true });
+            setIsAdmin(response.data.isAdmin);
+        }
+        catch (err) {
+            //
+        }
+    }
+    checkAdmin();
+}, []);
 
   const segments = pathname.split("/");
   const current = segments[segments.length - 1];
@@ -72,6 +87,16 @@ export default function LayoutDashboard({ children, account }: P) {
       href: "/dashboard/queue",
       icon: QueueListIcon,
     },
+    ...(isAdmin
+      ? [
+          {
+            name: t("dashboard-page:navigation.saas-stats"),
+            href: "/dashboard/saas-stats",
+            icon: CircleStackIcon, // chartBar
+          },
+        ]
+      : []),
+    // { name: "A.I.", href: "/dashboard/ai", icon: LifebuoyIcon },
   ];
 
   const userNavigation = [
@@ -413,3 +438,4 @@ export default function LayoutDashboard({ children, account }: P) {
     </>
   );
 }
+
