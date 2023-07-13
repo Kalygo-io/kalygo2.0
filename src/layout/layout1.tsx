@@ -6,12 +6,13 @@ import { ReactNode } from "react";
 
 interface P {
   children: ReactNode;
+  disableStickyTopNav?: boolean;
 }
 
-export default function Layout1({ children }: P) {
+export default function Layout1({ children, disableStickyTopNav }: P) {
   return (
     <>
-      <NavbarCenteredLogo />
+      <NavbarCenteredLogo disableStickyTopNav={disableStickyTopNav} />
       {/* <Navbar /> */}
       <main>{children}</main>
       <Footer />

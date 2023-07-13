@@ -17,7 +17,8 @@ import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 // import Link from "next/link";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
 import { navigatorLangDetector } from "@/lib/languageDetector";
-import Layout1a from "@/layout/layout1a";
+
+// import Layout1a from "@/layout/layout1a";
 // import languageDetector from "@/lib/languageDetector";
 
 const getStaticProps = makeStaticProps([
@@ -90,7 +91,7 @@ export default function Feedback() {
           content={t("seo:feedback-page-seo-meta-description")!}
         />
       </Head>
-      <Layout1a>
+      <Layout1 disableStickyTopNav>
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="mt-20 sm:mx-auto sm:w-full sm:max-w-sm">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -116,11 +117,7 @@ export default function Feedback() {
               </div>
 
               <div>
-                <button
-                  // type="submit"
-                  // onClick={() => onSubmit(getValues())}
-                  className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                >
+                <button className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
                   {t("feedback-page:send")}
                 </button>
               </div>
@@ -136,7 +133,7 @@ export default function Feedback() {
             </p>
           </div>
         </div>
-      </Layout1a>
+      </Layout1>
     </>
   );
 }

@@ -1,0 +1,156 @@
+{
+  "dashboard": "Painel",
+  "welcome-to-kalygo": "Bem-vindo",
+  "protected": "Protegido",
+  "navigation": {
+    "overview": "Visão geral",
+    "summarize": "Resumir",
+    "templates": "Comandos",
+    "settings": "Configurações",
+    "vector-search": "Pesquisa de vetores",
+    "queue": "Fila"
+  },
+  "user-nav": {
+    "settings": "Configurações",
+    "sign-out": "sair"
+  },
+  "index": {
+    "title": "Painel",
+    "no-documents-yet": "Ainda sem Documentos!",
+    "credits": {
+      "free-summarization-credits": "Créditos de resumo grátis",
+      "try-free-summarization-credits": "Tente resumir",
+      "free-vector-search-credits": "Créditos de pesquisa de vetores gratuitos",
+      "try-vector-search-credits": "Experimente a pesquisa vetorial",
+      "credit-card-charges": "Cobranças",
+      "more-info": "Mais informações"
+    },
+    "summaries": {
+      "title": "Resumos",
+      "subtitle": "Uma visão geral dos seus resumos",
+      "view-all": "Ver tudo",
+      "table": {
+        "id": "Eu ia",
+        "filename": "Nome do arquivo",
+        "processed-length": "Comprimento Processado",
+        "date": "Data",
+        "edit": "Editar",
+        "view": "Visualizar"
+      }
+    },
+    "vector-searches": {
+      "title": "Pesquisas de vetores",
+      "subtitle": "Uma visão geral de suas pesquisas",
+      "view-all": "Ver tudo",
+      "table": {
+        "id": "Eu ia",
+        "filename": "Nome do arquivo",
+        "processed-length": "Comprimento Processado",
+        "date": "Data",
+        "edit": "Editar",
+        "view": "Visualizar"
+      }
+    }
+  },
+  "summarize": {
+    "upload-a-file": "Selecione o arquivo",
+    "upload-limits": "Arquivos TXT e PDF de até 1 MB",
+    "clear": "Claro",
+    "summarize": "Resumir",
+    "received-quote": "Cotação recebida",
+    "summary-success": {
+      "original-length": "Comprimento Original",
+      "condensed-length": "Comprimento condensado",
+      "summary": "Resumo",
+      "no-content": "sem conteúdo"
+    }
+  },
+  "perform-vector-search": {
+    "choose-file": "Escolher arquivo",
+    "review": "Análise"
+  },
+  "vector-search": {
+    "title": "Pesquisa de vetores",
+    "requested": "Requeridos",
+    "time-requested-unknown": "A hora em que a busca do vetor foi solicitada é desconhecida",
+    "filename": "Nome do arquivo",
+    "original-file": "arquivo original",
+    "download": "Download",
+    "query": "Consulta",
+    "matched-chunk": "Pedaço correspondente"
+  },
+  "queue": {
+    "title": "Fila",
+    "no-jobs-found": "Nenhum trabalho encontrado na fila",
+    "job-status": "Status de trabalho",
+    "file-name": "Nome do arquivo",
+    "requested-at": "Solicitado em",
+    "remove": "Remover",
+    "view": "Visualizar",
+    "job-type": "Tipo",
+    "vector-search": {
+      "query": "Consulta"
+    }
+  },
+  "summary": {
+    "title": "Resumo",
+    "requested": "Requeridos",
+    "time-requested-unknown": "A hora em que o resumo foi solicitado é desconhecida",
+    "filename": "Nome do arquivo",
+    "original-length": "Comprimento original",
+    "condensed-length": "Comprimento condensado",
+    "content": "Contente"
+  },
+  "settings": {
+    "free-credits": {
+      "title": "créditos grátis",
+      "summaries": "Resumos",
+      "summary": "Resumo",
+      "vector-searches": "Pesquisas de vetores",
+      "vector-search": "Pesquisa de vetores"
+    },
+    "personal": {
+      "title": "Pessoal",
+      "first-name": "Primeiro nome",
+      "last-name": "Sobrenome",
+      "email": "E-mail",
+      "save": "Salvar"
+    },
+    "payment": {
+      "title": "Pagamento",
+      "no-card": "Nenhum cartão",
+      "get-started": "Comece salvando seu cartão com o Stripe",
+      "new-card": "Novo cartão",
+      "delete-card": "Excluir",
+      "new-card-modal": {
+        "card-details": "Detalhes do cartão",
+        "card-number": "Número do cartão",
+        "expiration-date": "Data de validade",
+        "cvv": "CVV/CVC",
+        "security-code": "Código de segurança",
+        "save": "Salvar",
+        "cancel": "Cancelar"
+      }
+    },
+    "subscription": {
+      "title": "Inscrição",
+      "change": "Mudar",
+      "switch-plan": "Mudar de plano",
+      "cancel": "Cancelar",
+      "you-are-currently-on": "Você está atualmente em:"
+    },
+    "delete-account": {
+      "title": "Deletar conta",
+      "you-can-mark-your-account": "Você pode marcar sua conta para exclusão aqui.",
+      "delete-my-account": "Deletar minha conta",
+      "delete-account-modal": {
+        "are-you-sure": "Tem certeza de que deseja excluir sua conta?",
+        "cancel": "Cancelar",
+        "delete": "Excluir"
+      }
+    },
+    "error": "Ocorreu um erro ao carregar as configurações"
+  },
+  "unknown-error": "Erro desconhecido",
+  "coming-soon": "Em breve!"
+}
