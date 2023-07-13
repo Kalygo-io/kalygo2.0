@@ -63,7 +63,7 @@ export function Footer() {
 
   return (
     <footer className="bg-white">
-      <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
+      <div className="mx-auto max-w-7xl overflow-hidden px-6 py-16 sm:py-16 lg:px-8">
         <nav
           className="-mb-6 flex justify-center flex-col items-center sm:flex-row sm:flex sm:justify-center sm:space-x-12"
           aria-label="Footer"
