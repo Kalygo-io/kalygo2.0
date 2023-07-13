@@ -19,6 +19,7 @@ import {
   DocumentMagnifyingGlassIcon,
   QueueListIcon,
   CircleStackIcon,
+  BeakerIcon,
 } from "@heroicons/react/24/outline";
 
 import { signOut } from "@/services/signOut";
@@ -61,6 +62,12 @@ export default function LayoutDashboard({ children, account }: P) {
       icon: DocumentMagnifyingGlassIcon,
     },
     {
+      name: t("dashboard-page:navigation.custom-request"),
+      href: "/dashboard/custom-request",
+      // href: "/dashboard/vector-search",
+      icon: BeakerIcon,
+    },
+    {
       name: t("dashboard-page:navigation.queue"),
       href: "/dashboard/queue",
       icon: QueueListIcon,
@@ -83,12 +90,12 @@ export default function LayoutDashboard({ children, account }: P) {
     },
   ];
 
-  // debugger;
-
   const totalCredits = account ? (
     <>
       <span className="text-sm text-gray-700">
-        {account.vectorSearchCredits + account.summaryCredits}{" "}
+        {account.vectorSearchCredits +
+          account.summaryCredits +
+          account.customRequestCredits}{" "}
         {account.vectorSearchCredits + account.summaryCredits === 1
           ? "credit"
           : "credits"}
@@ -101,9 +108,6 @@ export default function LayoutDashboard({ children, account }: P) {
   ) : (
     <></>
   );
-
-  console.log("* CHAVEZ * account * CHAVEZ *", account);
-  console.log("totalCredits", totalCredits);
 
   return (
     <>
@@ -346,7 +350,7 @@ export default function LayoutDashboard({ children, account }: P) {
 
                 {/* Separator */}
                 <div
-                  className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10 ml-2 mr-2"
+                  className="block h-6 w-px bg-gray-900/10 ml-2 mr-2"
                   aria-hidden="true"
                 />
 

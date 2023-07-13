@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { JobList } from "@/components/queueComponents/jobList";
-import { viewSummaryQueue } from "@/services/viewSummaryQueue";
+import { viewQueue } from "@/services/viewQueue";
 import get from "lodash.get";
 
 const getStaticProps = makeStaticProps([
@@ -45,7 +45,7 @@ export default function Queue() {
   useEffect(() => {
     const interval = setInterval(async () => {
       try {
-        const resp = await viewSummaryQueue();
+        const resp = await viewQueue();
         const activeJobs = get(resp, "data.activeJobs", []);
         setJobs({
           val: activeJobs,
@@ -64,11 +64,11 @@ export default function Queue() {
   }, []);
 
   useEffect(() => {
-    console.log("useEffect viewSummaryQueue");
+    console.log("useEffect viewQueue");
 
     async function fetch() {
       try {
-        const resp = await viewSummaryQueue();
+        const resp = await viewQueue();
         const activeJobs = get(resp, "data.activeJobs", []);
         setJobs({
           val: activeJobs,

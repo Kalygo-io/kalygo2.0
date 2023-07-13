@@ -1,11 +1,11 @@
 import axios from "axios";
 import { errorToast } from "@/utility/toasts";
 
-export async function viewSummaryQueue() {
+export async function viewQueue() {
   try {
     var config = {
       method: "get",
-      url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/view-summary-queue`,
+      url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/view-queue`,
       headers: {
         "Content-Type": "application/json",
       },
@@ -20,6 +20,6 @@ export async function viewSummaryQueue() {
     return resp;
   } catch (e) {
     console.error(e);
-    errorToast("Error occurred when viewing summary queue");
+    errorToast("Error occurred when viewing queue");
   }
 }
