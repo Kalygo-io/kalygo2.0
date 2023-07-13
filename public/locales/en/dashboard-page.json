@@ -9,7 +9,8 @@
     "settings": "Settings",
     "vector-search": "Smart Search",
     "queue": "My Documents",
-    "saas-stats": "SaaS Stats"
+    "saas-stats": "SaaS Stats",
+    "custom-request": "Custom Request"
   },
   "user-nav": {
     "settings": "Settings",
@@ -55,6 +56,7 @@
   },
   "summarize": {
     "upload-a-file": "Select file",
+    "upload-files": "Select files",
     "upload-limits": "TXT & PDF files up to 1MB",
     "clear": "Clear",
     "summarize": "Summarize",
@@ -84,17 +86,32 @@
     "query": "Query",
     "matched-chunk": "Matched Chunk"
   },
+  "custom-request": {
+    "select-files": "Select files",
+    "prompt": "Prompt",
+    "prompt-placeholder-text": "Write the custom request that will be applied to your files here",
+    "run": "Run",
+    "upload-limits": "TXT & PDF files up to 1MB each",
+    "title": "Custom Request",
+    "requested": "Requested",
+    "filenames": "File names",
+    "total-completion-response": "Response"
+  },
   "queue": {
-    "title": "Queue",
-    "no-jobs-found": "No jobs found in queue",
+    "title": "My Documents",
+    "nothing-found": "Nothing found",
     "job-status": "Job status",
     "file-name": "File name",
+    "file-names": "File names",
     "requested-at": "Requested at",
     "remove": "Remove",
     "view": "View",
     "job-type": "Type",
     "vector-search": {
       "query": "Query"
+    },
+    "custom-request": {
+      "prompt": "Prompt"
     }
   },
   "summary": {
@@ -115,7 +132,9 @@
       "summaries": "Summaries",
       "summary": "Summary",
       "vector-searches": "Smart searches",
-      "vector-search": "Smart search"
+      "vector-search": "Smart search",
+      "custom-request-credit": "Custom Request",
+      "custom-request-credits": "Custom Requests"
     },
     "personal": {
       "title": "Personal",

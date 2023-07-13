@@ -102,9 +102,8 @@ export function PaymentRequiredModal(p: P) {
                           Referral Program
                         </h3>
                         <h2 className="mb-4 mt-2 text-xs text-center text-gray-500">
-                          Or share a Kalygo referral link with your friends to
-                          win usage credits when they sign up with a paid
-                          account
+                          Share a Kalygo referral link with your friends to win
+                          usage credits when they sign up with a paid account
                         </h2>
                         <div className="-mx-2 text-sm text-gray-700">
                           <div

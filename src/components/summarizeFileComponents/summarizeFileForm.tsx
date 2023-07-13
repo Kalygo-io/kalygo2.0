@@ -21,29 +21,12 @@ import get from "lodash.get";
 import isNumber from "lodash.isnumber";
 
 interface Props {
-  onSuccess: ({
-    summary,
-    fileName,
-    originalLength,
-    condensedLength,
-  }: {
-    summary: string[];
-    fileName: string;
-    originalLength: number;
-    condensedLength: number;
-  }) => void;
-  setSummaryState: (state: any) => void;
   setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
   onError: (err: any) => void;
 }
 
 export function SummarizeFileForm(props: Props) {
-  const {
-    onSuccess,
-    onError,
-    setSummaryState,
-    setShowPaymentMethodRequiredModal,
-  } = props;
+  const { onError, setShowPaymentMethodRequiredModal } = props;
 
   const [dragActive, setDragActive] = useState(false);
   const [fileList, setFileList] = useState<FileList | null>();

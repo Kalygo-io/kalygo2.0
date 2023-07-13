@@ -2,11 +2,9 @@
 
 import Head from "next/head";
 
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
-import ContractList from "@/components/browseContractsComponents/contractList";
 
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
@@ -16,9 +14,9 @@ import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang
 import { Fragment, useEffect, useState } from "react";
 import { infoToast, errorToast } from "@/utility/toasts";
 import {
-  SummarizeFileForm,
-  SummaryError,
-} from "@/components/summarizeFileComponents";
+  CustomRequestOnFilesForm,
+  CustomRequestOnFilesError,
+} from "@/components/customRequestOnFilesComponents";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { PaymentRequiredModal } from "@/components/shared/PaymentRequiredModal";
 import axios from "axios";
@@ -34,7 +32,7 @@ const getStaticProps = makeStaticProps([
 ]);
 export { getStaticPaths, getStaticProps };
 
-export default function Summarize() {
+export default function CustomRequest() {
   const { state, dispatch } = useAppContext();
   const router = useRouter();
   const { t } = useTranslation();
@@ -90,7 +88,7 @@ export default function Summarize() {
   if (summary.loading) {
     jsx = <WindowLoader></WindowLoader>;
   } else if (summary.err) {
-    jsx = <SummaryError />;
+    jsx = <CustomRequestOnFilesError />;
   } else if (showPaymentMethodRequiredModal) {
     jsx = (
       <PaymentRequiredModal
@@ -102,7 +100,7 @@ export default function Summarize() {
     );
   } else {
     jsx = (
-      <SummarizeFileForm
+      <CustomRequestOnFilesForm
         setShowPaymentMethodRequiredModal={(showModal: boolean) => {
           setShowPaymentMethodRequiredModal(showModal);
         }}
@@ -124,9 +122,20 @@ export default function Summarize() {
       <Head>
         <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
-      <LayoutDashboard account={account.val}>{jsx}</LayoutDashboard>
+      <LayoutDashboard account={account.val}>
+        <div className="p-4 sm:p-6 lg:p-8">
+          <div className="sm:flex sm:items-center">
+            <div className="sm:flex-auto">
+              <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+                {t("dashboard-page:custom-request.title")}
+              </h2>
+            </div>
+          </div>
+          {jsx}
+        </div>
+      </LayoutDashboard>
     </>
   );
 }
 
-Summarize.requireAuth = true;
+CustomRequest.requireAuth = true;
