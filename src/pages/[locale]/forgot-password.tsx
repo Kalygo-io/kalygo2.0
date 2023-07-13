@@ -117,7 +117,7 @@ export default function ForgotPassword() {
                   {...register("email", {
                     required: true,
                     pattern: new RegExp(
-                      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+                      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/
                     ),
                   })}
                   id="email"
