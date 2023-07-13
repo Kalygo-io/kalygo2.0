@@ -29,12 +29,15 @@ interface SaasStatsData {
   averageOpenAiChargesByPlan: Array<{ subscriptionPlan: string, averageAiCharges: number }>;
   totalSearches: number;
   averageSearchesPerUser: number;
+  totalCustomRequests: number;
+  averageCustomRequestsPerUser: number;
 }
 
 export default function SaasStats() {
   const { t } = useTranslation();
   const [statsData, setStatsData] = useState<SaasStatsData | null>(null);
-  const [isSummaryCredit, setIsSummaryCredit] = useState(true);
+  const [creditType, setCreditType] = useState('summary');
+  const [btnLabel, setBtnLabel] = useState('Summary Credits');
   const [email, setEmail] = useState('');
   const [amount, setAmount] = useState(0);
   const [errorMessage, setErrorMessage] = useState('');
@@ -55,6 +58,8 @@ export default function SaasStats() {
           averageOpenAiChargesByPlan,
           totalSearches,
           averageSearchesPerUser,
+          totalCustomRequests,
+          averageCustomRequestsPerUser,
         } = response.data;
         console.log("TOTAL AI:", totalOpenAiCharges);
         setStatsData({
@@ -69,6 +74,8 @@ export default function SaasStats() {
           averageOpenAiChargesByPlan,
           totalSearches,
           averageSearchesPerUser,
+          totalCustomRequests,
+          averageCustomRequestsPerUser,
         });
       } catch (err) {
         console.log(err);
@@ -77,36 +84,45 @@ export default function SaasStats() {
     fetchSaasData();
   }, []);
 
-  const allocateSummaryCredits = async () => {
-    try {
-      await axios.post(`${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/allocate-summary-credits`, 
-      {
-        email: email,
-        amount: amount
-      }, 
-      { withCredentials: true }
-      );
-      setEmail('');
-      setAmount(0);
-      setErrorMessage('Succesful');
-    } catch (err) {
-      setErrorMessage('Failed');
-      console.log(err);
+  useEffect(() => {
+    switch (creditType) {
+      case 'summary':
+        setBtnLabel('Summary Credits');
+        break;
+      case 'search':
+        setBtnLabel('Search Credits');
+        break;
+      case 'customRequest':
+        setBtnLabel('Custom Request Credits');
+        break;
+      default:
+        setBtnLabel('Summary Credits');
     }
-  };
+  }, [creditType]);  
 
-  const allocateSearchCredits = async () => {
+  const allocateCredits = async () => {
     try {
-      await axios.post(`${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/allocate-search-credits`, 
-      {
-        email: email,
-        amount: amount
-      }, 
-      { withCredentials: true }
-      );
-      setEmail('');
-      setAmount(0);
-      setErrorMessage('Succesful');
+      let apiEndpoint;
+      if (creditType === 'summary') {
+        apiEndpoint = '/api/v1/allocate-summary-credits';
+      } else if (creditType === 'search') {
+        apiEndpoint = '/api/v1/allocate-search-credits';
+      } else if (creditType === 'customRequest') {
+        apiEndpoint = '/api/v1/allocate-custom-request-credits';
+      }
+
+      if (apiEndpoint) {
+        await axios.post(`${process.env.NEXT_PUBLIC_API_HOSTNAME}${apiEndpoint}`,
+          {
+            email: email,
+            amount: amount
+          },
+          { withCredentials: true }
+        );
+        setEmail('');
+        setAmount(0);
+        setErrorMessage('Succesful');
+      }
     } catch (err) {
       setErrorMessage('Failed');
       console.log(err);
@@ -146,8 +162,8 @@ export default function SaasStats() {
               <div className="col-span-full bg-white border-2 p-4 rounded-lg shadow">
                 <h2 className="mb-2 font-bold text-2xl text-blue-700 underline">AI Charges</h2>
                 <div className="grid grid-cols-2 gap-4">
-                  {renderStatCard("Total OpenAI Charges", `$${statsData.totalOpenAiCharges._sum.amount.toFixed(5)}`)}
-                  {renderStatCard("Avg OpenAI Charges/User", `$${statsData.averageOpenAiChargesPerUser.toFixed(5)}`)}
+                  {renderStatCard("Total OpenAI Charges", `$${statsData?.totalOpenAiCharges?._sum?.amount?.toFixed(5)}`)}
+                  {renderStatCard("Avg OpenAI Charges/User", `$${statsData?.averageOpenAiChargesPerUser?.toFixed(5)}`)}
                 </div>
               </div>
               <div className="col-span-full bg-white border-2 p-4 rounded-lg shadow">
@@ -167,6 +183,44 @@ export default function SaasStats() {
             </div>
           )}
           <div className="mt-6 space-y-4">
+            <div className="mt-2">
+              <div>
+                <input 
+                  type="radio" 
+                  id="summary-credits" 
+                  name="credit-type" 
+                  value="summary" 
+                  checked={creditType === 'summary'}
+                  onChange={() => setCreditType('summary')}
+                  className="mr-2 focus:ring-0"
+                />
+                <label htmlFor="summary-credits">Summary Credits</label>
+              </div>
+              <div>
+                <input 
+                  type="radio" 
+                  id="search-credits" 
+                  name="credit-type" 
+                  value="search" 
+                  checked={creditType === 'search'}
+                  onChange={() => setCreditType('search')}
+                  className="mr-2 focus:ring-0"
+                />
+                <label htmlFor="search-credits">Search Credits</label>
+              </div>
+              <div>
+                <input 
+                  type="radio" 
+                  id="custom-request-credits" 
+                  name="credit-type" 
+                  value="customRequest" 
+                  checked={creditType === 'customRequest'}
+                  onChange={() => setCreditType('customRequest')}
+                  className="mr-2 focus:ring-0"
+                />
+                <label htmlFor="custom-request-credits">Custom Request Credits</label>
+              </div>
+            </div>
             <div>
               <label htmlFor="email" className="block text-lg font-semibold text-gray-900">
                 Email:
@@ -193,27 +247,11 @@ export default function SaasStats() {
                 onChange={(e) => setAmount(+(e.target.value))}
               />
             </div>
-            <div className="mt-2">
-              <Switch
-                checked={isSummaryCredit}
-                onChange={setIsSummaryCredit}
-                className={`${isSummaryCredit ? 'bg-orange-400' : 'bg-gray-200'}
-                relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
-              >
-                <span className="sr-only">Use setting</span>
-                <span
-                  aria-hidden="true"
-                  className={`${isSummaryCredit ? 'translate-x-5' : 'translate-x-0'}
-                  inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200`}
-                />
-              </Switch>
-              <span className="ml-2">{isSummaryCredit ? 'Summary Credits' : 'Search Credits'}</span>
-            </div>
             <button
-              className="w-full px-4 py-2 mt-2 font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-700"
-              onClick={isSummaryCredit ? allocateSummaryCredits : allocateSearchCredits}
+              className="w-full px-4 py-2 mt-2 font-semibold text-white bg-orange-400 rounded-md hover:bg-orange-500"
+              onClick={allocateCredits}
             >
-              Allocate {isSummaryCredit ? 'Summary Credits' : 'Search Credits'}
+              Allocate {btnLabel}
             </button>
             {errorMessage && <p className="mt-2 font-bold text-lg text-center text-blue-500">{errorMessage}</p>}
           </div>

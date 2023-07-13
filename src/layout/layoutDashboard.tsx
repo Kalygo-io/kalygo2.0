@@ -48,7 +48,7 @@ export default function LayoutDashboard({ children, account }: P) {
             setIsAdmin(response.data.isAdmin);
         }
         catch (err) {
-            console.log(err);
+            //
         }
     }
     checkAdmin();
