@@ -56,6 +56,7 @@
     }
   },
   "summarize": {
+    "title": "Resumir",
     "upload-a-file": "Seleccione Archivo",
     "upload-limits": "Archivos TXT y PDF de hasta 1 MB",
     "clear": "Claro",
@@ -69,8 +70,13 @@
     }
   },
   "perform-vector-search": {
+    "title": "Búsqueda de vectores",
     "choose-file": "Elija el archivo",
-    "review": "Revisar"
+    "review": "Revisar",
+    "review-widget": {
+      "similarity-search": "Búsqueda de similitud",
+      "unsupported-file-type": "Tipo de archivo no soportado"
+    }
   },
   "vector-search": {
     "title": "Búsqueda de vectores",
@@ -81,6 +87,17 @@
     "download": "Descargar",
     "query": "Consulta",
     "matched-chunk": "Fragmento coincidente"
+  },
+  "custom-request": {
+    "select-files": "Selecciona archivos",
+    "prompt": "Inmediato",
+    "prompt-placeholder-text": "Escriba aquí la solicitud personalizada que se aplicará a sus archivos",
+    "run": "Correr",
+    "upload-limits": "Archivos TXT y PDF de hasta 1 MB cada uno",
+    "title": "Solicitud personalizada",
+    "requested": "Solicitado",
+    "filenames": "Nombres de archivo",
+    "total-completion-response": "Respuesta"
   },
   "queue": {
     "title": "Cola",

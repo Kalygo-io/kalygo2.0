@@ -124,7 +124,18 @@ export default function Summarize() {
       <Head>
         <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
-      <LayoutDashboard account={account.val}>{jsx}</LayoutDashboard>
+      <LayoutDashboard account={account.val}>
+        <div className="p-4 sm:p-6 lg:p-8">
+          <div className="sm:flex sm:items-center">
+            <div className="sm:flex-auto">
+              <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+                {t("dashboard-page:summarize.title")}
+              </h2>
+            </div>
+          </div>
+        </div>
+        {jsx}
+      </LayoutDashboard>
     </>
   );
 }
