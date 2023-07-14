@@ -14,19 +14,10 @@ import { useTranslation } from "next-i18next";
 
 import { infoToast } from "@/utility/toasts";
 import { useForm, Controller } from "react-hook-form";
-import { similaritySearchInFile } from "@/services/similaritySearchInFile";
-
-import type { PDFDocumentProxy } from "pdfjs-dist";
 import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
 import isNumber from "lodash.isnumber";
 import get from "lodash.get";
-
-const options = {
-  cMapUrl: "cmaps/",
-  standardFontDataUrl: "standard_fonts/",
-};
-
-type PDFFile = string | File | null;
+import { errorReporter } from "@/utility/error/reporter";
 
 interface Props {
   files: File[] | null;
@@ -76,45 +67,53 @@ export function ChooseFiles(props: Props) {
 
   // triggers when file is dropped
   const handleDrop = async function (e: any) {
-    e.preventDefault();
-    e.stopPropagation();
-    setDragActive(false);
-    if (
-      e.dataTransfer.files &&
-      e.dataTransfer.files[0] &&
-      ["application/pdf", "text/plain"].includes(
-        e.dataTransfer?.items["0"]?.type
-      )
-    ) {
-      // at least one file has been dropped so do something
-      setFiles(e.dataTransfer.files || null);
-      setStep(2);
+    try {
+      e.preventDefault();
+      e.stopPropagation();
+      setDragActive(false);
+      if (
+        e.dataTransfer.files &&
+        e.dataTransfer.files[0] &&
+        ["application/pdf", "text/plain"].includes(
+          e.dataTransfer?.items["0"]?.type
+        )
+      ) {
+        // at least one file has been dropped so do something
+        setFiles(e.dataTransfer.files || null);
+        setStep(2);
+      }
+    } catch (e) {
+      errorReporter(e);
     }
   };
 
   // triggers when file is selected with click
   const handleChange = async function (e: any) {
-    e.preventDefault();
-    if (e.target.files && e.target.files) {
-      // at least one file has been selected so do something
+    try {
+      e.preventDefault();
+      if (e.target.files && e.target.files) {
+        // at least one file has been selected so do something
 
-      const paymentMethodsRequest = getAccountPaymentMethodsFactory();
-      const paymentMethodsResponse = await paymentMethodsRequest;
-      console.log("paymentMethodsResponse", paymentMethodsResponse);
+        const paymentMethodsRequest = getAccountPaymentMethodsFactory();
+        const paymentMethodsResponse = await paymentMethodsRequest;
+        console.log("paymentMethodsResponse", paymentMethodsResponse);
 
-      if (
-        (isNumber(get(paymentMethodsResponse, "data.customRequestCredits")) &&
-          get(paymentMethodsResponse, "data.customRequestCredits") > 0) ||
-        get(paymentMethodsResponse, "data.stripeDefaultSource")
-      ) {
-        // setFileList(e.target.files);
-        setFiles(e.target.files || null);
-        setStep(2);
-      } else {
-        // show Payment Required Modal
-        console.log("PAYMENT REQUIRED");
-        setShowPaymentMethodRequiredModal(true);
+        if (
+          (isNumber(get(paymentMethodsResponse, "data.customRequestCredits")) &&
+            get(paymentMethodsResponse, "data.customRequestCredits") > 0) ||
+          get(paymentMethodsResponse, "data.stripeDefaultSource")
+        ) {
+          // setFileList(e.target.files);
+          setFiles(e.target.files || null);
+          setStep(2);
+        } else {
+          // show Payment Required Modal
+          console.log("PAYMENT REQUIRED");
+          setShowPaymentMethodRequiredModal(true);
+        }
       }
+    } catch (e) {
+      errorReporter(e);
     }
   };
 
