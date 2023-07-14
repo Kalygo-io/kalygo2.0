@@ -46,12 +46,12 @@ export const VectorSearchesTable = (p: P) => {
             <table className="min-w-full divide-y divide-gray-300">
               <thead>
                 <tr>
-                  <th
+                  {/* <th
                     scope="col"
                     className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
                   >
                     {t("dashboard-page:index.vector-searches.table.id")}
-                  </th>
+                  </th> */}
                   <th
                     scope="col"
                     className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
@@ -74,9 +74,9 @@ export const VectorSearchesTable = (p: P) => {
               <tbody className="bg-white">
                 {vectorSearches?.map((search) => (
                   <tr key={search.id} className="even:bg-gray-50">
-                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-3">
+                    {/* <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-3">
                       {search.id}
-                    </td>
+                    </td> */}
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       {search.filename}
                     </td>
