@@ -8,7 +8,8 @@
     "templates": "Comandos",
     "settings": "Configurações",
     "vector-search": "Pesquisa de vetores",
-    "queue": "Fila"
+    "queue": "Fila",
+    "custom-request": "Solicitação personalizada"
   },
   "user-nav": {
     "settings": "Configurações",

@@ -2,11 +2,9 @@
 
 import Head from "next/head";
 
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
-import ContractList from "@/components/browseContractsComponents/contractList";
 
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
@@ -16,12 +14,10 @@ import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang
 import { Fragment, useEffect, useState } from "react";
 import { infoToast, errorToast } from "@/utility/toasts";
 import {
-  //   SearchFileForm,
-  SearchFileWizard,
-  SearchSuccess,
-  SearchError,
-} from "@/components/searchFileComponentsV2";
-import { SectionLoader } from "@/components/shared/SectionLoader";
+  CustomRequestForm,
+  CustomRequestError,
+  CustomRequestWizard,
+} from "@/components/customRequestOnFilesComponentsV2";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { PaymentRequiredModal } from "@/components/shared/PaymentRequiredModal";
 import axios from "axios";
@@ -37,8 +33,9 @@ const getStaticProps = makeStaticProps([
 ]);
 export { getStaticPaths, getStaticProps };
 
-export default function VectorSearchV2() {
+export default function CustomRequest() {
   const { state, dispatch } = useAppContext();
+  const router = useRouter();
   const { t } = useTranslation();
 
   const [account, setAccount] = useState<{
@@ -70,10 +67,12 @@ export default function VectorSearchV2() {
     fetch();
   }, []);
 
-  const [searchResults, setSearchResultsState] = useState<{
+  const [summary, setSummaryState] = useState<{
     val: {
-      results: string[];
-      query: string;
+      summary: string[];
+      fileName: string;
+      originalLength: number;
+      condensedLength: number;
     } | null;
     loading: boolean;
     err: Error | null;
@@ -86,13 +85,11 @@ export default function VectorSearchV2() {
   const [showPaymentMethodRequiredModal, setShowPaymentMethodRequiredModal] =
     useState<boolean>(false);
 
-  console.log("showPaymentMethodRequiredModal", showPaymentMethodRequiredModal);
-
   let jsx = null;
-  if (searchResults.loading) {
+  if (summary.loading) {
     jsx = <WindowLoader></WindowLoader>;
-  } else if (searchResults.err) {
-    jsx = <SearchError />;
+  } else if (summary.err) {
+    jsx = <CustomRequestError />;
   } else if (showPaymentMethodRequiredModal) {
     jsx = (
       <PaymentRequiredModal
@@ -102,23 +99,9 @@ export default function VectorSearchV2() {
         }}
       />
     );
-  } else if (searchResults.val) {
-    jsx = (
-      <SearchSuccess
-        query={searchResults.val.query}
-        results={searchResults.val.results}
-        reset={() => {
-          setSearchResultsState({
-            val: null,
-            loading: false,
-            err: null,
-          });
-        }}
-      />
-    );
   } else {
     jsx = (
-      <SearchFileWizard
+      <CustomRequestWizard
         setShowPaymentMethodRequiredModal={(showModal: boolean) => {
           setShowPaymentMethodRequiredModal(showModal);
         }}
@@ -136,7 +119,7 @@ export default function VectorSearchV2() {
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
               <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
-                {t("dashboard-page:vector-search.title")}
+                {t("dashboard-page:custom-request.title")}
               </h2>
             </div>
           </div>
@@ -147,4 +130,4 @@ export default function VectorSearchV2() {
   );
 }
 
-VectorSearchV2.requireAuth = true;
+CustomRequest.requireAuth = true;

@@ -69,7 +69,6 @@ export default function LayoutDashboard({ children, account }: P) {
       href: "/dashboard/summarize",
       icon: LifebuoyIcon,
     },
-
     {
       name: t("dashboard-page:navigation.vector-search"),
       href: "/dashboard/vector-search/vector-search-v2",
@@ -78,8 +77,7 @@ export default function LayoutDashboard({ children, account }: P) {
     },
     {
       name: t("dashboard-page:navigation.custom-request"),
-      href: "/dashboard/custom-request",
-      // href: "/dashboard/vector-search",
+      href: "/dashboard/custom-request/custom-request-v2",
       icon: BeakerIcon,
     },
     {

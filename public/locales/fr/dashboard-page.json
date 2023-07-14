@@ -8,7 +8,8 @@
     "templates": "Instructions",
     "settings": "Paramètres",
     "vector-search": "Recherche de vecteur",
-    "queue": "File d'attente"
+    "queue": "File d'attente",
+    "custom-request": "Demande personnalisée"
   },
   "user-nav": {
     "settings": "Paramètres",

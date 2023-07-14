@@ -57,6 +57,7 @@
     }
   },
   "summarize": {
+    "title": "Summarize",
     "upload-a-file": "Select file",
     "upload-files": "Select files",
     "upload-limits": "TXT & PDF files up to 1MB",
@@ -71,6 +72,7 @@
     }
   },
   "perform-vector-search": {
+    "title": "Vector Search",
     "choose-file": "Choose file",
     "review": "Review",
     "review-widget": {
@@ -98,6 +100,16 @@
     "requested": "Requested",
     "filenames": "File names",
     "total-completion-response": "Response"
+  },
+  "custom-request-v2": {
+    "choose-files": "Choose files",
+    "provide-request": "Provide request",
+    "run": "Run",
+    "select-files": "Select files",
+    "upload-limits": "TXT & PDF files up to 1MB each",
+    "save": "Save",
+    "prompt": "Prompt",
+    "prompt-placeholder-text": "Edit or customize the request that will be applied to your files here"
   },
   "queue": {
     "title": "My Documents",
