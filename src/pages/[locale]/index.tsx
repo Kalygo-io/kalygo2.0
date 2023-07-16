@@ -64,7 +64,7 @@ export default function Home(props: any) {
             id="landing-page-hero"
           >
             <h1 className="title text-7xl font-bold tracking-tight text-gray-900">
-              <span>Docs made&nbsp;</span>
+              <span className="text-center">Docs made&nbsp;</span>
               <Typewriter
                 options={{
                   strings: ["simple", "easy", "fast", "intuitive"],
