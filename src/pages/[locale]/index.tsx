@@ -2,6 +2,7 @@
 
 import Head from "next/head";
 import Image from "next/image";
+import Typewriter from "typewriter-effect";
 import { useAppContext } from "@/context/AppContext";
 import Layout1 from "@/layout/layout1";
 
@@ -16,6 +17,7 @@ import { Pricing } from "@/components/indexComponents/pricing";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Mailing } from "@/components/indexComponents/mailing";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 const getStaticProps = makeStaticProps([
   "landing-page",
@@ -48,50 +50,58 @@ export default function Home(props: any) {
 
       <Layout1>
         <div className="relative isolate overflow-hidden bg-gradient-to-b from-blue-100/20 pt-14">
-          <div
+          {/* <div
             className="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl shadow-blue-600/10 ring-1 ring-blue-50 sm:-mr-80 lg:-mr-96"
             aria-hidden="true"
-          />
-          <div className="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
-            <div
-              ref={ref}
-              style={{
-                opacity: isInView ? 1 : 0,
-                transition: "all 0.8s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
-              }}
-              className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8"
-            >
-              <h1 className="max-w-2xl text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:col-span-2 xl:col-auto">
-                {t("landing-page:landing-page-headline")}
-              </h1>
-              <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
-                <p className="text-lg leading-8 text-gray-600">
-                  {t("landing-page:landing-page-subheadline")}
-                </p>
-                <div className="mt-10 flex items-center gap-x-2">
-                  <Link
-                    href="/signup"
-                    className="rounded-md bg-blue-600 px-3.5 py-2.5 text-md font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                  >
-                    {t("landing-page:sign-up")}&nbsp;&nbsp;
-                    <small>{t("landing-page:its-free")}</small>
-                  </Link>
-                  {/* <Link
-                    href="/login"
-                    className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                  >
-                    {t("landing-page:log-in")}
-                  </Link> */}
-                </div>
+          /> */}
+
+          <div
+            ref={ref}
+            style={{
+              opacity: isInView ? 1 : 0,
+              transition: "all 0.8s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+            }}
+            id="landing-page-hero"
+          >
+            <h1 className="title text-7xl font-bold tracking-tight text-gray-900">
+              <span>Docs made&nbsp;</span>
+              <Typewriter
+                options={{
+                  strings: ["simple", "easy", "fast", "intuitive"],
+                  autoStart: true,
+                  loop: true,
+                }}
+              />
+            </h1>
+            <div className="sub-heading-section mt-6">
+              <p className="text-xl leading-8 text-gray-600">
+                {t("landing-page:landing-page-subheadline")}
+              </p>
+              <div className="cta-button">
+                <Link
+                  href="/signup"
+                  className="rounded-md bg-blue-600 px-5 py-3.5 text-lg font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                >
+                  &nbsp;{t("landing-page:try-kalygo-for-free")}&nbsp;
+                </Link>
               </div>
-              <Image
-                src="/logo.svg"
-                width={512}
-                height={512}
-                alt="Kalygo's logo"
-                className="mt-10 aspect-[2/2] w-full max-w-lg rounded-2xl object-fit sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 xl:mt-36"
+            </div>
+            <img
+              src="/Documents.svg"
+              alt="Icon of a stack of documents"
+              className="image-1"
+            />
+            <div className="arrow flex justify-center items-center">
+              <ArrowRightIcon
+                className="icon text-gray-500"
+                aria-hidden="true"
               />
             </div>
+            <img
+              src="/hero-product-photo-v2.png"
+              alt="Icon of a stack of documents"
+              className="image-2"
+            />
           </div>
           <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32" />
         </div>
