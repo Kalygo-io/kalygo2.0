@@ -131,30 +131,30 @@
         "card-number": "Número do cartão",
         "expiration-date": "Data de validade",
         "cvv": "CVV/CVC",
-        "security-code": "Código de segurança",
-        "save": "Salvar",
-        "cancel": "Cancelar"
+        "security-code": "Security code",
+        "save": "Save",
+        "cancel": "Cancel"
       }
     },
     "subscription": {
-      "title": "Inscrição",
-      "change": "Mudar",
-      "switch-plan": "Mudar de plano",
-      "cancel": "Cancelar",
-      "you-are-currently-on": "Você está atualmente em:"
+      "title": "Subscription",
+      "change": "Change",
+      "switch-plan": "Switch plan",
+      "cancel": "Cancel",
+      "you-are-currently-on": "You are currently on: "
     },
     "delete-account": {
-      "title": "Deletar conta",
-      "you-can-mark-your-account": "Você pode marcar sua conta para exclusão aqui.",
-      "delete-my-account": "Deletar minha conta",
+      "title": "Delete account",
+      "you-can-mark-your-account": "You can mark your account for deletion here.",
+      "delete-my-account": "Delete my account",
       "delete-account-modal": {
-        "are-you-sure": "Tem certeza de que deseja excluir sua conta?",
-        "cancel": "Cancelar",
-        "delete": "Excluir"
+        "are-you-sure": "Are you sure you want to delete your account?",
+        "cancel": "Cancel",
+        "delete": "Delete"
       }
     },
-    "error": "Ocorreu um erro ao carregar as configurações"
+    "error": "Error occurred while loading settings"
   },
-  "unknown-error": "Erro desconhecido",
-  "coming-soon": "Em breve!"
+  "unknown-error": "Unknown Error",
+  "coming-soon": "Coming soon!"
 }

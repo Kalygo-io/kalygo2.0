@@ -138,23 +138,23 @@
     },
     "subscription": {
       "title": "Abonnement",
-      "change": "Changement",
-      "switch-plan": "Changer de forfait",
-      "cancel": "Annuler",
-      "you-are-currently-on": "Vous êtes actuellement sur :"
+      "change": "Change",
+      "switch-plan": "Switch plan",
+      "cancel": "Cancel",
+      "you-are-currently-on": "You are currently on: "
     },
     "delete-account": {
-      "title": "Supprimer le compte",
-      "you-can-mark-your-account": "Vous pouvez marquer votre compte pour suppression ici.",
-      "delete-my-account": "Supprimer mon compte",
+      "title": "Delete account",
+      "you-can-mark-your-account": "You can mark your account for deletion here.",
+      "delete-my-account": "Delete my account",
       "delete-account-modal": {
-        "are-you-sure": "Êtes-vous sûr de vouloir supprimer votre compte ?",
-        "cancel": "Annuler",
-        "delete": "Supprimer"
+        "are-you-sure": "Are you sure you want to delete your account?",
+        "cancel": "Cancel",
+        "delete": "Delete"
       }
     },
-    "error": "Une erreur s'est produite lors du chargement des paramètres"
+    "error": "Error occurred while loading settings"
   },
-  "unknown-error": "Erreur inconnue",
-  "coming-soon": "À venir!"
+  "unknown-error": "Unknown Error",
+  "coming-soon": "Coming soon!"
 }

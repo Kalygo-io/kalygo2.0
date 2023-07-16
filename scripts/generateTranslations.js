@@ -7,17 +7,17 @@ const outputPath = "public/locales";
 // personal credentials, update before pushing to production
 const projectId = "kalygotranslation2";
 const keyFilename = "keyfile.json";
-// const targetLanguages = ["en", "es", "pt", "fr"];
 const targetLanguages = ["es", "pt", "fr"];
 
 const translate = new Translate({ projectId, keyFilename });
+
+
 
 // function to translate values in files
 async function translateJSONValues(file, val, targetLanguage, path) {
   console.log("translateJSONValues");
 
   if (typeof val === "string") {
-    // snapshot // path
     console.log("path", path);
 
     let snapshotJSON;
@@ -30,19 +30,25 @@ async function translateJSONValues(file, val, targetLanguage, path) {
     const oldValue = get(snapshotJSON, path);
     const newValue = val;
 
-    // TODO
-    // The variables ie `{{ VARIABLE_NAME_HERE }}` in the values of each key
-    // need to be recorded before being sent for translation in case the translation service changes the variable name
-    // if the translation service changes the variable name, you must re-write the variable to the original name
-
     console.log("oldValue", snapshotJSON, oldValue, path);
     console.log("newValue", val, newValue, path);
 
     if (oldValue !== newValue) {
       console.log("HERE");
 
-      const [translation] = await translate.translate(val, targetLanguage);
-      return translation;
+      const variables = [];
+      const translatedValue = newValue.replace(/{{\w+}}/g, (match, variable) => {
+        variables.push(variable);
+        return variables.length - 1;
+      });
+
+      const [translation] = await translate.translate(translatedValue, targetLanguage);
+
+      const translatedResult = translation.replace(/(\d+)/g, (match, index) => {
+        return `{{${variables[parseInt(index)]}}}`;
+      });
+
+      return translatedResult;
     } else {
       if (fs.existsSync(`${outputPath}/${targetLanguage}/${file}`)) {
         const oldTranslatedFile = JSON.parse(
@@ -87,6 +93,7 @@ async function translateJSONValues(file, val, targetLanguage, path) {
     return val;
   }
 }
+
 
 async function createFiles(targetLanguage) {
   try {

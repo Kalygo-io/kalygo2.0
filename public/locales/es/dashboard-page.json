@@ -20,7 +20,7 @@
     "credits": {
       "free-summarization-credits": "Créditos de resumen gratis",
       "try-free-summarization-credits": "Prueba el resumen",
-      "free-vector-search-credits": "Créditos de búsqueda inteligente gratuitos",
+      "free-vector-search-credits": "Créditos de búsqueda inteligente gratis",
       "try-vector-search-credits": "Prueba la búsqueda inteligente",
       "credit-card-charges": "Cargos mensuales",
       "more-info": "Más información"
@@ -86,7 +86,7 @@
   "queue": {
     "title": "Cola",
     "no-jobs-found": "No se encontraron trabajos en la cola",
-    "job-status": "Estatus del trabajo!",
+    "job-status": "estado del trabajo",
     "file-name": "Nombre del archivo",
     "requested-at": "Solicitado en",
     "remove": "Eliminar",
