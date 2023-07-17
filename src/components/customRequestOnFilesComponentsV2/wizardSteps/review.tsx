@@ -89,7 +89,7 @@ export function Review(props: Props) {
             {/* Left column area */}
             {/* LEFT */}
             <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight underline underline-offset-4">
-              Chosen Files
+              {t("dashboard-page:custom-request-v2.chosen-files")!}
             </h2>
 
             <ul role="list" className="divide-y divide-gray-100">
@@ -153,7 +153,7 @@ export function Review(props: Props) {
             {/* Main area */}
             {/* MAIN */}
             <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight underline underline-offset-4">
-              Provided Request
+              {t("dashboard-page:custom-request-v2.provided-request")!}
             </h2>
             <div className="grid grid-cols-1 gap-x-6 gap-y-8">
               {/* <div className="col-span-full flex justify-center"> */}

@@ -8,13 +8,15 @@
     "templates": "Indicaciones",
     "settings": "Ajustes",
     "vector-search": "Busqueda inteligente",
-    "queue": "Mis documentos"
+    "queue": "Mis documentos",
+    "saas-stats": "Estadísticas SaaS",
+    "custom-request": "Solicitud personalizada"
   },
   "user-nav": {
     "settings": "Ajustes",
     "sign-out": "Desconectar",
     "credit": "Crédito",
-    "credits": "Creditos"
+    "credits": "Créditos"
   },
   "index": {
     "title": "Panel",
@@ -57,6 +59,7 @@
   "summarize": {
     "title": "Resumir",
     "upload-a-file": "Seleccione Archivo",
+    "upload-files": "Selecciona archivos",
     "upload-limits": "Archivos TXT y PDF de hasta 1 MB",
     "clear": "Claro",
     "summarize": "Resumir",
@@ -73,11 +76,7 @@
     "choose-file": "Elija el archivo",
     "review": "Revisar",
     "review-widget": {
-<<<<<<< HEAD
       "similarity-search": "Búsqueda de similitud",
-=======
-      "similarity-search": "búsqueda de similitud",
->>>>>>> feature/translationScriptEnhancements
       "unsupported-file-type": "Tipo de archivo no soportado"
     }
   },
@@ -102,17 +101,34 @@
     "filenames": "Nombres de archivo",
     "total-completion-response": "Respuesta"
   },
+  "custom-request-v2": {
+    "choose-files": "Seleccionar archivos",
+    "provide-request": "Proporcionar solicitud",
+    "run": "Correr",
+    "select-files": "Selecciona archivos",
+    "upload-limits": "Archivos TXT y PDF de hasta 1 MB cada uno",
+    "save": "Ahorrar",
+    "prompt": "Inmediato",
+    "prompt-placeholder-text": "Edite o personalice la solicitud que se aplicará a sus archivos aquí",
+    "chosen-files": "Archivos elegidos",
+    "suggested-requests": "Solicitudes sugeridas",
+    "provided-request": "Solicitud proporcionada"
+  },
   "queue": {
-    "title": "Cola",
-    "no-jobs-found": "No se encontraron trabajos en la cola",
+    "title": "Mis documentos",
+    "nothing-found": "Nada Encontrado",
     "job-status": "estado del trabajo",
     "file-name": "Nombre del archivo",
+    "file-names": "Nombres de archivo",
     "requested-at": "Solicitado en",
     "remove": "Eliminar",
     "view": "Vista",
     "job-type": "Tipo",
     "vector-search": {
       "query": "Consulta"
+    },
+    "custom-request": {
+      "prompt": "Inmediato"
     }
   },
   "summary": {
@@ -124,13 +140,18 @@
     "condensed-length": "Longitud condensada",
     "content": "Contenido"
   },
+  "saas-stats": {
+    "title": "Estadísticas SaaS"
+  },
   "settings": {
     "free-credits": {
       "title": "Créditos gratis",
       "summaries": "Resúmenes",
       "summary": "Resumen",
       "vector-searches": "Búsquedas inteligentes",
-      "vector-search": "Busqueda inteligente"
+      "vector-search": "Busqueda inteligente",
+      "custom-request-credit": "Solicitud personalizada",
+      "custom-request-credits": "Solicitudes personalizadas"
     },
     "personal": {
       "title": "Personal",

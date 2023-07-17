@@ -9,6 +9,7 @@
   "files-uploaded-for-summarization-complete": "Your summarizations are being generated. You will be notified via email when all your files have been processed.",
   "you-joined-the-mailing-list": "You joined the mailing list!",
   "vector-search-is-processing": "Your search is processing...",
+  "custom-request-is-processing": "Your request is processing...",
   "error": {
     "something-unexpected-happened": "Something unexpected happened"
   }

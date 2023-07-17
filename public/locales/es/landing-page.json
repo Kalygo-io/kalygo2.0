@@ -1,7 +1,13 @@
 {
   "landing-page-headline": "Documentos simplificados",
-  "landing-page-subheadline": "Resumir, buscar y compartir",
+  "landing-page-headline-prefix": "Documentos hechos",
+  "typewriter-word-1": "simple",
+  "typewriter-word-2": "fácil",
+  "typewriter-word-3": "rápido",
+  "typewriter-word-4": "intuitivo",
+  "landing-page-subheadline": "Cargue datos y aproveche el software de vanguardia que incluye indicaciones personalizables, resúmenes en todos los documentos y flujos de trabajo de colaboración",
   "sign-up": "Obtener Kalygo",
   "its-free": "es gratis",
-  "log-in": "Acceso"
+  "log-in": "Acceso",
+  "try-kalygo-for-free": "Prueba Kalygo gratis"
 }

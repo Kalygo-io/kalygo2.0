@@ -8,11 +8,15 @@
     "templates": "Comandos",
     "settings": "Configurações",
     "vector-search": "Busca inteligente",
-    "queue": "Meus documentos"
+    "queue": "Meus documentos",
+    "saas-stats": "Estatísticas de SaaS",
+    "custom-request": "Solicitação personalizada"
   },
   "user-nav": {
     "settings": "Configurações",
-    "sign-out": "sair"
+    "sign-out": "sair",
+    "credit": "Crédito",
+    "credits": "Créditos"
   },
   "index": {
     "title": "Painel",
@@ -53,7 +57,9 @@
     }
   },
   "summarize": {
+    "title": "Resumir",
     "upload-a-file": "Selecione o arquivo",
+    "upload-files": "Selecionar arquivos",
     "upload-limits": "Arquivos TXT e PDF de até 1 MB",
     "clear": "Claro",
     "summarize": "Resumir",
@@ -66,6 +72,7 @@
     }
   },
   "perform-vector-search": {
+    "title": "Pesquisa de vetores",
     "choose-file": "Escolher arquivo",
     "review": "Análise",
     "review-widget": {
@@ -83,9 +90,31 @@
     "query": "Consulta",
     "matched-chunk": "Pedaço correspondente"
   },
+  "custom-request": {
+    "select-files": "Selecionar arquivos",
+    "prompt": "Incitar",
+    "prompt-placeholder-text": "Escreva a solicitação personalizada que será aplicada aos seus arquivos aqui",
+    "run": "Correr",
+    "upload-limits": "Arquivos TXT e PDF de até 1 MB cada",
+    "title": "Solicitação personalizada",
+    "requested": "Requeridos",
+    "filenames": "Nomes de arquivo",
+    "total-completion-response": "Resposta"
+  },
+  "custom-request-v2": {
+    "choose-files": "Escolher os arquivos",
+    "provide-request": "Fornecer solicitação",
+    "run": "Correr",
+    "select-files": "Selecionar arquivos",
+    "upload-limits": "Arquivos TXT e PDF de até 1 MB cada",
+    "save": "Salvar",
+    "prompt": "Incitar",
+    "chosen-files": "arquivos escolhidos",
+    "suggested-requests": "Solicitações sugeridas",
+    "provided-request": "Solicitação fornecida"
+  },
   "queue": {
     "title": "Fila",
-    "no-jobs-found": "Nenhum trabalho encontrado na fila",
     "job-status": "Status de trabalho",
     "file-name": "Nome do arquivo",
     "requested-at": "Solicitado em",
@@ -94,7 +123,8 @@
     "job-type": "Tipo",
     "vector-search": {
       "query": "Consulta"
-    }
+    },
+    "custom-request": {}
   },
   "summary": {
     "title": "Resumo",
@@ -105,9 +135,10 @@
     "condensed-length": "Comprimento condensado",
     "content": "Contente"
   },
+  "saas-stats": {},
   "settings": {
     "free-credits": {
-      "title": "créditos grátis",
+      "title": "Créditos grátis",
       "summaries": "Resumos",
       "summary": "Resumo",
       "vector-searches": "Pesquisas inteligentes",
@@ -132,35 +163,29 @@
         "expiration-date": "Data de validade",
         "cvv": "CVV/CVC",
         "security-code": "Security code",
-        "save": "Save",
-        "cancel": "Cancel"
+        "save": "Salvar",
+        "cancel": "Cancelar"
       }
     },
     "subscription": {
-      "title": "Subscription",
-      "change": "Change",
-      "switch-plan": "Switch plan",
-      "cancel": "Cancel",
-      "you-are-currently-on": "You are currently on: "
+      "title": "Inscrição",
+      "change": "Mudar",
+      "switch-plan": "Mudar de plano",
+      "cancel": "Cancelar",
+      "you-are-currently-on": "Você está atualmente em: "
     },
     "delete-account": {
-      "title": "Delete account",
-      "you-can-mark-your-account": "You can mark your account for deletion here.",
-      "delete-my-account": "Delete my account",
+      "title": "Deletar conta",
+      "you-can-mark-your-account": "Você pode marcar sua conta para exclusão aqui.",
+      "delete-my-account": "Deletar minha conta",
       "delete-account-modal": {
-        "are-you-sure": "Are you sure you want to delete your account?",
-        "cancel": "Cancel",
-        "delete": "Delete"
+        "are-you-sure": "Tem certeza de que deseja excluir sua conta?",
+        "cancel": "Cancelar",
+        "delete": "Excluir"
       }
     },
-    "error": "Error occurred while loading settings"
+    "error": "Ocorreu um erro ao carregar as configurações"
   },
-<<<<<<< HEAD
   "unknown-error": "Erro desconhecido",
   "coming-soon": "Em breve!"
 }
-=======
-  "unknown-error": "Unknown Error",
-  "coming-soon": "Coming soon!"
-}
->>>>>>> feature/translationScriptEnhancements

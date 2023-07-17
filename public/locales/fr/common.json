@@ -6,12 +6,12 @@
   "stats": {
     "headline": "Les documents n'ont pas besoin d'être compliqués",
     "subheadline": "Kalygo vous fait gagner du temps pour que vous puissiez vous concentrer sur l'essentiel",
-    "stat1_headline": "Résumer",
+    "stat1_headline": "Aperçu",
     "stat1_subheadline": "Obtenez les informations les plus importantes dont vous avez besoin à partir de vos documents",
     "stat2_headline": "Recherche",
     "stat2_subheadline": "Parlez à vos documents et allez au-delà de la correspondance des mots clés",
-    "stat3_headline": "Partager",
-    "stat3_subheadline": "Partagez avec les membres de votre équipe ou vos clients"
+    "stat3_headline": "Faciliter",
+    "stat3_subheadline": "Partagez des informations avec les membres de votre équipe ou vos clients"
   },
   "pricing": {
     "title": "Tarification",
@@ -31,23 +31,23 @@
     "tier3_feature2": "Plus d'analyses",
     "tier3_feature3": "Fonctionnalités collaboratives",
     "tier3_feature4": "Toutes les fonctionnalités activées",
-    "summary": "summary",
-    "month": "month",
-    "sign-up": "Sign up",
-    "coming-soon": "Coming soon"
+    "summary": "Résumé",
+    "month": "mois",
+    "sign-up": "S'inscrire",
+    "coming-soon": "À venir"
   },
   "about": {
-    "header": "About"
+    "header": "À propos"
   },
   "terms-of-service": {
-    "header": "Terms of service"
+    "header": "Conditions d'utilisation"
   },
   "privacy-policy": {
-    "header": "Privacy policy"
+    "header": "Politique de confidentialité"
   },
   "footer": {
-    "about": "About",
-    "terms-of-service": "Terms of Service",
-    "copyright": "CMD Software Inc. All rights reserved."
+    "about": "À propos",
+    "terms-of-service": "Conditions d'utilisation",
+    "copyright": "CMD Software Inc. Tous les droits sont réservés."
   }
 }

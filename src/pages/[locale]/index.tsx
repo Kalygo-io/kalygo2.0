@@ -64,10 +64,17 @@ export default function Home(props: any) {
             id="landing-page-hero"
           >
             <h1 className="title text-7xl font-bold tracking-tight text-gray-900">
-              <span className="text-center">Docs made&nbsp;</span>
+              <span className="text-center">
+                {t("landing-page:landing-page-headline-prefix")}&nbsp;
+              </span>
               <Typewriter
                 options={{
-                  strings: ["simple", "easy", "fast", "intuitive"],
+                  strings: [
+                    t("landing-page:typewriter-word-1"),
+                    t("landing-page:typewriter-word-2"),
+                    t("landing-page:typewriter-word-3"),
+                    t("landing-page:typewriter-word-4"),
+                  ],
                   autoStart: true,
                   loop: true,
                 }}

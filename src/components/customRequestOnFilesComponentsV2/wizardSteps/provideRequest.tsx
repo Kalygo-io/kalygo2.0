@@ -96,7 +96,7 @@ export function ProvideRequest(props: Props) {
     },
   });
 
-  console.log("files", files);
+  // console.log("files", files);
 
   return (
     <div className="flex min-h-full flex-col">
@@ -108,7 +108,7 @@ export function ProvideRequest(props: Props) {
           <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:pl-6">
             {/* Left column area */}
             <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight underline underline-offset-4">
-              Chosen Files
+              {t("dashboard-page:custom-request-v2.chosen-files")!}
             </h2>
             <ul role="list" className="divide-y divide-gray-100">
               {Object.keys(files).map((value: string, index: number) => {
@@ -214,7 +214,7 @@ export function ProvideRequest(props: Props) {
           {/* Right column area */}
           {/* RIGHT */}
           <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight underline underline-offset-4">
-            Suggested Requests
+            {t("dashboard-page:custom-request-v2.suggested-requests")!}
           </h2>
           {preBuiltPrompts.map((prompt) => (
             <li
