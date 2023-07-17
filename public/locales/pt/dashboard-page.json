@@ -109,10 +109,14 @@
     "upload-limits": "Arquivos TXT e PDF de até 1 MB cada",
     "save": "Salvar",
     "prompt": "Incitar",
+    "prompt-placeholder-text": "Edite ou personalize a solicitação que será aplicada aos seus arquivos aqui",
     "chosen-files": "arquivos escolhidos",
     "suggested-requests": "Solicitações sugeridas",
     "provided-request": "Solicitação fornecida",
-    "prompt-placeholder-text": "Edite ou personalize a solicitação que será aplicada aos seus arquivos aqui"
+    "open-options": "Abrir opções",
+    "more-like-this": "Mais como isso",
+    "select": "Selecione",
+    "not-this-one": "Esse não"
   },
   "queue": {
     "title": "Fila",

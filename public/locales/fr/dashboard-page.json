@@ -108,10 +108,14 @@
     "select-files": "Sélectionnez les fichiers",
     "upload-limits": "Fichiers TXT et PDF jusqu'à 1 Mo chacun",
     "save": "Sauvegarder",
+    "prompt-placeholder-text": "Modifiez ou personnalisez la demande qui sera appliquée à vos fichiers ici",
     "chosen-files": "Fichiers choisis",
-    "provided-request": "Demande fournie",
     "suggested-requests": "Demandes suggérées",
-    "prompt-placeholder-text": "Modifiez ou personnalisez la demande qui sera appliquée à vos fichiers ici"
+    "provided-request": "Demande fournie",
+    "open-options": "Options ouvertes",
+    "more-like-this": "Plus comme ça",
+    "select": "Sélectionner",
+    "not-this-one": "Pas celui-ci"
   },
   "queue": {
     "title": "File d'attente",

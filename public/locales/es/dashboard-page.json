@@ -112,7 +112,11 @@
     "prompt-placeholder-text": "Edite o personalice la solicitud que se aplicará a sus archivos aquí",
     "chosen-files": "Archivos elegidos",
     "suggested-requests": "Solicitudes sugeridas",
-    "provided-request": "Solicitud proporcionada"
+    "provided-request": "Solicitud proporcionada",
+    "open-options": "Opciones abiertas",
+    "more-like-this": "Más como esto",
+    "select": "Seleccionar",
+    "not-this-one": "Este no"
   },
   "queue": {
     "title": "Mis documentos",
