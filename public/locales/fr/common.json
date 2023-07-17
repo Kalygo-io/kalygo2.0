@@ -21,7 +21,7 @@
     "tier1_feature2": "Assistance automatisée",
     "tier2_name": "Standard",
     "tier2_description": "Tout en gratuit, et plus encore",
-    "tier2_feature1": "Payer par résumé",
+    "tier2_feature1": "Payez à l'utilisation de chaque fonctionnalité premium",
     "tier2_feature2": "Fichiers PDF et TXT pris en charge",
     "tier2_feature3": "Analyse de base",
     "tier2_feature4": "Assistance 24h/24",
@@ -34,7 +34,8 @@
     "summary": "Résumé",
     "month": "mois",
     "sign-up": "S'inscrire",
-    "coming-soon": "À venir"
+    "coming-soon": "À venir",
+    "premium-feature": "fonctionnalité"
   },
   "enterprise-pricing": {
     "title": "Entreprise",

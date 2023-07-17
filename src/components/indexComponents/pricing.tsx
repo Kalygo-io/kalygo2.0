@@ -88,7 +88,7 @@ export function Pricing() {
                         {tier.price.summary}
                       </span>
                       <span className="text-sm font-semibold leading-6 text-gray-600">
-                        /{t("common:pricing.summary")}
+                        /{t("common:pricing.premium-feature")}
                       </span>
                     </>
                   )}

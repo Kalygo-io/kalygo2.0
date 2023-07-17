@@ -21,7 +21,7 @@
     "tier1_feature2": "Automated support",
     "tier2_name": "Standard",
     "tier2_description": "Everything in Free, plus more",
-    "tier2_feature1": "Pay per summary",
+    "tier2_feature1": "Pay as you use each premium feature",
     "tier2_feature2": "PDF & TXT files supported",
     "tier2_feature3": "Basic analytics",
     "tier2_feature4": "24hr support",
@@ -34,7 +34,8 @@
     "summary": "summary",
     "month": "month",
     "sign-up": "Sign up",
-    "coming-soon": "Coming soon"
+    "coming-soon": "Coming soon",
+    "premium-feature": "feature"
   },
   "enterprise-pricing": {
     "title": "Enterprise",
