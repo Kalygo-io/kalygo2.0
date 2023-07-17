@@ -26,7 +26,7 @@
       "more-info": "Más información"
     },
     "summaries": {
-      "title": "resúmenes",
+      "title": "Resúmenes",
       "subtitle": "Una visión general de sus resúmenes",
       "view-all": "Ver todo",
       "table": {
@@ -107,8 +107,8 @@
   },
   "settings": {
     "free-credits": {
-      "title": "créditos gratis",
-      "summaries": "resúmenes",
+      "title": "Créditos gratis",
+      "summaries": "Resúmenes",
       "summary": "Resumen",
       "vector-searches": "Búsquedas inteligentes",
       "vector-search": "Busqueda inteligente"

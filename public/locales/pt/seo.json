@@ -1,6 +1,6 @@
 {
-  "landing-page-seo-title": "Página inicial do Kalygo [en]",
-  "use-cases-page-seo-title": "Casos de uso do Kalygo [pt]",
+  "landing-page-seo-title": "Página inicial do Kalygo",
+  "use-cases-page-seo-title": "Casos de uso de Kalygo",
   "use-cases-page-seo-meta-description": "Uma visão geral dos casos de uso do Kalygo.",
   "browse-contracts-page-seo-title": "Procurar Contratos",
   "sign-up-page-seo-title": "Página de inscrição do Kalygo",
@@ -17,8 +17,8 @@
   "feedback-page-seo-meta-description": "Formulário de feedback geral para Kalygo.",
   "email-page-seo-title": "Lista de mala direta Kalygo",
   "email-page-seo-meta-description": "Adoraríamos receber seus comentários enquanto desenvolvemos a plataforma Kalygo.",
-  "dashboard-page-seo-meta-title": "Dashboard [en]",
-  "reset-password-page-seo-title": "Reset Password [en]",
+  "dashboard-page-seo-meta-title": "Painel",
+  "reset-password-page-seo-title": "Redefinir senha",
   "about-page-title": "About Page",
   "about-page-description": "The about page for Kalygo."
 }
