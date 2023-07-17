@@ -36,6 +36,17 @@
     "sign-up": "Sign up",
     "coming-soon": "Coming soon"
   },
+  "enterprise-pricing": {
+    "title": "Enterprise",
+    "tier1_name": "PrivateGPT",
+    "tier1_description": "Hosted LLMs",
+    "tier1_feature1": "Keep your data private",
+    "tier1_feature2": "Contact us for assistance",
+    "summary": "summary",
+    "month": "month",
+    "sign-up": "Sign up",
+    "coming-soon": "Coming soon"
+  },
   "about": {
     "header": "About"
   },

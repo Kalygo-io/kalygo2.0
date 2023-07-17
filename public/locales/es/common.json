@@ -36,6 +36,17 @@
     "sign-up": "Inscribirse",
     "coming-soon": "Muy pronto"
   },
+  "enterprise-pricing": {
+    "title": "Empresa",
+    "tier1_name": "PrivadoGPT",
+    "tier1_description": "LLM alojados",
+    "tier1_feature1": "Mantenga sus datos privados",
+    "tier1_feature2": "Contáctenos para asistencia",
+    "summary": "resumen",
+    "month": "mes",
+    "sign-up": "Inscribirse",
+    "coming-soon": "Muy pronto"
+  },
   "about": {
     "header": "Acerca de"
   },

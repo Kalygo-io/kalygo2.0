@@ -36,6 +36,17 @@
     "sign-up": "S'inscrire",
     "coming-soon": "À venir"
   },
+  "enterprise-pricing": {
+    "title": "Entreprise",
+    "tier1_name": "PrivateGPT",
+    "tier1_description": "LLM hébergés",
+    "tier1_feature1": "Gardez vos données privées",
+    "tier1_feature2": "Contactez-nous pour obtenir de l'aide",
+    "summary": "résumé",
+    "month": "mois",
+    "sign-up": "S'inscrire",
+    "coming-soon": "À venir"
+  },
   "about": {
     "header": "À propos"
   },

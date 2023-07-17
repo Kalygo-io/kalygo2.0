@@ -18,6 +18,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Mailing } from "@/components/indexComponents/mailing";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import { EnterprisePricing } from "@/components/indexComponents/enterprise_pricing";
 
 const getStaticProps = makeStaticProps([
   "landing-page",
@@ -114,6 +115,7 @@ export default function Home(props: any) {
         </div>
         <Stats />
         <Pricing />
+        <EnterprisePricing />
         <Mailing />
       </Layout1>
     </>
