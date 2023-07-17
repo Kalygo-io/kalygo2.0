@@ -43,11 +43,11 @@
     "header": "Termos de serviço"
   },
   "privacy-policy": {
-    "header": "Política de Privacidade"
+    "header": "Privacy policy"
   },
   "footer": {
-    "about": "Sobre",
-    "terms-of-service": "Termos de serviço",
-    "copyright": "CMD Software Inc. Todos os direitos reservados."
+    "about": "About",
+    "terms-of-service": "Terms of Service",
+    "copyright": "CMD Software Inc. All rights reserved."
   }
 }

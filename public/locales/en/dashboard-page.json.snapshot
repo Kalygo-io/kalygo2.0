@@ -1,0 +1,160 @@
+{
+  "dashboard": "Dashboard",
+  "welcome-to-kalygo": "Welcome",
+  "protected": "Protected",
+  "navigation": {
+    "overview": "Home",
+    "summarize": "Summarize",
+    "templates": "Prompts",
+    "settings": "Settings",
+    "vector-search": "Smart Search",
+    "queue": "My Documents"
+  },
+  "user-nav": {
+    "settings": "Settings",
+    "sign-out": "Sign out"
+  },
+  "index": {
+    "title": "Dashboard",
+    "no-documents-yet": "No Documents Yet!",
+    "credits": {
+      "free-summarization-credits": "Free Summarization Credits",
+      "try-free-summarization-credits": "Try summarization",
+      "free-vector-search-credits": "Free Smart Search Credits",
+      "try-vector-search-credits": "Try smart search",
+      "credit-card-charges": "Monthly Charges",
+      "more-info": "More information"
+    },
+    "summaries": {
+      "title": "Summaries",
+      "subtitle": "An overview of your summaries",
+      "view-all": "View all",
+      "table": {
+        "id": "Id",
+        "filename": "Filename",
+        "processed-length": "Processed Length",
+        "date": "Date",
+        "edit": "Edit",
+        "view": "View"
+      }
+    },
+    "vector-searches": {
+      "title": "Smart Searches",
+      "subtitle": "An overview of your searches",
+      "view-all": "View all",
+      "table": {
+        "id": "Id",
+        "filename": "Filename",
+        "processed-length": "Processed Length",
+        "date": "Date",
+        "edit": "Edit",
+        "view": "View"
+      }
+    }
+  },
+  "summarize": {
+    "upload-a-file": "Select file",
+    "upload-limits": "TXT & PDF files up to 1MB",
+    "clear": "Clear",
+    "summarize": "Summarize",
+    "received-quote": "Received quote",
+    "summary-success": {
+      "original-length": "Original Length",
+      "condensed-length": "Condensed Length",
+      "summary": "Summary",
+      "no-content": "No content"
+    }
+  },
+  "perform-vector-search": {
+    "choose-file": "Choose file",
+    "review": "Review",
+    "review-widget": {
+      "similarity-search": "Similarity search",
+      "unsupported-file-type": "Unsupported file type"
+    }
+  },
+  "vector-search": {
+    "title": "Smart Search",
+    "requested": "Requested",
+    "time-requested-unknown": "The time the search was requested is unknown",
+    "filename": "Filename",
+    "original-file": "Original file",
+    "download": "Download",
+    "query": "Query",
+    "matched-chunk": "Matched Chunk"
+  },
+  "queue": {
+    "title": "Queue",
+    "no-jobs-found": "No jobs found in queue",
+    "job-status": "Job status",
+    "file-name": "File name",
+    "requested-at": "Requested at",
+    "remove": "Remove",
+    "view": "View",
+    "job-type": "Type",
+    "vector-search": {
+      "query": "Query"
+    }
+  },
+  "summary": {
+    "title": "Summary",
+    "requested": "Requested",
+    "time-requested-unknown": "The time the summary was requested is unknown",
+    "filename": "Filename",
+    "original-length": "Original Length",
+    "condensed-length": "Condensed Length",
+    "content": "Content"
+  },
+  "settings": {
+    "free-credits": {
+      "title": "Free credits",
+      "summaries": "Summaries",
+      "summary": "Summary",
+      "vector-searches": "Smart searches",
+      "vector-search": "Smart search"
+    },
+    "personal": {
+      "title": "Personal",
+      "first-name": "First name",
+      "last-name": "Last name",
+      "email": "Email",
+      "save": "Save"
+    },
+    "payment": {
+      "title": "Payment",
+      "no-card": "No Card",
+      "get-started": "Get started by saving your card with Stripe",
+      "new-card": "New card",
+      "delete-card": "Delete",
+      "new-card-modal": {
+        "card-details": "Card details",
+        "card-number": "Card number",
+        "expiration-date": "Expiration date",
+        "cvv": "CVV/CVC",
+        "security-code": "Security code",
+        "save": "Save",
+        "cancel": "Cancel"
+      }
+    },
+    "subscription": {
+      "title": "Subscription",
+      "change": "Change",
+      "switch-plan": "Switch plan",
+      "cancel": "Cancel",
+      "you-are-currently-on": "You are currently on: "
+    },
+    "delete-account": {
+      "title": "Delete account",
+      "you-can-mark-your-account": "You can mark your account for deletion here.",
+      "delete-my-account": "Delete my account",
+      "delete-account-modal": {
+        "are-you-sure": "Are you sure you want to delete your account?",
+        "cancel": "Cancel",
+        "delete": "Delete"
+      }
+    },
+    "error": "Error occurred while loading settings"
+  },
+  "unknown-error": "Unknown Error",
+  "coming-soon": "Coming soon!"
+}

@@ -1,0 +1,12 @@
+{
+  "email-address": "Email address",
+  "enter-email": "Enter email",
+  "password": "Password",
+  "new-password": "New password",
+  "enter-password": "Enter password",
+  "forgot-password": "Forgot password?",
+  "minimum-7-characters": "Minimum 7 characters",
+  "sign-up": "Sign up",
+  "reset-token": "Reset token",
+  "enter-reset-token": "Enter reset token"
+}

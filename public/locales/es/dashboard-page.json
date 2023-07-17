@@ -3,13 +3,12 @@
   "welcome-to-kalygo": "Bienvenido",
   "protected": "Protegido",
   "navigation": {
-    "overview": "Descripción general",
+    "overview": "Hogar",
     "summarize": "Resumir",
     "templates": "Indicaciones",
     "settings": "Ajustes",
-    "vector-search": "Búsqueda de vectores",
-    "queue": "Cola",
-    "custom-request": "Solicitud personalizada"
+    "vector-search": "Busqueda inteligente",
+    "queue": "Mis documentos"
   },
   "user-nav": {
     "settings": "Ajustes",
@@ -23,13 +22,13 @@
     "credits": {
       "free-summarization-credits": "Créditos de resumen gratis",
       "try-free-summarization-credits": "Prueba el resumen",
-      "free-vector-search-credits": "Créditos de búsqueda de vectores gratis",
-      "try-vector-search-credits": "Pruebe la búsqueda de vectores",
-      "credit-card-charges": "Cargos",
+      "free-vector-search-credits": "Créditos de búsqueda inteligente gratis",
+      "try-vector-search-credits": "Prueba la búsqueda inteligente",
+      "credit-card-charges": "Cargos mensuales",
       "more-info": "Más información"
     },
     "summaries": {
-      "title": "resúmenes",
+      "title": "Resúmenes",
       "subtitle": "Una visión general de sus resúmenes",
       "view-all": "Ver todo",
       "table": {
@@ -42,7 +41,7 @@
       }
     },
     "vector-searches": {
-      "title": "Búsquedas vectoriales",
+      "title": "Búsquedas inteligentes",
       "subtitle": "Una visión general de sus búsquedas",
       "view-all": "Ver todo",
       "table": {
@@ -74,14 +73,18 @@
     "choose-file": "Elija el archivo",
     "review": "Revisar",
     "review-widget": {
+<<<<<<< HEAD
       "similarity-search": "Búsqueda de similitud",
+=======
+      "similarity-search": "búsqueda de similitud",
+>>>>>>> feature/translationScriptEnhancements
       "unsupported-file-type": "Tipo de archivo no soportado"
     }
   },
   "vector-search": {
-    "title": "Búsqueda de vectores",
+    "title": "Busqueda inteligente",
     "requested": "Solicitado",
-    "time-requested-unknown": "Se desconoce la hora a la que se solicitó la búsqueda vectorial",
+    "time-requested-unknown": "Se desconoce la hora en que se solicitó la búsqueda.",
     "filename": "Nombre del archivo",
     "original-file": "Archivo original",
     "download": "Descargar",
@@ -123,11 +126,11 @@
   },
   "settings": {
     "free-credits": {
-      "title": "créditos gratis",
-      "summaries": "resúmenes",
+      "title": "Créditos gratis",
+      "summaries": "Resúmenes",
       "summary": "Resumen",
-      "vector-searches": "Búsquedas de vectores",
-      "vector-search": "Búsqueda de vectores"
+      "vector-searches": "Búsquedas inteligentes",
+      "vector-search": "Busqueda inteligente"
     },
     "personal": {
       "title": "Personal",

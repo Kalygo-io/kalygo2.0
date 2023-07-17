@@ -31,23 +31,23 @@
     "tier3_feature2": "Plus d'analyses",
     "tier3_feature3": "Fonctionnalités collaboratives",
     "tier3_feature4": "Toutes les fonctionnalités activées",
-    "summary": "résumé",
-    "month": "mois",
-    "sign-up": "S'inscrire",
-    "coming-soon": "À venir"
+    "summary": "summary",
+    "month": "month",
+    "sign-up": "Sign up",
+    "coming-soon": "Coming soon"
   },
   "about": {
-    "header": "À propos"
+    "header": "About"
   },
   "terms-of-service": {
-    "header": "Conditions d'utilisation"
+    "header": "Terms of service"
   },
   "privacy-policy": {
-    "header": "Politique de confidentialité"
+    "header": "Privacy policy"
   },
   "footer": {
-    "about": "À propos",
-    "terms-of-service": "Conditions d'utilisation",
-    "copyright": "CMD Software Inc. Tous droits réservés."
+    "about": "About",
+    "terms-of-service": "Terms of Service",
+    "copyright": "CMD Software Inc. All rights reserved."
   }
 }
