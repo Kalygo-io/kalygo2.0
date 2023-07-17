@@ -111,7 +111,8 @@
     "prompt": "Incitar",
     "chosen-files": "arquivos escolhidos",
     "suggested-requests": "Solicitações sugeridas",
-    "provided-request": "Solicitação fornecida"
+    "provided-request": "Solicitação fornecida",
+    "prompt-placeholder-text": "Edite ou personalize a solicitação que será aplicada aos seus arquivos aqui"
   },
   "queue": {
     "title": "Fila",

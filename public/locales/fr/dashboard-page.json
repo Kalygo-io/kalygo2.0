@@ -110,7 +110,8 @@
     "save": "Sauvegarder",
     "chosen-files": "Fichiers choisis",
     "provided-request": "Demande fournie",
-    "suggested-requests": "Demandes suggérées"
+    "suggested-requests": "Demandes suggérées",
+    "prompt-placeholder-text": "Modifiez ou personnalisez la demande qui sera appliquée à vos fichiers ici"
   },
   "queue": {
     "title": "File d'attente",
