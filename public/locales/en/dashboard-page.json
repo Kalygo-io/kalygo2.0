@@ -71,6 +71,16 @@
       "no-content": "No content"
     }
   },
+  "summarize-v2": {
+    "title": "Summarize",
+    "choose-files": "Choose files",
+    "customize-summary": "Customize",
+    "chosen-files": "Chosen files",
+    "customizations": "Customizations",
+    "run": "Run",
+    "select-files": "Select files",
+    "upload-limits": "TXT & PDF files up to 1 MB"
+  },
   "perform-vector-search": {
     "title": "Vector Search",
     "choose-file": "Choose file",

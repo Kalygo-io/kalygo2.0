@@ -28,10 +28,10 @@ import { useRouter } from "next/router";
 import isNumber from "lodash.isnumber";
 import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
 import { Menu, Transition } from "@headlessui/react";
-import { customRequestFactory } from "@/serviceFactory/customRequestFactory";
+import { customSummaryFactory } from "@/serviceFactory/customSummaryFactory";
 
 interface Props {
-  prompt: string;
+  customizations: Record<string, string> | null;
   files: File[];
   wizardStepsRef: RefObject<HTMLElement>;
   setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
@@ -42,8 +42,12 @@ function classNames(...classes: string[]) {
 }
 
 export function Review(props: Props) {
-  const { prompt, files, wizardStepsRef, setShowPaymentMethodRequiredModal } =
-    props;
+  const {
+    customizations,
+    files,
+    wizardStepsRef,
+    setShowPaymentMethodRequiredModal,
+  } = props;
 
   const [numPages, setNumPages] = useState<number>();
   const router = useRouter();
@@ -74,11 +78,11 @@ export function Review(props: Props) {
       <div className="mx-auto w-full max-w-7xl grow lg:flex xl:px-2">
         {/* Left sidebar & main wrapper */}
         <div className="flex-1 xl:flex">
-          <div className="border-b border-gray-200 px-4 py-6 sm:px-6 lg:pl-8 xl:w-96 xl:shrink-0 xl:border-b-0 xl:border-r xl:pl-6">
+          <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:w-96 xl:shrink-0 xl:pl-6">
             {/* Left column area */}
             {/* LEFT */}
             <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight underline underline-offset-4">
-              {t("dashboard-page:custom-request-v2.chosen-files")!}
+              {t("dashboard-page:summarize-v2.chosen-files")!}
             </h2>
 
             <ul role="list" className="divide-y divide-gray-100">
@@ -142,31 +146,24 @@ export function Review(props: Props) {
             {/* Main area */}
             {/* MAIN */}
             <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight underline underline-offset-4">
-              {t("dashboard-page:custom-request-v2.provided-request")!}
+              {t("dashboard-page:summarize-v2.customizations")!}
             </h2>
             <div className="grid grid-cols-1 gap-x-6 gap-y-8">
               {/* <div className="col-span-full flex justify-center"> */}
               <div className="col-span-full">
-                <form>
-                  <div>
-                    <div className="mt-2">
-                      <textarea
-                        readOnly
-                        defaultValue={prompt}
-                        rows={4}
-                        name="prompt"
-                        id="prompt"
-                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                      />
-                    </div>
-                  </div>
-                </form>
+                {customizations && (
+                  <ul className="m-4">
+                    {Object.keys(customizations).map((c, idx) => {
+                      return <li> {customizations[c]}</li>;
+                    })}
+                  </ul>
+                )}
               </div>
             </div>
           </div>
         </div>
 
-        <div className="shrink-0 border-t border-gray-200 px-4 py-6 sm:px-6 lg:w-96 lg:border-l lg:border-t-0 lg:pr-8 xl:pr-6">
+        <div className="shrink-0 px-4 py-6 sm:px-6 lg:w-96 lg:pr-8 xl:pr-6">
           {/* Right column area */}
           {/* RIGHT */}
           <div>
@@ -175,7 +172,10 @@ export function Review(props: Props) {
                 try {
                   console.log("customRequest RUN");
 
-                  const customRequest = customRequestFactory(prompt, files);
+                  const customRequest = customSummaryFactory(
+                    customizations!,
+                    files
+                  );
                   const customRequestResponse = await customRequest;
                   console.log("customRequestResponse", customRequestResponse);
 
@@ -185,15 +185,26 @@ export function Review(props: Props) {
                 } catch (e: any) {
                   errorToast(e.toString());
                 }
+                // try {
+                //   console.log("customSummary RUN");
+                //   // const customRequest = customRequestFactory(prompt, files);
+                //   // const customRequestResponse = await customRequest;
+                //   // console.log("customRequestResponse", customRequestResponse);
+                //   // const detectedLng = navigatorLangDetector();
+                //   // router.push(`/${detectedLng}/dashboard/queue`);
+                //   // infoToast(t("toast-messages:custom-request-is-processing"));
+                // } catch (e: any) {
+                //   errorToast(e.toString());
+                // }
               }}
-              disabled={files.length === 0 || prompt === ""}
+              disabled={files.length === 0 || !customizations}
               className={`${
-                files.length === 0 || prompt === ""
+                files.length === 0 || !customizations
                   ? "opacity-50"
                   : "opacity-100"
               } mt-2 flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
             >
-              {t("dashboard-page:custom-request.run")!}
+              {t("dashboard-page:summarize-v2.run")!}
             </button>
           </div>
         </div>

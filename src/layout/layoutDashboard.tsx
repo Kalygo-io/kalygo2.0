@@ -69,7 +69,8 @@ export default function LayoutDashboard({ children, account }: P) {
     },
     {
       name: t("dashboard-page:navigation.summarize"),
-      href: "/dashboard/summarize",
+      // href: "/dashboard/summarize",
+      href: "/dashboard/summarize/summarize-v2",
       icon: LifebuoyIcon,
     },
     {
