@@ -5,6 +5,7 @@ import { useTranslation } from "next-i18next";
 import { SummaryJob } from "./jsxForJobType/summary";
 import { CustomRequest } from "./jsxForJobType/customRequest";
 import { VectorSearch } from "./jsxForJobType/vectorSearch";
+import { SummaryV2Job } from "./jsxForJobType/summaryV2";
 
 interface P {
   jobs: any[];
@@ -32,6 +33,16 @@ export const JobList = (p: P) => {
           case "Summary":
             jobTypeJsx = (
               <SummaryJob
+                job={i}
+                router={router}
+                triggerFetch={triggerFetch}
+                fetchCounter={fetchCounter}
+              />
+            );
+            break;
+          case "SummaryV2":
+            jobTypeJsx = (
+              <SummaryV2Job
                 job={i}
                 router={router}
                 triggerFetch={triggerFetch}

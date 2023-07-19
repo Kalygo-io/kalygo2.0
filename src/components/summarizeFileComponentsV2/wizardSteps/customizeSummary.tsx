@@ -69,11 +69,10 @@ export function CustomizeSummary(props: Props) {
   } = useForm({
     defaultValues: {
       format: "bullet-points",
-      type: "summarize-overall",
-      length: "medium",
+      type: "summarize-chunks",
+      length: "short",
       language: "English",
     },
-    mode: "onChange",
   });
 
   return (

@@ -149,12 +149,11 @@ export function Review(props: Props) {
               {t("dashboard-page:summarize-v2.customizations")!}
             </h2>
             <div className="grid grid-cols-1 gap-x-6 gap-y-8">
-              {/* <div className="col-span-full flex justify-center"> */}
               <div className="col-span-full">
                 {customizations && (
                   <ul className="m-4">
                     {Object.keys(customizations).map((c, idx) => {
-                      return <li> {customizations[c]}</li>;
+                      return <li key={c}> {customizations[c]}</li>;
                     })}
                   </ul>
                 )}
@@ -170,32 +169,21 @@ export function Review(props: Props) {
             <button
               onClick={async () => {
                 try {
-                  console.log("customRequest RUN");
+                  console.log("customSummary RUN", customizations);
 
                   const customRequest = customSummaryFactory(
                     customizations!,
                     files
                   );
                   const customRequestResponse = await customRequest;
-                  console.log("customRequestResponse", customRequestResponse);
+                  console.log("customSummaryResponse", customRequestResponse);
 
                   const detectedLng = navigatorLangDetector();
                   router.push(`/${detectedLng}/dashboard/queue`);
-                  infoToast(t("toast-messages:custom-request-is-processing"));
+                  infoToast(t("toast-messages:custom-summary-is-processing"));
                 } catch (e: any) {
                   errorToast(e.toString());
                 }
-                // try {
-                //   console.log("customSummary RUN");
-                //   // const customRequest = customRequestFactory(prompt, files);
-                //   // const customRequestResponse = await customRequest;
-                //   // console.log("customRequestResponse", customRequestResponse);
-                //   // const detectedLng = navigatorLangDetector();
-                //   // router.push(`/${detectedLng}/dashboard/queue`);
-                //   // infoToast(t("toast-messages:custom-request-is-processing"));
-                // } catch (e: any) {
-                //   errorToast(e.toString());
-                // }
               }}
               disabled={files.length === 0 || !customizations}
               className={`${

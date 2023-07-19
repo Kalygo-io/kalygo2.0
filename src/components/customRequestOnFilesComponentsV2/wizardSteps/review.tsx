@@ -173,8 +173,6 @@ export function Review(props: Props) {
             <button
               onClick={async () => {
                 try {
-                  console.log("customRequest RUN");
-
                   const customRequest = customRequestFactory(prompt, files);
                   const customRequestResponse = await customRequest;
                   console.log("customRequestResponse", customRequestResponse);

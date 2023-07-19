@@ -9,6 +9,7 @@ export async function customSummaryFactory(
 ) {
   try {
     console.log("fileList", fileList);
+    console.log("customizations", customizations);
 
     const formData = new FormData();
     const fileListKeys = Object.keys(fileList);
@@ -21,9 +22,6 @@ export async function customSummaryFactory(
     formData.set("type", customizations["type"]);
     formData.set("length", customizations["length"]);
     formData.set("language", customizations["language"]);
-
-    // console.log("formData", formData);
-    // console.log("formData", formData.get("documents"));
 
     const config = {
       method: "post",

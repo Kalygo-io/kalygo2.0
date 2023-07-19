@@ -84,6 +84,10 @@ export default function SummarizeV2() {
   const [showPaymentMethodRequiredModal, setShowPaymentMethodRequiredModal] =
     useState<boolean>(false);
 
+  //   console.log("summary.loading", summary.loading);
+  //   console.log("summary.err", summary.err);
+  //   console.log("showPaymentMethodRequiredModal", showPaymentMethodRequiredModal);
+
   let jsx = null;
   if (summary.loading) {
     jsx = <WindowLoader></WindowLoader>;
