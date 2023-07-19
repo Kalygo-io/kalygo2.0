@@ -1,5 +1,6 @@
 import { round } from "@/utility/Math/round";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
+import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import { useTranslation } from "next-i18next";
 import ReactMarkdown from "react-markdown";
 
@@ -32,14 +33,18 @@ export default function SummaryV2(p: P) {
               {summary?.completionResponse.map((i: any, idx: any) => {
                 return (
                   <div key={i.file}>
-                    <b>{i.file}</b>
+                    <span>
+                      <InformationCircleIcon className="h-4 w-4 inline" />
+                      &nbsp;
+                      <b>{i.file}</b>
+                    </span>
 
                     <ul>
                       {i?.response?.map((i: any, idx: any) => {
                         return (
                           <li className="mt-2" key={i.part}>
-                            (Part {i.part + 1}){" "}
-                            <ReactMarkdown>
+                            {/* (Part {i.part + 1}) */}
+                            <ReactMarkdown className="summary-v2-markdown">
                               {i.completionResponse}
                             </ReactMarkdown>
                           </li>
@@ -71,10 +76,14 @@ export default function SummaryV2(p: P) {
             <dl className="divide-y divide-gray-100">
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">
-                  {t("dashboard-page:summary-v2.prompt")}
+                  {/* {t("dashboard-page:summary-v2.prompt")} */}
+                  {t("dashboard-page:summary.requested")}:
                 </dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-2">
-                  <ReactMarkdown>{summary?.prompt}</ReactMarkdown>
+                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+                  {/* <ReactMarkdown>{summary?.prompt}</ReactMarkdown> */}
+                  {summary?.createdAt
+                    ? `${new Date(summary.createdAt)}`
+                    : t("dashboard-page:summary.time-requested-unknown")}
                 </dd>
               </div>
             </dl>
