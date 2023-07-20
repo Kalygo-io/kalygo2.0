@@ -6,12 +6,12 @@
   "stats": {
     "headline": "Documentos não precisam ser complicados",
     "subheadline": "Kalygo economiza seu tempo para que você possa se concentrar no que importa",
-    "stat1_headline": "Resumir",
+    "stat1_headline": "Entendimento",
     "stat1_subheadline": "Obtenha as informações mais importantes que você precisa de seus documentos",
-    "stat2_headline": "Procurar",
+    "stat2_headline": "Visão geral",
     "stat2_subheadline": "Converse com seus documentos e vá além da correspondência de palavras-chave",
-    "stat3_headline": "Compartilhar",
-    "stat3_subheadline": "Compartilhe com os membros da sua equipe ou clientes"
+    "stat3_headline": "Facilidade",
+    "stat3_subheadline": "Compartilhe insights com os membros de sua equipe ou clientes"
   },
   "pricing": {
     "title": "Preços",
@@ -21,7 +21,7 @@
     "tier1_feature2": "Suporte automatizado",
     "tier2_name": "Padrão",
     "tier2_description": "Tudo em Gratuito e mais",
-    "tier2_feature1": "Pague por resumo",
+    "tier2_feature1": "Pague conforme usar cada recurso premium",
     "tier2_feature2": "Arquivos PDF e TXT suportados",
     "tier2_feature3": "Análise básica",
     "tier2_feature4": "suporte 24 horas",
@@ -34,6 +34,18 @@
     "summary": "resumo",
     "month": "mês",
     "sign-up": "Inscrever-se",
+    "coming-soon": "Em breve",
+    "premium-feature": "recurso"
+  },
+  "enterprise-pricing": {
+    "title": "Empreendimento",
+    "tier1_name": "PrivateGPT",
+    "tier1_description": "LLMs hospedados",
+    "tier1_feature1": "Mantenha seus dados privados",
+    "tier1_feature2": "Contacte-nos para assistência",
+    "summary": "resumo",
+    "month": "mês",
+    "sign-up": "Inscrever-se",
     "coming-soon": "Em breve"
   },
   "about": {
@@ -43,11 +55,11 @@
     "header": "Termos de serviço"
   },
   "privacy-policy": {
-    "header": "Política de Privacidade"
+    "header": "Privacy policy"
   },
   "footer": {
-    "about": "Sobre",
-    "terms-of-service": "Termos de serviço",
-    "copyright": "CMD Software Inc. Todos os direitos reservados."
+    "about": "About",
+    "terms-of-service": "Terms of Service",
+    "copyright": "CMD Software Inc. All rights reserved."
   }
 }

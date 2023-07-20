@@ -3,16 +3,20 @@
   "welcome-to-kalygo": "Bem-vindo",
   "protected": "Protegido",
   "navigation": {
-    "overview": "Visão geral",
+    "overview": "Lar",
     "summarize": "Resumir",
     "templates": "Comandos",
     "settings": "Configurações",
-    "vector-search": "Pesquisa de vetores",
-    "queue": "Fila"
+    "vector-search": "Busca inteligente",
+    "queue": "Meus documentos",
+    "saas-stats": "Estatísticas de SaaS",
+    "custom-request": "Solicitação personalizada"
   },
   "user-nav": {
     "settings": "Configurações",
-    "sign-out": "sair"
+    "sign-out": "sair",
+    "credit": "Crédito",
+    "credits": "Créditos"
   },
   "index": {
     "title": "Painel",
@@ -20,10 +24,10 @@
     "credits": {
       "free-summarization-credits": "Créditos de resumo grátis",
       "try-free-summarization-credits": "Tente resumir",
-      "free-vector-search-credits": "Créditos de pesquisa de vetores gratuitos",
-      "try-vector-search-credits": "Experimente a pesquisa vetorial",
-      "credit-card-charges": "Cobranças",
-      "more-info": "Mais informações"
+      "free-vector-search-credits": "Créditos gratuitos de pesquisa inteligente",
+      "try-vector-search-credits": "Experimente a pesquisa inteligente",
+      "credit-card-charges": "Cobranças Mensais",
+      "more-info": "Mais Informações"
     },
     "summaries": {
       "title": "Resumos",
@@ -39,7 +43,7 @@
       }
     },
     "vector-searches": {
-      "title": "Pesquisas de vetores",
+      "title": "Pesquisas Inteligentes",
       "subtitle": "Uma visão geral de suas pesquisas",
       "view-all": "Ver tudo",
       "table": {
@@ -53,35 +57,79 @@
     }
   },
   "summarize": {
+    "title": "Resumir",
     "upload-a-file": "Selecione o arquivo",
+    "upload-files": "Selecionar arquivos",
     "upload-limits": "Arquivos TXT e PDF de até 1 MB",
     "clear": "Claro",
     "summarize": "Resumir",
     "received-quote": "Cotação recebida",
     "summary-success": {
-      "original-length": "Comprimento Original",
+      "original-length": "Comprimento original",
       "condensed-length": "Comprimento condensado",
       "summary": "Resumo",
       "no-content": "sem conteúdo"
     }
   },
+  "summarize-v2": {
+    "title": "Resumir",
+    "choose-files": "Escolher os arquivos",
+    "customize-summary": "Customizar",
+    "chosen-files": "arquivos escolhidos",
+    "customizations": "personalizações",
+    "run": "Correr",
+    "select-files": "Selecionar arquivos",
+    "upload-limits": "Arquivos TXT e PDF de até 1 MB"
+  },
   "perform-vector-search": {
+    "title": "Pesquisa de vetores",
     "choose-file": "Escolher arquivo",
-    "review": "Análise"
+    "review": "Análise",
+    "review-widget": {
+      "similarity-search": "pesquisa de similaridade",
+      "unsupported-file-type": "Tipo de arquivo não suportado"
+    }
   },
   "vector-search": {
-    "title": "Pesquisa de vetores",
+    "title": "Busca inteligente",
     "requested": "Requeridos",
-    "time-requested-unknown": "A hora em que a busca do vetor foi solicitada é desconhecida",
+    "time-requested-unknown": "A hora em que a pesquisa foi solicitada é desconhecida",
     "filename": "Nome do arquivo",
     "original-file": "arquivo original",
     "download": "Download",
     "query": "Consulta",
     "matched-chunk": "Pedaço correspondente"
   },
+  "custom-request": {
+    "select-files": "Selecionar arquivos",
+    "prompt": "Incitar",
+    "prompt-placeholder-text": "Escreva a solicitação personalizada que será aplicada aos seus arquivos aqui",
+    "run": "Correr",
+    "upload-limits": "Arquivos TXT e PDF de até 1 MB cada",
+    "title": "Solicitação personalizada",
+    "requested": "Requeridos",
+    "filenames": "Nomes de arquivo",
+    "total-completion-response": "Resposta"
+  },
+  "custom-request-v2": {
+    "choose-files": "Escolher os arquivos",
+    "provide-request": "Fornecer solicitação",
+    "run": "Correr",
+    "select-files": "Selecionar arquivos",
+    "upload-limits": "Arquivos TXT e PDF de até 1 MB cada",
+    "save": "Salvar",
+    "prompt": "Incitar",
+    "prompt-placeholder-text": "Edite ou personalize a solicitação que será aplicada aos seus arquivos aqui",
+    "chosen-files": "arquivos escolhidos",
+    "suggested-requests": "Solicitações sugeridas",
+    "provided-request": "Solicitação fornecida",
+    "open-options": "Abrir opções",
+    "more-like-this": "Mais como isso",
+    "select": "Selecione",
+    "not-this-one": "Esse não"
+  },
   "queue": {
     "title": "Fila",
-    "no-jobs-found": "Nenhum trabalho encontrado na fila",
     "job-status": "Status de trabalho",
     "file-name": "Nome do arquivo",
     "requested-at": "Solicitado em",
@@ -90,7 +138,8 @@
     "job-type": "Tipo",
     "vector-search": {
       "query": "Consulta"
-    }
+    },
+    "custom-request": {}
   },
   "summary": {
     "title": "Resumo",
@@ -101,13 +150,17 @@
     "condensed-length": "Comprimento condensado",
     "content": "Contente"
   },
+  "summary-v2": {
+    "prompt": "Incitar"
+  },
+  "saas-stats": {},
   "settings": {
     "free-credits": {
-      "title": "créditos grátis",
+      "title": "Créditos grátis",
       "summaries": "Resumos",
       "summary": "Resumo",
-      "vector-searches": "Pesquisas de vetores",
-      "vector-search": "Pesquisa de vetores"
+      "vector-searches": "Pesquisas inteligentes",
+      "vector-search": "Busca inteligente"
     },
     "personal": {
       "title": "Pessoal",
@@ -127,7 +180,7 @@
         "card-number": "Número do cartão",
         "expiration-date": "Data de validade",
         "cvv": "CVV/CVC",
-        "security-code": "Código de segurança",
+        "security-code": "Security code",
         "save": "Salvar",
         "cancel": "Cancelar"
       }
@@ -137,7 +190,7 @@
       "change": "Mudar",
       "switch-plan": "Mudar de plano",
       "cancel": "Cancelar",
-      "you-are-currently-on": "Você está atualmente em:"
+      "you-are-currently-on": "Você está atualmente em: "
     },
     "delete-account": {
       "title": "Deletar conta",

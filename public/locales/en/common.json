@@ -6,12 +6,12 @@
   "stats": {
     "headline": "Documents don't need to be complicated",
     "subheadline": "Kalygo saves you time so you can focus on what matters",
-    "stat1_headline": "Summarize",
+    "stat1_headline": "Insight",
     "stat1_subheadline": "Get the most important information you need from your documents",
-    "stat2_headline": "Search",
+    "stat2_headline": "Overview",
     "stat2_subheadline": "Talk to your documents and go beyond keyword matching",
-    "stat3_headline": "Share",
-    "stat3_subheadline": "Share with your team members or clients"
+    "stat3_headline": "Ease",
+    "stat3_subheadline": "Share insight with your team members or clients"
   },
   "pricing": {
     "title": "Pricing",
@@ -21,7 +21,7 @@
     "tier1_feature2": "Automated support",
     "tier2_name": "Standard",
     "tier2_description": "Everything in Free, plus more",
-    "tier2_feature1": "Pay per summary",
+    "tier2_feature1": "Pay as you use each premium feature",
     "tier2_feature2": "PDF & TXT files supported",
     "tier2_feature3": "Basic analytics",
     "tier2_feature4": "24hr support",
@@ -31,6 +31,18 @@
     "tier3_feature2": "More analytics",
     "tier3_feature3": "Collaboration Features",
     "tier3_feature4": "All features enabled",
+    "summary": "summary",
+    "month": "month",
+    "sign-up": "Sign up",
+    "coming-soon": "Coming soon",
+    "premium-feature": "feature"
+  },
+  "enterprise-pricing": {
+    "title": "Enterprise",
+    "tier1_name": "PrivateGPT",
+    "tier1_description": "Hosted LLMs",
+    "tier1_feature1": "Keep your data private",
+    "tier1_feature2": "Contact us for assistance",
     "summary": "summary",
     "month": "month",
     "sign-up": "Sign up",

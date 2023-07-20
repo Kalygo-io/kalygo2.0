@@ -9,7 +9,9 @@
   "files-uploaded-for-summarization-complete": "Seus resumos estão sendo gerados. Você será notificado por e-mail quando todos os seus arquivos forem processados.",
   "you-joined-the-mailing-list": "Você se juntou à lista de discussão!",
   "vector-search-is-processing": "Sua pesquisa está sendo processada...",
+  "custom-request-is-processing": "Sua solicitação está sendo processada...",
+  "custom-summary-is-processing": "Seu resumo está sendo processado...",
   "error": {
-    "something-unexpected-happened": "algo inesperado aconteceu"
+    "something-unexpected-happened": "Something unexpected happened"
   }
 }

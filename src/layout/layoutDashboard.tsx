@@ -40,20 +40,23 @@ export default function LayoutDashboard({ children, account }: P) {
   const { t } = useTranslation();
   const { pathname, query } = router;
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [ isAdmin, setIsAdmin ] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const checkAdmin = async () => {
-        try {
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/check-admin`, { withCredentials: true });
-            setIsAdmin(response.data.isAdmin);
-        }
-        catch (err) {
-            //
-        }
-    }
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/check-admin`,
+          { withCredentials: true }
+        );
+
+        setIsAdmin(response.data.isAdmin);
+      } catch (err) {
+        //
+      }
+    };
     checkAdmin();
-}, []);
+  }, []);
 
   const segments = pathname.split("/");
   const current = segments[segments.length - 1];
@@ -66,20 +69,19 @@ export default function LayoutDashboard({ children, account }: P) {
     },
     {
       name: t("dashboard-page:navigation.summarize"),
-      href: "/dashboard/summarize",
+      // href: "/dashboard/summarize",
+      href: "/dashboard/summarize/summarize-v2",
       icon: LifebuoyIcon,
     },
-
     {
       name: t("dashboard-page:navigation.vector-search"),
-      href: "/dashboard/vector-search/vector-search-v2",
-      // href: "/dashboard/vector-search",
+      // href: "/dashboard/vector-search/vector-search-v2",
+      href: "/dashboard/vector-search",
       icon: DocumentMagnifyingGlassIcon,
     },
     {
       name: t("dashboard-page:navigation.custom-request"),
-      href: "/dashboard/custom-request",
-      // href: "/dashboard/vector-search",
+      href: "/dashboard/custom-request/custom-request-v2",
       icon: BeakerIcon,
     },
     {
@@ -438,4 +440,3 @@ export default function LayoutDashboard({ children, account }: P) {
     </>
   );
 }
-

@@ -57,9 +57,10 @@
     }
   },
   "summarize": {
+    "title": "Summarize",
     "upload-a-file": "Select file",
     "upload-files": "Select files",
-    "upload-limits": "TXT & PDF files up to 1MB",
+    "upload-limits": "TXT & PDF files up to 1 MB",
     "clear": "Clear",
     "summarize": "Summarize",
     "received-quote": "Received quote",
@@ -70,7 +71,18 @@
       "no-content": "No content"
     }
   },
+  "summarize-v2": {
+    "title": "Summarize",
+    "choose-files": "Choose files",
+    "customize-summary": "Customize",
+    "chosen-files": "Chosen files",
+    "customizations": "Customizations",
+    "run": "Run",
+    "select-files": "Select files",
+    "upload-limits": "TXT & PDF files up to 1 MB"
+  },
   "perform-vector-search": {
+    "title": "Vector Search",
     "choose-file": "Choose file",
     "review": "Review",
     "review-widget": {
@@ -93,11 +105,28 @@
     "prompt": "Prompt",
     "prompt-placeholder-text": "Write the custom request that will be applied to your files here",
     "run": "Run",
-    "upload-limits": "TXT & PDF files up to 1MB each",
+    "upload-limits": "TXT & PDF files up to 1 MB each",
     "title": "Custom Request",
     "requested": "Requested",
     "filenames": "File names",
     "total-completion-response": "Response"
+  },
+  "custom-request-v2": {
+    "choose-files": "Choose files",
+    "provide-request": "Provide request",
+    "run": "Run",
+    "select-files": "Select files",
+    "upload-limits": "TXT & PDF files up to 1 MB each",
+    "save": "Save",
+    "prompt": "Prompt",
+    "prompt-placeholder-text": "Edit or customize the request that will be applied to your files here",
+    "chosen-files": "Chosen files",
+    "suggested-requests": "Suggested Requests",
+    "provided-request": "Provided Request",
+    "open-options": "Open options",
+    "more-like-this": "More like this",
+    "select": "Select",
+    "not-this-one": "Not this one"
   },
   "queue": {
     "title": "My Documents",
@@ -124,6 +153,9 @@
     "original-length": "Original Length",
     "condensed-length": "Condensed Length",
     "content": "Content"
+  },
+  "summary-v2": {
+    "prompt": "Prompt"
   },
   "saas-stats": {
     "title": "SaaS Stats"

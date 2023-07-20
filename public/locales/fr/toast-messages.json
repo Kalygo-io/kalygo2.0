@@ -9,7 +9,9 @@
   "files-uploaded-for-summarization-complete": "Vos récapitulatifs sont en cours de génération. Vous serez averti par e-mail lorsque tous vos fichiers auront été traités.",
   "you-joined-the-mailing-list": "Vous avez rejoint la liste de diffusion !",
   "vector-search-is-processing": "Votre recherche est en cours de traitement...",
+  "custom-request-is-processing": "Votre demande est en cours de traitement...",
+  "custom-summary-is-processing": "Votre résumé est en cours de traitement...",
   "error": {
-    "something-unexpected-happened": "Quelque chose d'inattendu s'est produit"
+    "something-unexpected-happened": "Something unexpected happened"
   }
 }
