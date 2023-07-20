@@ -83,6 +83,8 @@ export default function Signin() {
     }
   };
 
+  const locale = router.query.locale;
+
   return (
     <>
       <Head>
@@ -196,30 +198,34 @@ export default function Signin() {
               </div>
             </div>
 
-            <div className="mt-6 grid grid-cols-2 gap-4">
-            <GoogleLogin
+            <div className="mt-6 flex flex-col justify-center items-center space-y-2">
+              <GoogleLogin
+                width="100"
+                locale={locale as string}
                 text="signin_with"
-                onSuccess={(credentialResponse) => {
-                  console.log("CREDENTIAL RESPONSE = ", credentialResponse);
-                  const { credential } = credentialResponse;
-                  const payload = credential ? decodeJwt(credential) : undefined;
-                  if (payload) {
-                    console.log("PAYLOAD = ", payload);
-                    axios.post(`${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/google-log-in`, {}, {
-                      headers: {
-                        Authorization: `Bearer ${credential}`
-                      },
-                      withCredentials: true,
-                    }).then( response => {
-                      console.log(response);
-                      const detectedLng = navigatorLangDetector();
-                      router.push(`/${detectedLng}/dashboard`);
-                    })
-                      .catch(err => console.log(err));
+                onSuccess={async (credentialResponse) => {
+                  try {
+                    const { credential } = credentialResponse;
+
+                    await axios.post(
+                      `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/google-log-in`,
+                      {},
+                      {
+                        headers: {
+                          Authorization: `Bearer ${credential}`,
+                        },
+                        withCredentials: true,
+                      }
+                    );
+                    const detectedLng = navigatorLangDetector();
+                    router.push(`/${detectedLng}/dashboard`);
+                  } catch (e) {
+                    errorReporter(e);
                   }
                 }}
                 onError={() => {
-                  console.log('Signup failed');
+                  const err = new Error("GOOGLE_LOGIN_ERROR");
+                  errorReporter(err);
                 }}
               />
               {/* <button
