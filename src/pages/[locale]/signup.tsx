@@ -23,6 +23,9 @@ import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang
 import { useState } from "react";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 
+import { GoogleLogin } from "@react-oauth/google";
+import { decodeJwt } from "jose";
+
 const getStaticProps = makeStaticProps([
   "seo",
   "navbar",
@@ -220,7 +223,40 @@ export default function Signup() {
             </div>
 
             <div className="mt-6 grid grid-cols-2 gap-4">
-              <button
+              <GoogleLogin
+                text="signup_with"
+                onSuccess={(credentialResponse) => {
+                  console.log("CREDENTIAL RESPONSE = ", credentialResponse);
+                  const { credential } = credentialResponse;
+                  const payload = credential
+                    ? decodeJwt(credential)
+                    : undefined;
+                  if (payload) {
+                    console.log("PAYLOAD = ", payload);
+                    axios
+                      .post(
+                        `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/google-sign-up`,
+                        {},
+                        {
+                          headers: {
+                            Authorization: `Bearer ${credential}`,
+                          },
+                          withCredentials: true,
+                        }
+                      )
+                      .then((response) => {
+                        console.log(response);
+                        const detectedLng = navigatorLangDetector();
+                        router.push(`/${detectedLng}/dashboard`);
+                      })
+                      .catch((err) => console.log(err));
+                  }
+                }}
+                onError={() => {
+                  console.log("Signup failed");
+                }}
+              />
+              {/* <button
                 onClick={() => {}}
                 className="flex w-full items-center justify-center gap-3 rounded-md opacity-20 bg-[grey] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F]"
               >
@@ -231,7 +267,7 @@ export default function Signup() {
                   />
                 </svg>
                 <span className="text-sm font-semibold leading-6">Google</span>
-              </button>
+              </button> */}
               <button
                 onClick={() => {}}
                 className="flex w-full items-center justify-center gap-3 rounded-md opacity-20 bg-[#1D9BF0] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"

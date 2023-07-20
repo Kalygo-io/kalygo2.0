@@ -14,6 +14,9 @@ import { errorReporter } from "@/utility/error/reporter";
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 
+import { GoogleLogin } from "@react-oauth/google";
+import { decodeJwt } from "jose";
+
 // import Link from "next/link";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
 import languageDetector, {
@@ -194,7 +197,32 @@ export default function Signin() {
             </div>
 
             <div className="mt-6 grid grid-cols-2 gap-4">
-              <button
+            <GoogleLogin
+                text="signin_with"
+                onSuccess={(credentialResponse) => {
+                  console.log("CREDENTIAL RESPONSE = ", credentialResponse);
+                  const { credential } = credentialResponse;
+                  const payload = credential ? decodeJwt(credential) : undefined;
+                  if (payload) {
+                    console.log("PAYLOAD = ", payload);
+                    axios.post(`${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/google-log-in`, {}, {
+                      headers: {
+                        Authorization: `Bearer ${credential}`
+                      },
+                      withCredentials: true,
+                    }).then( response => {
+                      console.log(response);
+                      const detectedLng = navigatorLangDetector();
+                      router.push(`/${detectedLng}/dashboard`);
+                    })
+                      .catch(err => console.log(err));
+                  }
+                }}
+                onError={() => {
+                  console.log('Signup failed');
+                }}
+              />
+              {/* <button
                 onClick={() => {}}
                 className="flex w-full items-center justify-center gap-3 rounded-md opacity-20 bg-[grey] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F]"
               >
@@ -205,7 +233,7 @@ export default function Signin() {
                   />
                 </svg>
                 <span className="text-sm font-semibold leading-6">Google</span>
-              </button>
+              </button> */}
               <button
                 onClick={() => {}}
                 className="flex w-full items-center justify-center gap-3 rounded-md opacity-20 bg-[#1D9BF0] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"
