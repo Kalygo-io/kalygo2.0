@@ -71,6 +71,13 @@
       "no-content": "Pas de contenu"
     }
   },
+  "summarize-v2": {
+    "title": "Résumer",
+    "choose-files": "Choisir des fichiers",
+    "customize-summary": "Personnaliser",
+    "chosen-files": "Fichiers choisis",
+    "customizations": "Personnalisations"
+  },
   "perform-vector-search": {
     "title": "Recherche de vecteur",
     "choose-file": "Choisir le fichier",
@@ -138,6 +145,9 @@
     "original-length": "Longueur d'origine",
     "condensed-length": "Longueur condensée",
     "content": "Contenu"
+  },
+  "summary-v2": {
+    "prompt": "invite"
   },
   "saas-stats": {},
   "settings": {

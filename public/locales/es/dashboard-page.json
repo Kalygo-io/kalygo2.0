@@ -71,6 +71,16 @@
       "no-content": "Sin contenido"
     }
   },
+  "summarize-v2": {
+    "title": "Resumir",
+    "choose-files": "Seleccionar archivos",
+    "customize-summary": "personalizar",
+    "chosen-files": "archivos elegidos",
+    "customizations": "Personalizaciones",
+    "run": "Correr",
+    "select-files": "Selecciona archivos",
+    "upload-limits": "Archivos TXT y PDF de hasta 1 MB"
+  },
   "perform-vector-search": {
     "title": "Búsqueda de vectores",
     "choose-file": "Elija el archivo",
@@ -143,6 +153,9 @@
     "original-length": "Longitud original",
     "condensed-length": "Longitud condensada",
     "content": "Contenido"
+  },
+  "summary-v2": {
+    "prompt": "Inmediato"
   },
   "saas-stats": {
     "title": "Estadísticas SaaS"

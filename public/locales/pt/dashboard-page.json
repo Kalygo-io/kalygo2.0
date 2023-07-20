@@ -71,6 +71,16 @@
       "no-content": "sem conteúdo"
     }
   },
+  "summarize-v2": {
+    "title": "Resumir",
+    "choose-files": "Escolher os arquivos",
+    "customize-summary": "Customizar",
+    "chosen-files": "arquivos escolhidos",
+    "customizations": "personalizações",
+    "run": "Correr",
+    "select-files": "Selecionar arquivos",
+    "upload-limits": "Arquivos TXT e PDF de até 1 MB"
+  },
   "perform-vector-search": {
     "title": "Pesquisa de vetores",
     "choose-file": "Escolher arquivo",
@@ -139,6 +149,9 @@
     "original-length": "Comprimento original",
     "condensed-length": "Comprimento condensado",
     "content": "Contente"
+  },
+  "summary-v2": {
+    "prompt": "Incitar"
   },
   "saas-stats": {},
   "settings": {

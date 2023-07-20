@@ -10,6 +10,7 @@
   "you-joined-the-mailing-list": "Você se juntou à lista de discussão!",
   "vector-search-is-processing": "Sua pesquisa está sendo processada...",
   "custom-request-is-processing": "Sua solicitação está sendo processada...",
+  "custom-summary-is-processing": "Seu resumo está sendo processado...",
   "error": {
     "something-unexpected-happened": "Something unexpected happened"
   }

@@ -226,10 +226,10 @@ export default function Signin() {
           <p className="mt-10 text-center text-sm text-gray-500">
             {t("log-in-page:not-a-member")}{" "}
             <Link
-              href="/signup-subscription"
+              href="/signup"
               className="font-semibold leading-6 text-blue-600 hover:text-blue-500"
             >
-              {t("log-in-page:start-a-free-trial")}
+              {t("log-in-page:sign-up")}
             </Link>
           </p>
 
