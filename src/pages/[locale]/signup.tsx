@@ -23,8 +23,7 @@ import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang
 import { useState } from "react";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 
-import { GoogleLogin } from "@react-oauth/google";
-import { decodeJwt } from "jose";
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -62,6 +61,33 @@ export default function Signup() {
     defaultValues: {
       email: "",
       password: "",
+    },
+  });
+
+  const googleLogin = useGoogleLogin({
+    onSuccess: async (credentialResponse) => {
+      try {
+        const { access_token } = credentialResponse;
+        await axios.post(
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/google-sign-up`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${access_token}`,
+            },
+            withCredentials: true,
+          }
+        );
+        const detectedLng = navigatorLangDetector();
+        router.push(`/${detectedLng}/dashboard`);
+      } catch (e) {
+        debugger;
+        errorReporter(e);
+      }
+    },
+    onError: () => {
+      const err = new Error("GOOGLE_SIGNUP_ERROR");
+      errorReporter(err);
     },
   });
 
@@ -224,13 +250,14 @@ export default function Signup() {
               </div>
             </div>
 
-            <div className="mt-6 flex flex-col justify-center items-center space-y-2">
-              <GoogleLogin
+            <div className="mt-6 grid grid-cols-2 gap-4">
+              {/* <GoogleLogin
                 width="100"
                 locale={locale as string}
                 text="signup_with"
                 onSuccess={async (credentialResponse) => {
                   try {
+                    debugger;
                     const { credential } = credentialResponse;
                     await axios.post(
                       `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/google-sign-up`,
@@ -253,10 +280,10 @@ export default function Signup() {
                   const err = new Error("GOOGLE_SIGNUP_ERROR");
                   errorReporter(err);
                 }}
-              />
-              {/* <button
-                onClick={() => {}}
-                className="flex w-full items-center justify-center gap-3 rounded-md opacity-20 bg-[grey] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F]"
+              /> */}
+              <button
+                onClick={() => googleLogin()}
+                className="flex w-full items-center justify-center gap-3 rounded-md bg-[grey] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F]"
               >
                 <svg className="h-5 w-5" aria-hidden="true" viewBox="0 0 48 48">
                   <path
@@ -265,7 +292,7 @@ export default function Signup() {
                   />
                 </svg>
                 <span className="text-sm font-semibold leading-6">Google</span>
-              </button> */}
+              </button>
               <button
                 onClick={() => {}}
                 className="flex w-full items-center justify-center gap-3 rounded-md opacity-20 bg-[#1D9BF0] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"
