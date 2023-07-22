@@ -21,7 +21,7 @@ const profiles = [
   {
     title: "Paralegals",
     subtitle:
-      "Quickly generate customized briefs effectively for the leaders of your organization",
+      "Quickly generate customized briefs for the leaders of your organization",
     image: (
       <Image
         src="/Paralegal.gif"
@@ -55,7 +55,7 @@ export default function IndustriesWeServe() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            The industry we serve
+            Industry We Serve
           </h2>
           <p className="mt-6 text-lg leading-8 text-white">
             We take pride in serving the legal industry
