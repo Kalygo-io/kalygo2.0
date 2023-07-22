@@ -15,7 +15,7 @@ export function EnterprisePricing() {
 
       id: "tier-enterprise",
       href: "/signup",
-      price: { summary: "$0", monthly: "$9,999" },
+      price: { summary: "$0", monthly: "$19,999" },
       description: t("common:enterprise-pricing.tier1_description"),
       features: [
         t("common:enterprise-pricing.tier1_feature1"),
