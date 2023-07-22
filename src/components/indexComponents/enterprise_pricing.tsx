@@ -20,6 +20,7 @@ export function EnterprisePricing() {
       features: [
         t("common:enterprise-pricing.tier1_feature1"),
         t("common:enterprise-pricing.tier1_feature2"),
+        t("common:enterprise-pricing.tier1_feature3"),
       ],
       enabled: true,
     },

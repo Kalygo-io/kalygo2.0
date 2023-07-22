@@ -41,7 +41,7 @@ export function Pricing() {
       name: t("common:pricing.tier3_name"),
       id: "tier-premium",
       href: "/signup-subscription",
-      price: { summary: "ø", monthly: "$9.99" },
+      price: { summary: "ø", monthly: "$89.99" },
       description: t("common:pricing.tier3_description"),
       features: [
         t("common:pricing.tier3_feature1"),

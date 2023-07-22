@@ -19,6 +19,7 @@ import { useRef } from "react";
 import { Mailing } from "@/components/indexComponents/mailing";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { EnterprisePricing } from "@/components/indexComponents/enterprise_pricing";
+import IndustriesWeServe from "@/components/indexComponents/industriesWeServe";
 
 const getStaticProps = makeStaticProps([
   "landing-page",
@@ -114,6 +115,7 @@ export default function Home(props: any) {
           <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32" />
         </div>
         <Stats />
+        <IndustriesWeServe />
         <Pricing />
         <EnterprisePricing />
         <Mailing />
