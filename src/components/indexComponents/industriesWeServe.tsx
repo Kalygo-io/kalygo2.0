@@ -8,15 +8,12 @@ const profiles = [
     image: (
       <Image
         src="/Law_firm.gif"
-        width={1000}
-        height={1000}
+        width={500}
+        height={500}
         alt=""
-        className="object-fit rounded-2xl object-center opacity-100 group-hover:opacity-50"
+        className="object-fit rounded-2xl object-center opacity-100 group-hover:opacity-50 mx-auto"
       />
     ),
-
-    // imageUrl:
-    //   "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
   },
   {
     title: "Paralegals",
@@ -25,10 +22,10 @@ const profiles = [
     image: (
       <Image
         src="/Paralegal.gif"
-        width={1000}
-        height={1000}
+        width={500}
+        height={500}
         alt=""
-        className="object-fit rounded-2xl object-center opacity-100 group-hover:opacity-50"
+        className="object-fit rounded-2xl object-center opacity-100 group-hover:opacity-50 mx-auto"
       />
     ),
   },
@@ -39,14 +36,13 @@ const profiles = [
     image: (
       <Image
         src="/Research.gif"
-        width={1000}
-        height={1000}
+        width={500}
+        height={500}
         alt=""
-        className="object-fit rounded-2xl object-center opacity-100 group-hover:opacity-50"
+        className="object-fit rounded-2xl object-center opacity-100 group-hover:opacity-50 mx-auto"
       />
     ),
   },
-  // More people...
 ];
 
 export default function IndustriesWeServe() {
@@ -63,15 +59,15 @@ export default function IndustriesWeServe() {
         </div>
         <ul
           role="list"
-          className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-1 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+          className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-1 lg:max-w-none lg:grid-cols-3"
         >
           {profiles.map((profile) => (
-            <li key={profile.title}>
+            <li key={profile.title} className="justify-center">
               {profile.image}
-              <h3 className="mt-6 text-lg font-semibold leading-8 tracking-tight text-white">
+              <h3 className="mt-6 text-lg font-semibold leading-8 tracking-tight text-white text-center">
                 {profile.title}
               </h3>
-              <p className="text-base leading-7 text-white">
+              <p className="text-base leading-7 text-white text-center">
                 {profile.subtitle}
               </p>
             </li>
