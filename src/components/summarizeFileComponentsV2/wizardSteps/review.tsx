@@ -75,12 +75,12 @@ export function Review(props: Props) {
   return (
     <div className="flex min-h-full flex-col">
       {/* 3 column wrapper */}
-      <div className="mx-auto w-full max-w-7xl grow lg:flex xl:px-2">
+      <div className="mx-auto w-full max-w-7xl grow lg:flex xl:px-2 border-b border-gray-900/10 pb-12 sm:space-y-0 sm:pb-0">
         {/* Left sidebar & main wrapper */}
         <div className="flex-1 xl:flex">
-          <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:w-96 xl:shrink-0 xl:pl-6">
+          <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:pl-6">
+            {/* <div className="border-b border-gray-200 px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:border-b-0 xl:border-r xl:pl-6"> */}
             {/* Left column area */}
-            {/* LEFT */}
             <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight underline underline-offset-4">
               {t("dashboard-page:summarize-v2.chosen-files")!}
             </h2>
@@ -97,66 +97,30 @@ export function Review(props: Props) {
                         {files[index].name}
                       </p>
                     </div>
-                    {/* <div className="flex flex-none items-center gap-x-4">
-                      <Menu as="div" className="relative flex-none">
-                        <Menu.Button className="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900">
-                          <span className="sr-only">Open options</span>
-                          <EllipsisVerticalIcon
-                            className="h-5 w-5"
-                            aria-hidden="true"
-                          />
-                        </Menu.Button>
-                        <Transition
-                          as={Fragment}
-                          enter="transition ease-out duration-100"
-                          enterFrom="transform opacity-0 scale-95"
-                          enterTo="transform opacity-100 scale-100"
-                          leave="transition ease-in duration-75"
-                          leaveFrom="transform opacity-100 scale-100"
-                          leaveTo="transform opacity-0 scale-95"
-                        >
-                          <Menu.Items className="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
-                            <Menu.Item>
-                              {({ active }) => (
-                                <a
-                                  href="#"
-                                  className={classNames(
-                                    active ? "bg-gray-50" : "",
-                                    "block px-3 py-1 text-sm leading-6 text-gray-900"
-                                  )}
-                                >
-                                  View
-                                  <span className="sr-only">
-                                    , {prompt.name}
-                                  </span>
-                                </a>
-                              )}
-                            </Menu.Item>
-                          </Menu.Items>
-                        </Transition>
-                      </Menu>
-                    </div> */}
                   </li>
                 );
               })}
             </ul>
           </div>
 
-          <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
+          {/* <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6"> */}
+          <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:pl-6 mx-auto">
             {/* Main area */}
             {/* MAIN */}
-            <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight underline underline-offset-4">
-              {t("dashboard-page:summarize-v2.customizations")!}
-            </h2>
-            <div className="grid grid-cols-1 gap-x-6 gap-y-8">
-              <div className="col-span-full">
-                {customizations && (
-                  <ul className="m-4">
-                    {Object.keys(customizations).map((c, idx) => {
-                      return <li key={c}> {customizations[c]}</li>;
-                    })}
-                  </ul>
-                )}
+            <div>
+              <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight underline underline-offset-4">
+                {t("dashboard-page:summarize-v2.customizations")!}
+              </h2>
+              <div className="grid grid-cols-1 gap-x-6 gap-y-8">
+                <div className="col-span-full">
+                  {customizations && (
+                    <ul className="m-4">
+                      {Object.keys(customizations).map((c, idx) => {
+                        return <li key={c}> {customizations[c]}</li>;
+                      })}
+                    </ul>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -164,38 +128,37 @@ export function Review(props: Props) {
 
         <div className="shrink-0 px-4 py-6 sm:px-6 lg:w-96 lg:pr-8 xl:pr-6">
           {/* Right column area */}
-          {/* RIGHT */}
-          <div>
-            <button
-              onClick={async () => {
-                try {
-                  console.log("customSummary RUN", customizations);
-
-                  const customRequest = customSummaryFactory(
-                    customizations!,
-                    files
-                  );
-                  const customRequestResponse = await customRequest;
-                  console.log("customSummaryResponse", customRequestResponse);
-
-                  const detectedLng = navigatorLangDetector();
-                  router.push(`/${detectedLng}/dashboard/queue`);
-                  infoToast(t("toast-messages:custom-summary-is-processing"));
-                } catch (e: any) {
-                  errorToast(e.toString());
-                }
-              }}
-              disabled={files.length === 0 || !customizations}
-              className={`${
-                files.length === 0 || !customizations
-                  ? "opacity-50"
-                  : "opacity-100"
-              } mt-2 flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
-            >
-              {t("dashboard-page:summarize-v2.run")!}
-            </button>
-          </div>
+          {/* QUOTE */}
         </div>
+      </div>
+
+      <div className="mx-auto w-full max-w-7xl mt-6 flex items-center justify-end gap-x-2">
+        <button
+          onClick={async () => {
+            try {
+              console.log("customSummary RUN", customizations);
+
+              const customRequest = customSummaryFactory(
+                customizations!,
+                files
+              );
+              const customRequestResponse = await customRequest;
+              console.log("customSummaryResponse", customRequestResponse);
+
+              const detectedLng = navigatorLangDetector();
+              router.push(`/${detectedLng}/dashboard/queue`);
+              infoToast(t("toast-messages:custom-summary-is-processing"));
+            } catch (e: any) {
+              errorToast(e.toString());
+            }
+          }}
+          disabled={files.length === 0 || !customizations}
+          className={`${
+            files.length === 0 || !customizations ? "opacity-50" : "opacity-100"
+          } mt-2 flex items-center justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
+        >
+          {t("dashboard-page:summarize-v2.summarize")!}
+        </button>
       </div>
     </div>
   );

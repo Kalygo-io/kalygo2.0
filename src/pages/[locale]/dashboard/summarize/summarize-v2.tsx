@@ -124,6 +124,10 @@ export default function SummarizeV2() {
               <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
                 {t("dashboard-page:summarize-v2.title")}
               </h2>
+              <p className="mt-1 text-sm leading-6 text-gray-400">
+                Select documents and generate customizable summaries of them in
+                sequence or in parallel
+              </p>
             </div>
           </div>
           {jsx}

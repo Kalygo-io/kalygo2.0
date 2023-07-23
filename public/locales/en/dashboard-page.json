@@ -78,7 +78,9 @@
     "chosen-files": "Chosen files",
     "customizations": "Customizations",
     "run": "Run",
-    "select-files": "Select files",
+    "summarize": "Summarize",
+    "request": "Request",
+    "select-files": "Select",
     "upload-limits": "TXT & PDF files up to 1 MB"
   },
   "perform-vector-search": {

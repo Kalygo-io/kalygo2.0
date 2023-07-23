@@ -1,24 +1,13 @@
-import {
-  DocumentDuplicateIcon,
-  EllipsisVerticalIcon,
-  PhotoIcon,
-  UserCircleIcon,
-} from "@heroicons/react/24/outline";
-
 import React, {
   Dispatch,
-  Fragment,
   RefObject,
   SetStateAction,
+  useEffect,
+  useRef,
   useState,
 } from "react";
 import { useTranslation } from "next-i18next";
-
-import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
-import isNumber from "lodash.isnumber";
-import get from "lodash.get";
 import { useForm } from "react-hook-form";
-import { Menu, Transition } from "@headlessui/react";
 
 interface Props {
   files: File[];
@@ -29,27 +18,21 @@ interface Props {
   setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
 }
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export function CustomizeSummary(props: Props) {
   const {
     customizations,
-    files,
     setStep,
     setCustomizations,
     setShowPaymentMethodRequiredModal,
   } = props;
   const { t } = useTranslation();
-  const [fileList, setFileList] = useState<FileList | null>();
-  const [quoteForFile, setQuoteForFile] = useState<{
-    quote: number;
-    filePath: string;
-  } | null>();
 
   // ref
-  const inputRef = React.useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    customizations;
+  }, []);
 
   const onSubmit = async (data: any) => {
     try {
@@ -68,10 +51,10 @@ export function CustomizeSummary(props: Props) {
     watch,
   } = useForm({
     defaultValues: {
-      format: "bullet-points",
-      type: "summarize-chunks",
-      length: "short",
-      language: "English",
+      format: customizations?.format || "bullet-points",
+      type: customizations?.type || "summarize-chunks",
+      length: customizations?.length || "short",
+      language: customizations?.language || "English",
     },
   });
 
@@ -288,17 +271,11 @@ export function CustomizeSummary(props: Props) {
         </div>
 
         <div className="mt-6 flex items-center justify-end gap-x-6">
-          {/* <button
-            type="button"
-            className="text-sm font-semibold leading-6 text-gray-900"
-          >
-            Cancel
-          </button> */}
           <button
             type="submit"
             className="inline-flex justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
           >
-            Save
+            Next
           </button>
         </div>
       </form>

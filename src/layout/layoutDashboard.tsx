@@ -432,8 +432,6 @@ export default function LayoutDashboard({ children, account }: P) {
               </div>
             </div>
           </div>
-
-          {/* <main className="py-10">{children}</main> */}
           <main>{children}</main>
         </div>
       </div>

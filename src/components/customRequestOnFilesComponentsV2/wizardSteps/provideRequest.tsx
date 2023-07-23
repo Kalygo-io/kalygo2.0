@@ -66,11 +66,6 @@ export function ProvideRequest(props: Props) {
   } = props;
   const { t } = useTranslation();
   const [dragActive, setDragActive] = useState(false);
-  const [fileList, setFileList] = useState<FileList | null>();
-  const [quoteForFile, setQuoteForFile] = useState<{
-    quote: number;
-    filePath: string;
-  } | null>();
 
   // ref
   const inputRef = React.useRef<HTMLInputElement>(null);

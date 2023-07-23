@@ -52,11 +52,6 @@ export default function Home(props: any) {
 
       <Layout1>
         <div className="relative isolate overflow-hidden bg-gradient-to-b from-blue-100/20 pt-14">
-          {/* <div
-            className="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl shadow-blue-600/10 ring-1 ring-blue-50 sm:-mr-80 lg:-mr-96"
-            aria-hidden="true"
-          /> */}
-
           <div
             ref={ref}
             style={{

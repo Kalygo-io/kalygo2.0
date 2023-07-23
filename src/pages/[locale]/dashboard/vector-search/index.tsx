@@ -80,7 +80,22 @@ export default function Summarize() {
       <Head>
         <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
-      <LayoutDashboard>{jsx}</LayoutDashboard>
+      <LayoutDashboard>
+        <div className="p-4 sm:p-6 lg:p-8">
+          <div className="sm:flex sm:items-center">
+            <div className="sm:flex-auto">
+              <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+                {t("dashboard-page:vector-search.title")}
+              </h2>
+              <p className="mt-1 text-sm leading-6 text-gray-400">
+                Returns results in your data that are similar to your search
+                terms even if your search terms are not matched exactly
+              </p>
+            </div>
+          </div>
+          {jsx}
+        </div>
+      </LayoutDashboard>
     </>
   );
 }

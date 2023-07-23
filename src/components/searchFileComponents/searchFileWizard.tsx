@@ -10,7 +10,7 @@ import { ErrorInDashboard } from "../shared/errorInDashboard";
 
 const steps = [
   { id: 1, name: "Choose file", href: "#", status: "current" },
-  { id: 2, name: "Query", href: "#", status: "upcoming" },
+  { id: 2, name: "Search", href: "#", status: "upcoming" },
   //   { id: "03", name: "Results", href: "#", status: "upcoming" },
 ];
 

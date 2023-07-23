@@ -1,19 +1,17 @@
 import {
-  XCircleIcon,
-  PhotoIcon,
-  ArrowUpOnSquareIcon,
   DocumentDuplicateIcon,
+  XCircleIcon,
 } from "@heroicons/react/24/outline";
 
-import { pdfjs, Document, Page } from "react-pdf";
-import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-import "react-pdf/dist/esm/Page/TextLayer.css";
-
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useTranslation } from "next-i18next";
 
-import { infoToast } from "@/utility/toasts";
-import { useForm, Controller } from "react-hook-form";
 import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
 import isNumber from "lodash.isnumber";
 import get from "lodash.get";
@@ -32,14 +30,14 @@ export function ChooseFiles(props: Props) {
   const { t } = useTranslation();
 
   const [dragActive, setDragActive] = useState(false);
-  const [fileList, setFileList] = useState<FileList | null>();
-  const [quoteForFile, setQuoteForFile] = useState<{
-    quote: number;
-    filePath: string;
-  } | null>();
+  const [filesLocal, setFilesLocal] = useState<File[] | null>();
 
   // ref
-  const inputRef = React.useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setFilesLocal(files);
+  }, []);
 
   // handle drag events
   const handleDrag = function (e: any) {
@@ -79,8 +77,7 @@ export function ChooseFiles(props: Props) {
         )
       ) {
         // at least one file has been dropped so do something
-        setFiles(e.dataTransfer.files || null);
-        setStep(2);
+        setFilesLocal(e.dataTransfer.files || null);
       }
     } catch (e) {
       errorReporter(e);
@@ -103,9 +100,7 @@ export function ChooseFiles(props: Props) {
             get(paymentMethodsResponse, "data.customRequestCredits") > 0) ||
           get(paymentMethodsResponse, "data.stripeDefaultSource")
         ) {
-          // setFileList(e.target.files);
-          setFiles(e.target.files || null);
-          setStep(2);
+          setFilesLocal(e.target.files);
         } else {
           // show Payment Required Modal
           console.log("PAYMENT REQUIRED");
@@ -117,16 +112,17 @@ export function ChooseFiles(props: Props) {
     }
   };
 
+  console.log("filesLocal", filesLocal);
+
   return (
     <div className="flex min-h-full flex-col">
       {/* 3 column wrapper */}
-      <div className="mx-auto w-full max-w-7xl grow lg:flex xl:px-2">
+      <div className="mx-auto w-full max-w-7xl grow lg:flex xl:px-2 border-b border-gray-900/10 pb-12 sm:space-y-0 sm:pb-0">
         {/* Left sidebar & main wrapper */}
         <div className="flex-1 xl:flex">
           {/* <div className="border-b border-gray-200 px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:border-b-0 xl:border-r xl:pl-6"> */}
-          <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:w-96 xl:shrink-0 xl:pl-6">
+          <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:pl-6">
             {/* Left column area */}
-            {/* LEFT */}
           </div>
 
           <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
@@ -198,8 +194,58 @@ export function ChooseFiles(props: Props) {
         {/* <div className="shrink-0 border-t border-gray-200 px-4 py-6 sm:px-6 lg:w-96 lg:border-l lg:border-t-0 lg:pr-8 xl:pr-6"> */}
         <div className="shrink-0 px-4 py-6 sm:px-6 lg:w-96 lg:pr-8 xl:pr-6">
           {/* Right column area */}
-          {/* RIGHT */}
+          {/* <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight underline underline-offset-4">
+              {t("dashboard-page:custom-request-v2.chosen-files")!}
+            </h2> */}
+          <ul role="list" className="divide-y divide-gray-100">
+            {filesLocal &&
+              Object.keys(filesLocal).map((f: string, index: number) => {
+                return (
+                  <li
+                    key={index}
+                    className="flex items-center justify-between gap-x-6 py-5"
+                  >
+                    <div className="flex items-start gap-x-3">
+                      <p className="text-sm font-semibold leading-6 text-gray-900">
+                        {filesLocal[index].name}
+                      </p>
+
+                      <XCircleIcon
+                        className="h-6 w-6"
+                        onClick={() => {
+                          console.log("___ --- ___");
+                          let newFileList = Array.from(filesLocal);
+
+                          newFileList.splice(index, 1); // here u remove the file
+                          console.log(newFileList);
+
+                          setFilesLocal(newFileList);
+                        }}
+                      />
+                    </div>
+                  </li>
+                );
+              })}
+          </ul>
         </div>
+      </div>
+      <div className="mx-auto w-full max-w-7xl mt-6 flex items-center justify-end gap-x-2">
+        <button
+          disabled={!filesLocal}
+          onClick={() => {
+            setFiles(filesLocal!);
+            setStep(2);
+          }}
+          className={`
+          ${
+            !filesLocal || filesLocal.length === 0
+              ? "opacity-50"
+              : "opacity-100"
+          }
+          inline-flex justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
+        >
+          Next
+        </button>
       </div>
     </div>
   );

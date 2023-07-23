@@ -121,6 +121,10 @@ export default function CustomRequest() {
               <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
                 {t("dashboard-page:custom-request.title")}
               </h2>
+              <p className="mt-1 text-sm leading-6 text-gray-400">
+                Issue customizable and suggested prompts against one or more
+                files
+              </p>
             </div>
           </div>
           {jsx}
