@@ -71,77 +71,45 @@ export function Review(props: Props) {
   return (
     <div className="flex min-h-full flex-col">
       {/* 3 column wrapper */}
-      <div className="mx-auto w-full max-w-7xl grow lg:flex xl:px-2">
+      <div className="my-4 mx-auto w-full max-w-7xl grow lg:flex xl:px-2">
         {/* Left sidebar & main wrapper */}
         <div className="flex-1 xl:flex">
-          <div className="border-b border-gray-200 px-4 py-6 sm:px-6 lg:pl-8 xl:w-96 xl:shrink-0 xl:border-b-0 xl:border-r xl:pl-6">
+          <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:w-96 xl:shrink-0 xl:pl-6 border-gray-200 border-b xl:border-b-0 xl:border-r">
             {/* Left column area */}
-            {/* LEFT */}
-            <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight underline underline-offset-4">
+            <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
               {t("dashboard-page:custom-request-v2.chosen-files")!}
             </h2>
 
-            <ul role="list" className="divide-y divide-gray-100">
-              {Object.keys(files).map((value: string, index: number) => {
-                return (
-                  <li
-                    key={index}
-                    className="flex items-center justify-between gap-x-6 py-5"
-                  >
-                    <div className="flex items-start gap-x-3">
-                      <p className="text-sm font-semibold leading-6 text-gray-900">
-                        {files[index].name}
-                      </p>
-                    </div>
-                    {/* <div className="flex flex-none items-center gap-x-4">
-                      <Menu as="div" className="relative flex-none">
-                        <Menu.Button className="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900">
-                          <span className="sr-only">Open options</span>
-                          <EllipsisVerticalIcon
-                            className="h-5 w-5"
-                            aria-hidden="true"
-                          />
-                        </Menu.Button>
-                        <Transition
-                          as={Fragment}
-                          enter="transition ease-out duration-100"
-                          enterFrom="transform opacity-0 scale-95"
-                          enterTo="transform opacity-100 scale-100"
-                          leave="transition ease-in duration-75"
-                          leaveFrom="transform opacity-100 scale-100"
-                          leaveTo="transform opacity-0 scale-95"
-                        >
-                          <Menu.Items className="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
-                            <Menu.Item>
-                              {({ active }) => (
-                                <a
-                                  href="#"
-                                  className={classNames(
-                                    active ? "bg-gray-50" : "",
-                                    "block px-3 py-1 text-sm leading-6 text-gray-900"
-                                  )}
-                                >
-                                  View
-                                  <span className="sr-only">
-                                    , {prompt.name}
-                                  </span>
-                                </a>
-                              )}
-                            </Menu.Item>
-                          </Menu.Items>
-                        </Transition>
-                      </Menu>
-                    </div> */}
-                  </li>
-                );
-              })}
-            </ul>
+            {files.length > 0 ? (
+              <ul role="list" className="divide-y divide-gray-100">
+                {Object.keys(files).map((value: string, index: number) => {
+                  return (
+                    <li
+                      key={index}
+                      className="flex items-center justify-between gap-x-6 py-5"
+                    >
+                      <div className="flex items-start gap-x-3">
+                        <p className="text-sm font-semibold leading-6 text-gray-900">
+                          {files[index].name}
+                        </p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p className="mt-1 text-sm leading-6 text-gray-400">
+                No files selected
+              </p>
+            )}
+
+            <p></p>
           </div>
 
           <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
             {/* Main area */}
             {/* MAIN */}
-            <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight underline underline-offset-4">
+            <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
               {t("dashboard-page:custom-request-v2.provided-request")!}
             </h2>
             <div className="grid grid-cols-1 gap-x-6 gap-y-8">
@@ -166,10 +134,10 @@ export function Review(props: Props) {
           </div>
         </div>
 
-        <div className="shrink-0 border-t border-gray-200 px-4 py-6 sm:px-6 lg:w-96 lg:border-l lg:border-t-0 lg:pr-8 xl:pr-6">
+        <div className="shrink-0 px-4 py-6 sm:px-6 lg:w-96 lg:pr-8 xl:pr-6 border-t border-gray-200 lg:border-l lg:border-t-0">
           {/* Right column area */}
           {/* RIGHT */}
-          <div>
+          {/* <div>
             <button
               onClick={async () => {
                 try {
@@ -189,11 +157,11 @@ export function Review(props: Props) {
                 files.length === 0 || prompt === ""
                   ? "opacity-50"
                   : "opacity-100"
-              } mt-2 flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
+              } mt-2 flex justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
             >
               {t("dashboard-page:custom-request.run")!}
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

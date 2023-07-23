@@ -122,8 +122,7 @@ export default function CustomRequest() {
                 {t("dashboard-page:custom-request.title")}
               </h2>
               <p className="mt-1 text-sm leading-6 text-gray-400">
-                Issue customizable and suggested prompts against one or more
-                files
+                Issue prompts against one or more files
               </p>
             </div>
           </div>

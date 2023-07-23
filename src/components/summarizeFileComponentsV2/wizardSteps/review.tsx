@@ -1,44 +1,23 @@
-import {
-  EllipsisVerticalIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/24/outline";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-
-import { pdfjs, Document, Page } from "react-pdf";
-import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-import "react-pdf/dist/esm/Page/TextLayer.css";
-
-import React, { Fragment, Ref, RefObject, useState } from "react";
-import get from "lodash.get";
-
+import React, { RefObject } from "react";
 import { useTranslation } from "next-i18next";
-
 import { errorToast, infoToast } from "@/utility/toasts";
 import { getSummarizationQuote } from "@/services/getSummarizationQuote";
-import { useForm, Controller } from "react-hook-form";
-import { similaritySearchInFile } from "@/services/similaritySearchInFile";
-
-import type { PDFDocumentProxy } from "pdfjs-dist";
-import { WindowLoader } from "@/components/shared/WindowLoader";
-import { PreviewTextFile } from "@/components/shared/PreviewTextFile";
-import { fileURLToPath } from "url";
-import { similaritySearchWithQueue } from "@/services/similaritySearchWithQueue";
 import { navigatorLangDetector } from "@/lib/languageDetector";
 import { useRouter } from "next/router";
-import isNumber from "lodash.isnumber";
-import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
-import { Menu, Transition } from "@headlessui/react";
 import { customSummaryFactory } from "@/serviceFactory/customSummaryFactory";
+import { Layout3ColumnAndFooterWrapper } from "../sharedComponents/layout3ColumnAndFooterWrapper";
+import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
+import { LeftAreaAndMainWrapper } from "../sharedComponents/leftAreaAndMainWrapper";
+import { LeftArea } from "../sharedComponents/leftArea";
+import { MainArea } from "../sharedComponents/mainArea";
+import { RightArea } from "../sharedComponents/rightArea";
+import { FooterWrapper } from "../sharedComponents/FooterWrapper";
 
 interface Props {
   customizations: Record<string, string> | null;
   files: File[];
   wizardStepsRef: RefObject<HTMLElement>;
   setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
-}
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
 }
 
 export function Review(props: Props) {
@@ -49,90 +28,75 @@ export function Review(props: Props) {
     setShowPaymentMethodRequiredModal,
   } = props;
 
-  const [numPages, setNumPages] = useState<number>();
   const router = useRouter();
   const { t } = useTranslation();
 
-  const {
-    register,
-    handleSubmit,
-    getValues,
-    formState: { errors },
-    setValue,
-    watch,
-  } = useForm({});
-
-  const [searchState, setSearchState] = useState<{
-    val: any;
-    loading: boolean;
-    err: any;
-  }>({
-    val: null,
-    loading: false,
-    err: null,
-  });
-
   return (
-    <div className="flex min-h-full flex-col">
-      {/* 3 column wrapper */}
-      <div className="mx-auto w-full max-w-7xl grow lg:flex xl:px-2 border-b border-gray-900/10 pb-12 sm:space-y-0 sm:pb-0">
-        {/* Left sidebar & main wrapper */}
-        <div className="flex-1 xl:flex">
-          <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:pl-6">
-            {/* <div className="border-b border-gray-200 px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:border-b-0 xl:border-r xl:pl-6"> */}
-            {/* Left column area */}
-            <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight underline underline-offset-4">
-              {t("dashboard-page:summarize-v2.chosen-files")!}
-            </h2>
+    <Layout3ColumnAndFooterWrapper>
+      <_3ColumnWrapper>
+        <LeftAreaAndMainWrapper>
+          <LeftArea>
+            <div className="flex flex-col justify-center items-center">
+              <h2 className="text-xl font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+                {t("dashboard-page:summarize-v2.chosen-files")!}
+              </h2>
+              {files.length > 0 ? (
+                <ul role="list" className="divide-y divide-gray-100">
+                  {Object.keys(files).map((value: string, index: number) => {
+                    return (
+                      <li
+                        key={index}
+                        className="flex items-center justify-between gap-x-6 py-5"
+                      >
+                        <div className="flex items-start gap-x-3">
+                          <p className="text-sm font-semibold leading-6 text-gray-900">
+                            {files[index].name}
+                          </p>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : (
+                <p className="mt-1 text-sm leading-6 text-gray-400">
+                  No files selected
+                </p>
+              )}
+            </div>
+          </LeftArea>
 
-            <ul role="list" className="divide-y divide-gray-100">
-              {Object.keys(files).map((value: string, index: number) => {
-                return (
-                  <li
-                    key={index}
-                    className="flex items-center justify-between gap-x-6 py-5"
-                  >
-                    <div className="flex items-start gap-x-3">
-                      <p className="text-sm font-semibold leading-6 text-gray-900">
-                        {files[index].name}
-                      </p>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          {/* <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6"> */}
-          <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:pl-6 mx-auto">
-            {/* Main area */}
-            {/* MAIN */}
-            <div>
-              <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight underline underline-offset-4">
+          <MainArea>
+            <div className="flex flex-col justify-center items-center">
+              <h2 className="text-xl font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
                 {t("dashboard-page:summarize-v2.customizations")!}
               </h2>
               <div className="grid grid-cols-1 gap-x-6 gap-y-8">
                 <div className="col-span-full">
-                  {customizations && (
+                  {customizations ? (
                     <ul className="m-4">
                       {Object.keys(customizations).map((c, idx) => {
                         return <li key={c}> {customizations[c]}</li>;
                       })}
                     </ul>
+                  ) : (
+                    <p className="mt-1 text-sm leading-6 text-gray-400">
+                      No customizations provided
+                    </p>
                   )}
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </MainArea>
+        </LeftAreaAndMainWrapper>
+        <RightArea>
+          <p className="mt-1 text-sm leading-6 text-gray-400">
+            A quote of the total cost of the request will be displayed here
+            after development is wrapped up...
+          </p>
+        </RightArea>
+      </_3ColumnWrapper>
 
-        <div className="shrink-0 px-4 py-6 sm:px-6 lg:w-96 lg:pr-8 xl:pr-6">
-          {/* Right column area */}
-          {/* QUOTE */}
-        </div>
-      </div>
-
-      <div className="mx-auto w-full max-w-7xl mt-6 flex items-center justify-end gap-x-2">
+      <FooterWrapper>
         <button
           onClick={async () => {
             try {
@@ -155,11 +119,11 @@ export function Review(props: Props) {
           disabled={files.length === 0 || !customizations}
           className={`${
             files.length === 0 || !customizations ? "opacity-50" : "opacity-100"
-          } mt-2 flex items-center justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
+          } flex items-center justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
         >
           {t("dashboard-page:summarize-v2.summarize")!}
         </button>
-      </div>
-    </div>
+      </FooterWrapper>
+    </Layout3ColumnAndFooterWrapper>
   );
 }

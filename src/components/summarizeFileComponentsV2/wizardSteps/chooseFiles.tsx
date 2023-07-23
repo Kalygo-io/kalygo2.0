@@ -2,7 +2,6 @@ import {
   DocumentDuplicateIcon,
   XCircleIcon,
 } from "@heroicons/react/24/outline";
-
 import React, {
   Dispatch,
   SetStateAction,
@@ -11,11 +10,17 @@ import React, {
   useState,
 } from "react";
 import { useTranslation } from "next-i18next";
-
 import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
 import isNumber from "lodash.isnumber";
 import get from "lodash.get";
 import { errorReporter } from "@/utility/error/reporter";
+import { Layout3ColumnAndFooterWrapper } from "../sharedComponents/layout3ColumnAndFooterWrapper";
+import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
+import { LeftAreaAndMainWrapper } from "../sharedComponents/leftAreaAndMainWrapper";
+import { LeftArea } from "../sharedComponents/leftArea";
+import { MainArea } from "../sharedComponents/mainArea";
+import { RightArea } from "../sharedComponents/rightArea";
+import { FooterWrapper } from "../sharedComponents/FooterWrapper";
 
 interface Props {
   files: File[] | null;
@@ -26,13 +31,9 @@ interface Props {
 
 export function ChooseFiles(props: Props) {
   const { files, setFiles, setStep, setShowPaymentMethodRequiredModal } = props;
-
   const { t } = useTranslation();
-
   const [dragActive, setDragActive] = useState(false);
   const [filesLocal, setFilesLocal] = useState<File[] | null>();
-
-  // ref
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -46,7 +47,6 @@ export function ChooseFiles(props: Props) {
 
     if (e.type === "dragenter" || e.type === "dragover") {
       const dataTransferItems = e.dataTransfer?.items;
-
       for (let i = 0; i < dataTransferItems.length; i++) {
         if (
           !["application/pdf", "text/plain"].includes(
@@ -76,8 +76,9 @@ export function ChooseFiles(props: Props) {
           e.dataTransfer?.items["0"]?.type
         )
       ) {
-        // at least one file has been dropped so do something
-        setFilesLocal(e.dataTransfer.files || null);
+        filesLocal
+          ? setFilesLocal([...filesLocal, ...(e.dataTransfer.files || null)])
+          : setFilesLocal(e.dataTransfer.files);
       }
     } catch (e) {
       errorReporter(e);
@@ -89,21 +90,18 @@ export function ChooseFiles(props: Props) {
     try {
       e.preventDefault();
       if (e.target.files && e.target.files) {
-        // at least one file has been selected so do something
-
         const paymentMethodsRequest = getAccountPaymentMethodsFactory();
         const paymentMethodsResponse = await paymentMethodsRequest;
-        console.log("paymentMethodsResponse", paymentMethodsResponse);
-
         if (
           (isNumber(get(paymentMethodsResponse, "data.customRequestCredits")) &&
             get(paymentMethodsResponse, "data.customRequestCredits") > 0) ||
           get(paymentMethodsResponse, "data.stripeDefaultSource")
         ) {
-          setFilesLocal(e.target.files);
+          // setFilesLocal(e.target.files);
+          filesLocal
+            ? setFilesLocal([...filesLocal, ...(e.target.files || null)])
+            : setFilesLocal(e.target.files);
         } else {
-          // show Payment Required Modal
-          console.log("PAYMENT REQUIRED");
           setShowPaymentMethodRequiredModal(true);
         }
       }
@@ -112,21 +110,17 @@ export function ChooseFiles(props: Props) {
     }
   };
 
-  console.log("filesLocal", filesLocal);
-
   return (
-    <div className="flex min-h-full flex-col">
-      {/* 3 column wrapper */}
-      <div className="mx-auto w-full max-w-7xl grow lg:flex xl:px-2 border-b border-gray-900/10 pb-12 sm:space-y-0 sm:pb-0">
-        {/* Left sidebar & main wrapper */}
-        <div className="flex-1 xl:flex">
-          {/* <div className="border-b border-gray-200 px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:border-b-0 xl:border-r xl:pl-6"> */}
-          <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:pl-6">
-            {/* Left column area */}
-          </div>
-
-          <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
-            {/* Main area */}
+    <Layout3ColumnAndFooterWrapper>
+      <_3ColumnWrapper>
+        <LeftAreaAndMainWrapper>
+          <LeftArea>
+            <p className="mt-1 text-sm leading-6 text-gray-400">
+              Ability to select from previously uploaded files coming soon
+              here...
+            </p>
+          </LeftArea>
+          <MainArea>
             <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="col-span-full flex justify-center">
                 <form
@@ -188,15 +182,10 @@ export function ChooseFiles(props: Props) {
                 </form>
               </div>
             </div>
-          </div>
-        </div>
+          </MainArea>
+        </LeftAreaAndMainWrapper>
 
-        {/* <div className="shrink-0 border-t border-gray-200 px-4 py-6 sm:px-6 lg:w-96 lg:border-l lg:border-t-0 lg:pr-8 xl:pr-6"> */}
-        <div className="shrink-0 px-4 py-6 sm:px-6 lg:w-96 lg:pr-8 xl:pr-6">
-          {/* Right column area */}
-          {/* <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight underline underline-offset-4">
-              {t("dashboard-page:custom-request-v2.chosen-files")!}
-            </h2> */}
+        <RightArea>
           <ul role="list" className="divide-y divide-gray-100">
             {filesLocal &&
               Object.keys(filesLocal).map((f: string, index: number) => {
@@ -227,9 +216,9 @@ export function ChooseFiles(props: Props) {
                 );
               })}
           </ul>
-        </div>
-      </div>
-      <div className="mx-auto w-full max-w-7xl mt-6 flex items-center justify-end gap-x-2">
+        </RightArea>
+      </_3ColumnWrapper>
+      <FooterWrapper>
         <button
           disabled={!filesLocal}
           onClick={() => {
@@ -246,7 +235,7 @@ export function ChooseFiles(props: Props) {
         >
           Next
         </button>
-      </div>
-    </div>
+      </FooterWrapper>
+    </Layout3ColumnAndFooterWrapper>
   );
 }

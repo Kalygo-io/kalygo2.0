@@ -59,7 +59,7 @@ export function CustomizeSummary(props: Props) {
   });
 
   return (
-    <div className="flex min-h-full flex-col px-4 py-6 sm:px-6 lg:py-8">
+    <div className="flex min-h-full flex-col px-4 py-6 sm:px-6 lg:py-4">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-12 sm:space-y-16">
           <div>

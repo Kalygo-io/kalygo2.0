@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction, useRef, useState } from "react";
 
 import { CheckIcon } from "@heroicons/react/24/solid";
 import { ChooseFiles } from "./wizardSteps/chooseFiles";
-import { ProvideRequest } from "./wizardSteps/provideRequest";
+import { CustomizeRequest } from "./wizardSteps/customizeRequest";
 import { Review } from "./wizardSteps/review";
 import { ErrorInDashboard } from "../shared/errorInDashboard";
 import { useTranslation } from "next-i18next";
@@ -42,7 +42,7 @@ export function CustomRequestWizard(props: Props) {
       break;
     case 2:
       jsx = (
-        <ProvideRequest
+        <CustomizeRequest
           prompt={prompt}
           files={files || []}
           setPrompt={setPrompt}
@@ -84,12 +84,7 @@ export function CustomRequestWizard(props: Props) {
               {s.id < step ? (
                 <span className="group flex w-full items-center">
                   <span className="flex items-center px-6 py-4 text-sm font-medium">
-                    <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 group-hover:bg-blue-800">
-                      {/* <CheckIcon
-                        className="h-6 w-6 text-white"
-                        aria-hidden="true"
-                      /> */}
-                    </span>
+                    <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 group-hover:bg-blue-800"></span>
                     <span className="ml-4 text-sm font-medium text-gray-900">
                       {s.name}
                     </span>
