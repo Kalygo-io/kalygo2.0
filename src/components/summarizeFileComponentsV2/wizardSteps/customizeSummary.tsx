@@ -8,6 +8,8 @@ import React, {
 } from "react";
 import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
+import { FooterWrapper } from "../sharedComponents/FooterWrapper";
+import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
 
 interface Props {
   files: File[];
@@ -59,11 +61,11 @@ export function CustomizeSummary(props: Props) {
   });
 
   return (
-    <div className="flex min-h-full flex-col px-4 py-6 sm:px-6 lg:py-4">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="space-y-12 sm:space-y-16">
-          <div>
-            <div className="mt-4 sm:mt-0 space-y-10 border-b border-gray-900/10 pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:pb-0">
+    <div className="flex min-h-full flex-col">
+      <_3ColumnWrapper>
+        <form className="mx-auto">
+          <div className="space-y-12 sm:space-y-16">
+            <div className="mt-6 sm:mt-0 space-y-10 border-gray-900/10 pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:pb-0">
               <fieldset>
                 <legend className="sr-only">Format</legend>
                 <div className="sm:grid sm:grid-cols-3 sm:items-baseline sm:gap-4 sm:py-6">
@@ -179,9 +181,6 @@ export function CustomizeSummary(props: Props) {
                   </div>
                   <div className="mt-1 sm:col-span-2 sm:mt-0">
                     <div className="max-w-lg">
-                      {/* <p className="text-sm leading-6 text-gray-600">
-                        These are delivered via SMS to your mobile phone.
-                      </p> */}
                       <div className="mt-6 space-x-2 flex justify-between">
                         <div className="flex items-center gap-x-3">
                           <input
@@ -248,7 +247,6 @@ export function CustomizeSummary(props: Props) {
                   <div className="mt-1 sm:col-span-2 sm:mt-0">
                     <div className="max-w-lg">
                       <div className="mt-6 space-x-2 flex justify-between">
-                        {/* <div className="mt-2 sm:col-span-2 sm:mt-0"> */}
                         <select
                           {...register("language")}
                           id="language"
@@ -268,17 +266,20 @@ export function CustomizeSummary(props: Props) {
               </fieldset>
             </div>
           </div>
-        </div>
-
-        <div className="mt-6 flex items-center justify-end gap-x-6">
+        </form>
+      </_3ColumnWrapper>
+      <FooterWrapper>
+        <div className="flex items-center justify-end gap-x-6">
           <button
-            type="submit"
+            onClick={() => {
+              onSubmit(getValues());
+            }}
             className="inline-flex justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
           >
             Next
           </button>
         </div>
-      </form>
+      </FooterWrapper>
     </div>
   );
 }
