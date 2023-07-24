@@ -42,10 +42,10 @@ const App = function ({ Component, pageProps }: CustomAppProps) {
         <meta property="og:title" content="Kalygo" />
         <meta
           property="og:description"
-          content="Kalygo 2.0 is a app for high-quality document summarization, vector search, and collaboration. All code on the platform is open source, reusable, and free. Enjoy Kalygo's suite of tools and A.I. assistance features today!"
+          content="Kalygo supports high-quality document summarization, vector search, multi-document based prompting, and collaboration. All code on the platform is open source, reusable, and free. Ease and insight is what Kalygo aims to leave you with!"
         />
-        <meta property="og:image" content="/logo540.png" />
-        <link rel="apple-touch-icon" href="/logo192.png" />
+        <meta property="og:image" content="/kalygo_new_logo-512x512.png" />
+        <link rel="apple-touch-icon" href="/kalygo_new_logo-192x192.png" />
         <meta
           name="description"
           content="Kalygo is a platform for managing your contracts with insight and ease."
@@ -53,7 +53,9 @@ const App = function ({ Component, pageProps }: CustomAppProps) {
       </Head>
 
       <ErrorBoundary>
-        <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}> 
+        <GoogleOAuthProvider
+          clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}
+        >
           <AppWrapper>
             {Component.requireAuth ? (
               <AuthGuard>
@@ -61,7 +63,7 @@ const App = function ({ Component, pageProps }: CustomAppProps) {
               </AuthGuard>
             ) : (
               // public page
-                <Component {...pageProps} />
+              <Component {...pageProps} />
             )}
           </AppWrapper>
         </GoogleOAuthProvider>

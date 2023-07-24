@@ -197,7 +197,7 @@ export default function LayoutDashboard({ children, account }: P) {
                       <Link href="/">
                         <Image
                           className="h-8 w-auto"
-                          src="/logo192.png"
+                          src="/kalygo_new_logo-192x192.png"
                           alt="Kalygo logo"
                           width={16}
                           height={16}
@@ -273,7 +273,7 @@ export default function LayoutDashboard({ children, account }: P) {
               <div className="flex h-16 shrink-0 items-center">
                 <Image
                   className="h-8 w-auto"
-                  src="/logo192.png"
+                  src="/kalygo_new_logo-192x192.png"
                   alt="Kalygo logo"
                   height={16}
                   width={16}

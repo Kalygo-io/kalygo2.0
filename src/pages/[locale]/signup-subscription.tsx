@@ -26,7 +26,7 @@ const products = [
     price: "$89.99",
     detail1: "w/ 14-day FREE trial",
     detail2: "",
-    imageSrc: "/logo192.png",
+    imageSrc: "/kalygo_new_logo-192x192.png",
     imageAlt:
       "Moss green canvas compact backpack with double top zipper, zipper front pouch, and matching carry handle and backpack straps.",
   },
