@@ -4,9 +4,9 @@ interface P {
   children: ReactElement | ReactElement[];
 }
 
-export function _3ColumnWrapper(props: P) {
+export function MainArea(props: P) {
   return (
-    <div className="m-4 mb-0 pb-4 mx-auto w-full max-w-7xl grow lg:flex xl:px-2 border-b border-black">
+    <div className="m-4 px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
       {props.children}
     </div>
   );

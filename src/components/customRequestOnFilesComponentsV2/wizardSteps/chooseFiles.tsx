@@ -2,15 +2,19 @@ import {
   XCircleIcon,
   DocumentDuplicateIcon,
 } from "@heroicons/react/24/outline";
-
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
-
 import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
 import isNumber from "lodash.isnumber";
 import get from "lodash.get";
 import { errorReporter } from "@/utility/error/reporter";
-import { Layout3ColumnWrapper } from "../sharedComponents/layout3ColumnWrapper";
+import { Layout3ColumnAndFooterWrapper } from "../sharedComponents/layout3ColumnAndFooterWrapper";
+import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
+import { LeftAreaAndMainWrapper } from "../sharedComponents/leftAreaAndMainWrapper";
+import { LeftArea } from "../sharedComponents/leftArea";
+import { MainArea } from "../sharedComponents/mainArea";
+import { RightArea } from "../sharedComponents/rightArea";
+import { FooterWrapper } from "../sharedComponents/FooterWrapper";
 
 interface Props {
   files: File[] | null;
@@ -21,20 +25,15 @@ interface Props {
 
 export function ChooseFiles(props: Props) {
   const { files, setFiles, setStep, setShowPaymentMethodRequiredModal } = props;
-
   const { t } = useTranslation();
-
   const [dragActive, setDragActive] = useState(false);
   const [filesLocal, setFilesLocal] = useState<File[] | null>();
-
-  // ref
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setFilesLocal(files);
   }, []);
 
-  // handle drag events
   const handleDrag = function (e: any) {
     e.preventDefault();
     e.stopPropagation();
@@ -58,7 +57,6 @@ export function ChooseFiles(props: Props) {
     }
   };
 
-  // triggers when file is dropped
   const handleDrop = async function (e: any) {
     try {
       e.preventDefault();
@@ -71,7 +69,6 @@ export function ChooseFiles(props: Props) {
           e.dataTransfer?.items["0"]?.type
         )
       ) {
-        // at least one file has been dropped so do something
         setFilesLocal(e.dataTransfer.files || null);
       }
     } catch (e) {
@@ -79,27 +76,20 @@ export function ChooseFiles(props: Props) {
     }
   };
 
-  // triggers when file is selected with click
   const handleChange = async function (e: any) {
     try {
       e.preventDefault();
       if (e.target.files && e.target.files) {
-        // at least one file has been selected so do something
-
         const paymentMethodsRequest = getAccountPaymentMethodsFactory();
         const paymentMethodsResponse = await paymentMethodsRequest;
-        console.log("paymentMethodsResponse", paymentMethodsResponse);
 
         if (
           (isNumber(get(paymentMethodsResponse, "data.customRequestCredits")) &&
             get(paymentMethodsResponse, "data.customRequestCredits") > 0) ||
           get(paymentMethodsResponse, "data.stripeDefaultSource")
         ) {
-          // setFileList(e.target.files);
           setFilesLocal(e.target.files || null);
         } else {
-          // show Payment Required Modal
-          console.log("PAYMENT REQUIRED");
           setShowPaymentMethodRequiredModal(true);
         }
       }
@@ -109,19 +99,16 @@ export function ChooseFiles(props: Props) {
   };
 
   return (
-    <Layout3ColumnWrapper>
-      {/* 3 column wrapper */}
-      <div className="mx-auto w-full max-w-7xl grow lg:flex xl:px-2 border-b border-gray-900/10 pb-12 sm:space-y-0 sm:pb-0">
-        {/* Left sidebar & main wrapper */}
-        <div className="flex-1 xl:flex">
-          {/* <div className="border-b border-gray-200 px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:border-b-0 xl:border-r xl:pl-6"> */}
-          <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:w-96 xl:shrink-0 xl:pl-6">
-            {/* Left column area */}
-            {/* LEFT */}
-          </div>
-
-          <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
-            {/* Main area */}
+    <Layout3ColumnAndFooterWrapper>
+      <_3ColumnWrapper>
+        <LeftAreaAndMainWrapper>
+          <LeftArea>
+            <p className="mt-1 text-sm leading-6 text-gray-400">
+              Ability to select from previously uploaded files coming soon
+              here...
+            </p>
+          </LeftArea>
+          <MainArea>
             <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="col-span-full flex justify-center">
                 <form
@@ -131,7 +118,7 @@ export function ChooseFiles(props: Props) {
                 >
                   <div
                     id="label-file-upload"
-                    className={`mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 ${
+                    className={`mt-0 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 ${
                       dragActive ? "drag-active" : ""
                     }`}
                   >
@@ -183,12 +170,9 @@ export function ChooseFiles(props: Props) {
                 </form>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* <div className="shrink-0 border-t border-gray-200 px-4 py-6 sm:px-6 lg:w-96 lg:border-l lg:border-t-0 lg:pr-8 xl:pr-6"> */}
-        <div className="shrink-0 px-4 py-6 sm:px-6 lg:w-96 lg:pr-8 xl:pr-6">
-          {/* Right column area */}
+          </MainArea>
+        </LeftAreaAndMainWrapper>
+        <RightArea>
           <ul role="list" className="divide-y divide-gray-100">
             {filesLocal &&
               Object.keys(filesLocal).map((f: string, index: number) => {
@@ -197,20 +181,16 @@ export function ChooseFiles(props: Props) {
                     key={index}
                     className="flex items-center justify-between gap-x-6 py-5"
                   >
-                    <div className="flex items-start gap-x-3">
+                    <div className="flex items-start gap-x-2">
                       <p className="text-sm font-semibold leading-6 text-gray-900">
                         {filesLocal[index].name}
                       </p>
-
                       <XCircleIcon
-                        className="h-6 w-6"
+                        className="h-6 w-6 cursor-pointer"
                         onClick={() => {
-                          console.log("___ --- ___");
                           let newFileList = Array.from(filesLocal);
-
-                          newFileList.splice(index, 1); // here u remove the file
+                          newFileList.splice(index, 1);
                           console.log(newFileList);
-
                           setFilesLocal(newFileList);
                         }}
                       />
@@ -219,9 +199,9 @@ export function ChooseFiles(props: Props) {
                 );
               })}
           </ul>
-        </div>
-      </div>
-      <div className="mx-auto w-full max-w-7xl mt-6 flex items-center justify-end gap-x-2">
+        </RightArea>
+      </_3ColumnWrapper>
+      <FooterWrapper>
         <button
           disabled={!filesLocal}
           onClick={() => {
@@ -238,7 +218,7 @@ export function ChooseFiles(props: Props) {
         >
           Next
         </button>
-      </div>
-    </Layout3ColumnWrapper>
+      </FooterWrapper>
+    </Layout3ColumnAndFooterWrapper>
   );
 }

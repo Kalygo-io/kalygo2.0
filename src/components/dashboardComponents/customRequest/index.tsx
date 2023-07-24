@@ -1,6 +1,5 @@
-import { round } from "@/utility/Math/round";
-import { PaperClipIcon } from "@heroicons/react/20/solid";
 import { useTranslation } from "next-i18next";
+import ReactMarkdown from "react-markdown";
 
 interface P {
   customRequest: any;
@@ -52,12 +51,14 @@ export default function CustomRequest(p: P) {
                 return (
                   <div key={i.file}>
                     <b>{i.file}</b>
-
                     <ul>
                       {i?.response?.map((i: any, idx: any) => {
                         return (
                           <li className="mt-2" key={i.part}>
-                            (Part {i.part + 1}) {i.completionResponse}
+                            {/* (Part {i.part + 1})  */}
+                            <ReactMarkdown className="">
+                              {i.completionResponse}
+                            </ReactMarkdown>
                           </li>
                         );
                       })}

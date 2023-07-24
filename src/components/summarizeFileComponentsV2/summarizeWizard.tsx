@@ -138,7 +138,7 @@ export function SummarizeWizard(props: Props) {
                       preserveAspectRatio="none"
                     >
                       <path
-                        d="M0 -2L0 40L0 82"
+                        d="M0 -2L20 40L0 82"
                         vectorEffect="non-scaling-stroke"
                         stroke="currentcolor"
                         strokeLinejoin="round"

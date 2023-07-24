@@ -130,7 +130,7 @@ export function ChooseFiles(props: Props) {
                 >
                   <div
                     id="label-file-upload"
-                    className={`mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 ${
+                    className={`mt-0 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 ${
                       dragActive ? "drag-active" : ""
                     }`}
                   >
@@ -194,20 +194,17 @@ export function ChooseFiles(props: Props) {
                     key={index}
                     className="flex items-center justify-between gap-x-6 py-5"
                   >
-                    <div className="flex items-start gap-x-3">
+                    <div className="flex items-start gap-x-2">
                       <p className="text-sm font-semibold leading-6 text-gray-900">
                         {filesLocal[index].name}
                       </p>
 
                       <XCircleIcon
-                        className="h-6 w-6"
+                        className="h-6 w-6 cursor-pointer"
                         onClick={() => {
-                          console.log("___ --- ___");
                           let newFileList = Array.from(filesLocal);
-
-                          newFileList.splice(index, 1); // here u remove the file
+                          newFileList.splice(index, 1);
                           console.log(newFileList);
-
                           setFilesLocal(newFileList);
                         }}
                       />

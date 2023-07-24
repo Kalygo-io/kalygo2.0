@@ -1,22 +1,15 @@
-import {
-  DocumentDuplicateIcon,
-  EllipsisVerticalIcon,
-} from "@heroicons/react/24/outline";
-
-import React, {
-  Dispatch,
-  Fragment,
-  RefObject,
-  SetStateAction,
-  useState,
-} from "react";
+import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
+import React, { Dispatch, Fragment, RefObject, SetStateAction } from "react";
 import { useTranslation } from "next-i18next";
-
-import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
-import isNumber from "lodash.isnumber";
-import get from "lodash.get";
 import { useForm } from "react-hook-form";
 import { Menu, Transition } from "@headlessui/react";
+import { Layout3ColumnAndFooterWrapper } from "../sharedComponents/layout3ColumnAndFooterWrapper";
+import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
+import { LeftAreaAndMainWrapper } from "../sharedComponents/leftAreaAndMainWrapper";
+import { LeftArea } from "../sharedComponents/leftArea";
+import { MainArea } from "../sharedComponents/mainArea";
+import { FooterWrapper } from "../sharedComponents/FooterWrapper";
+import { RightArea } from "../sharedComponents/rightArea";
 
 interface Props {
   files: File[];
@@ -52,22 +45,11 @@ function classNames(...classes: string[]) {
 }
 
 export function CustomizeRequest(props: Props) {
-  const {
-    prompt,
-    files,
-    setStep,
-    setPrompt,
-    setShowPaymentMethodRequiredModal,
-  } = props;
+  const { prompt, files, setStep, setPrompt } = props;
   const { t } = useTranslation();
-  const [dragActive, setDragActive] = useState(false);
-
-  // ref
-  const inputRef = React.useRef<HTMLInputElement>(null);
 
   const onSubmit = async (data: any) => {
     try {
-      console.log("provideRequest submit", data);
       setPrompt(data.prompt);
       setStep(3);
     } catch (e: any) {}
@@ -75,9 +57,8 @@ export function CustomizeRequest(props: Props) {
 
   const {
     register,
-    handleSubmit,
     getValues,
-    formState: { errors },
+    formState: { isValid },
     setValue,
     watch,
   } = useForm({
@@ -87,14 +68,10 @@ export function CustomizeRequest(props: Props) {
   });
 
   return (
-    <div className="flex min-h-full flex-col">
-      {/* 3 column wrapper */}
-      <div className="mx-auto w-full max-w-7xl grow lg:flex xl:px-2">
-        {/* Left sidebar & main wrapper */}
-        <div className="flex-1 xl:flex">
-          {/* <div className="border-b border-gray-200 px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:border-b-0 xl:border-r xl:pl-6"> */}
-          <div className="m-4 px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:pl-6 border-gray-200 border-b xl:border-b-0 xl:border-r">
-            {/* Left column area */}
+    <Layout3ColumnAndFooterWrapper>
+      <_3ColumnWrapper>
+        <LeftAreaAndMainWrapper>
+          <LeftArea>
             <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
               {t("dashboard-page:custom-request-v2.chosen-files")!}
             </h2>
@@ -120,14 +97,12 @@ export function CustomizeRequest(props: Props) {
                 No files selected
               </p>
             )}
-          </div>
+          </LeftArea>
 
-          <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
-            {/* Main area */}
+          <MainArea>
             <div className="grid grid-cols-1 gap-x-6 gap-y-8">
-              {/* <div className="col-span-full flex justify-center"> */}
               <div className="col-span-full">
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form>
                   <div>
                     <label
                       htmlFor="prompt"
@@ -152,22 +127,13 @@ export function CustomizeRequest(props: Props) {
                       />
                     </div>
                   </div>
-
-                  <div>
-                    <button className="mt-2 flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
-                      {t("dashboard-page:custom-request-v2.next")!}
-                    </button>
-                  </div>
                 </form>
               </div>
             </div>
-          </div>
-        </div>
+          </MainArea>
+        </LeftAreaAndMainWrapper>
 
-        {/* <div className="shrink-0 border-t border-gray-200 px-4 py-6 sm:px-6 lg:w-96 lg:border-l lg:border-t-0 lg:pr-8 xl:pr-6"> */}
-        <div className="m-4 shrink-0 px-4 py-6 sm:px-6 lg:w-96 lg:pr-8 xl:pr-6 border-gray-200 border-t lg:border-l lg:border-t-0">
-          {/* Right column area */}
-          {/* RIGHT */}
+        <RightArea>
           <h2 className="text-md font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight underline-offset-4 text-center">
             {t("dashboard-page:custom-request-v2.suggested-requests")!}
           </h2>
@@ -259,8 +225,21 @@ export function CustomizeRequest(props: Props) {
               </div>
             </li>
           ))}
-        </div>
-      </div>
-    </div>
+        </RightArea>
+      </_3ColumnWrapper>
+      <FooterWrapper>
+        <button
+          disabled={!isValid}
+          onClick={() => {
+            onSubmit(getValues());
+          }}
+          className={`${
+            files.length === 0 || !isValid ? "opacity-50" : "opacity-100"
+          } inline-flex justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
+        >
+          Next
+        </button>
+      </FooterWrapper>
+    </Layout3ColumnAndFooterWrapper>
   );
 }

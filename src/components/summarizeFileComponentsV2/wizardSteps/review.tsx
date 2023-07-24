@@ -90,8 +90,8 @@ export function Review(props: Props) {
         </LeftAreaAndMainWrapper>
         <RightArea>
           <p className="mt-1 text-sm leading-6 text-gray-400">
-            A quote of the total cost of the request will be displayed here
-            after development is wrapped up...
+            A quote of the total cost of the request will be displayed here when
+            feature development is complete...
           </p>
         </RightArea>
       </_3ColumnWrapper>
