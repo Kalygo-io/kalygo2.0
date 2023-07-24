@@ -42,7 +42,7 @@ const App = function ({ Component, pageProps }: CustomAppProps) {
         <meta property="og:title" content="Kalygo" />
         <meta
           property="og:description"
-          content="Kalygo supports high-quality document summarization, vector search, multi-document based prompting, and collaboration. All code on the platform is open source, reusable, and free. Ease and insight is what Kalygo aims to leave you with!"
+          content="Kalygo supports high-quality document summarization, vector search, multi-document based prompting, and collaboration. All code on the platform is open source, reusable, and free. Ease and insight is what Kalygo aims to leave you with."
         />
         <meta property="og:image" content="/kalygo_new_logo-512x512.png" />
         <link rel="apple-touch-icon" href="/kalygo_new_logo-192x192.png" />
