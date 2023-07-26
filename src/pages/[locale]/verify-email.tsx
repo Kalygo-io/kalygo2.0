@@ -73,16 +73,10 @@ export default function VerifyEmail() {
           error: null,
         });
       } catch (e) {
-        // setState({
-        //   loading: false,
-        //   val: null,
-        //   error: e,
-        // });
-
         setState({
           loading: false,
-          val: true,
-          error: null,
+          val: null,
+          error: e,
         });
       }
     }
