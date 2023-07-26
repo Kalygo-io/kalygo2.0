@@ -3,8 +3,7 @@ import Image from "next/image";
 const profiles = [
   {
     title: "Law firms",
-    subtitle:
-      "Kalygo's collaboration features help your team reliably increase productivity",
+    subtitle: "Lawyers, Paralegals, and Counsel",
     image: (
       <Image
         src="/Law_firm.gif"
@@ -16,12 +15,12 @@ const profiles = [
     ),
   },
   {
-    title: "Paralegals",
+    title: "Psychologists",
     subtitle:
-      "Quickly generate customized briefs for the leaders of your organization",
+      "Quickly digest notes for your clients with LLM technology. Make sure you don't break confidentiality and use a PrivateGPT plan.",
     image: (
       <Image
-        src="/Paralegal.gif"
+        src="/Psychologist.gif"
         width={500}
         height={500}
         alt=""
@@ -30,12 +29,11 @@ const profiles = [
     ),
   },
   {
-    title: "Counsel",
-    subtitle:
-      "Discovery can be overwhelming and Kalygo is here to shorten time to insight so you focus on what matters",
+    title: "Researchers",
+    subtitle: "Professors and Students",
     image: (
       <Image
-        src="/Research.gif"
+        src="/Researcher.gif"
         width={500}
         height={500}
         alt=""
@@ -51,10 +49,12 @@ export default function IndustriesWeServe() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Industry We Serve
+            Industries We Serve
           </h2>
           <p className="mt-6 text-lg leading-8 text-white">
-            We take pride in serving the legal industry
+            Any professional that deals with high volumes of documents will find
+            Kalygo beneficial in managing, digesting. and re-repurposing their
+            data.
           </p>
         </div>
         <ul
