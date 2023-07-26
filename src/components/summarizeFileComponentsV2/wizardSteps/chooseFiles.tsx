@@ -71,7 +71,7 @@ export function ChooseFiles(props: Props) {
       setDragActive(false);
       if (
         e.dataTransfer.files &&
-        e.dataTransfer.files[0] &&
+        e.dataTransfer.files[0] && // TODO needs to be updated to check all files
         ["application/pdf", "text/plain"].includes(
           e.dataTransfer?.items["0"]?.type
         )

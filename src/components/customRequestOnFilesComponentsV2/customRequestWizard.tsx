@@ -1,6 +1,4 @@
 import React, { Dispatch, SetStateAction, useRef, useState } from "react";
-
-import { CheckIcon } from "@heroicons/react/24/solid";
 import { ChooseFiles } from "./wizardSteps/chooseFiles";
 import { CustomizeRequest } from "./wizardSteps/customizeRequest";
 import { Review } from "./wizardSteps/review";

@@ -1,42 +1,54 @@
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/24/outline";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { SizeMe } from "react-sizeme";
 
 import { pdfjs, Document, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 
-import React, { Ref, RefObject, useState } from "react";
+import React, {
+  MutableRefObject,
+  Ref,
+  RefObject,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import get from "lodash.get";
 
 import { useTranslation } from "next-i18next";
 
 import { infoToast } from "@/utility/toasts";
-import { getSummarizationQuote } from "@/services/getSummarizationQuote";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { similaritySearchInFile } from "@/services/similaritySearchInFile";
 
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { PreviewTextFile } from "@/components/shared/PreviewTextFile";
-import { fileURLToPath } from "url";
+import { useResize } from "@/components/shared/hooks/useResize";
 
 const options = {
   cMapUrl: "cmaps/",
   standardFontDataUrl: "standard_fonts/",
 };
 
-// type PDFFile = string | File | null;
-
 interface Props {
   file: File | null;
-  wizardStepsRef: RefObject<HTMLElement>;
+  wizardStepsRef: MutableRefObject<HTMLElement>;
 }
 
 export function Query(props: Props) {
   const { file, wizardStepsRef } = props;
 
   const [numPages, setNumPages] = useState<number>();
+  const [page, setPage] = useState<number>(1);
   const { t } = useTranslation();
+  const parentRef = useRef<HTMLDivElement | null>(null);
+  const size = useResize(parentRef);
 
   const {
     register,
@@ -59,6 +71,16 @@ export function Query(props: Props) {
     loading: false,
     err: null,
   });
+
+  useEffect(() => {
+    if (parentRef.current) {
+      let parentHeight = parentRef?.current?.offsetHeight;
+      let parentWidth = parentRef?.current?.offsetWidth;
+
+      console.log("parentHeight", parentHeight);
+      console.log("parentWidth", parentWidth);
+    }
+  }, [parentRef, size]);
 
   const onSubmit = async (data: any) => {
     try {
@@ -177,14 +199,6 @@ export function Query(props: Props) {
     }
   };
 
-  //   function onFileChange(event: React.ChangeEvent<HTMLInputElement>) {
-  //     const { files } = event.target;
-
-  //     if (files && files[0]) {
-  //       setFile(files[0] || null);
-  //     }
-  //   }
-
   function onDocumentLoadSuccess({ numPages: nextNumPages }: PDFDocumentProxy) {
     setNumPages(nextNumPages);
   }
@@ -208,7 +222,6 @@ export function Query(props: Props) {
                 </p>
                 <p className="flex-none text-xs text-gray-600">
                   <span>{distances[idx]}</span>
-                  {/* <time dateTime={comment.dateTime}>{comment.date}</time> */}
                 </p>
               </div>
               <CopyToClipboard text={i} onCopy={() => console.log("copied")}>
@@ -228,23 +241,48 @@ export function Query(props: Props) {
     case "application/pdf":
       viewer = (
         <div
-          className={`px-4 py-2 sm:px-6 lg:pl-8 xl:pl-6 overflow-scroll mx-1 flex flex-col justify-start items-center w-full shadow-sm rounded-md border-2`}
+          ref={parentRef}
+          className={`px-4 py-2 sm:px-6 lg:pl-8 xl:pl-6 mx-1 flex flex-col justify-start items-center overflow-scroll shadow-sm rounded-md border-2`}
         >
+          <span className="isolate inline-flex rounded-md shadow-sm">
+            <button
+              onClick={() =>
+                setPage((prevState) =>
+                  prevState > 1 ? prevState - 1 : prevState
+                )
+              }
+              type="button"
+              className="relative inline-flex items-center rounded-l-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+            >
+              <span className="sr-only">Previous</span>
+              <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
+            </button>
+            <button
+              onClick={() =>
+                setPage((prevState) =>
+                  prevState <= (numPages ? numPages - 1 : 0)
+                    ? prevState + 1
+                    : prevState
+                )
+              }
+              type="button"
+              className="relative -ml-px inline-flex items-center rounded-r-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+            >
+              <span className="sr-only">Next</span>
+              <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
+            </button>
+          </span>
           <Document
             file={file}
             onLoadSuccess={onDocumentLoadSuccess}
             options={options}
           >
-            {Array.from(new Array(numPages), (el, index) => (
-              <Page key={`page_${index + 1}`} pageNumber={index + 1} />
-            ))}
+            <Page key={`page_${page}`} width={size?.width} pageNumber={page} />
           </Document>
         </div>
       );
       break;
     case "text/plain":
-      //   debugger;
-
       viewer = (
         <div
           className={`px-4 py-2 sm:px-6 lg:pl-8 xl:pl-6 overflow-scroll mx-1 flex w-full shadow-sm rounded-md border-2`}
@@ -252,37 +290,22 @@ export function Query(props: Props) {
           <PreviewTextFile file={file} />
         </div>
       );
-
       break;
-
     default:
       viewer = <>Unsupported file type</>;
       break;
   }
 
   return (
-    <>
-      <div
-        className="lg:grid grid-cols-3 flex flex-col grid-rows-1 pt-8"
-        style={{
-          height: `calc(100vh - ${
-            wizardStepsRef?.current?.clientHeight! + 88 + 64
-          }px)`, // 88 is the top nav && p8 == 2rem == 64px of padding to adjust for the padding around the <main></main> panel
-        }}
-      >
-        {/* Left sidebar & main wrapper */}
-        <div className="flex-1 flex lg:order-1 order-2 col-span-2">
-          {/* <div className="border-b border-gray-200 px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:border-b-0 xl:border-r xl:pl-6">
-            Left column area
-          </div> */}
-
-          {/* Main area */}
+    <div className="flex min-h-full flex-col">
+      {/* <div className="m-4 mb-0 pb-4 mx-auto w-full max-w-7xl grow lg:flex xl:px-2 border-b border-black"></div> */}
+      <div className="m-4 lg:grid grid-cols-3 flex flex-col grid-rows-1">
+        <div className="m-4 px-4 py-6 flex-1 flex lg:order-1 order-2 col-span-2">
           {viewer}
         </div>
 
-        <div className="shrink-0 border-b lg:border-gray-200 px-4 lg:border-l lg:border-b-0 lg:pr-8 xl:pr-4 lg:order-2 order-1 col-span-1 overflow-scroll">
+        <div className="m-4 px-4 py-6 shrink-0 border-b lg:border-gray-200 lg:border-l lg:border-b-0 lg:pr-8 xl:pr-4 lg:order-2 order-1 col-span-1 overflow-scroll">
           {/* Right column area */}
-
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col justify-center items-center w-full"
@@ -306,6 +329,6 @@ export function Query(props: Props) {
           {jsx}
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -11,42 +11,13 @@ import { ErrorInDashboard } from "../shared/errorInDashboard";
 const steps = [
   { id: 1, name: "Choose file", href: "#", status: "current" },
   { id: 2, name: "Search", href: "#", status: "upcoming" },
-  //   { id: "03", name: "Results", href: "#", status: "upcoming" },
 ];
 
-interface Props {
-  // onSuccess: ({
-  //   results,
-  //   query,
-  // }: // fileName,
-  // // originalLength,
-  // // condensedLength,
-  // {
-  //   results: string[];
-  //   query: string;
-  //   // fileName: string;
-  //   // originalLength: number;
-  //   // condensedLength: number;
-  // }) => void;
-  // setSearchResultsState: (state: any) => void;
-  // onError: (err: any) => void;
-}
+interface Props {}
 
 export function SearchFileWizard(props: Props) {
   const [step, setStep] = useState(1);
   const [file, setFile] = useState<File | null>(null);
-  const [searchResults, setSearchResultsState] = useState<{
-    val: {
-      results: string[];
-      query: string;
-    } | null;
-    loading: boolean;
-    err: Error | null;
-  }>({
-    val: null,
-    loading: false,
-    err: null,
-  });
 
   const wizardStepsRef = useRef(null);
 
@@ -72,9 +43,7 @@ export function SearchFileWizard(props: Props) {
           {steps.map((s, sIdx) => (
             <li
               onClick={(evt) => {
-                if (s.id === 1) {
-                  setStep(s.id);
-                }
+                setStep(s.id);
               }}
               key={s.name}
               className="relative md:flex md:flex-1 cursor-pointer"
@@ -82,12 +51,7 @@ export function SearchFileWizard(props: Props) {
               {s.id < step ? (
                 <span className="group flex w-full items-center">
                   <span className="flex items-center px-6 py-4 text-sm font-medium">
-                    <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 group-hover:bg-blue-800">
-                      <CheckIcon
-                        className="h-6 w-6 text-white"
-                        aria-hidden="true"
-                      />
-                    </span>
+                    <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 group-hover:bg-blue-800"></span>
                     <span className="ml-4 text-sm font-medium text-gray-900">
                       {s.name}
                     </span>
