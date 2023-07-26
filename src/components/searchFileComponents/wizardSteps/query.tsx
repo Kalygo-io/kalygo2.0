@@ -9,14 +9,7 @@ import { pdfjs, Document, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 
-import React, {
-  MutableRefObject,
-  Ref,
-  RefObject,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { RefObject, useRef, useState } from "react";
 import get from "lodash.get";
 
 import { useTranslation } from "next-i18next";
@@ -231,7 +224,7 @@ export function Query(props: Props) {
       viewer = (
         <div
           ref={parentRef}
-          className={`px-4 py-2 sm:px-6 lg:pl-8 xl:pl-6 mx-1 flex flex-col justify-start items-center overflow-scroll shadow-sm rounded-md border-2`}
+          className={`px-4 py-0 sm:px-6 lg:pl-8 xl:pl-6 mx-1 flex flex-col justify-start items-center overflow-scroll shadow-sm rounded-md border-2`}
         >
           <span className="isolate inline-flex rounded-md shadow-sm">
             <button
@@ -289,11 +282,11 @@ export function Query(props: Props) {
     <div className="flex min-h-full flex-col">
       {/* <div className="m-4 mb-0 pb-4 mx-auto w-full max-w-7xl grow lg:flex xl:px-2 border-b border-black"></div> */}
       <div className="m-4 lg:grid grid-cols-3 flex flex-col grid-rows-1">
-        <div className="m-4 px-4 py-6 flex-1 flex w-full mx-auto lg:order-1 order-2 col-span-2">
+        <div className="px-4 py-4 flex-1 flex w-full mx-auto lg:order-1 order-2 col-span-2">
           {viewer}
         </div>
 
-        <div className="m-4 px-4 py-6 shrink-0 border-b lg:border-gray-200 lg:border-l lg:border-b-0 lg:pr-8 xl:pr-4 lg:order-2 order-1 col-span-1 overflow-scroll">
+        <div className="m-4 px-4 py-6 shrink-0 border-b lg:border-gray-200 lg:border-l lg:border-b-0 lg:pr-8 xl:pr-4 lg:order-2 order-1 col-span-1 overflow-scroll rounded-md border-2">
           {/* Right column area */}
           <form
             onSubmit={handleSubmit(onSubmit)}
