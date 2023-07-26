@@ -4,7 +4,6 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { SizeMe } from "react-sizeme";
 
 import { pdfjs, Document, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
@@ -38,7 +37,7 @@ const options = {
 
 interface Props {
   file: File | null;
-  wizardStepsRef: MutableRefObject<HTMLElement>;
+  wizardStepsRef: RefObject<HTMLElement>;
 }
 
 export function Query(props: Props) {
@@ -71,16 +70,6 @@ export function Query(props: Props) {
     loading: false,
     err: null,
   });
-
-  useEffect(() => {
-    if (parentRef.current) {
-      let parentHeight = parentRef?.current?.offsetHeight;
-      let parentWidth = parentRef?.current?.offsetWidth;
-
-      console.log("parentHeight", parentHeight);
-      console.log("parentWidth", parentWidth);
-    }
-  }, [parentRef, size]);
 
   const onSubmit = async (data: any) => {
     try {
@@ -300,7 +289,7 @@ export function Query(props: Props) {
     <div className="flex min-h-full flex-col">
       {/* <div className="m-4 mb-0 pb-4 mx-auto w-full max-w-7xl grow lg:flex xl:px-2 border-b border-black"></div> */}
       <div className="m-4 lg:grid grid-cols-3 flex flex-col grid-rows-1">
-        <div className="m-4 px-4 py-6 flex-1 flex lg:order-1 order-2 col-span-2">
+        <div className="m-4 px-4 py-6 flex-1 flex w-full mx-auto lg:order-1 order-2 col-span-2">
           {viewer}
         </div>
 

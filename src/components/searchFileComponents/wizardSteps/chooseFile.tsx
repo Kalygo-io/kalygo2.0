@@ -2,7 +2,13 @@ import {
   XCircleIcon,
   DocumentDuplicateIcon,
 } from "@heroicons/react/24/outline";
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useTranslation } from "next-i18next";
 import { Layout3ColumnAndFooterWrapper } from "../sharedComponents/layout3ColumnAndFooterWrapper";
 import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
@@ -22,7 +28,7 @@ export function ChooseFile(props: Props) {
   const { t } = useTranslation();
   const [dragActive, setDragActive] = useState(false);
   const [fileLocal, setFileLocal] = useState<File | null>();
-  const inputRef = React.useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setFileLocal(file);
