@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const profiles = [
   {
-    title: "Law firms",
+    title: "Law Firms",
     subtitle: "Lawyers, Paralegals, and Counsel",
     image: (
       <Image
