@@ -226,7 +226,7 @@ export function Query(props: Props) {
           ref={parentRef}
           className={`px-4 py-0 sm:px-6 lg:pl-8 xl:pl-6 mx-1 flex flex-col justify-start items-center overflow-scroll shadow-sm rounded-md border-2`}
         >
-          <span className="isolate inline-flex rounded-md shadow-sm">
+          <span className="isolate inline-flex rounded-md shadow-sm m-2">
             <button
               onClick={() =>
                 setPage((prevState) =>
@@ -234,7 +234,7 @@ export function Query(props: Props) {
                 )
               }
               type="button"
-              className="m-2 relative inline-flex items-center rounded-l-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+              className="relative inline-flex items-center rounded-l-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
             >
               <span className="sr-only">Previous</span>
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
