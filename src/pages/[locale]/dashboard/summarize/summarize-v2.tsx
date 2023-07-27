@@ -119,9 +119,9 @@ export default function SummarizeV2() {
                 {t("dashboard-page:summarize-v2.title")}
               </h2>
               <p className="mt-1 text-sm leading-6 text-gray-400">
-                'Summarize' allows you to upload 1 to 10 documents (.txt or
-                .pdf) and summarize them with the customization options you
-                specify in step 2.
+                &apos;Summarize&apos; allows you to upload 1 to 10 documents
+                (.txt or .pdf) and summarize them with the customization options
+                you specify in step 2.
               </p>
             </div>
           </div>

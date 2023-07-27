@@ -101,7 +101,7 @@ export function ChooseFile(props: Props) {
                         aria-hidden="true"
                       />
 
-                      <div className="mb-2 mt-4 flex items-center justify-center text-sm leading-6 text-gray-600">
+                      <div className="mb-2 mt-2 flex items-center justify-center text-sm leading-6 text-gray-600">
                         <label
                           htmlFor="input-file-upload"
                           className="relative cursor-pointer rounded-md font-semibold text-blue-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-2 hover:text-blue-500"
