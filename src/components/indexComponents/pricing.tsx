@@ -20,6 +20,7 @@ export function Pricing() {
       features: [
         t("common:pricing.tier1_feature1"),
         t("common:pricing.tier1_feature2"),
+        t("common:pricing.tier1_feature3"),
       ],
       enabled: true,
     },
@@ -34,6 +35,7 @@ export function Pricing() {
         t("common:pricing.tier2_feature2"),
         t("common:pricing.tier2_feature3"),
         t("common:pricing.tier2_feature4"),
+        t("common:pricing.tier2_feature5"),
       ],
       enabled: true,
     },
@@ -48,6 +50,7 @@ export function Pricing() {
         t("common:pricing.tier3_feature2"),
         t("common:pricing.tier3_feature3"),
         t("common:pricing.tier3_feature4"),
+        t("common:pricing.tier3_feature5"),
       ],
       enabled: true,
     },
