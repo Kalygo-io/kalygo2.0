@@ -13,18 +13,27 @@ const steps = [
   { id: 2, name: "Search", href: "#", status: "upcoming" },
 ];
 
-interface Props {}
+interface Props {
+  setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
+}
 
 export function SearchFileWizard(props: Props) {
+  const { setShowPaymentMethodRequiredModal } = props;
   const [step, setStep] = useState(1);
   const [file, setFile] = useState<File | null>(null);
-
   const wizardStepsRef = useRef(null);
 
   let jsx = null;
   switch (step) {
     case 1:
-      jsx = <ChooseFile file={file} setFile={setFile} setStep={setStep} />;
+      jsx = (
+        <ChooseFile
+          setShowPaymentMethodRequiredModal={setShowPaymentMethodRequiredModal}
+          file={file}
+          setFile={setFile}
+          setStep={setStep}
+        />
+      );
       break;
     case 2:
       jsx = <Query file={file} wizardStepsRef={wizardStepsRef} />;

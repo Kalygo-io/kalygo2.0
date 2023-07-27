@@ -23,6 +23,7 @@ import {
 } from "@/components/searchFileComponents";
 import { SectionLoader } from "@/components/shared/SectionLoader";
 import { WindowLoader } from "@/components/shared/WindowLoader";
+import { PaymentRequiredModal } from "@/components/shared/PaymentRequiredModal";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -52,11 +53,25 @@ export default function Summarize() {
     err: null,
   });
 
+  const [showPaymentMethodRequiredModal, setShowPaymentMethodRequiredModal] =
+    useState<boolean>(false);
+
+  console.log("showPaymentMethodRequiredModal", showPaymentMethodRequiredModal);
+
   let jsx = null;
   if (searchResults.loading) {
     jsx = <WindowLoader></WindowLoader>;
   } else if (searchResults.err) {
     jsx = <SearchError />;
+  } else if (showPaymentMethodRequiredModal) {
+    jsx = (
+      <PaymentRequiredModal
+        isOpen={showPaymentMethodRequiredModal}
+        setIsOpen={(isOpen) => {
+          setShowPaymentMethodRequiredModal(isOpen);
+        }}
+      />
+    );
   } else if (searchResults.val) {
     jsx = (
       <SearchSuccess
@@ -72,7 +87,13 @@ export default function Summarize() {
       />
     );
   } else {
-    jsx = <SearchFileWizard />;
+    jsx = (
+      <SearchFileWizard
+        setShowPaymentMethodRequiredModal={(showModal: boolean) => {
+          setShowPaymentMethodRequiredModal(showModal);
+        }}
+      />
+    );
   }
 
   return (

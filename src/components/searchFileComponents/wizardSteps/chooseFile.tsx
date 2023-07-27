@@ -13,15 +13,19 @@ import { LeftAreaAndMainWrapper } from "../sharedComponents/leftAreaAndMainWrapp
 import { LeftArea } from "../sharedComponents/leftArea";
 import { MainArea } from "../sharedComponents/mainArea";
 import { RightArea } from "../sharedComponents/rightArea";
+import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
+import isNumber from "lodash.isnumber";
+import get from "lodash.get";
 
 interface Props {
   file: File | null;
   setFile: Dispatch<SetStateAction<File | null>>;
   setStep: Dispatch<SetStateAction<number>>;
+  setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
 }
 
 export function ChooseFile(props: Props) {
-  const { file, setFile, setStep } = props;
+  const { file, setFile, setStep, setShowPaymentMethodRequiredModal } = props;
   const { t } = useTranslation();
   const [dragActive, setDragActive] = useState(false);
   const [fileLocal, setFileLocal] = useState<File | null>();
@@ -58,16 +62,42 @@ export function ChooseFile(props: Props) {
         e.dataTransfer?.items["0"]?.type
       )
     ) {
-      setFile(e.dataTransfer.files[0]);
-      setStep(2);
+      const paymentMethodsRequest = getAccountPaymentMethodsFactory();
+      const paymentMethodsResponse = await paymentMethodsRequest;
+      console.log("paymentMethodsResponse", paymentMethodsResponse);
+      if (
+        (isNumber(get(paymentMethodsResponse, "data.vectorSearchCredits")) &&
+          get(paymentMethodsResponse, "data.vectorSearchCredits") > 0) ||
+        get(paymentMethodsResponse, "data.stripeDefaultSource")
+      ) {
+        setFile(e.dataTransfer.files[0]);
+        setStep(2);
+      } else {
+        // show Payment Required Modal
+        console.log("PAYMENT REQUIRED");
+        setShowPaymentMethodRequiredModal(true);
+      }
     }
   };
 
   const handleChange = async function (e: any) {
     e.preventDefault();
     if (e.target.files && e.target.files[0]) {
-      setFile(e.target.files[0]);
-      setStep(2);
+      const paymentMethodsRequest = getAccountPaymentMethodsFactory();
+      const paymentMethodsResponse = await paymentMethodsRequest;
+      console.log("paymentMethodsResponse", paymentMethodsResponse);
+      if (
+        (isNumber(get(paymentMethodsResponse, "data.vectorSearchCredits")) &&
+          get(paymentMethodsResponse, "data.vectorSearchCredits") > 0) ||
+        get(paymentMethodsResponse, "data.stripeDefaultSource")
+      ) {
+        setFile(e.target.files[0]);
+        setStep(2);
+      } else {
+        // show Payment Required Modal
+        console.log("PAYMENT REQUIRED");
+        setShowPaymentMethodRequiredModal(true);
+      }
     }
   };
 
