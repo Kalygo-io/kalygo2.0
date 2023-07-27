@@ -88,8 +88,10 @@ export default function Summarize() {
                 {t("dashboard-page:vector-search.title")}
               </h2>
               <p className="mt-1 text-sm leading-6 text-gray-400">
-                Returns results in your data that are similar to your search
-                terms even if your search terms are not matched exactly
+                'Smart Search' allows you to upload 1 document (.txt or .pdf)
+                and search it for relevant areas. Smart search will return
+                matches in the document with a score that tells you how similar
+                the match is to your search terms.
               </p>
             </div>
           </div>

@@ -70,7 +70,7 @@ export function SummarizeWizard(props: Props) {
   }
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 px-2 sm:px-2 lg:px-2">
+    <div className="p-2 sm:p-4 lg:p-4 px-2 sm:px-2 lg:px-2">
       <nav aria-label="Progress" ref={wizardStepsRef}>
         <ol
           role="list"
@@ -88,10 +88,10 @@ export function SummarizeWizard(props: Props) {
                 <span className="group flex w-full items-center">
                   <span className="flex items-center px-6 py-4 text-sm font-medium">
                     <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 group-hover:bg-blue-800">
-                      {/* <CheckIcon
+                      <CheckIcon
                         className="h-6 w-6 text-white"
                         aria-hidden="true"
-                      /> */}
+                      />
                     </span>
                     <span className="ml-4 text-sm font-medium text-gray-900">
                       {s.name}

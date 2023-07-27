@@ -116,8 +116,8 @@ export function ChooseFiles(props: Props) {
         <LeftAreaAndMainWrapper>
           <LeftArea>
             <p className="mt-1 text-sm leading-6 text-gray-400">
-              Ability to select from previously uploaded files coming soon
-              here...
+              {/* Ability to select from previously uploaded files coming soon
+              here... */}
             </p>
           </LeftArea>
           <MainArea>

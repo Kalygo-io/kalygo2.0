@@ -1,7 +1,4 @@
-import {
-  XCircleIcon,
-  DocumentDuplicateIcon,
-} from "@heroicons/react/24/outline";
+import { XCircleIcon, DocumentIcon } from "@heroicons/react/24/outline";
 import React, {
   Dispatch,
   SetStateAction,
@@ -80,8 +77,8 @@ export function ChooseFile(props: Props) {
         <LeftAreaAndMainWrapper>
           <LeftArea>
             <p className="mt-1 text-sm leading-6 text-gray-400">
-              Ability to select from previously uploaded files coming soon
-              here...
+              {/* Ability to select from previously uploaded files coming soon
+              here... */}
             </p>
           </LeftArea>
           <MainArea>
@@ -99,28 +96,34 @@ export function ChooseFile(props: Props) {
                     }`}
                   >
                     <div>
-                      <DocumentDuplicateIcon
+                      <DocumentIcon
                         className="mx-auto h-12 w-12 text-gray-300"
                         aria-hidden="true"
                       />
 
-                      <div className="mt-4 flex items-center justify-center text-sm leading-6 text-gray-600">
+                      <div className="mb-2 mt-4 flex items-center justify-center text-sm leading-6 text-gray-600">
                         <label
                           htmlFor="input-file-upload"
                           className="relative cursor-pointer rounded-md font-semibold text-blue-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-2 hover:text-blue-500"
                         >
-                          <span>
-                            {t("dashboard-page:summarize.upload-a-file")}
-                          </span>
-                          <input
-                            ref={inputRef}
-                            type="file"
-                            id="input-file-upload"
-                            multiple={true}
-                            onChange={handleChange}
-                            accept=".pdf,.txt"
-                            className="sr-only"
-                          />
+                          <button
+                            type="button"
+                            className="rounded bg-blue-600 px-2 py-2 text-xs font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                            onClick={() => {
+                              inputRef.current?.click();
+                            }}
+                          >
+                            {t("dashboard-page:perform-vector-search.select")}
+                            <input
+                              ref={inputRef}
+                              type="file"
+                              id="input-file-upload"
+                              multiple={true}
+                              onChange={handleChange}
+                              accept=".pdf,.txt"
+                              className="sr-only"
+                            />
+                          </button>
                         </label>
                       </div>
                       {dragActive && (

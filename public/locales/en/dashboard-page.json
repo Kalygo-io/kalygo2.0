@@ -86,6 +86,7 @@
   "perform-vector-search": {
     "title": "Vector Search",
     "choose-file": "Choose file",
+    "select": "Select",
     "review": "Review",
     "review-widget": {
       "similarity-search": "Similarity search",

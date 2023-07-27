@@ -80,7 +80,7 @@ export function Review(props: Props) {
       <_3ColumnWrapper>
         <LeftAreaAndMainWrapper>
           <LeftArea>
-            <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+            <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight">
               {t("dashboard-page:custom-request-v2.chosen-files")!}
             </h2>
             {files.length > 0 ? (
@@ -107,7 +107,7 @@ export function Review(props: Props) {
             )}
           </LeftArea>
           <MainArea>
-            <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+            <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight">
               {t("dashboard-page:custom-request-v2.provided-request")!}
             </h2>
             <div className="grid grid-cols-1 gap-x-6 gap-y-8">
@@ -134,8 +134,9 @@ export function Review(props: Props) {
         </LeftAreaAndMainWrapper>
         <RightArea>
           <p className="mt-1 text-sm leading-6 text-gray-400">
-            A quote of the total cost of the request will be displayed here when
-            feature development is complete...
+            {/* A quote of the total cost of the request will be displayed here when
+            feature development is complete... */}
+            Click send to process your request
           </p>
         </RightArea>
       </_3ColumnWrapper>

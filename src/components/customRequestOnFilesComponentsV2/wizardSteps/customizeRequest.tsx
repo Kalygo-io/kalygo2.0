@@ -72,7 +72,7 @@ export function CustomizeRequest(props: Props) {
       <_3ColumnWrapper>
         <LeftAreaAndMainWrapper>
           <LeftArea>
-            <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+            <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight">
               {t("dashboard-page:custom-request-v2.chosen-files")!}
             </h2>
             {files.length > 0 ? (
@@ -106,7 +106,8 @@ export function CustomizeRequest(props: Props) {
                   <div>
                     <label
                       htmlFor="prompt"
-                      className="block text-sm font-medium leading-6 text-gray-900"
+                      // className="block text-sm font-medium leading-6 text-gray-900"
+                      className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl"
                     >
                       {t("dashboard-page:custom-request.prompt")}
                     </label>
@@ -134,7 +135,7 @@ export function CustomizeRequest(props: Props) {
         </LeftAreaAndMainWrapper>
 
         <RightArea>
-          <h2 className="text-md font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight underline-offset-4 text-center">
+          <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight underline-offset-4 text-center">
             {t("dashboard-page:custom-request-v2.suggested-requests")!}
           </h2>
           {preBuiltPrompts.map((prompt) => (

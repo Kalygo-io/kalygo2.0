@@ -75,103 +75,32 @@ export function Query(props: Props) {
         err: null,
       });
 
-      if (file && file.type === "application/pdf") {
-        const reader = new FileReader();
-        reader.addEventListener("loadend", async () => {
-          const loadingTask = pdfjs.getDocument(reader.result as ArrayBuffer);
-
-          loadingTask.promise.then(async function (pdf) {
-            // you can now use *pdf* here
-            const maxPages = pdf.numPages;
-            var countPromises = []; // collecting all page promises
-            for (var j = 1; j <= maxPages; j++) {
-              var page = pdf.getPage(j);
-
-              countPromises.push(
-                page.then(function (page) {
-                  // add page promise
-                  var textContent = page.getTextContent();
-                  return textContent.then(function (text) {
-                    // return content promise
-                    return text.items
-                      .map(function (s: any) {
-                        return s.str;
-                      })
-                      .join(""); // value page text
-                  });
-                })
-              );
-            }
-
-            const finalText = await Promise.all(countPromises).then(function (
-              texts
-            ) {
-              return texts.join("");
+      similaritySearchInFile(
+        data.query,
+        file!,
+        (results: string[], err: any) => {
+          if (err) {
+            setSearchResultsState({
+              val: null,
+              loading: false,
+              err: err,
             });
+          } else {
+            infoToast("Successfully performed similarity search");
 
-            var blob = new Blob([finalText], { type: "text/plain" });
-            var pdf2txtFile = new File([blob], "pdf2txt.txt", {
-              type: "text/plain",
+            console.log("RESULTS", results);
+
+            setSearchResultsState({
+              val: {
+                results,
+                query: data.query,
+              },
+              loading: false,
+              err: null,
             });
-
-            similaritySearchInFile(
-              data.query,
-              pdf2txtFile,
-              (results: string[], err: any) => {
-                if (err) {
-                  setSearchResultsState({
-                    val: null,
-                    loading: false,
-                    err: err,
-                  });
-                } else {
-                  infoToast("Successfully performed similarity search");
-
-                  console.log("RESULTS", results);
-
-                  setSearchResultsState({
-                    val: {
-                      results,
-                      query: data.query,
-                    },
-                    loading: false,
-                    err: null,
-                  });
-                }
-              }
-            );
-          });
-        });
-
-        reader.readAsDataURL(file as Blob);
-      } else {
-        similaritySearchInFile(
-          data.query,
-          file!,
-          (results: string[], err: any) => {
-            if (err) {
-              setSearchResultsState({
-                val: null,
-                loading: false,
-                err: err,
-              });
-            } else {
-              infoToast("Successfully performed similarity search");
-
-              console.log("RESULTS", results);
-
-              setSearchResultsState({
-                val: {
-                  results,
-                  query: data.query,
-                },
-                loading: false,
-                err: null,
-              });
-            }
           }
-        );
-      }
+        }
+      );
     } catch (e) {
       setSearchResultsState({
         val: null,
@@ -200,7 +129,8 @@ export function Query(props: Props) {
             <div className="flex-auto">
               <div className="flex items-baseline justify-between gap-x-4">
                 <p className="text-sm font-semibold leading-6 text-gray-900">
-                  Chunk {get(metadatas, `${idx}.index`)}
+                  Chunk {get(metadatas, `${idx}.index`)}, Page{" "}
+                  {get(metadatas, `${idx}.pageNumber`)}
                 </p>
                 <p className="flex-none text-xs text-gray-600">
                   <span>{distances[idx]}</span>
@@ -282,7 +212,7 @@ export function Query(props: Props) {
     <div className="flex min-h-full flex-col">
       {/* <div className="m-4 mb-0 pb-4 mx-auto w-full max-w-7xl grow lg:flex xl:px-2 border-b border-black"></div> */}
       <div className="m-4 lg:grid grid-cols-3 flex flex-col grid-rows-1">
-        <div className="px-4 py-4 flex-1 flex w-full mx-auto lg:order-1 order-2 col-span-2">
+        <div className="px-4 py-4 flex justify-center max-w-full mx-auto lg:order-1 order-2 col-span-2">
           {viewer}
         </div>
 
@@ -303,7 +233,10 @@ export function Query(props: Props) {
             />
 
             <div>
-              <button className="inline-flex items-center gap-x-2 rounded-md bg-blue-600 m-2 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+              <button
+                disabled={!file}
+                className="inline-flex items-center gap-x-2 rounded-md bg-blue-600 m-2 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+              >
                 <MagnifyingGlassIcon className="h-4 w-4" />
               </button>
             </div>
