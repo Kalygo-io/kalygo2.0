@@ -58,18 +58,18 @@ export const SummariesTable = (p: P) => {
                   >
                     {t("dashboard-page:index.summaries.table.filename")}
                   </th>
-                  <th
+                  {/* <th
                     scope="col"
                     className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                   >
                     {t("dashboard-page:index.summaries.table.processed-length")}
-                  </th>
-                  <th
+                  </th> */}
+                  {/* <th
                     scope="col"
                     className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                   >
                     {t("dashboard-page:index.summaries.table.date")}
-                  </th>
+                  </th> */}
                   <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-0">
                     <span className="sr-only">
                       {t("dashboard-page:index.summaries.table.edit")}
@@ -86,7 +86,7 @@ export const SummariesTable = (p: P) => {
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       {summary.filename}
                     </td>
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                    {/* <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       {summary.condensedCharCount}&nbsp;
                       <span className="text-green-600">
                         (
@@ -97,10 +97,10 @@ export const SummariesTable = (p: P) => {
                         )}
                         x)
                       </span>
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                    </td> */}
+                    {/* <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       {new Date(summary.createdAt).toLocaleString()}
-                    </td>
+                    </td> */}
                     <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3">
                       <button
                         className="text-blue-600 hover:text-blue-900"

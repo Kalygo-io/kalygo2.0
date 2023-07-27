@@ -74,9 +74,9 @@ export const CustomRequestsTable = (p: P) => {
         {customRequests?.map((customRequest) => (
           <li
             key={customRequest.id}
-            className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap overflow-hidden"
+            className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap"
           >
-            <div className="truncate">
+            <div>
               {/* <p className="text-sm font-semibold leading-6 text-gray-900 truncate">
                 {customRequest.prompt}
               </p> */}
