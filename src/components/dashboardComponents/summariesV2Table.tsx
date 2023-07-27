@@ -9,7 +9,7 @@ interface P {
   summaries: any[];
 }
 
-export const SummariesTable = (p: P) => {
+export const SummariesV2Table = (p: P) => {
   let { summaries } = p;
 
   const { state, dispatch } = useAppContext();
@@ -52,18 +52,12 @@ export const SummariesTable = (p: P) => {
                   >
                     {t("dashboard-page:index.summaries.table.id")}
                   </th> */}
-                  <th
+                  {/* <th
                     scope="col"
                     className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                   >
                     {t("dashboard-page:index.summaries.table.filename")}
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                  >
-                    {t("dashboard-page:index.summaries.table.processed-length")}
-                  </th>
+                  </th> */}
                   <th
                     scope="col"
                     className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
@@ -83,21 +77,9 @@ export const SummariesTable = (p: P) => {
                     {/* <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-3">
                       {summary.id}
                     </td> */}
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                    {/* <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       {summary.filename}
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                      {summary.condensedCharCount}&nbsp;
-                      <span className="text-green-600">
-                        (
-                        {round(
-                          summary.originalCharCount /
-                            summary.condensedCharCount,
-                          1
-                        )}
-                        x)
-                      </span>
-                    </td>
+                    </td> */}
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       {new Date(summary.createdAt).toLocaleString()}
                     </td>
@@ -106,7 +88,7 @@ export const SummariesTable = (p: P) => {
                         className="text-blue-600 hover:text-blue-900"
                         onClick={() => {
                           router.push(
-                            `/dashboard/summary?summary-id=${summary.id}`
+                            `/dashboard/summary-v2?summary-v2-id=${summary.id}`
                           );
                         }}
                       >
@@ -123,6 +105,6 @@ export const SummariesTable = (p: P) => {
       </div>
     </div>
   ) : (
-    <>{t("dashboard-page:index.no-summaries-v1-yet")}</>
+    <>{t("dashboard-page:index.no-summaries-v2-yet")}</>
   );
 };

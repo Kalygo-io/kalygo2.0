@@ -115,8 +115,6 @@ export default function Signin() {
 
       let resp = await axios(config);
 
-      console.log("resp", resp);
-
       // const detectedLng = languageDetector.detect();
       const detectedLng = navigatorLangDetector();
 

@@ -81,7 +81,6 @@ export default function Signup() {
         const detectedLng = navigatorLangDetector();
         router.push(`/${detectedLng}/dashboard`);
       } catch (e) {
-        debugger;
         errorReporter(e);
       }
     },

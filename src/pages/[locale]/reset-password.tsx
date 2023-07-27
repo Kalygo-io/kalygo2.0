@@ -73,7 +73,6 @@ export default function ResetPassword() {
       };
 
       let resp = await axios(config);
-      //   console.log(resp);
 
       infoToast(t("toast-messages:reset-password-success"));
 
@@ -84,8 +83,6 @@ export default function ResetPassword() {
       errorReporter(e);
     }
   };
-
-  // console.log("errors", errors);
 
   return (
     <>

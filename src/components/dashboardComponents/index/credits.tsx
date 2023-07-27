@@ -30,7 +30,7 @@ export function Credits(p: P) {
       stat: summaryCredits,
       icon: LifebuoyIcon,
       onClick: () => {
-        router.push("/dashboard/summarize");
+        router.push("/dashboard/summarize/summarize-v2");
       },
       onClickText: t(
         "dashboard-page:index.credits.try-free-summarization-credits"
@@ -42,20 +42,20 @@ export function Credits(p: P) {
       stat: vectorSearchCredits,
       icon: DocumentMagnifyingGlassIcon,
       onClick: () => {
-        router.push("/dashboard/vector-search/vector-search-v2");
+        router.push("/dashboard/vector-search");
       },
       onClickText: t("dashboard-page:index.credits.try-vector-search-credits"),
     },
-    {
-      id: 3,
-      name: t("dashboard-page:index.credits.credit-card-charges"),
-      stat: "$0.00",
-      icon: CreditCardIcon,
-      onClick: () => {
-        router.push("/dashboard/settings");
-      },
-      onClickText: t("dashboard-page:index.credits.more-info"),
-    },
+    // {
+    //   id: 3,
+    //   name: t("dashboard-page:index.credits.credit-card-charges"),
+    //   stat: "$0.00",
+    //   icon: CreditCardIcon,
+    //   onClick: () => {
+    //     router.push("/dashboard/settings");
+    //   },
+    //   onClickText: t("dashboard-page:index.credits.more-info"),
+    // },
   ];
 
   function classNames(...classes: any[]) {
