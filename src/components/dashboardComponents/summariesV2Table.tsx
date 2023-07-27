@@ -72,64 +72,69 @@ export const SummariesV2Table = (p: P) => {
         {/* </tr>
         </thead> */}
         {/* <tbody className="bg-white"> */}
-        {summaries?.map((summary) => (
-          <li
-            key={summary.id}
-            className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap"
-          >
-            <div>
-              <p className="text-sm font-semibold leading-6 text-gray-900"></p>
-              <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
-                <p></p>
-                <svg viewBox="0 0 2 2" className="h-0.5 w-0.5 fill-current">
-                  <circle cx={1} cy={1} r={1} />
-                </svg>
-                <p>
-                  <time dateTime={new Date(summary.createdAt).toLocaleString()}>
-                    {new Date(summary.createdAt).toLocaleString()}
-                  </time>
-                </p>
+        {summaries?.map((summary) => {
+          const completionResponse = summary.completionResponse?.slice(0, 10);
+
+          return (
+            <li
+              key={summary.id}
+              className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap"
+            >
+              <div>
+                <p className="text-sm font-semibold leading-6 text-gray-900"></p>
+                <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
+                  <p></p>
+                  <svg viewBox="0 0 2 2" className="h-0.5 w-0.5 fill-current">
+                    <circle cx={1} cy={1} r={1} />
+                  </svg>
+                  <p>
+                    <time
+                      dateTime={new Date(summary.createdAt).toLocaleString()}
+                    >
+                      {new Date(summary.createdAt).toLocaleString()}
+                    </time>
+                  </p>
+                </div>
               </div>
-            </div>
-            <dl className="flex w-full flex-none justify-between gap-x-8 sm:w-auto">
-              <div className="flex -space-x-0.5">
-                <dt className="sr-only">Files</dt>
-                {Object.keys(summary.completionResponse).map(
-                  (item: any, idx: number) => (
-                    <dd key={idx}>
-                      <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 group-hover:bg-blue-800"></span>
-                    </dd>
-                  )
-                )}
-              </div>
-              <div className="flex w-16 gap-x-2.5">
-                <dt>
-                  <span className="sr-only">View</span>
-                  <button
-                    className="text-blue-600 hover:text-blue-900"
-                    onClick={() => {
-                      router.push(
-                        `/dashboard/summary-v2?summary-v2-id=${summary.id}`
-                      );
-                    }}
-                  >
-                    {t("dashboard-page:index.summaries-v2.table.view")}
-                    <span className="sr-only">{summary.id}</span>
-                  </button>
-                </dt>
-                <dd className="text-sm leading-6 text-gray-900"></dd>
-              </div>
-            </dl>
-            {/* <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-3">
+              <dl className="flex w-full flex-none justify-between gap-x-8 sm:w-auto">
+                <div className="flex -space-x-0.5">
+                  <dt className="sr-only">Files</dt>
+                  {Object.keys(completionResponse).map(
+                    (item: any, idx: number) => (
+                      <dd key={idx}>
+                        <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 group-hover:bg-blue-800"></span>
+                      </dd>
+                    )
+                  )}
+                </div>
+                <div className="flex w-16 gap-x-2.5">
+                  <dt>
+                    <span className="sr-only">View</span>
+                    <button
+                      className="text-blue-600 hover:text-blue-900"
+                      onClick={() => {
+                        router.push(
+                          `/dashboard/summary-v2?summary-v2-id=${summary.id}`
+                        );
+                      }}
+                    >
+                      {t("dashboard-page:index.summaries-v2.table.view")}
+                      <span className="sr-only">{summary.id}</span>
+                    </button>
+                  </dt>
+                  <dd className="text-sm leading-6 text-gray-900"></dd>
+                </div>
+              </dl>
+              {/* <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-3">
                       {summary.id}
                     </td> */}
-            {/* <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+              {/* <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       {summary.filename}
                     </td> */}
-            {/* <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+              {/* <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
               {new Date(summary.createdAt).toLocaleString()}
             </td> */}
-            {/* <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3">
+              {/* <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3">
               <button
                 className="text-blue-600 hover:text-blue-900"
                 onClick={() => {
@@ -142,8 +147,9 @@ export const SummariesV2Table = (p: P) => {
                 <span className="sr-only"> {summary.id}</span>
               </button>
             </td> */}
-          </li>
-        ))}
+            </li>
+          );
+        })}
         {/* </tbody> */}
       </ul>
       {/* </div>
