@@ -16,7 +16,7 @@ export default function SummaryV2(p: P) {
     <div>
       <main className="lg:pl-8">
         <div className="xl:pr-96">
-          <div className="px-4 py-10 sm:px-6 lg:px-8 lg:py-6">
+          <div className="mx-4 px-4 py-10 sm:px-6 lg:px-8 lg:py-6">
             {/* Main area */}
             <div className="mt-1 text-sm leading-6 text-gray-700 sm:mt-0">
               {/* {summary?.content?.split("\n\n").map((i: any, idx: any) => {
