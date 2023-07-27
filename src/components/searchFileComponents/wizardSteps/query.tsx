@@ -137,7 +137,20 @@ export function Query(props: Props) {
                 </p>
               </div>
               <CopyToClipboard text={i} onCopy={() => console.log("copied")}>
-                <p className="mt-1 line-clamp-2 text-sm leading-6 text-gray-600 cursor-pointer">
+                <p
+                  className="mt-1 line-clamp-2 text-sm leading-6 text-gray-600 cursor-pointer"
+                  onClick={() => {
+                    switch (file && file.type) {
+                      case "application/pdf":
+                        setPage(get(metadatas, `${idx}.pageNumber`, page));
+                        break;
+                      case "text/plain":
+                        break;
+                      default:
+                        break;
+                    }
+                  }}
+                >
                   {i}
                 </p>
               </CopyToClipboard>
