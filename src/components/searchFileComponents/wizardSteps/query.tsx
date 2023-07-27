@@ -9,7 +9,7 @@ import { pdfjs, Document, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 
-import React, { RefObject, useRef, useState } from "react";
+import React, { RefObject, useCallback, useRef, useState } from "react";
 import get from "lodash.get";
 
 import { useTranslation } from "next-i18next";
@@ -50,6 +50,8 @@ export function Query(props: Props) {
     setValue,
     watch,
   } = useForm({});
+
+  const [searchText, setSearchText] = useState("");
 
   const [searchResults, setSearchResultsState] = useState<{
     val: {
@@ -136,24 +138,25 @@ export function Query(props: Props) {
                   <span>{distances[idx]}</span>
                 </p>
               </div>
-              <CopyToClipboard text={i} onCopy={() => console.log("copied")}>
-                <p
-                  className="mt-1 line-clamp-2 text-sm leading-6 text-gray-600 cursor-pointer"
-                  onClick={() => {
-                    switch (file && file.type) {
-                      case "application/pdf":
-                        setPage(get(metadatas, `${idx}.pageNumber`, page));
-                        break;
-                      case "text/plain":
-                        break;
-                      default:
-                        break;
-                    }
-                  }}
-                >
-                  {i}
-                </p>
-              </CopyToClipboard>
+
+              <p
+                className="mt-1 line-clamp-2 text-sm leading-6 text-gray-600 cursor-pointer"
+                onClick={() => {
+                  switch (file && file.type) {
+                    case "application/pdf":
+                      setPage(get(metadatas, `${idx}.pageNumber`, page));
+                      navigator.clipboard.writeText(i);
+                      break;
+                    case "text/plain":
+                      navigator.clipboard.writeText(i);
+                      break;
+                    default:
+                      break;
+                  }
+                }}
+              >
+                {i}
+              </p>
             </div>
           </li>
         ))}
@@ -220,6 +223,8 @@ export function Query(props: Props) {
       viewer = <>Unsupported file type</>;
       break;
   }
+
+  console.log("searchText", searchText);
 
   return (
     <div className="flex min-h-full flex-col">
