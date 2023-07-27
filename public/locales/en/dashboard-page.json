@@ -33,6 +33,19 @@
       "more-info": "More information"
     },
     "summaries": {
+      "title": "Summaries (v1)",
+      "subtitle": "An overview of your summaries",
+      "view-all": "View all",
+      "table": {
+        "id": "Id",
+        "filename": "File name",
+        "processed-length": "Processed Length",
+        "date": "Date",
+        "edit": "Edit",
+        "view": "View"
+      }
+    },
+    "summaries-v2": {
       "title": "Summaries",
       "subtitle": "An overview of your summaries",
       "view-all": "View all",

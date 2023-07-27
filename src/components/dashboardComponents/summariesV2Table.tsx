@@ -24,10 +24,10 @@ export const SummariesV2Table = (p: P) => {
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-base font-semibold leading-6 text-gray-900">
-            {t("dashboard-page:index.summaries.title")}
+            {t("dashboard-page:index.summaries-v2.title")}
           </h1>
           <p className="mt-2 text-sm text-gray-700">
-            {t("dashboard-page:index.summaries.subtitle")}
+            {t("dashboard-page:index.summaries-v2.subtitle")}
           </p>
         </div>
         {/* <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
@@ -36,7 +36,7 @@ export const SummariesV2Table = (p: P) => {
             type="button"
             className="opacity-50 block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
           >
-            {t("dashboard-page:index.summaries.view-all")}
+            {t("dashboard-page:index.summaries-v2.view-all")}
           </button>
         </div> */}
       </div>
@@ -50,23 +50,23 @@ export const SummariesV2Table = (p: P) => {
                     scope="col"
                     className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
                   >
-                    {t("dashboard-page:index.summaries.table.id")}
+                    {t("dashboard-page:index.summaries-v2.table.id")}
                   </th> */}
                   {/* <th
                     scope="col"
                     className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                   >
-                    {t("dashboard-page:index.summaries.table.filename")}
+                    {t("dashboard-page:index.summaries-v2.table.filename")}
                   </th> */}
                   <th
                     scope="col"
                     className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                   >
-                    {t("dashboard-page:index.summaries.table.date")}
+                    {t("dashboard-page:index.summaries-v2.table.date")}
                   </th>
                   <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-0">
                     <span className="sr-only">
-                      {t("dashboard-page:index.summaries.table.edit")}
+                      {t("dashboard-page:index.summaries-v2.table.edit")}
                     </span>
                   </th>
                 </tr>
@@ -92,7 +92,7 @@ export const SummariesV2Table = (p: P) => {
                           );
                         }}
                       >
-                        {t("dashboard-page:index.summaries.table.view")}
+                        {t("dashboard-page:index.summaries-v2.table.view")}
                         <span className="sr-only"> {summary.id}</span>
                       </button>
                     </td>
