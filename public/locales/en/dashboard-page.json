@@ -8,7 +8,7 @@
     "templates": "Prompts",
     "settings": "Settings",
     "vector-search": "Smart Search",
-    "queue": "My Documents",
+    "queue": "My Requests",
     "saas-stats": "SaaS Stats",
     "custom-request": "Custom Request"
   },
@@ -134,7 +134,7 @@
     "not-this-one": "Not this one"
   },
   "queue": {
-    "title": "My Documents",
+    "title": "My Requests",
     "nothing-found": "Nothing found",
     "job-status": "Job status",
     "file-name": "File name",
