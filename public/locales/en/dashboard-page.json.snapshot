@@ -8,7 +8,7 @@
     "templates": "Prompts",
     "settings": "Settings",
     "vector-search": "Smart Search",
-    "queue": "My Documents",
+    "queue": "My Requests",
     "saas-stats": "SaaS Stats",
     "custom-request": "Custom Request"
   },
@@ -21,6 +21,9 @@
   "index": {
     "title": "Dashboard",
     "no-documents-yet": "No Documents Yet!",
+    "no-summaries-v1-yet": "After requesting summaries (v1) they will be listed here",
+    "no-summaries-v2-yet": "After requesting summaries (v2) they will be listed here",
+    "no-custom-requests-yet": "After requesting custom requests they will be listed here",
     "credits": {
       "free-summarization-credits": "Free Summarization Credits",
       "try-free-summarization-credits": "Try summarization",
@@ -30,12 +33,37 @@
       "more-info": "More information"
     },
     "summaries": {
+      "title": "Summaries (v1)",
+      "subtitle": "An overview of your summaries",
+      "view-all": "View all",
+      "table": {
+        "id": "Id",
+        "filename": "File name",
+        "processed-length": "Processed Length",
+        "date": "Date",
+        "edit": "Edit",
+        "view": "View"
+      }
+    },
+    "summaries-v2": {
       "title": "Summaries",
       "subtitle": "An overview of your summaries",
       "view-all": "View all",
       "table": {
         "id": "Id",
-        "filename": "Filename",
+        "filename": "File name",
+        "processed-length": "Processed Length",
+        "date": "Date",
+        "edit": "Edit",
+        "view": "View"
+      }
+    },
+    "custom-requests": {
+      "title": "Custom Requests",
+      "subtitle": "An overview of your custom requests",
+      "table": {
+        "id": "Id",
+        "filename": "File name",
         "processed-length": "Processed Length",
         "date": "Date",
         "edit": "Edit",
@@ -86,6 +114,7 @@
   "perform-vector-search": {
     "title": "Vector Search",
     "choose-file": "Choose file",
+    "select": "Select",
     "review": "Review",
     "review-widget": {
       "similarity-search": "Similarity search",
@@ -133,7 +162,7 @@
     "not-this-one": "Not this one"
   },
   "queue": {
-    "title": "My Documents",
+    "title": "My Requests",
     "nothing-found": "Nothing found",
     "job-status": "Job status",
     "file-name": "File name",

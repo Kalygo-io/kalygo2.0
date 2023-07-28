@@ -65,7 +65,7 @@ export function Pricing() {
           </h2>
         </div>
         <div className="mt-20 flow-root">
-          <div className="isolate grid max-w-sm grid-cols-1 gap-y-16 gap-x-4 divide-y divide-gray-100 sm:mx-auto lg:max-w-none lg:grid-cols-3 lg:divide-y-0 mx-auto">
+          <div className="isolate grid max-w-sm grid-cols-1 gap-y-16 gap-x-8 divide-y divide-gray-100 sm:mx-auto lg:max-w-none lg:grid-cols-3 lg:divide-y-0 mx-auto">
             {tiers.map((tier) => (
               <div
                 key={tier.id}

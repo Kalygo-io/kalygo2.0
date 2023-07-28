@@ -8,7 +8,7 @@
     "templates": "Instructions",
     "settings": "Paramètres",
     "vector-search": "Recherche intelligente",
-    "queue": "Mes documents",
+    "queue": "Mes demandes",
     "saas-stats": "Statistiques SaaS",
     "custom-request": "Demande personnalisée"
   },
@@ -21,6 +21,9 @@
   "index": {
     "title": "Tableau de bord",
     "no-documents-yet": "Aucun document pour le moment !",
+    "no-summaries-v1-yet": "Après avoir demandé des résumés (v1), ils seront répertoriés ici",
+    "no-summaries-v2-yet": "Après avoir demandé des résumés (v2), ils seront répertoriés ici",
+    "no-custom-requests-yet": "Après avoir demandé des demandes personnalisées, elles seront répertoriées ici",
     "credits": {
       "free-summarization-credits": "Crédits de synthèse gratuits",
       "try-free-summarization-credits": "Essayez le résumé",
@@ -30,9 +33,34 @@
       "more-info": "Plus d'information"
     },
     "summaries": {
+      "title": "Résumés (v1)",
+      "subtitle": "Un aperçu de vos résumés",
+      "view-all": "Voir tout",
+      "table": {
+        "id": "Identifiant",
+        "filename": "Nom de fichier",
+        "processed-length": "Longueur traitée",
+        "date": "Date",
+        "edit": "Modifier",
+        "view": "Voir"
+      }
+    },
+    "summaries-v2": {
       "title": "Résumés",
       "subtitle": "Un aperçu de vos résumés",
       "view-all": "Voir tout",
+      "table": {
+        "id": "Identifiant",
+        "filename": "Nom de fichier",
+        "processed-length": "Longueur traitée",
+        "date": "Date",
+        "edit": "Modifier",
+        "view": "Voir"
+      }
+    },
+    "custom-requests": {
+      "title": "Demandes personnalisées",
+      "subtitle": "Un aperçu de vos demandes personnalisées",
       "table": {
         "id": "Identifiant",
         "filename": "Nom de fichier",
@@ -84,6 +112,7 @@
   "perform-vector-search": {
     "title": "Recherche de vecteur",
     "choose-file": "Choisir le fichier",
+    "select": "Sélectionner",
     "review": "Examen",
     "review-widget": {
       "similarity-search": "Recherche de similarité",

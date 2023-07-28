@@ -8,7 +8,7 @@
     "templates": "Comandos",
     "settings": "Configurações",
     "vector-search": "Busca inteligente",
-    "queue": "Meus documentos",
+    "queue": "Minhas solicitações",
     "saas-stats": "Estatísticas de SaaS",
     "custom-request": "Solicitação personalizada"
   },
@@ -21,6 +21,9 @@
   "index": {
     "title": "Painel",
     "no-documents-yet": "Ainda sem Documentos!",
+    "no-summaries-v1-yet": "Após solicitar resumos (v1) eles serão listados aqui",
+    "no-summaries-v2-yet": "Após solicitar resumos (v2) eles serão listados aqui",
+    "no-custom-requests-yet": "Depois de solicitar solicitações personalizadas, elas serão listadas aqui",
     "credits": {
       "free-summarization-credits": "Créditos de resumo grátis",
       "try-free-summarization-credits": "Tente resumir",
@@ -30,9 +33,34 @@
       "more-info": "Mais Informações"
     },
     "summaries": {
+      "title": "Resumos (v1)",
+      "subtitle": "Uma visão geral dos seus resumos",
+      "view-all": "Ver tudo",
+      "table": {
+        "id": "Eu ia",
+        "filename": "Nome do arquivo",
+        "processed-length": "Comprimento Processado",
+        "date": "Data",
+        "edit": "Editar",
+        "view": "Visualizar"
+      }
+    },
+    "summaries-v2": {
       "title": "Resumos",
       "subtitle": "Uma visão geral dos seus resumos",
       "view-all": "Ver tudo",
+      "table": {
+        "id": "Eu ia",
+        "filename": "Nome do arquivo",
+        "processed-length": "Comprimento Processado",
+        "date": "Data",
+        "edit": "Editar",
+        "view": "Visualizar"
+      }
+    },
+    "custom-requests": {
+      "title": "Solicitações personalizadas",
+      "subtitle": "Uma visão geral de suas solicitações personalizadas",
       "table": {
         "id": "Eu ia",
         "filename": "Nome do arquivo",
@@ -86,6 +114,7 @@
   "perform-vector-search": {
     "title": "Pesquisa de vetores",
     "choose-file": "Escolher arquivo",
+    "select": "Selecione",
     "review": "Análise",
     "review-widget": {
       "similarity-search": "pesquisa de similaridade",

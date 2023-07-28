@@ -81,7 +81,7 @@ export function Stats() {
               className="mx-auto flex max-w-xs flex-col items-center gap-y-4"
             >
               <div>{stat.icon}</div>
-              <dt className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+              <dt className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
                 {stat.headline}
               </dt>
               <dd className="text-base leading-7 text-gray-600">

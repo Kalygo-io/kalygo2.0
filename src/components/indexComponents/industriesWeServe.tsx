@@ -47,11 +47,11 @@ export default function IndustriesWeServe() {
   return (
     <div className="bg-blue-600 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        <div className="mx-auto max-w-2xl">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl text-center">
             Industries We Serve
           </h2>
-          <p className="mt-6 text-lg leading-8 text-white">
+          <p className="mt-6 text-lg leading-8 text-white text-center">
             Any professional that deals with high volumes of documents will find
             Kalygo beneficial in managing, digesting. and repurposing their
             data.
