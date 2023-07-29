@@ -16,8 +16,7 @@ const profiles = [
   },
   {
     title: "Psychologists",
-    subtitle:
-      "Quickly digest notes for your clients with LLM technology. Make sure you don't break confidentiality and use a PrivateGPT plan.",
+    subtitle: "Quickly digest notes for your clients with LLM technology",
     image: (
       <Image
         src="/Psychologist.gif"
