@@ -171,11 +171,15 @@
     "remove": "Remove",
     "view": "View",
     "job-type": "Type",
+
     "vector-search": {
       "query": "Query"
     },
     "custom-request": {
       "prompt": "Prompt"
+    },
+    "summary-v2": {
+      "variation": "Variation"
     }
   },
   "summary": {

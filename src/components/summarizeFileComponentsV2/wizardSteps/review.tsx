@@ -36,7 +36,7 @@ export function Review(props: Props) {
       <_3ColumnWrapper>
         <LeftAreaAndMainWrapper>
           <LeftArea>
-            <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center items-start truncate">
               <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight">
                 {t("dashboard-page:summarize-v2.chosen-files")!}
               </h2>
@@ -89,7 +89,7 @@ export function Review(props: Props) {
           </MainArea>
         </LeftAreaAndMainWrapper>
         <RightArea>
-          <p className="mt-1 text-sm leading-6 text-gray-400">
+          <p className="mt-1 text-sm leading-6 text-gray-400 text-center">
             {/* A quote of the total cost of the request will be displayed here when
             feature development is complete... */}
             Click summarize to process your request

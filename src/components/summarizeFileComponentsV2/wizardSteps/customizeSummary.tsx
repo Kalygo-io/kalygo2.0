@@ -10,6 +10,7 @@ import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
 import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
+import { SummarizationTypes } from "@/types/SummarizationTypes";
 
 interface Props {
   files: File[];
@@ -54,7 +55,7 @@ export function CustomizeSummary(props: Props) {
   } = useForm({
     defaultValues: {
       format: customizations?.format || "bullet-points",
-      type: customizations?.type || "summarize-chunks",
+      type: customizations?.type || SummarizationTypes.EachFileOverall,
       length: customizations?.length || "short",
       language: customizations?.language || "English",
     },
@@ -130,36 +131,52 @@ export function CustomizeSummary(props: Props) {
                   <div className="mt-1 sm:col-span-2 sm:mt-0">
                     <div className="max-w-lg">
                       <div className="mt-6 space-x-2 flex justify-between">
-                        <div className="flex items-center gap-x-3">
-                          <input
-                            {...register("type")}
-                            id="each-part-of-data"
-                            name="type"
-                            type="radio"
-                            value="summarize-chunks"
-                            className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
-                          />
-                          <label
-                            htmlFor="each-part-of-data"
-                            className="block text-sm font-medium leading-6 text-gray-900"
-                          >
-                            Summarize Chunks
-                          </label>
-                        </div>
-                        <div className="flex items-center gap-x-3">
+                        <div className="flex items-center gap-x-2">
                           <input
                             {...register("type")}
                             id="overall-data"
                             name="type"
                             type="radio"
-                            value="summarize-overall"
+                            value={SummarizationTypes.EachFileOverall}
                             className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
                           />
                           <label
                             htmlFor="overall-data"
                             className="block text-sm font-medium leading-6 text-gray-900"
                           >
-                            Summarize Overall
+                            Each Overall
+                          </label>
+                        </div>
+                        <div className="flex items-center gap-x-2">
+                          <input
+                            {...register("type")}
+                            id="each-part-of-data"
+                            name="type"
+                            type="radio"
+                            value={SummarizationTypes.EachFileInChunks}
+                            className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
+                          />
+                          <label
+                            htmlFor="each-part-of-data"
+                            className="block text-sm font-medium leading-6 text-gray-900"
+                          >
+                            Each In Chunks
+                          </label>
+                        </div>
+                        <div className="flex items-center gap-x-2">
+                          <input
+                            {...register("type")}
+                            id="overall"
+                            name="type"
+                            type="radio"
+                            value={SummarizationTypes.Overall}
+                            className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
+                          />
+                          <label
+                            htmlFor="overall"
+                            className="block text-sm font-medium leading-6 text-gray-900"
+                          >
+                            Overall
                           </label>
                         </div>
                       </div>
