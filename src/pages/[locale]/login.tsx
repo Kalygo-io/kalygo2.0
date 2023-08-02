@@ -78,6 +78,21 @@ export default function Signin() {
     },
   });
 
+  const getTwitterOauthUrl = () => {
+    const rootUrl = "https://twitter.com/i/oauth2/authorize";
+    const options = {
+      redirect_uri: "http://www.localhost:3000/api/v1/auth/oauth/twitter",
+      client_id: process.env.TWITTER_CLIENT_ID!,
+      state: "state",
+      response_type: "code",
+      code_challenge: "y_SfRG4BmOES02uqWeIkIgLQAlTBggyf_G7uKT51ku8",
+      code_challenge_method: "S256",
+      scope: ["users.read"].join(" "),
+    };
+    const qs = new URLSearchParams(options).toString();
+    return router.push(`${rootUrl}?${qs}`);
+  };
+
   const router = useRouter();
 
   const onSubmit = async (data: any) => {
@@ -294,7 +309,7 @@ export default function Signin() {
                 <span className="text-sm font-semibold leading-6">Google</span>
               </button>
               <button
-                onClick={() => {}}
+                onClick={() => getTwitterOauthUrl()}
                 className="flex w-full items-center justify-center gap-3 rounded-md opacity-20 bg-[#1D9BF0] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"
               >
                 <svg
