@@ -8,7 +8,7 @@
     "templates": "Indicaciones",
     "settings": "Ajustes",
     "vector-search": "Busqueda inteligente",
-    "queue": "Mis documentos",
+    "queue": "Mis solicitudes",
     "saas-stats": "Estadísticas SaaS",
     "custom-request": "Solicitud personalizada"
   },
@@ -21,6 +21,9 @@
   "index": {
     "title": "Panel",
     "no-documents-yet": "¡No hay documentos todavía!",
+    "no-summaries-v1-yet": "Después de solicitar resúmenes (v1), se enumerarán aquí",
+    "no-summaries-v2-yet": "Después de solicitar resúmenes (v2), se enumerarán aquí",
+    "no-custom-requests-yet": "Después de solicitar solicitudes personalizadas, se enumerarán aquí.",
     "credits": {
       "free-summarization-credits": "Créditos de resumen gratis",
       "try-free-summarization-credits": "Prueba el resumen",
@@ -30,9 +33,34 @@
       "more-info": "Más información"
     },
     "summaries": {
-      "title": "Resúmenes",
+      "title": "Resúmenes (v1)",
       "subtitle": "Una visión general de sus resúmenes",
       "view-all": "Ver todo",
+      "table": {
+        "id": "Identificación",
+        "filename": "Nombre del archivo",
+        "processed-length": "Longitud procesada",
+        "date": "Fecha",
+        "edit": "Editar",
+        "view": "Vista"
+      }
+    },
+    "summaries-v2": {
+      "title": "resúmenes",
+      "subtitle": "Una visión general de sus resúmenes",
+      "view-all": "Ver todo",
+      "table": {
+        "id": "Identificación",
+        "filename": "Nombre del archivo",
+        "processed-length": "Longitud procesada",
+        "date": "Fecha",
+        "edit": "Editar",
+        "view": "Vista"
+      }
+    },
+    "custom-requests": {
+      "title": "Solicitudes personalizadas",
+      "subtitle": "Una descripción general de sus solicitudes personalizadas",
       "table": {
         "id": "Identificación",
         "filename": "Nombre del archivo",
@@ -78,12 +106,15 @@
     "chosen-files": "archivos elegidos",
     "customizations": "Personalizaciones",
     "run": "Correr",
-    "select-files": "Selecciona archivos",
+    "summarize": "Resumir",
+    "request": "Pedido",
+    "select-files": "Seleccionar",
     "upload-limits": "Archivos TXT y PDF de hasta 1 MB"
   },
   "perform-vector-search": {
     "title": "Búsqueda de vectores",
     "choose-file": "Elija el archivo",
+    "select": "Seleccionar",
     "review": "Revisar",
     "review-widget": {
       "similarity-search": "Búsqueda de similitud",
@@ -113,23 +144,25 @@
   },
   "custom-request-v2": {
     "choose-files": "Seleccionar archivos",
-    "provide-request": "Proporcionar solicitud",
-    "run": "Correr",
-    "select-files": "Selecciona archivos",
+    "provide-request": "personalizar",
+    "run": "Pedido",
+    "send": "Enviar",
+    "select-files": "Seleccionar",
     "upload-limits": "Archivos TXT y PDF de hasta 1 MB cada uno",
     "save": "Ahorrar",
+    "next": "Próximo",
     "prompt": "Inmediato",
     "prompt-placeholder-text": "Edite o personalice la solicitud que se aplicará a sus archivos aquí",
     "chosen-files": "Archivos elegidos",
-    "suggested-requests": "Solicitudes sugeridas",
-    "provided-request": "Solicitud proporcionada",
+    "suggested-requests": "Sugirió",
+    "provided-request": "Indicación proporcionada",
     "open-options": "Opciones abiertas",
     "more-like-this": "Más como esto",
     "select": "Seleccionar",
     "not-this-one": "Este no"
   },
   "queue": {
-    "title": "Mis documentos",
+    "title": "Mis solicitudes",
     "nothing-found": "Nada Encontrado",
     "job-status": "estado del trabajo",
     "file-name": "Nombre del archivo",

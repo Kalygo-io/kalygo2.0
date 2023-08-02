@@ -121,6 +121,13 @@ export default function CustomRequest() {
               <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
                 {t("dashboard-page:custom-request.title")}
               </h2>
+              <p className="mt-1 text-sm leading-6 text-gray-400">
+                &apos;Custom Request&apos; gives you the most control over your
+                documents. First, upload between 1 to 10 documents (.txt or
+                .pdf) you want Kalygo to interact with. Then in the second step
+                you use the text box to write out how and what kalygo should do
+                with your files or try out a suggested request.
+              </p>
             </div>
           </div>
           {jsx}

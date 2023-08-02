@@ -1,18 +1,12 @@
 "use client";
 
 import Head from "next/head";
-
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
-
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
-
-// import Link from "next/link";
-import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
-import { Fragment, useEffect, useState } from "react";
-import { infoToast, errorToast } from "@/utility/toasts";
+import { useEffect, useState } from "react";
 import {
   SummarizeError,
   SummarizeWizard,
@@ -124,6 +118,11 @@ export default function SummarizeV2() {
               <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
                 {t("dashboard-page:summarize-v2.title")}
               </h2>
+              <p className="mt-1 text-sm leading-6 text-gray-400">
+                &apos;Summarize&apos; allows you to upload 1 to 10 documents
+                (.txt or .pdf) and summarize them with the customization options
+                you specify in step 2.
+              </p>
             </div>
           </div>
           {jsx}

@@ -23,6 +23,7 @@ import {
 } from "@/components/searchFileComponents";
 import { SectionLoader } from "@/components/shared/SectionLoader";
 import { WindowLoader } from "@/components/shared/WindowLoader";
+import { PaymentRequiredModal } from "@/components/shared/PaymentRequiredModal";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -52,11 +53,25 @@ export default function Summarize() {
     err: null,
   });
 
+  const [showPaymentMethodRequiredModal, setShowPaymentMethodRequiredModal] =
+    useState<boolean>(false);
+
+  console.log("showPaymentMethodRequiredModal", showPaymentMethodRequiredModal);
+
   let jsx = null;
   if (searchResults.loading) {
     jsx = <WindowLoader></WindowLoader>;
   } else if (searchResults.err) {
     jsx = <SearchError />;
+  } else if (showPaymentMethodRequiredModal) {
+    jsx = (
+      <PaymentRequiredModal
+        isOpen={showPaymentMethodRequiredModal}
+        setIsOpen={(isOpen) => {
+          setShowPaymentMethodRequiredModal(isOpen);
+        }}
+      />
+    );
   } else if (searchResults.val) {
     jsx = (
       <SearchSuccess
@@ -72,7 +87,13 @@ export default function Summarize() {
       />
     );
   } else {
-    jsx = <SearchFileWizard />;
+    jsx = (
+      <SearchFileWizard
+        setShowPaymentMethodRequiredModal={(showModal: boolean) => {
+          setShowPaymentMethodRequiredModal(showModal);
+        }}
+      />
+    );
   }
 
   return (
@@ -80,7 +101,24 @@ export default function Summarize() {
       <Head>
         <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
-      <LayoutDashboard>{jsx}</LayoutDashboard>
+      <LayoutDashboard>
+        <div className="p-4 sm:p-6 lg:p-8">
+          <div className="sm:flex sm:items-center">
+            <div className="sm:flex-auto">
+              <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+                {t("dashboard-page:vector-search.title")}
+              </h2>
+              <p className="mt-1 text-sm leading-6 text-gray-400">
+                &apos;Smart Search&apos; allows you to upload 1 document (.txt
+                or .pdf) and search it for relevant areas. Smart search will
+                return matches in the document with a score that tells you how
+                similar the match is to your search terms.
+              </p>
+            </div>
+          </div>
+          {jsx}
+        </div>
+      </LayoutDashboard>
     </>
   );
 }

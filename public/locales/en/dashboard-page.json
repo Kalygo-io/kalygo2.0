@@ -8,7 +8,7 @@
     "templates": "Prompts",
     "settings": "Settings",
     "vector-search": "Smart Search",
-    "queue": "My Documents",
+    "queue": "My Requests",
     "saas-stats": "SaaS Stats",
     "custom-request": "Custom Request"
   },
@@ -21,6 +21,9 @@
   "index": {
     "title": "Dashboard",
     "no-documents-yet": "No Documents Yet!",
+    "no-summaries-v1-yet": "After requesting summaries (v1) they will be listed here",
+    "no-summaries-v2-yet": "After requesting summaries (v2) they will be listed here",
+    "no-custom-requests-yet": "After requesting custom requests they will be listed here",
     "credits": {
       "free-summarization-credits": "Free Summarization Credits",
       "try-free-summarization-credits": "Try summarization",
@@ -30,12 +33,37 @@
       "more-info": "More information"
     },
     "summaries": {
+      "title": "Summaries (v1)",
+      "subtitle": "An overview of your summaries",
+      "view-all": "View all",
+      "table": {
+        "id": "Id",
+        "filename": "File name",
+        "processed-length": "Processed Length",
+        "date": "Date",
+        "edit": "Edit",
+        "view": "View"
+      }
+    },
+    "summaries-v2": {
       "title": "Summaries",
       "subtitle": "An overview of your summaries",
       "view-all": "View all",
       "table": {
         "id": "Id",
-        "filename": "Filename",
+        "filename": "File name",
+        "processed-length": "Processed Length",
+        "date": "Date",
+        "edit": "Edit",
+        "view": "View"
+      }
+    },
+    "custom-requests": {
+      "title": "Custom Requests",
+      "subtitle": "An overview of your custom requests",
+      "table": {
+        "id": "Id",
+        "filename": "File name",
         "processed-length": "Processed Length",
         "date": "Date",
         "edit": "Edit",
@@ -78,12 +106,15 @@
     "chosen-files": "Chosen files",
     "customizations": "Customizations",
     "run": "Run",
-    "select-files": "Select files",
+    "summarize": "Summarize",
+    "request": "Request",
+    "select-files": "Select",
     "upload-limits": "TXT & PDF files up to 1 MB"
   },
   "perform-vector-search": {
     "title": "Vector Search",
     "choose-file": "Choose file",
+    "select": "Select",
     "review": "Review",
     "review-widget": {
       "similarity-search": "Similarity search",
@@ -113,23 +144,25 @@
   },
   "custom-request-v2": {
     "choose-files": "Choose files",
-    "provide-request": "Provide request",
-    "run": "Run",
-    "select-files": "Select files",
+    "provide-request": "Customize",
+    "run": "Request",
+    "send": "Send",
+    "select-files": "Select",
     "upload-limits": "TXT & PDF files up to 1 MB each",
     "save": "Save",
+    "next": "Next",
     "prompt": "Prompt",
     "prompt-placeholder-text": "Edit or customize the request that will be applied to your files here",
     "chosen-files": "Chosen files",
-    "suggested-requests": "Suggested Requests",
-    "provided-request": "Provided Request",
+    "suggested-requests": "Suggested",
+    "provided-request": "Provided Prompt",
     "open-options": "Open options",
     "more-like-this": "More like this",
     "select": "Select",
     "not-this-one": "Not this one"
   },
   "queue": {
-    "title": "My Documents",
+    "title": "My Requests",
     "nothing-found": "Nothing found",
     "job-status": "Job status",
     "file-name": "File name",
@@ -138,11 +171,15 @@
     "remove": "Remove",
     "view": "View",
     "job-type": "Type",
+
     "vector-search": {
       "query": "Query"
     },
     "custom-request": {
       "prompt": "Prompt"
+    },
+    "summary-v2": {
+      "variation": "Variation"
     }
   },
   "summary": {

@@ -28,7 +28,7 @@ export function Navbar() {
             <span className="sr-only">{t("common:company-name")}</span>
             <Image
               className="h-8 w-auto"
-              src="/logo192.png"
+              src="/kalygo_new_logo-192x192.png"
               alt="Kalygo logo"
               width={192}
               height={192}
@@ -78,7 +78,7 @@ export function Navbar() {
               <span className="sr-only">{t("common:company-name")}</span>
               <Image
                 className="h-8 w-auto"
-                src="/logo192.png"
+                src="/kalygo_new_logo-192x192.png"
                 alt="Kalygo logo"
                 width={192}
                 height={192}

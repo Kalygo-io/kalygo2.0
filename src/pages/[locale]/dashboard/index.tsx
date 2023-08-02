@@ -21,6 +21,8 @@ import { PlusIcon } from "@heroicons/react/24/outline";
 import get from "lodash.get";
 import { Credits } from "@/components/dashboardComponents/index/credits";
 import { PaymentRequiredModal } from "@/components/shared/PaymentRequiredModal";
+import { SummariesV2Table } from "@/components/dashboardComponents/summariesV2Table";
+import { CustomRequestsTable } from "@/components/dashboardComponents/customRequestsTable";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -48,6 +50,26 @@ export default function Dashboard() {
   });
 
   const [vectorSearches, setVectorSearches] = useState<{
+    val: any[];
+    loading: boolean;
+    err: any;
+  }>({
+    val: [],
+    loading: true,
+    err: null,
+  });
+
+  const [summariesV2, setSummariesV2] = useState<{
+    val: any[];
+    loading: boolean;
+    err: any;
+  }>({
+    val: [],
+    loading: true,
+    err: null,
+  });
+
+  const [customRequests, setCustomRequests] = useState<{
     val: any[];
     loading: boolean;
     err: any;
@@ -97,15 +119,38 @@ export default function Dashboard() {
         });
 
         const res3 = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/summaries-v2`,
+          {
+            withCredentials: true,
+          }
+        );
+        setSummariesV2({
+          loading: false,
+          val: res3.data,
+          err: null,
+        });
+
+        const res4 = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/custom-requests`,
+          {
+            withCredentials: true,
+          }
+        );
+        setCustomRequests({
+          loading: false,
+          val: res4.data,
+          err: null,
+        });
+
+        const res5 = await axios.get(
           `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account`,
           {
             withCredentials: true,
           }
         );
-
         setAccount({
           loading: false,
-          val: res3.data,
+          val: res5.data,
           err: null,
         });
       } catch (e) {
@@ -127,36 +172,69 @@ export default function Dashboard() {
   }, []);
 
   const isWelcomeUI =
-    summaries.val &&
-    vectorSearches.val &&
-    summaries.val.length === 0 &&
-    vectorSearches.val.length === 0
+    summaries.val?.length === 0 &&
+    vectorSearches.val?.length === 0 &&
+    summariesV2.val?.length === 0 &&
+    customRequests.val?.length === 0
       ? true
       : false;
 
   let jsx = null;
 
-  if (summaries.loading || vectorSearches.loading || account.loading) {
+  if (
+    summaries.loading ||
+    vectorSearches.loading ||
+    account.loading ||
+    summariesV2.loading ||
+    customRequests.loading
+  ) {
     jsx = <WindowLoader></WindowLoader>;
-  } else if (summaries.err || vectorSearches.err || account.err) {
+  } else if (
+    summaries.err ||
+    summariesV2.err ||
+    vectorSearches.err ||
+    customRequests.err ||
+    account.err
+  ) {
     jsx = <ErrorInDashboard />;
   } else if (
-    summaries.val &&
-    vectorSearches.val &&
-    (summaries.val.length > 0 || vectorSearches.val.length > 0)
+    summaries.val?.length > 0 ||
+    vectorSearches.val?.length > 0 ||
+    summariesV2.val?.length > 0 ||
+    customRequests.val?.length > 0
   ) {
     jsx = (
       <>
-        <SummariesTable summaries={summaries.val} />
-        <div className="relative px-4 py-24 sm:p-6 lg:p-12">
-          <div
-            className="absolute inset-0 flex items-center"
-            aria-hidden="true"
-          >
-            <div className="w-full border-t border-gray-300" />
-          </div>
-        </div>
-        <VectorSearchesTable vectorSearches={vectorSearches.val} />
+        {summariesV2.val?.length > 0 && (
+          <SummariesV2Table summaries={summariesV2.val} />
+        )}
+
+        {summaries.val?.length > 0 && (
+          <>
+            <div className="relative px-4 py-24 sm:p-6 lg:p-12">
+              <div
+                className="absolute inset-0 flex items-center"
+                aria-hidden="true"
+              >
+                <div className="w-full border-t border-gray-300" />
+              </div>
+            </div>
+            <SummariesTable summaries={summaries.val} />
+          </>
+        )}
+        {customRequests.val?.length > 0 && (
+          <>
+            <div className="relative px-4 py-24 sm:p-6 lg:p-12">
+              <div
+                className="absolute inset-0 flex items-center"
+                aria-hidden="true"
+              >
+                <div className="w-full border-t border-gray-300" />
+              </div>
+            </div>
+            <CustomRequestsTable customRequests={customRequests.val} />
+          </>
+        )}
       </>
     );
   } else if (isWelcomeUI) {

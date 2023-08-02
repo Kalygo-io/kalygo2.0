@@ -13,15 +13,16 @@ import { errorReporter } from "@/utility/error/reporter";
 
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
+import { isAuthedFactory } from "@/serviceFactory/isAuthedFactory";
 
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
-import { decodeJwt } from "jose";
+import { useGoogleLogin } from "@react-oauth/google";
 
 // import Link from "next/link";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
 import languageDetector, {
   navigatorLangDetector,
 } from "@/lib/languageDetector";
+import { useEffect } from "react";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -36,6 +37,21 @@ export { getStaticPaths, getStaticProps };
 
 export default function Signin() {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    async function isAuthed() {
+      try {
+        const isAuthedRequest = isAuthedFactory();
+        const isAuthedResponse = await isAuthedRequest;
+        console.log("isAuthedResponse", isAuthedResponse);
+        router.push(`/dashboard`);
+      } catch (e) {
+        console.log("isAuthed FALSE");
+      }
+    }
+
+    isAuthed();
+  }, []);
 
   const {
     register,
@@ -114,8 +130,6 @@ export default function Signin() {
 
       let resp = await axios(config);
 
-      console.log("resp", resp);
-
       // const detectedLng = languageDetector.detect();
       const detectedLng = navigatorLangDetector();
 
@@ -140,8 +154,8 @@ export default function Signin() {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <Image
             className="mx-auto h-10 w-auto"
-            src="/logo192.png"
-            alt={t("image-alt-tags:logo192.png")}
+            src="/kalygo_new_logo-192x192.png"
+            alt={t("image-alt-tags:kalygo_new_logo-192x192")}
             width={192}
             height={192}
           />
@@ -215,11 +229,7 @@ export default function Signin() {
             </div>
 
             <div>
-              <button
-                // type="submit"
-                // onClick={() => onSubmit(getValues())}
-                className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-              >
+              <button className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
                 {t("log-in-page:log-in")}
               </button>
             </div>
@@ -240,36 +250,7 @@ export default function Signin() {
               </div>
             </div>
 
-            <div className="mt-6 grid grid-cols-2 gap-4">
-              {/* <GoogleLogin
-                width="100"
-                locale={locale as string}
-                text="signin_with"
-                onSuccess={async (credentialResponse) => {
-                  try {
-                    const { credential } = credentialResponse;
-
-                    await axios.post(
-                      `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/google-log-in`,
-                      {},
-                      {
-                        headers: {
-                          Authorization: `Bearer ${credential}`,
-                        },
-                        withCredentials: true,
-                      }
-                    );
-                    const detectedLng = navigatorLangDetector();
-                    router.push(`/${detectedLng}/dashboard`);
-                  } catch (e) {
-                    errorReporter(e);
-                  }
-                }}
-                onError={() => {
-                  const err = new Error("GOOGLE_LOGIN_ERROR");
-                  errorReporter(err);
-                }}
-              /> */}
+            <div className="mt-6 grid grid-cols-1 gap-4">
               <button
                 onClick={() => googleLogin()}
                 className="flex w-full items-center justify-center gap-3 rounded-md bg-[black] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F] hover:bg-[grey]"

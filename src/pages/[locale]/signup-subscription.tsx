@@ -23,10 +23,10 @@ const products = [
   {
     id: 1,
     name: "Kalygo Premium Subscription",
-    price: "$9.99",
+    price: "$89.99",
     detail1: "w/ 14-day FREE trial",
     detail2: "",
-    imageSrc: "/logo192.png",
+    imageSrc: "/kalygo_new_logo-192x192.png",
     imageAlt:
       "Moss green canvas compact backpack with double top zipper, zipper front pouch, and matching carry handle and backpack straps.",
   },
@@ -192,7 +192,7 @@ export default function Signup() {
               <dl className="hidden space-y-6 border-t border-gray-200 pt-6 text-sm font-medium text-gray-900 lg:block">
                 <div className="flex items-center justify-between">
                   <dt className="text-gray-600">Subtotal</dt>
-                  <dd>$9.99</dd>
+                  <dd>$89.99</dd>
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -202,7 +202,7 @@ export default function Signup() {
 
                 <div className="flex items-center justify-between border-t border-gray-200 pt-6">
                   <dt className="text-base">Total</dt>
-                  <dd className="text-base">$9.99</dd>
+                  <dd className="text-base">$89.99</dd>
                 </div>
               </dl>
 
@@ -211,7 +211,7 @@ export default function Signup() {
                   <div className="mx-auto max-w-lg">
                     <Popover.Button className="flex w-full items-center py-6 font-medium">
                       <span className="mr-auto text-base">Total</span>
-                      <span className="mr-2 text-base">$9.99</span>
+                      <span className="mr-2 text-base">$89.99</span>
                       <ChevronUpIcon
                         className="h-5 w-5 text-gray-500"
                         aria-hidden="true"
@@ -247,7 +247,7 @@ export default function Signup() {
                         <dl className="mx-auto max-w-lg space-y-6">
                           <div className="flex items-center justify-between">
                             <dt className="text-gray-600">Subtotal</dt>
-                            <dd>$9.99</dd>
+                            <dd>$89.99</dd>
                           </div>
 
                           <div className="flex items-center justify-between">

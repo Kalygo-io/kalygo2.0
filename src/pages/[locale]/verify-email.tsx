@@ -124,12 +124,18 @@ export default function VerifyEmail() {
             <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
               {t("verify-email-page:you-are-verified")}
             </h1>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
+            <div className="mt-10 flex flex-col items-center justify-center gap-y-8">
+              <Link
+                href="/login"
+                className="rounded-md bg-blue-600 px-3.5 py-2.5 text-md font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+              >
+                {t("verify-email-page:log-in")}
+              </Link>
               <Link
                 href="/"
-                className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                className="font-semibold text-sm hover:text-gray-600 text-gray-500"
               >
-                {t("verify-email-page:back-to-home")}
+                {t("verify-email-page:back-to-home")} &rarr;
               </Link>
             </div>
           </div>

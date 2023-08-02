@@ -10,50 +10,30 @@ import { ErrorInDashboard } from "../shared/errorInDashboard";
 
 const steps = [
   { id: 1, name: "Choose file", href: "#", status: "current" },
-  { id: 2, name: "Query", href: "#", status: "upcoming" },
-  //   { id: "03", name: "Results", href: "#", status: "upcoming" },
+  { id: 2, name: "Search", href: "#", status: "upcoming" },
 ];
 
 interface Props {
-  // onSuccess: ({
-  //   results,
-  //   query,
-  // }: // fileName,
-  // // originalLength,
-  // // condensedLength,
-  // {
-  //   results: string[];
-  //   query: string;
-  //   // fileName: string;
-  //   // originalLength: number;
-  //   // condensedLength: number;
-  // }) => void;
-  // setSearchResultsState: (state: any) => void;
-  // onError: (err: any) => void;
+  setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
 }
 
 export function SearchFileWizard(props: Props) {
+  const { setShowPaymentMethodRequiredModal } = props;
   const [step, setStep] = useState(1);
   const [file, setFile] = useState<File | null>(null);
-  const [searchResults, setSearchResultsState] = useState<{
-    val: {
-      results: string[];
-      query: string;
-    } | null;
-    loading: boolean;
-    err: Error | null;
-  }>({
-    val: null,
-    loading: false,
-    err: null,
-  });
-
   const wizardStepsRef = useRef(null);
 
   let jsx = null;
   switch (step) {
     case 1:
-      jsx = <ChooseFile file={file} setFile={setFile} setStep={setStep} />;
+      jsx = (
+        <ChooseFile
+          setShowPaymentMethodRequiredModal={setShowPaymentMethodRequiredModal}
+          file={file}
+          setFile={setFile}
+          setStep={setStep}
+        />
+      );
       break;
     case 2:
       jsx = <Query file={file} wizardStepsRef={wizardStepsRef} />;
@@ -63,7 +43,7 @@ export function SearchFileWizard(props: Props) {
   }
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 px-2 sm:px-2 lg:px-2">
+    <div className="p-2 sm:p-4 lg:p-4 px-2 sm:px-2 lg:px-2">
       <nav aria-label="Progress" ref={wizardStepsRef}>
         <ol
           role="list"
@@ -72,9 +52,7 @@ export function SearchFileWizard(props: Props) {
           {steps.map((s, sIdx) => (
             <li
               onClick={(evt) => {
-                if (s.id === 1) {
-                  setStep(s.id);
-                }
+                setStep(s.id);
               }}
               key={s.name}
               className="relative md:flex md:flex-1 cursor-pointer"

@@ -1,24 +1,16 @@
-import {
-  DocumentDuplicateIcon,
-  EllipsisVerticalIcon,
-  PhotoIcon,
-  UserCircleIcon,
-} from "@heroicons/react/24/outline";
-
 import React, {
   Dispatch,
-  Fragment,
   RefObject,
   SetStateAction,
+  useEffect,
+  useRef,
   useState,
 } from "react";
 import { useTranslation } from "next-i18next";
-
-import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
-import isNumber from "lodash.isnumber";
-import get from "lodash.get";
 import { useForm } from "react-hook-form";
-import { Menu, Transition } from "@headlessui/react";
+import { FooterWrapper } from "../sharedComponents/FooterWrapper";
+import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
+import { SummarizationTypes } from "@/types/SummarizationTypes";
 
 interface Props {
   files: File[];
@@ -29,27 +21,21 @@ interface Props {
   setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
 }
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export function CustomizeSummary(props: Props) {
   const {
     customizations,
-    files,
     setStep,
     setCustomizations,
     setShowPaymentMethodRequiredModal,
   } = props;
   const { t } = useTranslation();
-  const [fileList, setFileList] = useState<FileList | null>();
-  const [quoteForFile, setQuoteForFile] = useState<{
-    quote: number;
-    filePath: string;
-  } | null>();
 
   // ref
-  const inputRef = React.useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    customizations;
+  }, []);
 
   const onSubmit = async (data: any) => {
     try {
@@ -68,19 +54,19 @@ export function CustomizeSummary(props: Props) {
     watch,
   } = useForm({
     defaultValues: {
-      format: "bullet-points",
-      type: "summarize-chunks",
-      length: "short",
-      language: "English",
+      format: customizations?.format || "bullet-points",
+      type: customizations?.type || SummarizationTypes.EachFileOverall,
+      length: customizations?.length || "short",
+      language: customizations?.language || "English",
     },
   });
 
   return (
-    <div className="flex min-h-full flex-col px-4 py-6 sm:px-6 lg:py-8">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="space-y-12 sm:space-y-16">
-          <div>
-            <div className="mt-4 sm:mt-0 space-y-10 border-b border-gray-900/10 pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:pb-0">
+    <div className="flex min-h-full flex-col">
+      <_3ColumnWrapper>
+        <form className="mx-auto">
+          <div className="space-y-12 sm:space-y-16">
+            <div className="mt-6 sm:mt-0 space-y-10 border-gray-900/10 pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:pb-0">
               <fieldset>
                 <legend className="sr-only">Format</legend>
                 <div className="sm:grid sm:grid-cols-3 sm:items-baseline sm:gap-4 sm:py-6">
@@ -144,40 +130,53 @@ export function CustomizeSummary(props: Props) {
                   </div>
                   <div className="mt-1 sm:col-span-2 sm:mt-0">
                     <div className="max-w-lg">
-                      {/* <p className="text-sm leading-6 text-gray-600">
-                        These are delivered via SMS to your mobile phone.
-                      </p> */}
                       <div className="mt-6 space-x-2 flex justify-between">
-                        <div className="flex items-center gap-x-3">
-                          <input
-                            {...register("type")}
-                            id="each-part-of-data"
-                            name="type"
-                            type="radio"
-                            value="summarize-chunks"
-                            className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
-                          />
-                          <label
-                            htmlFor="each-part-of-data"
-                            className="block text-sm font-medium leading-6 text-gray-900"
-                          >
-                            Summarize Chunks
-                          </label>
-                        </div>
-                        <div className="flex items-center gap-x-3">
+                        <div className="flex items-center gap-x-2">
                           <input
                             {...register("type")}
                             id="overall-data"
                             name="type"
                             type="radio"
-                            value="summarize-overall"
+                            value={SummarizationTypes.EachFileOverall}
                             className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
                           />
                           <label
                             htmlFor="overall-data"
                             className="block text-sm font-medium leading-6 text-gray-900"
                           >
-                            Summarize Overall
+                            Each Overall
+                          </label>
+                        </div>
+                        <div className="flex items-center gap-x-2">
+                          <input
+                            {...register("type")}
+                            id="each-part-of-data"
+                            name="type"
+                            type="radio"
+                            value={SummarizationTypes.EachFileInChunks}
+                            className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
+                          />
+                          <label
+                            htmlFor="each-part-of-data"
+                            className="block text-sm font-medium leading-6 text-gray-900"
+                          >
+                            Each In Chunks
+                          </label>
+                        </div>
+                        <div className="flex items-center gap-x-2">
+                          <input
+                            {...register("type")}
+                            id="overall"
+                            name="type"
+                            type="radio"
+                            value={SummarizationTypes.Overall}
+                            className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
+                          />
+                          <label
+                            htmlFor="overall"
+                            className="block text-sm font-medium leading-6 text-gray-900"
+                          >
+                            Overall
                           </label>
                         </div>
                       </div>
@@ -196,9 +195,6 @@ export function CustomizeSummary(props: Props) {
                   </div>
                   <div className="mt-1 sm:col-span-2 sm:mt-0">
                     <div className="max-w-lg">
-                      {/* <p className="text-sm leading-6 text-gray-600">
-                        These are delivered via SMS to your mobile phone.
-                      </p> */}
                       <div className="mt-6 space-x-2 flex justify-between">
                         <div className="flex items-center gap-x-3">
                           <input
@@ -265,7 +261,6 @@ export function CustomizeSummary(props: Props) {
                   <div className="mt-1 sm:col-span-2 sm:mt-0">
                     <div className="max-w-lg">
                       <div className="mt-6 space-x-2 flex justify-between">
-                        {/* <div className="mt-2 sm:col-span-2 sm:mt-0"> */}
                         <select
                           {...register("language")}
                           id="language"
@@ -285,23 +280,20 @@ export function CustomizeSummary(props: Props) {
               </fieldset>
             </div>
           </div>
-        </div>
-
-        <div className="mt-6 flex items-center justify-end gap-x-6">
-          {/* <button
-            type="button"
-            className="text-sm font-semibold leading-6 text-gray-900"
-          >
-            Cancel
-          </button> */}
+        </form>
+      </_3ColumnWrapper>
+      <FooterWrapper>
+        <div className="flex items-center justify-end gap-x-6">
           <button
-            type="submit"
+            onClick={() => {
+              onSubmit(getValues());
+            }}
             className="inline-flex justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
           >
-            Save
+            Next
           </button>
         </div>
-      </form>
+      </FooterWrapper>
     </div>
   );
 }

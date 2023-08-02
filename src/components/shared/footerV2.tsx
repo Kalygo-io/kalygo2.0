@@ -94,6 +94,9 @@ export function Footer() {
         <p className="mt-10 text-center text-xs leading-5 text-gray-500">
           &copy; {new Date().getFullYear()} {t("common:footer.copyright")}
         </p>
+        <p className="mt-4 text-center text-xs leading-5 text-gray-500">
+          <a href="https://storyset.com/work">Illustrations by Storyset</a>
+        </p>
       </div>
     </footer>
   );

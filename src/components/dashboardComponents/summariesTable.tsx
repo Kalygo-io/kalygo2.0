@@ -41,7 +41,7 @@ export const SummariesTable = (p: P) => {
         </div> */}
       </div>
       <div className="mt-8 flow-root">
-        <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div className="mx-4 my-2 overflow-x-auto sm:mx-6 lg:mx-8">
           <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
             <table className="min-w-full divide-y divide-gray-300">
               <thead>
@@ -58,18 +58,18 @@ export const SummariesTable = (p: P) => {
                   >
                     {t("dashboard-page:index.summaries.table.filename")}
                   </th>
-                  <th
+                  {/* <th
                     scope="col"
                     className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                   >
                     {t("dashboard-page:index.summaries.table.processed-length")}
-                  </th>
-                  <th
+                  </th> */}
+                  {/* <th
                     scope="col"
                     className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                   >
                     {t("dashboard-page:index.summaries.table.date")}
-                  </th>
+                  </th> */}
                   <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-0">
                     <span className="sr-only">
                       {t("dashboard-page:index.summaries.table.edit")}
@@ -78,15 +78,17 @@ export const SummariesTable = (p: P) => {
                 </tr>
               </thead>
               <tbody className="bg-white">
-                {summaries?.map((summary) => (
-                  <tr key={summary.id} className="even:bg-gray-50">
-                    {/* <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-3">
+                {summaries?.map((summary) => {
+                  return (
+                    <tr key={summary.id} className="even:bg-gray-50">
+                      {/* <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-3">
                       {summary.id}
                     </td> */}
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                      {summary.filename}
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        {/* {summary.filename} */}
+                        <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 group-hover:bg-blue-800"></span>
+                      </td>
+                      {/* <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       {summary.condensedCharCount}&nbsp;
                       <span className="text-green-600">
                         (
@@ -97,25 +99,26 @@ export const SummariesTable = (p: P) => {
                         )}
                         x)
                       </span>
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                    </td> */}
+                      {/* <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       {new Date(summary.createdAt).toLocaleString()}
-                    </td>
-                    <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3">
-                      <button
-                        className="text-blue-600 hover:text-blue-900"
-                        onClick={() => {
-                          router.push(
-                            `/dashboard/summary?summary-id=${summary.id}`
-                          );
-                        }}
-                      >
-                        {t("dashboard-page:index.summaries.table.view")}
-                        <span className="sr-only"> {summary.id}</span>
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+                    </td> */}
+                      <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3">
+                        <button
+                          className="text-blue-600 hover:text-blue-900"
+                          onClick={() => {
+                            router.push(
+                              `/dashboard/summary?summary-id=${summary.id}`
+                            );
+                          }}
+                        >
+                          {t("dashboard-page:index.summaries.table.view")}
+                          <span className="sr-only"> {summary.id}</span>
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -123,6 +126,6 @@ export const SummariesTable = (p: P) => {
       </div>
     </div>
   ) : (
-    <>{t("dashboard-page:index.no-documents-yet")}</>
+    <>{t("dashboard-page:index.no-summaries-v1-yet")}</>
   );
 };

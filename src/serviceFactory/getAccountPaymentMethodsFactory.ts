@@ -1,6 +1,5 @@
 import { errorReporter } from "@/utility/error/reporter";
 import axios from "axios";
-import { TFunction } from "next-i18next";
 
 export async function getAccountPaymentMethodsFactory() {
   try {

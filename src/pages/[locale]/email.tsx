@@ -84,8 +84,8 @@ export default function Email() {
           <div className="relative isolate overflow-hidden bg-blue-900 px-6 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:py-32">
             <div className="flex w-full justify-center items-center">
               <Image
-                alt={t("image-alt-tags:logo192.png")}
-                src="/logo192.png"
+                alt={t("image-alt-tags:kalygo_new_logo-192x192")}
+                src="/kalygo_new_logo-192x192.png"
                 width={100}
                 height={100}
               />

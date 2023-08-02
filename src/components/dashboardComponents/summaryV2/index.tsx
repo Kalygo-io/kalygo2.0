@@ -16,7 +16,7 @@ export default function SummaryV2(p: P) {
     <div>
       <main className="lg:pl-8">
         <div className="xl:pr-96">
-          <div className="px-4 py-10 sm:px-6 lg:px-8 lg:py-6">
+          <div className="mx-4 px-4 py-10 sm:px-6 lg:px-8 lg:py-6">
             {/* Main area */}
             <div className="mt-1 text-sm leading-6 text-gray-700 sm:mt-0">
               {/* {summary?.content?.split("\n\n").map((i: any, idx: any) => {
@@ -40,12 +40,12 @@ export default function SummaryV2(p: P) {
                     </span>
 
                     <ul>
-                      {i?.response?.map((i: any, idx: any) => {
+                      {i?.response?.map((j: any, idx: any) => {
                         return (
-                          <li className="mt-2" key={i.part}>
-                            {/* (Part {i.part + 1}) */}
+                          <li className="mt-2" key={j.part}>
+                            {i?.response.length > 1 && `(Part ${j.part + 1})`}
                             <ReactMarkdown className="summary-v2-markdown">
-                              {i.completionResponse}
+                              {j.completionResponse}
                             </ReactMarkdown>
                           </li>
                         );

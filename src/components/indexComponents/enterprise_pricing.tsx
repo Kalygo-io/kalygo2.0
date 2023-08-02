@@ -15,30 +15,31 @@ export function EnterprisePricing() {
 
       id: "tier-enterprise",
       href: "/signup",
-      price: { summary: "$0", monthly: "$9,999" },
+      price: { summary: "$0", monthly: "$19,999" },
       description: t("common:enterprise-pricing.tier1_description"),
       features: [
         t("common:enterprise-pricing.tier1_feature1"),
         t("common:enterprise-pricing.tier1_feature2"),
+        t("common:enterprise-pricing.tier1_feature3"),
       ],
       enabled: true,
     },
   ];
 
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <div className="bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl sm:text-center">
-          <h2 className="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+          <h2 className="p-8 text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl">
             {t("common:enterprise-pricing.title")}
           </h2>
         </div>
         <div className="mt-20 flow-root">
-          <div className="isolate -mt-16 grid max-w-sm grid-cols-1 gap-y-16 divide-y divide-gray-100 sm:mx-auto lg:-mx-8 lg:mt-0 lg:max-w-none lg:grid-cols-1 lg:divide-y-0 xl:-mx-4">
+          <div className="isolate flex max-w-sm justify-center divide-y divide-gray-100 sm:mx-auto lg:max-w-none lg:divide-y-0 mx-auto">
             {tiers.map((tier) => (
               <div
                 key={tier.id}
-                className="pt-16 lg:px-8 lg:pt-0 xl:px-14 flex flex-col justify-start items-center"
+                className="rounded-2xl bg-gray-100 p-16 lg:px-8 xl:px-14 flex flex-col justify-start items-center shadow-xl"
               >
                 <h3
                   id={tier.id}

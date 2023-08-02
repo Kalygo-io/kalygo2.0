@@ -95,7 +95,7 @@ export function NavbarCenteredLogo(p: P) {
                       </span>
                       <Image
                         className="h-8 w-auto"
-                        src="/logo192.png"
+                        src="/kalygo_new_logo-192x192.png"
                         alt="Kalygo logo"
                         width={192}
                         height={192}
@@ -189,7 +189,7 @@ export function NavbarCenteredLogo(p: P) {
             <div className="flex items-center">
               <Image
                 className="h-8 w-auto"
-                src="/logo192.png"
+                src="/kalygo_new_logo-192x192.png"
                 alt="Kalygo logo"
                 width={192}
                 height={192}

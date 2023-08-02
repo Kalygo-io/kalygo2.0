@@ -72,7 +72,7 @@ export function Stats() {
   ];
 
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <div className="bg-gray-100 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
           {stats.map((stat) => (
@@ -81,7 +81,7 @@ export function Stats() {
               className="mx-auto flex max-w-xs flex-col items-center gap-y-4"
             >
               <div>{stat.icon}</div>
-              <dt className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+              <dt className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
                 {stat.headline}
               </dt>
               <dd className="text-base leading-7 text-gray-600">
