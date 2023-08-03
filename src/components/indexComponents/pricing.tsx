@@ -52,7 +52,7 @@ export function Pricing() {
         t("common:pricing.tier3_feature4"),
         t("common:pricing.tier3_feature5"),
       ],
-      enabled: true,
+      enabled: false,
     },
   ];
 
@@ -60,7 +60,7 @@ export function Pricing() {
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl sm:text-center">
-          <h2 className="p-8 text-6xl font-bold tracking-tight text-gray-900 sm:text-7xl">
+          <h2 className="p-8 text-center text-6xl font-bold tracking-tight text-gray-900 sm:text-7xl">
             {t("common:pricing.title")}
           </h2>
         </div>
@@ -147,7 +147,7 @@ export function Pricing() {
                       aria-describedby={tier.id}
                       className="w-full mt-10 block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:opacity-50"
                     >
-                      {t("common:pricing.sign-up")}
+                      {t("common:pricing.coming-soon")}
                     </button>
                   )}
                 </div>

@@ -51,9 +51,9 @@ export default function IndustriesWeServe() {
             Industries We Serve
           </h2>
           <p className="mt-6 text-lg leading-8 text-white text-center">
-            Any professional that deals with high volumes of documents will find
-            Kalygo beneficial in managing, digesting. and repurposing their
-            data.
+            Any professional that deals with high volumes of document-based data
+            will find Kalygo beneficial in managing, digesting. and repurposing
+            their data.
           </p>
         </div>
         <ul

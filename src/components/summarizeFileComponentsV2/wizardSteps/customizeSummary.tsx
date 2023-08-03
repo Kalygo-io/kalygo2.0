@@ -126,7 +126,7 @@ export function CustomizeSummary(props: Props) {
                     className="text-sm font-semibold leading-6 text-gray-900"
                     aria-hidden="true"
                   >
-                    Type
+                    Mode
                   </div>
                   <div className="mt-1 sm:col-span-2 sm:mt-0">
                     <div className="max-w-lg">

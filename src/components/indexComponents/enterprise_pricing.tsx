@@ -30,7 +30,7 @@ export function EnterprisePricing() {
     <div className="bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl sm:text-center">
-          <h2 className="p-8 text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+          <h2 className="p-8  text-center text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl">
             {t("common:enterprise-pricing.title")}
           </h2>
         </div>
