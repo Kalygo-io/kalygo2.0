@@ -1,7 +1,12 @@
+import { RadioGroupStars } from "@/components/shared/RatingComponent";
+import { rateSummaryFactory } from "@/serviceFactory/rateSummaryFactory";
 import { round } from "@/utility/Math/round";
+import { errorReporter } from "@/utility/error/reporter";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
-import { InformationCircleIcon } from "@heroicons/react/24/outline";
+import { InformationCircleIcon, StarIcon } from "@heroicons/react/24/outline";
+import get from "lodash.get";
 import { useTranslation } from "next-i18next";
+import { MouseEventHandler } from "react";
 import ReactMarkdown from "react-markdown";
 
 interface P {
@@ -19,15 +24,6 @@ export default function SummaryV2(p: P) {
           <div className="mx-4 px-4 py-10 sm:px-6 lg:px-8 lg:py-6">
             {/* Main area */}
             <div className="mt-1 text-sm leading-6 text-gray-700 sm:mt-0">
-              {/* {summary?.content?.split("\n\n").map((i: any, idx: any) => {
-                return (
-                  <div key={idx}>
-                    <p>{i}</p>
-                    <br />
-                  </div>
-                );
-              })} */}
-
               {/* <ReactMarkdown>{summary?.completionResponse}</ReactMarkdown> */}
 
               {summary?.completionResponse.map((i: any, idx: any) => {
@@ -61,19 +57,9 @@ export default function SummaryV2(p: P) {
       </main>
 
       <aside className="fixed inset-y-0 right-0 hidden w-96 overflow-y-auto border-l border-gray-200 px-4 pt-20 pb-6 sm:px-6 lg:px-8 xl:block">
-        {/* Secondary column (hidden on smaller screens) */}
         <div>
-          {/* <div className="px-4 sm:px-0">
-            <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-              {summary?.createdAt
-                ? `${t("dashboard-page:summary.requested")}: ${new Date(
-                    summary.createdAt
-                  )}`
-                : t("dashboard-page:summary.time-requested-unknown")}
-            </p>
-          </div> */}
           <div className="mt-6">
-            <dl className="divide-y divide-gray-100">
+            <dl className="divide-y divide-gray-100 space-y-10">
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">
                   {/* {t("dashboard-page:summary-v2.prompt")} */}
@@ -84,6 +70,34 @@ export default function SummaryV2(p: P) {
                   {summary?.createdAt
                     ? `${new Date(summary.createdAt)}`
                     : t("dashboard-page:summary.time-requested-unknown")}
+                </dd>
+              </div>
+              <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt className="text-sm font-medium leading-6 text-gray-900">
+                  Rating
+                </dt>
+                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+                  <div className="flex items-end">
+                    <RadioGroupStars
+                      rating={get(summary, "Ratings.0.rating", null)}
+                      maxRating={get(summary, "Ratings.0.maxRating", null)}
+                      recordRating={async (
+                        rating: number,
+                        ratingMax: number
+                      ) => {
+                        try {
+                          // prettier-ignore
+                          const rateSummaryRequest = rateSummaryFactory(summary.id, rating, ratingMax);
+                          // prettier-ignore
+                          const rateSummaryResponse = await rateSummaryRequest;
+                          // prettier-ignore
+                          console.log("rateSummaryResponse", rateSummaryResponse);
+                        } catch (e) {
+                          errorReporter(e);
+                        }
+                      }}
+                    />
+                  </div>
                 </dd>
               </div>
             </dl>

@@ -2,14 +2,10 @@
 
 import Head from "next/head";
 
-import { NextPageContext } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
-import ContractList from "@/components/browseContractsComponents/contractList";
-
-import { Error } from "../../../../components/shared/error";
 
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";

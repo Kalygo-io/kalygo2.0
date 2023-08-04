@@ -44,10 +44,6 @@ interface Props {
   setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
 }
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export function Review(props: Props) {
   const { prompt, files, wizardStepsRef, setShowPaymentMethodRequiredModal } =
     props;

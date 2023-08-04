@@ -10,6 +10,7 @@ import { LeftArea } from "../sharedComponents/leftArea";
 import { MainArea } from "../sharedComponents/mainArea";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
 import { RightArea } from "../sharedComponents/rightArea";
+import { classNames } from "@/utility/misc/classNames";
 
 interface Props {
   files: File[];
@@ -39,10 +40,6 @@ const preBuiltPrompts = [
       "Summarize the following data and return the summary as a list of bullet points. Please return the bullet point as a valid JSON formatted array.",
   },
 ];
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export function CustomizeRequest(props: Props) {
   const { prompt, files, setStep, setPrompt } = props;

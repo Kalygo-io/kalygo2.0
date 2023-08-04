@@ -25,10 +25,7 @@ import {
 
 import { signOut } from "@/services/signOut";
 import { useTranslation } from "next-i18next";
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
+import { classNames } from "@/utility/misc/classNames";
 
 interface P {
   children: ReactNode;

@@ -1,15 +1,11 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-
 import {
   CreditCardIcon,
   ShieldExclamationIcon,
 } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
-
-function classNames(...classes: any[]) {
-  return classes.filter(Boolean).join(" ");
-}
+import { classNames } from "@/utility/misc/classNames";
 
 interface P {
   isOpen: boolean;
