@@ -33,7 +33,7 @@ export const SummaryV2Job = (props: {
               {t("dashboard-page:queue.summary-v2.variation")}
             </dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-              {job?.data?.params?.customizations?.type}
+              {job?.data?.params?.customizations?.mode}
             </dd>
           </div>
           <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
