@@ -35,7 +35,7 @@ export function EnterprisePricing() {
           </h2>
         </div>
         <div className="mt-20 flow-root">
-          <div className="isolate flex max-w-sm justify-center divide-y divide-gray-100 sm:mx-auto lg:max-w-none lg:divide-y-0 mx-auto">
+          <div className="isolate flex max-w-sm justify-center divide-y divide-gray-100 sm:mx-auto lg:max-w-lg lg:divide-y-0 mx-auto">
             {tiers.map((tier) => (
               <div
                 key={tier.id}

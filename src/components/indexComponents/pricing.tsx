@@ -39,21 +39,21 @@ export function Pricing() {
       ],
       enabled: true,
     },
-    {
-      name: t("common:pricing.tier3_name"),
-      id: "tier-premium",
-      href: "/signup-subscription",
-      price: { summary: "ø", monthly: "$89.99" },
-      description: t("common:pricing.tier3_description"),
-      features: [
-        t("common:pricing.tier3_feature1"),
-        t("common:pricing.tier3_feature2"),
-        t("common:pricing.tier3_feature3"),
-        t("common:pricing.tier3_feature4"),
-        t("common:pricing.tier3_feature5"),
-      ],
-      enabled: false,
-    },
+    // {
+    //   name: t("common:pricing.tier3_name"),
+    //   id: "tier-premium",
+    //   href: "/signup-subscription",
+    //   price: { summary: "ø", monthly: "$89.99" },
+    //   description: t("common:pricing.tier3_description"),
+    //   features: [
+    //     t("common:pricing.tier3_feature1"),
+    //     t("common:pricing.tier3_feature2"),
+    //     t("common:pricing.tier3_feature3"),
+    //     t("common:pricing.tier3_feature4"),
+    //     t("common:pricing.tier3_feature5"),
+    //   ],
+    //   enabled: false,
+    // },
   ];
 
   return (
@@ -65,7 +65,7 @@ export function Pricing() {
           </h2>
         </div>
         <div className="mt-20 flow-root">
-          <div className="isolate grid max-w-sm grid-cols-1 gap-y-16 gap-x-8 divide-y divide-gray-100 sm:mx-auto lg:max-w-none lg:grid-cols-3 lg:divide-y-0 mx-auto">
+          <div className="isolate grid max-w-sm grid-cols-1 gap-y-16 gap-x-8 divide-y divide-gray-100 sm:mx-auto lg:max-w-3xl lg:grid-cols-2 lg:divide-y-0 mx-auto">
             {tiers.map((tier) => (
               <div
                 key={tier.id}

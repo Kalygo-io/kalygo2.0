@@ -6,11 +6,13 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { Disclosure, Transition } from "@headlessui/react";
 import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
 import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
 import { SummarizationTypes } from "@/types/SummarizationTypes";
+import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 interface Props {
   files: File[];
@@ -55,9 +57,10 @@ export function CustomizeSummary(props: Props) {
   } = useForm({
     defaultValues: {
       format: customizations?.format || "bullet-points",
-      type: customizations?.type || SummarizationTypes.EachFileOverall,
+      mode: customizations?.mode || "EachFileOverall",
       length: customizations?.length || "short",
       language: customizations?.language || "English",
+      model: customizations?.model || "gpt-3.5-turbo",
     },
   });
 
@@ -86,7 +89,6 @@ export function CustomizeSummary(props: Props) {
                           <input
                             {...register("format")}
                             id="bullet-points"
-                            name="format"
                             type="radio"
                             value="bullet-points"
                             className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
@@ -102,7 +104,6 @@ export function CustomizeSummary(props: Props) {
                           <input
                             {...register("format")}
                             id="paragraph"
-                            name="format"
                             type="radio"
                             value="paragraph"
                             className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
@@ -120,7 +121,7 @@ export function CustomizeSummary(props: Props) {
                 </div>
               </fieldset>
               <fieldset>
-                <legend className="sr-only">Type</legend>
+                <legend className="sr-only">Mode</legend>
                 <div className="sm:grid sm:grid-cols-3 sm:items-baseline sm:gap-4 sm:py-6">
                   <div
                     className="text-sm font-semibold leading-6 text-gray-900"
@@ -133,9 +134,8 @@ export function CustomizeSummary(props: Props) {
                       <div className="mt-6 space-x-2 flex justify-between">
                         <div className="flex items-center gap-x-2">
                           <input
-                            {...register("type")}
+                            {...register("mode")}
                             id="overall-data"
-                            name="type"
                             type="radio"
                             value={SummarizationTypes.EachFileOverall}
                             className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
@@ -149,9 +149,8 @@ export function CustomizeSummary(props: Props) {
                         </div>
                         <div className="flex items-center gap-x-2">
                           <input
-                            {...register("type")}
+                            {...register("mode")}
                             id="each-part-of-data"
-                            name="type"
                             type="radio"
                             value={SummarizationTypes.EachFileInChunks}
                             className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
@@ -165,9 +164,8 @@ export function CustomizeSummary(props: Props) {
                         </div>
                         <div className="flex items-center gap-x-2">
                           <input
-                            {...register("type")}
+                            {...register("mode")}
                             id="overall"
-                            name="type"
                             type="radio"
                             value={SummarizationTypes.Overall}
                             className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
@@ -278,6 +276,140 @@ export function CustomizeSummary(props: Props) {
                   </div>
                 </div>
               </fieldset>
+              <div className="sm:grid sm:grid-cols-1 sm:items-baseline sm:gap-4 sm:py-6">
+                {/* <label
+                  htmlFor="language"
+                  className="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5"
+                >
+                  Language
+                </label> */}
+                <div className="mt-1 sm:col-span-3 sm:mt-0">
+                  <div className="max-w-lg">
+                    <Disclosure>
+                      {({ open }) => (
+                        <>
+                          <span className="flex">
+                            <Disclosure.Button>
+                              {!open ? (
+                                <>
+                                  <label className="block text-sm font-medium leading-6 text-gray-900 px-1">
+                                    <PlusIcon
+                                      className="h-5 w-5 inline relative -top-0.5 text-blue-600 hover:text-blue-500"
+                                      aria-hidden="true"
+                                    />{" "}
+                                    Show advanced options
+                                  </label>
+                                </>
+                              ) : (
+                                <>
+                                  <label className="block text-sm font-medium leading-6 text-gray-900 px-1">
+                                    <MinusIcon
+                                      className="h-5 w-5 inline relative -top-0.5 text-blue-600 hover:text-blue-500"
+                                      aria-hidden="true"
+                                    />{" "}
+                                    Hide advanced options
+                                  </label>
+                                </>
+                              )}
+                            </Disclosure.Button>
+                          </span>
+
+                          <Transition
+                            enter="transition duration-200 ease-out"
+                            enterFrom="transform scale-95 opacity-0"
+                            enterTo="transform scale-100 opacity-100"
+                            leave="transition duration-150 ease-out"
+                            leaveFrom="transform scale-100 opacity-100"
+                            leaveTo="transform scale-190 opacity-0"
+                          >
+                            <Disclosure.Panel className="bg-slate-100 rounded-md p-4 my-2">
+                              <fieldset>
+                                <legend className="sr-only">A.I. model</legend>
+                                <div className="sm:grid sm:grid-cols-3 sm:items-baseline sm:gap-4 sm:py-2">
+                                  <label
+                                    htmlFor="ai-model"
+                                    className="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5"
+                                  >
+                                    A.I. model
+                                  </label>
+                                  <div className="mt-1 sm:col-span-2 sm:mt-0">
+                                    <div className="max-w-lg">
+                                      <div className="mt-2 space-x-2 flex justify-between">
+                                        <select
+                                          {...register("model")}
+                                          id="ai-model"
+                                          name="ai-model"
+                                          autoComplete="ai-model"
+                                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                                        >
+                                          <option value={"gpt-3.5-turbo"}>
+                                            GPT-3 (4k)
+                                          </option>
+                                          <option value={"gpt-4"}>
+                                            GPT-4 (8k)
+                                          </option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </fieldset>
+                            </Disclosure.Panel>
+                          </Transition>
+                        </>
+                      )}
+                    </Disclosure>
+                    {/* <div className="mt-6 space-x-2 flex justify-between">
+                      <select
+                        {...register("language")}
+                        id="language"
+                        name="language"
+                        autoComplete="language"
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                      >
+                        <option>English</option>
+                        <option>Spanish</option>
+                        <option>French</option>
+                        <option>Portuguese</option>
+                      </select>
+                    </div> */}
+                  </div>
+                </div>
+                {/* <div className="max-w-lg">
+                  <Disclosure>
+                    <Disclosure.Button>
+                      Is team pricing available?
+                    </Disclosure.Button>
+
+                    <Transition
+                      enter="transition duration-100 ease-out"
+                      enterFrom="transform scale-95 opacity-0"
+                      enterTo="transform scale-100 opacity-100"
+                      leave="transition duration-75 ease-out"
+                      leaveFrom="transform scale-100 opacity-100"
+                      leaveTo="transform scale-95 opacity-0"
+                    >
+                      <Disclosure.Panel>
+                        Yes! You can purchase a license that you can share with
+                        your entire team.
+                      </Disclosure.Panel>
+                    </Transition>
+                  </Disclosure>
+                </div> */}
+                {/* <span className="rounded-full bg-indigo-600 p-1 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                  <PlusIcon className="h-5 w-5" aria-hidden="true" />
+                  Advanced Settings{" "}
+                </span> */}
+                {/* <Disclosure>
+                  <Disclosure.Button className="py-2">
+                    
+                  </Disclosure.Button>
+                  <Disclosure.Panel className="text-gray-500">
+                    Yes! You can purchase a license that you can share with your
+                    entire team.
+                  </Disclosure.Panel>
+                </Disclosure> */}
+              </div>
             </div>
           </div>
         </form>

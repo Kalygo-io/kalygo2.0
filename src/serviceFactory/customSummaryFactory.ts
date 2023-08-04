@@ -19,9 +19,10 @@ export async function customSummaryFactory(
     }
 
     formData.set("format", customizations["format"]);
-    formData.set("type", customizations["type"]);
+    formData.set("mode", customizations["mode"]);
     formData.set("length", customizations["length"]);
     formData.set("language", customizations["language"]);
+    formData.set("model", customizations["model"]);
 
     const config = {
       method: "post",
