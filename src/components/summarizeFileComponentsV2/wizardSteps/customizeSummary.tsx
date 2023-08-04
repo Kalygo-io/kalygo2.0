@@ -345,7 +345,7 @@ export function CustomizeSummary(props: Props) {
                                           <option value={"gpt-3.5-turbo"}>
                                             GPT-3 (4k)
                                           </option>
-                                          <option value={"gpt-4"}>
+                                          <option disabled value={"gpt-4"}>
                                             GPT-4 (8k)
                                           </option>
                                         </select>
@@ -359,56 +359,8 @@ export function CustomizeSummary(props: Props) {
                         </>
                       )}
                     </Disclosure>
-                    {/* <div className="mt-6 space-x-2 flex justify-between">
-                      <select
-                        {...register("language")}
-                        id="language"
-                        name="language"
-                        autoComplete="language"
-                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                      >
-                        <option>English</option>
-                        <option>Spanish</option>
-                        <option>French</option>
-                        <option>Portuguese</option>
-                      </select>
-                    </div> */}
                   </div>
                 </div>
-                {/* <div className="max-w-lg">
-                  <Disclosure>
-                    <Disclosure.Button>
-                      Is team pricing available?
-                    </Disclosure.Button>
-
-                    <Transition
-                      enter="transition duration-100 ease-out"
-                      enterFrom="transform scale-95 opacity-0"
-                      enterTo="transform scale-100 opacity-100"
-                      leave="transition duration-75 ease-out"
-                      leaveFrom="transform scale-100 opacity-100"
-                      leaveTo="transform scale-95 opacity-0"
-                    >
-                      <Disclosure.Panel>
-                        Yes! You can purchase a license that you can share with
-                        your entire team.
-                      </Disclosure.Panel>
-                    </Transition>
-                  </Disclosure>
-                </div> */}
-                {/* <span className="rounded-full bg-indigo-600 p-1 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                  <PlusIcon className="h-5 w-5" aria-hidden="true" />
-                  Advanced Settings{" "}
-                </span> */}
-                {/* <Disclosure>
-                  <Disclosure.Button className="py-2">
-                    
-                  </Disclosure.Button>
-                  <Disclosure.Panel className="text-gray-500">
-                    Yes! You can purchase a license that you can share with your
-                    entire team.
-                  </Disclosure.Panel>
-                </Disclosure> */}
               </div>
             </div>
           </div>
