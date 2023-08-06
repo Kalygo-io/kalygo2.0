@@ -21,7 +21,8 @@ import { PlusIcon } from "@heroicons/react/24/outline";
 import get from "lodash.get";
 import { Credits } from "@/components/dashboardComponents/index/credits";
 import { PaymentRequiredModal } from "@/components/shared/PaymentRequiredModal";
-import { SummariesV2Table } from "@/components/dashboardComponents/summariesV2Table";
+// import { SummariesV2Table } from "@/components/dashboardComponents/summariesV2Table";
+import { SummariesV2TableAlt } from "@/components/dashboardComponents/summariesV2TableAlt";
 import { CustomRequestsTable } from "@/components/dashboardComponents/customRequestsTable";
 
 const getStaticProps = makeStaticProps([
@@ -206,7 +207,8 @@ export default function Dashboard() {
     jsx = (
       <>
         {summariesV2.val?.length > 0 && (
-          <SummariesV2Table summaries={summariesV2.val} />
+          // <SummariesV2Table summaries={summariesV2.val} />
+          <SummariesV2TableAlt summaries={summariesV2.val} />
         )}
 
         {summaries.val?.length > 0 && (

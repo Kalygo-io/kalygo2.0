@@ -168,6 +168,7 @@
     "file-name": "File name",
     "file-names": "File names",
     "requested-at": "Requested at",
+    "processed-on": "Processed on",
     "remove": "Remove",
     "view": "View",
     "job-type": "Type",
@@ -179,7 +180,7 @@
       "prompt": "Prompt"
     },
     "summary-v2": {
-      "variation": "Variation"
+      "mode": "Mode"
     }
   },
   "summary": {
@@ -192,7 +193,11 @@
     "content": "Content"
   },
   "summary-v2": {
-    "prompt": "Prompt"
+    "prompt": "Prompt",
+    "mode": "Mode",
+    "model": "Model",
+    "language": "Language",
+    "format": "Format"
   },
   "saas-stats": {
     "title": "SaaS Stats"

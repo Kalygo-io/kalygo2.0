@@ -93,8 +93,8 @@ export function ChooseFiles(props: Props) {
         const paymentMethodsRequest = getAccountPaymentMethodsFactory();
         const paymentMethodsResponse = await paymentMethodsRequest;
         if (
-          (isNumber(get(paymentMethodsResponse, "data.customRequestCredits")) &&
-            get(paymentMethodsResponse, "data.customRequestCredits") > 0) ||
+          (isNumber(get(paymentMethodsResponse, "data.summaryCredits")) &&
+            get(paymentMethodsResponse, "data.summaryCredits") > 0) ||
           get(paymentMethodsResponse, "data.stripeDefaultSource")
         ) {
           // setFilesLocal(e.target.files);

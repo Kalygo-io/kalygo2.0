@@ -110,13 +110,13 @@ export default function Settings() {
         <Divider />
         <FreeCredits account={account.val!} />
         <Divider />
-        <Plan
+        {/* <Plan
           account={account.val!}
           cb={() => {
             fetch();
           }}
-        />
-        <Divider />
+        /> */}
+        {/* <Divider /> */}
         <Payment
           id="payment-section"
           cb={() => {

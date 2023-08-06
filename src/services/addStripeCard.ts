@@ -1,10 +1,6 @@
 import { navigatorLangDetector } from "@/lib/languageDetector";
 import { errorReporter } from "@/utility/error/reporter";
-import { infoToast } from "@/utility/toasts/infoToast";
 import axios from "axios";
-import { NextRouter } from "next/router";
-
-import { TFunction } from "next-i18next";
 
 export async function addStripeCard(
   payload: {

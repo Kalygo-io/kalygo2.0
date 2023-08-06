@@ -11,10 +11,11 @@ import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
 import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
-import { SummarizationTypes } from "@/types/SummarizationTypes";
+import { SummaryMode } from "@/types/SummaryMode";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 interface Props {
+  account: any;
   files: File[];
   customizations: Record<string, string> | null;
   setStep: Dispatch<SetStateAction<number>>;
@@ -29,6 +30,7 @@ export function CustomizeSummary(props: Props) {
     setStep,
     setCustomizations,
     setShowPaymentMethodRequiredModal,
+    account,
   } = props;
   const { t } = useTranslation();
 
@@ -57,7 +59,7 @@ export function CustomizeSummary(props: Props) {
   } = useForm({
     defaultValues: {
       format: customizations?.format || "bullet-points",
-      mode: customizations?.mode || "EachFileOverall",
+      mode: customizations?.mode || "EACH_FILE_OVERALL",
       length: customizations?.length || "short",
       language: customizations?.language || "English",
       model: customizations?.model || "gpt-3.5-turbo",
@@ -137,7 +139,7 @@ export function CustomizeSummary(props: Props) {
                             {...register("mode")}
                             id="overall-data"
                             type="radio"
-                            value={SummarizationTypes.EachFileOverall}
+                            value={SummaryMode.EACH_FILE_OVERALL}
                             className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
                           />
                           <label
@@ -152,7 +154,7 @@ export function CustomizeSummary(props: Props) {
                             {...register("mode")}
                             id="each-part-of-data"
                             type="radio"
-                            value={SummarizationTypes.EachFileInChunks}
+                            value={SummaryMode.EACH_FILE_IN_CHUNKS}
                             className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
                           />
                           <label
@@ -167,7 +169,7 @@ export function CustomizeSummary(props: Props) {
                             {...register("mode")}
                             id="overall"
                             type="radio"
-                            value={SummarizationTypes.Overall}
+                            value={SummaryMode.OVERALL}
                             className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
                           />
                           <label
@@ -345,8 +347,16 @@ export function CustomizeSummary(props: Props) {
                                           <option value={"gpt-3.5-turbo"}>
                                             GPT-3 (4k)
                                           </option>
-                                          <option disabled value={"gpt-4"}>
+                                          <option
+                                            disabled={
+                                              !account.stripeDefaultSource
+                                            }
+                                            value={"gpt-4"}
+                                          >
                                             GPT-4 (8k)
+                                          </option>
+                                          <option disabled value={"llama-2"}>
+                                            LLaMa 2
                                           </option>
                                         </select>
                                       </div>

@@ -27,7 +27,7 @@ export function FreeCredits(p: P) {
       id: 2,
       name:
         vectorSearchCredits === 1
-          ? t("dashboard-page:settings.free-credits.vector-search")
+          ? t("dashboard-page:settings.free-credits.vector-searches")
           : t("dashboard-page:settings.free-credits.vector-searches"),
       value: vectorSearchCredits,
     },

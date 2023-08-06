@@ -73,7 +73,7 @@ export const SummariesV2Table = (p: P) => {
         </thead> */}
         {/* <tbody className="bg-white"> */}
         {summaries?.map((summary) => {
-          const completionResponse = summary.completionResponse?.slice(0, 10);
+          const completionResponse = summary.summary?.slice(0, 10);
 
           return (
             <li

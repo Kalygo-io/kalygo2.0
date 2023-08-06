@@ -1,5 +1,6 @@
 import { RadioGroupStars } from "@/components/shared/RatingComponent";
 import { rateSummaryFactory } from "@/serviceFactory/rateSummaryFactory";
+import { SummaryMode } from "@/types/SummaryMode";
 import { round } from "@/utility/Math/round";
 import { errorReporter } from "@/utility/error/reporter";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
@@ -25,32 +26,99 @@ export default function SummaryV2(p: P) {
             {/* Main area */}
             <div className="mt-1 text-sm leading-6 text-gray-700 sm:mt-0">
               {/* <ReactMarkdown>{summary?.completionResponse}</ReactMarkdown> */}
+              {summary.mode === SummaryMode.PRIOR_TO_TRACKING_MODE &&
+                JSON.stringify(summary.summary, null, 2)}
+              {summary.mode === SummaryMode.EACH_FILE_OVERALL &&
+                summary?.summary.map((i: any, idx: any) => {
+                  return (
+                    <div key={i.file}>
+                      <span>
+                        {/* <InformationCircleIcon className="h-4 w-4 inline" /> */}
+                        <h3 className="text-lg">
+                          <b>{i.file}</b>
+                        </h3>
+                      </span>
 
-              {summary?.completionResponse.map((i: any, idx: any) => {
-                return (
-                  <div key={i.file}>
-                    <span>
-                      <InformationCircleIcon className="h-4 w-4 inline" />
-                      &nbsp;
-                      <b>{i.file}</b>
-                    </span>
+                      <ReactMarkdown className="summary-v2-markdown">
+                        {i.summary}
+                      </ReactMarkdown>
+                      <br />
+                    </div>
+                  );
+                })}
+              {summary.mode === SummaryMode.OVERALL &&
+                summary?.summary.map((i: any, idx: any) => {
+                  return (
+                    <div key={idx}>
+                      {summary?.summary.length > 1 && `(Part ${i.part + 1})`}
+                      <ReactMarkdown className="summary-v2-markdown">
+                        {i.summary}
+                      </ReactMarkdown>
+                      <br />
+                    </div>
+                  );
+                })}
 
-                    <ul>
-                      {i?.response?.map((j: any, idx: any) => {
-                        return (
-                          <li className="mt-2" key={j.part}>
-                            {i?.response.length > 1 && `(Part ${j.part + 1})`}
-                            <ReactMarkdown className="summary-v2-markdown">
-                              {j.completionResponse}
-                            </ReactMarkdown>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                    <br />
-                  </div>
-                );
-              })}
+              {/* {summary.mode === SummaryMode.EACH_FILE_IN_CHUNKS &&
+                JSON.stringify(summary.summary, null, 2)} */}
+              {summary.mode === SummaryMode.EACH_FILE_IN_CHUNKS &&
+                summary?.summary.map((i: any, idx: any) => {
+                  {
+                    return (
+                      <>
+                        <h3 className="text-lg">
+                          <b>{i.file}</b>
+                        </h3>
+                        <ul>
+                          {i?.summary?.map((j: any, idx: any) => {
+                            return (
+                              <li className="mt-2" key={j.chunk}>
+                                {i?.summary.length > 1 &&
+                                  `(Part ${j.chunk + 1})`}
+                                <ReactMarkdown className="summary-v2-markdown">
+                                  {j.chunkSummary}
+                                </ReactMarkdown>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </>
+                    );
+
+                    // <ul>
+                    //   asdf
+                    //   {i?.summary?.map((j: any, idx: any) => {
+                    //     console.log("i.summary", i.summary);
+                    //     console.log("j", j);
+
+                    //     return (
+                    //       <li className="mt-2" key={j.chunk}>
+                    //         asdf
+                    //         {i?.summary.length > 1 && `(Part ${j.chunk + 1})`}
+                    //         <ReactMarkdown className="summary-v2-markdown">
+                    //           {j.chunkSummary}
+                    //         </ReactMarkdown>
+                    //       </li>
+                    //     );
+                    //   })}
+                    // </ul>;
+                  }
+
+                  // return (
+                  //   <div key={i.file}>
+                  //     {summary?.summary.length > 1 && `(Part ${i.part + 1})`}
+                  //     {/* <span>
+                  //       <InformationCircleIcon className="h-4 w-4 inline" />
+                  //       &nbsp;
+                  //       <b>{i.file}</b>
+                  //     </span> */}
+                  //     {/* <ReactMarkdown className="summary-v2-markdown">
+                  //       {i.summary}
+                  //     </ReactMarkdown> */}
+                  //     <br />
+                  //   </div>
+                  // );
+                })}
             </div>
           </div>
         </div>
@@ -70,6 +138,14 @@ export default function SummaryV2(p: P) {
                   {summary?.createdAt
                     ? `${new Date(summary.createdAt)}`
                     : t("dashboard-page:summary.time-requested-unknown")}
+                </dd>
+              </div>
+              <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt className="text-sm font-medium leading-6 text-gray-900">
+                  {t("dashboard-page:summary-v2.mode")}:
+                </dt>
+                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+                  {summary?.mode}
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -100,6 +176,38 @@ export default function SummaryV2(p: P) {
                   </div>
                 </dd>
               </div>
+              {summary.model && (
+                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                  <dt className="text-sm font-medium leading-6 text-gray-900">
+                    {t("dashboard-page:summary-v2.model")}:
+                  </dt>
+                  <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+                    {summary?.model}
+                  </dd>
+                </div>
+              )}
+
+              {summary.language && (
+                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                  <dt className="text-sm font-medium leading-6 text-gray-900">
+                    {t("dashboard-page:summary-v2.language")}:
+                  </dt>
+                  <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+                    {summary?.language}
+                  </dd>
+                </div>
+              )}
+
+              {summary.format && (
+                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                  <dt className="text-sm font-medium leading-6 text-gray-900">
+                    {t("dashboard-page:summary-v2.format")}:
+                  </dt>
+                  <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+                    {summary?.format}
+                  </dd>
+                </div>
+              )}
             </dl>
           </div>
         </div>

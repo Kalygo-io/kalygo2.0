@@ -32,8 +32,6 @@ export function DeleteAccountModal(p: P) {
 
   const onSubmit = async (data: any) => {
     try {
-      console.log("data", data);
-
       await deleteAccount(() => {
         cb();
       });

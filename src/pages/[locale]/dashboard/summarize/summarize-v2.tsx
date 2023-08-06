@@ -99,6 +99,7 @@ export default function SummarizeV2() {
   } else {
     jsx = (
       <SummarizeWizard
+        account={account.val}
         setShowPaymentMethodRequiredModal={(showModal: boolean) => {
           setShowPaymentMethodRequiredModal(showModal);
         }}

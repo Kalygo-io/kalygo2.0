@@ -9,10 +9,11 @@ import { useTranslation } from "next-i18next";
 
 interface Props {
   setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
+  account: any;
 }
 
 export function SummarizeWizard(props: Props) {
-  const { setShowPaymentMethodRequiredModal } = props;
+  const { account, setShowPaymentMethodRequiredModal } = props;
 
   const [step, setStep] = useState(1);
   const [files, setFiles] = useState<File[] | null>(null);
@@ -46,6 +47,7 @@ export function SummarizeWizard(props: Props) {
     case 2:
       jsx = (
         <CustomizeSummary
+          account={account}
           customizations={customizations}
           files={files || []}
           setCustomizations={setCustomizations}

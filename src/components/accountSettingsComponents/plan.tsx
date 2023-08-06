@@ -43,16 +43,13 @@ export function Plan(p: P) {
   });
 
   useEffect(() => {
-    console.log("--- !!! ---");
     setValue("plan", subscriptionPlan);
   }, [subscriptionPlan]);
 
   const onSubmit = async (data: any) => {
     try {
       const { plan } = data;
-
       console.log("onSubmit");
-
       var config = {
         method: "patch",
         url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account/change-plan`,
@@ -68,7 +65,7 @@ export function Plan(p: P) {
         withCredentials: true,
       };
 
-      let resp = await axios(config);
+      await axios(config);
 
       cb();
 
@@ -79,8 +76,6 @@ export function Plan(p: P) {
       errorReporter(e);
     }
   };
-
-  // console.log("--- ___ ---");
 
   return (
     <>
@@ -153,7 +148,7 @@ export function Plan(p: P) {
                     <option key={"STANDARD"} value={"STANDARD"}>
                       Standard
                     </option>
-                    <option key={"PREMIUM"} value={"PREMIUM"}>
+                    <option disabled key={"PREMIUM"} value={"PREMIUM"}>
                       Premium
                     </option>
                   </select>
