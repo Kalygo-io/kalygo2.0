@@ -40,22 +40,22 @@ export default function LayoutDashboard({ children, account }: P) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
-  useEffect(() => {
-    async function checkAdmin() {
-      console.log("checkAdmin");
-      try {
-        console.log("try");
-        await axios.get(
-          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/is-admin`,
-          { withCredentials: true }
-        );
-        setIsAdmin(true);
-      } catch (err) {
-        console.log("err validating isAdmin", err);
-      }
-    }
-    checkAdmin();
-  }, []);
+  // useEffect(() => {
+  //   async function checkAdmin() {
+  //     console.log("checkAdmin");
+  //     try {
+  //       console.log("try");
+  //       await axios.get(
+  //         `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/is-admin`,
+  //         { withCredentials: true }
+  //       );
+  //       setIsAdmin(true);
+  //     } catch (err) {
+  //       console.log("err validating isAdmin", err);
+  //     }
+  //   }
+  //   checkAdmin();
+  // }, []);
 
   const segments = pathname.split("/");
   const current = segments[segments.length - 1];
@@ -88,15 +88,15 @@ export default function LayoutDashboard({ children, account }: P) {
       href: "/dashboard/queue",
       icon: QueueListIcon,
     },
-    ...(isAdmin
-      ? [
-          {
-            name: t("dashboard-page:navigation.admin"),
-            href: "/dashboard/admin",
-            icon: LockClosedIcon, // chartBar
-          },
-        ]
-      : []),
+    // ...(isAdmin
+    //   ? [
+    //       {
+    //         name: t("dashboard-page:navigation.admin"),
+    //         href: "/dashboard/admin",
+    //         icon: LockClosedIcon, // chartBar
+    //       },
+    //     ]
+    //   : []),
     // { name: "A.I.", href: "/dashboard/ai", icon: LifebuoyIcon },
   ];
 
