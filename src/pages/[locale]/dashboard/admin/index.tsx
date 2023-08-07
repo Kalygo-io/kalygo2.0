@@ -136,7 +136,7 @@ export default function AdminDashboard() {
                     View details
                   </span>
                 </div>
-                <div className="grid grid-cols-1 gap-4">
+                <div className="grid grid-cols-1 gap-4 pt-4">
                   {renderStatCard(
                     "OpenAI",
                     `$${statsData?.totalOpenAiCharges?._sum?.amount?.toFixed(
@@ -157,7 +157,7 @@ export default function AdminDashboard() {
                     View details
                   </span>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pt-4">
                   {renderStatCard("Total Summaries", statsData.totalSummaries)}
                   {renderStatCard("Summaries (v1)", statsData.totalSummariesV1)}
                   {renderStatCard("Summaries (v2)", statsData.totalSummariesV2)}
@@ -185,7 +185,7 @@ export default function AdminDashboard() {
                     View details
                   </span>
                 </div>
-                <div className="grid grid-cols-1 gap-4">
+                <div className="grid grid-cols-1 gap-4 pt-4">
                   {renderStatCard(
                     "Avg. Rating",
                     `${(statsData.averageRating * 100).toFixed(2)}%`
