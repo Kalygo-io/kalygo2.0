@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 
-export function AuthGuard({ children }: { children: JSX.Element }) {
+export function AdminGuard({ children }: { children: JSX.Element }) {
   const { state, dispatch } = useAppContext();
-  const { authLoading, auth } = state;
+  const { adminLoading, admin } = state;
   const router = useRouter();
   const [renderCount, setRenderCount] = useState<number>(0);
 
@@ -18,38 +18,38 @@ export function AuthGuard({ children }: { children: JSX.Element }) {
     async function fetch() {
       try {
         dispatch({
-          type: "set_auth",
+          type: "set_admin",
           payload: {
-            authRedirect: router.route,
-            authLoading: true,
-            auth: false,
+            adminRedirect: router.route,
+            adminLoading: true,
+            admin: false,
           },
         });
 
         await axios.get(
-          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/is-authed`,
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/is-admin`,
           { withCredentials: true }
         );
 
         dispatch({
-          type: "set_auth",
+          type: "set_admin",
           payload: {
-            authRedirect: "",
-            authLoading: false,
-            auth: true,
+            adminRedirect: "",
+            adminLoading: false,
+            admin: true,
           },
         });
       } catch (e) {
         dispatch({
-          type: "set_auth",
+          type: "set_admin",
           payload: {
-            authRedirect: router.route,
-            authLoading: false,
-            auth: false,
+            adminRedirect: router.route,
+            adminLoading: false,
+            admin: false,
           },
         });
 
-        router.push("/login");
+        router.push("/");
       }
     }
 
@@ -59,12 +59,12 @@ export function AuthGuard({ children }: { children: JSX.Element }) {
   // debugger;
 
   /* show loading indicator while the auth provider is still initializing */
-  if (authLoading) {
+  if (adminLoading) {
     return <WindowLoader></WindowLoader>;
   }
 
   // if auth initialized with a valid user show protected page
-  if (!authLoading && auth && renderCount > 0) {
+  if (!adminLoading && admin && renderCount > 0) {
     return <>{children}</>;
   }
 

@@ -18,7 +18,7 @@ export const RadioGroupStars = (props: P) => {
   return (
     <>
       <RadioGroup value={value} onChange={setValue} className="w-full my-1">
-        <RadioGroup.Label className="sr-only">Choose a option</RadioGroup.Label>
+        <RadioGroup.Label className="sr-only">Choose a rating</RadioGroup.Label>
         <div className="flex flex-row-reverse justify-center gap-1">
           {[...ratings].reverse().map((item) => (
             <RadioGroup.Option
@@ -30,7 +30,7 @@ export const RadioGroupStars = (props: P) => {
               }}
               className={({ active, checked }) =>
                 classNames(
-                  "cursor-pointer text-gray-200 pl-1.5 py-0.5",
+                  "cursor-pointer text-gray-200 py-0.5",
                   "flex-1 hover:text-orange-400",
                   "peer",
                   "peer-hover:text-orange-400",
@@ -41,7 +41,7 @@ export const RadioGroupStars = (props: P) => {
                 )
               }
             >
-              <RadioGroup.Label as={BsStarFill} className="w-6 h-6" />
+              <RadioGroup.Label as={BsStarFill} className="w-6 h-6 m-auto" />
             </RadioGroup.Option>
           ))}
         </div>

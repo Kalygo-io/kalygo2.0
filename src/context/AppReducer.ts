@@ -2,7 +2,9 @@ export const initialState = {
   authLoading: false,
   authRedirect: "",
   auth: false,
-  summaryId: "",
+  adminLoading: false,
+  adminRedirect: "",
+  admin: false,
 };
 
 export type Action =
@@ -12,7 +14,9 @@ export type Action =
         auth: boolean;
         authLoading: boolean;
         authRedirect: string;
-        summaryId: string;
+        admin: boolean;
+        adminLoading: boolean;
+        adminRedirect: string;
       };
     }
   | {
@@ -24,9 +28,11 @@ export type Action =
       };
     }
   | {
-      type: "set_summary";
+      type: "set_admin";
       payload: {
-        summaryId: string;
+        adminLoading: boolean;
+        adminRedirect: string;
+        admin: boolean;
       };
     };
 
@@ -35,7 +41,9 @@ export const AppReducer = (
     auth: boolean;
     authLoading: boolean;
     authRedirect: string;
-    summaryId: string;
+    admin: boolean;
+    adminLoading: boolean;
+    adminRedirect: string;
   },
   action: Action
 ) => {
@@ -53,10 +61,12 @@ export const AppReducer = (
       };
     }
 
-    case "set_summary": {
+    case "set_admin": {
       return {
         ...state,
-        summaryId: action.payload.summaryId,
+        adminLoading: action.payload.adminLoading,
+        adminRedirect: action.payload.adminRedirect,
+        admin: action.payload.admin,
       };
     }
   }

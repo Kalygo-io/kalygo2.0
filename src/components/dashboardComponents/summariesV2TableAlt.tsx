@@ -2,16 +2,6 @@ import { useAppContext } from "@/context/AppContext";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 
-const people = [
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  // More people...
-];
-
 interface P {
   summaries: any[];
 }
@@ -48,12 +38,12 @@ export function SummariesV2TableAlt(p: P) {
         <table className="min-w-full divide-y divide-gray-300">
           <thead>
             <tr>
-              <th
+              {/* <th
                 scope="col"
                 className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
               >
                 {t("dashboard-page:index.summaries-v2.table.id")}
-              </th>
+              </th> */}
               <th
                 scope="col"
                 className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell"
@@ -80,9 +70,9 @@ export function SummariesV2TableAlt(p: P) {
           <tbody className="divide-y divide-gray-200 bg-white">
             {summaries.map((summary) => (
               <tr key={summary.id}>
-                <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                {/* <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                   {summary.id}
-                </td>
+                </td> */}
                 <td className="hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell">
                   <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
                     <p>

@@ -21,11 +21,15 @@ import type { NextComponentType } from "next"; //Import Component type
 
 import { pdfjs } from "react-pdf";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { AdminGuard } from "@/guards/AdminGuard";
 pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.js`;
 
 // Add custom appProp type then use union to add it
 type CustomAppProps = AppProps & {
-  Component: NextComponentType & { requireAuth?: boolean }; // add auth type
+  Component: NextComponentType & {
+    requireAuth?: boolean;
+    requireAdmin?: boolean;
+  }; // add auth type
 };
 
 const App = function ({ Component, pageProps }: CustomAppProps) {
@@ -61,6 +65,10 @@ const App = function ({ Component, pageProps }: CustomAppProps) {
               <AuthGuard>
                 <Component {...pageProps} />
               </AuthGuard>
+            ) : Component.requireAdmin ? (
+              <AdminGuard>
+                <Component {...pageProps} />
+              </AdminGuard>
             ) : (
               // public page
               <Component {...pageProps} />

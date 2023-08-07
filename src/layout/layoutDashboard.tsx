@@ -21,6 +21,7 @@ import {
   QueueListIcon,
   CircleStackIcon,
   BeakerIcon,
+  LockClosedIcon,
 } from "@heroicons/react/24/outline";
 
 import { signOut } from "@/services/signOut";
@@ -40,18 +41,19 @@ export default function LayoutDashboard({ children, account }: P) {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    const checkAdmin = async () => {
+    async function checkAdmin() {
+      console.log("checkAdmin");
       try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/check-admin`,
+        console.log("try");
+        await axios.get(
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/is-admin`,
           { withCredentials: true }
         );
-
-        setIsAdmin(response.data.isAdmin);
+        setIsAdmin(true);
       } catch (err) {
-        //
+        console.log("err validating isAdmin", err);
       }
-    };
+    }
     checkAdmin();
   }, []);
 
@@ -89,9 +91,9 @@ export default function LayoutDashboard({ children, account }: P) {
     ...(isAdmin
       ? [
           {
-            name: t("dashboard-page:navigation.saas-stats"),
-            href: "/dashboard/saas-stats",
-            icon: CircleStackIcon, // chartBar
+            name: t("dashboard-page:navigation.admin"),
+            href: "/dashboard/admin",
+            icon: LockClosedIcon, // chartBar
           },
         ]
       : []),

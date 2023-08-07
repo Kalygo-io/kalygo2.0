@@ -20,7 +20,9 @@ type appContextType = {
     auth: boolean;
     authLoading: boolean;
     authRedirect: string;
-    summaryId: string;
+    admin: boolean;
+    adminLoading: boolean;
+    adminRedirect: string;
   };
   dispatch: Dispatch<Action>;
 };
@@ -30,7 +32,9 @@ const appContextDefaultValues: appContextType = {
     auth: false,
     authLoading: false,
     authRedirect: "",
-    summaryId: "",
+    admin: false,
+    adminLoading: false,
+    adminRedirect: "",
   },
   dispatch: () => {},
 };

@@ -9,7 +9,7 @@
     "settings": "Settings",
     "vector-search": "Smart Search",
     "queue": "My Requests",
-    "saas-stats": "SaaS Stats",
+    "admin": "Admin",
     "custom-request": "Custom Request"
   },
   "user-nav": {
@@ -199,8 +199,11 @@
     "language": "Language",
     "format": "Format"
   },
-  "saas-stats": {
-    "title": "SaaS Stats"
+  "admin": {
+    "title": "Overview",
+    "accounts": {
+      "title": "Accounts"
+    }
   },
   "settings": {
     "free-credits": {
