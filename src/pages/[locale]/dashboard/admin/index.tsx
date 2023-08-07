@@ -6,6 +6,7 @@ import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 import axios from "axios";
 import { Switch } from "@headlessui/react";
 import { useRouter } from "next/router";
+import LinkComponent from "@/components/shared/Link";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -77,10 +78,25 @@ export default function AdminDashboard() {
     fetchSaasData();
   }, []);
 
-  const renderStatCard = (title: string, value: string | number | null) => {
+  const renderStatCard = (
+    title: string,
+    value: string | number | null,
+    detailPage: string | null = ""
+  ) => {
     return (
       <div className="flex flex-col text-center">
-        <h3 className="mb-2 font-bold text-xl">{title}</h3>
+        <h3 className="mb-2 font-bold text-xl">
+          {title}{" "}
+          {detailPage && (
+            <span>
+              <LinkComponent href={detailPage}>
+                <small className="px-2 text-center text-xs font-semibold text-blue-600 hover:text-blue-500 cursor-pointer">
+                  Detail
+                </small>
+              </LinkComponent>
+            </span>
+          )}
+        </h3>
         <p className="text-lg font-semibold">{value}</p>
       </div>
     );
@@ -121,7 +137,11 @@ export default function AdminDashboard() {
                     statsData.verifiedAccountsCount
                   )}
                   {renderStatCard("Paid Accounts", statsData.paidAccountsCount)}
-                  {renderStatCard("MAU", statsData.monthlyActiveUsers)}
+                  {renderStatCard(
+                    "MAU",
+                    statsData.monthlyActiveUsers,
+                    "/dashboard/admin/logins-overview"
+                  )}
                 </div>
               </div>
               <div className="col-span-full bg-white border-x border-y p-4 rounded-lg shadow-sm">

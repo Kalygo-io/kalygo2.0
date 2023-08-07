@@ -16,7 +16,6 @@ import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import LinkComponent from "@/components/shared/Link";
 import CustomRequest from "@/components/dashboardComponents/customRequest";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";

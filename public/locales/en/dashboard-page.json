@@ -203,6 +203,9 @@
     "title": "Overview",
     "accounts": {
       "title": "Accounts"
+    },
+    "logins": {
+      "title": "Logins"
     }
   },
   "settings": {

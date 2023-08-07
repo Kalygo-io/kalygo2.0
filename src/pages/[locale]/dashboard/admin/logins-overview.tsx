@@ -3,12 +3,14 @@ import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import LayoutDashboard from "@/layout/layoutDashboard";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
-import { AccountsOverviewTable } from "@/components/adminComponents/accountsOverviewTable";
 import { getAccountsFactory } from "@/serviceFactory/getAccountsFactory";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
 import { ColumnDirection } from "@/types/ColumnDirection";
 import { AccountTableColumns } from "@/types/AccountTableColumns";
+import { LoginsOverviewTable } from "@/components/adminComponents/loginsOverviewTable";
+import { LoginsTableColumns } from "@/types/LoginsTableColumns";
+import { getLoginsFactory } from "@/serviceFactory/getLoginsFactory";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -21,10 +23,10 @@ const getStaticProps = makeStaticProps([
 ]);
 export { getStaticPaths, getStaticProps };
 
-export default function AccountsOverview() {
+export default function LoginsOverview() {
   const { t } = useTranslation();
 
-  const [accounts, setAccounts] = useState<{
+  const [logins, setLogins] = useState<{
     loading: boolean;
     val: any;
     err: any;
@@ -43,38 +45,36 @@ export default function AccountsOverview() {
   });
 
   const [columnDirections, setColumnDirections] = useState<{
-    columnToSort: AccountTableColumns;
-    state: Record<AccountTableColumns, ColumnDirection>;
+    columnToSort: LoginsTableColumns;
+    state: Record<LoginsTableColumns, ColumnDirection>;
   }>({
     columnToSort: "createdAt",
     state: {
       email: "asc",
       createdAt: "desc",
-      lastLogin: "desc",
-      payMethod: "desc",
     },
   });
 
   useEffect(() => {
     async function getAccounts() {
       try {
-        const getAccountsRequest = getAccountsFactory(
+        const request = getLoginsFactory(
           columnDirections.columnToSort,
           columnDirections.state[columnDirections.columnToSort],
           tableState.page - 1,
           tableState.perPage
         );
-        const getAccountsResponse = await getAccountsRequest;
-        console.log("getAccountsResponse", getAccountsResponse);
+        const response = await request;
+        console.log("response", response);
 
-        setAccounts({
+        setLogins({
           loading: false,
-          val: getAccountsResponse?.data,
+          val: response?.data,
           err: null,
         });
       } catch (e) {
         console.error(e);
-        setAccounts({
+        setLogins({
           loading: false,
           val: null,
           err: e,
@@ -85,17 +85,17 @@ export default function AccountsOverview() {
   }, [columnDirections, tableState]);
 
   let jsx = null;
-  if (accounts.loading) {
+  if (logins.loading) {
     jsx = <WindowLoader></WindowLoader>;
-  } else if (accounts.val) {
+  } else if (logins.val) {
     jsx = (
-      <AccountsOverviewTable
+      <LoginsOverviewTable
         tableState={tableState}
         setTableState={setTableState}
-        accounts={accounts.val}
+        logins={logins.val}
         columnDirections={columnDirections.state}
         setColumnDirections={(
-          column: AccountTableColumns,
+          column: LoginsTableColumns,
           direction: ColumnDirection
         ) => {
           setColumnDirections({
@@ -112,7 +112,7 @@ export default function AccountsOverview() {
     jsx = <ErrorInDashboard />;
   }
 
-  console.log("! accounts !", accounts);
+  console.log("! logins !", logins);
 
   return (
     <>
@@ -124,7 +124,7 @@ export default function AccountsOverview() {
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
               <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
-                {t("dashboard-page:admin.accounts.title")}
+                {t("dashboard-page:admin.logins.title")}
               </h2>
             </div>
           </div>
@@ -141,4 +141,4 @@ export default function AccountsOverview() {
   );
 }
 
-AccountsOverview.requireAdmin = true;
+LoginsOverview.requireAdmin = true;
