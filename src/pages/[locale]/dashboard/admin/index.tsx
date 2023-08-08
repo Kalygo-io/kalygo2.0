@@ -131,10 +131,13 @@ export default function AdminDashboard() {
               <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
                 {t("dashboard-page:admin.title")}
               </h2>
+              <p className="mt-1 text-sm leading-6 text-gray-400">
+                An overview of the most important high level app usage metrics
+              </p>
             </div>
           </div>
           {statsData && (
-            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="col-span-full bg-white border-x border-y p-4 rounded-lg shadow-sm">
                 <div className="flex items-baseline">
                   <h2 className="mb-2 font-bold text-2xl">Accounts</h2>
@@ -175,7 +178,7 @@ export default function AdminDashboard() {
                   <h2 className="mb-2 font-bold text-2xl">3rd party charges</h2>
                   <span
                     onClick={() => {
-                      router.push("/");
+                      // router.push("/");
                     }}
                     className="px-2 text-center text-sm font-semibold text-blue-600 hover:text-blue-500 cursor-pointer"
                   >
@@ -196,7 +199,7 @@ export default function AdminDashboard() {
                   <h2 className="mb-2 font-bold text-2xl">Features</h2>
                   <span
                     onClick={() => {
-                      router.push("/");
+                      // router.push("/");
                     }}
                     className="px-2 text-center text-sm font-semibold text-blue-600 hover:text-blue-500 cursor-pointer"
                   >
@@ -218,7 +221,7 @@ export default function AdminDashboard() {
                   <h2 className="mb-2 font-bold text-2xl">Ratings</h2>
                   <span
                     onClick={() => {
-                      router.push("/");
+                      // router.push("/");
                     }}
                     className="px-2 text-center text-sm font-semibold text-blue-600 hover:text-blue-500 cursor-pointer"
                   >
