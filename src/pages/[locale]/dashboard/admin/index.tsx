@@ -21,7 +21,7 @@ export { getStaticPaths, getStaticProps };
 
 interface SaasStatsData {
   totalAccounts: number;
-  paidAccountsCount: number;
+  stripeCustomersWithCardCount: number;
   verifiedAccountsCount: number;
   totalSummaries: number;
   totalSummariesV1: number;
@@ -47,7 +47,7 @@ export default function AdminDashboard() {
         );
         const {
           totalAccounts,
-          paidAccountsCount,
+          stripeCustomersWithCardCount,
           verifiedAccountsCount,
           totalSummaries,
           totalSummariesV1,
@@ -60,7 +60,7 @@ export default function AdminDashboard() {
         } = response.data;
         setStatsData({
           totalAccounts,
-          paidAccountsCount,
+          stripeCustomersWithCardCount,
           verifiedAccountsCount,
           totalSummaries,
           totalSummariesV1,
@@ -78,7 +78,7 @@ export default function AdminDashboard() {
     fetchSaasData();
   }, []);
 
-  const renderStatCard = (
+  const renderStat = (
     title: string,
     value: string | number | null,
     detailPage: string | null = ""
@@ -98,6 +98,23 @@ export default function AdminDashboard() {
           )}
         </h3>
         <p className="text-lg font-semibold">{value}</p>
+      </div>
+    );
+  };
+
+  const renderStatLink = (title: string, detailPage: string) => {
+    return (
+      <div className="flex flex-col text-center">
+        <h3 className="mb-2 font-bold text-xl">{title} </h3>
+        <p className="text-lg font-semibold">
+          <span>
+            <LinkComponent href={detailPage}>
+              <small className="px-2 text-center text-md font-semibold text-blue-600 hover:text-blue-500 cursor-pointer">
+                Detail
+              </small>
+            </LinkComponent>
+          </span>
+        </p>
       </div>
     );
   };
@@ -130,18 +147,27 @@ export default function AdminDashboard() {
                     View details
                   </span>
                 </div>
-                <div className="grid grid-cols-2 gap-4 pt-4">
-                  {renderStatCard("Total Accounts", statsData.totalAccounts)}
-                  {renderStatCard(
-                    "Verified Accounts",
-                    statsData.verifiedAccountsCount
-                  )}
-                  {renderStatCard("Paid Accounts", statsData.paidAccountsCount)}
-                  {renderStatCard(
-                    "MAU",
-                    statsData.monthlyActiveUsers,
-                    "/dashboard/admin/logins-overview"
-                  )}
+                <div className="flex space-y-4 pt-4">
+                  <div className="w-6/12 flex flex-col justify-center items-center space-y-4">
+                    {renderStat("Total", statsData.totalAccounts)}
+                    {renderStat("Verified", statsData.verifiedAccountsCount)}
+                    {renderStat(
+                      "MAU",
+                      statsData.monthlyActiveUsers,
+                      "/dashboard/admin/logins-overview"
+                    )}
+                  </div>
+                  <div className="w-6/12 flex flex-col justify-center items-center space-y-4">
+                    {renderStat(
+                      "Cards on file",
+                      statsData.stripeCustomersWithCardCount,
+                      "/dashboard/admin/accounts-with-card-overview"
+                    )}
+                    {renderStatLink(
+                      "Charges",
+                      "/dashboard/admin/charges-overview"
+                    )}
+                  </div>
                 </div>
               </div>
               <div className="col-span-full bg-white border-x border-y p-4 rounded-lg shadow-sm">
@@ -157,7 +183,7 @@ export default function AdminDashboard() {
                   </span>
                 </div>
                 <div className="grid grid-cols-1 gap-4 pt-4">
-                  {renderStatCard(
+                  {renderStat(
                     "OpenAI",
                     `$${statsData?.totalOpenAiCharges?._sum?.amount?.toFixed(
                       5
@@ -178,19 +204,13 @@ export default function AdminDashboard() {
                   </span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pt-4">
-                  {renderStatCard("Total Summaries", statsData.totalSummaries)}
-                  {renderStatCard("Summaries (v1)", statsData.totalSummariesV1)}
-                  {renderStatCard("Summaries (v2)", statsData.totalSummariesV2)}
-                  {renderStatCard(
-                    "Smart Search Total",
-                    statsData.totalSearches
-                  )}
-                  {renderStatCard("Smart Search", statsData.totalSearches)}
-                  {renderStatCard("Smart Search Plus", "Coming Soon...")}
-                  {renderStatCard(
-                    "Custom Request",
-                    statsData.totalCustomRequests
-                  )}
+                  {renderStat("Total Summaries", statsData.totalSummaries)}
+                  {renderStat("Summaries (v1)", statsData.totalSummariesV1)}
+                  {renderStat("Summaries (v2)", statsData.totalSummariesV2)}
+                  {renderStat("Smart Search Total", statsData.totalSearches)}
+                  {renderStat("Smart Search", statsData.totalSearches)}
+                  {renderStat("Smart Search Plus", "Coming Soon...")}
+                  {renderStat("Custom Request", statsData.totalCustomRequests)}
                 </div>
               </div>
               <div className="col-span-full bg-white border-x border-y p-4 rounded-lg shadow-sm">
@@ -206,7 +226,7 @@ export default function AdminDashboard() {
                   </span>
                 </div>
                 <div className="grid grid-cols-1 gap-4 pt-4">
-                  {renderStatCard(
+                  {renderStat(
                     "Avg. Rating",
                     `${(statsData.averageRating * 100).toFixed(2)}%`
                   )}

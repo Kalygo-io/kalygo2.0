@@ -206,6 +206,12 @@
     },
     "logins": {
       "title": "Logins"
+    },
+    "paid-accounts": {
+      "title": "Paid Accounts"
+    },
+    "charges": {
+      "title": "Charges"
     }
   },
   "settings": {

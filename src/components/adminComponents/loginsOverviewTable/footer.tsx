@@ -88,6 +88,7 @@ export function Footer(p: P) {
             {pageButtons.map((val, idx) => {
               return val === tableState.page ? (
                 <span
+                  key={idx}
                   onClick={() => {
                     setTableState({
                       ...tableState,
@@ -101,6 +102,7 @@ export function Footer(p: P) {
                 </span>
               ) : (
                 <span
+                  key={idx}
                   onClick={() => {
                     setTableState({
                       ...tableState,
