@@ -43,7 +43,7 @@ export function Pricing() {
     {
       name: t("common:pricing.tier3_name"),
       id: "tier-premium",
-      href: "/signup-subscription",
+      href: "/signup",
       price: { summary: "ø", monthly: "Flexible" },
       description: t("common:pricing.tier3_description"),
       features: [
@@ -52,8 +52,9 @@ export function Pricing() {
         t("common:pricing.tier3_feature3"),
         t("common:pricing.tier3_feature4"),
         t("common:pricing.tier3_feature5"),
+        t("common:pricing.tier3_feature6"),
       ],
-      enabled: false,
+      enabled: true,
     },
   ];
 
