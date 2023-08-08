@@ -37,6 +37,7 @@ export function Pricing() {
         t("common:pricing.tier2_feature3"),
         t("common:pricing.tier2_feature4"),
         t("common:pricing.tier2_feature5"),
+        t("common:pricing.tier2_feature6"),
       ],
       enabled: true,
     },
@@ -149,7 +150,7 @@ export function Pricing() {
                       aria-describedby={tier.id}
                       className="w-full mt-10 block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:opacity-50"
                     >
-                      {t("common:pricing.coming-soon")}
+                      {t("common:pricing.sign-up")}
                     </button>
                   )}
                 </div>
