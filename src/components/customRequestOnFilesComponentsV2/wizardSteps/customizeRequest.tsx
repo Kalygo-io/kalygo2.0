@@ -37,7 +37,7 @@ const preBuiltPrompts = [
     id: 3,
     name: "Bullet Points",
     prompt:
-      "Summarize the following data and return the summary as a list of bullet points. Please return the bullet point as a valid JSON formatted array.",
+      "Summarize the following data and return the summary as a list of bullet points. Please return the bullet points as a valid JSON formatted array.",
   },
 ];
 

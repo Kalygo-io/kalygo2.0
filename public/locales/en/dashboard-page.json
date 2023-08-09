@@ -136,7 +136,7 @@
     "prompt": "Prompt",
     "prompt-placeholder-text": "Write the custom request that will be applied to your files here",
     "run": "Run",
-    "upload-limits": "TXT & PDF files up to 1 MB each",
+    "upload-limits": "TXT & PDF files",
     "title": "Custom Request",
     "requested": "Requested",
     "filenames": "File names",

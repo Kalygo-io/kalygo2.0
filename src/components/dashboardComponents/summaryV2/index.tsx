@@ -65,14 +65,14 @@ export default function SummaryV2(p: P) {
                 summary?.summary.map((i: any, idx: any) => {
                   {
                     return (
-                      <>
+                      <div key={idx}>
                         <h3 className="text-lg">
                           <b>{i.file}</b>
                         </h3>
                         <ul>
                           {i?.summary?.map((j: any, idx: any) => {
                             return (
-                              <li className="mt-2" key={j.chunk}>
+                              <li key={idx} className="mt-2">
                                 {i?.summary.length > 1 &&
                                   `(Part ${j.chunk + 1})`}
                                 <ReactMarkdown className="summary-v2-markdown">
@@ -82,7 +82,7 @@ export default function SummaryV2(p: P) {
                             );
                           })}
                         </ul>
-                      </>
+                      </div>
                     );
 
                     // <ul>
