@@ -1,4 +1,4 @@
-import React, { RefObject } from "react";
+import React, { RefObject, useState } from "react";
 import { useTranslation } from "next-i18next";
 import { errorToast, infoToast } from "@/utility/toasts";
 import { getSummarizationQuote } from "@/services/getSummarizationQuote";
@@ -30,6 +30,16 @@ export function Review(props: Props) {
 
   const router = useRouter();
   const { t } = useTranslation();
+
+  const [request, setRequest] = useState<{
+    loading: boolean;
+    val: any;
+    err: any;
+  }>({
+    loading: false,
+    val: null,
+    err: null,
+  });
 
   return (
     <Layout3ColumnAndFooterWrapper>
@@ -103,6 +113,12 @@ export function Review(props: Props) {
             try {
               console.log("customSummary RUN", customizations);
 
+              setRequest({
+                val: null,
+                loading: true,
+                err: null,
+              });
+
               const customRequest = customSummaryFactory(
                 customizations!,
                 files
@@ -112,17 +128,27 @@ export function Review(props: Props) {
 
               const detectedLng = navigatorLangDetector();
               router.push(`/${detectedLng}/dashboard/queue`);
-              infoToast(t("toast-messages:custom-summary-is-processing"));
+              infoToast(t("toast-messages:summary-v2-is-processing"));
             } catch (e: any) {
               errorToast(e.toString());
+
+              setRequest({
+                val: null,
+                loading: false,
+                err: e,
+              });
             }
           }}
-          disabled={files.length === 0 || !customizations}
+          disabled={files.length === 0 || !customizations || request.loading}
           className={`${
-            files.length === 0 || !customizations ? "opacity-50" : "opacity-100"
+            files.length === 0 || !customizations || request.loading
+              ? "opacity-50"
+              : "opacity-100"
           } flex items-center justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
         >
-          {t("dashboard-page:summarize-v2.summarize")!}
+          {request.loading
+            ? t("dashboard-page:summarize-v2.loading")
+            : t("dashboard-page:summarize-v2.summarize")!}
         </button>
       </FooterWrapper>
     </Layout3ColumnAndFooterWrapper>

@@ -109,7 +109,8 @@
     "summarize": "Summarize",
     "request": "Request",
     "select-files": "Select",
-    "upload-limits": "TXT & PDF files up to 1 MB"
+    "upload-limits": "TXT & PDF files",
+    "loading": "Loading..."
   },
   "perform-vector-search": {
     "title": "Vector Search",
@@ -170,6 +171,7 @@
     "requested-at": "Requested at",
     "processed-on": "Processed on",
     "remove": "Remove",
+    "retry": "Retry",
     "view": "View",
     "job-type": "Type",
 
