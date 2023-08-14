@@ -38,7 +38,6 @@ export default function SummaryV2(p: P) {
                           <b>{i.file}</b>
                         </h3>
                       </span>
-
                       <ReactMarkdown className="summary-v2-markdown">
                         {i.summary}
                       </ReactMarkdown>
@@ -124,7 +123,7 @@ export default function SummaryV2(p: P) {
         </div>
       </main>
 
-      <aside className="fixed inset-y-0 right-0 hidden w-96 overflow-y-auto border-l border-gray-200 px-4 pt-20 pb-6 sm:px-6 lg:px-8 xl:block">
+      <aside className="fixed inset-y-0 right-0 hidden w-96 overflow-y-auto border-l border-gray-200 px-4 pt-20 pb-6 sm:px-6 lg:px-8 xl:block bg-white">
         <div>
           <div className="mt-6">
             <dl className="divide-y divide-gray-100 space-y-10">
