@@ -37,7 +37,7 @@ const creditAmountPresets = [
   {
     id: 1,
     title: "1000 points ($10.00)",
-    points: "2000",
+    points: "1000",
     price: "$14.52",
   },
   { id: 2, title: "Custom", points: "Flexible", price: "Flexible" },
