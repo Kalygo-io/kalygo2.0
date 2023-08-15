@@ -237,38 +237,42 @@ export default function LayoutDashboard({ children, account }: P) {
                             ))}
                           </ul>
                         </li>
-                        <li className="mt-auto">
-                          <Link
-                            href="/dashboard/buy-credits"
-                            className={classNames(
-                              "settings" === current
-                                ? "bg-blue-700 text-white"
-                                : "text-blue-200 hover:text-white hover:bg-blue-700",
-                              "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                            )}
-                          >
-                            <CreditCardIcon
-                              className="h-6 w-6 shrink-0 text-blue-200 group-hover:text-white"
-                              aria-hidden="true"
-                            />
-                            {t("dashboard-page:navigation.buy-credits")}
-                          </Link>
-                          <Link
-                            href="/dashboard/settings"
-                            className={classNames(
-                              "settings" === current
-                                ? "bg-blue-700 text-white"
-                                : "text-blue-200 hover:text-white hover:bg-blue-700",
-                              "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                            )}
-                          >
-                            <Cog6ToothIcon
-                              className="h-6 w-6 shrink-0 text-blue-200 group-hover:text-white"
-                              aria-hidden="true"
-                            />
-                            {t("dashboard-page:navigation.settings")}
-                          </Link>
-                        </li>
+                        <ul className="mt-auto space-y-1">
+                          <li>
+                            <Link
+                              href="/dashboard/buy-credits"
+                              className={classNames(
+                                "buy-credits" === current
+                                  ? "bg-blue-700 text-white"
+                                  : "text-blue-200 hover:text-white hover:bg-blue-700",
+                                "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+                              )}
+                            >
+                              <CreditCardIcon
+                                className="h-6 w-6 shrink-0 text-blue-200 group-hover:text-white"
+                                aria-hidden="true"
+                              />
+                              {t("dashboard-page:navigation.buy-credits")}
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/dashboard/settings"
+                              className={classNames(
+                                "settings" === current
+                                  ? "bg-blue-700 text-white"
+                                  : "text-blue-200 hover:text-white hover:bg-blue-700",
+                                "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+                              )}
+                            >
+                              <Cog6ToothIcon
+                                className="h-6 w-6 shrink-0 text-blue-200 group-hover:text-white"
+                                aria-hidden="true"
+                              />
+                              {t("dashboard-page:navigation.settings")}
+                            </Link>
+                          </li>
+                        </ul>
                       </ul>
                     </nav>
                   </div>
