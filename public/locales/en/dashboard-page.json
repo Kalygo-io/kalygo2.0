@@ -150,7 +150,7 @@
     "run": "Request",
     "send": "Send",
     "select-files": "Select",
-    "upload-limits": "TXT & PDF files up to 1 MB each",
+    "upload-limits": "TXT & PDF files",
     "save": "Save",
     "next": "Next",
     "prompt": "Prompt",
