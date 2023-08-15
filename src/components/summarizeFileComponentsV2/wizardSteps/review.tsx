@@ -46,33 +46,31 @@ export function Review(props: Props) {
       <_3ColumnWrapper>
         <LeftAreaAndMainWrapper>
           <LeftArea>
-            <div className="flex flex-col justify-center items-start truncate">
-              <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight">
-                {t("dashboard-page:summarize-v2.chosen-files")!}
-              </h2>
-              {files.length > 0 ? (
-                <ul role="list" className="divide-y divide-gray-100">
-                  {Object.keys(files).map((value: string, index: number) => {
-                    return (
-                      <li
-                        key={index}
-                        className="flex items-center justify-between gap-x-6 py-5"
-                      >
-                        <div className="flex items-start gap-x-3">
-                          <p className="text-sm font-semibold leading-6 text-gray-900">
-                            {files[index].name}
-                          </p>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
-              ) : (
-                <p className="mt-1 text-sm leading-6 text-gray-400">
-                  No files selected
-                </p>
-              )}
-            </div>
+            <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight">
+              {t("dashboard-page:summarize-v2.chosen-files")!}
+            </h2>
+            {files.length > 0 ? (
+              <ul role="list" className="divide-y divide-gray-100">
+                {Object.keys(files).map((value: string, index: number) => {
+                  return (
+                    <li
+                      key={index}
+                      className="flex items-center justify-between gap-x-6 py-5"
+                    >
+                      <div className="flex items-start gap-x-3 truncate">
+                        <p className="text-sm font-semibold leading-6 text-gray-900 truncate">
+                          {files[index].name}
+                        </p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p className="mt-1 text-sm leading-6 text-gray-400">
+                No files selected
+              </p>
+            )}
           </LeftArea>
 
           <MainArea>

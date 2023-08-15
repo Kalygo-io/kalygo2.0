@@ -80,8 +80,8 @@ export function CustomizeRequest(props: Props) {
                       key={index}
                       className="flex items-center justify-between gap-x-6 py-5"
                     >
-                      <div className="flex items-start gap-x-3">
-                        <p className="text-sm font-semibold leading-6 text-gray-900">
+                      <div className="flex items-start gap-x-3 truncate">
+                        <p className="text-sm font-semibold leading-6 text-gray-900 truncate">
                           {files[index].name}
                         </p>
                       </div>
