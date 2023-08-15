@@ -1,33 +1,9 @@
-import {
-  EllipsisVerticalIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/24/outline";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-
-import { pdfjs, Document, Page } from "react-pdf";
-import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-import "react-pdf/dist/esm/Page/TextLayer.css";
-
-import React, { Fragment, Ref, RefObject, useState } from "react";
-import get from "lodash.get";
-
+import React, { RefObject, useState } from "react";
 import { useTranslation } from "next-i18next";
-
 import { errorToast, infoToast } from "@/utility/toasts";
-import { getSummarizationQuote } from "@/services/getSummarizationQuote";
-import { useForm, Controller } from "react-hook-form";
-import { similaritySearchInFile } from "@/services/similaritySearchInFile";
-
-import type { PDFDocumentProxy } from "pdfjs-dist";
-import { WindowLoader } from "@/components/shared/WindowLoader";
-import { PreviewTextFile } from "@/components/shared/PreviewTextFile";
-import { fileURLToPath } from "url";
-import { similaritySearchWithQueue } from "@/services/similaritySearchWithQueue";
+import { useForm } from "react-hook-form";
 import { navigatorLangDetector } from "@/lib/languageDetector";
 import { useRouter } from "next/router";
-import isNumber from "lodash.isnumber";
-import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
-import { Menu, Transition } from "@headlessui/react";
 import { customRequestFactory } from "@/serviceFactory/customRequestFactory";
 import { Layout3ColumnAndFooterWrapper } from "../sharedComponents/layout3ColumnAndFooterWrapper";
 import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
@@ -53,12 +29,7 @@ export function Review(props: Props) {
   const { t } = useTranslation();
 
   const {
-    register,
-    handleSubmit,
-    getValues,
     formState: { errors },
-    setValue,
-    watch,
   } = useForm({});
 
   const [searchState, setSearchState] = useState<{
@@ -87,8 +58,8 @@ export function Review(props: Props) {
                       key={index}
                       className="flex items-center justify-between gap-x-6 py-5"
                     >
-                      <div className="flex items-start gap-x-3">
-                        <p className="text-sm font-semibold leading-6 text-gray-900">
+                      <div className="flex items-start gap-x-3 truncate">
+                        <p className="text-sm font-semibold leading-6 text-gray-900 truncate">
                           {files[index].name}
                         </p>
                       </div>
