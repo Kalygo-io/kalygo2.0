@@ -10,7 +10,8 @@
     "vector-search": "Smart Search",
     "queue": "My Requests",
     "admin": "Admin",
-    "custom-request": "Custom Request"
+    "custom-request": "Custom Request",
+    "buy-credits": "Buy Credits"
   },
   "user-nav": {
     "settings": "Settings",
@@ -215,6 +216,10 @@
     "charges": {
       "title": "Charges"
     }
+  },
+  "buy-credits": {
+    "title": "Buy credits",
+    "description": "Buy Usage Credits. 100 credits equals $1.00 USD of usage just like standard credit card points work."
   },
   "settings": {
     "free-credits": {
