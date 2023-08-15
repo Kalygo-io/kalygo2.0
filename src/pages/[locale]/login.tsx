@@ -1,23 +1,15 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import Layout1 from "@/layout/layout1";
 import Head from "next/head";
-
 import { useRouter } from "next/router";
-// import { useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
-
 import { errorReporter } from "@/utility/error/reporter";
-
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 import { isAuthedFactory } from "@/serviceFactory/isAuthedFactory";
-
 import { useGoogleLogin } from "@react-oauth/google";
-
-// import Link from "next/link";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
 import languageDetector, {
   navigatorLangDetector,
