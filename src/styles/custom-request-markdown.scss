@@ -1,0 +1,42 @@
+.custom-request-markdown {
+    ul, ol {
+        list-style-type: upper-roman;
+
+        margin-top: 1em;
+        margin-bottom: 1em;
+        
+    }
+
+    ul, ol {
+        ul, ol {
+            list-style-type: lower-roman; 
+            margin-left: 2em;
+        }
+    }
+
+    ul, ol {
+        ul, ol {
+            ul, ol {
+                list-style-type: disc; 
+                margin-left: 1em;
+            }
+        }
+    }
+
+    ul, ol {
+        ul, ol {
+            ul, ol {
+                ul, ol {
+                        list-style-type: circle; 
+                    margin-left: 1em;
+                }
+            }
+        }
+    }
+
+    p {
+        text-indent: 2em;
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+}

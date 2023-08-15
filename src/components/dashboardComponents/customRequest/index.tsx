@@ -56,7 +56,7 @@ export default function CustomRequest(p: P) {
                         return (
                           <li className="mt-2" key={i.part}>
                             {/* (Part {i.part + 1})  */}
-                            <ReactMarkdown className="">
+                            <ReactMarkdown className="custom-request-markdown">
                               {i.completionResponse}
                             </ReactMarkdown>
                           </li>

@@ -183,8 +183,8 @@ export function ChooseFiles(props: Props) {
                     key={index}
                     className="flex items-center justify-between gap-x-6 py-5"
                   >
-                    <div className="flex items-start gap-x-2">
-                      <p className="text-sm font-semibold leading-6 text-gray-900">
+                    <div className="flex items-start gap-x-2 truncate">
+                      <p className="text-sm font-semibold leading-6 text-gray-900 truncate">
                         {filesLocal[index].name}
                       </p>
                       <XCircleIcon

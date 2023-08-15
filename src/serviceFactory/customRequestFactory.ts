@@ -15,6 +15,7 @@ export async function customRequestFactory(prompt: string, fileList: File[]) {
     }
 
     formData.set("customPrompt", prompt);
+    formData.set("model", `gpt-3.5-turbo`);
 
     // console.log("formData", formData);
     // console.log("formData", formData.get("documents"));
