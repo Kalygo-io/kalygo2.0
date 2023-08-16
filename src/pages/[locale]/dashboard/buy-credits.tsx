@@ -76,6 +76,7 @@ export default function BuyCredits() {
   });
 
   const creditAmountPreset = watch("selectedCreditAmountPreset");
+  const amountOfCredits = watch("amountOfCredits");
 
   const onSubmit = async (data: any) => {
     try {
@@ -86,8 +87,6 @@ export default function BuyCredits() {
       errorReporter(e);
     }
   };
-
-  console.log("creditAmountPreset", creditAmountPreset);
 
   return (
     <>
@@ -115,81 +114,75 @@ export default function BuyCredits() {
                 <div>
                   <div className="mt-10 border-t border-gray-200 pt-10">
                     <Controller
-                      {...register("selectedCreditAmountPreset", {
-                        required: true,
-                      })}
+                      name="selectedCreditAmountPreset"
                       control={control}
+                      defaultValue={creditAmountPresets[0]}
                       render={(props) => (
-                        <RadioGroup
-                          // onChange={setSelectedDeliveryMethod}
-                          {...props.field}
-                        >
+                        <RadioGroup {...props.field}>
                           <RadioGroup.Label className="text-lg font-medium text-gray-900">
-                            Delivery method
+                            Amount of credits
                           </RadioGroup.Label>
 
                           <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
-                            {creditAmountPresets.map((preset) => (
-                              <RadioGroup.Option
-                                key={preset.id}
-                                value={preset}
-                                className={({ checked, active }) =>
-                                  classNames(
-                                    checked
-                                      ? "border-transparent"
-                                      : "border-gray-300",
-                                    active ? "ring-2 ring-blue-500" : "",
-                                    "relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none"
-                                  )
-                                }
-                              >
-                                {({ checked, active }) => {
-                                  console.log(
-                                    "checked",
-                                    checked,
-                                    "active",
-                                    active
-                                  );
+                            {creditAmountPresets.map((preset) => {
+                              const checked =
+                                preset.id === props.field.value.id;
 
-                                  return (
-                                    <>
-                                      <span className="flex flex-1">
-                                        <span className="flex flex-col">
-                                          <RadioGroup.Label
-                                            as="span"
-                                            className="block text-sm font-medium text-gray-900"
-                                          >
-                                            {preset.title}
-                                          </RadioGroup.Label>
-                                          <RadioGroup.Description
-                                            as="span"
-                                            className="mt-6 text-sm font-medium text-gray-900"
-                                          >
-                                            {preset.price}
-                                          </RadioGroup.Description>
+                              return (
+                                <RadioGroup.Option
+                                  key={preset.id}
+                                  value={preset}
+                                  className={({ active }) =>
+                                    classNames(
+                                      checked
+                                        ? "border-transparent"
+                                        : "border-gray-300",
+                                      active ? "ring-2 ring-blue-500" : "",
+                                      "relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none"
+                                    )
+                                  }
+                                >
+                                  {({ active }) => {
+                                    return (
+                                      <>
+                                        <span className="flex flex-1">
+                                          <span className="flex flex-col">
+                                            <RadioGroup.Label
+                                              as="span"
+                                              className="block text-sm font-medium text-gray-900"
+                                            >
+                                              {preset.title}
+                                            </RadioGroup.Label>
+                                            <RadioGroup.Description
+                                              as="span"
+                                              className="mt-6 text-sm font-medium text-gray-900"
+                                            >
+                                              {preset.price}
+                                            </RadioGroup.Description>
+                                          </span>
                                         </span>
-                                      </span>
-                                      {checked ? (
-                                        <CheckCircleIcon
-                                          className="h-5 w-5 text-blue-600"
+                                        {checked ? (
+                                          <CheckCircleIcon
+                                            className="h-5 w-5 text-blue-600"
+                                            aria-hidden="true"
+                                          />
+                                        ) : null}
+                                        <span
+                                          className={classNames(
+                                            active ? "border" : "border-2",
+                                            checked
+                                              ? "border-blue-500"
+                                              : "border-transparent",
+                                            "pointer-events-none absolute -inset-px rounded-lg"
+                                          )}
                                           aria-hidden="true"
                                         />
-                                      ) : null}
-                                      <span
-                                        className={classNames(
-                                          active ? "border" : "border-2",
-                                          checked
-                                            ? "border-blue-500"
-                                            : "border-transparent",
-                                          "pointer-events-none absolute -inset-px rounded-lg"
-                                        )}
-                                        aria-hidden="true"
-                                      />
-                                    </>
-                                  );
-                                }}
-                              </RadioGroup.Option>
-                            ))}
+                                      </>
+                                    );
+                                  }}
+                                </RadioGroup.Option>
+                              );
+                            })}
                           </div>
                         </RadioGroup>
                       )}
@@ -201,18 +194,27 @@ export default function BuyCredits() {
                             htmlFor="cardNumber"
                             className="block text-sm font-medium text-gray-700"
                           >
-                            Amount of credits
+                            Amount of credits - {amountOfCredits}
                           </label>
                           <div className="mt-1">
                             <input
                               {...register("amountOfCredits", {
-                                required: false,
+                                required:
+                                  creditAmountPreset.id === 2 ? true : false,
                                 pattern: new RegExp(/^[0-9]+$/),
                               })}
                               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                              type="text"
+                              type="range"
                               name="cardNumber"
                               autoComplete="cardNumber"
+                              min={100}
+                              max={100000}
+                              onChange={(event) => {
+                                console.log("---");
+
+                                const val = Number.parseInt(event.target.value);
+                                setValue("amountOfCredits", val);
+                              }}
                             />
                           </div>
                         </div>
@@ -336,16 +338,14 @@ export default function BuyCredits() {
                             <div className="min-w-0 flex-1">
                               <h4 className="text-sm">Credits</h4>
                               <p className="mt-1 text-sm text-gray-500">
-                                {/* {product.size} */}
-                                1000
+                                {amountOfCredits}
                               </p>
                             </div>
                           </div>
 
                           <div className="flex flex-1 items-end justify-between pt-2">
                             <p className="mt-1 text-sm font-medium text-gray-900">
-                              {/* {product.price} */}
-                              $10.00
+                              ${(amountOfCredits / 100).toFixed(2)}
                             </p>
                           </div>
                         </div>
@@ -355,25 +355,32 @@ export default function BuyCredits() {
                       <div className="flex items-center justify-between">
                         <dt className="text-sm">Subtotal</dt>
                         <dd className="text-sm font-medium text-gray-900">
-                          $10.00
-                        </dd>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <dt className="text-sm">Markup</dt>
-                        <dd className="text-sm font-medium text-gray-900">
-                          $2.00
+                          ${(amountOfCredits / 100).toFixed(2)}
                         </dd>
                       </div>
                       <div className="flex items-center justify-between">
                         <dt className="text-sm">Fees</dt>
                         <dd className="text-sm font-medium text-gray-900">
-                          $2.52
+                          ${((amountOfCredits / 100) * 0.029 + 0.3).toFixed(2)}
+                        </dd>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <dt className="text-sm">Markup</dt>
+                        <dd className="text-sm font-medium text-gray-900">
+                          $
+                          {(
+                            ((amountOfCredits / 100) * 1.029 + 0.3) *
+                            0.4
+                          ).toFixed(2)}
                         </dd>
                       </div>
                       <div className="flex items-center justify-between border-t border-gray-200 pt-6">
                         <dt className="text-base font-medium">Total</dt>
                         <dd className="text-base font-medium text-gray-900">
-                          $14.52
+                          {(
+                            ((amountOfCredits / 100) * 1.029 + 0.3) *
+                            1.4
+                          ).toFixed(2)}
                         </dd>
                       </div>
                     </dl>
