@@ -26,7 +26,7 @@ export async function getStripeCards(cb: any) {
 
     cb(resp.data, null);
   } catch (e) {
-    errorReporter(e);
+    // errorReporter(e);
 
     cb(null, e);
   }

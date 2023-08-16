@@ -99,6 +99,12 @@ export function AccountsOverviewTable(p: P) {
                   >
                     <div className="group inline-flex">Last login</div>
                   </th>
+                  <th
+                    scope="col"
+                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                  >
+                    <div className="group inline-flex">CustomerID</div>
+                  </th>
                   <th scope="col" className="relative py-3.5 pl-3 pr-0">
                     <span className="sr-only">View</span>
                   </th>
@@ -139,6 +145,9 @@ export function AccountsOverviewTable(p: P) {
                         ) : (
                           "ø"
                         )}
+                      </td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        {account?.stripeId}
                       </td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-0">
                         <button

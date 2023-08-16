@@ -12,15 +12,12 @@ import { CheckCircleIcon, TrashIcon } from "@heroicons/react/20/solid";
 import { useForm, Controller } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
+import { purchaseCreditsFactory } from "@/serviceFactory/purchaseCreditsFactory";
 
 // import Link from "next/link";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
 import { Fragment, useState } from "react";
-import {
-  CircleStackIcon,
-  PhotoIcon,
-  UserCircleIcon,
-} from "@heroicons/react/24/outline";
+import { CircleStackIcon } from "@heroicons/react/24/outline";
 import { errorReporter } from "@/utility/error/reporter";
 
 const getStaticProps = makeStaticProps([
@@ -35,13 +32,7 @@ const getStaticProps = makeStaticProps([
 export { getStaticPaths, getStaticProps };
 
 const creditAmountPresets = [
-  {
-    id: 1,
-    title: "1000 points ($10.00)",
-    points: "1000",
-    price: "$14.52",
-  },
-  { id: 2, title: "Custom", points: "Flexible", price: "Flexible" },
+  { id: 2, title: "Custom", price: "Flexible amount" },
 ];
 
 function classNames(...classes: string[]) {
@@ -55,34 +46,51 @@ export default function BuyCredits() {
     register,
     handleSubmit,
     getValues,
-    formState: { errors },
+    formState: { errors, isValid },
     setValue,
     watch,
     control,
   } = useForm({
     defaultValues: {
-      cardNumber: "",
-      nameOnCard: "",
-      expDate: "",
-      cvc: "",
-      amountOfCredits: 10000,
+      card_number: "4242424242424242",
+      name: "Tad",
+      exp_date: "12/24",
+      cvc: "123",
+      credits: 10000,
       selectedCreditAmountPreset: {
-        id: 1,
-        title: "1000 points ($10.00)",
-        points: "1000",
-        price: "$14.52",
+        id: 2,
+        title: "Custom",
+        price: "Flexible amount",
       },
     },
   });
 
   const creditAmountPreset = watch("selectedCreditAmountPreset");
-  const amountOfCredits = watch("amountOfCredits");
+  const credits = watch("credits");
 
   const onSubmit = async (data: any) => {
     try {
       console.log("data", data);
+      console.log("credits", data.credits);
+      console.log("card_number", data.card_number);
+      console.log("cvc", data.cvc);
+      console.log("exp_date", data.exp_date);
+      console.log("name", data.name);
 
-      const [exp_month, exp_year] = data.expDate.split("/");
+      const [exp_month, exp_year] = data.exp_date.split("/");
+
+      const customRequest = purchaseCreditsFactory(
+        {
+          card_number: data.card_number,
+          name: data.name,
+          exp_month,
+          exp_year,
+          cvc: data.cvc,
+        },
+        data.credits
+      );
+      const customRequestResponse = await customRequest;
+      console.log("customSummaryResponse", customRequestResponse);
     } catch (e) {
       errorReporter(e);
     }
@@ -120,7 +128,7 @@ export default function BuyCredits() {
                       render={(props) => (
                         <RadioGroup {...props.field}>
                           <RadioGroup.Label className="text-lg font-medium text-gray-900">
-                            Amount of credits
+                            Credits
                           </RadioGroup.Label>
 
                           <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
@@ -194,16 +202,16 @@ export default function BuyCredits() {
                             htmlFor="cardNumber"
                             className="block text-sm font-medium text-gray-700"
                           >
-                            Amount of credits - {amountOfCredits}
+                            Amount of credits - {credits}
                           </label>
                           <div className="mt-1">
                             <input
-                              {...register("amountOfCredits", {
+                              {...register("credits", {
                                 required:
                                   creditAmountPreset.id === 2 ? true : false,
                                 pattern: new RegExp(/^[0-9]+$/),
                               })}
-                              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                              className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                               type="range"
                               name="cardNumber"
                               autoComplete="cardNumber"
@@ -213,7 +221,7 @@ export default function BuyCredits() {
                                 console.log("---");
 
                                 const val = Number.parseInt(event.target.value);
-                                setValue("amountOfCredits", val);
+                                setValue("credits", val);
                               }}
                             />
                           </div>
@@ -231,40 +239,40 @@ export default function BuyCredits() {
                     <div className="mt-6 grid grid-cols-4 gap-x-4 gap-y-6">
                       <div className="col-span-4">
                         <label
-                          htmlFor="cardNumber"
+                          htmlFor="card_number"
                           className="block text-sm font-medium text-gray-700"
                         >
                           Card number
                         </label>
                         <div className="mt-1">
                           <input
-                            {...register("cardNumber", {
+                            {...register("card_number", {
                               required: true,
                               pattern: new RegExp(/^[0-9]+$/),
                             })}
                             className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                             type="text"
-                            name="cardNumber"
-                            autoComplete="cardNumber"
+                            name="card_number"
+                            autoComplete="card_number"
                           />
                         </div>
                       </div>
 
                       <div className="col-span-4">
                         <label
-                          htmlFor="nameOnCard"
+                          htmlFor="name"
                           className="block text-sm font-medium text-gray-700"
                         >
                           Name on card
                         </label>
                         <div className="mt-1">
                           <input
-                            {...register("nameOnCard", {
+                            {...register("name", {
                               required: true,
                             })}
                             type="text"
-                            name="nameOnCard"
-                            autoComplete="nameOnCard"
+                            name="name"
+                            autoComplete="name"
                             className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                           />
                         </div>
@@ -272,22 +280,22 @@ export default function BuyCredits() {
 
                       <div className="col-span-3">
                         <label
-                          htmlFor="expDate"
+                          htmlFor="exp_date"
                           className="block text-sm font-medium text-gray-700"
                         >
                           Expiration date (MM/YY)
                         </label>
                         <div className="mt-1">
                           <input
-                            {...register("expDate", {
+                            {...register("exp_date", {
                               required: true,
                               pattern: new RegExp(/[0-9]{2}\/[0-9]{2}/),
                             })}
                             placeholder="MM/YY"
                             type="text"
-                            name="expDate"
-                            id="expDate"
-                            autoComplete="expDate"
+                            name="exp_date"
+                            id="exp_date"
+                            autoComplete="exp_date"
                             className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                           />
                         </div>
@@ -329,7 +337,7 @@ export default function BuyCredits() {
                       <li className="flex px-4 py-6 sm:px-6">
                         <div className="flex-shrink-0">
                           <CircleStackIcon
-                            className="text-black h-6 w-6"
+                            className="text-blue-600 h-6 w-6"
                             aria-label="Usage Credits Icon"
                           />
                         </div>
@@ -338,14 +346,14 @@ export default function BuyCredits() {
                             <div className="min-w-0 flex-1">
                               <h4 className="text-sm">Credits</h4>
                               <p className="mt-1 text-sm text-gray-500">
-                                {amountOfCredits}
+                                {credits}
                               </p>
                             </div>
                           </div>
 
                           <div className="flex flex-1 items-end justify-between pt-2">
                             <p className="mt-1 text-sm font-medium text-gray-900">
-                              ${(amountOfCredits / 100).toFixed(2)}
+                              ${(credits / 100).toFixed(2)}
                             </p>
                           </div>
                         </div>
@@ -355,32 +363,25 @@ export default function BuyCredits() {
                       <div className="flex items-center justify-between">
                         <dt className="text-sm">Subtotal</dt>
                         <dd className="text-sm font-medium text-gray-900">
-                          ${(amountOfCredits / 100).toFixed(2)}
+                          ${(credits / 100).toFixed(2)}
                         </dd>
                       </div>
                       <div className="flex items-center justify-between">
                         <dt className="text-sm">Fees</dt>
                         <dd className="text-sm font-medium text-gray-900">
-                          ${((amountOfCredits / 100) * 0.029 + 0.3).toFixed(2)}
+                          ${((credits / 100) * 0.029 + 0.3).toFixed(2)}
                         </dd>
                       </div>
                       <div className="flex items-center justify-between">
                         <dt className="text-sm">Markup</dt>
                         <dd className="text-sm font-medium text-gray-900">
-                          $
-                          {(
-                            ((amountOfCredits / 100) * 1.029 + 0.3) *
-                            0.4
-                          ).toFixed(2)}
+                          ${(((credits / 100) * 1.029 + 0.3) * 0.4).toFixed(2)}
                         </dd>
                       </div>
                       <div className="flex items-center justify-between border-t border-gray-200 pt-6">
                         <dt className="text-base font-medium">Total</dt>
                         <dd className="text-base font-medium text-gray-900">
-                          {(
-                            ((amountOfCredits / 100) * 1.029 + 0.3) *
-                            1.4
-                          ).toFixed(2)}
+                          ${(((credits / 100) * 1.029 + 0.3) * 1.4).toFixed(2)}
                         </dd>
                       </div>
                     </dl>
@@ -388,7 +389,10 @@ export default function BuyCredits() {
                     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                       <button
                         type="submit"
-                        className="w-full rounded-md border border-transparent bg-blue-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                        disabled={!isValid}
+                        className={`${
+                          !isValid ? "opacity-50" : "opacity-100"
+                        } w-full rounded-md border border-transparent bg-blue-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-50`}
                       >
                         Get credits
                       </button>
