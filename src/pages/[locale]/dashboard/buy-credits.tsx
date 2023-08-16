@@ -52,10 +52,10 @@ export default function BuyCredits() {
     control,
   } = useForm({
     defaultValues: {
-      card_number: "4242424242424242",
-      name: "Tad",
-      exp_date: "12/24",
-      cvc: "123",
+      card_number: "",
+      name: "",
+      exp_date: "",
+      cvc: "",
       credits: 10000,
       selectedCreditAmountPreset: {
         id: 2,
