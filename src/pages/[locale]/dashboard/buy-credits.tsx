@@ -151,7 +151,8 @@ export default function BuyCredits() {
                 className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16"
               >
                 <div>
-                  <div className="mt-10 border-t border-gray-200 pt-10">
+                  {/* Amount of credits */}
+                  <div>
                     <Controller
                       name="selectedCreditAmountPreset"
                       control={control}
@@ -179,7 +180,17 @@ export default function BuyCredits() {
                           }}
                         >
                           <RadioGroup.Label className="text-lg font-medium text-gray-900">
-                            Credits
+                            <span
+                              className="flex items-center px-6 py-4 text-sm font-medium"
+                              aria-current="step"
+                            >
+                              <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-blue-600">
+                                <span className="text-blue-600">1</span>
+                              </span>
+                              <span className="ml-4 text-sm font-medium text-blue-600">
+                                Choose credits
+                              </span>
+                            </span>
                           </RadioGroup.Label>
 
                           <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
@@ -315,12 +326,16 @@ export default function BuyCredits() {
                   {/* Payment */}
                   <div className="mt-10 border-t border-gray-200 pt-10">
                     <h2 className="text-lg font-medium text-gray-900">
-                      Payment{" "}
-                      <span>
-                        <FaCcStripe
-                          className="text-indigo-600 inline h-6 w-6"
-                          aria-label="Stripe Icon"
-                        />
+                      <span
+                        className="flex items-center px-6 py-4 text-sm font-medium"
+                        aria-current="step"
+                      >
+                        <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-blue-600">
+                          <span className="text-blue-600">2</span>
+                        </span>
+                        <span className="ml-4 text-sm font-medium text-blue-600">
+                          Payment{" "}
+                        </span>
                       </span>
                     </h2>
 
@@ -330,7 +345,13 @@ export default function BuyCredits() {
                           htmlFor="card_number"
                           className="block text-sm font-medium text-gray-700"
                         >
-                          Card number
+                          Card number{" "}
+                          <span>
+                            <FaCcStripe
+                              className="text-indigo-600 inline h-6 w-6"
+                              aria-label="Stripe Icon"
+                            />
+                          </span>
                         </label>
                         <div className="mt-1">
                           <input
@@ -436,7 +457,9 @@ export default function BuyCredits() {
 
                 {/* Order summary */}
                 <div className="mt-10 lg:mt-0">
-                  <h2 className="text-lg font-medium text-gray-900">Summary</h2>
+                  <h2 className="text-lg px-6 pt-8 font-medium text-gray-900">
+                    Checkout{" "}
+                  </h2>
 
                   <div className="mt-4 rounded-lg border border-gray-200 bg-white shadow-sm">
                     <h3 className="sr-only">Items in your cart</h3>
