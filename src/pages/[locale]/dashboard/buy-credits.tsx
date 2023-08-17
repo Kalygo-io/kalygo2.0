@@ -32,7 +32,9 @@ const getStaticProps = makeStaticProps([
 export { getStaticPaths, getStaticProps };
 
 const creditAmountPresets = [
-  { id: 2, title: "Custom", price: "Flexible amount" },
+  { id: 1, title: "500 credits", creditsAmount: 500, price: "$7.62" },
+  { id: 2, title: "1,000 credits", creditsAmount: 1000, price: "$14.83" },
+  { id: 3, title: "Custom amount", creditsAmount: -1, price: "TBD" },
 ];
 
 function classNames(...classes: string[]) {
@@ -126,7 +128,27 @@ export default function BuyCredits() {
                       control={control}
                       defaultValue={creditAmountPresets[0]}
                       render={(props) => (
-                        <RadioGroup {...props.field}>
+                        <RadioGroup
+                          {...props.field}
+                          onChange={(value) => {
+                            if (value.id === 1) {
+                              // prettier-ignore
+                              setValue("selectedCreditAmountPreset", creditAmountPresets[0]);
+                              // prettier-ignore
+                              setValue("credits", creditAmountPresets[0].creditsAmount);
+                            } else if (value.id === 2) {
+                              // prettier-ignore
+                              setValue("selectedCreditAmountPreset", creditAmountPresets[1]);
+                              // prettier-ignore
+                              setValue("credits", creditAmountPresets[1].creditsAmount);
+                            } else {
+                              setValue(
+                                "selectedCreditAmountPreset",
+                                creditAmountPresets[2]
+                              );
+                            }
+                          }}
+                        >
                           <RadioGroup.Label className="text-lg font-medium text-gray-900">
                             Credits
                           </RadioGroup.Label>
@@ -195,26 +217,26 @@ export default function BuyCredits() {
                         </RadioGroup>
                       )}
                     />
-                    {creditAmountPreset.id === 2 && (
+                    {creditAmountPreset.id === 3 && (
                       <div className="mt-6">
                         <div className="col-span-4">
                           <label
-                            htmlFor="cardNumber"
+                            htmlFor="credits"
                             className="block text-sm font-medium text-gray-700"
                           >
-                            Amount of credits - {credits}
+                            Amount of credits: {credits.toLocaleString()}
                           </label>
-                          <div className="mt-1">
+                          <div className="mt-2">
                             <input
                               {...register("credits", {
                                 required:
-                                  creditAmountPreset.id === 2 ? true : false,
+                                  creditAmountPreset.id === 3 ? true : false,
                                 pattern: new RegExp(/^[0-9]+$/),
                               })}
                               className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                               type="range"
-                              name="cardNumber"
-                              autoComplete="cardNumber"
+                              name="credits"
+                              autoComplete="credits"
                               min={100}
                               max={100000}
                               onChange={(event) => {
@@ -222,6 +244,31 @@ export default function BuyCredits() {
 
                                 const val = Number.parseInt(event.target.value);
                                 setValue("credits", val);
+                              }}
+                            />
+                          </div>
+                          <div className="mt-4">
+                            <input
+                              {...register("credits", {
+                                required:
+                                  creditAmountPreset.id === 3 ? true : false,
+                                pattern: new RegExp(/^[0-9]+$/),
+                              })}
+                              className="block rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                              type="input"
+                              name="credits"
+                              autoComplete="credits"
+                              min={100}
+                              max={100000}
+                              onChange={(event) => {
+                                console.log("---");
+                                let val;
+                                if (event.target.value) {
+                                  val = Number.parseInt(event.target.value);
+                                  setValue("credits", val);
+                                } else {
+                                  setValue("credits", 0);
+                                }
                               }}
                             />
                           </div>
@@ -346,7 +393,7 @@ export default function BuyCredits() {
                             <div className="min-w-0 flex-1">
                               <h4 className="text-sm">Credits</h4>
                               <p className="mt-1 text-sm text-gray-500">
-                                {credits}
+                                {credits.toLocaleString()}
                               </p>
                             </div>
                           </div>

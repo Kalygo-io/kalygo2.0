@@ -51,11 +51,12 @@ export function EnterprisePricing() {
                   {tier.id === "tier-enterprise" && (
                     <>
                       <span className="text-5xl font-bold tracking-tight text-gray-900">
-                        {tier.price.monthly}
+                        {/* {tier.price.monthly} */}
+                        {t("common:enterprise-pricing.contact-us")}
                       </span>
-                      <span className="text-sm font-semibold leading-6 text-gray-600">
+                      {/* <span className="text-sm font-semibold leading-6 text-gray-600">
                         /{t("common:enterprise-pricing.month")}
-                      </span>
+                      </span> */}
                     </>
                   )}
                 </p>
