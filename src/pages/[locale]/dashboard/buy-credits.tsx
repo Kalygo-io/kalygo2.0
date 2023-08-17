@@ -38,9 +38,27 @@ const getStaticProps = makeStaticProps([
 export { getStaticPaths, getStaticProps };
 
 const creditAmountPresets = [
-  { id: 1, title: "500 credits", creditsAmount: 500, price: "$8.17" },
-  { id: 2, title: "1,000 credits", creditsAmount: 1000, price: "$15.88" },
-  { id: 3, title: "Custom amount", creditsAmount: -1, price: "TBD" },
+  {
+    id: 1,
+    title: "500 credits",
+    description: "~1,039 pages with GPT-3 & ~40 pages with GPT-4",
+    creditsAmount: 500,
+    price: "$8.17",
+  },
+  {
+    id: 2,
+    title: "1,000 credits",
+    description: "~2,078 pages with GPT-3 & ~81 pages with GPT-4",
+    creditsAmount: 1000,
+    price: "$15.88",
+  },
+  {
+    id: 3,
+    title: "Custom amount",
+    description: "",
+    creditsAmount: -1,
+    price: "TBD",
+  },
 ];
 
 function classNames(...classes: string[]) {
@@ -194,6 +212,12 @@ export default function BuyCredits() {
                                             >
                                               {preset.title}
                                             </RadioGroup.Label>
+                                            <RadioGroup.Description
+                                              as="span"
+                                              className="mt-1 flex items-center text-sm text-gray-500"
+                                            >
+                                              {preset.description}
+                                            </RadioGroup.Description>
                                             <RadioGroup.Description
                                               as="span"
                                               className="mt-6 text-sm font-medium text-gray-900"
