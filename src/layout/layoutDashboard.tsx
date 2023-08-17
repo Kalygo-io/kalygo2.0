@@ -135,17 +135,18 @@ export default function LayoutDashboard({ children, account }: P) {
     <></>
   );
 
-  const usageCredits = account ? (
-    <>
-      <span className="text-sm text-gray-700">{account.usageCredits}</span>
-      <CircleStackIcon
-        className="text-blue-600 h-6 w-6"
-        aria-label="Usage Credits Icon"
-      />
-    </>
-  ) : (
-    <></>
-  );
+  const usageCredits =
+    account && account.usageCredits ? (
+      <>
+        <span className="text-sm text-gray-700">{account.usageCredits}</span>
+        <CircleStackIcon
+          className="text-blue-600 h-6 w-6"
+          aria-label="Usage Credits Icon"
+        />
+      </>
+    ) : (
+      <></>
+    );
 
   return (
     <>
