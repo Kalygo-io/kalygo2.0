@@ -1,7 +1,7 @@
 import { errorReporter } from "@/utility/error/reporter";
 import axios from "axios";
 
-export async function purchaseCreditsFactory(
+export async function buyCreditsFactory(
   card: {
     card_number: string;
     exp_month: string;
@@ -14,7 +14,7 @@ export async function purchaseCreditsFactory(
   try {
     const config = {
       method: "post",
-      url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account/purchase-credits`,
+      url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account/buy-credits`,
       headers: {
         "Content-Type": "application/json",
       },

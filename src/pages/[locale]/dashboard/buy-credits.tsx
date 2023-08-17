@@ -8,17 +8,23 @@ import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
 import ContractList from "@/components/browseContractsComponents/contractList";
 import { RadioGroup } from "@headlessui/react";
-import { CheckCircleIcon, TrashIcon } from "@heroicons/react/20/solid";
+import { CheckCircleIcon } from "@heroicons/react/20/solid";
+import { FaCcStripe } from "react-icons/fa6";
 import { useForm, Controller } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
-import { purchaseCreditsFactory } from "@/serviceFactory/purchaseCreditsFactory";
+import { buyCreditsFactory } from "@/serviceFactory/buyCreditsFactory";
 
 // import Link from "next/link";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
 import { Fragment, useState } from "react";
 import { CircleStackIcon } from "@heroicons/react/24/outline";
 import { errorReporter } from "@/utility/error/reporter";
+import {
+  calculateFees,
+  calculateTotal,
+} from "@/utility/pricing/calculatePricing";
+import { infoToast } from "@/utility/toasts";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -32,8 +38,8 @@ const getStaticProps = makeStaticProps([
 export { getStaticPaths, getStaticProps };
 
 const creditAmountPresets = [
-  { id: 1, title: "500 credits", creditsAmount: 500, price: "$7.62" },
-  { id: 2, title: "1,000 credits", creditsAmount: 1000, price: "$14.83" },
+  { id: 1, title: "500 credits", creditsAmount: 500, price: "$8.17" },
+  { id: 2, title: "1,000 credits", creditsAmount: 1000, price: "$15.88" },
   { id: 3, title: "Custom amount", creditsAmount: -1, price: "TBD" },
 ];
 
@@ -47,6 +53,7 @@ export default function BuyCredits() {
   const {
     register,
     handleSubmit,
+    reset,
     getValues,
     formState: { errors, isValid },
     setValue,
@@ -58,12 +65,13 @@ export default function BuyCredits() {
       name: "",
       exp_date: "",
       cvc: "",
-      credits: 10000,
+      credits: 1000,
       selectedCreditAmountPreset: {
         id: 2,
         title: "Custom",
         price: "Flexible amount",
       },
+      saveCard: false,
     },
   });
 
@@ -81,7 +89,7 @@ export default function BuyCredits() {
 
       const [exp_month, exp_year] = data.exp_date.split("/");
 
-      const customRequest = purchaseCreditsFactory(
+      const buyCreditsRequest = buyCreditsFactory(
         {
           card_number: data.card_number,
           name: data.name,
@@ -91,8 +99,11 @@ export default function BuyCredits() {
         },
         data.credits
       );
-      const customRequestResponse = await customRequest;
-      console.log("customSummaryResponse", customRequestResponse);
+      const response = await buyCreditsRequest;
+      console.log("buyCreditsResponse", response);
+
+      infoToast("Successfully purchased credits!");
+      reset();
     } catch (e) {
       errorReporter(e);
     }
@@ -247,7 +258,7 @@ export default function BuyCredits() {
                               }}
                             />
                           </div>
-                          <div className="mt-4">
+                          <div className="mt-2">
                             <input
                               {...register("credits", {
                                 required:
@@ -280,7 +291,13 @@ export default function BuyCredits() {
                   {/* Payment */}
                   <div className="mt-10 border-t border-gray-200 pt-10">
                     <h2 className="text-lg font-medium text-gray-900">
-                      Payment
+                      Payment{" "}
+                      <span>
+                        <FaCcStripe
+                          className="text-indigo-600 inline h-6 w-6"
+                          aria-label="Stripe Icon"
+                        />
+                      </span>
                     </h2>
 
                     <div className="mt-6 grid grid-cols-4 gap-x-4 gap-y-6">
@@ -370,6 +387,25 @@ export default function BuyCredits() {
                           />
                         </div>
                       </div>
+
+                      <div>
+                        <div className="mt-1">
+                          <label
+                            htmlFor="saveCard"
+                            className="text-sm font-medium text-gray-700"
+                          >
+                            Save Card?
+                          </label>
+                          <input
+                            {...register("saveCard")}
+                            type="checkbox"
+                            name="saveCard"
+                            id="saveCard"
+                            autoComplete="saveCard"
+                            className="ml-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -416,19 +452,13 @@ export default function BuyCredits() {
                       <div className="flex items-center justify-between">
                         <dt className="text-sm">Fees</dt>
                         <dd className="text-sm font-medium text-gray-900">
-                          ${((credits / 100) * 0.029 + 0.3).toFixed(2)}
-                        </dd>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <dt className="text-sm">Markup</dt>
-                        <dd className="text-sm font-medium text-gray-900">
-                          ${(((credits / 100) * 1.029 + 0.3) * 0.4).toFixed(2)}
+                          ${calculateFees(credits)}
                         </dd>
                       </div>
                       <div className="flex items-center justify-between border-t border-gray-200 pt-6">
                         <dt className="text-base font-medium">Total</dt>
                         <dd className="text-base font-medium text-gray-900">
-                          ${(((credits / 100) * 1.029 + 0.3) * 1.4).toFixed(2)}
+                          ${calculateTotal(credits)}
                         </dd>
                       </div>
                     </dl>

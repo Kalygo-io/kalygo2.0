@@ -30,7 +30,7 @@ export const AllocateCreditsWidget = () => {
         );
         setEmail("");
         setAmount(0);
-        setErrorMessage("Succesful");
+        setErrorMessage("Successful");
       }
     } catch (err) {
       setErrorMessage("Failed");

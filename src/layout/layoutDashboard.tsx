@@ -135,6 +135,18 @@ export default function LayoutDashboard({ children, account }: P) {
     <></>
   );
 
+  const usageCredits = account ? (
+    <>
+      <span className="text-sm text-gray-700">{account.usageCredits}</span>
+      <CircleStackIcon
+        className="text-blue-600 h-6 w-6"
+        aria-label="Usage Credits Icon"
+      />
+    </>
+  ) : (
+    <></>
+  );
+
   return (
     <>
       <div>
@@ -403,7 +415,7 @@ export default function LayoutDashboard({ children, account }: P) {
             <div className="flex flex-1 justify-end gap-x-4 self-stretch lg:gap-x-6">
               <div className="flex items-center gap-x-2 lg:gap-x-2">
                 {totalCredits}
-
+                {usageCredits}
                 {/* <button
                   type="button"
                   className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500"
