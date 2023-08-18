@@ -42,6 +42,16 @@ export default function Queue() {
     err: null,
   });
 
+  const [account, setAccount] = useState<{
+    val: any;
+    loading: boolean;
+    err: any;
+  }>({
+    val: null,
+    loading: true,
+    err: null,
+  });
+
   useEffect(() => {
     const interval = setInterval(async () => {
       try {
@@ -75,10 +85,28 @@ export default function Queue() {
           loading: false,
           err: null,
         });
+
+        const respAccount = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account`,
+          {
+            withCredentials: true,
+          }
+        );
+        setAccount({
+          loading: false,
+          val: respAccount.data,
+          err: null,
+        });
       } catch (e) {
         setJobs({
           val: jobs.val,
           loading: false,
+          err: e,
+        });
+
+        setAccount({
+          loading: false,
+          val: null,
           err: e,
         });
       }
@@ -110,7 +138,7 @@ export default function Queue() {
       <Head>
         <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
-      <LayoutDashboard>
+      <LayoutDashboard account={account.val}>
         <div className="p-4 sm:p-6 lg:p-8">
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">

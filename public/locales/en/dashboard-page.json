@@ -17,7 +17,9 @@
     "settings": "Settings",
     "sign-out": "Sign out",
     "credit": "Credit",
-    "credits": "Credits"
+    "credits": "Credits",
+    "free-credit": "Free Credit",
+    "free-credits": "Free Credits"
   },
   "index": {
     "title": "Dashboard",

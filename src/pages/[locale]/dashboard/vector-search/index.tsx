@@ -1,19 +1,13 @@
 "use client";
 
 import Head from "next/head";
-
-import Image from "next/image";
-import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
-import ContractList from "@/components/browseContractsComponents/contractList";
-
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
-
 // import Link from "next/link";
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { infoToast, errorToast } from "@/utility/toasts";
 import {
   //   SearchFileForm,
@@ -24,6 +18,7 @@ import {
 import { SectionLoader } from "@/components/shared/SectionLoader";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { PaymentRequiredModal } from "@/components/shared/PaymentRequiredModal";
+import axios from "axios";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -36,7 +31,7 @@ const getStaticProps = makeStaticProps([
 ]);
 export { getStaticPaths, getStaticProps };
 
-export default function Summarize() {
+export default function VectorSearch() {
   const { state, dispatch } = useAppContext();
   const { t } = useTranslation();
 
@@ -56,7 +51,34 @@ export default function Summarize() {
   const [showPaymentMethodRequiredModal, setShowPaymentMethodRequiredModal] =
     useState<boolean>(false);
 
-  console.log("showPaymentMethodRequiredModal", showPaymentMethodRequiredModal);
+  const [account, setAccount] = useState<{
+    val: any;
+    loading: boolean;
+    err: any;
+  }>({
+    val: null,
+    loading: true,
+    err: null,
+  });
+
+  useEffect(() => {
+    async function fetch() {
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account`,
+        {
+          withCredentials: true,
+        }
+      );
+
+      setAccount({
+        loading: false,
+        val: res.data,
+        err: null,
+      });
+    }
+
+    fetch();
+  }, []);
 
   let jsx = null;
   if (searchResults.loading) {
@@ -101,7 +123,7 @@ export default function Summarize() {
       <Head>
         <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
-      <LayoutDashboard>
+      <LayoutDashboard account={account.val}>
         <div className="p-4 sm:p-6 lg:p-8">
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
@@ -123,4 +145,4 @@ export default function Summarize() {
   );
 }
 
-Summarize.requireAuth = true;
+VectorSearch.requireAuth = true;

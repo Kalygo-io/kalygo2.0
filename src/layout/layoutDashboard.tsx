@@ -123,8 +123,8 @@ export default function LayoutDashboard({ children, account }: P) {
           account.summaryCredits +
           account.customRequestCredits}{" "}
         {account.vectorSearchCredits + account.summaryCredits === 1
-          ? t("dashboard-page:user-nav.credit")
-          : t("dashboard-page:user-nav.credits")}
+          ? t("dashboard-page:user-nav.free-credit")
+          : t("dashboard-page:user-nav.free-credits")}
       </span>
       <CircleStackIcon
         className="text-black h-6 w-6"
@@ -138,7 +138,13 @@ export default function LayoutDashboard({ children, account }: P) {
   const usageCredits =
     account && account.usageCredits ? (
       <>
-        <span className="text-sm text-gray-700">{account.usageCredits}</span>
+        <span className="text-sm text-gray-700">
+          {account.usageCredits.toLocaleString(navigator.language, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}
+          {" Credits"}
+        </span>
         <CircleStackIcon
           className="text-blue-600 h-6 w-6"
           aria-label="Usage Credits Icon"
