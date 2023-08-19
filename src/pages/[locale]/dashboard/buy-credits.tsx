@@ -363,6 +363,7 @@ export default function BuyCredits() {
                             type="text"
                             name="card_number"
                             autoComplete="card_number"
+                            placeholder="0000 0000 0000 0000"
                           />
                         </div>
                       </div>
@@ -382,6 +383,7 @@ export default function BuyCredits() {
                             type="text"
                             name="name"
                             autoComplete="name"
+                            placeholder="Cardholder's name"
                             className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                           />
                         </div>
