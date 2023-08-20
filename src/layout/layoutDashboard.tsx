@@ -22,6 +22,7 @@ import {
   BeakerIcon,
   LockClosedIcon,
   CreditCardIcon,
+  PuzzlePieceIcon,
 } from "@heroicons/react/24/outline";
 
 import { signOut } from "@/services/signOut";
@@ -82,6 +83,11 @@ export default function LayoutDashboard({ children, account }: P) {
       name: t("dashboard-page:navigation.custom-request"),
       href: "/dashboard/custom-request/custom-request-v2",
       icon: BeakerIcon,
+    },
+    {
+      name: t("dashboard-page:navigation.chunking-tool"),
+      href: "/dashboard/chunking-tool",
+      icon: PuzzlePieceIcon,
     },
     {
       name: t("dashboard-page:navigation.queue"),

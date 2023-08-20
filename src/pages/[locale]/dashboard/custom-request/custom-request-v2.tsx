@@ -14,7 +14,6 @@ import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang
 import { Fragment, useEffect, useState } from "react";
 import { infoToast, errorToast } from "@/utility/toasts";
 import {
-  CustomRequestForm,
   CustomRequestError,
   CustomRequestWizard,
 } from "@/components/customRequestOnFilesComponentsV2";

@@ -5,6 +5,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  webpack: function (config, options) {
+    config.experiments = { asyncWebAssembly: true };
+    return config;
+  },
 };
 
 module.exports = nextConfig;

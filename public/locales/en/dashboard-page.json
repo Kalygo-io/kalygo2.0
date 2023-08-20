@@ -11,6 +11,7 @@
     "queue": "My Requests",
     "admin": "Admin",
     "custom-request": "Custom Request",
+    "chunking-tool": "Chunking Tool",
     "buy-credits": "Buy Credits"
   },
   "user-nav": {
@@ -168,6 +169,15 @@
     "more-like-this": "More like this",
     "select": "Select",
     "not-this-one": "Not this one"
+  },
+
+  "chunking-tool": {
+    "title": "Chunking Tool",
+    "description": "The 'Chunking Tool' allows you to upload your data and Kalygo will return it in a format that is ingestable for the A.I. model you are trying to use.",
+    "choose-files": "Choose files",
+    "provide-details": "Provide Details",
+    "chunk": "Chunk",
+    "chosen-files": "Chosen files"
   },
   "queue": {
     "title": "My Requests",

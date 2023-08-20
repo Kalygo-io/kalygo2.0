@@ -1,0 +1,171 @@
+import React, { RefObject, useState } from "react";
+import { useTranslation } from "next-i18next";
+import { errorToast, infoToast } from "@/utility/toasts";
+import { useForm } from "react-hook-form";
+import { navigatorLangDetector } from "@/lib/languageDetector";
+import { useRouter } from "next/router";
+import { customRequestFactory } from "@/serviceFactory/customRequestFactory";
+import { Layout3ColumnAndFooterWrapper } from "../sharedComponents/layout3ColumnAndFooterWrapper";
+import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
+import { LeftAreaAndMainWrapper } from "../sharedComponents/leftAreaAndMainWrapper";
+import { LeftArea } from "../sharedComponents/leftArea";
+import { MainArea } from "../sharedComponents/mainArea";
+import { RightArea } from "../sharedComponents/rightArea";
+import { FooterWrapper } from "../sharedComponents/FooterWrapper";
+import { SummaryMode } from "@/types/SummaryMode";
+import { EachFileInChunksPrompts } from "./reviewComponents/EachFileInChunksPrompts";
+import { EachFileOverallPrompts } from "./reviewComponents/EachFileOverallPrompts";
+import { OverallPrompts } from "./reviewComponents/OverallPrompts";
+import { Tiktoken, encoding_for_model } from "@dqbd/tiktoken";
+import { areChunksValidForModelContext } from "../utils/areChunksValidForModelContext";
+import model_pricing from "@/config/model_pricing";
+import { makeChunksSmaller } from "../utils/makeChunksSmaller";
+import { convertFileToTxtFile } from "../utils/convertFileToTxtFile";
+
+interface Props {
+  customizations: {
+    mode: string;
+    model: "gpt-3.5-turbo" | "gpt-4";
+    prompt?: string;
+    finalPrompt?: string;
+    overallPrompt?: string;
+    includeFinalPrompt?: boolean;
+  } | null;
+  files: File[];
+  wizardStepsRef: RefObject<HTMLElement>;
+  setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
+}
+
+export function Review(props: Props) {
+  const {
+    customizations,
+    files,
+    wizardStepsRef,
+    setShowPaymentMethodRequiredModal,
+  } = props;
+
+  const [numPages, setNumPages] = useState<number>();
+  const router = useRouter();
+  const { t } = useTranslation();
+
+  const {
+    formState: { errors },
+  } = useForm({});
+
+  const [searchState, setSearchState] = useState<{
+    val: any;
+    loading: boolean;
+    err: any;
+  }>({
+    val: null,
+    loading: false,
+    err: null,
+  });
+
+  return (
+    <Layout3ColumnAndFooterWrapper>
+      <_3ColumnWrapper>
+        <LeftAreaAndMainWrapper>
+          <LeftArea>
+            <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight">
+              {t("dashboard-page:chunking-tool.chosen-files")!}
+            </h2>
+            {files.length > 0 ? (
+              <ul role="list" className="divide-y divide-gray-100">
+                {Object.keys(files).map((value: string, index: number) => {
+                  return (
+                    <li
+                      key={index}
+                      className="flex items-center justify-between gap-x-6 py-5"
+                    >
+                      <div className="flex items-start gap-x-3 truncate">
+                        <p className="text-sm font-semibold leading-6 text-gray-900 truncate">
+                          {files[index].name}
+                        </p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p className="mt-1 text-sm leading-6 text-gray-400">
+                No files selected
+              </p>
+            )}
+          </LeftArea>
+          <MainArea>
+            <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight text-center">
+              {t("dashboard-page:custom-request-v2.customizations")!}
+            </h2>
+            <div className="grid grid-cols-1 gap-x-6 gap-y-8">
+              <div className="col-span-full">
+                <form>
+                  <div className="mt-2">
+                    <div className="text-center">
+                      {customizations?.model && (
+                        <span>{customizations?.model}</span>
+                      )}
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </MainArea>
+        </LeftAreaAndMainWrapper>
+        <RightArea>
+          <p className="mt-1 text-sm leading-6 text-gray-400 text-center">
+            Click send to process your request
+          </p>
+        </RightArea>
+      </_3ColumnWrapper>
+      <FooterWrapper>
+        <button
+          onClick={async () => {
+            try {
+              console.log("generating chunks...");
+
+              const encoder: Tiktoken = encoding_for_model(
+                customizations?.model!
+              );
+
+              console.log("encoder", encoder);
+
+              const fileAsTxt: string = await convertFileToTxtFile(files[0]);
+
+              let chunks: string[] = [fileAsTxt];
+
+              while (
+                !areChunksValidForModelContext(
+                  [chunks[0]], // check if the file is small enough to be prepended with the PROMPT_PREFIX and not trigger input token limit
+                  model_pricing.models[customizations?.model!].context,
+                  encoder
+                )
+              ) {
+                // -v-v- PROMPT_PREFIX PLUS THE_FILE IS TOO BIG SO MUST BREAK INTO SMALLER CHUNKS -v-v-
+                console.log("in while loop..."); // for console debugging...
+                let newChunks = makeChunksSmaller(
+                  chunks,
+                  model_pricing.models[customizations?.model!].context,
+                  encoder
+                );
+                chunks = newChunks;
+              }
+
+              console.log("chunks", chunks);
+            } catch (e: any) {
+              errorToast(e.toString());
+            }
+          }}
+          disabled={files.length === 0 || customizations?.prompt === ""}
+          className={`${
+            files.length === 0 || customizations?.prompt === ""
+              ? "opacity-50"
+              : "opacity-100"
+          } mt-2 flex justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
+        >
+          {t("dashboard-page:chunking-tool.chunk")!}
+        </button>
+      </FooterWrapper>
+    </Layout3ColumnAndFooterWrapper>
+  );
+}
