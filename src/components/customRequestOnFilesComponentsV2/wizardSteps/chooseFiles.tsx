@@ -15,6 +15,7 @@ import { LeftArea } from "../sharedComponents/leftArea";
 import { MainArea } from "../sharedComponents/mainArea";
 import { RightArea } from "../sharedComponents/rightArea";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
+import { enoughUsageCreditsToUsePaidFeatures } from "@/utility/guards/enoughUsageCreditsToUsePaidFeatures";
 
 interface Props {
   files: File[] | null;
@@ -69,9 +70,22 @@ export function ChooseFiles(props: Props) {
           e.dataTransfer?.items["0"]?.type
         )
       ) {
-        filesLocal
-          ? setFilesLocal([...filesLocal, ...(e.dataTransfer.files || null)])
-          : setFilesLocal(e.dataTransfer.files);
+        const paymentMethodsRequest = getAccountPaymentMethodsFactory();
+        const paymentMethodsResponse = await paymentMethodsRequest;
+
+        if (
+          (isNumber(get(paymentMethodsResponse, "data.customRequestCredits")) &&
+            get(paymentMethodsResponse, "data.customRequestCredits") > 0) ||
+          enoughUsageCreditsToUsePaidFeatures(
+            get(paymentMethodsResponse, "data.usageCredits")
+          )
+        ) {
+          filesLocal
+            ? setFilesLocal([...filesLocal, ...(e.dataTransfer.files || null)])
+            : setFilesLocal(e.dataTransfer.files);
+        } else {
+          setShowPaymentMethodRequiredModal(true);
+        }
       }
     } catch (e) {
       errorReporter(e);
@@ -81,6 +95,7 @@ export function ChooseFiles(props: Props) {
   const handleChange = async function (e: any) {
     try {
       e.preventDefault();
+
       if (e.target.files && e.target.files) {
         const paymentMethodsRequest = getAccountPaymentMethodsFactory();
         const paymentMethodsResponse = await paymentMethodsRequest;
@@ -88,7 +103,9 @@ export function ChooseFiles(props: Props) {
         if (
           (isNumber(get(paymentMethodsResponse, "data.customRequestCredits")) &&
             get(paymentMethodsResponse, "data.customRequestCredits") > 0) ||
-          get(paymentMethodsResponse, "data.stripeDefaultSource")
+          enoughUsageCreditsToUsePaidFeatures(
+            get(paymentMethodsResponse, "data.usageCredits")
+          )
         ) {
           setFilesLocal(e.target.files || null);
         } else {
