@@ -8,22 +8,25 @@ import {
 interface P {
   register: UseFormRegister<{
     mode: string;
-    model: string;
+    model: "gpt-3.5-turbo" | "gpt-4";
     prompt: string | undefined;
+    includeFinalPrompt: boolean | undefined;
     finalPrompt: string | undefined;
     overallPrompt: string | undefined;
   }>;
   trigger: UseFormTrigger<{
     mode: string;
-    model: string;
+    model: "gpt-3.5-turbo" | "gpt-4";
     prompt: string | undefined;
+    includeFinalPrompt: boolean | undefined;
     finalPrompt: string | undefined;
     overallPrompt: string | undefined;
   }>;
   setValue: UseFormSetValue<{
     mode: string;
-    model: string;
+    model: "gpt-3.5-turbo" | "gpt-4";
     prompt: string | undefined;
+    includeFinalPrompt: boolean | undefined;
     finalPrompt: string | undefined;
     overallPrompt: string | undefined;
   }>;

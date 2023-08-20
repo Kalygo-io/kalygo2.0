@@ -16,10 +16,14 @@ export function CustomRequestWizard(props: Props) {
 
   const [step, setStep] = useState(1);
   const [files, setFiles] = useState<File[] | null>(null);
-  const [customizations, setCustomizations] = useState<Record<
-    string,
-    string
-  > | null>(null);
+  const [customizations, setCustomizations] = useState<{
+    mode: string;
+    model: "gpt-3.5-turbo" | "gpt-4";
+    prompt?: string;
+    finalPrompt?: string;
+    overallPrompt?: string;
+    includeFinalPrompt?: boolean;
+  } | null>(null);
 
   const { t } = useTranslation();
 

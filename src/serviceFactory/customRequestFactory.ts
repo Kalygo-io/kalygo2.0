@@ -4,7 +4,7 @@ import get from "lodash.get";
 import { errorReporter } from "@/utility/error/reporter";
 
 export async function customRequestFactory(
-  customizations: Record<string, string> | null,
+  customizations: Record<string, string | boolean> | null,
   fileList: File[]
 ) {
   try {
@@ -16,11 +16,11 @@ export async function customRequestFactory(
       console.log(fileList, fileList[i]);
       formData.append("documents", fileList[i]);
     }
-    formData.set("mode", customizations?.mode!);
-    formData.set("prompt", customizations?.prompt!);
-    formData.set("finalPrompt", customizations?.finalPrompt!);
-    formData.set("overallPrompt", customizations?.overallPrompt!);
-    formData.set("model", customizations?.model!);
+    formData.set("mode", customizations?.mode! as string);
+    formData.set("prompt", customizations?.prompt! as string);
+    formData.set("finalPrompt", customizations?.finalPrompt! as string);
+    formData.set("overallPrompt", customizations?.overallPrompt! as string);
+    formData.set("model", customizations?.model! as string);
 
     // console.log("formData", formData);
     // console.log("formData", formData.get("documents"));

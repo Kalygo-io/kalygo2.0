@@ -18,7 +18,14 @@ import { EachFileOverallPrompts } from "./reviewComponents/EachFileOverallPrompt
 import { OverallPrompts } from "./reviewComponents/OverallPrompts";
 
 interface Props {
-  customizations: Record<string, string> | null;
+  customizations: {
+    mode: string;
+    model: "gpt-3.5-turbo" | "gpt-4";
+    prompt?: string;
+    finalPrompt?: string;
+    overallPrompt?: string;
+    includeFinalPrompt?: boolean;
+  } | null;
   files: File[];
   wizardStepsRef: RefObject<HTMLElement>;
   setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
@@ -91,19 +98,24 @@ export function Review(props: Props) {
                   <div className="mt-2">
                     {customizations?.mode === SummaryMode.EACH_FILE_OVERALL && (
                       <EachFileOverallPrompts
-                        prompt={customizations.prompt}
-                        finalPrompt={customizations.finalPrompt}
+                        includeFinalPrompt={
+                          customizations.includeFinalPrompt as boolean
+                        }
+                        prompt={customizations.prompt as string}
+                        finalPrompt={customizations.finalPrompt as string}
                       />
                     )}
                     {customizations?.mode ===
                       SummaryMode.EACH_FILE_IN_CHUNKS && (
-                      <EachFileInChunksPrompts prompt={customizations.prompt} />
+                      <EachFileInChunksPrompts
+                        prompt={customizations.prompt as string}
+                      />
                     )}
                     {customizations?.mode === SummaryMode.OVERALL && (
                       <OverallPrompts
-                        prompt={customizations.prompt}
-                        finalPrompt={customizations.finalPrompt}
-                        overallPrompt={customizations.finalPrompt}
+                        prompt={customizations.prompt as string}
+                        finalPrompt={customizations.finalPrompt as string}
+                        overallPrompt={customizations.finalPrompt as string}
                       />
                     )}
                     <div className="text-center">

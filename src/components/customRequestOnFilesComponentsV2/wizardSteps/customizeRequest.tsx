@@ -23,9 +23,25 @@ import { OverallPrompts } from "./customizeRequestComponents/OverallPrompts";
 interface Props {
   account: any;
   files: File[];
-  customizations: Record<string, string> | null;
+  customizations: {
+    mode: string;
+    model: "gpt-3.5-turbo" | "gpt-4";
+    prompt?: string;
+    finalPrompt?: string;
+    overallPrompt?: string;
+    includeFinalPrompt?: boolean;
+  } | null;
   setStep: Dispatch<SetStateAction<number>>;
-  setCustomizations: Dispatch<SetStateAction<Record<string, string> | null>>;
+  setCustomizations: Dispatch<
+    SetStateAction<{
+      mode: string;
+      model: "gpt-3.5-turbo" | "gpt-4";
+      prompt?: string;
+      finalPrompt?: string;
+      overallPrompt?: string;
+      includeFinalPrompt?: boolean;
+    } | null>
+  >;
   wizardStepsRef: RefObject<HTMLElement>;
   setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
 }
@@ -108,6 +124,7 @@ export function CustomizeRequest(props: Props) {
       mode: customizations?.mode || "EACH_FILE_OVERALL",
       model: customizations?.model || "gpt-3.5-turbo",
       prompt: customizations?.prompt,
+      includeFinalPrompt: customizations?.includeFinalPrompt,
       finalPrompt: customizations?.finalPrompt,
       overallPrompt: customizations?.overallPrompt,
     },
@@ -115,6 +132,7 @@ export function CustomizeRequest(props: Props) {
 
   const mode = watch("mode");
   watch("prompt");
+  watch("includeFinalPrompt");
   watch("finalPrompt");
   watch("overallPrompt");
 
@@ -236,6 +254,7 @@ export function CustomizeRequest(props: Props) {
                         </div>
                         {mode === SummaryMode.EACH_FILE_OVERALL && (
                           <EachFileOverallPrompts
+                            values={getValues()}
                             register={register}
                             trigger={trigger}
                             setValue={setValue}
