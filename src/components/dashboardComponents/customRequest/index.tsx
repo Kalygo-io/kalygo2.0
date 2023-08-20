@@ -93,6 +93,33 @@ export default function CustomRequest(p: P) {
                     </div>
                   );
                 })}
+
+              {customRequest.mode === ScanningMode.OVERALL &&
+                customRequest?.completionResponse.map((i: any, idx: any) => {
+                  return (
+                    <div key={idx}>
+                      {customRequest?.completionResponse.length > 1 &&
+                        `(Part ${i.part + 1})`}
+                      <ReactMarkdown className="summary-v2-markdown">
+                        {i.overallCompletion}
+                      </ReactMarkdown>
+                      <br />
+                    </div>
+                  );
+                })}
+
+              {/* summary?.summary.map((i: any, idx: any) => {
+                  return (
+                    <div key={idx}>
+                      {summary?.summary.length > 1 && `(Part ${i.part + 1})`}
+                      <ReactMarkdown className="summary-v2-markdown">
+                        {i.summary}
+                      </ReactMarkdown>
+                      <br />
+                    </div>
+                  );
+                }) */}
+
               {/* {customRequest?.completionResponse.map((i: any, idx: any) => {
                 return (
                   <div key={i.file}>

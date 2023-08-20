@@ -115,7 +115,7 @@ export function Review(props: Props) {
                       <OverallPrompts
                         prompt={customizations.prompt as string}
                         finalPrompt={customizations.finalPrompt as string}
-                        overallPrompt={customizations.finalPrompt as string}
+                        overallPrompt={customizations.overallPrompt as string}
                       />
                     )}
                     <div className="text-center">
