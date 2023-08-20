@@ -38,7 +38,7 @@ export const OverallPrompts = (props: P) => {
           htmlFor="prompt"
           className="block text-md font-medium leading-6 text-gray-900"
         >
-          Intermediate Prompt
+          Prompt
         </label>
         <div className="mt-2">
           <textarea
@@ -62,7 +62,7 @@ export const OverallPrompts = (props: P) => {
           htmlFor="final-prompt"
           className="block text-md font-medium leading-6 text-gray-900"
         >
-          Final Prompt
+          Final File Prompt
         </label>
         <div className="mt-2">
           <textarea
@@ -76,7 +76,7 @@ export const OverallPrompts = (props: P) => {
             id="finalPrompt"
             name="finalPrompt"
             rows={4}
-            placeholder="Final prompt..."
+            placeholder="Final file prompt..."
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
           />
         </div>

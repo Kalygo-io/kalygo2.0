@@ -20,7 +20,7 @@ export const EachFileOverallPrompts = (props: P) => {
           htmlFor="prompt"
           className="block text-md font-medium leading-6 text-gray-900"
         >
-          Intermediate Prompt
+          Prompt
         </label>
         <div className="mt-2">
           <textarea

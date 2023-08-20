@@ -20,7 +20,7 @@ export const OverallPrompts = (props: P) => {
           htmlFor="prompt"
           className="block text-md font-medium leading-6 text-gray-900"
         >
-          Intermediate Prompt
+          Prompt
         </label>
         <div className="mt-2">
           <textarea
@@ -41,7 +41,7 @@ export const OverallPrompts = (props: P) => {
           htmlFor="final-prompt"
           className="block text-md font-medium leading-6 text-gray-900"
         >
-          Final Prompt
+          Final File Prompt
         </label>
         <div className="mt-2">
           <textarea
