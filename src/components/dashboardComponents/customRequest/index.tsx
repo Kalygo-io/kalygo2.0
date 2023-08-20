@@ -1,5 +1,6 @@
 import { useTranslation } from "next-i18next";
 import ReactMarkdown from "react-markdown";
+import { ScanningMode } from "@/types/ScanningMode";
 
 interface P {
   customRequest: any;
@@ -47,7 +48,34 @@ export default function CustomRequest(p: P) {
               {t("dashboard-page:custom-request.total-completion-response")}
             </dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-              {customRequest?.completionResponse.map((i: any, idx: any) => {
+              {customRequest.mode === ScanningMode.PRIOR_TO_TRACKING_MODE &&
+                JSON.stringify(customRequest.completionResponse, null, 2)}
+              {customRequest.mode === ScanningMode.EACH_FILE_IN_CHUNKS &&
+                customRequest?.completionResponse.map((i: any, idx: any) => {
+                  {
+                    return (
+                      <div key={idx}>
+                        <h3 className="text-lg">
+                          <b>{i.file}</b>
+                        </h3>
+                        <ul>
+                          {i?.summary?.map((j: any, idx: any) => {
+                            return (
+                              <li key={idx} className="mt-2">
+                                {i?.summary.length > 1 &&
+                                  `(Part ${j.chunk + 1})`}
+                                <ReactMarkdown className="summary-v2-markdown">
+                                  {j.chunkSummary}
+                                </ReactMarkdown>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    );
+                  }
+                })}
+              {/* {customRequest?.completionResponse.map((i: any, idx: any) => {
                 return (
                   <div key={i.file}>
                     <b>{i.file}</b>
@@ -55,7 +83,6 @@ export default function CustomRequest(p: P) {
                       {i?.response?.map((i: any, idx: any) => {
                         return (
                           <li className="mt-2" key={i.part}>
-                            {/* (Part {i.part + 1})  */}
                             <ReactMarkdown className="custom-request-markdown">
                               {i.completionResponse}
                             </ReactMarkdown>
@@ -66,65 +93,9 @@ export default function CustomRequest(p: P) {
                     <br />
                   </div>
                 );
-              })}
+              })} */}
             </dd>
           </div>
-          {/* <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">
-              Attachments
-            </dt>
-            <dd className="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-              <ul
-                role="list"
-                className="divide-y divide-gray-100 rounded-md border border-gray-200"
-              >
-                <li className="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
-                  <div className="flex w-0 flex-1 items-center">
-                    <PaperClipIcon
-                      className="h-5 w-5 flex-shrink-0 text-gray-400"
-                      aria-hidden="true"
-                    />
-                    <div className="ml-4 flex min-w-0 flex-1 gap-2">
-                      <span className="truncate font-medium">
-                        resume_back_end_developer.pdf
-                      </span>
-                      <span className="flex-shrink-0 text-gray-400">2.4mb</span>
-                    </div>
-                  </div>
-                  <div className="ml-4 flex-shrink-0">
-                    <a
-                      href="#"
-                      className="font-medium text-indigo-600 hover:text-indigo-500"
-                    >
-                      Download
-                    </a>
-                  </div>
-                </li>
-                <li className="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
-                  <div className="flex w-0 flex-1 items-center">
-                    <PaperClipIcon
-                      className="h-5 w-5 flex-shrink-0 text-gray-400"
-                      aria-hidden="true"
-                    />
-                    <div className="ml-4 flex min-w-0 flex-1 gap-2">
-                      <span className="truncate font-medium">
-                        coverletter_back_end_developer.pdf
-                      </span>
-                      <span className="flex-shrink-0 text-gray-400">4.5mb</span>
-                    </div>
-                  </div>
-                  <div className="ml-4 flex-shrink-0">
-                    <a
-                      href="#"
-                      className="font-medium text-indigo-600 hover:text-indigo-500"
-                    >
-                      Download
-                    </a>
-                  </div>
-                </li>
-              </ul>
-            </dd>
-          </div> */}
         </dl>
       </div>
     </div>

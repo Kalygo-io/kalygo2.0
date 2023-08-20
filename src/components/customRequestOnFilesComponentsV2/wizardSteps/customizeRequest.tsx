@@ -103,7 +103,7 @@ export function CustomizeRequest(props: Props) {
   } = useForm({
     mode: "onChange",
     reValidateMode: "onChange",
-    shouldUnregister: true,
+    // shouldUnregister: true,
     defaultValues: {
       mode: customizations?.mode || "EACH_FILE_OVERALL",
       model: customizations?.model || "gpt-3.5-turbo",
@@ -312,6 +312,7 @@ export function CustomizeRequest(props: Props) {
                 <div
                   onClick={() => {
                     setValue("prompt", prompt.prompt);
+                    trigger();
                   }}
                   className="flex items-start gap-x-3 cursor-pointer"
                 >
@@ -361,6 +362,7 @@ export function CustomizeRequest(props: Props) {
                           <div
                             onClick={() => {
                               setValue("prompt", prompt.prompt);
+                              trigger("prompt");
                             }}
                             className={classNames(
                               active ? "bg-gray-50" : "",

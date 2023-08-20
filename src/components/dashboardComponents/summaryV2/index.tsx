@@ -83,40 +83,7 @@ export default function SummaryV2(p: P) {
                         </ul>
                       </div>
                     );
-
-                    // <ul>
-                    //   asdf
-                    //   {i?.summary?.map((j: any, idx: any) => {
-                    //     console.log("i.summary", i.summary);
-                    //     console.log("j", j);
-
-                    //     return (
-                    //       <li className="mt-2" key={j.chunk}>
-                    //         asdf
-                    //         {i?.summary.length > 1 && `(Part ${j.chunk + 1})`}
-                    //         <ReactMarkdown className="summary-v2-markdown">
-                    //           {j.chunkSummary}
-                    //         </ReactMarkdown>
-                    //       </li>
-                    //     );
-                    //   })}
-                    // </ul>;
                   }
-
-                  // return (
-                  //   <div key={i.file}>
-                  //     {summary?.summary.length > 1 && `(Part ${i.part + 1})`}
-                  //     {/* <span>
-                  //       <InformationCircleIcon className="h-4 w-4 inline" />
-                  //       &nbsp;
-                  //       <b>{i.file}</b>
-                  //     </span> */}
-                  //     {/* <ReactMarkdown className="summary-v2-markdown">
-                  //       {i.summary}
-                  //     </ReactMarkdown> */}
-                  //     <br />
-                  //   </div>
-                  // );
                 })}
             </div>
           </div>
