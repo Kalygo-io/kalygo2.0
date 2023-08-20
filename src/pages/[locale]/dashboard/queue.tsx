@@ -14,6 +14,7 @@ import { WindowLoader } from "@/components/shared/WindowLoader";
 import { JobList } from "@/components/queueComponents/jobList";
 import { viewQueue } from "@/services/viewQueue";
 import get from "lodash.get";
+import { useGetAccount } from "@/utility/hooks/getAccount";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -42,15 +43,7 @@ export default function Queue() {
     err: null,
   });
 
-  const [account, setAccount] = useState<{
-    val: any;
-    loading: boolean;
-    err: any;
-  }>({
-    val: null,
-    loading: true,
-    err: null,
-  });
+  const { account } = useGetAccount();
 
   useEffect(() => {
     const interval = setInterval(async () => {
@@ -85,28 +78,10 @@ export default function Queue() {
           loading: false,
           err: null,
         });
-
-        const respAccount = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account`,
-          {
-            withCredentials: true,
-          }
-        );
-        setAccount({
-          loading: false,
-          val: respAccount.data,
-          err: null,
-        });
       } catch (e) {
         setJobs({
           val: jobs.val,
           loading: false,
-          err: e,
-        });
-
-        setAccount({
-          loading: false,
-          val: null,
           err: e,
         });
       }

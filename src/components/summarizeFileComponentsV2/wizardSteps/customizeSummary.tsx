@@ -37,10 +37,6 @@ export function CustomizeSummary(props: Props) {
   // ref
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    customizations;
-  }, []);
-
   const onSubmit = async (data: any) => {
     try {
       console.log("provideRequest submit", data);
@@ -83,9 +79,6 @@ export function CustomizeSummary(props: Props) {
                   </div>
                   <div className="mt-1 sm:col-span-2 sm:mt-0">
                     <div className="max-w-lg">
-                      {/* <p className="text-sm leading-6 text-gray-600">
-                        These are delivered via SMS to your mobile phone.
-                      </p> */}
                       <div className="mt-6 space-x-2 flex justify-between">
                         <div className="flex items-center gap-x-3">
                           <input

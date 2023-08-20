@@ -1,8 +1,12 @@
-import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
+import {
+  EllipsisVerticalIcon,
+  MinusIcon,
+  PlusIcon,
+} from "@heroicons/react/24/outline";
 import React, { Dispatch, Fragment, RefObject, SetStateAction } from "react";
 import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
-import { Menu, Transition } from "@headlessui/react";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Layout3ColumnAndFooterWrapper } from "../sharedComponents/layout3ColumnAndFooterWrapper";
 import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
 import { LeftAreaAndMainWrapper } from "../sharedComponents/leftAreaAndMainWrapper";
@@ -11,12 +15,17 @@ import { MainArea } from "../sharedComponents/mainArea";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
 import { RightArea } from "../sharedComponents/rightArea";
 import { classNames } from "@/utility/misc/classNames";
+import { SummaryMode } from "@/types/SummaryMode";
+import { EachFileOverallPrompts } from "./customizeRequestComponents/EachFileOverallPrompts";
+import { EachFileInChunksPrompts } from "./customizeRequestComponents/EachFileInChunksPrompts";
+import { OverallPrompts } from "./customizeRequestComponents/OverallPrompts";
 
 interface Props {
+  account: any;
   files: File[];
-  prompt: string;
+  customizations: Record<string, string> | null;
   setStep: Dispatch<SetStateAction<number>>;
-  setPrompt: Dispatch<SetStateAction<string>>;
+  setCustomizations: Dispatch<SetStateAction<Record<string, string> | null>>;
   wizardStepsRef: RefObject<HTMLElement>;
   setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
 }
@@ -42,27 +51,72 @@ const preBuiltPrompts = [
 ];
 
 export function CustomizeRequest(props: Props) {
-  const { prompt, files, setStep, setPrompt } = props;
+  // const { prompt, files, setStep, setPrompt } = props;
+
+  const {
+    customizations,
+    files,
+    setStep,
+    setCustomizations,
+    setShowPaymentMethodRequiredModal,
+    account,
+  } = props;
+
   const { t } = useTranslation();
+
+  // const onSubmit = async (data: any) => {
+  //   try {
+  //     setPrompt(data.prompt);
+  //     setStep(3);
+  //   } catch (e: any) {}
+  // };
+
+  // const {
+  //   register,
+  //   getValues,
+  //   formState: { isValid },
+  //   setValue,
+  //   watch,
+  // } = useForm({
+  //   defaultValues: {
+  //     prompt: prompt || "",
+  //   },
+  // });
 
   const onSubmit = async (data: any) => {
     try {
-      setPrompt(data.prompt);
+      console.log("provideRequest submit", data);
+      setCustomizations(data);
       setStep(3);
     } catch (e: any) {}
   };
 
   const {
     register,
+    handleSubmit,
     getValues,
-    formState: { isValid },
+    trigger,
+    resetField,
+    formState: { errors, isValid },
     setValue,
     watch,
   } = useForm({
+    mode: "onChange",
+    reValidateMode: "onChange",
+    shouldUnregister: true,
     defaultValues: {
-      prompt: prompt || "",
+      mode: customizations?.mode || "EACH_FILE_OVERALL",
+      model: customizations?.model || "gpt-3.5-turbo",
+      prompt: customizations?.prompt,
+      finalPrompt: customizations?.finalPrompt,
+      overallPrompt: customizations?.overallPrompt,
     },
   });
+
+  const mode = watch("mode");
+  watch("prompt");
+  watch("finalPrompt");
+  watch("overallPrompt");
 
   return (
     <Layout3ColumnAndFooterWrapper>
@@ -97,32 +151,146 @@ export function CustomizeRequest(props: Props) {
           </LeftArea>
 
           <MainArea>
+            <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl text-center">
+              {t("dashboard-page:custom-request-v2.customizations")}
+            </h2>
             <div className="grid grid-cols-1 gap-x-6 gap-y-8">
               <div className="col-span-full">
-                <form>
-                  <div>
-                    <label
-                      htmlFor="prompt"
-                      // className="block text-sm font-medium leading-6 text-gray-900"
-                      className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl"
-                    >
-                      {t("dashboard-page:custom-request.prompt")}
-                    </label>
-                    <div className="mt-2">
-                      <textarea
-                        {...register("prompt", {
-                          required: true,
-                        })}
-                        placeholder={
-                          t(
-                            "dashboard-page:custom-request-v2.prompt-placeholder-text"
-                          )!
-                        }
-                        rows={4}
-                        name="prompt"
-                        id="prompt"
-                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                      />
+                <form className="mx-auto">
+                  <div className="space-y-12 sm:space-y-16">
+                    <div className="sm:mt-2 space-y-10 border-gray-900/10 pb-12 sm:space-y-6 sm:divide-y sm:divide-gray-900/10 sm:pb-0">
+                      <fieldset className="space-y-2">
+                        <legend className="sr-only">Mode</legend>
+                        <label
+                          htmlFor="mode"
+                          className="block text-md font-medium leading-6 text-gray-900"
+                        >
+                          Mode
+                        </label>
+                        <div className="mt-2">
+                          <div className="mt-4 space-x-2 flex justify-between">
+                            <div className="flex items-center gap-x-2">
+                              <input
+                                {...register("mode")}
+                                id="overall-data"
+                                type="radio"
+                                onChange={(e) => {
+                                  setValue("mode", e.target.value);
+                                  resetField("prompt");
+                                  resetField("finalPrompt");
+                                  resetField("overallPrompt");
+                                }}
+                                value={SummaryMode.EACH_FILE_OVERALL}
+                                className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
+                              />
+                              <label
+                                htmlFor="overall-data"
+                                className="block text-sm font-medium leading-6 text-gray-900"
+                              >
+                                Each Overall
+                              </label>
+                            </div>
+                            <div className="flex items-center gap-x-2">
+                              <input
+                                {...register("mode")}
+                                id="each-part-of-data"
+                                type="radio"
+                                onChange={(e) => {
+                                  setValue("mode", e.target.value);
+                                  resetField("prompt");
+                                  resetField("finalPrompt");
+                                  resetField("overallPrompt");
+                                }}
+                                value={SummaryMode.EACH_FILE_IN_CHUNKS}
+                                className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
+                              />
+                              <label
+                                htmlFor="each-part-of-data"
+                                className="block text-sm font-medium leading-6 text-gray-900"
+                              >
+                                Each In Chunks
+                              </label>
+                            </div>
+                            <div className="flex items-center gap-x-2">
+                              <input
+                                {...register("mode")}
+                                id="overall"
+                                type="radio"
+                                onChange={(e) => {
+                                  setValue("mode", e.target.value);
+                                  resetField("prompt");
+                                  resetField("finalPrompt");
+                                  resetField("overallPrompt");
+                                }}
+                                value={SummaryMode.OVERALL}
+                                className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
+                              />
+                              <label
+                                htmlFor="overall"
+                                className="block text-sm font-medium leading-6 text-gray-900"
+                              >
+                                Overall
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        {mode === SummaryMode.EACH_FILE_OVERALL && (
+                          <EachFileOverallPrompts
+                            register={register}
+                            trigger={trigger}
+                            setValue={setValue}
+                          />
+                        )}
+                        {mode === SummaryMode.EACH_FILE_IN_CHUNKS && (
+                          <EachFileInChunksPrompts
+                            register={register}
+                            trigger={trigger}
+                            setValue={setValue}
+                          />
+                        )}
+                        {mode === SummaryMode.OVERALL && (
+                          <OverallPrompts
+                            register={register}
+                            trigger={trigger}
+                            setValue={setValue}
+                          />
+                        )}
+                      </fieldset>
+                      <fieldset>
+                        <legend className="sr-only">A.I. model</legend>
+                        <div className="py-6">
+                          <label
+                            htmlFor="model"
+                            className="block text-md font-medium leading-6 text-gray-900 sm:pt-1.5"
+                          >
+                            A.I. model
+                          </label>
+                          <div className="mt-1 sm:mt-0">
+                            <div className="mt-2 space-x-2 flex justify-between w-full">
+                              <select
+                                {...register("model")}
+                                id="model"
+                                name="model"
+                                autoComplete="model"
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-full sm:text-sm sm:leading-6"
+                              >
+                                <option value={"gpt-3.5-turbo"}>
+                                  GPT-3 (4k)
+                                </option>
+                                <option
+                                  disabled={!account?.stripeDefaultSource}
+                                  value={"gpt-4"}
+                                >
+                                  GPT-4 (8k)
+                                </option>
+                                <option disabled value={"llama-2"}>
+                                  LLaMa 2
+                                </option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
                     </div>
                   </div>
                 </form>
@@ -138,7 +306,7 @@ export function CustomizeRequest(props: Props) {
           {preBuiltPrompts.map((prompt) => (
             <li
               key={prompt.id}
-              className="flex items-center justify-between gap-x-6 py-4 pt-8"
+              className="flex items-center justify-between gap-x-6 pt-8"
             >
               <div className="min-w-0">
                 <div
@@ -227,12 +395,12 @@ export function CustomizeRequest(props: Props) {
       </_3ColumnWrapper>
       <FooterWrapper>
         <button
-          disabled={!isValid}
+          disabled={!(files.length > 0 && isValid)}
           onClick={() => {
             onSubmit(getValues());
           }}
           className={`${
-            files.length === 0 || !isValid ? "opacity-50" : "opacity-100"
+            files.length > 0 && isValid ? "opacity-100" : "opacity-50"
           } inline-flex justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
         >
           Next

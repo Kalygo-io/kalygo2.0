@@ -21,6 +21,7 @@ import {
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { PaymentRequiredModal } from "@/components/shared/PaymentRequiredModal";
 import axios from "axios";
+import { useGetAccount } from "@/utility/hooks/getAccount";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -38,34 +39,7 @@ export default function CustomRequest() {
   const router = useRouter();
   const { t } = useTranslation();
 
-  const [account, setAccount] = useState<{
-    val: any;
-    loading: boolean;
-    err: any;
-  }>({
-    val: null,
-    loading: true,
-    err: null,
-  });
-
-  useEffect(() => {
-    async function fetch() {
-      const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account`,
-        {
-          withCredentials: true,
-        }
-      );
-
-      setAccount({
-        loading: false,
-        val: res.data,
-        err: null,
-      });
-    }
-
-    fetch();
-  }, []);
+  const { account } = useGetAccount();
 
   const [summary, setSummaryState] = useState<{
     val: {
@@ -102,6 +76,7 @@ export default function CustomRequest() {
   } else {
     jsx = (
       <CustomRequestWizard
+        account={account}
         setShowPaymentMethodRequiredModal={(showModal: boolean) => {
           setShowPaymentMethodRequiredModal(showModal);
         }}
@@ -119,16 +94,10 @@ export default function CustomRequest() {
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
               <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
-                {t("dashboard-page:custom-request.title")}
+                {t("dashboard-page:custom-request-v2.title")}
               </h2>
               <p className="mt-1 text-sm leading-6 text-gray-400">
-                &apos;Custom Request&apos; gives you the most control over your
-                documents. First, upload 1 to 10 documents (.txt or .pdf) you
-                want Kalygo to interact with. Free Tier uploads are limited to
-                1MB while Paid Tier uploads are limited to 40MB. Then in the
-                second step you can use the text box to write out how and what
-                Kalygo should do with your files or you can try out a suggested
-                request.
+                {t("dashboard-page:custom-request-v2.description")}
               </p>
             </div>
           </div>

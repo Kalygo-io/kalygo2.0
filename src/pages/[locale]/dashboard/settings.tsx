@@ -22,6 +22,7 @@ import { Divider } from "@/components/shared/Divider";
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
 import { FreeCredits } from "@/components/accountSettingsComponents/freeCredits";
 import get from "lodash.get";
+import { useGetAccount } from "@/utility/hooks/getAccount";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -40,25 +41,7 @@ export default function Settings() {
   const { t } = useTranslation();
   const router = useRouter();
   const { asPath } = router;
-
-  const [account, setAccount] = useState<{
-    val: {
-      email: string;
-      firstName: string;
-      lastName: string;
-      subscriptionPlan: string;
-      subscriptions: any[];
-      summaryCredits: number;
-      vectorSearchCredits: number;
-      customRequestCredits: number;
-    } | null;
-    loading: boolean;
-    err: any;
-  }>({
-    val: null,
-    loading: true,
-    err: null,
-  });
+  const { account, refresh } = useGetAccount();
 
   useEffect(() => {
     if (account.val) {
@@ -75,28 +58,6 @@ export default function Settings() {
         );
     }
   }, [asPath, account.val]);
-
-  async function fetch() {
-    getAccount(t, (val: any, err: any) => {
-      if (err) {
-        setAccount({
-          val: null,
-          loading: false,
-          err: err,
-        });
-      } else {
-        setAccount({
-          val: val,
-          loading: false,
-          err: null,
-        });
-      }
-    });
-  }
-
-  useEffect(() => {
-    fetch();
-  }, []);
 
   let jsx = null;
   if (account.loading) {
@@ -120,7 +81,7 @@ export default function Settings() {
         <Payment
           id="payment-section"
           cb={() => {
-            fetch();
+            refresh((val) => val + 1);
           }}
         />
         <Divider />

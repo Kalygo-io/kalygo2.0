@@ -12,17 +12,25 @@ import { LeftArea } from "../sharedComponents/leftArea";
 import { MainArea } from "../sharedComponents/mainArea";
 import { RightArea } from "../sharedComponents/rightArea";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
+import { SummaryMode } from "@/types/SummaryMode";
+import { EachFileInChunksPrompts } from "./reviewComponents/EachFileInChunksPrompts";
+import { EachFileOverallPrompts } from "./reviewComponents/EachFileOverallPrompts";
+import { OverallPrompts } from "./reviewComponents/OverallPrompts";
 
 interface Props {
-  prompt: string;
+  customizations: Record<string, string> | null;
   files: File[];
   wizardStepsRef: RefObject<HTMLElement>;
   setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
 }
 
 export function Review(props: Props) {
-  const { prompt, files, wizardStepsRef, setShowPaymentMethodRequiredModal } =
-    props;
+  const {
+    customizations,
+    files,
+    wizardStepsRef,
+    setShowPaymentMethodRequiredModal,
+  } = props;
 
   const [numPages, setNumPages] = useState<number>();
   const router = useRouter();
@@ -74,25 +82,36 @@ export function Review(props: Props) {
             )}
           </LeftArea>
           <MainArea>
-            <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight">
-              {t("dashboard-page:custom-request-v2.provided-request")!}
+            <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight text-center">
+              {t("dashboard-page:custom-request-v2.customizations")!}
             </h2>
             <div className="grid grid-cols-1 gap-x-6 gap-y-8">
               <div className="col-span-full">
                 <form>
-                  <div>
-                    <div className="mt-2">
-                      <textarea
-                        disabled
-                        readOnly
-                        defaultValue={prompt || "No prompt provided"}
-                        rows={4}
-                        name="prompt"
-                        id="prompt"
-                        className={`block w-full rounded-md border-0 py-1.5 bg-slate-100 ${
-                          prompt ? "text-gray-800" : "text-gray-400"
-                        } shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6`}
+                  <div className="mt-2">
+                    {customizations?.mode === SummaryMode.EACH_FILE_OVERALL && (
+                      <EachFileOverallPrompts
+                        prompt={customizations.prompt}
+                        finalPrompt={customizations.finalPrompt}
                       />
+                    )}
+                    {customizations?.mode ===
+                      SummaryMode.EACH_FILE_IN_CHUNKS && (
+                      <EachFileInChunksPrompts prompt={customizations.prompt} />
+                    )}
+                    {customizations?.mode === SummaryMode.OVERALL && (
+                      <OverallPrompts
+                        prompt={customizations.prompt}
+                        finalPrompt={customizations.finalPrompt}
+                        overallPrompt={customizations.finalPrompt}
+                      />
+                    )}
+                    <div className="text-center">
+                      {!customizations?.mode && (
+                        <span className="text-gray-400">
+                          No customizations yet
+                        </span>
+                      )}
                     </div>
                   </div>
                 </form>
@@ -101,7 +120,7 @@ export function Review(props: Props) {
           </MainArea>
         </LeftAreaAndMainWrapper>
         <RightArea>
-          <p className="mt-1 text-sm leading-6 text-gray-400">
+          <p className="mt-1 text-sm leading-6 text-gray-400 text-center">
             {/* A quote of the total cost of the request will be displayed here when
             feature development is complete... */}
             Click send to process your request
@@ -112,7 +131,8 @@ export function Review(props: Props) {
         <button
           onClick={async () => {
             try {
-              const customRequest = customRequestFactory(prompt, files);
+              console.log("customizations", customizations);
+              const customRequest = customRequestFactory(customizations, files);
               const customRequestResponse = await customRequest;
               console.log("customRequestResponse", customRequestResponse);
 
@@ -123,9 +143,11 @@ export function Review(props: Props) {
               errorToast(e.toString());
             }
           }}
-          disabled={files.length === 0 || prompt === ""}
+          disabled={files.length === 0 || customizations?.prompt === ""}
           className={`${
-            files.length === 0 || prompt === "" ? "opacity-50" : "opacity-100"
+            files.length === 0 || customizations?.prompt === ""
+              ? "opacity-50"
+              : "opacity-100"
           } mt-2 flex justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
         >
           {t("dashboard-page:custom-request-v2.send")!}

@@ -3,7 +3,10 @@ import { errorToast } from "@/utility/toasts";
 import get from "lodash.get";
 import { errorReporter } from "@/utility/error/reporter";
 
-export async function customRequestFactory(prompt: string, fileList: File[]) {
+export async function customRequestFactory(
+  customizations: Record<string, string> | null,
+  fileList: File[]
+) {
   try {
     console.log("fileList", fileList);
 
@@ -13,9 +16,11 @@ export async function customRequestFactory(prompt: string, fileList: File[]) {
       console.log(fileList, fileList[i]);
       formData.append("documents", fileList[i]);
     }
-
-    formData.set("customPrompt", prompt);
-    formData.set("model", `gpt-3.5-turbo`);
+    formData.set("mode", customizations?.mode!);
+    formData.set("prompt", customizations?.prompt!);
+    formData.set("finalPrompt", customizations?.finalPrompt!);
+    formData.set("overallPrompt", customizations?.overallPrompt!);
+    formData.set("model", customizations?.model!);
 
     // console.log("formData", formData);
     // console.log("formData", formData.get("documents"));

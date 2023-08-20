@@ -8,14 +8,18 @@ import { CheckIcon } from "@heroicons/react/24/outline";
 
 interface Props {
   setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
+  account: any;
 }
 
 export function CustomRequestWizard(props: Props) {
-  const { setShowPaymentMethodRequiredModal } = props;
+  const { setShowPaymentMethodRequiredModal, account } = props;
 
   const [step, setStep] = useState(1);
   const [files, setFiles] = useState<File[] | null>(null);
-  const [prompt, setPrompt] = useState<string>("");
+  const [customizations, setCustomizations] = useState<Record<
+    string,
+    string
+  > | null>(null);
 
   const { t } = useTranslation();
 
@@ -42,9 +46,10 @@ export function CustomRequestWizard(props: Props) {
     case 2:
       jsx = (
         <CustomizeRequest
-          prompt={prompt}
+          account={account}
+          customizations={customizations}
           files={files || []}
-          setPrompt={setPrompt}
+          setCustomizations={setCustomizations}
           setStep={setStep}
           wizardStepsRef={wizardStepsRef}
           setShowPaymentMethodRequiredModal={setShowPaymentMethodRequiredModal}
@@ -54,7 +59,7 @@ export function CustomRequestWizard(props: Props) {
     case 3:
       jsx = (
         <Review
-          prompt={prompt}
+          customizations={customizations}
           files={files || []}
           wizardStepsRef={wizardStepsRef}
           setShowPaymentMethodRequiredModal={setShowPaymentMethodRequiredModal}

@@ -24,6 +24,7 @@ import { PaymentRequiredModal } from "@/components/shared/PaymentRequiredModal";
 // import { SummariesV2Table } from "@/components/dashboardComponents/summariesV2Table";
 import { SummariesV2TableAlt } from "@/components/dashboardComponents/summariesV2TableAlt";
 import { CustomRequestsTable } from "@/components/dashboardComponents/customRequestsTable";
+import { useGetAccount } from "@/utility/hooks/getAccount";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -80,15 +81,7 @@ export default function Dashboard() {
     err: null,
   });
 
-  const [account, setAccount] = useState<{
-    val: any;
-    loading: boolean;
-    err: any;
-  }>({
-    val: null,
-    loading: true,
-    err: null,
-  });
+  const { account } = useGetAccount();
 
   useEffect(() => {
     async function fetch() {
@@ -140,18 +133,6 @@ export default function Dashboard() {
         setCustomRequests({
           loading: false,
           val: res4.data,
-          err: null,
-        });
-
-        const res5 = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account`,
-          {
-            withCredentials: true,
-          }
-        );
-        setAccount({
-          loading: false,
-          val: res5.data,
           err: null,
         });
       } catch (e) {

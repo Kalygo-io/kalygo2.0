@@ -14,6 +14,7 @@ import {
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { PaymentRequiredModal } from "@/components/shared/PaymentRequiredModal";
 import axios from "axios";
+import { useGetAccount } from "@/utility/hooks/getAccount";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -30,64 +31,12 @@ export default function SummarizeV2() {
   const { state, dispatch } = useAppContext();
   const router = useRouter();
   const { t } = useTranslation();
-
-  const [account, setAccount] = useState<{
-    val: any;
-    loading: boolean;
-    err: any;
-  }>({
-    val: null,
-    loading: true,
-    err: null,
-  });
-
-  useEffect(() => {
-    async function fetch() {
-      const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account`,
-        {
-          withCredentials: true,
-        }
-      );
-
-      setAccount({
-        loading: false,
-        val: res.data,
-        err: null,
-      });
-    }
-
-    fetch();
-  }, []);
-
-  const [summary, setSummaryState] = useState<{
-    val: {
-      summary: string[];
-      fileName: string;
-      originalLength: number;
-      condensedLength: number;
-    } | null;
-    loading: boolean;
-    err: Error | null;
-  }>({
-    val: null,
-    loading: false,
-    err: null,
-  });
-
+  const { account } = useGetAccount();
   const [showPaymentMethodRequiredModal, setShowPaymentMethodRequiredModal] =
     useState<boolean>(false);
 
-  //   console.log("summary.loading", summary.loading);
-  //   console.log("summary.err", summary.err);
-  //   console.log("showPaymentMethodRequiredModal", showPaymentMethodRequiredModal);
-
   let jsx = null;
-  if (summary.loading) {
-    jsx = <WindowLoader></WindowLoader>;
-  } else if (summary.err) {
-    jsx = <SummarizeError />;
-  } else if (showPaymentMethodRequiredModal) {
+  if (showPaymentMethodRequiredModal) {
     jsx = (
       <PaymentRequiredModal
         isOpen={showPaymentMethodRequiredModal}
@@ -120,10 +69,7 @@ export default function SummarizeV2() {
                 {t("dashboard-page:summarize-v2.title")}
               </h2>
               <p className="mt-1 text-sm leading-6 text-gray-400">
-                &apos;Summarize&apos; allows you to upload 1 to 10 documents
-                (.txt or .pdf). Free Tier uploads are limited to 1MB while Paid
-                Tier uploads are limited to 40MB. Summarize them with the
-                customization options you specify in step 2.
+                {t("dashboard-page:summarize-v2.description")}
               </p>
             </div>
           </div>
