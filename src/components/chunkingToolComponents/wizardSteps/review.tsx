@@ -160,7 +160,7 @@ export function Review(props: Props) {
                 }
               }
             }}
-            className="text-blue-600 text-md cursor-pointer hover:text-blue-500 py-4"
+            className="text-blue-600 text-md cursor-pointer hover:text-blue-500 p-4"
           >
             <span>Download all chunks</span>
           </button>
