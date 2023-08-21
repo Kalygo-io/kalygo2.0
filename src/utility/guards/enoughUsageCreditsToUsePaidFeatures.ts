@@ -4,8 +4,20 @@ export function enoughUsageCreditsToUsePaidFeatures(
   usageCredits: number,
   model: "gpt-3.5-turbo" | "gpt-4" = "gpt-3.5-turbo"
 ) {
+  console.log("enoughUsageCreditsToUsePaidFeatures", usageCredits);
+  console.log(
+    "model_pricing.models[model].minimumCreditsRequired",
+    model,
+    model_pricing.models[model].minimumCreditsRequired
+  );
+  console.log(
+    "---",
+    usageCredits > model_pricing.models[model].minimumCreditsRequired,
+    "---"
+  );
+
   // in pennies
-  if (usageCredits / 100 > model_pricing.models[model].minimumCreditsRequired) {
+  if (usageCredits > model_pricing.models[model].minimumCreditsRequired) {
     return true;
   }
   {
