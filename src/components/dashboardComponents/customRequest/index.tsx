@@ -1,4 +1,5 @@
 import { RadioGroupStars } from "@/components/shared/RatingComponent";
+import { rateCustomRequestFactory } from "@/serviceFactory/rateCustomRequestFactory";
 import { rateSummaryFactory } from "@/serviceFactory/rateSummaryFactory";
 import { ScanningMode } from "@/types/ScanningMode";
 import { SummaryMode } from "@/types/SummaryMode";
@@ -14,6 +15,8 @@ interface P {
 export default function CustomRequest(p: P) {
   const { customRequest } = p;
   const { t } = useTranslation();
+
+  console.log("customRequest", customRequest);
 
   return (
     <div>
@@ -130,7 +133,7 @@ export default function CustomRequest(p: P) {
                       ) => {
                         try {
                           // prettier-ignore
-                          const rateSummaryRequest = rateSummaryFactory(customRequest.id, rating, ratingMax);
+                          const rateSummaryRequest = rateCustomRequestFactory(customRequest.id, rating, ratingMax);
                           // prettier-ignore
                           const rateSummaryResponse = await rateSummaryRequest;
                           // prettier-ignore
