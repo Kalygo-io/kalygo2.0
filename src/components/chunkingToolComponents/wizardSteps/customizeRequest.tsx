@@ -14,11 +14,6 @@ import { LeftArea } from "../sharedComponents/leftArea";
 import { MainArea } from "../sharedComponents/mainArea";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
 import { RightArea } from "../sharedComponents/rightArea";
-import { classNames } from "@/utility/misc/classNames";
-import { SummaryMode } from "@/types/SummaryMode";
-import { EachFileOverallPrompts } from "./customizeRequestComponents/EachFileOverallPrompts";
-import { EachFileInChunksPrompts } from "./customizeRequestComponents/EachFileInChunksPrompts";
-import { OverallPrompts } from "./customizeRequestComponents/OverallPrompts";
 
 interface Props {
   account: any;

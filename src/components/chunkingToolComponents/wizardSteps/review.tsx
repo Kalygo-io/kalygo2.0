@@ -100,7 +100,7 @@ export function Review(props: Props) {
           </LeftAreaAndMainWrapper>
           <RightArea>
             <p className="mt-1 text-sm leading-6 text-gray-400 text-center">
-              Click 'Chunk' to break up your file into chunks
+              Click &apos;Chunk&apos; to break up your file into chunks
             </p>
           </RightArea>
         </_3ColumnWrapper>
