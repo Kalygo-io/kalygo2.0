@@ -21,6 +21,7 @@ import { LeftArea } from "../sharedComponents/leftArea";
 import { MainArea } from "../sharedComponents/mainArea";
 import { RightArea } from "../sharedComponents/rightArea";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
+import { enoughUsageCreditsToUsePaidFeatures } from "@/utility/guards/enoughUsageCreditsToUsePaidFeatures";
 
 interface Props {
   files: File[] | null;
@@ -95,9 +96,10 @@ export function ChooseFiles(props: Props) {
         if (
           (isNumber(get(paymentMethodsResponse, "data.summaryCredits")) &&
             get(paymentMethodsResponse, "data.summaryCredits") > 0) ||
-          get(paymentMethodsResponse, "data.stripeDefaultSource")
+          enoughUsageCreditsToUsePaidFeatures(
+            get(paymentMethodsResponse, "data.usageCredits")
+          )
         ) {
-          // setFilesLocal(e.target.files);
           filesLocal
             ? setFilesLocal([...filesLocal, ...(e.target.files || null)])
             : setFilesLocal(e.target.files);
