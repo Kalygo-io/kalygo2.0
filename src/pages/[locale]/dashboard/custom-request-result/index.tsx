@@ -81,6 +81,7 @@ export default function CustomRequestResult() {
   if (customRequest.loading) {
     jsx = <WindowLoader></WindowLoader>;
   } else if (customRequest.val) {
+    debugger;
     jsx = <CustomRequest customRequest={customRequest.val} />;
   } else {
     jsx = <ErrorInDashboard />;

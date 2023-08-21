@@ -23,7 +23,8 @@ import { Credits } from "@/components/dashboardComponents/index/credits";
 import { PaymentRequiredModal } from "@/components/shared/PaymentRequiredModal";
 // import { SummariesV2Table } from "@/components/dashboardComponents/summariesV2Table";
 import { SummariesV2TableAlt } from "@/components/dashboardComponents/summariesV2TableAlt";
-import { CustomRequestsTable } from "@/components/dashboardComponents/customRequestsTable";
+// import { CustomRequestsTable } from "@/components/dashboardComponents/customRequestsTable";
+import { CustomRequestsTableAlt } from "@/components/dashboardComponents/customRequestsTableAlt";
 import { useGetAccount } from "@/utility/hooks/getAccount";
 
 const getStaticProps = makeStaticProps([
@@ -215,7 +216,7 @@ export default function Dashboard() {
                 <div className="w-full border-t border-gray-300" />
               </div>
             </div>
-            <CustomRequestsTable customRequests={customRequests.val} />
+            <CustomRequestsTableAlt customRequests={customRequests.val} />
           </>
         )}
       </>
