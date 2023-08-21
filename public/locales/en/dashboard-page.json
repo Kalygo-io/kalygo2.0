@@ -173,11 +173,13 @@
 
   "chunking-tool": {
     "title": "Chunking Tool",
-    "description": "The 'Chunking Tool' allows you to upload your data and Kalygo will return it in a format that is ingestable for the A.I. model you are trying to use.",
+    "description": "The 'Chunking Tool' allows you to select a file and specify the model you would like use to process your file. After providing these details, Kalygo will extract the text and cut up the file so that each part of it is ingestable into the A.I. model specified.",
     "choose-files": "Choose files",
+    "choose-file": "Choose file",
     "provide-details": "Provide Details",
     "chunk": "Chunk",
-    "chosen-files": "Chosen files"
+    "chosen-files": "Chosen files",
+    "chosen-file": "Chosen file"
   },
   "queue": {
     "title": "My Requests",

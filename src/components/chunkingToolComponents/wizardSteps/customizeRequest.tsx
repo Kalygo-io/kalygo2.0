@@ -43,7 +43,6 @@ interface Props {
     } | null>
   >;
   wizardStepsRef: RefObject<HTMLElement>;
-  setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
 }
 
 const preBuiltPrompts = [
@@ -67,17 +66,7 @@ const preBuiltPrompts = [
 ];
 
 export function CustomizeRequest(props: Props) {
-  // const { prompt, files, setStep, setPrompt } = props;
-
-  const {
-    customizations,
-    files,
-    setStep,
-    setCustomizations,
-    setShowPaymentMethodRequiredModal,
-    account,
-  } = props;
-
+  const { customizations, files, setStep, setCustomizations, account } = props;
   const { t } = useTranslation();
 
   const onSubmit = async (data: any) => {
@@ -122,7 +111,7 @@ export function CustomizeRequest(props: Props) {
         <LeftAreaAndMainWrapper>
           <LeftArea>
             <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight">
-              {t("dashboard-page:custom-request-v2.chosen-files")!}
+              {t("dashboard-page:chunking-tool.chosen-file")!}
             </h2>
             {files.length > 0 ? (
               <ul role="list" className="divide-y divide-gray-100">
@@ -143,7 +132,7 @@ export function CustomizeRequest(props: Props) {
               </ul>
             ) : (
               <p className="mt-1 text-sm leading-6 text-gray-400">
-                No files selected
+                No file selected
               </p>
             )}
           </LeftArea>

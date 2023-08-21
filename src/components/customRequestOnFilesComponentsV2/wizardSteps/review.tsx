@@ -135,7 +135,7 @@ export function Review(props: Props) {
           <p className="mt-1 text-sm leading-6 text-gray-400 text-center">
             {/* A quote of the total cost of the request will be displayed here when
             feature development is complete... */}
-            Click send to process your request
+            Click 'Send' to process your request
           </p>
         </RightArea>
       </_3ColumnWrapper>

@@ -1,5 +1,5 @@
-import React, { Dispatch, SetStateAction, useRef, useState } from "react";
-import { ChooseFiles } from "./wizardSteps/chooseFiles";
+import React, { useRef, useState } from "react";
+import { ChooseFile } from "./wizardSteps/chooseFile";
 import { CustomizeRequest } from "./wizardSteps/customizeRequest";
 import { Review } from "./wizardSteps/review";
 import { ErrorInDashboard } from "../shared/errorInDashboard";
@@ -7,12 +7,11 @@ import { useTranslation } from "next-i18next";
 import { CheckIcon } from "@heroicons/react/24/outline";
 
 interface Props {
-  setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
   account: any;
 }
 
 export function ChunkingToolWizard(props: Props) {
-  const { setShowPaymentMethodRequiredModal, account } = props;
+  const { account } = props;
 
   const [step, setStep] = useState(1);
   const [files, setFiles] = useState<File[] | null>(null);
@@ -30,7 +29,7 @@ export function ChunkingToolWizard(props: Props) {
   const wizardStepsRef = useRef(null);
 
   const steps = [
-    { id: 1, name: t("dashboard-page:chunking-tool.choose-files") },
+    { id: 1, name: t("dashboard-page:chunking-tool.choose-file") },
     { id: 2, name: t("dashboard-page:chunking-tool.provide-details") },
     { id: 3, name: t("dashboard-page:chunking-tool.chunk") },
   ];
@@ -38,14 +37,7 @@ export function ChunkingToolWizard(props: Props) {
   let jsx = null;
   switch (step) {
     case 1:
-      jsx = (
-        <ChooseFiles
-          files={files}
-          setFiles={setFiles}
-          setStep={setStep}
-          setShowPaymentMethodRequiredModal={setShowPaymentMethodRequiredModal}
-        />
-      );
+      jsx = <ChooseFile files={files} setFiles={setFiles} setStep={setStep} />;
       break;
     case 2:
       jsx = (
@@ -56,7 +48,6 @@ export function ChunkingToolWizard(props: Props) {
           setCustomizations={setCustomizations}
           setStep={setStep}
           wizardStepsRef={wizardStepsRef}
-          setShowPaymentMethodRequiredModal={setShowPaymentMethodRequiredModal}
         />
       );
       break;
@@ -66,7 +57,6 @@ export function ChunkingToolWizard(props: Props) {
           customizations={customizations}
           files={files || []}
           wizardStepsRef={wizardStepsRef}
-          setShowPaymentMethodRequiredModal={setShowPaymentMethodRequiredModal}
         />
       );
       break;

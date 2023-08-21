@@ -4,9 +4,6 @@ import {
 } from "@heroicons/react/24/outline";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
-import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
-import isNumber from "lodash.isnumber";
-import get from "lodash.get";
 import { errorReporter } from "@/utility/error/reporter";
 import { Layout3ColumnAndFooterWrapper } from "../sharedComponents/layout3ColumnAndFooterWrapper";
 import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
@@ -15,17 +12,15 @@ import { LeftArea } from "../sharedComponents/leftArea";
 import { MainArea } from "../sharedComponents/mainArea";
 import { RightArea } from "../sharedComponents/rightArea";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
-import { enoughUsageCreditsToUsePaidFeatures } from "@/utility/guards/enoughUsageCreditsToUsePaidFeatures";
 
 interface Props {
   files: File[] | null;
   setFiles: Dispatch<SetStateAction<File[] | null>>;
   setStep: Dispatch<SetStateAction<number>>;
-  setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
 }
 
-export function ChooseFiles(props: Props) {
-  const { files, setFiles, setStep, setShowPaymentMethodRequiredModal } = props;
+export function ChooseFile(props: Props) {
+  const { files, setFiles, setStep } = props;
   const { t } = useTranslation();
   const [dragActive, setDragActive] = useState(false);
   const [filesLocal, setFilesLocal] = useState<File[] | null>();
@@ -70,22 +65,9 @@ export function ChooseFiles(props: Props) {
           e.dataTransfer?.items["0"]?.type
         )
       ) {
-        const paymentMethodsRequest = getAccountPaymentMethodsFactory();
-        const paymentMethodsResponse = await paymentMethodsRequest;
-
-        if (
-          (isNumber(get(paymentMethodsResponse, "data.customRequestCredits")) &&
-            get(paymentMethodsResponse, "data.customRequestCredits") > 0) ||
-          enoughUsageCreditsToUsePaidFeatures(
-            get(paymentMethodsResponse, "data.usageCredits")
-          )
-        ) {
-          filesLocal
-            ? setFilesLocal([...filesLocal, ...(e.dataTransfer.files || null)])
-            : setFilesLocal(e.dataTransfer.files);
-        } else {
-          setShowPaymentMethodRequiredModal(true);
-        }
+        filesLocal
+          ? setFilesLocal([...filesLocal, ...(e.dataTransfer.files || null)])
+          : setFilesLocal(e.dataTransfer.files);
       }
     } catch (e) {
       errorReporter(e);
@@ -97,20 +79,7 @@ export function ChooseFiles(props: Props) {
       e.preventDefault();
 
       if (e.target.files && e.target.files) {
-        const paymentMethodsRequest = getAccountPaymentMethodsFactory();
-        const paymentMethodsResponse = await paymentMethodsRequest;
-
-        if (
-          (isNumber(get(paymentMethodsResponse, "data.customRequestCredits")) &&
-            get(paymentMethodsResponse, "data.customRequestCredits") > 0) ||
-          enoughUsageCreditsToUsePaidFeatures(
-            get(paymentMethodsResponse, "data.usageCredits")
-          )
-        ) {
-          setFilesLocal(e.target.files || null);
-        } else {
-          setShowPaymentMethodRequiredModal(true);
-        }
+        setFilesLocal(e.target.files || null);
       }
     } catch (e) {
       errorReporter(e);

@@ -37,48 +37,9 @@ export default function ChunkingTool() {
 
   const { account } = useGetAccount();
 
-  const [summary, setSummaryState] = useState<{
-    val: {
-      summary: string[];
-      fileName: string;
-      originalLength: number;
-      condensedLength: number;
-    } | null;
-    loading: boolean;
-    err: Error | null;
-  }>({
-    val: null,
-    loading: false,
-    err: null,
-  });
-
-  const [showPaymentMethodRequiredModal, setShowPaymentMethodRequiredModal] =
-    useState<boolean>(false);
-
   let jsx = null;
-  if (summary.loading) {
-    jsx = <WindowLoader></WindowLoader>;
-  } else if (summary.err) {
-    jsx = <ChunkingToolError />;
-  } else if (showPaymentMethodRequiredModal) {
-    jsx = (
-      <PaymentRequiredModal
-        isOpen={showPaymentMethodRequiredModal}
-        setIsOpen={(isOpen) => {
-          setShowPaymentMethodRequiredModal(isOpen);
-        }}
-      />
-    );
-  } else {
-    jsx = (
-      <ChunkingToolWizard
-        account={account}
-        setShowPaymentMethodRequiredModal={(showModal: boolean) => {
-          setShowPaymentMethodRequiredModal(showModal);
-        }}
-      />
-    );
-  }
+
+  jsx = <ChunkingToolWizard account={account} />;
 
   return (
     <>
