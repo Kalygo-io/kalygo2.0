@@ -237,7 +237,7 @@ export default function Dashboard() {
         <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
       <LayoutDashboard account={account.val}>
-        <div className="p-4 sm:p-6 lg:p-8">
+        <div className="pt-4 sm:pt-6 lg:pt-8 px-4 sm:px-6 lg:px-8">
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
               {!summaries.loading &&
