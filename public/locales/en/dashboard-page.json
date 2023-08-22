@@ -237,7 +237,11 @@
   },
   "buy-credits": {
     "title": "Buy credits",
-    "description": "100 credits equals $1.00 USD of usage just like standard credit card points do. Fees not included."
+    "description": "100 credits equals $1.00 USD of usage just like standard credit card points do. Fees not included.",
+    "select-amount": "Amount of Credits",
+    "payment-method": "Payment Method",
+    "review": "Review",
+    "get-credits": "Get credits"
   },
   "settings": {
     "free-credits": {
