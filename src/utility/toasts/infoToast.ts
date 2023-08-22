@@ -1,8 +1,11 @@
 import { toast } from "react-toastify";
 
-export function infoToast(message: string) {
+export function infoToast(
+  message: string,
+  position: "top-right" | "bottom-right" = "top-right"
+) {
   toast(message, {
-    position: "top-right",
+    position,
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,

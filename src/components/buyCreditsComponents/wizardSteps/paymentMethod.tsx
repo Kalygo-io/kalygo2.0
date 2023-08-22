@@ -97,125 +97,127 @@ export function PaymentMethod(props: Props) {
             <h2 className="text-lg px-6 pt-8 font-medium text-gray-900 text-center">
               Credit Card{" "}
             </h2>
-            <form className="mx-auto max-w-xl">
-              <div className="m-0 p-0">
-                <div className="mt-6 grid grid-cols-4 gap-x-4 gap-y-6">
-                  <div className="col-span-4">
-                    <label
-                      htmlFor="card_number"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Card number{" "}
-                      <span>
-                        <FaCcStripe
-                          className="text-indigo-600 inline h-6 w-6"
-                          aria-label="Stripe Icon"
-                        />
-                      </span>
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        {...register("card_number", {
-                          required: true,
-                          pattern: new RegExp(/^[0-9]+$/),
-                        })}
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                        type="text"
-                        name="card_number"
-                        autoComplete="card_number"
-                        placeholder="0000 0000 0000 0000"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="col-span-4">
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Name on card
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        {...register("name", {
-                          required: true,
-                        })}
-                        type="text"
-                        name="name"
-                        autoComplete="name"
-                        placeholder="Cardholder's name"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="col-span-3">
-                    <label
-                      htmlFor="exp_date"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Expiration date (MM/YY)
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        {...register("exp_date", {
-                          required: true,
-                          pattern: new RegExp(/[0-9]{2}\/[0-9]{2}/),
-                        })}
-                        placeholder="MM/YY"
-                        type="text"
-                        name="exp_date"
-                        id="exp_date"
-                        autoComplete="exp_date"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="cvc"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      CVC
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        {...register("cvc", {
-                          required: true,
-                          pattern: new RegExp(/^[0-9]+$/),
-                        })}
-                        placeholder="&bull;&bull;&bull;"
-                        type="text"
-                        name="cvc"
-                        id="cvc"
-                        autoComplete="csc"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="mt-1">
+            <div className="mt-4 rounded-lg border border-gray-200 bg-white shadow-sm px-4 py-6 sm:px-6">
+              <form className="mx-auto max-w-xl">
+                <div className="m-0 p-0">
+                  <div className="mt-6 grid grid-cols-4 gap-x-4 gap-y-6">
+                    <div className="col-span-4">
                       <label
-                        htmlFor="saveCard"
-                        className="text-sm font-medium text-gray-700"
+                        htmlFor="card_number"
+                        className="block text-sm font-medium text-gray-700"
                       >
-                        Save Card?
+                        Card number{" "}
+                        <span>
+                          <FaCcStripe
+                            className="text-indigo-600 inline h-6 w-6"
+                            aria-label="Stripe Icon"
+                          />
+                        </span>
                       </label>
-                      <input
-                        {...register("saveCard")}
-                        type="checkbox"
-                        name="saveCard"
-                        id="saveCard"
-                        autoComplete="saveCard"
-                        className="ml-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                      />
+                      <div className="mt-1">
+                        <input
+                          {...register("card_number", {
+                            required: true,
+                            pattern: new RegExp(/^[0-9]+$/),
+                          })}
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                          type="text"
+                          name="card_number"
+                          autoComplete="card_number"
+                          placeholder="0000 0000 0000 0000"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="col-span-4">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Name on card
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          {...register("name", {
+                            required: true,
+                          })}
+                          type="text"
+                          name="name"
+                          autoComplete="name"
+                          placeholder="Cardholder's name"
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="col-span-3">
+                      <label
+                        htmlFor="exp_date"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Expiration date (MM/YY)
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          {...register("exp_date", {
+                            required: true,
+                            pattern: new RegExp(/[0-9]{2}\/[0-9]{2}/),
+                          })}
+                          placeholder="MM/YY"
+                          type="text"
+                          name="exp_date"
+                          id="exp_date"
+                          autoComplete="exp_date"
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="cvc"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        CVC
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          {...register("cvc", {
+                            required: true,
+                            pattern: new RegExp(/^[0-9]+$/),
+                          })}
+                          placeholder="&bull;&bull;&bull;"
+                          type="text"
+                          name="cvc"
+                          id="cvc"
+                          autoComplete="csc"
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <div className="mt-1">
+                        <label
+                          htmlFor="saveCard"
+                          className="text-sm font-medium text-gray-700"
+                        >
+                          Save Card?
+                        </label>
+                        <input
+                          {...register("saveCard")}
+                          type="checkbox"
+                          name="saveCard"
+                          id="saveCard"
+                          autoComplete="saveCard"
+                          className="ml-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </_3ColumnWrapper>

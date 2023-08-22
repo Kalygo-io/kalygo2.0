@@ -241,6 +241,7 @@
     "select-amount": "Amount of Credits",
     "payment-method": "Payment Method",
     "review": "Review",
+    "purchase": "Purchase",
     "get-credits": "Get credits"
   },
   "settings": {

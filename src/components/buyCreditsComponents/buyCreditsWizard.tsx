@@ -38,7 +38,7 @@ export function BuyCreditsWizard(props: Props) {
   const steps = [
     { id: 1, name: t("dashboard-page:buy-credits.select-amount") },
     { id: 2, name: t("dashboard-page:buy-credits.payment-method") },
-    { id: 3, name: t("dashboard-page:buy-credits.review") },
+    { id: 3, name: t("dashboard-page:buy-credits.purchase") },
   ];
 
   let jsx = null;

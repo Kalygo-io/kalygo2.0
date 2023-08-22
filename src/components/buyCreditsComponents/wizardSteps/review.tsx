@@ -166,7 +166,7 @@ export function Review(props: Props) {
 
                 const detectedLng = navigatorLangDetector();
                 router.push(`/${detectedLng}/dashboard`);
-                infoToast("Successfully purchased credits...");
+                infoToast("Successfully purchased credits...", "bottom-right");
               }
             } catch (e) {
               errorReporter(e);
