@@ -6,6 +6,7 @@ import "@/styles/summarizeFileForm.css";
 import "@/styles/customRequestOnFilesForm.css";
 import "@/styles/landingPageHero.scss";
 import "@/styles/summary-v2-markdown.scss";
+import "@/styles/summary-v2-aside.css";
 import "@/styles/custom-request-markdown.scss";
 
 import type { AppProps } from "next/app";
