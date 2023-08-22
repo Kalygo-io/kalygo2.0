@@ -23,6 +23,7 @@ import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
 import { FreeCredits } from "@/components/accountSettingsComponents/freeCredits";
 import get from "lodash.get";
 import { useGetAccount } from "@/utility/hooks/getAccount";
+import { UsageCredits } from "@/components/accountSettingsComponents/usageCredits";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -70,6 +71,8 @@ export default function Settings() {
         <Personal account={account.val!} />
         <Divider />
         <FreeCredits account={account.val!} />
+        <Divider />
+        <UsageCredits account={account.val!} />
         <Divider />
         {/* <Plan
           account={account.val!}

@@ -245,6 +245,11 @@
     "get-credits": "Get credits"
   },
   "settings": {
+    "usage-credits": {
+      "credits": "Credits",
+      "credit": "Credit",
+      "title": "Credits"
+    },
     "free-credits": {
       "title": "Free credits",
       "summaries": "Summaries",
