@@ -242,9 +242,14 @@
     "payment-method": "Payment Method",
     "review": "Review",
     "purchase": "Purchase",
-    "get-credits": "Get credits"
+    "get-credits": "Get credits",
+    "complete-purchase": "Complete Purchase"
   },
   "settings": {
+    "purchase-history": {
+      "title": "Purchase History",
+      "description": "The history of your account's transactions on the platform."
+    },
     "usage-credits": {
       "credits": "Credits",
       "credit": "Credit",

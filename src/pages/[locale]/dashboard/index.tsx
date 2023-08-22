@@ -193,7 +193,7 @@ export default function Dashboard() {
           <SummariesV2TableAlt summaries={summariesV2.val} />
         )}
 
-        {summaries.val?.length > 0 && (
+        {/* {summaries.val?.length > 0 && (
           <>
             <div className="relative px-4 py-24 sm:p-6 lg:p-12">
               <div
@@ -205,7 +205,8 @@ export default function Dashboard() {
             </div>
             <SummariesTable summaries={summaries.val} />
           </>
-        )}
+        )} */}
+
         {customRequests.val?.length > 0 && (
           <>
             <div className="relative px-4 py-24 sm:p-6 lg:p-12">

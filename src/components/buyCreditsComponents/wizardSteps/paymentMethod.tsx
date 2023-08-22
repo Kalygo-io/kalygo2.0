@@ -12,7 +12,11 @@ import { useForm } from "react-hook-form";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
 import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
 import { SummaryMode } from "@/types/SummaryMode";
-import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+import {
+  LockClosedIcon,
+  MinusIcon,
+  PlusIcon,
+} from "@heroicons/react/24/outline";
 import { FaCcStripe } from "react-icons/fa6";
 
 interface Props {
@@ -94,10 +98,16 @@ export function PaymentMethod(props: Props) {
       <_3ColumnWrapper>
         <div className="mx-auto w-full max-w-lg">
           <div className="mt-10 lg:mt-0">
-            <h2 className="text-lg px-6 pt-8 font-medium text-gray-900 text-center">
-              Credit Card{" "}
+            <h2 className="text-md px-6 pt-8 font-medium text-gray-900 text-center">
+              *Don't worry, you won't be charged yet
             </h2>
             <div className="mt-4 rounded-lg border border-gray-200 bg-white shadow-sm px-4 py-6 sm:px-6">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gray-100">
+                <LockClosedIcon
+                  className="h-6 w-6 text-gray-600"
+                  aria-hidden="true"
+                />
+              </div>
               <form className="mx-auto max-w-xl">
                 <div className="m-0 p-0">
                   <div className="mt-6 grid grid-cols-4 gap-x-4 gap-y-6">

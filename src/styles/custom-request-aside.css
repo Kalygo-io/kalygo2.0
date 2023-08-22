@@ -1,0 +1,8 @@
+#custom-request-aside::-webkit-scrollbar {
+  display: none;
+}
+
+#custom-request-aside {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

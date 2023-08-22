@@ -1,4 +1,5 @@
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 
 interface P {
   account: {
@@ -11,6 +12,7 @@ export function UsageCredits(p: P) {
     account: { usageCredits },
   } = p;
   const { t } = useTranslation();
+  const router = useRouter();
 
   const stats = [
     {
@@ -19,7 +21,10 @@ export function UsageCredits(p: P) {
         usageCredits === 1
           ? t("dashboard-page:settings.usage-credits.credit")
           : t("dashboard-page:settings.usage-credits.credits"),
-      value: usageCredits,
+      value: usageCredits.toLocaleString(navigator.language, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }),
     },
   ];
 
@@ -29,6 +34,17 @@ export function UsageCredits(p: P) {
         <h2 className="text-base font-semibold leading-7 text-black">
           {t("dashboard-page:settings.usage-credits.title")}
         </h2>
+        <button
+          onClick={() => {
+            router.push(`/dashboard/settings/purchase-history`);
+          }}
+          className="mt-1 p-0.5 text-sm leading-6 text-blue-600 hover:text-blue-500 cursor-pointer"
+        >
+          View purchase history
+          {/* {t(
+              "dashboard-page:settings.delete-account.you-can-mark-your-account"
+            )} */}
+        </button>
       </div>
       <div className="md:col-span-2">
         <dl className="mt-16 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
