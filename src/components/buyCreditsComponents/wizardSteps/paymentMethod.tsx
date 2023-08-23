@@ -99,7 +99,7 @@ export function PaymentMethod(props: Props) {
         <div className="mx-auto w-full max-w-lg">
           <div className="mt-10 lg:mt-0">
             <h2 className="text-md px-6 pt-8 font-medium text-gray-900 text-center">
-              *Don't worry, you won't be charged yet
+              *Don&apos;t worry, you won&apos;t be charged yet
             </h2>
             <div className="mt-4 rounded-lg border border-gray-200 bg-white shadow-sm px-4 py-6 sm:px-6">
               <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gray-100">
