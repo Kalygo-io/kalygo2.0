@@ -5,21 +5,14 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
-
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
-
 import { useState } from "react";
 import { infoToast, errorToast } from "@/utility/toasts";
-import {
-  ChunkingToolError,
-  ChunkingToolWizard,
-} from "@/components/chunkingToolComponents";
 import { WindowLoader } from "@/components/shared/WindowLoader";
-import { PaymentRequiredModal } from "@/components/shared/PaymentRequiredModal";
-import { useGetAccount } from "@/utility/hooks/getAccount";
 import { PurchaseHistoryTable } from "@/components/accountSettingsComponents/purchaseHistoryComponents/purchaseHistory";
 import { usePurchaseHistory } from "@/utility/hooks/getPurchaseHistory";
+import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -40,7 +33,13 @@ export default function PurchaseHistory() {
   const { purchaseHistory } = usePurchaseHistory();
 
   let jsx = null;
-  jsx = <PurchaseHistoryTable charges={purchaseHistory.val} />;
+  if (purchaseHistory.loading) {
+    jsx = <WindowLoader></WindowLoader>;
+  } else if (purchaseHistory.val) {
+    jsx = <PurchaseHistoryTable charges={purchaseHistory.val} />;
+  } else {
+    jsx = <ErrorInDashboard />;
+  }
 
   return (
     <>

@@ -16,8 +16,6 @@ export function PurchaseHistoryTable(p: P) {
 
   charges = charges ? charges?.data?.slice(0, 40) : [];
 
-  console.log("charges", charges);
-
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="-mx-4 mt-8 sm:-mx-0">
