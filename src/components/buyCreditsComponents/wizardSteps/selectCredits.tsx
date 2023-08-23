@@ -32,6 +32,7 @@ import {
   calculateFees,
   calculateTotal,
 } from "@/utility/pricing/calculatePricing";
+import isString from "lodash/isString";
 
 interface Props {
   creditsAmount: {
@@ -97,7 +98,7 @@ export function SelectCredits(props: Props) {
     control,
   } = useForm({
     defaultValues: {
-      credits: creditsAmount?.credits || 1000,
+      credits: 1000,
       selectedCreditAmountPreset: creditsAmount?.selectedCreditAmountPreset || {
         id: 2,
         title: "Custom",
@@ -117,8 +118,8 @@ export function SelectCredits(props: Props) {
     }
   }, []);
 
-  const creditAmountPreset = watch("selectedCreditAmountPreset");
   const credits = watch("credits");
+  const selectedCreditAmountPreset = watch("selectedCreditAmountPreset");
 
   return (
     <Layout3ColumnAndFooterWrapper>
@@ -224,7 +225,7 @@ export function SelectCredits(props: Props) {
                 </RadioGroup>
               )}
             />
-            {creditAmountPreset.id === 3 && (
+            {selectedCreditAmountPreset.id === 3 && (
               <div className="mt-6">
                 <div className="col-span-4">
                   <label
@@ -236,7 +237,8 @@ export function SelectCredits(props: Props) {
                   <div className="mt-2">
                     <input
                       {...register("credits", {
-                        required: creditAmountPreset.id === 3 ? true : false,
+                        required:
+                          selectedCreditAmountPreset.id === 3 ? true : false,
                         pattern: new RegExp(/^[0-9]+$/),
                       })}
                       className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
@@ -256,7 +258,8 @@ export function SelectCredits(props: Props) {
                   <div className="mt-2">
                     <input
                       {...register("credits", {
-                        required: creditAmountPreset.id === 3 ? true : false,
+                        required:
+                          selectedCreditAmountPreset.id === 3 ? true : false,
                         pattern: new RegExp(/^[0-9]+$/),
                       })}
                       className="block rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
@@ -344,9 +347,8 @@ export function SelectCredits(props: Props) {
           disabled={!isValid}
           onClick={() => {
             setCreditsAmount({
-              credits: getValues().credits,
-              selectedCreditAmountPreset:
-                getValues().selectedCreditAmountPreset,
+              credits: credits,
+              selectedCreditAmountPreset: selectedCreditAmountPreset,
             });
             setStep(2);
           }}

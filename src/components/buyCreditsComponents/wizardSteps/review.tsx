@@ -79,7 +79,13 @@ export function Review(props: Props) {
                       <div className="min-w-0 flex-1">
                         <h4 className="text-sm">Credits</h4>
                         <p className="mt-1 text-sm text-gray-500">
-                          {creditsAmount?.credits.toLocaleString()}
+                          {creditsAmount?.credits.toLocaleString(
+                            navigator.language,
+                            {
+                              minimumFractionDigits: 0,
+                              maximumFractionDigits: 0,
+                            }
+                          )}
                         </p>
                       </div>
                     </div>
