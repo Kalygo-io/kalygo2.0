@@ -212,7 +212,7 @@ export function PaymentMethod(props: Props) {
                           htmlFor="saveCard"
                           className="text-sm font-medium text-gray-700"
                         >
-                          Save Card?
+                          Save Card
                         </label>
                         <input
                           {...register("saveCard")}

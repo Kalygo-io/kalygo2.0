@@ -66,6 +66,7 @@ export function PurchaseHistoryTable(p: P) {
                       </dd>
                       <dt className="sr-only sm:hidden">Amount</dt>
                       <dd className="mt-1 truncate text-gray-500 sm:hidden">
+                        $
                         {`${(charge.amount / 100).toLocaleString(
                           navigator.language,
                           {
@@ -80,6 +81,7 @@ export function PurchaseHistoryTable(p: P) {
                     {charge.status}
                   </td>
                   <td className="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">
+                    $
                     {`${(charge.amount / 100).toLocaleString(
                       navigator.language,
                       {
