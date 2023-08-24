@@ -92,7 +92,7 @@ export default function CustomRequestResult() {
         <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
       <LayoutDashboard>
-        <div className="p-4 sm:p-6 lg:p-8">
+        <div className="p-4 pb-0 sm:p-6 lg:p-8  sm:pb-0 lg:pb-0">
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
               <h1 className="text-base font-semibold leading-7 text-gray-900">

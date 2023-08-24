@@ -3,11 +3,19 @@ import { rateSummaryFactory } from "@/serviceFactory/rateSummaryFactory";
 import { SummaryMode } from "@/types/SummaryMode";
 import { round } from "@/utility/Math/round";
 import { errorReporter } from "@/utility/error/reporter";
+import { classNames } from "@/utility/misc/classNames";
+import { Menu, Transition } from "@headlessui/react";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
-import { InformationCircleIcon, StarIcon } from "@heroicons/react/24/outline";
+import {
+  EllipsisVerticalIcon,
+  EnvelopeIcon,
+  InformationCircleIcon,
+  ShareIcon,
+  StarIcon,
+} from "@heroicons/react/24/outline";
 import get from "lodash.get";
 import { useTranslation } from "next-i18next";
-import { MouseEventHandler } from "react";
+import { Fragment, MouseEventHandler } from "react";
 import ReactMarkdown from "react-markdown";
 
 interface P {
@@ -92,10 +100,71 @@ export default function SummaryV2(p: P) {
 
       <aside
         id="summary-v2-aside"
-        className="fixed inset-y-0 right-0 hidden w-96 overflow-y-auto border-l border-gray-200 px-4 pt-20 pb-6 sm:px-6 lg:px-8 xl:block bg-white"
+        className="fixed inset-y-0 right-0 w-96 overflow-y-auto border-l border-gray-200 px-4 pt-20 pb-6 sm:px-6 lg:px-8 xl:block bg-white"
       >
         <div>
           <div className="mt-6">
+            <div className="flex justify-end space-x-2">
+              <button>
+                <EnvelopeIcon className="h-6 w-6" />
+              </button>
+              <button>
+                <ShareIcon className="h-6 w-6" />
+              </button>
+              <Menu as="div" className="relative inline-block text-left">
+                <div>
+                  <Menu.Button className="flex items-center rounded-full bg-gray-100 text-black hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+                    <span className="sr-only">Open options</span>
+                    <EllipsisVerticalIcon
+                      className="h-6 w-6"
+                      aria-hidden="true"
+                    />
+                  </Menu.Button>
+                </div>
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
+                  enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75"
+                  leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95"
+                >
+                  <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-100">
+                    <div className="py-1">
+                      <Menu.Item>
+                        {({ active }) => (
+                          <span
+                            className={classNames(
+                              active
+                                ? "bg-gray-100 text-gray-900"
+                                : "text-gray-700",
+                              "block px-4 py-2 text-sm"
+                            )}
+                          >
+                            Redo
+                          </span>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <span
+                            className={classNames(
+                              active
+                                ? "bg-gray-100 text-gray-900"
+                                : "text-gray-700",
+                              "block px-4 py-2 text-sm"
+                            )}
+                          >
+                            Continue Prompting
+                          </span>
+                        )}
+                      </Menu.Item>
+                    </div>
+                  </Menu.Items>
+                </Transition>
+              </Menu>
+            </div>
             <dl className="divide-y divide-gray-100 space-y-10">
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">
