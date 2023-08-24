@@ -28,7 +28,7 @@ export default function CustomRequest(p: P) {
 
   return (
     <div>
-      <main className="lg:pl-8">
+      <div id="custom-request-main" className="min-h-screen">
         <div className="xl:pr-96">
           <div className="mx-4 px-4 py-10 sm:px-6 lg:px-8 lg:py-6">
             {/* Main area */}
@@ -96,154 +96,145 @@ export default function CustomRequest(p: P) {
             </div>
           </div>
         </div>
-      </main>
+      </div>
 
-      <aside
+      <div
         id="custom-request-aside"
         className="fixed inset-y-0 right-0 hidden w-96 overflow-y-auto border-l border-gray-200 px-4 pt-20 pb-6 sm:px-6 lg:px-8 xl:block bg-white"
       >
-        <div>
-          <div className="mt-6">
-            <div className="flex justify-end space-x-2">
-              <button onClick={() => {}}>
-                <EnvelopeIcon className="h-6 w-6" />
-              </button>
-              <button onClick={() => {}}>
-                <ShareIcon className="h-6 w-6" />
-              </button>
-              <Menu as="div" className="relative inline-block text-left">
-                <div>
-                  <Menu.Button className="flex items-center rounded-full bg-gray-100 text-black hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">
-                    <span className="sr-only">Open options</span>
-                    <EllipsisVerticalIcon
-                      className="h-6 w-6"
-                      aria-hidden="true"
-                    />
-                  </Menu.Button>
-                </div>
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-100">
-                    <div className="py-1">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <span
-                            className={classNames(
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
-                            )}
-                          >
-                            Redo
-                          </span>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <span
-                            className={classNames(
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
-                            )}
-                          >
-                            Continue Prompting
-                          </span>
-                        )}
-                      </Menu.Item>
-                    </div>
-                  </Menu.Items>
-                </Transition>
-              </Menu>
-            </div>
-
-            <dl className="divide-y divide-gray-100 space-y-10">
-              <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt className="text-sm font-medium leading-6 text-gray-900">
-                  {/* {t("dashboard-page:summary-v2.prompt")} */}
-                  {t("dashboard-page:summary.requested")}:
-                </dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
-                  {/* <ReactMarkdown>{summary?.prompt}</ReactMarkdown> */}
-                  {customRequest?.createdAt
-                    ? `${new Date(customRequest.createdAt)}`
-                    : t("dashboard-page:summary.time-requested-unknown")}
-                </dd>
+        <div className="mt-6">
+          <div className="flex justify-end space-x-2">
+            <button onClick={() => {}}>
+              <EnvelopeIcon className="h-6 w-6" />
+            </button>
+            <button onClick={() => {}}>
+              <ShareIcon className="h-6 w-6" />
+            </button>
+            <Menu as="div" className="relative inline-block text-left">
+              <div>
+                <Menu.Button className="flex items-center rounded-full bg-gray-100 text-black hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+                  <span className="sr-only">Open options</span>
+                  <EllipsisVerticalIcon
+                    className="h-6 w-6"
+                    aria-hidden="true"
+                  />
+                </Menu.Button>
               </div>
-              <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt className="text-sm font-medium leading-6 text-gray-900">
-                  {t("dashboard-page:summary-v2.mode")}:
-                </dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
-                  {customRequest?.mode}
-                </dd>
-              </div>
-              <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt className="text-sm font-medium leading-6 text-gray-900">
-                  Rating
-                </dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
-                  <div className="flex items-end">
-                    <RadioGroupStars
-                      rating={get(customRequest, "Ratings.0.rating", null)}
-                      maxRating={get(
-                        customRequest,
-                        "Ratings.0.maxRating",
-                        null
+              <Transition
+                as={Fragment}
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+              >
+                <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-100">
+                  <div className="py-1">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <span
+                          className={classNames(
+                            active
+                              ? "bg-gray-100 text-gray-900"
+                              : "text-gray-700",
+                            "block px-4 py-2 text-sm"
+                          )}
+                        >
+                          Redo
+                        </span>
                       )}
-                      recordRating={async (
-                        rating: number,
-                        ratingMax: number
-                      ) => {
-                        try {
-                          // prettier-ignore
-                          const rateSummaryRequest = rateCustomRequestFactory(customRequest.id, rating, ratingMax);
-                          // prettier-ignore
-                          const rateSummaryResponse = await rateSummaryRequest;
-                          // prettier-ignore
-                          console.log("rateSummaryResponse", rateSummaryResponse);
-                        } catch (e) {
-                          errorReporter(e);
-                        }
-                      }}
-                    />
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <span
+                          className={classNames(
+                            active
+                              ? "bg-gray-100 text-gray-900"
+                              : "text-gray-700",
+                            "block px-4 py-2 text-sm"
+                          )}
+                        >
+                          Continue Prompting
+                        </span>
+                      )}
+                    </Menu.Item>
                   </div>
+                </Menu.Items>
+              </Transition>
+            </Menu>
+          </div>
+
+          <dl className="divide-y divide-gray-100 space-y-10">
+            <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt className="text-sm font-medium leading-6 text-gray-900">
+                {/* {t("dashboard-page:summary-v2.prompt")} */}
+                {t("dashboard-page:summary.requested")}:
+              </dt>
+              <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+                {/* <ReactMarkdown>{summary?.prompt}</ReactMarkdown> */}
+                {customRequest?.createdAt
+                  ? `${new Date(customRequest.createdAt)}`
+                  : t("dashboard-page:summary.time-requested-unknown")}
+              </dd>
+            </div>
+            <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt className="text-sm font-medium leading-6 text-gray-900">
+                {t("dashboard-page:summary-v2.mode")}:
+              </dt>
+              <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+                {customRequest?.mode}
+              </dd>
+            </div>
+            <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt className="text-sm font-medium leading-6 text-gray-900">
+                Rating
+              </dt>
+              <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+                <div className="flex items-end">
+                  <RadioGroupStars
+                    rating={get(customRequest, "Ratings.0.rating", null)}
+                    maxRating={get(customRequest, "Ratings.0.maxRating", null)}
+                    recordRating={async (rating: number, ratingMax: number) => {
+                      try {
+                        // prettier-ignore
+                        const rateSummaryRequest = rateCustomRequestFactory(customRequest.id, rating, ratingMax);
+                        // prettier-ignore
+                        const rateSummaryResponse = await rateSummaryRequest;
+                        // prettier-ignore
+                        console.log("rateSummaryResponse", rateSummaryResponse);
+                      } catch (e) {
+                        errorReporter(e);
+                      }
+                    }}
+                  />
+                </div>
+              </dd>
+            </div>
+            {customRequest.model && (
+              <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt className="text-sm font-medium leading-6 text-gray-900">
+                  {t("dashboard-page:summary-v2.model")}:
+                </dt>
+                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+                  {customRequest?.model}
                 </dd>
               </div>
-              {customRequest.model && (
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt className="text-sm font-medium leading-6 text-gray-900">
-                    {t("dashboard-page:summary-v2.model")}:
-                  </dt>
-                  <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
-                    {customRequest?.model}
-                  </dd>
-                </div>
-              )}
+            )}
 
-              {customRequest.prompt && (
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt className="text-sm font-medium leading-6 text-gray-900">
-                    {t("dashboard-page:custom-request.prompt")}:
-                  </dt>
-                  <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
-                    {customRequest?.prompt}
-                  </dd>
-                </div>
-              )}
-            </dl>
-          </div>
+            {customRequest.prompt && (
+              <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <dt className="text-sm font-medium leading-6 text-gray-900">
+                  {t("dashboard-page:custom-request.prompt")}:
+                </dt>
+                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+                  {customRequest?.prompt}
+                </dd>
+              </div>
+            )}
+          </dl>
         </div>
-      </aside>
+      </div>
     </div>
   );
 }

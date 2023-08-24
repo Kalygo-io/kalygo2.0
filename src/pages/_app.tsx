@@ -6,9 +6,9 @@ import "@/styles/summarizeFileForm.css";
 import "@/styles/customRequestOnFilesForm.css";
 import "@/styles/landingPageHero.scss";
 import "@/styles/summary-v2-markdown.scss";
-import "@/styles/summary-v2-aside.css";
+import "@/styles/summary-v2.css";
 import "@/styles/custom-request-markdown.scss";
-import "@/styles/custom-request-aside.css";
+import "@/styles/custom-request.css";
 
 import type { AppProps } from "next/app";
 import { appWithTranslation } from "next-i18next";

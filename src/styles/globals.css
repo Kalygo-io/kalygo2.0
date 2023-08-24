@@ -74,7 +74,6 @@
 /* Track */
 ::-webkit-scrollbar-track {
   background: #dadada;
-  border-top-right-radius: 6px;
 }
 
 /* Handle */

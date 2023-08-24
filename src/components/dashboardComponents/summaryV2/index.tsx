@@ -28,7 +28,7 @@ export default function SummaryV2(p: P) {
 
   return (
     <div>
-      <main className="lg:pl-8">
+      <div className="min-h-screen" id="summary-v2-main">
         <div className="xl:pr-96">
           <div className="mx-4 px-4 py-10 sm:px-6 lg:px-8 lg:py-6">
             {/* Main area */}
@@ -96,11 +96,11 @@ export default function SummaryV2(p: P) {
             </div>
           </div>
         </div>
-      </main>
+      </div>
 
-      <aside
+      <div
         id="summary-v2-aside"
-        className="fixed inset-y-0 right-0 w-96 overflow-y-auto border-l border-gray-200 px-4 pt-20 pb-6 sm:px-6 lg:px-8 xl:block bg-white"
+        className="fixed inset-y-0 right-0 hidden w-96 overflow-y-auto border-l border-gray-200 px-4 pt-20 pb-6 sm:px-6 lg:px-8 xl:block bg-white"
       >
         <div>
           <div className="mt-6">
@@ -249,7 +249,7 @@ export default function SummaryV2(p: P) {
             </dl>
           </div>
         </div>
-      </aside>
+      </div>
     </div>
   );
 }
