@@ -30,70 +30,67 @@ export default function CustomRequest(p: P) {
     <div>
       <div id="custom-request-main" className="min-h-screen">
         <div className="xl:pr-96">
-          <div className="mx-4 px-4 py-10 sm:px-6 lg:px-8 lg:py-6">
-            {/* Main area */}
-            <div className="mt-1 text-sm leading-6 text-gray-700 sm:mt-0">
-              {customRequest.mode === ScanningMode.PRIOR_TO_TRACKING_MODE &&
-                JSON.stringify(customRequest.completionResponse, null, 2)}
+          {/* Main area */}
+          <div className="mt-1 text-sm leading-6 text-gray-700 sm:mt-0">
+            {customRequest.mode === ScanningMode.PRIOR_TO_TRACKING_MODE &&
+              JSON.stringify(customRequest.completionResponse, null, 2)}
 
-              {customRequest.mode === ScanningMode.EACH_FILE_IN_CHUNKS &&
-                customRequest?.completionResponse.map((i: any, idx: any) => {
-                  {
-                    return (
-                      <div key={idx}>
-                        <h3 className="text-lg">
-                          <b>{i.file}</b>
-                        </h3>
-                        <ul>
-                          {i?.summary?.map((j: any, idx: any) => {
-                            return (
-                              <li key={idx} className="mt-2">
-                                {i?.summary.length > 1 &&
-                                  `(Part ${j.chunk + 1})`}
-                                <ReactMarkdown className="summary-v2-markdown">
-                                  {j.chunkSummary}
-                                </ReactMarkdown>
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </div>
-                    );
-                  }
-                })}
-
-              {customRequest.mode === ScanningMode.EACH_FILE_OVERALL &&
-                customRequest?.completionResponse.map((i: any, idx: any) => {
-                  return (
-                    <div key={i.file}>
-                      <span>
-                        {/* <InformationCircleIcon className="h-4 w-4 inline" /> */}
-                        <h3 className="text-lg">
-                          <b>{i.file}</b>
-                        </h3>
-                      </span>
-                      <ReactMarkdown className="summary-v2-markdown">
-                        {i.finalCompletionForFile}
-                      </ReactMarkdown>
-                      <br />
-                    </div>
-                  );
-                })}
-
-              {customRequest.mode === ScanningMode.OVERALL &&
-                customRequest?.completionResponse.map((i: any, idx: any) => {
+            {customRequest.mode === ScanningMode.EACH_FILE_IN_CHUNKS &&
+              customRequest?.completionResponse.map((i: any, idx: any) => {
+                {
                   return (
                     <div key={idx}>
-                      {customRequest?.completionResponse.length > 1 &&
-                        `(Part ${i.part + 1})`}
-                      <ReactMarkdown className="summary-v2-markdown">
-                        {i.overallCompletion}
-                      </ReactMarkdown>
-                      <br />
+                      <h3 className="text-lg">
+                        <b>{i.file}</b>
+                      </h3>
+                      <ul>
+                        {i?.summary?.map((j: any, idx: any) => {
+                          return (
+                            <li key={idx} className="mt-2">
+                              {i?.summary.length > 1 && `(Part ${j.chunk + 1})`}
+                              <ReactMarkdown className="summary-v2-markdown">
+                                {j.chunkSummary}
+                              </ReactMarkdown>
+                            </li>
+                          );
+                        })}
+                      </ul>
                     </div>
                   );
-                })}
-            </div>
+                }
+              })}
+
+            {customRequest.mode === ScanningMode.EACH_FILE_OVERALL &&
+              customRequest?.completionResponse.map((i: any, idx: any) => {
+                return (
+                  <div key={i.file}>
+                    <span>
+                      {/* <InformationCircleIcon className="h-4 w-4 inline" /> */}
+                      <h3 className="text-lg">
+                        <b>{i.file}</b>
+                      </h3>
+                    </span>
+                    <ReactMarkdown className="summary-v2-markdown">
+                      {i.finalCompletionForFile}
+                    </ReactMarkdown>
+                    <br />
+                  </div>
+                );
+              })}
+
+            {customRequest.mode === ScanningMode.OVERALL &&
+              customRequest?.completionResponse.map((i: any, idx: any) => {
+                return (
+                  <div key={idx}>
+                    {customRequest?.completionResponse.length > 1 &&
+                      `(Part ${i.part + 1})`}
+                    <ReactMarkdown className="summary-v2-markdown">
+                      {i.overallCompletion}
+                    </ReactMarkdown>
+                    <br />
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>
@@ -104,9 +101,9 @@ export default function CustomRequest(p: P) {
       >
         <div className="mt-6">
           <div className="flex justify-end space-x-2">
-            <button onClick={() => {}}>
+            {/* <button onClick={() => {}}>
               <EnvelopeIcon className="h-6 w-6" />
-            </button>
+            </button> */}
             <button onClick={() => {}}>
               <ShareIcon className="h-6 w-6" />
             </button>

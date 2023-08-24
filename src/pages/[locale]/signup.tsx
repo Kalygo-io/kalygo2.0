@@ -177,7 +177,7 @@ export default function Signup() {
                   {...register("email", {
                     required: true,
                     pattern: new RegExp(
-                      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/
+                      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/ // email regex
                     ),
                   })}
                   id="email"

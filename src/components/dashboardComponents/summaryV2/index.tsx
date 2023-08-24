@@ -15,8 +15,9 @@ import {
 } from "@heroicons/react/24/outline";
 import get from "lodash.get";
 import { useTranslation } from "next-i18next";
-import { Fragment, MouseEventHandler } from "react";
+import { Fragment, MouseEventHandler, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import { ShareModal } from "./components/shareModal";
 
 interface P {
   summary: any;
@@ -26,74 +27,73 @@ export default function SummaryV2(p: P) {
   const { summary } = p;
   const { t } = useTranslation();
 
+  const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
+
   return (
     <div>
       <div className="min-h-screen" id="summary-v2-main">
         <div className="xl:pr-96">
-          <div className="mx-4 px-4 py-10 sm:px-6 lg:px-8 lg:py-6">
-            {/* Main area */}
-            <div className="mt-1 text-sm leading-6 text-gray-700 sm:mt-0">
-              {/* <ReactMarkdown>{summary?.completionResponse}</ReactMarkdown> */}
-              {summary.mode === SummaryMode.PRIOR_TO_TRACKING_MODE &&
-                JSON.stringify(summary.summary, null, 2)}
-              {summary.mode === SummaryMode.EACH_FILE_OVERALL &&
-                summary?.summary.map((i: any, idx: any) => {
-                  return (
-                    <div key={i.file}>
-                      <span>
-                        {/* <InformationCircleIcon className="h-4 w-4 inline" /> */}
-                        <h3 className="text-lg">
-                          <b>{i.file}</b>
-                        </h3>
-                      </span>
-                      <ReactMarkdown className="summary-v2-markdown">
-                        {i.summary}
-                      </ReactMarkdown>
-                      <br />
-                    </div>
-                  );
-                })}
-              {summary.mode === SummaryMode.OVERALL &&
-                summary?.summary.map((i: any, idx: any) => {
+          {/* Main area */}
+          <div className="mt-1 text-sm leading-6 text-gray-700 sm:mt-0">
+            {/* <ReactMarkdown>{summary?.completionResponse}</ReactMarkdown> */}
+            {summary.mode === SummaryMode.PRIOR_TO_TRACKING_MODE &&
+              JSON.stringify(summary.summary, null, 2)}
+            {summary.mode === SummaryMode.EACH_FILE_OVERALL &&
+              summary?.summary.map((i: any, idx: any) => {
+                return (
+                  <div key={i.file}>
+                    <span>
+                      {/* <InformationCircleIcon className="h-4 w-4 inline" /> */}
+                      <h3 className="text-lg">
+                        <b>{i.file}</b>
+                      </h3>
+                    </span>
+                    <ReactMarkdown className="summary-v2-markdown">
+                      {i.summary}
+                    </ReactMarkdown>
+                    <br />
+                  </div>
+                );
+              })}
+            {summary.mode === SummaryMode.OVERALL &&
+              summary?.summary.map((i: any, idx: any) => {
+                return (
+                  <div key={idx}>
+                    {summary?.summary.length > 1 && `(Part ${i.part + 1})`}
+                    <ReactMarkdown className="summary-v2-markdown">
+                      {i.summary}
+                    </ReactMarkdown>
+                    <br />
+                  </div>
+                );
+              })}
+
+            {/* {summary.mode === SummaryMode.EACH_FILE_IN_CHUNKS &&
+                JSON.stringify(summary.summary, null, 2)} */}
+            {summary.mode === SummaryMode.EACH_FILE_IN_CHUNKS &&
+              summary?.summary.map((i: any, idx: any) => {
+                {
                   return (
                     <div key={idx}>
-                      {summary?.summary.length > 1 && `(Part ${i.part + 1})`}
-                      <ReactMarkdown className="summary-v2-markdown">
-                        {i.summary}
-                      </ReactMarkdown>
-                      <br />
+                      <h3 className="text-lg">
+                        <b>{i.file}</b>
+                      </h3>
+                      <ul>
+                        {i?.summary?.map((j: any, idx: any) => {
+                          return (
+                            <li key={idx} className="mt-2">
+                              {i?.summary.length > 1 && `(Part ${j.chunk + 1})`}
+                              <ReactMarkdown className="summary-v2-markdown">
+                                {j.chunkSummary}
+                              </ReactMarkdown>
+                            </li>
+                          );
+                        })}
+                      </ul>
                     </div>
                   );
-                })}
-
-              {/* {summary.mode === SummaryMode.EACH_FILE_IN_CHUNKS &&
-                JSON.stringify(summary.summary, null, 2)} */}
-              {summary.mode === SummaryMode.EACH_FILE_IN_CHUNKS &&
-                summary?.summary.map((i: any, idx: any) => {
-                  {
-                    return (
-                      <div key={idx}>
-                        <h3 className="text-lg">
-                          <b>{i.file}</b>
-                        </h3>
-                        <ul>
-                          {i?.summary?.map((j: any, idx: any) => {
-                            return (
-                              <li key={idx} className="mt-2">
-                                {i?.summary.length > 1 &&
-                                  `(Part ${j.chunk + 1})`}
-                                <ReactMarkdown className="summary-v2-markdown">
-                                  {j.chunkSummary}
-                                </ReactMarkdown>
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </div>
-                    );
-                  }
-                })}
-            </div>
+                }
+              })}
           </div>
         </div>
       </div>
@@ -105,10 +105,14 @@ export default function SummaryV2(p: P) {
         <div>
           <div className="mt-6">
             <div className="flex justify-end space-x-2">
-              <button>
+              {/* <button>
                 <EnvelopeIcon className="h-6 w-6" />
-              </button>
-              <button>
+              </button> */}
+              <button
+                onClick={() => {
+                  setShareModalOpen(true);
+                }}
+              >
                 <ShareIcon className="h-6 w-6" />
               </button>
               <Menu as="div" className="relative inline-block text-left">
@@ -250,6 +254,12 @@ export default function SummaryV2(p: P) {
           </div>
         </div>
       </div>
+      <ShareModal
+        open={shareModalOpen}
+        cb={(isOpen: boolean) => {
+          setShareModalOpen(isOpen);
+        }}
+      />
     </div>
   );
 }

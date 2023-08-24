@@ -170,7 +170,6 @@
     "select": "Select",
     "not-this-one": "Not this one"
   },
-
   "chunking-tool": {
     "title": "Chunking Tool",
     "description": "The 'Chunking Tool' allows you to select a file and specify the model you would like use to process your file. After providing these details, Kalygo will extract the text and cut up the file so that each part of it is ingestable into the A.I. model specified.",
@@ -218,7 +217,11 @@
     "mode": "Mode",
     "model": "Model",
     "language": "Language",
-    "format": "Format"
+    "format": "Format",
+    "share-modal": {
+      "title": "Share",
+      "email": "Email"
+    }
   },
   "admin": {
     "title": "Overview",
