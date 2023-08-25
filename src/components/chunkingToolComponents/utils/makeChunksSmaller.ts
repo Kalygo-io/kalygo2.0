@@ -10,8 +10,6 @@ export function makeChunksSmaller(
   console.log("chunks");
 
   for (let i = 0; i < chunks.length; i++) {
-    console.log("i", i);
-
     const dataChunk = `${chunks[i]}`;
     if (encoder.encode(dataChunk).length > context) {
       let middle = Math.floor(chunks[i].length / 2); // TODO - is there a more finesse way to split the chunk then simply in half?

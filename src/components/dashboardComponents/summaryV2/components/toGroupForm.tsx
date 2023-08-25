@@ -49,7 +49,7 @@ export const ToGroupForm = (p: P) => {
       <div className="flex flex-wrap w-full">
         <div className="py-4">
           {summary.SummariesAndAccessGroups.filter((i: any) => {
-            return i.accessGroup.visible;
+            return i?.accessGroup?.visible;
           }).length > 0 && <b>Shared with:</b>}{" "}
           {summary.SummariesAndAccessGroups.filter((i: any) => {
             return i.accessGroup.visible;

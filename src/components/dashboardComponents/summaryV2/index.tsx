@@ -41,7 +41,6 @@ export default function SummaryV2(p: P) {
                 return (
                   <div key={i.file}>
                     <span>
-                      {/* <InformationCircleIcon className="h-4 w-4 inline" /> */}
                       <h3 className="text-lg">
                         <b>{i.file}</b>
                       </h3>
@@ -108,7 +107,7 @@ export default function SummaryV2(p: P) {
                 >
                   <ShareIcon className="h-6 w-6" />
                 </button>
-                <Menu as="div" className="relative inline-block text-left">
+                {/* <Menu as="div" className="relative inline-block text-left">
                   <div>
                     <Menu.Button className="flex items-center rounded-full bg-gray-100 text-black hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">
                       <span className="sr-only">Open options</span>
@@ -160,7 +159,7 @@ export default function SummaryV2(p: P) {
                       </div>
                     </Menu.Items>
                   </Transition>
-                </Menu>
+                </Menu> */}
               </div>
             )}
             <dl className="divide-y divide-gray-100 space-y-10">
