@@ -17,6 +17,7 @@ import { WindowLoader } from "@/components/shared/WindowLoader";
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
 import { useGetAccountWithAccessGroups } from "@/utility/hooks/getAccountWithAccessGroups";
 import LayoutDashboardNoAdmin from "@/layout/layoutDashboardNoAdmin";
+import { UnauthorizedErrorInDashboard } from "@/components/shared/unauthorizedErrorInDashboard";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -76,8 +77,16 @@ export default function Page() {
   } else if (summary.val) {
     jsx = <SummaryV2 summary={summary.val} />;
   } else {
-    jsx = <ErrorInDashboard />;
+    console.log("--- --- ---", summary.err);
+
+    if (summary?.err?.response.status) {
+      jsx = <UnauthorizedErrorInDashboard />;
+    } else {
+      jsx = <ErrorInDashboard />;
+    }
   }
+
+  console.log("---");
 
   return (
     <>

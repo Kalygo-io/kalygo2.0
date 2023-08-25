@@ -6,7 +6,11 @@ import { errorReporter } from "@/utility/error/reporter";
 import { classNames } from "@/utility/misc/classNames";
 import { Menu, Transition } from "@headlessui/react";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
-import { EllipsisVerticalIcon, ShareIcon } from "@heroicons/react/24/outline";
+import {
+  EllipsisVerticalIcon,
+  GlobeAltIcon,
+  ShareIcon,
+} from "@heroicons/react/24/outline";
 import get from "lodash.get";
 import { useTranslation } from "next-i18next";
 import { Fragment, MouseEventHandler, useState } from "react";
@@ -100,6 +104,15 @@ export default function SummaryV2(p: P) {
           <div className="mt-6">
             {showSharing && (
               <div className="flex justify-end space-x-2">
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      `${process.env.NEXT_PUBLIC_HOSTNAME}/dashboard/summary-v2/share?summary-v2-id=${summary.id}`
+                    );
+                  }}
+                >
+                  <GlobeAltIcon className="h-6 w-6" />
+                </button>
                 <button
                   onClick={() => {
                     setShareModalOpen(true);
