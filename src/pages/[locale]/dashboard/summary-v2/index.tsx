@@ -82,6 +82,7 @@ export default function Page() {
         account={account.val}
         refresh={refresh}
         refreshCount={refreshCount}
+        showSharing
       />
     );
   } else {
