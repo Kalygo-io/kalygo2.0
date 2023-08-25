@@ -28,6 +28,7 @@ import {
 import { signOut } from "@/services/signOut";
 import { useTranslation } from "next-i18next";
 import { classNames } from "@/utility/misc/classNames";
+import { errorReporter } from "@/utility/error/reporter";
 
 interface P {
   children: ReactNode;
@@ -43,16 +44,14 @@ export default function LayoutDashboard({ children, account }: P) {
 
   useEffect(() => {
     async function checkAdmin() {
-      console.log("checkAdmin");
       try {
-        console.log("try");
         await axios.get(
           `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/is-admin`,
           { withCredentials: true }
         );
         setIsAdmin(true);
-      } catch (err) {
-        console.log("err validating isAdmin", err);
+      } catch (e) {
+        errorReporter(e, false);
       }
     }
     checkAdmin();

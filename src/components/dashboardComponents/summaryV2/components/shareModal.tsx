@@ -15,11 +15,12 @@ import { ToGroupForm } from "./toGroupForm";
 
 interface P {
   open: boolean;
-  cb: (isOpen: boolean, newCard: any) => void;
+  cb: (isOpen: boolean) => void;
+  account: any;
 }
 
 export const ShareModal = (p: P) => {
-  const { open, cb } = p;
+  const { open, cb, account } = p;
 
   const { t } = useTranslation();
 
@@ -46,15 +47,9 @@ export const ShareModal = (p: P) => {
     }
   };
 
-  console.log("shareModal", errors);
-
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog
-        as="div"
-        className="relative z-10"
-        onClose={() => cb(false, null)}
-      >
+      <Dialog as="div" className="relative z-10" onClose={() => cb(false)}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -126,14 +121,17 @@ export const ShareModal = (p: P) => {
 
                 {panel == "individual" ? (
                   <ToIndividualForm
-                    cb={() => {
+                    cb={(isOpen: boolean) => {
                       console.log("--- _ Individual _ ---");
+                      cb(isOpen);
                     }}
                   />
                 ) : (
                   <ToGroupForm
-                    cb={() => {
+                    accessGroups={account.accessGroups}
+                    cb={(isOpen: boolean) => {
                       console.log("--- _ Group _ ---");
+                      cb(isOpen);
                     }}
                   />
                 )}

@@ -21,7 +21,7 @@ export function UsageCredits(p: P) {
         usageCredits === 1
           ? t("dashboard-page:settings.usage-credits.credit")
           : t("dashboard-page:settings.usage-credits.credits"),
-      value: usageCredits.toLocaleString(navigator.language, {
+      value: usageCredits?.toLocaleString(navigator.language, {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
       }),
@@ -54,7 +54,7 @@ export function UsageCredits(p: P) {
                 {stat.name}
               </dt>
               <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900">
-                {stat.value}
+                {stat.value || "ø"}
               </dd>
             </div>
           ))}

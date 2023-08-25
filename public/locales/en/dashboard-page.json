@@ -29,10 +29,12 @@
     "no-summaries-v2-yet": "After requesting summaries (v2) they will be listed here",
     "no-custom-requests-yet": "After requesting custom requests they will be listed here",
     "credits": {
-      "free-summarization-credits": "Free Summarization Credits",
-      "try-free-summarization-credits": "Try summarization",
-      "free-vector-search-credits": "Free Smart Search Credits",
-      "try-vector-search-credits": "Try smart search",
+      "summarization-credits": "Summarization Credits",
+      "try-summarization-credits": "Try 'Summary' tool",
+      "vector-search-credits": "Free Smart Search Credits",
+      "try-vector-search-credits": "Try 'Smart Search'",
+      "custom-request-credits": "Custom Request Credits",
+      "try-custom-request-credits": "Try 'Custom Request' tool",
       "credit-card-charges": "Monthly Charges",
       "more-info": "More information"
     },
@@ -262,8 +264,8 @@
       "title": "Free credits",
       "summaries": "Summaries",
       "summary": "Summary",
-      "vector-searches": "Smart searches",
-      "vector-search": "Smart search",
+      "vector-searches": "Smart Searches",
+      "vector-search": "Smart Search",
       "custom-request-credit": "Custom Request",
       "custom-request-credits": "Custom Requests"
     },

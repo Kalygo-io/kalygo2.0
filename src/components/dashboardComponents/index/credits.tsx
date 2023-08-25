@@ -1,6 +1,7 @@
 import {
   ArrowDownIcon,
   ArrowUpIcon,
+  BeakerIcon,
   CreditCardIcon,
   CursorArrowRaysIcon,
   DocumentMagnifyingGlassIcon,
@@ -12,12 +13,16 @@ import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 
 interface P {
-  account: { summaryCredits: number; vectorSearchCredits: number };
+  account: {
+    summaryCredits: number;
+    vectorSearchCredits: number;
+    customRequestCredits: number;
+  };
 }
 
 export function Credits(p: P) {
   const {
-    account: { summaryCredits, vectorSearchCredits },
+    account: { summaryCredits, vectorSearchCredits, customRequestCredits },
   } = p;
   const { t } = useTranslation();
 
@@ -26,20 +31,28 @@ export function Credits(p: P) {
   const stats = [
     {
       id: 1,
-      name: t("dashboard-page:index.credits.free-summarization-credits"),
+      name: t("dashboard-page:index.credits.summarization-credits"),
       stat: summaryCredits,
       icon: LifebuoyIcon,
       onClick: () => {
         router.push("/dashboard/summarize/summarize-v2");
       },
-      onClickText: t(
-        "dashboard-page:index.credits.try-free-summarization-credits"
-      ),
+      onClickText: t("dashboard-page:index.credits.try-summarization-credits"),
     },
     {
       id: 2,
-      name: t("dashboard-page:index.credits.free-vector-search-credits"),
-      stat: vectorSearchCredits,
+      name: t("dashboard-page:index.credits.custom-request-credits"),
+      stat: customRequestCredits,
+      icon: BeakerIcon,
+      onClick: () => {
+        router.push("/dashboard/custom-request/custom-request-v2");
+      },
+      onClickText: t("dashboard-page:index.credits.try-custom-request-credits"),
+    },
+    {
+      id: 3,
+      name: t("dashboard-page:index.credits.vector-search-credits"),
+      stat: customRequestCredits,
       icon: DocumentMagnifyingGlassIcon,
       onClick: () => {
         router.push("/dashboard/vector-search");

@@ -15,6 +15,7 @@ import axios from "axios";
 import SummaryV2 from "@/components/dashboardComponents/summaryV2";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
+import { useGetAccountWithAccessGroups } from "@/utility/hooks/getAccountWithAccessGroups";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -35,6 +36,8 @@ export default function Page() {
 
   const summaryV2Id = searchParams.get("summary-v2-id") || "";
   const { t } = useTranslation();
+
+  const { account } = useGetAccountWithAccessGroups();
 
   const [summary, setSummary] = useState<{
     val: any;
@@ -74,10 +77,10 @@ export default function Page() {
   }, []);
 
   let jsx = null;
-  if (summary.loading) {
+  if (summary.loading || account.loading) {
     jsx = <WindowLoader></WindowLoader>;
-  } else if (summary.val) {
-    jsx = <SummaryV2 summary={summary.val} />;
+  } else if (summary.val && account.val) {
+    jsx = <SummaryV2 summary={summary.val} account={account.val} />;
   } else {
     jsx = <ErrorInDashboard />;
   }

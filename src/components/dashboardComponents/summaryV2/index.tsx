@@ -21,10 +21,11 @@ import { ShareModal } from "./components/shareModal";
 
 interface P {
   summary: any;
+  account: any;
 }
 
 export default function SummaryV2(p: P) {
-  const { summary } = p;
+  const { summary, account } = p;
   const { t } = useTranslation();
 
   const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
@@ -67,9 +68,6 @@ export default function SummaryV2(p: P) {
                   </div>
                 );
               })}
-
-            {/* {summary.mode === SummaryMode.EACH_FILE_IN_CHUNKS &&
-                JSON.stringify(summary.summary, null, 2)} */}
             {summary.mode === SummaryMode.EACH_FILE_IN_CHUNKS &&
               summary?.summary.map((i: any, idx: any) => {
                 {
@@ -255,6 +253,7 @@ export default function SummaryV2(p: P) {
         </div>
       </div>
       <ShareModal
+        account={account}
         open={shareModalOpen}
         cb={(isOpen: boolean) => {
           setShareModalOpen(isOpen);
