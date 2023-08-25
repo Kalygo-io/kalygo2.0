@@ -1,4 +1,7 @@
+import { addSummaryToAccessGroupFactory } from "@/serviceFactory/addSummaryToAccessGroupFactory";
+import { removeSummaryFromAccessGroupFactory } from "@/serviceFactory/removeSummaryFromAccessGroupFactory";
 import { errorReporter } from "@/utility/error/reporter";
+import { XCircleIcon } from "@heroicons/react/24/outline";
 import { useTranslation } from "next-i18next";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -6,10 +9,11 @@ import { useForm } from "react-hook-form";
 interface P {
   cb: (isOpen: boolean) => void;
   accessGroups: any[];
+  summary: any;
 }
 
 export const ToGroupForm = (p: P) => {
-  const { cb, accessGroups } = p;
+  const { cb, accessGroups, summary } = p;
   const { t } = useTranslation();
   const {
     register,
@@ -20,13 +24,21 @@ export const ToGroupForm = (p: P) => {
     watch,
   } = useForm({
     defaultValues: {
-      shareToGroup: "Public",
+      shareToGroup: "",
     },
   });
 
   const onSubmit = async (data: any) => {
     try {
       console.log("data", data);
+
+      const request = addSummaryToAccessGroupFactory(
+        summary.id,
+        Number.parseInt(data.shareToGroup)
+      );
+
+      const response = await request;
+      cb(false);
     } catch (e) {
       errorReporter(e);
     }
@@ -34,34 +46,61 @@ export const ToGroupForm = (p: P) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <fieldset>
-        <legend className="sr-only">Access Groups</legend>
-        <div className="sm:grid sm:grid-cols-3 sm:items-baseline sm:gap-4 sm:py-6">
-          <label
-            htmlFor="accessGroups"
-            className="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5"
-          >
-            Access Groups
-          </label>
-          <div className="mt-1 sm:col-span-2 sm:mt-0">
-            <div className="max-w-lg">
-              <div className="mt-6 space-x-2 flex justify-between">
-                <select
-                  {...register("shareToGroup")}
-                  id="accessGroups"
-                  name="accessGroups"
-                  autoComplete="accessGroups"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                >
-                  {accessGroups.map((g) => {
-                    return <option key={g.name}>{g.name}</option>;
+      <div className="flex flex-wrap w-full">
+        <div className="py-4">
+          {summary.SummariesAndAccessGroups.filter((i: any) => {
+            return i.accessGroup.visible;
+          }).length > 0 && <b>Shared with:</b>}{" "}
+          {summary.SummariesAndAccessGroups.filter((i: any) => {
+            return i.accessGroup.visible;
+          }).map((i: any) => (
+            <span
+              key={i.accessGroup.id}
+              className="inline-flex items-start gap-x-1 truncate"
+            >
+              {i.accessGroup.name}{" "}
+              <XCircleIcon
+                className="h-6 w-6 cursor-pointer"
+                onClick={async () => {
+                  console.log("___ --- ___");
+                  const request = removeSummaryFromAccessGroupFactory(
+                    summary.id,
+                    Number.parseInt(i.accessGroup.id)
+                  );
+                  const response = await request;
+                  cb(true);
+                }}
+              />
+            </span>
+          ))}
+        </div>
+        <fieldset className="relative w-full flex flex-col max-w-lg">
+          <div className="">
+            <div className="space-x-2 flex justify-between">
+              <select
+                {...register("shareToGroup")}
+                id="shareToGroup"
+                name="shareToGroup"
+                autoComplete="shareToGroup"
+                className="mt-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6"
+              >
+                <option value={""} className="text-gray-400">
+                  Select Access Group
+                </option>
+                {accessGroups
+                  .filter((value) => value.visible)
+                  .map((g) => {
+                    return (
+                      <option key={g.name} value={g.id}>
+                        {g.name}
+                      </option>
+                    );
                   })}
-                </select>
-              </div>
+              </select>
             </div>
           </div>
-        </div>
-      </fieldset>
+        </fieldset>
+      </div>
       <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
         <button
           disabled={!isValid}

@@ -6,13 +6,7 @@ import { errorReporter } from "@/utility/error/reporter";
 import { classNames } from "@/utility/misc/classNames";
 import { Menu, Transition } from "@headlessui/react";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
-import {
-  EllipsisVerticalIcon,
-  EnvelopeIcon,
-  InformationCircleIcon,
-  ShareIcon,
-  StarIcon,
-} from "@heroicons/react/24/outline";
+import { EllipsisVerticalIcon, ShareIcon } from "@heroicons/react/24/outline";
 import get from "lodash.get";
 import { useTranslation } from "next-i18next";
 import { Fragment, MouseEventHandler, useState } from "react";
@@ -22,10 +16,12 @@ import { ShareModal } from "./components/shareModal";
 interface P {
   summary: any;
   account: any;
+  refresh: any;
+  refreshCount: number;
 }
 
 export default function SummaryV2(p: P) {
-  const { summary, account } = p;
+  const { summary, account, refresh, refreshCount } = p;
   const { t } = useTranslation();
 
   const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
@@ -254,6 +250,9 @@ export default function SummaryV2(p: P) {
       </div>
       <ShareModal
         account={account}
+        refresh={refresh}
+        refreshCount={refreshCount}
+        summary={summary}
         open={shareModalOpen}
         cb={(isOpen: boolean) => {
           setShareModalOpen(isOpen);

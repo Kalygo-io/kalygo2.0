@@ -31,14 +31,10 @@ export { getStaticPaths, getStaticProps };
 
 export default function Page() {
   const router = useRouter();
-
   const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
-
   const summaryV2Id = searchParams.get("summary-v2-id") || "";
   const { t } = useTranslation();
-
-  const { account } = useGetAccountWithAccessGroups();
-
+  const { account, refresh, refreshCount } = useGetAccountWithAccessGroups();
   const [summary, setSummary] = useState<{
     val: any;
     loading: boolean;
@@ -74,13 +70,20 @@ export default function Page() {
     }
 
     fetch();
-  }, []);
+  }, [refreshCount]);
 
   let jsx = null;
   if (summary.loading || account.loading) {
     jsx = <WindowLoader></WindowLoader>;
   } else if (summary.val && account.val) {
-    jsx = <SummaryV2 summary={summary.val} account={account.val} />;
+    jsx = (
+      <SummaryV2
+        summary={summary.val}
+        account={account.val}
+        refresh={refresh}
+        refreshCount={refreshCount}
+      />
+    );
   } else {
     jsx = <ErrorInDashboard />;
   }

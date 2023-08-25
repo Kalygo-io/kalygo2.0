@@ -17,13 +17,14 @@ interface P {
   open: boolean;
   cb: (isOpen: boolean) => void;
   account: any;
+  summary: any;
+  refresh: any;
+  refreshCount: number;
 }
 
 export const ShareModal = (p: P) => {
-  const { open, cb, account } = p;
-
+  const { open, cb, account, summary, refresh, refreshCount } = p;
   const { t } = useTranslation();
-
   const [panel, setPanel] = useState<"individual" | "group">("individual");
 
   const {
@@ -128,10 +129,12 @@ export const ShareModal = (p: P) => {
                   />
                 ) : (
                   <ToGroupForm
+                    summary={summary}
                     accessGroups={account.accessGroups}
                     cb={(isOpen: boolean) => {
                       console.log("--- _ Group _ ---");
                       cb(isOpen);
+                      refresh(refreshCount + 1);
                     }}
                   />
                 )}

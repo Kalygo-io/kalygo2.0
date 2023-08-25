@@ -34,10 +34,7 @@ export const ToIndividualForm = (p: P) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-wrap gap-3 w-full">
-        <label className="relative w-full flex flex-col">
-          <span className="mb-3">
-            {t("dashboard-page:summary-v2.share-modal.email")}
-          </span>
+        <fieldset className="relative w-full flex flex-col">
           <input
             {...register("shareToEmail", {
               required: true,
@@ -48,11 +45,11 @@ export const ToIndividualForm = (p: P) => {
             type="text"
             name="shareToEmail"
             placeholder="Email"
-            className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
+            className={`mt-3 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
               errors["shareToEmail"] && "ring-red-700 focus:ring-red-500"
             }`}
           />
-        </label>
+        </fieldset>
       </div>
       <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
         <button

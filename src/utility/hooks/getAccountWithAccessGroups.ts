@@ -9,7 +9,7 @@ import React, {
 import axios from "axios";
 
 export function useGetAccountWithAccessGroups() {
-  const [refreshCount, refresh] = useState(0);
+  const [refreshCount, refresh] = useState<number>(0);
   const [account, setAccount] = useState<{
     val: {
       email: string;
@@ -33,6 +33,8 @@ export function useGetAccountWithAccessGroups() {
 
   useEffect(() => {
     async function fetch() {
+      console.log("calling fetch...");
+
       const res = await axios.get(
         `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account/get-account-with-access-groups`,
         {
@@ -48,10 +50,11 @@ export function useGetAccountWithAccessGroups() {
     }
 
     fetch();
-  }, []);
+  }, [refreshCount]);
 
   return {
     account,
     refresh,
+    refreshCount,
   };
 }
