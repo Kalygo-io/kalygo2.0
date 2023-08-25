@@ -15,13 +15,14 @@ import { ShareModal } from "./components/shareModal";
 
 interface P {
   summary: any;
-  account: any;
-  refresh: any;
-  refreshCount: number;
+  account?: any;
+  refresh?: any;
+  refreshCount?: number;
+  showSharing?: boolean;
 }
 
 export default function SummaryV2(p: P) {
-  const { summary, account, refresh, refreshCount } = p;
+  const { summary, account, refresh, refreshCount, showSharing } = p;
   const { t } = useTranslation();
 
   const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
@@ -98,71 +99,70 @@ export default function SummaryV2(p: P) {
       >
         <div>
           <div className="mt-6">
-            <div className="flex justify-end space-x-2">
-              {/* <button>
-                <EnvelopeIcon className="h-6 w-6" />
-              </button> */}
-              <button
-                onClick={() => {
-                  setShareModalOpen(true);
-                }}
-              >
-                <ShareIcon className="h-6 w-6" />
-              </button>
-              <Menu as="div" className="relative inline-block text-left">
-                <div>
-                  <Menu.Button className="flex items-center rounded-full bg-gray-100 text-black hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">
-                    <span className="sr-only">Open options</span>
-                    <EllipsisVerticalIcon
-                      className="h-6 w-6"
-                      aria-hidden="true"
-                    />
-                  </Menu.Button>
-                </div>
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
+            {showSharing && (
+              <div className="flex justify-end space-x-2">
+                <button
+                  onClick={() => {
+                    setShareModalOpen(true);
+                  }}
                 >
-                  <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-100">
-                    <div className="py-1">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <span
-                            className={classNames(
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
-                            )}
-                          >
-                            Redo
-                          </span>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <span
-                            className={classNames(
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
-                            )}
-                          >
-                            Continue Prompting
-                          </span>
-                        )}
-                      </Menu.Item>
-                    </div>
-                  </Menu.Items>
-                </Transition>
-              </Menu>
-            </div>
+                  <ShareIcon className="h-6 w-6" />
+                </button>
+                <Menu as="div" className="relative inline-block text-left">
+                  <div>
+                    <Menu.Button className="flex items-center rounded-full bg-gray-100 text-black hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+                      <span className="sr-only">Open options</span>
+                      <EllipsisVerticalIcon
+                        className="h-6 w-6"
+                        aria-hidden="true"
+                      />
+                    </Menu.Button>
+                  </div>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-100">
+                      <div className="py-1">
+                        <Menu.Item>
+                          {({ active }) => (
+                            <span
+                              className={classNames(
+                                active
+                                  ? "bg-gray-100 text-gray-900"
+                                  : "text-gray-700",
+                                "block px-4 py-2 text-sm"
+                              )}
+                            >
+                              Redo
+                            </span>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <span
+                              className={classNames(
+                                active
+                                  ? "bg-gray-100 text-gray-900"
+                                  : "text-gray-700",
+                                "block px-4 py-2 text-sm"
+                              )}
+                            >
+                              Continue Prompting
+                            </span>
+                          )}
+                        </Menu.Item>
+                      </div>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
+              </div>
+            )}
             <dl className="divide-y divide-gray-100 space-y-10">
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">
@@ -251,7 +251,7 @@ export default function SummaryV2(p: P) {
       <ShareModal
         account={account}
         refresh={refresh}
-        refreshCount={refreshCount}
+        refreshCount={refreshCount || 0}
         summary={summary}
         open={shareModalOpen}
         cb={(isOpen: boolean) => {
