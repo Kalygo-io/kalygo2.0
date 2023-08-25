@@ -56,6 +56,11 @@ export default function SummaryV2(p: P) {
                   </div>
                 );
               })}
+            {summary.mode === SummaryMode.OVERALL && (
+              <h3 className="text-lg">
+                <b>{summary.title}</b>
+              </h3>
+            )}
             {summary.mode === SummaryMode.OVERALL &&
               summary?.summary.map((i: any, idx: any) => {
                 return (
