@@ -44,6 +44,8 @@ export const ToGroupForm = (p: P) => {
     }
   };
 
+  console.log("accessGroups", accessGroups);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-wrap w-full">
@@ -88,11 +90,14 @@ export const ToGroupForm = (p: P) => {
                   Select Access Group
                 </option>
                 {accessGroups
-                  .filter((value) => value.visible)
+                  .filter((value) => value?.accessGroup?.visible)
                   .map((g) => {
                     return (
-                      <option key={g.name} value={g.id}>
-                        {g.name}
+                      <option
+                        key={g?.accessGroup.name}
+                        value={g?.accessGroup.id}
+                      >
+                        {g?.accessGroup.name}
                       </option>
                     );
                   })}
