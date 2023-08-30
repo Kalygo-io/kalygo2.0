@@ -23,6 +23,7 @@ import {
   LockClosedIcon,
   CreditCardIcon,
   PuzzlePieceIcon,
+  EnvelopeIcon,
 } from "@heroicons/react/24/outline";
 
 import { signOut } from "@/services/signOut";
@@ -95,6 +96,11 @@ export default function LayoutDashboard({ children, account }: P) {
     },
     ...(isAdmin
       ? [
+          {
+            name: t("dashboard-page:navigation.send-email"),
+            href: "/dashboard/send-email",
+            icon: EnvelopeIcon,
+          },
           {
             name: t("dashboard-page:navigation.admin"),
             href: "/dashboard/admin",

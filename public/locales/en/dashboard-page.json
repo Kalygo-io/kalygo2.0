@@ -12,7 +12,8 @@
     "admin": "Admin",
     "custom-request": "Custom Request",
     "chunking-tool": "Chunking Tool",
-    "buy-credits": "Buy Credits"
+    "buy-credits": "Buy Credits",
+    "send-email": "Send Email"
   },
   "user-nav": {
     "settings": "Settings",
@@ -239,6 +240,12 @@
     "charges": {
       "title": "Charges"
     }
+  },
+  "send-email": {
+    "title": "Send Email",
+    "description": "Send a hyper-personalized email",
+    "greeting": "Greeting",
+    "paragraph1": "Paragraph 1"
   },
   "buy-credits": {
     "title": "Buy credits",
