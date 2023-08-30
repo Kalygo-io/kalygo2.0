@@ -12,7 +12,8 @@
     "admin": "Admin",
     "custom-request": "Custom Request",
     "chunking-tool": "Chunking Tool",
-    "buy-credits": "Buy Credits"
+    "buy-credits": "Buy Credits",
+    "send-email": "Send Email"
   },
   "user-nav": {
     "settings": "Settings",
@@ -89,6 +90,10 @@
         "view": "View"
       }
     }
+  },
+  "send-email": {
+    "title": "Send Email",
+    "description": "Send a custom Kalygo branded email"
   },
   "summarize": {
     "title": "Summarize",

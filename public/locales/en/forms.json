@@ -8,5 +8,8 @@
   "minimum-7-characters": "Minimum 7 characters",
   "sign-up": "Sign up",
   "reset-token": "Reset token",
-  "enter-reset-token": "Enter reset token"
+  "enter-reset-token": "Enter reset token",
+  "greeting": "Greeting",
+  "paragraph1": "Paragraph",
+  "ending": "Ending"
 }

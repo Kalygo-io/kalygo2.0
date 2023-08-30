@@ -8,6 +8,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
 import {
   EllipsisVerticalIcon,
+  EnvelopeIcon,
   GlobeAltIcon,
   ShareIcon,
 } from "@heroicons/react/24/outline";
@@ -107,25 +108,31 @@ export default function SummaryV2(p: P) {
       >
         <div>
           <div className="mt-6">
-            {showSharing && (
-              <div className="flex justify-end space-x-2">
-                <button
-                  onClick={() => {
-                    navigator.clipboard.writeText(
-                      `${process.env.NEXT_PUBLIC_HOSTNAME}/dashboard/summary-v2/share?summary-v2-id=${summary.id}`
-                    );
-                  }}
-                >
-                  <GlobeAltIcon className="h-6 w-6" />
-                </button>
-                <button
-                  onClick={() => {
-                    setShareModalOpen(true);
-                  }}
-                >
-                  <ShareIcon className="h-6 w-6" />
-                </button>
-                {/* <Menu as="div" className="relative inline-block text-left">
+            <div className="flex justify-end space-x-2">
+              {/* <button onClick={() => {}}>
+                <EnvelopeIcon className="h-6 w-6" />
+              </button> */}
+              {showSharing && (
+                <>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(
+                        `${process.env.NEXT_PUBLIC_HOSTNAME}/dashboard/summary-v2/share?summary-v2-id=${summary.id}`
+                      );
+                    }}
+                  >
+                    <GlobeAltIcon className="h-6 w-6" />
+                  </button>
+                  <button
+                    onClick={() => {
+                      setShareModalOpen(true);
+                    }}
+                  >
+                    <ShareIcon className="h-6 w-6" />
+                  </button>
+                </>
+              )}
+              {/* <Menu as="div" className="relative inline-block text-left">
                   <div>
                     <Menu.Button className="flex items-center rounded-full bg-gray-100 text-black hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">
                       <span className="sr-only">Open options</span>
@@ -178,8 +185,7 @@ export default function SummaryV2(p: P) {
                     </Menu.Items>
                   </Transition>
                 </Menu> */}
-              </div>
-            )}
+            </div>
             <dl className="divide-y divide-gray-100 space-y-10">
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">

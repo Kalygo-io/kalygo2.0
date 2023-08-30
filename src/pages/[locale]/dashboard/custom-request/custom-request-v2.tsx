@@ -75,7 +75,7 @@ export default function CustomRequest() {
   } else {
     jsx = (
       <CustomRequestWizard
-        account={account}
+        account={account.val}
         setShowPaymentMethodRequiredModal={(showModal: boolean) => {
           setShowPaymentMethodRequiredModal(showModal);
         }}
