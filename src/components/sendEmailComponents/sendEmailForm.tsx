@@ -1,4 +1,5 @@
 import { errorReporter } from "@/utility/error/reporter";
+import { infoToast } from "@/utility/toasts";
 import axios from "axios";
 import { useTranslation } from "next-i18next";
 import React from "react";
@@ -16,16 +17,39 @@ export const SendEmailForm = () => {
     watch,
   } = useForm({
     defaultValues: {
-      email: "",
-      greeting: "",
-      paragraph1: "",
-      ending: "",
+      recipientEmail: "tad@cmdlabs.io",
+      subject: "A hyper-customized message...",
+      messageAsText: "Message as text...",
+      emailPreviewText: "Message Preview",
+      logoOnclickUrl: "https://kalygo.io",
+      logoImageUrl: "https://kalygo.io/kalygo_new_logo-192x192.png",
+      greeting: "Hello,",
+      paragraph1: "asdfasdf",
+      paragraph2: "",
+      paragraph3: "",
+      paragraph4: "",
+      ending: "Sincerely,",
+      endingSignature: "Tad Duval",
     },
   });
 
   const onSubmit = async (data: any) => {
     try {
-      const { email, password } = data;
+      const {
+        recipientEmail,
+        subject,
+        messageAsText,
+        emailPreviewText,
+        logoOnclickUrl,
+        logoImageUrl,
+        greeting,
+        paragraph1,
+        paragraph2,
+        paragraph3,
+        paragraph4,
+        ending,
+        endingSignature,
+      } = data;
 
       const config = {
         method: "post",
@@ -34,94 +58,206 @@ export const SendEmailForm = () => {
           "Content-Type": "application/json",
         },
         data: {
-          email,
-          password,
+          recipientEmail,
+          subject,
+          messageAsText,
+          emailPreviewText,
+          logoOnclickUrl,
+          logoImageUrl,
+          greeting,
+          paragraphs: {
+            "1": paragraph1,
+            "2": paragraph2,
+            "3": paragraph3,
+            "4": paragraph4,
+          },
+          ending,
+          endingSignature,
         },
         withCredentials: true,
       };
 
-      // setSignUpState({
-      //   error: null,
-      //   loading: true,
-      //   val: null,
-      // });
-
       let resp = await axios(config);
       console.log(resp);
-      // infoToast(t("toast-messages:sign-up-success"));
-
-      // setSignUpState({
-      //   error: null,
-      //   loading: false,
-      //   val: null,
-      // });
-
-      // const detectedLng = languageDetector.detect();
-      // const detectedLng = navigatorLangDetector();
-      // router.push(`/${detectedLng}/`);
+      infoToast(t("toast-messages:sending-email"));
     } catch (e) {
-      // setSignUpState({
-      //   error: e,
-      //   loading: false,
-      //   val: null,
-      // });
-
       errorReporter(e);
     }
   };
 
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-0 lg:px-8">
+        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-5xl">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+              <div className="sm:col-span-3">
+                <label
+                  htmlFor="recipientEmail"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  {t("forms:send-email.recipient-email")}
+                </label>
+                <div className="mt-2">
+                  <input
+                    {...register("recipientEmail", {
+                      required: true,
+                      pattern: new RegExp(
+                        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/ // email regex
+                      ),
+                    })}
+                    id="recipientEmail"
+                    name="recipientEmail"
+                    type="recipientEmail"
+                    autoComplete="recipientEmail"
+                    placeholder={t("forms:send-email.enter-recipient-email")!}
+                    className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
+                      errors["recipientEmail"] &&
+                      "ring-red-700 focus:ring-red-500"
+                    }`}
+                  />
+                </div>
+              </div>
+              <div className="sm:col-span-3">
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  {t("forms:send-email.subject")}
+                </label>
+                <div className="mt-2">
+                  <input
+                    {...register("subject", {
+                      required: true,
+                    })}
+                    id="subject"
+                    name="subject"
+                    type="text"
+                    autoComplete="subject"
+                    placeholder={t("forms:send-email.enter-subject")!}
+                    className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
+                      errors["subject"] && "ring-red-700 focus:ring-red-500"
+                    }`}
+                  />
+                </div>
+              </div>
+            </div>
+            {/*  */}
             <div>
               <label
-                htmlFor="email"
+                htmlFor="messageAsText"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                {t("forms:email-address")}
+                {t("forms:send-email.message-as-text")}
               </label>
               <div className="mt-2">
-                <input
-                  {...register("email", {
+                <textarea
+                  {...register("messageAsText", {
                     required: true,
-                    pattern: new RegExp(
-                      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/ // email regex
-                    ),
                   })}
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  placeholder={t("forms:enter-email")!}
+                  id="messageAsText"
+                  name="messageAsText"
+                  rows={4}
+                  autoComplete="messageAsText"
+                  placeholder={t("forms:send-email.enter-message-as-text")!}
                   className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
-                    errors["email"] && "ring-red-700 focus:ring-red-500"
+                    errors["messageAsText"] && "ring-red-700 focus:ring-red-500"
                   }`}
                 />
               </div>
             </div>
+            {/*  */}
             <div>
               <label
-                htmlFor="greeting"
+                htmlFor="emailPreviewText"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                {t("forms:greeting")}
+                {t("forms:send-email.email-preview-text")}
               </label>
               <div className="mt-2">
                 <input
-                  {...register("greeting", {
+                  {...register("emailPreviewText", {
                     required: true,
                   })}
-                  id="greeting"
-                  name="greeting"
-                  type="greeting"
-                  autoComplete="greeting"
-                  placeholder={t("forms:greeting")!}
+                  id="emailPreviewText"
+                  name="emailPreviewText"
+                  type="text"
+                  autoComplete="emailPreviewText"
+                  placeholder={t("forms:send-email.enter-email-preview-text")!}
                   className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
-                    errors["greeting"] && "ring-red-700 focus:ring-red-500"
+                    errors["emailPreviewText"] &&
+                    "ring-red-700 focus:ring-red-500"
                   }`}
                 />
+              </div>
+            </div>
+            {/*  */}
+            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+              <div className="sm:col-span-3">
+                <label
+                  htmlFor="logo-onclick-url"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  {t("forms:send-email.logo-onclick-url")}
+                </label>
+                <div className="mt-2">
+                  <input
+                    {...register("logoOnclickUrl", {
+                      required: true,
+                    })}
+                    name="logo-onclick-url"
+                    id="logo-onclick-url"
+                    type="text"
+                    autoComplete={"logo-onclick-url"}
+                    placeholder={t("forms:send-email.enter-logo-onclick-url")!}
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+              <div className="sm:col-span-3">
+                <label
+                  htmlFor="logoImageUrl"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  {t("forms:send-email.logo-image-url")}
+                </label>
+                <div className="mt-2">
+                  <input
+                    {...register("logoImageUrl", {
+                      required: true,
+                    })}
+                    name="logoImageUrl"
+                    id="logoImageUrl"
+                    type="text"
+                    autoComplete={"logoImageUrl"}
+                    placeholder={t("forms:send-email.enter-logo-image-url")!}
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+            </div>
+            {/*  */}
+            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+              <div className="sm:col-span-3">
+                <label
+                  htmlFor="greeting"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  {t("forms:send-email.greeting")}
+                </label>
+                <div className="mt-2">
+                  <input
+                    {...register("greeting", {
+                      required: true,
+                    })}
+                    name="greeting"
+                    id="greeting"
+                    type="text"
+                    autoComplete={"greeting"}
+                    placeholder={t("forms:send-email.enter-greeting")!}
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
               </div>
             </div>
             {/*  */}
@@ -130,7 +266,7 @@ export const SendEmailForm = () => {
                 htmlFor="paragraph1"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                {t("forms:paragraph1")}
+                {t("forms:send-email.paragraph-1")}
               </label>
               <div className="mt-2">
                 <textarea
@@ -140,7 +276,7 @@ export const SendEmailForm = () => {
                   rows={4}
                   name="paragraph1"
                   id="paragraph1"
-                  placeholder="Your message here"
+                  placeholder={t("forms:send-email.enter-paragraph-1")!}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                   defaultValue={""}
                 />
@@ -149,25 +285,92 @@ export const SendEmailForm = () => {
             {/*  */}
             <div>
               <label
-                htmlFor="ending"
+                htmlFor="paragraph2"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                {t("forms:ending")}
+                {t("forms:send-email.paragraph-2")}
               </label>
               <div className="mt-2">
-                <input
-                  {...register("ending", {
-                    required: true,
-                  })}
-                  id="ending"
-                  name="ending"
-                  type="ending"
-                  autoComplete="ending"
-                  placeholder={t("forms:ending")!}
-                  className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
-                    errors["ending"] && "ring-red-700 focus:ring-red-500"
-                  }`}
+                <textarea
+                  {...register("paragraph2", {})}
+                  rows={4}
+                  name="paragraph2"
+                  id="paragraph2"
+                  placeholder={t("forms:send-email.enter-paragraph-2")!}
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                  defaultValue={""}
                 />
+              </div>
+            </div>
+            {/*  */}
+            <div>
+              <label
+                htmlFor="paragraph3"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                {t("forms:send-email.paragraph-3")}
+              </label>
+              <div className="mt-2">
+                <textarea
+                  {...register("paragraph3", {})}
+                  rows={4}
+                  name="paragraph3"
+                  id="paragraph3"
+                  placeholder={t("forms:send-email.enter-paragraph-3")!}
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                  defaultValue={""}
+                />
+              </div>
+            </div>
+            {/*  */}
+            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+              <div className="sm:col-span-3">
+                <label
+                  htmlFor="ending"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  {t("forms:send-email.ending")}
+                </label>
+                <div className="mt-2">
+                  <input
+                    {...register("ending", {
+                      required: true,
+                    })}
+                    id="ending"
+                    name="ending"
+                    type="ending"
+                    autoComplete="ending"
+                    placeholder={t("forms:send-email.ending")!}
+                    className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
+                      errors["ending"] && "ring-red-700 focus:ring-red-500"
+                    }`}
+                  />
+                </div>
+              </div>
+              {/*  */}
+              <div className="sm:col-span-3">
+                <label
+                  htmlFor="endingSignature"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  {t("forms:send-email.ending-signature")}
+                </label>
+                <div className="mt-2">
+                  <input
+                    {...register("endingSignature", {
+                      required: true,
+                    })}
+                    id="endingSignature"
+                    name="endingSignature"
+                    type="endingSignature"
+                    autoComplete="endingSignature"
+                    placeholder={t("forms:send-email.enter-ending-signature")!}
+                    className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
+                      errors["endingSignature"] &&
+                      "ring-red-700 focus:ring-red-500"
+                    }`}
+                  />
+                </div>
               </div>
             </div>
             <div>
