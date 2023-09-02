@@ -17,7 +17,7 @@ export const SendEmailForm = () => {
     watch,
   } = useForm({
     defaultValues: {
-      recipientEmail: "tad@cmdlabs.io",
+      recipientEmails: "tad@cmdlabs.io",
       subject: "A hyper-customized message...",
       messageAsText: "Message as text...",
       emailPreviewText: "Message Preview",
@@ -28,6 +28,8 @@ export const SendEmailForm = () => {
       paragraph2: "",
       paragraph3: "",
       paragraph4: "",
+      paragraph5: "",
+      paragraph6: "",
       ending: "Sincerely,",
       endingSignature: "Tad Duval",
     },
@@ -36,7 +38,7 @@ export const SendEmailForm = () => {
   const onSubmit = async (data: any) => {
     try {
       const {
-        recipientEmail,
+        recipientEmails,
         subject,
         messageAsText,
         emailPreviewText,
@@ -47,9 +49,15 @@ export const SendEmailForm = () => {
         paragraph2,
         paragraph3,
         paragraph4,
+        paragraph5,
+        paragraph6,
         ending,
         endingSignature,
       } = data;
+
+      const recipientEmailsAsArray = (recipientEmails as string).split(",");
+
+      console.log("recipientEmailsAsArray", recipientEmailsAsArray);
 
       const config = {
         method: "post",
@@ -58,7 +66,7 @@ export const SendEmailForm = () => {
           "Content-Type": "application/json",
         },
         data: {
-          recipientEmail,
+          recipientEmails: recipientEmailsAsArray,
           subject,
           messageAsText,
           emailPreviewText,
@@ -70,6 +78,8 @@ export const SendEmailForm = () => {
             "2": paragraph2,
             "3": paragraph3,
             "4": paragraph4,
+            "5": paragraph5,
+            "6": paragraph6,
           },
           ending,
           endingSignature,
@@ -93,26 +103,26 @@ export const SendEmailForm = () => {
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-3">
                 <label
-                  htmlFor="recipientEmail"
+                  htmlFor="recipientEmails"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  {t("forms:send-email.recipient-email")}
+                  {t("forms:send-email.recipient-emails")}
                 </label>
                 <div className="mt-2">
                   <input
-                    {...register("recipientEmail", {
+                    {...register("recipientEmails", {
                       required: true,
-                      pattern: new RegExp(
-                        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/ // email regex
-                      ),
+                      // pattern: new RegExp(
+                      //   /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/ // email regex
+                      // ),
                     })}
-                    id="recipientEmail"
-                    name="recipientEmail"
-                    type="recipientEmail"
-                    autoComplete="recipientEmail"
-                    placeholder={t("forms:send-email.enter-recipient-email")!}
+                    id="recipientEmails"
+                    name="recipientEmails"
+                    type="recipientEmails"
+                    autoComplete="recipientEmails"
+                    placeholder={t("forms:send-email.enter-recipient-emails")!}
                     className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
-                      errors["recipientEmail"] &&
+                      errors["recipientEmails"] &&
                       "ring-red-700 focus:ring-red-500"
                     }`}
                   />
@@ -317,6 +327,66 @@ export const SendEmailForm = () => {
                   name="paragraph3"
                   id="paragraph3"
                   placeholder={t("forms:send-email.enter-paragraph-3")!}
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                  defaultValue={""}
+                />
+              </div>
+            </div>
+            {/*  */}
+            <div>
+              <label
+                htmlFor="paragraph4"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                {t("forms:send-email.paragraph-4")}
+              </label>
+              <div className="mt-2">
+                <textarea
+                  {...register("paragraph4", {})}
+                  rows={4}
+                  name="paragraph4"
+                  id="paragraph4"
+                  placeholder={t("forms:send-email.enter-paragraph-4")!}
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                  defaultValue={""}
+                />
+              </div>
+            </div>
+            {/*  */}
+            <div>
+              <label
+                htmlFor="paragraph5"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                {t("forms:send-email.paragraph-5")}
+              </label>
+              <div className="mt-2">
+                <textarea
+                  {...register("paragraph5", {})}
+                  rows={4}
+                  name="paragraph5"
+                  id="paragraph5"
+                  placeholder={t("forms:send-email.enter-paragraph-5")!}
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                  defaultValue={""}
+                />
+              </div>
+            </div>
+            {/*  */}
+            <div>
+              <label
+                htmlFor="paragraph6"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                {t("forms:send-email.paragraph-6")}
+              </label>
+              <div className="mt-2">
+                <textarea
+                  {...register("paragraph6", {})}
+                  rows={4}
+                  name="paragraph6"
+                  id="paragraph6"
+                  placeholder={t("forms:send-email.enter-paragraph-6")!}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                   defaultValue={""}
                 />
