@@ -12,7 +12,12 @@ import { useForm } from "react-hook-form";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
 import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
 import { SummaryMode } from "@/types/SummaryMode";
-import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+import {
+  InformationCircleIcon,
+  MinusIcon,
+  PlusIcon,
+} from "@heroicons/react/24/outline";
+import { useRouter } from "next/router";
 
 interface Props {
   account: any;
@@ -34,8 +39,7 @@ export function CustomizeSummary(props: Props) {
   } = props;
   const { t } = useTranslation();
 
-  // ref
-  const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   const onSubmit = async (data: any) => {
     try {
@@ -119,15 +123,44 @@ export function CustomizeSummary(props: Props) {
                 <legend className="sr-only">Mode</legend>
                 <div className="sm:grid sm:grid-cols-3 sm:items-baseline sm:gap-4 sm:py-6">
                   <div
-                    className="text-sm font-semibold leading-6 text-gray-900"
+                    className="flex text-sm font-semibold leading-6 text-gray-900"
                     aria-hidden="true"
                   >
-                    Mode
+                    Scanning Mode
+                    <sup
+                      className="flex"
+                      onClick={() => {
+                        console.log("--- ___ ---");
+
+                        router.push("/");
+                      }}
+                    >
+                      <InformationCircleIcon className="h-4 w-4 text-blue-500 hover:text-blue-600 cursor-pointer" />
+                    </sup>
                   </div>
                   <div className="mt-1 sm:col-span-2 sm:mt-0">
                     <div className="max-w-lg">
-                      <div className="mt-6 space-x-2 flex justify-between">
-                        <div className="flex items-center gap-x-2">
+                      <div className="mt-6 space-x-2 flex flex-wrap justify-between mx-auto">
+                        <select
+                          {...register("mode")}
+                          id="mode"
+                          name="mode"
+                          autoComplete="mode"
+                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                        >
+                          <option value={SummaryMode.EACH_FILE_OVERALL}>
+                            Each Overall
+                          </option>
+                          <option value={SummaryMode.EACH_FILE_IN_CHUNKS}>
+                            Each In Chunks
+                          </option>
+                          <option value={SummaryMode.OVERALL}>Overall</option>
+                          <option disabled value={SummaryMode.PER_PAGE}>
+                            Per Page
+                          </option>
+                        </select>
+
+                        {/* <div className="flex items-center gap-x-2">
                           <input
                             {...register("mode")}
                             id="overall-data"
@@ -172,6 +205,21 @@ export function CustomizeSummary(props: Props) {
                             Overall
                           </label>
                         </div>
+                        <div className="flex items-center gap-x-2">
+                          <input
+                            {...register("mode")}
+                            id="per_page"
+                            type="radio"
+                            value={SummaryMode.PER_PAGE}
+                            className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
+                          />
+                          <label
+                            htmlFor="per_page"
+                            className="block text-sm font-medium leading-6 text-gray-900"
+                          >
+                            Per Page
+                          </label>
+                        </div> */}
                       </div>
                     </div>
                   </div>

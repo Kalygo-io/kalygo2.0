@@ -54,8 +54,8 @@ export default function IndustriesWeServe() {
             {t("common:industries-we-serve.title")}
           </h2>
           <p className="mt-6 text-lg leading-8 text-white text-center">
-            {t("common:industries-we-serve.description-1")}
-            <b>{t("common:industries-we-serve.description-2")}</b>
+            {t("common:industries-we-serve.description-1")}{" "}
+            <b>{t("common:industries-we-serve.description-2")}</b>{" "}
             {t("common:industries-we-serve.description-3")}
           </p>
         </div>

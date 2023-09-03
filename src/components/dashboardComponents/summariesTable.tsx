@@ -13,7 +13,6 @@ export const SummariesTable = (p: P) => {
   let { summaries } = p;
 
   const { state, dispatch } = useAppContext();
-
   const router = useRouter();
   const { t } = useTranslation();
 
