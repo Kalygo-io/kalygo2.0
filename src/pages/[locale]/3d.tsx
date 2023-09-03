@@ -122,7 +122,7 @@ export default function Feedback() {
         />
       </Head>
       <Layout1 disableStickyTopNav>
-        <div style={{ width: "100vw", height: "100vh" }}>
+        <div style={{ width: "96vw", height: "100vh", margin: "0 auto" }}>
           <Canvas
             gl={{ preserveDrawingBuffer: true }}
             shadows

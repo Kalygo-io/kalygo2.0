@@ -30,7 +30,7 @@ export function Kalygo3dModel(props: P) {
         geometry={nodes.Curve.geometry}
         material={materials["SVGMat.001"]}
         rotation={[Math.PI / 2, 0, 0]}
-        scale={30}
+        scale={32}
       />
     </group>
   );
