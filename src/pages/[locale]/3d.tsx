@@ -129,25 +129,12 @@ export default function Feedback() {
             dpr={[1, 1.5]}
             camera={{ position: [0, 0, 5], fov: 50 }}
           >
-            {/* <pointLight
-              position={[100, 100, 0]}
-              intensity={1.5}
-            /> */}
-            {/* <pointLight position={[0, 20, 10]} intensity={1.5} /> */}
             <Kalygo3dModel />
-            {/* <ambientLight /> */}
-            {/* <pointLight position={[10, 10, 10]} /> */}
-            {/* <pointLight position={[0, 20, 10]} intensity={1.5} /> */}
             <directionalLight
               color="white"
-              position={[-100, 0, 5]}
+              position={[0, 0, 10]}
               intensity={2.5}
             />
-            {/* <mesh rotation={[0, 10, 0]}>
-              <boxGeometry attach="geometry" args={[1, 1, 1]} />
-              <meshStandardMaterial attach="material" color={"#6be092"} />
-            </mesh> */}
-
             <OrbitControls enableZoom={false} />
           </Canvas>
         </div>

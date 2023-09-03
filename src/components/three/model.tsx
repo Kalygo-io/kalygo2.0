@@ -23,6 +23,7 @@ export function Kalygo3dModel(props: P) {
   return (
     <group {...props} dispose={null}>
       <mesh
+        // @ts-ignore
         ref={ref}
         castShadow
         receiveShadow
