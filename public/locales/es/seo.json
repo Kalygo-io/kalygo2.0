@@ -20,5 +20,7 @@
   "dashboard-page-seo-meta-title": "Panel",
   "reset-password-page-seo-title": "Restablecer la contraseña",
   "about-page-title": "Acerca de la página",
-  "about-page-description": "La página acerca de Kalygo."
+  "about-page-description": "La página acerca de Kalygo.",
+  "3d-page-seo-title": "{{undefined}}d",
+  "3d-page-seo-description": "Ojos dulces."
 }

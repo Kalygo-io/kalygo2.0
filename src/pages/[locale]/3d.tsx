@@ -115,10 +115,10 @@ export default function Feedback() {
   return (
     <>
       <Head>
-        <title>{t("seo:feedback-page-seo-title")}</title>
+        <title>{t("seo:3d-page-seo-title")}</title>
         <meta
           name="description"
-          content={t("seo:feedback-page-seo-meta-description")!}
+          content={t("seo:3d-page-seo-meta-description")!}
         />
       </Head>
       <Layout1 disableStickyTopNav>
