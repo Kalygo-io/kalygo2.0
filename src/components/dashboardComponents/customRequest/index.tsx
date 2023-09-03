@@ -9,22 +9,28 @@ import { Menu, Transition } from "@headlessui/react";
 import {
   EllipsisVerticalIcon,
   EnvelopeIcon,
+  GlobeAltIcon,
   ShareIcon,
 } from "@heroicons/react/24/outline";
 import get from "lodash.get";
 import { useTranslation } from "next-i18next";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import { ShareModal } from "../customRequest/components/shareModal";
 
 interface P {
   customRequest: any;
+  account?: any;
+  refresh?: any;
+  refreshCount?: number;
+  showSharing?: boolean;
 }
 
 export default function CustomRequest(p: P) {
-  const { customRequest } = p;
+  const { customRequest, account, refresh, refreshCount, showSharing } = p;
   const { t } = useTranslation();
 
-  console.log("customRequest", customRequest);
+  const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
 
   return (
     <div>
@@ -100,14 +106,25 @@ export default function CustomRequest(p: P) {
         className="fixed inset-y-0 right-0 hidden w-96 overflow-y-auto border-l border-gray-200 px-4 pt-20 pb-6 sm:px-6 lg:px-8 xl:block bg-white"
       >
         <div className="mt-6">
-          <div className="flex justify-end space-x-2">
-            {/* <button onClick={() => {}}>
-              <EnvelopeIcon className="h-6 w-6" />
-            </button> */}
-            <button onClick={() => {}}>
-              <ShareIcon className="h-6 w-6" />
-            </button>
-            {/* <Menu as="div" className="relative inline-block text-left">
+          {showSharing && (
+            <div className="flex justify-end space-x-2">
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(
+                    `${process.env.NEXT_PUBLIC_HOSTNAME}/dashboard/custom-request-result/share?custom-request-id=${customRequest.id}`
+                  );
+                }}
+              >
+                <GlobeAltIcon className="h-6 w-6" />
+              </button>
+              <button
+                onClick={() => {
+                  setShareModalOpen(true);
+                }}
+              >
+                <ShareIcon className="h-6 w-6" />
+              </button>
+              {/* <Menu as="div" className="relative inline-block text-left">
               <div>
                 <Menu.Button className="flex items-center rounded-full bg-gray-100 text-black hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">
                   <span className="sr-only">Open options</span>
@@ -160,7 +177,8 @@ export default function CustomRequest(p: P) {
                 </Menu.Items>
               </Transition>
             </Menu> */}
-          </div>
+            </div>
+          )}
 
           <dl className="divide-y divide-gray-100 space-y-10">
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -232,6 +250,17 @@ export default function CustomRequest(p: P) {
           </dl>
         </div>
       </div>
+
+      <ShareModal
+        account={account}
+        refresh={refresh}
+        refreshCount={refreshCount || 0}
+        customRequest={customRequest}
+        open={shareModalOpen}
+        cb={(isOpen: boolean) => {
+          setShareModalOpen(isOpen);
+        }}
+      />
     </div>
   );
 }

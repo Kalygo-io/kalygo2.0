@@ -17,28 +17,15 @@ interface P {
   open: boolean;
   cb: (isOpen: boolean) => void;
   account: any;
-  summary: any;
+  customRequest: any;
   refresh: any;
   refreshCount: number;
 }
 
 export const ShareModal = (p: P) => {
-  const { open, cb, account, summary, refresh, refreshCount } = p;
+  const { open, cb, account, customRequest, refresh, refreshCount } = p;
   const { t } = useTranslation();
   const [panel, setPanel] = useState<"individual" | "group">("individual");
-
-  const {
-    register,
-    handleSubmit,
-    getValues,
-    formState: { errors, isValid },
-    setValue,
-    watch,
-  } = useForm({
-    defaultValues: {
-      shareToEmail: "", // example@example.com
-    },
-  });
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -121,7 +108,7 @@ export const ShareModal = (p: P) => {
                   />
                 ) : (
                   <ToGroupForm
-                    summary={summary}
+                    customRequest={customRequest}
                     accessGroups={account.accessGroups}
                     cb={(isOpen: boolean) => {
                       console.log("--- _ Group _ ---");

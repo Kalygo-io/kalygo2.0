@@ -2,24 +2,24 @@
 
 import Head from "next/head";
 
-import { NextPageContext } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
-import ContractList from "@/components/browseContractsComponents/contractList";
-
-import { Error } from "../../../../components/shared/error";
 
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import CustomRequest from "@/components/dashboardComponents/customRequest";
+import SummaryV2 from "@/components/dashboardComponents/summaryV2";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
 import { useGetAccountWithAccessGroups } from "@/utility/hooks/getAccountWithAccessGroups";
+import LayoutDashboardNoAdmin from "@/layout/layoutDashboardNoAdmin";
+import { UnauthorizedErrorInDashboard } from "@/components/shared/unauthorizedErrorInDashboard";
+import CustomRequestResult from ".";
+import CustomRequest from "@/components/dashboardComponents/customRequest";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -33,15 +33,13 @@ const getStaticProps = makeStaticProps([
 ]);
 export { getStaticPaths, getStaticProps };
 
-export default function CustomRequestResult() {
+export default function Page() {
   const router = useRouter();
-
   const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
-
-  const customRequestId = searchParams.get("custom-request-id") || "";
+  const recordId = searchParams.get("custom-request-id") || "";
   const { t } = useTranslation();
-  const { account, refresh, refreshCount } = useGetAccountWithAccessGroups();
-  const [customRequest, setCustomRequest] = useState<{
+  //   const { account, refresh, refreshCount } = useGetAccountWithAccessGroups();
+  const [record, setRecord] = useState<{
     val: any;
     loading: boolean;
     err: any;
@@ -55,19 +53,16 @@ export default function CustomRequestResult() {
     async function fetch() {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/custom-request/${customRequestId}`,
-          {
-            withCredentials: true,
-          }
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/get-public-custom-request/${recordId}`
         );
 
-        setCustomRequest({
+        setRecord({
           loading: false,
           val: res.data,
           err: null,
         });
       } catch (e) {
-        setCustomRequest({
+        setRecord({
           loading: false,
           val: null,
           err: e,
@@ -76,32 +71,32 @@ export default function CustomRequestResult() {
     }
 
     fetch();
-  }, [refreshCount]);
+  }, []);
 
   let jsx = null;
-  if (customRequest.loading) {
+  if (record.loading) {
     jsx = <WindowLoader></WindowLoader>;
-  } else if (customRequest.val) {
-    jsx = (
-      <CustomRequest
-        account={account.val}
-        customRequest={customRequest.val}
-        refresh={refresh}
-        refreshCount={refreshCount}
-        showSharing={true}
-      />
-    );
+  } else if (record.val) {
+    jsx = <CustomRequest customRequest={record.val} />;
   } else {
-    jsx = <ErrorInDashboard />;
+    console.log("--- --- ---", record.err);
+
+    if (record?.err?.response?.status === 403) {
+      jsx = <UnauthorizedErrorInDashboard />;
+    } else {
+      jsx = <ErrorInDashboard />;
+    }
   }
+
+  console.log("---");
 
   return (
     <>
       <Head>
         <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
-      <LayoutDashboard>
-        <div className="p-4 pb-0 sm:p-6 lg:p-8  sm:pb-0 lg:pb-0">
+      <LayoutDashboardNoAdmin>
+        <div className="p-4 pb-0 sm:p-6 sm:pb-0 lg:p-8 lg:pb-0">
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
               <h1 className="text-base font-semibold leading-7 text-gray-900">
@@ -115,9 +110,7 @@ export default function CustomRequestResult() {
             </div>
           </div>
         </div>
-      </LayoutDashboard>
+      </LayoutDashboardNoAdmin>
     </>
   );
 }
-
-CustomRequestResult.requireAuth = true;

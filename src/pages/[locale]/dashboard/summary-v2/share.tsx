@@ -79,7 +79,7 @@ export default function Page() {
   } else {
     console.log("--- --- ---", summary.err);
 
-    if (summary?.err?.response.status) {
+    if (summary?.err?.response?.status === 403) {
       jsx = <UnauthorizedErrorInDashboard />;
     } else {
       jsx = <ErrorInDashboard />;
