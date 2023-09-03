@@ -11,6 +11,10 @@
   "vector-search-is-processing": "Your search is processing...",
   "custom-request-is-processing": "Your request is processing...",
   "custom-summary-is-processing": "Your summary is processing...",
+  "chunking-is-processing": "Chunk are being generated...",
+  "summary-v2-is-processing": "Your summary is processing...",
+  "send-email-success": "Request to send email has been processed",
+  "sending-email": "Sending email...",
   "error": {
     "something-unexpected-happened": "Something unexpected happened"
   }

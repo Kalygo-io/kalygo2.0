@@ -9,14 +9,19 @@
     "settings": "Paramètres",
     "vector-search": "Recherche intelligente",
     "queue": "Mes demandes",
-    "saas-stats": "Statistiques SaaS",
-    "custom-request": "Demande personnalisée"
+    "admin": "Administrateur",
+    "custom-request": "Demande personnalisée",
+    "chunking-tool": "Outil de regroupement",
+    "buy-credits": "Acheter des crédits",
+    "send-email": "Envoyer un e-mail"
   },
   "user-nav": {
     "settings": "Paramètres",
     "sign-out": "se déconnecter",
     "credit": "Crédit",
-    "credits": "Crédits"
+    "credits": "Crédits",
+    "free-credit": "Crédit gratuit",
+    "free-credits": "Crédits gratuits"
   },
   "index": {
     "title": "Tableau de bord",
@@ -25,10 +30,12 @@
     "no-summaries-v2-yet": "Après avoir demandé des résumés (v2), ils seront répertoriés ici",
     "no-custom-requests-yet": "Après avoir demandé des demandes personnalisées, elles seront répertoriées ici",
     "credits": {
-      "free-summarization-credits": "Crédits de synthèse gratuits",
-      "try-free-summarization-credits": "Essayez le résumé",
-      "free-vector-search-credits": "Crédits de recherche intelligente gratuits",
-      "try-vector-search-credits": "Essayez la recherche intelligente",
+      "summarization-credits": "Crédits de synthèse",
+      "try-summarization-credits": "Essayez l'outil \"Résumé\"",
+      "vector-search-credits": "Crédits de recherche intelligente gratuits",
+      "try-vector-search-credits": "Essayez la « Recherche intelligente »",
+      "custom-request-credits": "Crédits de demande personnalisée",
+      "try-custom-request-credits": "Essayez l'outil « Demande personnalisée »",
       "credit-card-charges": "Frais mensuels",
       "more-info": "Plus d'information"
     },
@@ -101,13 +108,16 @@
   },
   "summarize-v2": {
     "title": "Résumer",
+    "description": "'Résumer' vous permet de télécharger {{undefined}} à {{undefined}} documents (.txt ou .pdf). Les téléchargements du niveau gratuit sont limités à {{undefined}} Mo tandis que les téléchargements du niveau payant sont limités à {{undefined}} Mo. Résumez-les avec les options de personnalisation que vous spécifiez à l'étape {{undefined}}.",
     "choose-files": "Choisir des fichiers",
     "customize-summary": "Personnaliser",
     "chosen-files": "Fichiers choisis",
     "customizations": "Personnalisations",
     "summarize": "Résumer",
     "request": "Demande",
-    "select-files": "Sélectionner"
+    "select-files": "Sélectionner",
+    "upload-limits": "Fichiers TXT et PDF",
+    "loading": "Chargement..."
   },
   "perform-vector-search": {
     "title": "Recherche de vecteur",
@@ -134,19 +144,22 @@
     "prompt": "Rapide",
     "prompt-placeholder-text": "Écrivez ici la demande personnalisée qui sera appliquée à vos fichiers",
     "run": "Courir",
-    "upload-limits": "Fichiers TXT et PDF jusqu'à 1 Mo chacun",
+    "upload-limits": "Fichiers TXT et PDF",
     "title": "Demande personnalisée",
     "requested": "Demandé",
     "filenames": "Noms de fichiers",
     "total-completion-response": "Réponse"
   },
   "custom-request-v2": {
+    "customizations": "Personnalisations",
     "choose-files": "Choisir des fichiers",
     "provide-request": "Personnaliser",
+    "title": "Demande personnalisée",
+    "description": "« Demande personnalisée » vous donne le plus de contrôle sur vos documents. Tout d'abord, téléchargez {{undefined}} à {{undefined}} documents (.txt ou .pdf) avec lesquels Kalygo doit interagir. Les téléchargements du niveau gratuit sont limités à {{undefined}} Mo tandis que les téléchargements du niveau payant sont limités à {{undefined}} Mo. Ensuite, dans la deuxième étape, vous pouvez utiliser la zone de texte pour écrire comment et ce que Kalygo doit faire avec vos fichiers ou vous pouvez essayer une demande suggérée.",
     "run": "Demande",
     "send": "Envoyer",
     "select-files": "Sélectionner",
-    "upload-limits": "Fichiers TXT et PDF jusqu'à 1 Mo chacun",
+    "upload-limits": "Fichiers TXT et PDF",
     "save": "Sauvegarder",
     "next": "Suivant",
     "prompt-placeholder-text": "Modifiez ou personnalisez la demande qui sera appliquée à vos fichiers ici",
@@ -158,18 +171,33 @@
     "select": "Sélectionner",
     "not-this-one": "Pas celui-ci"
   },
+  "chunking-tool": {
+    "title": "Outil de regroupement",
+    "description": "Le « Chunking Tool » vous permet de sélectionner un fichier et de spécifier le modèle que vous souhaitez utiliser pour traiter votre fichier. Après avoir fourni ces détails, Kalygo extraira le texte et découpera le fichier afin que chaque partie soit ingérable dans l'IA. modèle spécifié.",
+    "choose-files": "Choisir des fichiers",
+    "choose-file": "Choisir le fichier",
+    "provide-details": "Fournir des détails",
+    "chunk": "Tronçon",
+    "chosen-files": "Fichiers choisis",
+    "chosen-file": "Fichier choisi"
+  },
   "queue": {
     "title": "File d'attente",
     "job-status": "Statut du travail",
     "file-name": "Nom de fichier",
     "requested-at": "Demandé à",
+    "processed-on": "Traité le",
     "remove": "Retirer",
+    "retry": "Recommencez",
     "view": "Voir",
     "job-type": "Taper",
     "vector-search": {
       "query": "Mettre en doute"
     },
-    "custom-request": {}
+    "custom-request": {},
+    "summary-v2": {
+      "mode": "Mode"
+    }
   },
   "summary": {
     "title": "Résumé",
@@ -181,10 +209,43 @@
     "content": "Contenu"
   },
   "summary-v2": {
-    "prompt": "invite"
+    "prompt": "invite",
+    "mode": "Mode",
+    "model": "Modèle",
+    "language": "Langue",
+    "format": "Format",
+    "share-modal": {
+      "title": "Partager",
+      "email": "E-mail"
+    }
   },
-  "saas-stats": {},
+  "admin": {
+    "title": "Aperçu",
+    "accounts": {
+      "title": "Comptes"
+    },
+    "logins": {
+      "title": "Connexions"
+    },
+    "paid-accounts": {
+      "title": "Comptes payants"
+    },
+    "charges": {
+      "title": "Des charges"
+    }
+  },
+  "send-email": {
+    "title": "Envoyer un e-mail",
+    "description": "Envoyer un email hyper-personnalisé",
+    "greeting": "Salutation",
+    "paragraph1": "Paragraphe {{undefined}}"
+  },
+  "buy-credits": {
+    "title": "Acheter des crédits"
+  },
   "settings": {
+    "purchase-history": {},
+    "usage-credits": {},
     "free-credits": {
       "title": "Crédits gratuits",
       "summaries": "Résumés",

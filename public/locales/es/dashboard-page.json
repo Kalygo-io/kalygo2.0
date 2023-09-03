@@ -9,14 +9,19 @@
     "settings": "Ajustes",
     "vector-search": "Busqueda inteligente",
     "queue": "Mis solicitudes",
-    "saas-stats": "Estadísticas SaaS",
-    "custom-request": "Solicitud personalizada"
+    "admin": "Administración",
+    "custom-request": "Solicitud personalizada",
+    "chunking-tool": "Herramienta de fragmentación",
+    "buy-credits": "Compra creditos",
+    "send-email": "Enviar correo electrónico"
   },
   "user-nav": {
     "settings": "Ajustes",
     "sign-out": "Desconectar",
     "credit": "Crédito",
-    "credits": "Créditos"
+    "credits": "Créditos",
+    "free-credit": "Crédito gratis",
+    "free-credits": "Créditos gratis"
   },
   "index": {
     "title": "Panel",
@@ -25,10 +30,12 @@
     "no-summaries-v2-yet": "Después de solicitar resúmenes (v2), se enumerarán aquí",
     "no-custom-requests-yet": "Después de solicitar solicitudes personalizadas, se enumerarán aquí.",
     "credits": {
-      "free-summarization-credits": "Créditos de resumen gratis",
-      "try-free-summarization-credits": "Prueba el resumen",
-      "free-vector-search-credits": "Créditos de búsqueda inteligente gratis",
-      "try-vector-search-credits": "Prueba la búsqueda inteligente",
+      "summarization-credits": "Créditos de resumen",
+      "try-summarization-credits": "Pruebe la herramienta 'Resumen'",
+      "vector-search-credits": "Créditos de búsqueda inteligente gratuitos",
+      "try-vector-search-credits": "Pruebe la 'Búsqueda inteligente'",
+      "custom-request-credits": "Créditos de solicitud personalizados",
+      "try-custom-request-credits": "Pruebe la herramienta 'Solicitud personalizada'",
       "credit-card-charges": "Cargos mensuales",
       "more-info": "Más información"
     },
@@ -101,6 +108,7 @@
   },
   "summarize-v2": {
     "title": "Resumir",
+    "description": "'Resumir' le permite cargar de {{undefined}} a {{undefined}} documentos (.txt o .pdf). Las cargas del nivel gratuito están limitadas a {{undefined}} MB, mientras que las cargas del nivel pago están limitadas a {{undefined}} MB. Resúmelos con las opciones de personalización que especifiques en el paso {{undefined}}.",
     "choose-files": "Seleccionar archivos",
     "customize-summary": "personalizar",
     "chosen-files": "archivos elegidos",
@@ -109,7 +117,8 @@
     "summarize": "Resumir",
     "request": "Pedido",
     "select-files": "Seleccionar",
-    "upload-limits": "Archivos TXT y PDF de hasta 1 MB"
+    "upload-limits": "Archivos TXT y PDF",
+    "loading": "Cargando..."
   },
   "perform-vector-search": {
     "title": "Búsqueda de vectores",
@@ -136,19 +145,22 @@
     "prompt": "Inmediato",
     "prompt-placeholder-text": "Escriba aquí la solicitud personalizada que se aplicará a sus archivos",
     "run": "Correr",
-    "upload-limits": "Archivos TXT y PDF de hasta 1 MB cada uno",
+    "upload-limits": "Archivos TXT y PDF",
     "title": "Solicitud personalizada",
     "requested": "Solicitado",
     "filenames": "Nombres de archivo",
     "total-completion-response": "Respuesta"
   },
   "custom-request-v2": {
+    "customizations": "Personalizaciones",
     "choose-files": "Seleccionar archivos",
     "provide-request": "personalizar",
+    "title": "Solicitud personalizada",
+    "description": "La 'Solicitud personalizada' le brinda el mayor control sobre sus documentos. Primero, cargue de {{undefined}} a {{undefined}} documentos (.txt o .pdf) con los que desee que Kalygo interactúe. Las cargas del nivel gratuito están limitadas a {{undefined}} MB, mientras que las cargas del nivel pago están limitadas a {{undefined}} MB. Luego, en el segundo paso, puedes usar el cuadro de texto para escribir cómo y qué debe hacer Kalygo con tus archivos o puedes probar una solicitud sugerida.",
     "run": "Pedido",
     "send": "Enviar",
     "select-files": "Seleccionar",
-    "upload-limits": "Archivos TXT y PDF de hasta 1 MB cada uno",
+    "upload-limits": "Archivos TXT y PDF",
     "save": "Ahorrar",
     "next": "Próximo",
     "prompt": "Inmediato",
@@ -161,6 +173,16 @@
     "select": "Seleccionar",
     "not-this-one": "Este no"
   },
+  "chunking-tool": {
+    "title": "Herramienta de fragmentación",
+    "description": "La 'Herramienta de fragmentación' le permite seleccionar un archivo y especificar el modelo que le gustaría usar para procesar su archivo. Después de proporcionar estos detalles, Kalygo extraerá el texto y cortará el archivo para que cada parte sea ingerible en el sistema de I.A. modelo especificado.",
+    "choose-files": "Seleccionar archivos",
+    "choose-file": "Elija el archivo",
+    "provide-details": "Proporcionar detalles",
+    "chunk": "Pedazo",
+    "chosen-files": "Archivos elegidos",
+    "chosen-file": "Archivo elegido"
+  },
   "queue": {
     "title": "Mis solicitudes",
     "nothing-found": "Nada Encontrado",
@@ -168,7 +190,9 @@
     "file-name": "Nombre del archivo",
     "file-names": "Nombres de archivo",
     "requested-at": "Solicitado en",
+    "processed-on": "Procesado el",
     "remove": "Eliminar",
+    "retry": "Rever",
     "view": "Vista",
     "job-type": "Tipo",
     "vector-search": {
@@ -176,6 +200,9 @@
     },
     "custom-request": {
       "prompt": "Inmediato"
+    },
+    "summary-v2": {
+      "mode": "Modo"
     }
   },
   "summary": {
@@ -188,12 +215,57 @@
     "content": "Contenido"
   },
   "summary-v2": {
-    "prompt": "Inmediato"
+    "prompt": "Inmediato",
+    "mode": "Modo",
+    "model": "Modelo",
+    "language": "Idioma",
+    "format": "Formato",
+    "share-modal": {
+      "title": "Compartir",
+      "email": "Correo electrónico"
+    }
   },
-  "saas-stats": {
-    "title": "Estadísticas SaaS"
+  "admin": {
+    "title": "Descripción general",
+    "accounts": {
+      "title": "Cuentas"
+    },
+    "logins": {
+      "title": "Inicios de sesión"
+    },
+    "paid-accounts": {
+      "title": "Cuentas Pagadas"
+    },
+    "charges": {
+      "title": "Cargos"
+    }
+  },
+  "send-email": {
+    "title": "Enviar correo electrónico",
+    "description": "Envía un correo electrónico hiperpersonalizado",
+    "greeting": "Saludo",
+    "paragraph1": "Párrafo {{undefined}}"
+  },
+  "buy-credits": {
+    "title": "Compra creditos",
+    "description": "{{undefined}} créditos equivalen a ${{undefined}},{{undefined}} USD de uso, al igual que los puntos de una tarjeta de crédito estándar. Honorarios no incluidos.",
+    "select-amount": "Cantidad de créditos",
+    "payment-method": "Método de pago",
+    "review": "Revisar",
+    "purchase": "Compra",
+    "get-credits": "Obtener créditos",
+    "complete-purchase": "Compra completa"
   },
   "settings": {
+    "purchase-history": {
+      "title": "Historial de compras",
+      "description": "El historial de las transacciones de su cuenta en la plataforma."
+    },
+    "usage-credits": {
+      "credits": "Créditos",
+      "credit": "Crédito",
+      "title": "Créditos"
+    },
     "free-credits": {
       "title": "Créditos gratis",
       "summaries": "Resúmenes",

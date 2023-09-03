@@ -9,14 +9,19 @@
     "settings": "Configurações",
     "vector-search": "Busca inteligente",
     "queue": "Minhas solicitações",
-    "saas-stats": "Estatísticas de SaaS",
-    "custom-request": "Solicitação personalizada"
+    "admin": "Administrador",
+    "custom-request": "Solicitação personalizada",
+    "chunking-tool": "Ferramenta de fragmentação",
+    "buy-credits": "Compre créditos",
+    "send-email": "Enviar email"
   },
   "user-nav": {
     "settings": "Configurações",
     "sign-out": "sair",
     "credit": "Crédito",
-    "credits": "Créditos"
+    "credits": "Créditos",
+    "free-credit": "Crédito Grátis",
+    "free-credits": "Créditos Grátis"
   },
   "index": {
     "title": "Painel",
@@ -25,10 +30,12 @@
     "no-summaries-v2-yet": "Após solicitar resumos (v2) eles serão listados aqui",
     "no-custom-requests-yet": "Depois de solicitar solicitações personalizadas, elas serão listadas aqui",
     "credits": {
-      "free-summarization-credits": "Créditos de resumo grátis",
-      "try-free-summarization-credits": "Tente resumir",
-      "free-vector-search-credits": "Créditos gratuitos de pesquisa inteligente",
-      "try-vector-search-credits": "Experimente a pesquisa inteligente",
+      "summarization-credits": "Créditos de Resumo",
+      "try-summarization-credits": "Experimente a ferramenta 'Resumo'",
+      "vector-search-credits": "Créditos de pesquisa inteligente gratuitos",
+      "try-vector-search-credits": "Experimente a 'Pesquisa Inteligente'",
+      "custom-request-credits": "Créditos de solicitação personalizada",
+      "try-custom-request-credits": "Experimente a ferramenta 'Solicitação personalizada'",
       "credit-card-charges": "Cobranças Mensais",
       "more-info": "Mais Informações"
     },
@@ -101,6 +108,7 @@
   },
   "summarize-v2": {
     "title": "Resumir",
+    "description": "'Resumir' permite fazer upload de {{undefined}} a {{undefined}} documentos (.txt ou .pdf). Os uploads do nível gratuito são limitados a {{undefined}} MB, enquanto os uploads do nível pago são limitados a {{undefined}} MB. Resuma-os com as opções de personalização especificadas na etapa {{undefined}}.",
     "choose-files": "Escolher os arquivos",
     "customize-summary": "Customizar",
     "chosen-files": "arquivos escolhidos",
@@ -109,7 +117,8 @@
     "summarize": "Resumir",
     "request": "Solicitar",
     "select-files": "Selecione",
-    "upload-limits": "Arquivos TXT e PDF de até 1 MB"
+    "upload-limits": "Arquivos TXT e PDF",
+    "loading": "Carregando..."
   },
   "perform-vector-search": {
     "title": "Pesquisa de vetores",
@@ -136,19 +145,22 @@
     "prompt": "Incitar",
     "prompt-placeholder-text": "Escreva a solicitação personalizada que será aplicada aos seus arquivos aqui",
     "run": "Correr",
-    "upload-limits": "Arquivos TXT e PDF de até 1 MB cada",
+    "upload-limits": "Arquivos TXT e PDF",
     "title": "Solicitação personalizada",
     "requested": "Requeridos",
     "filenames": "Nomes de arquivo",
     "total-completion-response": "Resposta"
   },
   "custom-request-v2": {
+    "customizations": "Personalizações",
     "choose-files": "Escolher os arquivos",
     "provide-request": "Customizar",
+    "title": "Solicitação personalizada",
+    "description": "'Solicitação personalizada' oferece maior controle sobre seus documentos. Primeiro, carregue de {{undefined}} a {{undefined}} documentos (.txt ou .pdf) com os quais deseja que o Kalygo interaja. Os uploads do nível gratuito são limitados a {{undefined}} MB, enquanto os uploads do nível pago são limitados a {{undefined}} MB. Então, na segunda etapa, você pode usar a caixa de texto para escrever como e o que o Kalygo deve fazer com seus arquivos ou pode tentar uma solicitação sugerida.",
     "run": "Solicitar",
     "send": "Enviar",
     "select-files": "Selecione",
-    "upload-limits": "Arquivos TXT e PDF de até 1 MB cada",
+    "upload-limits": "Arquivos TXT e PDF",
     "save": "Salvar",
     "next": "Próximo",
     "prompt": "Incitar",
@@ -161,18 +173,33 @@
     "select": "Selecione",
     "not-this-one": "Esse não"
   },
+  "chunking-tool": {
+    "title": "Ferramenta de fragmentação",
+    "description": "A 'Ferramenta Chunking' permite selecionar um arquivo e especificar o modelo que você gostaria de usar para processar seu arquivo. Depois de fornecer esses detalhes, Kalygo extrairá o texto e cortará o arquivo para que cada parte dele possa ser assimilada pela IA. modelo especificado.",
+    "choose-files": "Escolher os arquivos",
+    "choose-file": "Escolher arquivo",
+    "provide-details": "Forneça detalhes",
+    "chunk": "Pedaço",
+    "chosen-files": "Arquivos escolhidos",
+    "chosen-file": "Arquivo escolhido"
+  },
   "queue": {
     "title": "Fila",
     "job-status": "Status de trabalho",
     "file-name": "Nome do arquivo",
     "requested-at": "Solicitado em",
+    "processed-on": "Processado em",
     "remove": "Remover",
+    "retry": "Tentar novamente",
     "view": "Visualizar",
     "job-type": "Tipo",
     "vector-search": {
       "query": "Consulta"
     },
-    "custom-request": {}
+    "custom-request": {},
+    "summary-v2": {
+      "mode": "Modo"
+    }
   },
   "summary": {
     "title": "Resumo",
@@ -184,10 +211,41 @@
     "content": "Contente"
   },
   "summary-v2": {
-    "prompt": "Incitar"
+    "prompt": "Incitar",
+    "mode": "Modo",
+    "model": "Modelo",
+    "language": "Linguagem",
+    "format": "Formatar",
+    "share-modal": {
+      "title": "Compartilhar",
+      "email": "E-mail"
+    }
   },
-  "saas-stats": {},
+  "admin": {
+    "title": "Visão geral",
+    "accounts": {
+      "title": "Contas"
+    },
+    "logins": {
+      "title": "Logins"
+    },
+    "paid-accounts": {
+      "title": "Contas pagas"
+    },
+    "charges": {
+      "title": "Cobranças"
+    }
+  },
+  "send-email": {
+    "title": "Enviar email",
+    "description": "Envie um e-mail hiperpersonalizado",
+    "greeting": "Saudações",
+    "paragraph1": "Parágrafo {{undefined}}"
+  },
+  "buy-credits": {},
   "settings": {
+    "purchase-history": {},
+    "usage-credits": {},
     "free-credits": {
       "title": "Créditos grátis",
       "summaries": "Resumos",

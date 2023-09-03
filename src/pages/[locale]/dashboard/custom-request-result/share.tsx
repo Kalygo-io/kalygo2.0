@@ -15,10 +15,8 @@ import axios from "axios";
 import SummaryV2 from "@/components/dashboardComponents/summaryV2";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
-import { useGetAccountWithAccessGroups } from "@/utility/hooks/getAccountWithAccessGroups";
 import LayoutDashboardNoAdmin from "@/layout/layoutDashboardNoAdmin";
 import { UnauthorizedErrorInDashboard } from "@/components/shared/unauthorizedErrorInDashboard";
-import CustomRequestResult from ".";
 import CustomRequest from "@/components/dashboardComponents/customRequest";
 
 const getStaticProps = makeStaticProps([

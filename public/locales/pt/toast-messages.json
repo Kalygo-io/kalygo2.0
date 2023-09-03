@@ -11,6 +11,9 @@
   "vector-search-is-processing": "Sua pesquisa está sendo processada...",
   "custom-request-is-processing": "Sua solicitação está sendo processada...",
   "custom-summary-is-processing": "Seu resumo está sendo processado...",
+  "chunking-is-processing": "Pedaços estão sendo gerados...",
+  "summary-v2-is-processing": "Seu resumo está sendo processado...",
+  "send-email-success": "A solicitação para enviar e-mail foi processada",
   "error": {
     "something-unexpected-happened": "Something unexpected happened"
   }

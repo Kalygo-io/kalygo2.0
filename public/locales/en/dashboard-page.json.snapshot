@@ -9,14 +9,19 @@
     "settings": "Settings",
     "vector-search": "Smart Search",
     "queue": "My Requests",
-    "saas-stats": "SaaS Stats",
-    "custom-request": "Custom Request"
+    "admin": "Admin",
+    "custom-request": "Custom Request",
+    "chunking-tool": "Chunking Tool",
+    "buy-credits": "Buy Credits",
+    "send-email": "Send Email"
   },
   "user-nav": {
     "settings": "Settings",
     "sign-out": "Sign out",
     "credit": "Credit",
-    "credits": "Credits"
+    "credits": "Credits",
+    "free-credit": "Free Credit",
+    "free-credits": "Free Credits"
   },
   "index": {
     "title": "Dashboard",
@@ -25,10 +30,12 @@
     "no-summaries-v2-yet": "After requesting summaries (v2) they will be listed here",
     "no-custom-requests-yet": "After requesting custom requests they will be listed here",
     "credits": {
-      "free-summarization-credits": "Free Summarization Credits",
-      "try-free-summarization-credits": "Try summarization",
-      "free-vector-search-credits": "Free Smart Search Credits",
-      "try-vector-search-credits": "Try smart search",
+      "summarization-credits": "Summarization Credits",
+      "try-summarization-credits": "Try 'Summary' tool",
+      "vector-search-credits": "Free Smart Search Credits",
+      "try-vector-search-credits": "Try 'Smart Search'",
+      "custom-request-credits": "Custom Request Credits",
+      "try-custom-request-credits": "Try 'Custom Request' tool",
       "credit-card-charges": "Monthly Charges",
       "more-info": "More information"
     },
@@ -101,6 +108,7 @@
   },
   "summarize-v2": {
     "title": "Summarize",
+    "description": "'Summarize' allows you to upload 1 to 10 documents (.txt or .pdf). Free Tier uploads are limited to 1MB while Paid Tier uploads are limited to 40MB. Summarize them with the customization options you specify in step 2.",
     "choose-files": "Choose files",
     "customize-summary": "Customize",
     "chosen-files": "Chosen files",
@@ -109,7 +117,8 @@
     "summarize": "Summarize",
     "request": "Request",
     "select-files": "Select",
-    "upload-limits": "TXT & PDF files up to 1 MB"
+    "upload-limits": "TXT & PDF files",
+    "loading": "Loading..."
   },
   "perform-vector-search": {
     "title": "Vector Search",
@@ -136,19 +145,22 @@
     "prompt": "Prompt",
     "prompt-placeholder-text": "Write the custom request that will be applied to your files here",
     "run": "Run",
-    "upload-limits": "TXT & PDF files up to 1 MB each",
+    "upload-limits": "TXT & PDF files",
     "title": "Custom Request",
     "requested": "Requested",
     "filenames": "File names",
     "total-completion-response": "Response"
   },
   "custom-request-v2": {
+    "customizations": "Customizations",
     "choose-files": "Choose files",
     "provide-request": "Customize",
+    "title": "Custom Request",
+    "description": "'Custom Request' gives you the most control over your documents. First, upload 1 to 10 documents (.txt or .pdf) you want Kalygo to interact with. Free Tier uploads are limited to 1MB while Paid Tier uploads are limited to 40MB. Then in the second step you can use the text box to write out how and what Kalygo should do with your files or you can try out a suggested request.",
     "run": "Request",
     "send": "Send",
     "select-files": "Select",
-    "upload-limits": "TXT & PDF files up to 1 MB each",
+    "upload-limits": "TXT & PDF files",
     "save": "Save",
     "next": "Next",
     "prompt": "Prompt",
@@ -161,6 +173,16 @@
     "select": "Select",
     "not-this-one": "Not this one"
   },
+  "chunking-tool": {
+    "title": "Chunking Tool",
+    "description": "The 'Chunking Tool' allows you to select a file and specify the model you would like use to process your file. After providing these details, Kalygo will extract the text and cut up the file so that each part of it is ingestable into the A.I. model specified.",
+    "choose-files": "Choose files",
+    "choose-file": "Choose file",
+    "provide-details": "Provide Details",
+    "chunk": "Chunk",
+    "chosen-files": "Chosen files",
+    "chosen-file": "Chosen file"
+  },
   "queue": {
     "title": "My Requests",
     "nothing-found": "Nothing found",
@@ -168,7 +190,9 @@
     "file-name": "File name",
     "file-names": "File names",
     "requested-at": "Requested at",
+    "processed-on": "Processed on",
     "remove": "Remove",
+    "retry": "Retry",
     "view": "View",
     "job-type": "Type",
     "vector-search": {
@@ -176,6 +200,9 @@
     },
     "custom-request": {
       "prompt": "Prompt"
+    },
+    "summary-v2": {
+      "mode": "Mode"
     }
   },
   "summary": {
@@ -188,18 +215,63 @@
     "content": "Content"
   },
   "summary-v2": {
-    "prompt": "Prompt"
+    "prompt": "Prompt",
+    "mode": "Mode",
+    "model": "Model",
+    "language": "Language",
+    "format": "Format",
+    "share-modal": {
+      "title": "Share",
+      "email": "Email"
+    }
   },
-  "saas-stats": {
-    "title": "SaaS Stats"
+  "admin": {
+    "title": "Overview",
+    "accounts": {
+      "title": "Accounts"
+    },
+    "logins": {
+      "title": "Logins"
+    },
+    "paid-accounts": {
+      "title": "Paid Accounts"
+    },
+    "charges": {
+      "title": "Charges"
+    }
+  },
+  "send-email": {
+    "title": "Send Email",
+    "description": "Send a hyper-personalized email",
+    "greeting": "Greeting",
+    "paragraph1": "Paragraph 1"
+  },
+  "buy-credits": {
+    "title": "Buy credits",
+    "description": "100 credits equals $1.00 USD of usage just like standard credit card points do. Fees not included.",
+    "select-amount": "Amount of Credits",
+    "payment-method": "Payment Method",
+    "review": "Review",
+    "purchase": "Purchase",
+    "get-credits": "Get credits",
+    "complete-purchase": "Complete Purchase"
   },
   "settings": {
+    "purchase-history": {
+      "title": "Purchase History",
+      "description": "The history of your account's transactions on the platform."
+    },
+    "usage-credits": {
+      "credits": "Credits",
+      "credit": "Credit",
+      "title": "Credits"
+    },
     "free-credits": {
       "title": "Free credits",
       "summaries": "Summaries",
       "summary": "Summary",
-      "vector-searches": "Smart searches",
-      "vector-search": "Smart search",
+      "vector-searches": "Smart Searches",
+      "vector-search": "Smart Search",
       "custom-request-credit": "Custom Request",
       "custom-request-credits": "Custom Requests"
     },

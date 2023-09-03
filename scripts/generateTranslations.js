@@ -5,13 +5,11 @@ const sourceFolderPath = "public/locales/en";
 const outputPath = "public/locales";
 
 // personal credentials, update before pushing to production
-const projectId = "kalygotranslation2";
-const keyFilename = "keyfile.json";
+const projectId = "kalygo";
+const keyFilename = "kalygo-24cb52e94470.json";
 const targetLanguages = ["es", "pt", "fr"];
 
 const translate = new Translate({ projectId, keyFilename });
-
-
 
 // function to translate values in files
 async function translateJSONValues(file, val, targetLanguage, path) {
@@ -37,12 +35,18 @@ async function translateJSONValues(file, val, targetLanguage, path) {
       console.log("HERE");
 
       const variables = [];
-      const translatedValue = newValue.replace(/{{\w+}}/g, (match, variable) => {
-        variables.push(variable);
-        return variables.length - 1;
-      });
+      const translatedValue = newValue.replace(
+        /{{\w+}}/g,
+        (match, variable) => {
+          variables.push(variable);
+          return variables.length - 1;
+        }
+      );
 
-      const [translation] = await translate.translate(translatedValue, targetLanguage);
+      const [translation] = await translate.translate(
+        translatedValue,
+        targetLanguage
+      );
 
       const translatedResult = translation.replace(/(\d+)/g, (match, index) => {
         return `{{${variables[parseInt(index)]}}}`;
@@ -93,7 +97,6 @@ async function translateJSONValues(file, val, targetLanguage, path) {
     return val;
   }
 }
-
 
 async function createFiles(targetLanguage) {
   try {
