@@ -132,7 +132,7 @@ export function CustomizeSummary(props: Props) {
                       onClick={() => {
                         console.log("--- ___ ---");
 
-                        router.push("/");
+                        router.push("/scanning-modes");
                       }}
                     >
                       <InformationCircleIcon className="h-4 w-4 text-blue-500 hover:text-blue-600 cursor-pointer" />
