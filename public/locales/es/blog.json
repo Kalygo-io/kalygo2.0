@@ -6,11 +6,11 @@
     "mode-2": "Cada uno en trozos",
     "mode-3": "En general",
     "mode-4": "Por página",
-    "mode-1-description": "Este modo corta los datos de cada archivo que carga en un lote para que cada fragmento esté dentro del límite de contexto de la A.I. modelo que estás utilizando. El mensaje que especifique se aplicará a cada fragmento de forma secuencial y la respuesta de finalización de cada fragmento se pasará como contexto para el fragmento siguiente. Opcionalmente, puede especificar un 'mensaje final' que es útil para pulir el resultado del escaneo de cada documento por última vez antes de presentar el resultado.",
+    "mode-1-description": "Este modo corta los datos de cada archivo que carga en un lote para que cada fragmento esté dentro del límite de contexto de la A.I. modelo que estás utilizando. El mensaje que especifique se aplicará a cada fragmento de forma secuencial y la respuesta de finalización de cada fragmento se pasará como contexto para el fragmento siguiente. Opcionalmente, puede especificar un 'mensaje final' que es útil para pulir el resultado del escaneo en cada documento antes de presentar el resultado.",
     "mode-1-emphasis": "Este modo es ideal para leer libros o extraer información de datos lineales.",
     "mode-2-description": "Este modo corta los datos de cada archivo que carga para que cada fragmento esté dentro del límite de contexto de la A.I. modelo que estás utilizando. El mensaje que especifique se aplicará a cada fragmento independientemente de los demás, es decir, en paralelo.",
     "mode-2-emphasis": "Este modo es excelente para generar resúmenes rápidos de las secciones de cada documento cargado en un lote o para realizar búsquedas conceptuales rápidas en cada documento de un lote.",
-    "mode-3-description": "Este modo es igual que el modo \"Cada general\", excepto que emite un mensaje adicional en la salida de cada documento en un lote.",
+    "mode-3-description": "Este modo es igual que el modo \"Cada general\", excepto que emite un mensaje adicional en la salida de cada documento procesado en un lote.",
     "mode-3-emphasis": "Este modo es excelente para obtener una comprensión general de una colección de documentos.",
     "mode-4-description": "Este modo sólo está disponible para formatos de documentos paginados como PDF. Este modo aplica un mensaje a cada página de cada documento cargado en un lote. Si le intriga el resultado final de una página, puede acceder fácilmente al documento fuente del que procede para verificar su credibilidad.",
     "mode-4-emphasis": "Este modo es excelente para obtener una descripción general precisa y rastreable de una colección de documentos paginados."

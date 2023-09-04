@@ -6,11 +6,11 @@
     "mode-2": "Each In Chunks",
     "mode-3": "Overall",
     "mode-4": "Per Page",
-    "mode-1-description": "This mode cuts up the data of each file you upload in a batch so that each chunk is within the context limit of the A.I. model you are using. The prompt you specify will be applied to each chunk sequentially with each chunks completion response passed as context for the subsequent chunk. You can optionally specify a 'final prompt' which is useful for polishing the output of scanning across each document one last time before presenting the output.",
+    "mode-1-description": "This mode cuts up the data of each file you upload in a batch so that each chunk is within the context limit of the A.I. model you are using. The prompt you specify will be applied to each chunk sequentially with each chunk's completion response passed as context for the subsequent chunk. You can optionally specify a 'final prompt' which is useful for polishing the output of scanning across each document before presenting the output.",
     "mode-1-emphasis": "This mode is great for reading books or extracting information from linear data.",
     "mode-2-description": "This mode cuts up the data in each file you upload so that each chunk is within the context limit of the A.I. model you are using. The prompt you specify will be applied to each chunk independently of the other chunks ie: in parallel.",
     "mode-2-emphasis": "This mode is great for generating quick summaries of the sections of each document uploaded in a batch or for performing quick conceptual searches against each document in a batch.",
-    "mode-3-description": "This mode is the same as `Each Overall` mode except that it issues an additional prompt against the output of each document in a batch.",
+    "mode-3-description": "This mode is the same as `Each Overall` mode except that it issues an additional prompt against the output of each processed document in a batch.",
     "mode-3-emphasis": "This mode is great for getting an overall understanding of a collection of documents.",
     "mode-4-description": "This mode is only available for paginated document formats like PDF's. This mode applies a prompt to each page of each document uploaded in a batch. If the completion output of a page intrigues you, you can easily pull up the source document from which it came to verify its credibility.",
     "mode-4-emphasis": "This mode is great for getting an accurate and traceable overview of a collection of paginated documents."
