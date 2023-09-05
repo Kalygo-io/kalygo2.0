@@ -36,10 +36,9 @@ export function CustomizeSummary(props: Props) {
     setCustomizations,
     setShowPaymentMethodRequiredModal,
     account,
+    files,
   } = props;
   const { t } = useTranslation();
-
-  const router = useRouter();
 
   const onSubmit = async (data: any) => {
     try {
@@ -48,6 +47,17 @@ export function CustomizeSummary(props: Props) {
       setStep(3);
     } catch (e: any) {}
   };
+
+  console.log("files", files);
+
+  let disablePerPageMode = false;
+  for (let i of files) {
+    console.log("i", i);
+    if (i.type !== "application/pdf") {
+      disablePerPageMode = true;
+      break;
+    }
+  }
 
   const {
     register,
@@ -156,8 +166,11 @@ export function CustomizeSummary(props: Props) {
                             Each In Chunks
                           </option>
                           <option value={SummaryMode.OVERALL}>Overall</option>
-                          <option disabled value={SummaryMode.PER_PAGE}>
-                            Per Page
+                          <option
+                            disabled={disablePerPageMode}
+                            value={SummaryMode.EACH_FILE_PER_PAGE}
+                          >
+                            Each Per Page
                           </option>
                         </select>
 

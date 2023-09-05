@@ -40,6 +40,10 @@ export default function SummaryV2(p: P) {
             {/* <ReactMarkdown>{summary?.completionResponse}</ReactMarkdown> */}
             {summary.mode === SummaryMode.PRIOR_TO_TRACKING_MODE &&
               JSON.stringify(summary.summary, null, 2)}
+
+            {/* {summary.mode === SummaryMode.EACH_FILE_PER_PAGE &&
+              JSON.stringify(summary.summary, null, 2)} */}
+
             {summary.mode === SummaryMode.EACH_FILE_OVERALL &&
               summary?.summary.map((i: any, idx: any) => {
                 return (
@@ -88,6 +92,37 @@ export default function SummaryV2(p: P) {
                               {i?.summary.length > 1 && `(Part ${j.chunk + 1})`}
                               <ReactMarkdown className="summary-v2-markdown">
                                 {j.chunkSummary}
+                              </ReactMarkdown>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  );
+                }
+              })}
+
+            {summary.mode === SummaryMode.EACH_FILE_PER_PAGE &&
+              summary?.summary.map((i: any, idx: any) => {
+                {
+                  return (
+                    <div key={idx}>
+                      <h3 className="text-lg my-4">
+                        <b>{i.file}</b>
+                      </h3>
+                      <ul>
+                        {i?.summariesOfTheParts?.map((j: any, idx: any) => {
+                          //
+                          // console.log("i", i);
+                          // console.log("j", j);
+                          //
+                          return (
+                            <li key={idx} className="mt-2">
+                              {i?.summariesOfTheParts.length > 1 &&
+                                `(Page ${idx + 1})`}
+
+                              <ReactMarkdown className="summary-v2-markdown">
+                                {j}
                               </ReactMarkdown>
                             </li>
                           );
