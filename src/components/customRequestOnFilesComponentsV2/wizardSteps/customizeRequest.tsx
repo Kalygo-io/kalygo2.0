@@ -79,25 +79,6 @@ export function CustomizeRequest(props: Props) {
 
   const { t } = useTranslation();
 
-  // const onSubmit = async (data: any) => {
-  //   try {
-  //     setPrompt(data.prompt);
-  //     setStep(3);
-  //   } catch (e: any) {}
-  // };
-
-  // const {
-  //   register,
-  //   getValues,
-  //   formState: { isValid },
-  //   setValue,
-  //   watch,
-  // } = useForm({
-  //   defaultValues: {
-  //     prompt: prompt || "",
-  //   },
-  // });
-
   const onSubmit = async (data: any) => {
     try {
       console.log("provideRequest submit", data);

@@ -6,18 +6,33 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { Disclosure, Transition } from "@headlessui/react";
 import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
 import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
-import { SummaryMode } from "@/types/SummaryMode";
-import {
-  LockClosedIcon,
-  MinusIcon,
-  PlusIcon,
-} from "@heroicons/react/24/outline";
+
+import { LockClosedIcon } from "@heroicons/react/24/outline";
 import { FaCcStripe } from "react-icons/fa6";
+
+const normalizeCardNumber = (value: string) => {
+  return (
+    value
+      .replace(/\s/g, "")
+      .match(/.{1,4}/g)
+      ?.join(" ")
+      .slice(0, 19) || ""
+  );
+};
+
+const normalizeExpDate = (value: string) => {
+  return (
+    value
+      .replace(/\s/g, "")
+      .match(/[0-9]{1,2}/g)
+      ?.join("/")
+      .slice(0, 5) || ""
+  );
+};
 
 interface Props {
   account: any;
@@ -73,6 +88,7 @@ export function PaymentMethod(props: Props) {
     formState: { errors, isValid },
     setValue,
     watch,
+    control,
   } = useForm({
     defaultValues: {
       card_number: "",
@@ -130,6 +146,10 @@ export function PaymentMethod(props: Props) {
                             required: true,
                             pattern: new RegExp(/^[0-9]+$/),
                           })}
+                          onChange={(e) => {
+                            const { value } = e.target;
+                            e.target.value = normalizeCardNumber(value);
+                          }}
                           className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                           type="text"
                           name="card_number"
@@ -173,6 +193,10 @@ export function PaymentMethod(props: Props) {
                             required: true,
                             pattern: new RegExp(/[0-9]{2}\/[0-9]{2}/),
                           })}
+                          onChange={(e) => {
+                            const { value } = e.target;
+                            e.target.value = normalizeExpDate(value);
+                          }}
                           placeholder="MM/YY"
                           type="text"
                           name="exp_date"
