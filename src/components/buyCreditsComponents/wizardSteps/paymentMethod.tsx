@@ -224,7 +224,7 @@ export function PaymentMethod(props: Props) {
                           type="text"
                           name="cvc"
                           id="cvc"
-                          autoComplete="csc"
+                          autoComplete="cvc"
                           className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                         />
                       </div>
