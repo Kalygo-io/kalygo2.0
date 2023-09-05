@@ -54,7 +54,7 @@ export default function CustomRequest(p: P) {
                           return (
                             <li key={idx} className="mt-2">
                               {i?.summary.length > 1 && `(Part ${j.chunk + 1})`}
-                              <ReactMarkdown className="summary-v2-markdown">
+                              <ReactMarkdown className="custom-request-markdown">
                                 {j.chunkSummary}
                               </ReactMarkdown>
                             </li>
@@ -76,7 +76,7 @@ export default function CustomRequest(p: P) {
                         <b>{i.file}</b>
                       </h3>
                     </span>
-                    <ReactMarkdown className="summary-v2-markdown">
+                    <ReactMarkdown className="custom-request-markdown">
                       {i.finalCompletionForFile}
                     </ReactMarkdown>
                     <br />
@@ -90,12 +90,38 @@ export default function CustomRequest(p: P) {
                   <div key={idx}>
                     {customRequest?.completionResponse.length > 1 &&
                       `(Part ${i.part + 1})`}
-                    <ReactMarkdown className="summary-v2-markdown">
+                    <ReactMarkdown className="custom-request-markdown">
                       {i.overallCompletion}
                     </ReactMarkdown>
                     <br />
                   </div>
                 );
+              })}
+
+            {customRequest.mode === ScanningMode.EACH_FILE_PER_PAGE &&
+              customRequest?.completionResponse.map((i: any, idx: any) => {
+                {
+                  return (
+                    <div key={idx}>
+                      <h3 className="text-lg">
+                        <b>{i.file}</b>
+                      </h3>
+                      <ul>
+                        {i?.completionsForTheParts?.map((j: any, idx: any) => {
+                          return (
+                            <li key={idx} className="mt-2">
+                              {i?.completionsForTheParts.length > 1 &&
+                                `(Page ${idx + 1})`}
+                              <ReactMarkdown className="custom-request-markdown">
+                                {j}
+                              </ReactMarkdown>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  );
+                }
               })}
           </div>
         </div>

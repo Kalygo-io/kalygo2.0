@@ -16,6 +16,7 @@ import { SummaryMode } from "@/types/SummaryMode";
 import { EachFileInChunksPrompts } from "./reviewComponents/EachFileInChunksPrompts";
 import { EachFileOverallPrompts } from "./reviewComponents/EachFileOverallPrompts";
 import { OverallPrompts } from "./reviewComponents/OverallPrompts";
+import { EachFilePerPagePrompts } from "./reviewComponents/EachFilePerPagePrompts";
 
 interface Props {
   customizations: {
@@ -116,6 +117,13 @@ export function Review(props: Props) {
                         prompt={customizations.prompt as string}
                         finalPrompt={customizations.finalPrompt as string}
                         overallPrompt={customizations.overallPrompt as string}
+                      />
+                    )}
+
+                    {customizations?.mode ===
+                      SummaryMode.EACH_FILE_PER_PAGE && (
+                      <EachFilePerPagePrompts
+                        prompt={customizations.prompt as string}
                       />
                     )}
                     <div className="text-center">

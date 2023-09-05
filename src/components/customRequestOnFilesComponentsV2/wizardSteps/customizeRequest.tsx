@@ -19,6 +19,7 @@ import { SummaryMode } from "@/types/SummaryMode";
 import { EachFileOverallPrompts } from "./customizeRequestComponents/EachFileOverallPrompts";
 import { EachFileInChunksPrompts } from "./customizeRequestComponents/EachFileInChunksPrompts";
 import { OverallPrompts } from "./customizeRequestComponents/OverallPrompts";
+import { EachFilePerPagePrompts } from "./customizeRequestComponents/EachFilePerPagePrompts";
 
 interface Props {
   account: any;
@@ -67,8 +68,6 @@ const preBuiltPrompts = [
 ];
 
 export function CustomizeRequest(props: Props) {
-  // const { prompt, files, setStep, setPrompt } = props;
-
   const {
     customizations,
     files,
@@ -106,6 +105,16 @@ export function CustomizeRequest(props: Props) {
       setStep(3);
     } catch (e: any) {}
   };
+
+  // console.log("files", files);
+
+  let disablePerPageMode = false;
+  for (let i of files) {
+    if (i.type !== "application/pdf") {
+      disablePerPageMode = true;
+      break;
+    }
+  }
 
   const {
     register,
@@ -186,8 +195,29 @@ export function CustomizeRequest(props: Props) {
                           Mode
                         </label>
                         <div className="mt-2">
-                          <div className="mt-4 space-x-2 flex justify-between">
-                            <div className="flex items-center gap-x-2">
+                          <select
+                            {...register("mode")}
+                            id="mode"
+                            name="mode"
+                            autoComplete="mode"
+                            // className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-full sm:text-sm sm:leading-6"
+                          >
+                            <option value={SummaryMode.EACH_FILE_OVERALL}>
+                              Each Overall
+                            </option>
+                            <option value={SummaryMode.EACH_FILE_IN_CHUNKS}>
+                              Each In Chunks
+                            </option>
+                            <option value={SummaryMode.OVERALL}>Overall</option>
+                            <option
+                              disabled={disablePerPageMode}
+                              value={SummaryMode.EACH_FILE_PER_PAGE}
+                            >
+                              Each Per Page
+                            </option>
+                          </select>
+                          {/* <div className="flex items-center gap-x-2">
                               <input
                                 {...register("mode")}
                                 id="overall-data"
@@ -249,9 +279,9 @@ export function CustomizeRequest(props: Props) {
                               >
                                 Overall
                               </label>
-                            </div>
-                          </div>
+                            </div> */}
                         </div>
+
                         {mode === SummaryMode.EACH_FILE_OVERALL && (
                           <EachFileOverallPrompts
                             values={getValues()}
@@ -260,6 +290,7 @@ export function CustomizeRequest(props: Props) {
                             setValue={setValue}
                           />
                         )}
+
                         {mode === SummaryMode.EACH_FILE_IN_CHUNKS && (
                           <EachFileInChunksPrompts
                             register={register}
@@ -267,8 +298,17 @@ export function CustomizeRequest(props: Props) {
                             setValue={setValue}
                           />
                         )}
+
                         {mode === SummaryMode.OVERALL && (
                           <OverallPrompts
+                            register={register}
+                            trigger={trigger}
+                            setValue={setValue}
+                          />
+                        )}
+
+                        {mode === SummaryMode.EACH_FILE_PER_PAGE && (
+                          <EachFilePerPagePrompts
                             register={register}
                             trigger={trigger}
                             setValue={setValue}
