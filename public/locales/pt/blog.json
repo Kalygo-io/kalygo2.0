@@ -1,4 +1,16 @@
 {
+  "blog": {
+    "title": "Nosso blog",
+    "subtitle": "Saiba mais sobre Kalygo em nossa comunidade",
+    "scanning-modes": {
+      "title": "4 modos de digitalização de dados do Kalygo",
+      "description": "O molho de Kalygo está nas 4 técnicas de varredura de dados que ele suporta para alimentar dados em sua IA desejada. modelos.",
+      "category": "Aprendizado",
+      "author": {
+        "name": "Tad Duval"
+      }
+    }
+  },
   "scanning-modes": {
     "title": "Modos de digitalização de documentos do Kalygo",
     "toc": "Índice",

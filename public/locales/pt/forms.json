@@ -10,7 +10,7 @@
   "reset-token": "Token de redefinição",
   "enter-reset-token": "Enter reset token",
   "greeting": "Saudações",
-  "paragraph1": "Parágrafo {{undefined}}",
+  "paragraph1": "Parágrafo 1",
   "ending": "Final",
   "send-email": {
     "recipient-emails": "Endereço de e-mail do destinatário",
@@ -27,17 +27,17 @@
     "enter-logo-image-url": "Insira o URL da imagem do logotipo",
     "greeting": "Saudações",
     "enter-greeting": "Insira a saudação",
-    "paragraph-1": "Parágrafo {{undefined}}",
-    "enter-paragraph-1": "Insira o parágrafo {{undefined}}",
-    "paragraph-2": "Parágrafo {{undefined}}",
-    "enter-paragraph-2": "Digite o parágrafo {{undefined}}",
-    "paragraph-3": "Parágrafo {{undefined}}",
-    "enter-paragraph-3": "Digite o parágrafo {{undefined}}",
-    "paragraph-4": "Parágrafo {{undefined}}",
-    "enter-paragraph-4": "Digite o parágrafo {{undefined}}",
-    "paragraph-5": "Parágrafo {{undefined}}",
-    "enter-paragraph-5": "Digite o parágrafo {{undefined}}",
-    "paragraph-6": "Parágrafo {{undefined}}",
-    "enter-paragraph-6": "Insira o parágrafo {{undefined}}"
+    "paragraph-1": "Parágrafo 1",
+    "enter-paragraph-1": "Insira o parágrafo 1",
+    "paragraph-2": "Parágrafo 2",
+    "enter-paragraph-2": "Digite o parágrafo 2",
+    "paragraph-3": "Parágrafo 3",
+    "enter-paragraph-3": "Digite o parágrafo 3",
+    "paragraph-4": "Parágrafo 4",
+    "enter-paragraph-4": "Digite o parágrafo 4",
+    "paragraph-5": "Parágrafo 5",
+    "enter-paragraph-5": "Digite o parágrafo 5",
+    "paragraph-6": "Parágrafo 6",
+    "enter-paragraph-6": "Insira o parágrafo 6"
   }
 }

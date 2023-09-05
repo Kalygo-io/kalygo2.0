@@ -108,7 +108,7 @@
   },
   "summarize-v2": {
     "title": "Resumir",
-    "description": "'Resumir' permite fazer upload de {{undefined}} a {{undefined}} documentos (.txt ou .pdf). Os uploads do nível gratuito são limitados a {{undefined}} MB, enquanto os uploads do nível pago são limitados a {{undefined}} MB. Resuma-os com as opções de personalização especificadas na etapa {{undefined}}.",
+    "description": "'Resumir' permite fazer upload de 1 a 10 documentos (.txt ou .pdf). Os uploads do nível gratuito são limitados a 1 MB, enquanto os uploads do nível pago são limitados a 40 MB. Resuma-os com as opções de personalização especificadas na etapa 2.",
     "choose-files": "Escolher os arquivos",
     "customize-summary": "Customizar",
     "chosen-files": "arquivos escolhidos",
@@ -156,7 +156,7 @@
     "choose-files": "Escolher os arquivos",
     "provide-request": "Customizar",
     "title": "Solicitação personalizada",
-    "description": "'Solicitação personalizada' oferece maior controle sobre seus documentos. Primeiro, carregue de {{undefined}} a {{undefined}} documentos (.txt ou .pdf) com os quais deseja que o Kalygo interaja. Os uploads do nível gratuito são limitados a {{undefined}} MB, enquanto os uploads do nível pago são limitados a {{undefined}} MB. Então, na segunda etapa, você pode usar a caixa de texto para escrever como e o que o Kalygo deve fazer com seus arquivos ou pode tentar uma solicitação sugerida.",
+    "description": "'Solicitação personalizada' oferece maior controle sobre seus documentos. Primeiro, carregue de 1 a 10 documentos (.txt ou .pdf) com os quais deseja que o Kalygo interaja. Os uploads do nível gratuito são limitados a 1 MB, enquanto os uploads do nível pago são limitados a 10 MB. Então, na segunda etapa, você pode usar a caixa de texto para escrever como e o que o Kalygo deve fazer com seus arquivos ou pode tentar uma solicitação sugerida.",
     "run": "Solicitar",
     "send": "Enviar",
     "select-files": "Selecione",
@@ -240,7 +240,7 @@
     "title": "Enviar email",
     "description": "Envie um e-mail hiperpersonalizado",
     "greeting": "Saudações",
-    "paragraph1": "Parágrafo {{undefined}}"
+    "paragraph1": "Parágrafo 1"
   },
   "buy-credits": {},
   "settings": {

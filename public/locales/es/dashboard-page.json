@@ -108,7 +108,7 @@
   },
   "summarize-v2": {
     "title": "Resumir",
-    "description": "'Resumir' le permite cargar de {{undefined}} a {{undefined}} documentos (.txt o .pdf). Las cargas del nivel gratuito están limitadas a {{undefined}} MB, mientras que las cargas del nivel pago están limitadas a {{undefined}} MB. Resúmelos con las opciones de personalización que especifiques en el paso {{undefined}}.",
+    "description": "'Resumir' le permite cargar de 1 a 10 documentos (.txt o .pdf). Las cargas del nivel gratuito están limitadas a 1 MB, mientras que las cargas del nivel pago están limitadas a 40 MB. Resúmelos con las opciones de personalización que especifiques en el paso 2.",
     "choose-files": "Seleccionar archivos",
     "customize-summary": "personalizar",
     "chosen-files": "archivos elegidos",
@@ -156,7 +156,7 @@
     "choose-files": "Seleccionar archivos",
     "provide-request": "personalizar",
     "title": "Solicitud personalizada",
-    "description": "La 'Solicitud personalizada' le brinda el mayor control sobre sus documentos. Primero, cargue de {{undefined}} a {{undefined}} documentos (.txt o .pdf) con los que desee que Kalygo interactúe. Las cargas del nivel gratuito están limitadas a {{undefined}} MB, mientras que las cargas del nivel pago están limitadas a {{undefined}} MB. Luego, en el segundo paso, puedes usar el cuadro de texto para escribir cómo y qué debe hacer Kalygo con tus archivos o puedes probar una solicitud sugerida.",
+    "description": "La 'Solicitud personalizada' le brinda el mayor control sobre sus documentos. Primero, cargue de 1 a 10 documentos (.txt o .pdf) con los que desee que Kalygo interactúe. Las cargas del nivel gratuito están limitadas a 1 MB, mientras que las cargas del nivel pago están limitadas a 40 MB. Luego, en el segundo paso, puedes usar el cuadro de texto para escribir cómo y qué debe hacer Kalygo con tus archivos o puedes probar una solicitud sugerida.",
     "run": "Pedido",
     "send": "Enviar",
     "select-files": "Seleccionar",
@@ -244,11 +244,11 @@
     "title": "Enviar correo electrónico",
     "description": "Envía un correo electrónico hiperpersonalizado",
     "greeting": "Saludo",
-    "paragraph1": "Párrafo {{undefined}}"
+    "paragraph1": "Párrafo 1"
   },
   "buy-credits": {
     "title": "Compra creditos",
-    "description": "{{undefined}} créditos equivalen a ${{undefined}},{{undefined}} USD de uso, al igual que los puntos de una tarjeta de crédito estándar. Honorarios no incluidos.",
+    "description": "100 créditos equivalen a $1,00 USD de uso, al igual que los puntos de una tarjeta de crédito estándar. Honorarios no incluidos.",
     "select-amount": "Cantidad de créditos",
     "payment-method": "Método de pago",
     "review": "Revisar",

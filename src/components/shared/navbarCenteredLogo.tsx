@@ -1,23 +1,10 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import {
-  Bars3Icon,
-  CalendarIcon,
-  ChartPieIcon,
-  DocumentDuplicateIcon,
-  FolderIcon,
-  HomeIcon,
-  UsersIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import Image from "next/image";
 import Link from "@/components/shared/Link";
 import { useTranslation } from "next-i18next";
-
-// function classNames(...classes: string[]) {
-//   return classes.filter(Boolean).join(" ");
-// }
 
 interface P {
   disableStickyTopNav?: boolean;
@@ -31,6 +18,7 @@ export function NavbarCenteredLogo(p: P) {
   const navigation = [
     { name: t("navbar:navbar-about"), href: "/about" },
     { name: t("navbar:navbar-feedback"), href: "/feedback" },
+    { name: t("navbar:navbar-blog"), href: "/blog" },
   ];
 
   return (

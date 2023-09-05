@@ -1,4 +1,17 @@
 {
+  "blog": {
+    "title": "Nuestro blog",
+    "subtitle": "Obtenga más información sobre Kalygo en nuestra comunidad",
+    "scanning-modes": {
+      "title": "Los 4 modos de escaneo de datos de Kalygo",
+      "description": "La salsa de Kalygo está en las 4 técnicas de escaneo de datos que admite para introducir datos en la IA que desee. modelos.",
+      "category": "Aprendiendo",
+      "author": {
+        "name": "Tad Duval",
+        "role": "Fundador"
+      }
+    }
+  },
   "scanning-modes": {
     "title": "Modos de escaneo de documentos de Kalygo",
     "toc": "Tabla de contenido",

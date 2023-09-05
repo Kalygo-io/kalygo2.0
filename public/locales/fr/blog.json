@@ -1,4 +1,16 @@
 {
+  "blog": {
+    "title": "Notre blog",
+    "subtitle": "Apprenez-en davantage sur Kalygo grâce à notre communauté",
+    "scanning-modes": {
+      "title": "Les 4 modes d'analyse des données de Kalygo",
+      "description": "La sauce de Kalygo réside dans les 4 techniques d'analyse de données qu'il prend en charge pour alimenter les données de votre IA souhaitée. des modèles.",
+      "category": "Apprentissage",
+      "author": {
+        "name": "Tad Duval"
+      }
+    }
+  },
   "scanning-modes": {
     "title": "Modes de numérisation de documents de Kalygo",
     "toc": "Table des matières",

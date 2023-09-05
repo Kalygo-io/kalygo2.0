@@ -3,5 +3,6 @@
   "navbar-contracts": "Contrats",
   "navbar-feedback": "Retour",
   "navbar-about": "À propos",
-  "navbar-login": "Log in"
+  "navbar-login": "Se connecter",
+  "navbar-blog": "Blog"
 }

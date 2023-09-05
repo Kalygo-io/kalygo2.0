@@ -2,8 +2,8 @@ import React from "react";
 
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
-import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import Layout1a from "@/layout/layout1a";
+import Head from "next/head";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -13,6 +13,7 @@ const getStaticProps = makeStaticProps([
   "contract-list",
   "error",
 ]);
+
 export { getStaticPaths, getStaticProps };
 
 export default function ScanningModes() {
@@ -20,6 +21,14 @@ export default function ScanningModes() {
 
   return (
     <>
+      <Head>
+        <title>{t("seo:scanning-modes-blog-article-title")}</title>
+        <meta
+          name="description"
+          content={t("seo:scanning-modes-blog-article-description")!}
+        />
+      </Head>
+
       <Layout1a>
         <div className="bg-white px-6 py-32 lg:px-8">
           <div className="mx-auto max-w-3xl text-base leading-7 text-gray-700">

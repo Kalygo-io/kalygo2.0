@@ -1,4 +1,17 @@
 {
+  "blog": {
+    "title": "Our blog",
+    "subtitle": "Learn more about Kalygo from our community",
+    "scanning-modes": {
+      "title": "Kalygo's 4 Data Scanning Modes",
+      "description": "Kalygo's sauce is in the 4 data scanning techniques it supports for feeding data into your desired A.I. models.",
+      "category": "Learning",
+      "author": {
+        "name": "Tad Duval",
+        "role": "Founder"
+      }
+    }
+  },
   "scanning-modes": {
     "title": "Kalygo's Document Scanning Modes",
     "toc": "Table of Contents",
