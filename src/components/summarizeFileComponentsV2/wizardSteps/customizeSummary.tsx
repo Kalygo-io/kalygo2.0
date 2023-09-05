@@ -130,9 +130,10 @@ export function CustomizeSummary(props: Props) {
                     <sup
                       className="flex"
                       onClick={() => {
-                        console.log("--- ___ ---");
-
-                        router.push("/scanning-modes");
+                        window.open(
+                          `${process.env.NEXT_PUBLIC_HOSTNAME}/blog/1-scanning-modes`,
+                          "_blank"
+                        );
                       }}
                     >
                       <InformationCircleIcon className="h-4 w-4 text-blue-500 hover:text-blue-600 cursor-pointer" />
