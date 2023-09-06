@@ -131,7 +131,7 @@ export default function Signin() {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <Image
             className="mx-auto h-10 w-auto"
-            src="/kalygo_new_logo-192x192.png"
+            src="/kalygo_new_logo-192x192_dark_blue.png"
             alt={t("image-alt-tags:kalygo_new_logo-192x192")}
             width={192}
             height={192}

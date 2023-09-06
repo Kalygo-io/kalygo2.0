@@ -84,7 +84,7 @@ export default function Home(props: any) {
               <div className="cta-button">
                 <Link
                   href="/signup"
-                  className="rounded-md bg-blue-500 mr-2 px-4 py-3.5 text-lg font-semibold text-white shadow-md hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                  className="rounded-md bg-blue-600 mr-2 px-4 py-3.5 text-lg font-semibold text-white shadow-md hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
                 >
                   &nbsp;{t("landing-page:try-kalygo-for-free")}&nbsp;
                 </Link>
