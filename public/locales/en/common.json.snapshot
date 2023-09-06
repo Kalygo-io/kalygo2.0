@@ -6,24 +6,24 @@
   "stats": {
     "headline": "Documents don't need to be complicated",
     "subheadline": "Kalygo saves you time so you can focus on what matters",
-    "stat1_headline": "Insight",
-    "stat1_subheadline": "Get the most important information you need from your documents",
-    "stat2_headline": "Overview",
-    "stat2_subheadline": "Talk to your documents and go beyond keyword matching",
-    "stat3_headline": "Ease",
-    "stat3_subheadline": "Share insight with your team members or clients"
+    "stat1_headline": "Accelerate\nWorkflows",
+    "stat1_subheadline": "Kalygo allows you to restructure your document review workflows to be 10x or even 100x faster than standard practices",
+    "stat2_headline": "Save\nTime",
+    "stat2_subheadline": "That means more time for your family, friends, exercise, extracurriculars, business development, sunshine, and much more",
+    "stat3_headline": "Boost\nProductivity",
+    "stat3_subheadline": "Leverage software, AI, and collaboration all at once to boost your or your team's productivity today"
   },
   "industries-we-serve": {
     "title": "Industries we serve",
-    "description-1": "Any professional that deals with high volumes of document-based data will find Kalygo beneficial in",
+    "description-1": "Anyone that deals with high volumes of document-based data will find Kalygo beneficial in",
     "description-2": "managing, digesting and repurposing",
     "description-3": "their data.",
-    "persona-1": "Law Firms",
-    "persona-1-subtitle": "Lawyers, Paralegals, and Counsel",
-    "persona-2": "Psychologists",
-    "persona-2-subtitle": "Quickly digest notes for your clients with LLM technology",
-    "persona-3": "Researchers",
-    "persona-3-subtitle": "Professors and Students"
+    "persona-1": "Researchers",
+    "persona-1-subtitle": "Higher Education Students and Teachers",
+    "persona-2": "Law Firms",
+    "persona-2-subtitle": "Lawyers, Paralegals, and Counsel",
+    "persona-3": "Psychologists",
+    "persona-3-subtitle": "Quickly digest your client notes with Kalygo"
   },
   "pricing": {
     "title": "Pricing",

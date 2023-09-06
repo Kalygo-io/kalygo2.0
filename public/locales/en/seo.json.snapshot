@@ -23,6 +23,8 @@
   "about-page-description": "The about page for Kalygo.",
   "3d-page-seo-title": "3d",
   "3d-page-seo-description": "Eye candy.",
+  "blog-page-title": "Blog",
+  "blog-page-description": "Kalygo's Community Blog",
   "scanning-modes-blog-article-title": "Scanning Modes Blog Article",
   "scanning-modes-blog-article-description": "An overview of the 4 data scanning modes Kalygo supports as of 9-4-2023."
 }

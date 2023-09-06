@@ -6,24 +6,24 @@
   "stats": {
     "headline": "Los documentos no necesitan ser complicados",
     "subheadline": "Kalygo te ahorra tiempo para que puedas concentrarte en lo que importa",
-    "stat1_headline": "Conocimiento",
-    "stat1_subheadline": "Obtenga la información más importante que necesita de sus documentos",
-    "stat2_headline": "Descripción general",
-    "stat2_subheadline": "Hable con sus documentos y vaya más allá de la concordancia de palabras clave",
-    "stat3_headline": "Facilidad",
-    "stat3_subheadline": "Comparta información con los miembros de su equipo o clientes"
+    "stat1_headline": "Acelerar\nFlujos de trabajo",
+    "stat1_subheadline": "Kalygo le permite reestructurar sus flujos de trabajo de revisión de documentos para que sean {{undefined}} o incluso {{undefined}} veces más rápidos que las prácticas estándar",
+    "stat2_headline": "Ahorrar\nTiempo",
+    "stat2_subheadline": "Eso significa más tiempo para su familia, amigos, ejercicio, actividades extracurriculares, desarrollo empresarial, sol y mucho más.",
+    "stat3_headline": "Aumentar\nProductividad",
+    "stat3_subheadline": "Aproveche el software, la inteligencia artificial y la colaboración al mismo tiempo para aumentar su productividad o la de su equipo hoy"
   },
   "industries-we-serve": {
     "title": "Industrias a las que servimos",
-    "description-1": "Cualquier profesional que maneje grandes volúmenes de datos basados en documentos encontrará beneficioso en Kalygo.",
+    "description-1": "Cualquiera que trabaje con grandes volúmenes de datos basados en documentos encontrará que Kalygo es beneficioso para",
     "description-2": "gestionar, digerir y reutilizar",
     "description-3": "sus datos.",
-    "persona-1": "Bufetes de abogados",
-    "persona-1-subtitle": "Abogados, asistentes legales y asesores",
-    "persona-2": "Psicólogos",
-    "persona-2-subtitle": "Resuma rápidamente notas para sus clientes con tecnología LLM",
-    "persona-3": "Investigadores",
-    "persona-3-subtitle": "Profesores y estudiantes"
+    "persona-1": "Investigadores",
+    "persona-1-subtitle": "Estudiantes y profesores de educación superior",
+    "persona-2": "Bufetes de abogados",
+    "persona-2-subtitle": "Abogados, asistentes legales y asesores",
+    "persona-3": "Psicólogos",
+    "persona-3-subtitle": "Digiere rápidamente las notas de tus clientes con Kalygo"
   },
   "pricing": {
     "title": "Precios",

@@ -6,22 +6,22 @@
   "stats": {
     "headline": "Documentos não precisam ser complicados",
     "subheadline": "Kalygo economiza seu tempo para que você possa se concentrar no que importa",
-    "stat1_headline": "Entendimento",
-    "stat1_subheadline": "Obtenha as informações mais importantes que você precisa de seus documentos",
-    "stat2_headline": "Visão geral",
-    "stat2_subheadline": "Converse com seus documentos e vá além da correspondência de palavras-chave",
-    "stat3_headline": "Facilidade",
-    "stat3_subheadline": "Compartilhe insights com os membros de sua equipe ou clientes"
+    "stat1_headline": "Acelerar\nFluxos de trabalho",
+    "stat1_subheadline": "Kalygo permite que você reestruture seus fluxos de trabalho de revisão de documentos para serem {{undefined}}x ou até {{undefined}}x mais rápidos do que as práticas padrão",
+    "stat2_headline": "Salvar\nTempo",
+    "stat2_subheadline": "Isso significa mais tempo para sua família, amigos, exercícios, atividades extracurriculares, desenvolvimento de negócios, sol e muito mais",
+    "stat3_headline": "Impulsionar\nProdutividade",
+    "stat3_subheadline": "Aproveite software, IA e colaboração de uma só vez para aumentar a sua produtividade ou a da sua equipe hoje mesmo"
   },
   "industries-we-serve": {
     "title": "Indústrias que atendemos",
-    "description-1": "Qualquer profissional que lide com grandes volumes de dados baseados em documentos achará o Kalygo benéfico em",
+    "description-1": "Qualquer pessoa que lide com grandes volumes de dados baseados em documentos achará o Kalygo benéfico em",
     "description-2": "gerenciando, digerindo e reaproveitando",
     "description-3": "seus dados.",
-    "persona-1": "Escritórios de advocacia",
-    "persona-1-subtitle": "Advogados, paralegais e consultores",
-    "persona-2": "Psicólogos",
-    "persona-2-subtitle": "Faça um resumo rápido das notas para seus clientes com a tecnologia LLM",
+    "persona-1": "Pesquisadores",
+    "persona-1-subtitle": "Alunos e Professores do Ensino Superior",
+    "persona-2": "Escritórios de advocacia",
+    "persona-2-subtitle": "Advogados, paralegais e consultores",
     "persona-3": "Pesquisadores",
     "persona-3-subtitle": "Professores e Alunos"
   },

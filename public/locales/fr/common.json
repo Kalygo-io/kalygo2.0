@@ -6,22 +6,22 @@
   "stats": {
     "headline": "Les documents n'ont pas besoin d'être compliqués",
     "subheadline": "Kalygo vous fait gagner du temps pour que vous puissiez vous concentrer sur l'essentiel",
-    "stat1_headline": "Aperçu",
-    "stat1_subheadline": "Obtenez les informations les plus importantes dont vous avez besoin à partir de vos documents",
-    "stat2_headline": "Recherche",
-    "stat2_subheadline": "Parlez à vos documents et allez au-delà de la correspondance des mots clés",
-    "stat3_headline": "Faciliter",
-    "stat3_subheadline": "Partagez des informations avec les membres de votre équipe ou vos clients"
+    "stat1_headline": "Accélérer\nFlux de travail",
+    "stat1_subheadline": "Kalygo vous permet de restructurer vos workflows de révision de documents pour qu'ils soient {{undefined}} fois, voire {{undefined}} fois plus rapides que les pratiques standards.",
+    "stat2_headline": "Sauvegarder\nTemps",
+    "stat2_subheadline": "Cela signifie plus de temps pour votre famille, vos amis, l'exercice, les activités parascolaires, le développement commercial, le soleil et bien plus encore.",
+    "stat3_headline": "Booster\nProductivité",
+    "stat3_subheadline": "Tirez parti simultanément des logiciels, de l'IA et de la collaboration pour augmenter votre productivité ou celle de votre équipe dès aujourd'hui."
   },
   "industries-we-serve": {
     "title": "Industries que nous servons",
-    "description-1": "Tout professionnel qui traite de gros volumes de données documentaires trouvera Kalygo utile dans",
+    "description-1": "Quiconque traite de gros volumes de données documentaires trouvera Kalygo utile dans",
     "description-2": "gérer, digérer et réutiliser",
     "description-3": "leurs données.",
-    "persona-1": "Cabinets d'avocats",
-    "persona-1-subtitle": "Avocats, parajuristes et conseillers juridiques",
-    "persona-2": "Psychologues",
-    "persona-2-subtitle": "Digérez rapidement les notes de vos clients grâce à la technologie LLM",
+    "persona-1": "Des chercheurs",
+    "persona-1-subtitle": "Étudiants et enseignants de l’enseignement supérieur",
+    "persona-2": "Cabinets d'avocats",
+    "persona-2-subtitle": "Avocats, parajuristes et conseillers juridiques",
     "persona-3": "Des chercheurs",
     "persona-3-subtitle": "Professeurs et étudiants"
   },
