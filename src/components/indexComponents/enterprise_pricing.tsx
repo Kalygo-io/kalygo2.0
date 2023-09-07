@@ -21,6 +21,7 @@ export function EnterprisePricing() {
         t("common:enterprise-pricing.tier1_feature1"),
         t("common:enterprise-pricing.tier1_feature2"),
         t("common:enterprise-pricing.tier1_feature3"),
+        t("common:enterprise-pricing.tier1_feature4"),
       ],
       enabled: true,
     },

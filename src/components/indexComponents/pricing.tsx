@@ -25,35 +25,35 @@ export function Pricing() {
       ],
       enabled: true,
     },
-    // {
-    //   name: t("common:pricing.tier2_name"),
-    //   id: "tier-standard",
-    //   href: "/signup",
-    //   price: { summary: "+50¢", monthly: "" },
-    //   description: t("common:pricing.tier2_description"),
-    //   features: [
-    //     t("common:pricing.tier2_feature1"),
-    //     t("common:pricing.tier2_feature2"),
-    //     t("common:pricing.tier2_feature3"),
-    //     t("common:pricing.tier2_feature4"),
-    //     t("common:pricing.tier2_feature5"),
-    //     t("common:pricing.tier2_feature6"),
-    //   ],
-    //   enabled: true,
-    // },
+    {
+      name: t("common:pricing.tier2_name"),
+      id: "tier-standard",
+      href: "/signup",
+      price: { summary: "+50¢", monthly: "$8.17" },
+      description: t("common:pricing.tier2_description"),
+      features: [
+        t("common:pricing.tier2_feature0"),
+        t("common:pricing.tier2_feature1"),
+        t("common:pricing.tier2_feature2"),
+        t("common:pricing.tier2_feature3"),
+        t("common:pricing.tier2_feature4"),
+        t("common:pricing.tier2_feature5"),
+      ],
+      enabled: true,
+    },
     {
       name: t("common:pricing.tier3_name"),
       id: "tier-premium",
       href: "/signup",
-      price: { summary: "ø", monthly: "Flexible" },
+      price: { summary: "ø", monthly: "$15.88" },
       description: t("common:pricing.tier3_description"),
       features: [
+        t("common:pricing.tier3_feature0"),
         t("common:pricing.tier3_feature1"),
         t("common:pricing.tier3_feature2"),
         t("common:pricing.tier3_feature3"),
         t("common:pricing.tier3_feature4"),
         t("common:pricing.tier3_feature5"),
-        t("common:pricing.tier3_feature6"),
       ],
       enabled: true,
     },
@@ -68,7 +68,7 @@ export function Pricing() {
           </h2>
         </div>
         <div className="mt-20 flow-root">
-          <div className="isolate grid max-w-lg grid-cols-1 gap-y-16 gap-x-8 divide-y divide-gray-100 sm:mx-auto lg:max-w-7xl lg:grid-cols-2 lg:divide-y-0 mx-auto">
+          <div className="isolate grid max-w-lg grid-cols-1 gap-y-16 gap-x-8 divide-y divide-gray-100 sm:mx-auto lg:max-w-7xl lg:grid-cols-3 lg:divide-y-0 mx-auto">
             {tiers.map((tier) => (
               <div
                 key={tier.id}
@@ -91,11 +91,11 @@ export function Pricing() {
                   {tier.id === "tier-standard" && (
                     <>
                       <span className="text-5xl font-bold tracking-tight text-gray-900">
-                        {tier.price.summary}
+                        {tier.price.monthly}
                       </span>
-                      <span className="text-sm font-semibold leading-6 text-gray-600">
+                      {/* <span className="text-sm font-semibold leading-6 text-gray-600">
                         /{t("common:pricing.premium-feature")}
-                      </span>
+                      </span> */}
                     </>
                   )}
                   {tier.id === "tier-premium" && (
@@ -128,7 +128,7 @@ export function Pricing() {
                   ))}
                 </ul>
                 <div className="h-full w-full flex flex-col justify-end">
-                  {["tier-free", "tier-standard"].includes(tier.id) && (
+                  {["tier-free"].includes(tier.id) && (
                     <button
                       disabled={!tier.enabled}
                       onClick={() => {
@@ -141,7 +141,7 @@ export function Pricing() {
                     </button>
                   )}
 
-                  {["tier-premium"].includes(tier.id) && (
+                  {["tier-standard", "tier-premium"].includes(tier.id) && (
                     <button
                       disabled={!tier.enabled}
                       onClick={() => {
