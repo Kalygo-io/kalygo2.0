@@ -144,7 +144,9 @@ export function PaymentMethod(props: Props) {
                         <input
                           {...register("card_number", {
                             required: true,
-                            pattern: new RegExp(/^[0-9]+$/),
+                            pattern: new RegExp(
+                              /[0-9]{4}[ ][0-9]{4}[ ][0-9]{4}[ ][0-9]{4}/
+                            ),
                           })}
                           onChange={(e) => {
                             const { value } = e.target;
