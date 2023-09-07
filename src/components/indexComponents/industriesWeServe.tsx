@@ -10,7 +10,7 @@ export default function IndustriesWeServe() {
       subtitle: t("common:industries-we-serve.persona-1-subtitle"),
       image: (
         <Image
-          src="/Law_firm.gif"
+          src="/Medical_Researchers.gif"
           width={500}
           height={500}
           alt=""
@@ -23,7 +23,7 @@ export default function IndustriesWeServe() {
       subtitle: t("common:industries-we-serve.persona-2-subtitle"),
       image: (
         <Image
-          src="/Psychologist.gif"
+          src="/Practice_Managers.gif"
           width={500}
           height={500}
           alt=""
@@ -36,7 +36,7 @@ export default function IndustriesWeServe() {
       subtitle: t("common:industries-we-serve.persona-3-subtitle"),
       image: (
         <Image
-          src="/Researcher.gif"
+          src="/Medical_Sales.gif"
           width={500}
           height={500}
           alt=""
