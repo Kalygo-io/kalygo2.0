@@ -18,12 +18,20 @@
     "description-1": "Qualquer profissional médico privado que lide com grandes volumes de dados baseados em documentos achará o Kalygo benéfico em",
     "description-2": "gerenciando, digerindo e reaproveitando",
     "description-3": "seus dados.",
-    "persona-1": "Pesquisadores",
-    "persona-1-subtitle": "Pesquisadores médicos, analistas e estudantes de pós-graduação",
-    "persona-2": "Administradores",
-    "persona-2-subtitle": "Gerentes, administradores e assistentes de prática médica",
-    "persona-3": "Médicos",
-    "persona-3-subtitle": "Vendas médicas, especialistas em ensaios clínicos e balconistas"
+    "medical_industry": {
+      "persona-1": "Pesquisadores",
+      "persona-1-subtitle": "Pesquisadores médicos, analistas e estudantes de pós-graduação",
+      "persona-2": "Administradores",
+      "persona-2-subtitle": "Gerentes, administradores e assistentes de prática médica",
+      "persona-3": "Médicos",
+      "persona-3-subtitle": "Vendas médicas, especialistas em ensaios clínicos e balconistas"
+    },
+    "academic_industry": {
+      "persona-1": "Pesquisadores",
+      "persona-1-subtitle": "Pesquisadores médicos, analistas e estudantes de pós-graduação",
+      "persona-2": "Administradores",
+      "persona-2-subtitle": "Gerentes, administradores e assistentes de prática médica"
+    }
   },
   "pricing": {
     "title": "Preços",

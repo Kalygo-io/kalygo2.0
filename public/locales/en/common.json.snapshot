@@ -18,12 +18,22 @@
     "description-1": "Any private medical professional that deals with high volumes of document-based data will find Kalygo beneficial in",
     "description-2": "managing, digesting and repurposing",
     "description-3": "their data.",
-    "persona-1": "Researchers",
-    "persona-1-subtitle": "Medical Researchers, Analysts, and Graduate Students",
-    "persona-2": "Administrators",
-    "persona-2-subtitle": "Medical Practice Managers, Admins, and Assistants",
-    "persona-3": "Clinicians",
-    "persona-3-subtitle": "Medical Sales, Clinical Trials Specialists, and Clerks"
+    "medical_industry": {
+      "persona-1": "Researchers",
+      "persona-1-subtitle": "Medical Researchers, Analysts, and Graduate Students",
+      "persona-2": "Administrators",
+      "persona-2-subtitle": "Medical Practice Managers, Admins, and Assistants",
+      "persona-3": "Clinicians",
+      "persona-3-subtitle": "Medical Sales, Clinical Trials Specialists, and Clerks"
+    },
+    "academic_industry": {
+      "persona-1": "Researchers",
+      "persona-1-subtitle": "Medical Researchers, Analysts, and Graduate Students",
+      "persona-2": "Administrators",
+      "persona-2-subtitle": "Medical Practice Managers, Admins, and Assistants",
+      "persona-3": "Clinicians",
+      "persona-3-subtitle": "Medical Sales, Clinical Trials Specialists, and Clerks"
+    }
   },
   "pricing": {
     "title": "Pricing",

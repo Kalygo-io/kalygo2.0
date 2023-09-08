@@ -18,12 +18,22 @@
     "description-1": "Cualquier profesional médico privado que maneje grandes volúmenes de datos basados en documentos encontrará que Kalygo es beneficioso para",
     "description-2": "gestionar, digerir y reutilizar",
     "description-3": "sus datos.",
-    "persona-1": "Investigadores",
-    "persona-1-subtitle": "Investigadores médicos, analistas y estudiantes de posgrado",
-    "persona-2": "Administradores",
-    "persona-2-subtitle": "Gerentes, administradores y asistentes de práctica médica",
-    "persona-3": "Médicos",
-    "persona-3-subtitle": "Ventas médicas, especialistas en ensayos clínicos y administrativos"
+    "medical_industry": {
+      "persona-1": "Investigadores",
+      "persona-1-subtitle": "Investigadores médicos, analistas y estudiantes de posgrado",
+      "persona-2": "Administradores",
+      "persona-2-subtitle": "Gerentes, administradores y asistentes de práctica médica",
+      "persona-3": "Médicos",
+      "persona-3-subtitle": "Ventas médicas, especialistas en ensayos clínicos y administrativos"
+    },
+    "academic_industry": {
+      "persona-1": "Investigadores",
+      "persona-1-subtitle": "Investigadores médicos, analistas y estudiantes de posgrado",
+      "persona-2": "Administradores",
+      "persona-2-subtitle": "Gerentes, administradores y asistentes de práctica médica",
+      "persona-3": "Médicos",
+      "persona-3-subtitle": "Ventas médicas, especialistas en ensayos clínicos y administrativos"
+    }
   },
   "pricing": {
     "title": "Precios",

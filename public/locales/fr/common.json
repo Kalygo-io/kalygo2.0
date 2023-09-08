@@ -18,12 +18,21 @@
     "description-1": "Tout professionnel de la santé privé qui traite de gros volumes de données documentaires trouvera Kalygo utile dans",
     "description-2": "gérer, digérer et réutiliser",
     "description-3": "leurs données.",
-    "persona-1": "Des chercheurs",
-    "persona-1-subtitle": "Chercheurs médicaux, analystes et étudiants diplômés",
-    "persona-2": "Administrateurs",
-    "persona-2-subtitle": "Gestionnaires de cabinet médical, administrateurs et assistants",
-    "persona-3": "Cliniciens",
-    "persona-3-subtitle": "Ventes médicales, spécialistes des essais cliniques et commis"
+    "medical_industry": {
+      "persona-1": "Des chercheurs",
+      "persona-1-subtitle": "Chercheurs médicaux, analystes et étudiants diplômés",
+      "persona-2": "Administrateurs",
+      "persona-2-subtitle": "Gestionnaires de cabinet médical, administrateurs et assistants",
+      "persona-3": "Cliniciens",
+      "persona-3-subtitle": "Ventes médicales, spécialistes des essais cliniques et commis"
+    },
+    "academic_industry": {
+      "persona-1": "Des chercheurs",
+      "persona-1-subtitle": "Chercheurs médicaux, analystes et étudiants diplômés",
+      "persona-2": "Administrateurs",
+      "persona-2-subtitle": "Gestionnaires de cabinet médical, administrateurs et assistants",
+      "persona-3": "Cliniciens"
+    }
   },
   "pricing": {
     "title": "Tarification",

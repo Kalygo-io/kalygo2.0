@@ -4,10 +4,12 @@ import Image from "next/image";
 export default function IndustriesWeServe() {
   const { t } = useTranslation();
 
-  const profiles = [
+  const MedicalProfiles = [
     {
-      title: t("common:industries-we-serve.persona-1"),
-      subtitle: t("common:industries-we-serve.persona-1-subtitle"),
+      title: t("common:industries-we-serve.medical_industry.persona-1"),
+      subtitle: t(
+        "common:industries-we-serve.medical_industry.persona-1-subtitle"
+      ),
       image: (
         <Image
           src="/Medical_Researchers.gif"
@@ -19,8 +21,10 @@ export default function IndustriesWeServe() {
       ),
     },
     {
-      title: t("common:industries-we-serve.persona-2"),
-      subtitle: t("common:industries-we-serve.persona-2-subtitle"),
+      title: t("common:industries-we-serve.medical_industry.persona-2"),
+      subtitle: t(
+        "common:industries-we-serve.medical_industry.persona-2-subtitle"
+      ),
       image: (
         <Image
           src="/Practice_Managers.gif"
@@ -32,8 +36,10 @@ export default function IndustriesWeServe() {
       ),
     },
     {
-      title: t("common:industries-we-serve.persona-3"),
-      subtitle: t("common:industries-we-serve.persona-3-subtitle"),
+      title: t("common:industries-we-serve.medical_industry.persona-3"),
+      subtitle: t(
+        "common:industries-we-serve.medical_industry.persona-3-subtitle"
+      ),
       image: (
         <Image
           src="/Medical_Sales.gif"
@@ -45,6 +51,48 @@ export default function IndustriesWeServe() {
       ),
     },
   ];
+
+  // const AcademicProfiles = [
+  //   {
+  //     title: t("common:industries-we-serve.academic.persona-1"),
+  //     subtitle: t("common:industries-we-serve.academic.persona-1-subtitle"),
+  //     image: (
+  //       <Image
+  //         src="/Researcher.gif"
+  //         width={500}
+  //         height={500}
+  //         alt=""
+  //         className="object-fit rounded-2xl object-center opacity-100 group-hover:opacity-50 mx-auto"
+  //       />
+  //     ),
+  //   },
+  //   {
+  //     title: t("common:industries-we-serve.persona-2"),
+  //     subtitle: t("common:industries-we-serve.persona-2-subtitle"),
+  //     image: (
+  //       <Image
+  //         src="/Law_firm.gif"
+  //         width={500}
+  //         height={500}
+  //         alt=""
+  //         className="object-fit rounded-2xl object-center opacity-100 group-hover:opacity-50 mx-auto"
+  //       />
+  //     ),
+  //   },
+  //   {
+  //     title: t("common:industries-we-serve.persona-3"),
+  //     subtitle: t("common:industries-we-serve.persona-3-subtitle"),
+  //     image: (
+  //       <Image
+  //         src="/Psychologist.gif"
+  //         width={500}
+  //         height={500}
+  //         alt=""
+  //         className="object-fit rounded-2xl object-center opacity-100 group-hover:opacity-50 mx-auto"
+  //       />
+  //     ),
+  //   },
+  // ];
 
   return (
     <div className="bg-blue-600 py-24 sm:py-32">
@@ -63,7 +111,7 @@ export default function IndustriesWeServe() {
           role="list"
           className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-1 lg:max-w-none lg:grid-cols-3"
         >
-          {profiles.map((profile) => (
+          {MedicalProfiles.map((profile) => (
             <li key={profile.title} className="justify-center">
               {profile.image}
               <h3 className="mt-6 text-lg font-semibold leading-8 tracking-tight text-white text-center">
