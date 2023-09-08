@@ -58,8 +58,8 @@ export function Mailing() {
             <Image
               alt={t("image-alt-tags:kalygo_new_logo-192x192")}
               src="/kalygo_new_logo-192x192.png"
-              width={100}
-              height={100}
+              width={80}
+              height={80}
             />
           </div>
           <h2 className="mx-auto mt-2 max-w-2xl text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">

@@ -6,7 +6,6 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
-import ContractList from "@/components/browseContractsComponents/contractList";
 import { Error } from "@/components/shared/error";
 
 import { useTranslation } from "next-i18next";
@@ -14,13 +13,12 @@ import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { WindowLoader } from "@/components/shared/WindowLoader";
-import { SummariesTable } from "@/components/dashboardComponents/summariesTable";
-import { VectorSearchesTable } from "@/components/dashboardComponents/vectorSearchesTable";
+
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
-import { PlusIcon } from "@heroicons/react/24/outline";
+
 import get from "lodash.get";
 import { Credits } from "@/components/dashboardComponents/index/credits";
-import { PaymentRequiredModal } from "@/components/shared/PaymentRequiredModal";
+
 // import { SummariesV2Table } from "@/components/dashboardComponents/summariesV2Table";
 import { SummariesV2TableAlt } from "@/components/dashboardComponents/summariesV2TableAlt";
 // import { CustomRequestsTable } from "@/components/dashboardComponents/customRequestsTable";
