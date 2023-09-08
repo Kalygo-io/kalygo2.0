@@ -115,6 +115,7 @@
     "customizations": "Personnalisations",
     "summarize": "Résumer",
     "request": "Demande",
+    "review": "Revoir",
     "select-files": "Sélectionner",
     "upload-limits": "Fichiers TXT et PDF",
     "loading": "Chargement..."
@@ -157,6 +158,7 @@
     "title": "Demande personnalisée",
     "description": "« Demande personnalisée » vous donne le plus de contrôle sur vos documents. Tout d'abord, téléchargez 1 à 10 documents (.txt ou .pdf) avec lesquels Kalygo doit interagir. Les téléchargements du niveau gratuit sont limités à 1 MB tandis que les téléchargements du niveau payant sont limités à 40 MB. Ensuite, dans la deuxième étape, vous pouvez utiliser la zone de texte pour écrire comment et ce que Kalygo doit faire avec vos fichiers ou vous pouvez essayer une demande suggérée.",
     "run": "Demande",
+    "review": "Revoir",
     "send": "Envoyer",
     "select-files": "Sélectionner",
     "upload-limits": "Fichiers TXT et PDF",

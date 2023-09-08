@@ -29,7 +29,7 @@ export function SummarizeWizard(props: Props) {
   const steps = [
     { id: 1, name: t("dashboard-page:summarize-v2.choose-files") },
     { id: 2, name: t("dashboard-page:summarize-v2.customize-summary") },
-    { id: 3, name: t("dashboard-page:summarize-v2.request") },
+    { id: 3, name: t("dashboard-page:summarize-v2.review") },
   ];
 
   let jsx = null;

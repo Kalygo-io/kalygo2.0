@@ -106,48 +106,53 @@ export function Review(props: Props) {
       </_3ColumnWrapper>
 
       <FooterWrapper>
-        <button
-          onClick={async () => {
-            try {
-              console.log("customSummary RUN", customizations);
+        <>
+          {/* <button className="flex items-center justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+            Back
+          </button> */}
+          <button
+            onClick={async () => {
+              try {
+                console.log("customSummary RUN", customizations);
 
-              setRequest({
-                val: null,
-                loading: true,
-                err: null,
-              });
+                setRequest({
+                  val: null,
+                  loading: true,
+                  err: null,
+                });
 
-              const customRequest = customSummaryFactory(
-                customizations!,
-                files
-              );
-              const customRequestResponse = await customRequest;
-              console.log("customSummaryResponse", customRequestResponse);
+                const customRequest = customSummaryFactory(
+                  customizations!,
+                  files
+                );
+                const customRequestResponse = await customRequest;
+                console.log("customSummaryResponse", customRequestResponse);
 
-              const detectedLng = navigatorLangDetector();
-              router.push(`/${detectedLng}/dashboard/queue`);
-              infoToast(t("toast-messages:summary-v2-is-processing"));
-            } catch (e: any) {
-              errorToast(e.toString());
+                const detectedLng = navigatorLangDetector();
+                router.push(`/${detectedLng}/dashboard/queue`);
+                infoToast(t("toast-messages:summary-v2-is-processing"));
+              } catch (e: any) {
+                errorToast(e.toString());
 
-              setRequest({
-                val: null,
-                loading: false,
-                err: e,
-              });
-            }
-          }}
-          disabled={files.length === 0 || !customizations || request.loading}
-          className={`${
-            files.length === 0 || !customizations || request.loading
-              ? "opacity-50"
-              : "opacity-100"
-          } flex items-center justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
-        >
-          {request.loading
-            ? t("dashboard-page:summarize-v2.loading")
-            : t("dashboard-page:summarize-v2.summarize")!}
-        </button>
+                setRequest({
+                  val: null,
+                  loading: false,
+                  err: e,
+                });
+              }
+            }}
+            disabled={files.length === 0 || !customizations || request.loading}
+            className={`${
+              files.length === 0 || !customizations || request.loading
+                ? "opacity-50"
+                : "opacity-100"
+            } flex items-center justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
+          >
+            {request.loading
+              ? t("dashboard-page:summarize-v2.loading")
+              : t("dashboard-page:summarize-v2.summarize")!}
+          </button>
+        </>
       </FooterWrapper>
     </Layout3ColumnAndFooterWrapper>
   );

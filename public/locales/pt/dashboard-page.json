@@ -116,6 +116,7 @@
     "run": "Correr",
     "summarize": "Resumir",
     "request": "Solicitar",
+    "review": "Análise",
     "select-files": "Selecione",
     "upload-limits": "Arquivos TXT e PDF",
     "loading": "Carregando..."
@@ -158,6 +159,7 @@
     "title": "Solicitação personalizada",
     "description": "'Solicitação personalizada' oferece maior controle sobre seus documentos. Primeiro, carregue de 1 a 10 documentos (.txt ou .pdf) com os quais deseja que o Kalygo interaja. Os uploads do nível gratuito são limitados a 1 MB, enquanto os uploads do nível pago são limitados a 10 MB. Então, na segunda etapa, você pode usar a caixa de texto para escrever como e o que o Kalygo deve fazer com seus arquivos ou pode tentar uma solicitação sugerida.",
     "run": "Solicitar",
+    "review": "Análise",
     "send": "Enviar",
     "select-files": "Selecione",
     "upload-limits": "Arquivos TXT e PDF",

@@ -116,6 +116,7 @@
     "run": "Run",
     "summarize": "Summarize",
     "request": "Request",
+    "review": "Review",
     "select-files": "Select",
     "upload-limits": "TXT & PDF files",
     "loading": "Loading..."
@@ -158,6 +159,7 @@
     "title": "Custom Request",
     "description": "'Custom Request' gives you the most control over your documents. First, upload 1 to 10 documents (.txt or .pdf) you want Kalygo to interact with. Free Tier uploads are limited to 1MB while Paid Tier uploads are limited to 40MB. Then in the second step you can use the text box to write out how and what Kalygo should do with your files or you can try out a suggested request.",
     "run": "Request",
+    "review": "Review",
     "send": "Send",
     "select-files": "Select",
     "upload-limits": "TXT & PDF files",
