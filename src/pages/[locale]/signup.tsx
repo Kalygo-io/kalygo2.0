@@ -24,6 +24,7 @@ import { useState } from "react";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 
 import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import { PasswordInput } from "@/components/forms/signUpForm/passwordInput";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -39,6 +40,12 @@ export { getStaticPaths, getStaticProps };
 
 export default function Signup() {
   const { t } = useTranslation();
+
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  function togglePasswordVisibility() {
+    setIsPasswordVisible((prevState) => !prevState);
+  }
 
   const [signUpState, setSignUpState] = useState<{
     loading: boolean;
@@ -183,6 +190,7 @@ export default function Signup() {
                   id="email"
                   name="email"
                   type="email"
+                  formNoValidate
                   autoComplete="email"
                   placeholder={t("forms:enter-email")!}
                   className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
@@ -210,19 +218,13 @@ export default function Signup() {
                 </div>
               </div>
               <div className="mt-2">
-                <input
-                  {...register("password", {
+                <PasswordInput
+                  t={t}
+                  errors={errors}
+                  register={register("password", {
                     required: true,
                     minLength: 7,
                   })}
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
-                  placeholder={t("forms:minimum-7-characters")!}
-                  className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
-                    errors["password"] && "ring-red-700 focus:ring-red-500"
-                  }`}
                 />
               </div>
             </div>
