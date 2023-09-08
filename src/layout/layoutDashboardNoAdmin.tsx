@@ -213,7 +213,7 @@ export default function LayoutDashboardNoAdmin({ children, account }: P) {
                     </div>
                   </Transition.Child>
                   {/* Sidebar component, swap this element with another sidebar if you like */}
-                  <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-blue-600 px-6 pb-4">
+                  <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-red-600 px-6 pb-4">
                     <div className="flex h-16 shrink-0 items-center">
                       <Link href="/">
                         <Image
@@ -307,7 +307,7 @@ export default function LayoutDashboardNoAdmin({ children, account }: P) {
         {/* Static sidebar for desktop */}
         <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-72 lg:flex-col">
           {/* Sidebar component, swap this element with another sidebar if you like */}
-          <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-blue-600 px-6 pb-4 z-0">
+          <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-red-600 px-6 pb-4 z-0">
             <Link className="mt-2 p-1" href="/">
               <div className="flex h-16 shrink-0 items-center">
                 <Image

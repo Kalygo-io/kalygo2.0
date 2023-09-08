@@ -73,12 +73,12 @@ export function Personal(p: P) {
               {/* <div>
                 <button
                   type="button"
-                  className="rounded-md bg-white/10 px-3 py-2 text-sm font-semibold text-black shadow-sm hover:bg-white/20"
+                  className="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500"
                 >
                   Change avatar
                 </button>
                 <p className="mt-2 text-xs leading-5 text-black">
-                  JPG, GIF or PNG. 1MB max.
+                  JPEG or PNG. 1MB max.
                 </p>
               </div> */}
             </div>
@@ -97,7 +97,9 @@ export function Personal(p: P) {
                   name="firstName"
                   id="firstName"
                   autoComplete="firstName"
-                  className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-black shadow-md ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
+                  className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
+                    errors["firstName"] && "ring-red-700 focus:ring-red-500"
+                  }`}
                 />
               </div>
             </div>
@@ -116,7 +118,9 @@ export function Personal(p: P) {
                   name="lastName"
                   id="lastName"
                   autoComplete="lastName"
-                  className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-black shadow-md ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
+                  className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
+                    errors["lastName"] && "ring-red-700 focus:ring-red-500"
+                  }`}
                 />
               </div>
             </div>
@@ -142,7 +146,7 @@ export function Personal(p: P) {
                   readOnly
                   autoComplete="email"
                   //   className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-black shadow-md ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
-                  className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
+                  className={`bg-slate-100 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
                     errors["email"] && "ring-red-700 focus:ring-red-500"
                   }`}
                 />
@@ -153,7 +157,7 @@ export function Personal(p: P) {
           <div className="mt-8 flex">
             <button
               type="submit"
-              className="rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+              className="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
             >
               {t("dashboard-page:settings.personal.save")}
             </button>

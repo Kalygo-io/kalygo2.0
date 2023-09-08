@@ -345,7 +345,6 @@ export default function LayoutDashboard({ children, account }: P) {
                             ] === current
                               ? "bg-blue-700 text-white"
                               : "text-blue-200 hover:text-white hover:bg-blue-700",
-                            // "text-blue-600 hover:text-white hover:bg-blue-700",
                             "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                           )}
                         >
@@ -391,10 +390,8 @@ export default function LayoutDashboard({ children, account }: P) {
                         "settings" === current
                           ? "bg-blue-700 text-white"
                           : "text-blue-200 hover:text-white hover:bg-blue-700",
-                        // "text-blue-600 hover:text-white hover:bg-blue-700",
                         "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                       )}
-                      // className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-blue-200 hover:bg-blue-700 hover:text-white"
                     >
                       <Cog6ToothIcon
                         className="h-6 w-6 shrink-0 text-blue-200 group-hover:text-white"
