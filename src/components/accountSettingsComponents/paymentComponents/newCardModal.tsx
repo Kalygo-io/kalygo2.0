@@ -12,6 +12,26 @@ interface P {
   cb: (isOpen: boolean, newCard: any) => void;
 }
 
+const normalizeCardNumber = (value: string) => {
+  return (
+    value
+      .replace(/\s/g, "")
+      .match(/.{1,4}/g)
+      ?.join(" ")
+      .slice(0, 19) || ""
+  );
+};
+
+const normalizeExpDate = (value: string) => {
+  return (
+    value
+      .replace(/\s/g, "")
+      .match(/[0-9]{1,2}/g)
+      ?.join("/")
+      .slice(0, 5) || ""
+  );
+};
+
 export function NewCardModal(p: P) {
   const { t } = useTranslation();
 
@@ -116,8 +136,14 @@ export function NewCardModal(p: P) {
                     <input
                       {...register("cardNumber", {
                         required: true,
-                        pattern: new RegExp(/^[0-9]+$/),
+                        pattern: new RegExp(
+                          /[0-9]{4}[ ][0-9]{4}[ ][0-9]{4}[ ][0-9]{4}/
+                        ),
                       })}
+                      onChange={(e) => {
+                        const { value } = e.target;
+                        e.target.value = normalizeCardNumber(value);
+                      }}
                       className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
                       type="text"
                       name="cardNumber"
@@ -150,6 +176,10 @@ export function NewCardModal(p: P) {
                         required: true,
                         pattern: new RegExp(/[0-9]{2}\/[0-9]{2}/),
                       })}
+                      onChange={(e) => {
+                        const { value } = e.target;
+                        e.target.value = normalizeExpDate(value);
+                      }}
                       className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
                       type="text"
                       name="expDate"
@@ -201,7 +231,7 @@ export function NewCardModal(p: P) {
                     <input
                       {...register("cvc", {
                         required: true,
-                        pattern: new RegExp(/^[0-9]+$/),
+                        pattern: new RegExp(/^[0-9]{3}$/),
                       })}
                       className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
                       type="text"
@@ -229,7 +259,9 @@ export function NewCardModal(p: P) {
                     disabled={!isValid}
                     onClick={() => onSubmit(getValues())}
                     type="button"
-                    className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:col-start-2"
+                    className={`${
+                      isValid ? "opacity-100" : "opacity-50"
+                    } inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:col-start-2`}
                   >
                     Save
                   </button>
