@@ -29,6 +29,7 @@
     "title": "Tarification",
     "tier1_name": "Gratuit",
     "tier1_description": "Fonctionnalités limitées",
+    "tier1_feature0": "3 crédits gratuits délivrés lors de votre inscription pour tester la plateforme",
     "tier1_feature1": "Les comptes sont gratuits",
     "tier1_feature2": "GPT-3",
     "tier1_feature3": "Limite de taille de fichier de 1 MB avec crédits",

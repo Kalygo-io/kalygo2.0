@@ -29,6 +29,7 @@
     "title": "Pricing",
     "tier1_name": "Free",
     "tier1_description": "Limited features",
+    "tier1_feature0": "3 free credits issued on signup so you can test out the platform",
     "tier1_feature1": "Accounts are free",
     "tier1_feature2": "GPT-3",
     "tier1_feature3": "1MB file size limit with credits",

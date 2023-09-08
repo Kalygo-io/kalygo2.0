@@ -18,6 +18,7 @@ export function Pricing() {
       price: { summary: "$0", monthly: "$0" },
       description: t("common:pricing.tier1_description"),
       features: [
+        t("common:pricing.tier1_feature0"),
         t("common:pricing.tier1_feature1"),
         t("common:pricing.tier1_feature2"),
         t("common:pricing.tier1_feature3"),
