@@ -8,7 +8,8 @@ import { Stats } from "@/components/indexComponents/stats";
 import { Pricing } from "@/components/indexComponents/pricing";
 import { Mailing } from "@/components/indexComponents/mailing";
 import { EnterprisePricing } from "@/components/indexComponents/enterprise_pricing";
-import { DefaultHero } from "@/components/indexComponents/defaultHero";
+import Industry from "@/components/indexComponents/industryWeServe";
+import { IndustryHero } from "@/components/indexComponents/industryHero";
 
 const getStaticProps = makeStaticProps([
   "landing-page",
@@ -25,17 +26,18 @@ const getStaticProps = makeStaticProps([
 ]);
 export { getStaticPaths, getStaticProps };
 
-export default function Home(props: any) {
+export default function MedicalLandingPage(props: any) {
   const { t } = useTranslation();
 
   return (
     <>
       <Head>
-        <title>{t("seo:landing-page-seo-title")}</title>
+        <title>{t("seo:landing-page-seo-medical-title")}</title>
       </Head>
       <Layout1>
-        <DefaultHero />
+        <IndustryHero industry="medical" />
         <Stats />
+        <Industry industry="medical" />
         <Pricing />
         <EnterprisePricing />
         <Mailing />

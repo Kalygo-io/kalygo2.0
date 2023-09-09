@@ -14,25 +14,39 @@
     "stat3_subheadline": "Leverage software, AI, and collaboration all at once to boost your or your team's productivity today"
   },
   "industries-we-serve": {
-    "title": "Industries we serve",
-    "description-1": "Any private medical professional that deals with high volumes of document-based data will find Kalygo beneficial in",
-    "description-2": "managing, digesting and repurposing",
-    "description-3": "their data.",
-    "medical_industry": {
+    "title": "Industry we serve",
+    "medical": {
+      "description-1": "Any medical professional that deals with high volumes of documents will find Kalygo beneficial in",
+      "description-2": "managing and digesting",
+      "description-3": "their data.",
       "persona-1": "Researchers",
       "persona-1-subtitle": "Medical Researchers, Analysts, and Graduate Students",
       "persona-2": "Administrators",
-      "persona-2-subtitle": "Medical Practice Managers, Admins, and Assistants",
+      "persona-2-subtitle": "Practice Managers, Admins, and Assistants",
       "persona-3": "Clinicians",
-      "persona-3-subtitle": "Medical Sales, Clinical Trials Specialists, and Clerks"
+      "persona-3-subtitle": "Doctors, Medical Sales, and Clinical Trials Specialists"
     },
-    "academic_industry": {
-      "persona-1": "Researchers",
-      "persona-1-subtitle": "Medical Researchers, Analysts, and Graduate Students",
-      "persona-2": "Administrators",
-      "persona-2-subtitle": "Medical Practice Managers, Admins, and Assistants",
-      "persona-3": "Clinicians",
-      "persona-3-subtitle": "Medical Sales, Clinical Trials Specialists, and Clerks"
+    "highered": {
+      "description-1": "Higher Education will always prioritze",
+      "description-2": "critical thinking and independent thought",
+      "description-3": "but the time for coming to terms with accelerated document workflows is now.",
+      "persona-1": "Higher Ed",
+      "persona-1-subtitle": "Researchers, Graduate Students, PhDs, and Administrators",
+      "persona-2": "Students",
+      "persona-2-subtitle": "Bachelors of Arts and Bachelors of Sciences",
+      "persona-3": "Professors",
+      "persona-3-subtitle": "Teachers and TAs of the Arts & Sciences"
+    },
+    "law": {
+      "description-1": "The legal world is filled with",
+      "description-2": "unmanageable amounts of documents",
+      "description-3": "and Kalygo is here to facilitate a better experience in the name of Justice.",
+      "persona-1": "Law Firms",
+      "persona-1-subtitle": "Partners & Associates",
+      "persona-2": "Discovery",
+      "persona-2-subtitle": "Contractors and Legal Assistants",
+      "persona-3": "Courts",
+      "persona-3-subtitle": "Judges, Jurors, and Clerks"
     }
   },
   "pricing": {

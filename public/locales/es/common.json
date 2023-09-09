@@ -14,25 +14,39 @@
     "stat3_subheadline": "Aproveche el software, la inteligencia artificial y la colaboración al mismo tiempo para aumentar su productividad o la de su equipo hoy"
   },
   "industries-we-serve": {
-    "title": "Industrias a las que servimos",
-    "description-1": "Cualquier profesional médico privado que maneje grandes volúmenes de datos basados en documentos encontrará que Kalygo es beneficioso para",
-    "description-2": "gestionar, digerir y reutilizar",
-    "description-3": "sus datos.",
-    "medical_industry": {
+    "title": "Industria a la que servimos",
+    "medical": {
+      "description-1": "Cualquier profesional médico que maneje grandes volúmenes de documentos encontrará que Kalygo es beneficioso para",
+      "description-2": "gestionar y digerir",
+      "description-3": "sus datos.",
       "persona-1": "Investigadores",
       "persona-1-subtitle": "Investigadores médicos, analistas y estudiantes de posgrado",
       "persona-2": "Administradores",
-      "persona-2-subtitle": "Gerentes, administradores y asistentes de práctica médica",
+      "persona-2-subtitle": "Gerentes de práctica, administradores y asistentes",
       "persona-3": "Médicos",
-      "persona-3-subtitle": "Ventas médicas, especialistas en ensayos clínicos y administrativos"
+      "persona-3-subtitle": "Médicos, especialistas en ventas médicas y ensayos clínicos"
     },
-    "academic_industry": {
-      "persona-1": "Investigadores",
-      "persona-1-subtitle": "Investigadores médicos, analistas y estudiantes de posgrado",
-      "persona-2": "Administradores",
-      "persona-2-subtitle": "Gerentes, administradores y asistentes de práctica médica",
-      "persona-3": "Médicos",
-      "persona-3-subtitle": "Ventas médicas, especialistas en ensayos clínicos y administrativos"
+    "highered": {
+      "description-1": "La Educación Superior siempre tendrá prioridad",
+      "description-2": "pensamiento crítico y pensamiento independiente",
+      "description-3": "pero ahora es el momento de aceptar flujos de trabajo de documentos acelerados.",
+      "persona-1": "educación superior",
+      "persona-1-subtitle": "Investigadores, estudiantes de posgrado, doctorados y administradores",
+      "persona-2": "Estudiantes",
+      "persona-2-subtitle": "Licenciaturas en Artes y Licenciaturas en Ciencias",
+      "persona-3": "Profesores",
+      "persona-3-subtitle": "Profesores y TA de las Artes y las Ciencias"
+    },
+    "law": {
+      "description-1": "El mundo legal está lleno de",
+      "description-2": "cantidades inmanejables de documentos",
+      "description-3": "y Kalygo está aquí para facilitar una mejor experiencia en nombre de la Justicia.",
+      "persona-1": "Bufetes de abogados",
+      "persona-1-subtitle": "Socios y asociados",
+      "persona-2": "Descubrimiento",
+      "persona-2-subtitle": "Contratistas y asistentes legales",
+      "persona-3": "Tribunales",
+      "persona-3-subtitle": "Jueces, jurados y secretarios"
     }
   },
   "pricing": {

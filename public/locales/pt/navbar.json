@@ -4,5 +4,11 @@
   "navbar-feedback": "Opinião",
   "navbar-about": "Sobre",
   "navbar-login": "Conecte-se",
-  "navbar-blog": "Blogue"
+  "navbar-blog": "Blogue",
+  "dropdown": {
+    "industries": "Indústrias",
+    "law": "Lei",
+    "medical": "Médico",
+    "higher-ed": "Educação superior"
+  }
 }

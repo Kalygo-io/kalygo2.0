@@ -4,5 +4,8 @@
   "navbar-feedback": "Retour",
   "navbar-about": "À propos",
   "navbar-login": "Se connecter",
-  "navbar-blog": "Blog"
+  "navbar-blog": "Blog",
+  "dropdown": {
+    "industries": "les industries"
+  }
 }

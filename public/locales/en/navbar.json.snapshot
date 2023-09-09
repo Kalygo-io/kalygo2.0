@@ -4,5 +4,11 @@
   "navbar-feedback": "Feedback",
   "navbar-about": "About",
   "navbar-login": "Log in",
-  "navbar-blog": "Blog"
+  "navbar-blog": "Blog",
+  "dropdown": {
+    "industries": "Industries",
+    "law": "Law",
+    "medical": "Medical",
+    "higher-ed": "Higher Ed"
+  }
 }

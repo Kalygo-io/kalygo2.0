@@ -5,6 +5,28 @@
   "typewriter-word-2": "facile",
   "typewriter-word-3": "rapide",
   "typewriter-word-4": "intuitif",
+  "industries": {
+    "medical": {
+      "landing-page-subheadline": "Kalygo aide les acteurs médicaux, petits et grands, avec des solutions de gestion de documents sur site sur mesure accélérées par l'IA.",
+      "typewriter-word-1": "Des rapports simplifiés",
+      "typewriter-word-2": "Des essais rapides",
+      "typewriter-word-3": "La recherche rendue intuitive",
+      "typewriter-word-4": "Le diagnostic simplifié"
+    },
+    "law": {
+      "landing-page-subheadline": "Qu'il s'agisse de découverte, de rédaction de contrats, d'informations ou de collaboration, le monde juridique ne sera plus jamais le même après avoir expérimenté les flux de travail documentaires optimisés par LLM.",
+      "typewriter-word-1": "Des contrats simplifiés",
+      "typewriter-word-2": "Des slips confectionnés rapidement",
+      "typewriter-word-3": "La découverte simplifiée",
+      "typewriter-word-4": "La diligence rendue intuitive"
+    },
+    "highered": {
+      "landing-page-subheadline": "Kalygo est un autre outil à ajouter à votre ceinture lorsqu'il s'agit de traiter et de réutiliser de grandes quantités de devoirs, de devoirs, de recherches, de matériel de cours et d'administration sous forme de texte.",
+      "typewriter-word-1": "Des cours simplifiés",
+      "typewriter-word-2": "Les devoirs rendus faciles",
+      "typewriter-word-3": "Notation effectuée rapidement"
+    }
+  },
   "landing-page-subheadline": "Téléchargez des données et tirez parti d'un logiciel de pointe qui inclut des invites personnalisables, des résumés de documents et des workflows de collaboration",
   "sign-up": "Obtenez Kalygo",
   "its-free": "C'est gratuit",

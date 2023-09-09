@@ -14,23 +14,35 @@
     "stat3_subheadline": "Aproveite software, IA e colaboração de uma só vez para aumentar a sua produtividade ou a da sua equipe hoje mesmo"
   },
   "industries-we-serve": {
-    "title": "Indústrias que atendemos",
-    "description-1": "Qualquer profissional médico privado que lide com grandes volumes de dados baseados em documentos achará o Kalygo benéfico em",
-    "description-2": "gerenciando, digerindo e reaproveitando",
-    "description-3": "seus dados.",
-    "medical_industry": {
+    "title": "Indústria que atendemos",
+    "medical": {
+      "description-1": "Qualquer profissional médico que lide com grandes volumes de documentos achará o Kalygo benéfico em",
+      "description-2": "gerenciando e digerindo",
+      "description-3": "seus dados.",
       "persona-1": "Pesquisadores",
       "persona-1-subtitle": "Pesquisadores médicos, analistas e estudantes de pós-graduação",
       "persona-2": "Administradores",
-      "persona-2-subtitle": "Gerentes, administradores e assistentes de prática médica",
+      "persona-2-subtitle": "Gerentes de prática, administradores e assistentes",
       "persona-3": "Médicos",
-      "persona-3-subtitle": "Vendas médicas, especialistas em ensaios clínicos e balconistas"
+      "persona-3-subtitle": "Médicos, especialistas em vendas médicas e ensaios clínicos"
     },
-    "academic_industry": {
-      "persona-1": "Pesquisadores",
-      "persona-1-subtitle": "Pesquisadores médicos, analistas e estudantes de pós-graduação",
-      "persona-2": "Administradores",
-      "persona-2-subtitle": "Gerentes, administradores e assistentes de prática médica"
+    "highered": {
+      "description-1": "O Ensino Superior sempre priorizará",
+      "description-2": "pensamento crítico e pensamento independente",
+      "description-3": "mas o momento de aceitar fluxos de trabalho acelerados de documentos é agora.",
+      "persona-1": "Educação superior",
+      "persona-1-subtitle": "Pesquisadores, estudantes de pós-graduação, doutores e administradores",
+      "persona-2": "Alunos",
+      "persona-2-subtitle": "Bacharel em Artes e Bacharel em Ciências",
+      "persona-3": "Professores",
+      "persona-3-subtitle": "Professores e TAs de Artes e Ciências"
+    },
+    "law": {
+      "description-1": "O mundo jurídico está repleto de",
+      "description-2": "quantidades incontroláveis de documentos",
+      "description-3": "e Kalygo está aqui para facilitar uma experiência melhor em nome da Justiça.",
+      "persona-1": "Escritórios de advocacia",
+      "persona-1-subtitle": "Parceiros e Associados"
     }
   },
   "pricing": {

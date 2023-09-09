@@ -1,10 +1,18 @@
 import { Fragment, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Dialog, Disclosure, Transition } from "@headlessui/react";
+import {
+  Bars3Icon,
+  ChevronRightIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 
 import Image from "next/image";
 import Link from "@/components/shared/Link";
 import { useTranslation } from "next-i18next";
+import { IndustriesDropdown } from "../indexComponents/navbar/industriesDropdown";
+import { IndustriesCollapsibleSidenavOption } from "../indexComponents/navbar/industriesCollapsibleSidenavOption";
+import { GoBook, GoHeart, GoLaw } from "react-icons/go";
+import { classNames } from "@/utility/misc/classNames";
 
 interface P {
   disableStickyTopNav?: boolean;
@@ -94,39 +102,20 @@ export function NavbarCenteredLogo(p: P) {
                     <ul role="list" className="flex flex-1 flex-col gap-y-7">
                       <li>
                         <ul role="list" className="-mx-2 space-y-1">
-                          {/* {navigation.map((item) => (
-                              <li key={item.name}>
-                                <a
-                                  href={item.href}
-                                  className={classNames(
-                                    item.current
-                                      ? "bg-gray-50 text-indigo-600"
-                                      : "text-gray-700 hover:text-indigo-600 hover:bg-gray-50",
-                                    "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                                  )}
-                                >
-                                  <item.icon
-                                    className={classNames(
-                                      item.current
-                                        ? "text-indigo-600"
-                                        : "text-gray-400 group-hover:text-indigo-600",
-                                      "h-6 w-6 shrink-0"
-                                    )}
-                                    aria-hidden="true"
-                                  />
-                                  {item.name}
-                                </a>
-                              </li>
-                            ))} */}
                           {navigation.map((item) => (
-                            <a
-                              key={item.name}
-                              href={item.href}
-                              className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                            >
-                              {item.name}
-                            </a>
+                            <li key={item.name}>
+                              <a
+                                key={item.name}
+                                href={item.href}
+                                className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                              >
+                                {item.name}
+                              </a>
+                            </li>
                           ))}
+                          <li>
+                            <IndustriesCollapsibleSidenavOption />
+                          </li>
                         </ul>
                       </li>
                     </ul>
@@ -160,6 +149,7 @@ export function NavbarCenteredLogo(p: P) {
                   {item.name}
                 </a>
               ))}
+              <IndustriesDropdown />
             </div>
             <div className="flex lg:hidden">
               <button
