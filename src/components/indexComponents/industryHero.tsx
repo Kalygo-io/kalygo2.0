@@ -6,7 +6,7 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import Link from "../shared/Link";
 
 interface P {
-  industry: "medical" | "law" | "highered";
+  industry: "medical" | "law" | "higher-ed";
 }
 
 export const IndustryHero = (p: P) => {
@@ -39,15 +39,15 @@ export const IndustryHero = (p: P) => {
       ];
       subHeadline = t("landing-page:industries.law.landing-page-subheadline");
       break;
-    case "highered":
+    case "higher-ed":
       typewriterCopy = [
-        t("landing-page:industries.highered.typewriter-word-1"),
-        t("landing-page:industries.highered.typewriter-word-2"),
-        t("landing-page:industries.highered.typewriter-word-3"),
-        t("landing-page:industries.highered.typewriter-word-4"),
+        t("landing-page:industries.higher-ed.typewriter-word-1"),
+        t("landing-page:industries.higher-ed.typewriter-word-2"),
+        t("landing-page:industries.higher-ed.typewriter-word-3"),
+        t("landing-page:industries.higher-ed.typewriter-word-4"),
       ];
       subHeadline = t(
-        "landing-page:industries.highered.landing-page-subheadline"
+        "landing-page:industries.higher-ed.landing-page-subheadline"
       );
       break;
   }
@@ -62,7 +62,7 @@ export const IndustryHero = (p: P) => {
         }}
         id="landing-page-hero"
       >
-        <h1 className="title text-6xl min-h-[13.5rem] xs:min-h-[9rem] md:min-h-0 md:text-7xl font-bold tracking-tight text-gray-900 text-center">
+        <h1 className="title text-7xl min-h-[13.5rem] xs:min-h-[9rem] md:min-h-0 md:text-7xl font-bold tracking-tight text-gray-900 text-center">
           <Typewriter
             options={{
               strings: typewriterCopy,
@@ -71,7 +71,7 @@ export const IndustryHero = (p: P) => {
             }}
           />
         </h1>
-        <div className="sub-heading-section mt-0 md:mt-4">
+        <div className="sub-heading-section mt-4">
           <p className="text-xl leading-8 text-gray-600">{subHeadline}</p>
           <div className="cta-button">
             <Link

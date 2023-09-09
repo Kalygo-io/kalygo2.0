@@ -14,7 +14,7 @@ export function IndustriesCollapsibleSidenavOption() {
       href: "/law",
       icon: GoLaw,
     },
-    { name: t("navbar:dropdown.higher-ed"), href: "/highered", icon: GoBook },
+    { name: t("navbar:dropdown.higher-ed"), href: "/higher-ed", icon: GoBook },
     { name: t("navbar:dropdown.medical"), href: "/medical", icon: GoHeart },
   ];
 

@@ -35,9 +35,9 @@ export default function HigherEdLandingPage(props: any) {
         <title>{t("seo:landing-page-seo-highered-title")}</title>
       </Head>
       <Layout1>
-        <IndustryHero industry="highered" />
+        <IndustryHero industry="higher-ed" />
         <Stats />
-        <Industry industry="highered" />
+        <Industry industry="higher-ed" />
         <Pricing />
         <EnterprisePricing />
         <Mailing />

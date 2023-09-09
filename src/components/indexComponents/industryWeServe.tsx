@@ -2,7 +2,7 @@ import { useTranslation } from "next-i18next";
 import Image from "next/image";
 
 interface P {
-  industry: "medical" | "law" | "highered";
+  industry: "medical" | "law" | "higher-ed";
 }
 
 export default function IndustryWeServe(p: P) {
@@ -68,11 +68,13 @@ export default function IndustryWeServe(p: P) {
         </p>
       );
       break;
-    case "highered":
+    case "higher-ed":
       profiles = [
         {
-          title: t("common:industries-we-serve.highered.persona-1"),
-          subtitle: t("common:industries-we-serve.highered.persona-1-subtitle"),
+          title: t("common:industries-we-serve.higher-ed.persona-1"),
+          subtitle: t(
+            "common:industries-we-serve.higher-ed.persona-1-subtitle"
+          ),
           image: (
             <Image
               src="/Researcher.gif"
@@ -84,8 +86,10 @@ export default function IndustryWeServe(p: P) {
           ),
         },
         {
-          title: t("common:industries-we-serve.highered.persona-2"),
-          subtitle: t("common:industries-we-serve.highered.persona-2-subtitle"),
+          title: t("common:industries-we-serve.higher-ed.persona-2"),
+          subtitle: t(
+            "common:industries-we-serve.higher-ed.persona-2-subtitle"
+          ),
           image: (
             <Image
               src="/College_Students.gif"
@@ -97,8 +101,10 @@ export default function IndustryWeServe(p: P) {
           ),
         },
         {
-          title: t("common:industries-we-serve.highered.persona-3"),
-          subtitle: t("common:industries-we-serve.highered.persona-3-subtitle"),
+          title: t("common:industries-we-serve.higher-ed.persona-3"),
+          subtitle: t(
+            "common:industries-we-serve.higher-ed.persona-3-subtitle"
+          ),
           image: (
             <Image
               src="/Professor.gif"
@@ -112,9 +118,9 @@ export default function IndustryWeServe(p: P) {
       ];
       subtitle = (
         <p className="mt-6 text-lg leading-8 text-white text-center">
-          {t("common:industries-we-serve.highered.description-1")}{" "}
-          <b>{t("common:industries-we-serve.highered.description-2")}</b>{" "}
-          {t("common:industries-we-serve.highered.description-3")}
+          {t("common:industries-we-serve.higher-ed.description-1")}{" "}
+          <b>{t("common:industries-we-serve.higher-ed.description-2")}</b>{" "}
+          {t("common:industries-we-serve.higher-ed.description-3")}
         </p>
       );
       break;
