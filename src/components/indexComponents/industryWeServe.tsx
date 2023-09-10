@@ -131,7 +131,7 @@ export default function IndustryWeServe(p: P) {
           subtitle: t("common:industries-we-serve.law.persona-1-subtitle"),
           image: (
             <Image
-              src="/Law_Firm.gif"
+              src="/Law_firm.gif"
               width={500}
               height={500}
               alt=""
