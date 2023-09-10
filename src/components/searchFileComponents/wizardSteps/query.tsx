@@ -170,8 +170,7 @@ export function Query(props: Props) {
       viewer = (
         <div
           ref={parentRef}
-          // className={`px-4 py-0 sm:px-6 lg:pl-8 xl:pl-6 mx-1 flex flex-col justify-start items-center overflow-scroll shadow-sm rounded-md border-2`}
-          className={`px-4 py-0 sm:px-6 lg:pl-8 xl:pl-6 mx-1 flex flex-col justify-start items-center overflow-scroll shadow-sm`}
+          className={`px-0 py-2 flex flex-col justify-start items-center overflow-scroll shadow-sm`}
         >
           <span className="isolate inline-flex rounded-md shadow-sm m-2">
             <button
@@ -215,8 +214,7 @@ export function Query(props: Props) {
     case "text/plain":
       viewer = (
         <div
-          // className={`px-4 py-2 sm:px-6 lg:pl-8 xl:pl-6 overflow-scroll mx-1 flex w-full shadow-sm rounded-md border-2`}
-          className={`px-4 py-2 sm:px-6 lg:pl-8 xl:pl-6 overflow-scroll mx-1 flex w-full shadow-sm`}
+          className={`px-0 py-2 sm:px-6 overflow-scroll mx-1 flex w-full shadow-sm`}
         >
           <PreviewTextFile file={file} />
         </div>
@@ -231,13 +229,11 @@ export function Query(props: Props) {
 
   return (
     <div className="flex min-h-full flex-col">
-      {/* <div className="m-4 mb-0 pb-4 mx-auto w-full max-w-7xl grow lg:flex xl:px-2 border-b border-black"></div> */}
       <div className="m-4 lg:grid grid-cols-3 flex flex-col grid-rows-1">
-        <div className="px-4 py-4 flex justify-center max-w-full mx-auto lg:order-1 order-2 col-span-2">
+        <div className="py-4 flex justify-center max-w-full mx-auto lg:order-1 order-2 col-span-2">
           {viewer}
         </div>
 
-        {/* <div className="m-4 px-4 py-6 shrink-0 border-b lg:border-gray-200 lg:border-l lg:border-b-0 lg:pr-8 xl:pr-4 lg:order-2 order-1 col-span-1 overflow-scroll rounded-md border-2"> */}
         <div className="m-4 px-4 py-6 shrink-0 border-b lg:border-gray-200 lg:border-l lg:border-b-0 lg:pr-8 xl:pr-4 lg:order-2 order-1 col-span-1 overflow-scroll">
           {/* Right column area */}
           <form
