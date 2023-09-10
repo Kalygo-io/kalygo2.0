@@ -13,7 +13,8 @@
     "custom-request": "Custom Request",
     "chunking-tool": "Chunking Tool",
     "buy-credits": "Buy Credits",
-    "send-email": "Send Email"
+    "send-email": "Send Email",
+    "text-to-speech": "Text-to-Speech"
   },
   "user-nav": {
     "settings": "Settings",
