@@ -24,6 +24,7 @@ import { FooterWrapper } from "../sharedComponents/FooterWrapper";
 import { enoughUsageCreditsToUsePaidFeatures } from "@/utility/guards/enoughUsageCreditsToUsePaidFeatures";
 
 interface Props {
+  account: any;
   files: File[] | null;
   setFiles: Dispatch<SetStateAction<File[] | null>>;
   setStep: Dispatch<SetStateAction<number>>;
@@ -31,7 +32,13 @@ interface Props {
 }
 
 export function ChooseFiles(props: Props) {
-  const { files, setFiles, setStep, setShowPaymentMethodRequiredModal } = props;
+  const {
+    files,
+    setFiles,
+    setStep,
+    setShowPaymentMethodRequiredModal,
+    account,
+  } = props;
   const { t } = useTranslation();
   const [dragActive, setDragActive] = useState(false);
   const [filesLocal, setFilesLocal] = useState<File[] | null>();
@@ -77,9 +84,16 @@ export function ChooseFiles(props: Props) {
           e.dataTransfer?.items["0"]?.type
         )
       ) {
-        filesLocal
-          ? setFilesLocal([...filesLocal, ...(e.dataTransfer.files || null)])
-          : setFilesLocal(e.dataTransfer.files);
+        if (
+          get(account, "customRequestCredits", 0) > 0 ||
+          enoughUsageCreditsToUsePaidFeatures(get(account, "usageCredits", 0))
+        ) {
+          filesLocal
+            ? setFilesLocal([...filesLocal, ...(e.dataTransfer.files || null)])
+            : setFilesLocal(e.dataTransfer.files);
+        } else {
+          setShowPaymentMethodRequiredModal(true);
+        }
       }
     } catch (e) {
       errorReporter(e);

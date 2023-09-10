@@ -41,6 +41,7 @@ export function CustomRequestWizard(props: Props) {
       jsx = (
         <ChooseFiles
           files={files}
+          account={account}
           setFiles={setFiles}
           setStep={setStep}
           setShowPaymentMethodRequiredModal={setShowPaymentMethodRequiredModal}

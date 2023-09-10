@@ -37,6 +37,7 @@ export function SummarizeWizard(props: Props) {
     case 1:
       jsx = (
         <ChooseFiles
+          account={account}
           files={files}
           setFiles={setFiles}
           setStep={setStep}

@@ -19,17 +19,26 @@ import { enoughUsageCreditsToUsePaidFeatures } from "@/utility/guards/enoughUsag
 
 interface Props {
   files: File[] | null;
+  account: any;
   setFiles: Dispatch<SetStateAction<File[] | null>>;
   setStep: Dispatch<SetStateAction<number>>;
   setShowPaymentMethodRequiredModal: (showModal: boolean) => void;
 }
 
 export function ChooseFiles(props: Props) {
-  const { files, setFiles, setStep, setShowPaymentMethodRequiredModal } = props;
+  const {
+    files,
+    setFiles,
+    setStep,
+    setShowPaymentMethodRequiredModal,
+    account,
+  } = props;
   const { t } = useTranslation();
   const [dragActive, setDragActive] = useState(false);
   const [filesLocal, setFilesLocal] = useState<File[] | null>();
   const inputRef = React.useRef<HTMLInputElement>(null);
+
+  console.log("---> account", account);
 
   useEffect(() => {
     setFilesLocal(files);
@@ -70,15 +79,9 @@ export function ChooseFiles(props: Props) {
           e.dataTransfer?.items["0"]?.type
         )
       ) {
-        const paymentMethodsRequest = getAccountPaymentMethodsFactory();
-        const paymentMethodsResponse = await paymentMethodsRequest;
-
         if (
-          (isNumber(get(paymentMethodsResponse, "data.customRequestCredits")) &&
-            get(paymentMethodsResponse, "data.customRequestCredits") > 0) ||
-          enoughUsageCreditsToUsePaidFeatures(
-            get(paymentMethodsResponse, "data.usageCredits")
-          )
+          get(account, "customRequestCredits", 0) > 0 ||
+          enoughUsageCreditsToUsePaidFeatures(get(account, "usageCredits", 0))
         ) {
           filesLocal
             ? setFilesLocal([...filesLocal, ...(e.dataTransfer.files || null)])
@@ -116,6 +119,8 @@ export function ChooseFiles(props: Props) {
       errorReporter(e);
     }
   };
+
+  console.log("filesLocal", filesLocal);
 
   return (
     <Layout3ColumnAndFooterWrapper>
