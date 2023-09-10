@@ -10,6 +10,15 @@
         "name": "Tad Duval",
         "role": "Fundador"
       }
+    },
+    "text-to-speech-teaser": {
+      "title": "Posible asociación de conversión de texto a voz con una reconocida empresa de subtítulos con sede en Maryland",
+      "description": "Una asociación con una empresa establecida que posee licencias comerciales para varios sistemas de inteligencia artificial de última generación. models ha expresado interés en comercializar su IP con Kalygo.",
+      "category": "Desarrollo de negocios",
+      "author": {
+        "name": "Tad Duval",
+        "role": "Fundador"
+      }
     }
   },
   "scanning-modes": {
@@ -27,5 +36,13 @@
     "mode-3-emphasis": "Este modo es excelente para obtener una comprensión general de una colección de documentos.",
     "mode-4-description": "Este modo sólo está disponible para formatos de documentos paginados como PDF. Este modo aplica un mensaje a cada página de cada documento cargado en un lote. Si le intriga el resultado final de una página, puede acceder fácilmente al documento fuente del que procede para verificar su credibilidad.",
     "mode-4-emphasis": "Este modo es excelente para obtener una descripción general precisa y rastreable de una colección de documentos paginados."
+  },
+  "text-to-speech-teaser": {
+    "title": "Posible asociación de conversión de texto a voz con una reconocida empresa de subtítulos con sede en Maryland",
+    "toc": "Tabla de contenido",
+    "paragraph-1": "Una reconocida empresa de subtítulos con sede en Maryland ha intercambiado ideas con Kalygo sobre el potencial de trabajar juntos para desarrollar varias aplicaciones para comercializar algunas de las aplicaciones de IA. licencias de modelo que obtuvieron recientemente.",
+    "paragraph-2": "La IA Los modelos a los que se hace referencia son modelos de texto-voz de última generación desarrollados por un gigante anónimo de las grandes tecnologías.",
+    "paragraph-3": "No sabemos cómo progresarán estos desarrollos, pero sentimos que era más estratégico compartir estas interesantes perspectivas con la comunidad de Kalygo.",
+    "paragraph-4": "Comparta el blog de Kalygo con sus amigos y familiares y suscríbase también a Kalygo YouTube, X, Instagram y LinkedIn para mantenerse actualizado."
   }
 }

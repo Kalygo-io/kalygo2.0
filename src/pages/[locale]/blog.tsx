@@ -30,6 +30,19 @@ export default function Blog() {
   const posts = [
     {
       id: 1,
+      title: t("blog:blog.text-to-speech-teaser.title"),
+      articlePath: "/blog/2-text-to-speech-teaser",
+      description: t("blog:blog.text-to-speech-teaser.description"),
+      date: "9-10-2023",
+      datetime: "2023-09-10",
+      category: t("blog:blog.text-to-speech-teaser.category"),
+      author: {
+        name: t("blog:blog.text-to-speech-teaser.author.name"),
+        role: t("blog:blog.text-to-speech-teaser.author.role"),
+      },
+    },
+    {
+      id: 2,
       title: t("blog:blog.scanning-modes.title"),
       articlePath: "/blog/1-scanning-modes",
       description: t("blog:blog.scanning-modes.description"),
