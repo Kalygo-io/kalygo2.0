@@ -13,7 +13,8 @@
     "custom-request": "Demande personnalisée",
     "chunking-tool": "Outil de regroupement",
     "buy-credits": "Acheter des crédits",
-    "send-email": "Envoyer un e-mail"
+    "send-email": "Envoyer un e-mail",
+    "text-to-speech": "Texte pour parler"
   },
   "user-nav": {
     "settings": "Paramètres",
