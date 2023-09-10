@@ -26,6 +26,8 @@ import {
   EnvelopeIcon,
 } from "@heroicons/react/24/outline";
 
+import { BiUserVoice } from "react-icons/bi";
+
 import { signOut } from "@/services/signOut";
 import { useTranslation } from "next-i18next";
 import { classNames } from "@/utility/misc/classNames";
@@ -89,6 +91,11 @@ export default function LayoutDashboard({ children, account }: P) {
       href: "/dashboard/chunking-tool",
       icon: PuzzlePieceIcon,
     },
+    // {
+    //   name: t("dashboard-page:navigation.text-to-speech"),
+    //   href: "/dashboard/queue",
+    //   icon: BiUserVoice,
+    // },
     {
       name: t("dashboard-page:navigation.queue"),
       href: "/dashboard/queue",

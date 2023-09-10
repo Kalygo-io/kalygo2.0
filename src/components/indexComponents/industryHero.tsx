@@ -62,7 +62,7 @@ export const IndustryHero = (p: P) => {
         }}
         id="landing-page-hero"
       >
-        <h1 className="title text-7xl min-h-[13.5rem] xs:min-h-[9rem] md:min-h-0 md:text-7xl font-bold tracking-tight text-gray-900 text-center">
+        <h1 className="title text-6xl min-h-[13.5rem] xs:min-h-[9rem] md:min-h-0 md:text-7xl font-bold tracking-tight text-gray-900 text-center">
           <Typewriter
             options={{
               strings: typewriterCopy,
