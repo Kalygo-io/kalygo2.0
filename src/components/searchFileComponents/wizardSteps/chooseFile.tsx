@@ -16,6 +16,7 @@ import { RightArea } from "../sharedComponents/rightArea";
 import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
 import isNumber from "lodash.isnumber";
 import get from "lodash.get";
+import { enoughUsageCreditsToCallEmbeddingModel } from "@/utility/guards/enoughUsageCreditsToCallEmbeddingModel";
 
 interface Props {
   file: File | null;
@@ -89,7 +90,9 @@ export function ChooseFile(props: Props) {
       if (
         (isNumber(get(paymentMethodsResponse, "data.vectorSearchCredits")) &&
           get(paymentMethodsResponse, "data.vectorSearchCredits") > 0) ||
-        get(paymentMethodsResponse, "data.stripeDefaultSource")
+        enoughUsageCreditsToCallEmbeddingModel(
+          get(paymentMethodsResponse, "data.usageCredits")
+        )
       ) {
         setFile(e.target.files[0]);
         setStep(2);

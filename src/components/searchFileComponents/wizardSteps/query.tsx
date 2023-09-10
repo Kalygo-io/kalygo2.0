@@ -202,6 +202,7 @@ export function Query(props: Props) {
             </button>
           </span>
           <Document
+            className="w-full"
             file={file}
             onLoadSuccess={onDocumentLoadSuccess}
             options={options}

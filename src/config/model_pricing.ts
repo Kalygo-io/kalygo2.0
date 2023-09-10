@@ -43,6 +43,7 @@ export default {
       },
     },
     "text-embedding-ada-002": {
+      minimumCreditsRequired: 10,
       context: 0,
       tpm: 1000000,
       rpm: 3000,
