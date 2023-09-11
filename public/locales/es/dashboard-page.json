@@ -14,7 +14,8 @@
     "chunking-tool": "Herramienta de fragmentación",
     "buy-credits": "Compra creditos",
     "send-email": "Enviar correo electrónico",
-    "text-to-speech": "Texto a voz"
+    "text-to-speech": "Texto a voz",
+    "prompts": "Indicaciones"
   },
   "user-nav": {
     "settings": "Ajustes",
@@ -185,6 +186,9 @@
     "chunk": "Pedazo",
     "chosen-files": "Archivos elegidos",
     "chosen-file": "Archivo elegido"
+  },
+  "prompts": {
+    "title": "Indicaciones"
   },
   "queue": {
     "title": "Mis solicitudes",

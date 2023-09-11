@@ -14,7 +14,8 @@
     "chunking-tool": "Outil de regroupement",
     "buy-credits": "Acheter des crédits",
     "send-email": "Envoyer un e-mail",
-    "text-to-speech": "Texte pour parler"
+    "text-to-speech": "Texte pour parler",
+    "prompts": "Instructions"
   },
   "user-nav": {
     "settings": "Paramètres",
@@ -183,6 +184,9 @@
     "chunk": "Tronçon",
     "chosen-files": "Fichiers choisis",
     "chosen-file": "Fichier choisi"
+  },
+  "prompts": {
+    "title": "Instructions"
   },
   "queue": {
     "title": "File d'attente",
