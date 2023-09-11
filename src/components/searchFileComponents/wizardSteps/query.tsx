@@ -125,7 +125,7 @@ export function Query(props: Props) {
     jsx = <WindowLoader></WindowLoader>;
   } else if (searchResults.val) {
     jsx = (
-      <ul role="list" className="divide-y divide-gray-100">
+      <ul role="list" className="divide-y divide-gray-100 max-h-screen">
         {documents.map((i, idx) => (
           <li key={idx} className="flex gap-x-4 py-5">
             <div className="flex-auto">
@@ -201,7 +201,7 @@ export function Query(props: Props) {
             </button>
           </span>
           <Document
-            className="w-full"
+            className="w-full max-h-screen"
             file={file}
             onLoadSuccess={onDocumentLoadSuccess}
             options={options}

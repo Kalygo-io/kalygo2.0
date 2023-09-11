@@ -30,8 +30,6 @@ const options = {
   standardFontDataUrl: "standard_fonts/",
 };
 
-// type PDFFile = string | File | null;
-
 interface Props {
   file: File | null;
   wizardStepsRef: RefObject<HTMLElement>;
