@@ -56,17 +56,11 @@ interface P {
 export const PromptsList = (p: P) => {
   const { prompts } = p;
 
-  return (
-    // <div className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0"></div>
-    // <div className="p-4 divide-y divide-gray-200 overflow-visible rounded-lg bg-white shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
-    // <div className="py-4 divide-x divide-y overflow-visible sm:grid sm:grid-cols-2">
+  return prompts.length > 0 ? (
     <div className="p-4 divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
       {prompts.map((prompt, actionIdx) => (
         <div
           key={prompt.id}
-          //   className={classNames(
-          //     "group relative bg-white p-6 border-solid border-2 border-gray-500"
-          //   )}
           className={classNames("group relative bg-white p-6")}
         >
           <div className="mt-8">
@@ -122,20 +116,6 @@ export const PromptsList = (p: P) => {
                           </span>
                         )}
                       </Menu.Item>
-                      {/* <Menu.Item>
-                        {({ active }) => (
-                          <span
-                            className={classNames(
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
-                            )}
-                          >
-                            Edit
-                          </span>
-                        )}
-                      </Menu.Item> */}
                       <Menu.Item>
                         {({ active }) => (
                           <span
@@ -159,5 +139,7 @@ export const PromptsList = (p: P) => {
         </div>
       ))}
     </div>
+  ) : (
+    <div>No prompts yet</div>
   );
 };
