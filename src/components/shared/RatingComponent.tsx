@@ -25,7 +25,6 @@ export const RadioGroupStars = (props: P) => {
               key={item}
               value={item}
               onClick={() => {
-                console.log("---");
                 recordRating(item, 5);
               }}
               className={({ active, checked }) =>

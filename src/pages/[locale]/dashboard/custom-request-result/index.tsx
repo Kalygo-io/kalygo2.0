@@ -104,7 +104,6 @@ export default function CustomRequestResult() {
         <div className="p-4 pb-0 sm:p-6 lg:p-8  sm:pb-0 lg:pb-0">
           <div className="sm:flex sm:items-center xl:pr-96">
             <p className="text-3xl font-bold leading-7 text-gray-900 sm:text-3xl break-words">
-              {/* {t("dashboard-page:custom-request.title")} */}
               {customRequest?.val?.prompt}
             </p>
           </div>

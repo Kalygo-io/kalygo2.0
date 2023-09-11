@@ -286,8 +286,6 @@ export default function BuyCredits() {
                               min={100}
                               max={100000}
                               onChange={(event) => {
-                                console.log("---");
-
                                 const val = Number.parseInt(event.target.value);
                                 setValue("credits", val);
                               }}
@@ -307,7 +305,6 @@ export default function BuyCredits() {
                               min={100}
                               max={100000}
                               onChange={(event) => {
-                                console.log("---");
                                 let val;
                                 if (event.target.value) {
                                   val = Number.parseInt(event.target.value);
