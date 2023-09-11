@@ -188,7 +188,8 @@
     "chosen-file": "Arquivo escolhido"
   },
   "prompts": {
-    "title": "Comandos"
+    "title": "Comandos",
+    "no-prompts-yet": "Ainda não há avisos"
   },
   "queue": {
     "title": "Fila",

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start -p 3001",
     "lint": "next lint",
-    "generateTranslations": "node scripts/generateTranslations"
+    "gt": "node scripts/generateTranslations"
   },
   "dependencies": {
     "@dqbd/tiktoken": "^1.0.7",

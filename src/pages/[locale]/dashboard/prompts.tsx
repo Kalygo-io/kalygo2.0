@@ -77,6 +77,7 @@ export default function Prompts() {
   } else if (prompts.val) {
     // jsx = <PromptTemplateList />;
     jsx = <PromptsList prompts={prompts.val || []} />;
+    // jsx = <PromptsList prompts={[]} />;
   } else {
     jsx = <>Unknown error</>;
   }

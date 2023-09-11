@@ -186,7 +186,8 @@
     "chosen-file": "Fichier choisi"
   },
   "prompts": {
-    "title": "Instructions"
+    "title": "Instructions",
+    "no-prompts-yet": "Aucune invite pour l'instant"
   },
   "queue": {
     "title": "File d'attente",

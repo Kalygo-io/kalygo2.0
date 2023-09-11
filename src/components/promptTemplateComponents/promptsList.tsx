@@ -3,6 +3,7 @@ import React, { Fragment } from "react";
 
 import { CloudIcon, EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 import { Menu, Transition } from "@headlessui/react";
+import { useTranslation } from "next-i18next";
 
 const actions = [
   {
@@ -54,6 +55,7 @@ interface P {
 }
 
 export const PromptsList = (p: P) => {
+  const { t } = useTranslation();
   const { prompts } = p;
 
   return prompts.length > 0 ? (
@@ -140,6 +142,6 @@ export const PromptsList = (p: P) => {
       ))}
     </div>
   ) : (
-    <div>No prompts yet</div>
+    <div>{t("dashboard-page:prompts.no-prompts-yet")}</div>
   );
 };

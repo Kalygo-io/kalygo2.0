@@ -188,7 +188,8 @@
     "chosen-file": "Archivo elegido"
   },
   "prompts": {
-    "title": "Indicaciones"
+    "title": "Indicaciones",
+    "no-prompts-yet": "Aún no hay mensajes"
   },
   "queue": {
     "title": "Mis solicitudes",

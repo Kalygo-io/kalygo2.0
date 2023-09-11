@@ -188,7 +188,8 @@
     "chosen-file": "Chosen file"
   },
   "prompts": {
-    "title": "Prompts"
+    "title": "Prompts",
+    "no-prompts-yet": "No prompts yet"
   },
   "queue": {
     "title": "My Requests",
