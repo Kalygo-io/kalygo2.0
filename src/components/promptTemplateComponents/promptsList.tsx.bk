@@ -1,0 +1,288 @@
+import { classNames } from "@/utility/misc/classNames";
+import React, { Fragment } from "react";
+
+import { CloudIcon, EllipsisVerticalIcon } from "@heroicons/react/24/outline";
+import { Menu, Transition } from "@headlessui/react";
+
+const actions = [
+  {
+    title: "Request time off",
+    href: "#",
+    icon: CloudIcon,
+    iconForeground: "text-teal-700",
+    iconBackground: "bg-teal-50",
+  },
+  {
+    title: "Benefits",
+    href: "#",
+    icon: CloudIcon,
+    iconForeground: "text-purple-700",
+    iconBackground: "bg-purple-50",
+  },
+  {
+    title: "Schedule a one-on-one",
+    href: "#",
+    icon: CloudIcon,
+    iconForeground: "text-sky-700",
+    iconBackground: "bg-sky-50",
+  },
+  {
+    title: "Payroll",
+    href: "#",
+    icon: CloudIcon,
+    iconForeground: "text-yellow-700",
+    iconBackground: "bg-yellow-50",
+  },
+  {
+    title: "Submit an expense",
+    href: "#",
+    icon: CloudIcon,
+    iconForeground: "text-rose-700",
+    iconBackground: "bg-rose-50",
+  },
+  {
+    title: "Training",
+    href: "#",
+    icon: CloudIcon,
+    iconForeground: "text-blue-700",
+    iconBackground: "bg-blue-50",
+  },
+];
+
+interface P {
+  prompts: any[];
+}
+
+export const PromptsList = (p: P) => {
+  const { prompts } = p;
+
+  //   console.log("prompts", prompts);
+
+  return (
+    <div className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
+      {prompts.map((prompt, actionIdx) => (
+        <div
+          key={prompt.updatedAt}
+          className={classNames(
+            actionIdx === 0
+              ? "rounded-tl-lg rounded-tr-lg sm:rounded-tr-none"
+              : "",
+            actionIdx === 1 ? "sm:rounded-tr-lg" : "",
+            actionIdx === actions.length - 2 ? "sm:rounded-bl-lg" : "",
+            actionIdx === actions.length - 1
+              ? "rounded-bl-lg rounded-br-lg sm:rounded-bl-none"
+              : "",
+            "bg-white p-6"
+          )}
+          //   onClick={() => {
+          //     console.log("--- ___ ---");
+          //   }}
+        >
+          {/* <div> */}
+
+          <span
+            className="text-gray-300 group-hover:text-gray-400"
+            aria-hidden="true"
+          >
+            <Menu as="div" className="absolute flex bg-red-400 right-6 top-6">
+              <div>
+                <Menu.Button className="flex items-center rounded-full bg-gray-100 text-black hover:text-gray-600 focus:outline-none">
+                  <span className="sr-only">Open options</span>
+                  <EllipsisVerticalIcon
+                    className="h-6 w-6"
+                    aria-hidden="true"
+                  />
+                </Menu.Button>
+              </div>
+              <Transition
+                as={Fragment}
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+              >
+                <Menu.Items className="right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-100">
+                  <div className="py-1">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <span
+                          className={classNames(
+                            active
+                              ? "bg-gray-100 text-gray-900"
+                              : "text-gray-700",
+                            "block px-4 py-2 text-sm"
+                          )}
+                        >
+                          Use
+                        </span>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <span
+                          className={classNames(
+                            active
+                              ? "bg-gray-100 text-gray-900"
+                              : "text-gray-700",
+                            "block px-4 py-2 text-sm"
+                          )}
+                        >
+                          Edit
+                        </span>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <span
+                          className={classNames(
+                            active
+                              ? "bg-gray-100 text-gray-900"
+                              : "text-gray-700",
+                            "block px-4 py-2 text-sm"
+                          )}
+                        >
+                          Share
+                        </span>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <span
+                          className={classNames(
+                            active
+                              ? "bg-gray-100 text-gray-900"
+                              : "text-gray-700",
+                            "block px-4 py-2 text-sm"
+                          )}
+                        >
+                          Share 2
+                        </span>
+                      )}
+                    </Menu.Item>
+                  </div>
+                </Menu.Items>
+              </Transition>
+            </Menu>
+          </span>
+          {/* </div> */}
+          <div className="mt-8">
+            <h3 className="text-base font-semibold leading-6 text-gray-900">
+              {prompt.prompt}
+            </h3>
+            <span className="mt-2 text-xs text-gray-500">
+              {new Date(prompt.updatedAt).toLocaleString()}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+    // <div className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
+    //   {prompts.map((prompt, actionIdx) => (
+    //     <div
+    //       key={prompt.createdAt}
+    //       className={classNames(
+    //         actionIdx === 0
+    //           ? "rounded-tl-lg rounded-tr-lg sm:rounded-tr-none"
+    //           : "",
+    //         actionIdx === 1 ? "sm:rounded-tr-lg" : "",
+    //         actionIdx === actions.length - 2 ? "sm:rounded-bl-lg" : "",
+    //         actionIdx === actions.length - 1
+    //           ? "rounded-bl-lg rounded-br-lg sm:rounded-bl-none"
+    //           : "",
+    //         "group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500"
+    //       )}
+    //     >
+    //       <div>
+    //         <span
+    //           className={classNames(
+    //             prompt.iconBackground,
+    //             prompt.iconForeground,
+    //             "inline-flex rounded-lg p-3 ring-4 ring-white"
+    //           )}
+    //         >
+    //           <CloudIcon className="h-6 w-6" aria-hidden="true" />
+    //         </span>
+    //       </div>
+    //       <div>
+    //         <span
+    //           className={classNames(
+    //             prompt.iconBackground,
+    //             prompt.iconForeground,
+    //             "inline-flex rounded-lg p-3 ring-4 ring-white"
+    //           )}
+    //         ></span>
+    //       </div>
+    //       <div className="mt-8">
+    //         <h3 className="text-base font-semibold leading-6 text-gray-900">
+    //           <span className="absolute inset-0" aria-hidden="true" />
+    //           {prompt.prompt}
+    //         </h3>
+    //         <p className="mt-2 text-sm text-gray-500">
+    //           {new Date(prompt.updatedAt).toLocaleString()}
+    //         </p>
+    //       </div>
+    //       <span
+    //         className="pointer-events-none absolute right-6 top-6 text-gray-300 group-hover:text-gray-400"
+    //         aria-hidden="true"
+    //       >
+    //         <Menu as="div" className="relative inline-block text-left">
+    //           <div>
+    //             <Menu.Button className="flex items-center rounded-full bg-gray-100 text-black hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+    //               <span className="sr-only">Open options</span>
+    //               <EllipsisVerticalIcon
+    //                 className="h-6 w-6"
+    //                 aria-hidden="true"
+    //               />
+    //             </Menu.Button>
+    //           </div>
+    //           <Transition
+    //             as={Fragment}
+    //             enter="transition ease-out duration-100"
+    //             enterFrom="transform opacity-0 scale-95"
+    //             enterTo="transform opacity-100 scale-100"
+    //             leave="transition ease-in duration-75"
+    //             leaveFrom="transform opacity-100 scale-100"
+    //             leaveTo="transform opacity-0 scale-95"
+    //           >
+    //             <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-100">
+    //               <div className="py-1">
+    //                 <Menu.Item>
+    //                   {({ active }) => (
+    //                     <span
+    //                       className={classNames(
+    //                         active
+    //                           ? "bg-gray-100 text-gray-900"
+    //                           : "text-gray-700",
+    //                         "block px-4 py-2 text-sm"
+    //                       )}
+    //                     >
+    //                       Use
+    //                     </span>
+    //                   )}
+    //                 </Menu.Item>
+    //                 <Menu.Item>
+    //                   {({ active }) => (
+    //                     <span
+    //                       className={classNames(
+    //                         active
+    //                           ? "bg-gray-100 text-gray-900"
+    //                           : "text-gray-700",
+    //                         "block px-4 py-2 text-sm"
+    //                       )}
+    //                     >
+    //                       Edit
+    //                     </span>
+    //                   )}
+    //                 </Menu.Item>
+    //               </div>
+    //             </Menu.Items>
+    //           </Transition>
+    //         </Menu>
+    //       </span>
+    //     </div>
+    //   ))}
+    // </div>
+  );
+};

@@ -7,7 +7,6 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
-import ContractList from "@/components/browseContractsComponents/contractList";
 
 import { Error } from "../../../../components/shared/error";
 

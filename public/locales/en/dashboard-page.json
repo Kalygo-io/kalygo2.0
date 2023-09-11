@@ -14,7 +14,8 @@
     "chunking-tool": "Chunking Tool",
     "buy-credits": "Buy Credits",
     "send-email": "Send Email",
-    "text-to-speech": "Text-to-Speech"
+    "text-to-speech": "Text-to-Speech",
+    "prompts": "Prompts"
   },
   "user-nav": {
     "settings": "Settings",
@@ -185,6 +186,9 @@
     "chunk": "Chunk",
     "chosen-files": "Chosen files",
     "chosen-file": "Chosen file"
+  },
+  "prompts": {
+    "title": "Prompts"
   },
   "queue": {
     "title": "My Requests",

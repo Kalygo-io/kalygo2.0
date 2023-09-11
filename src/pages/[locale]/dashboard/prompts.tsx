@@ -1,23 +1,23 @@
 "use client";
 
 import Head from "next/head";
-
-import { NextPageContext } from "next";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
-
-import { Error } from "../../../../components/shared/error";
-
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 
+import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Summary from "@/components/dashboardComponents/summary";
 import { WindowLoader } from "@/components/shared/WindowLoader";
-import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
+import { JobList } from "@/components/queueComponents/jobList";
+import { viewQueue } from "@/services/viewQueue";
+import get from "lodash.get";
+import { useGetAccount } from "@/utility/hooks/getAccount";
+import { PromptTemplateList } from "@/components/promptTemplateComponents/promptTemplateList";
+import { getPromptsFactory } from "@/serviceFactory/getPrompts";
+import { PromptsList } from "@/components/promptTemplateComponents/promptsList";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -27,24 +27,19 @@ const getStaticProps = makeStaticProps([
   "error",
   "dashboard-page",
   "toast-messages",
-  "id",
 ]);
 export { getStaticPaths, getStaticProps };
 
-export default function Page() {
-  const router = useRouter();
-
-  const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
-
-  const summaryId = searchParams.get("summary-id") || "";
+export default function Prompts() {
+  const { state, dispatch } = useAppContext();
   const { t } = useTranslation();
-
-  const [summary, setSummary] = useState<{
-    val: any;
+  const { account } = useGetAccount();
+  const [prompts, setPrompts] = useState<{
+    val: any[];
     loading: boolean;
     err: any;
   }>({
-    val: null,
+    val: [],
     loading: true,
     err: null,
   });
@@ -52,22 +47,19 @@ export default function Page() {
   useEffect(() => {
     async function fetch() {
       try {
-        const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/get-summary/${summaryId}`,
-          {
-            withCredentials: true,
-          }
-        );
+        const getPromptsRequest = getPromptsFactory();
+        const getPromptsResponse = await getPromptsRequest;
+        console.log("getPromptsResponse", getPromptsResponse);
 
-        setSummary({
+        setPrompts({
           loading: false,
-          val: res.data,
+          val: get(getPromptsResponse, "data", []),
           err: null,
         });
       } catch (e) {
-        setSummary({
+        setPrompts({
           loading: false,
-          val: null,
+          val: [],
           err: e,
         });
       }
@@ -77,12 +69,16 @@ export default function Page() {
   }, []);
 
   let jsx = null;
-  if (summary.loading) {
+
+  if (prompts.loading) {
     jsx = <WindowLoader></WindowLoader>;
-  } else if (summary.val) {
-    jsx = <Summary summary={summary.val} />;
+  } else if (prompts.err) {
+    jsx = <>Error loading prompts</>;
+  } else if (prompts.val) {
+    // jsx = <PromptTemplateList />;
+    jsx = <PromptsList prompts={prompts.val || []} />;
   } else {
-    jsx = <ErrorInDashboard />;
+    jsx = <>Unknown error</>;
   }
 
   return (
@@ -90,19 +86,20 @@ export default function Page() {
       <Head>
         <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
-      <LayoutDashboard>
+      <LayoutDashboard account={account.val}>
         <div className="p-4 sm:p-6 lg:p-8">
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
-              <h1 className="text-base font-semibold leading-7 text-gray-900">
-                {t("dashboard-page:summary.title")}
-              </h1>
+              <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+                {t("dashboard-page:prompts.title")}
+              </h2>
             </div>
           </div>
           <div className="mt-8 flow-root">
             <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                 {jsx}
+                {/* Coming Soon... */}
               </div>
             </div>
           </div>
@@ -112,4 +109,4 @@ export default function Page() {
   );
 }
 
-Page.requireAuth = true;
+Prompts.requireAuth = true;

@@ -6,7 +6,6 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
-import ContractList from "@/components/browseContractsComponents/contractList";
 import { RadioGroup } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import { FaCcStripe } from "react-icons/fa6";

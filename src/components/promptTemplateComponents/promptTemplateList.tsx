@@ -1,35 +1,35 @@
 import { infoToast } from "@/utility/toasts";
 import { useTranslation } from "next-i18next";
 
-export default function ContractList() {
+export function PromptTemplateList() {
   const { t } = useTranslation();
 
-  const contracts = [
-    {
-      name: t("prompt-template-list:1-title"),
-      description: t("prompt-template-list:1-description"),
-      attributes: [t("prompt-template-list:badge-audited")],
-      enabled: true,
-    },
-    {
-      name: t("prompt-template-list:2-title"),
-      description: t("prompt-template-list:2-description"),
-      attributes: [
-        t("prompt-template-list:badge-audited"),
-        t("prompt-template-list:badge-popular"),
-      ],
-      enabled: true,
-    },
-    {
-      name: t("prompt-template-list:3-title"),
-      description: t("prompt-template-list:3-description"),
-      attributes: [t("prompt-template-list:badge-coming-soon")],
-    },
-    {
-      name: t("prompt-template-list:4-title"),
-      description: t("prompt-template-list:4-description"),
-      attributes: [t("prompt-template-list:badge-coming-soon")],
-    },
+  const contracts: any[] = [
+    // {
+    //   name: t("prompt-template-list:1-title"),
+    //   description: t("prompt-template-list:1-description"),
+    //   attributes: [t("prompt-template-list:badge-audited")],
+    //   enabled: true,
+    // },
+    // {
+    //   name: t("prompt-template-list:2-title"),
+    //   description: t("prompt-template-list:2-description"),
+    //   attributes: [
+    //     t("prompt-template-list:badge-audited"),
+    //     t("prompt-template-list:badge-popular"),
+    //   ],
+    //   enabled: true,
+    // },
+    // {
+    //   name: t("prompt-template-list:3-title"),
+    //   description: t("prompt-template-list:3-description"),
+    //   attributes: [t("prompt-template-list:badge-coming-soon")],
+    // },
+    // {
+    //   name: t("prompt-template-list:4-title"),
+    //   description: t("prompt-template-list:4-description"),
+    //   attributes: [t("prompt-template-list:badge-coming-soon")],
+    // },
     // {
     //   name: t("prompt-template-list:5-title"),
     //   description: t("prompt-template-list:5-description"),
@@ -60,7 +60,7 @@ export default function ContractList() {
   return (
     <>
       <div className="container mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {contracts.map((contract) => (
+        {contracts?.map((contract) => (
           <li
             key={contract.name}
             className="col-span-1 flex flex-col bg-white border-1 p-4 rounded-lg shadow"
@@ -70,7 +70,7 @@ export default function ContractList() {
             </h2>
             <p className="text-md text-justify">{contract.description}</p>
             <div className="flex flex-wrap mt-auto pt-3 text-xs">
-              {contract.attributes.map((attr) => {
+              {contract.attributes.map((attr: any) => {
                 return (
                   <span
                     key={attr}

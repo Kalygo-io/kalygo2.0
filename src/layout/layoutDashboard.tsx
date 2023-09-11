@@ -24,6 +24,7 @@ import {
   CreditCardIcon,
   PuzzlePieceIcon,
   EnvelopeIcon,
+  RectangleGroupIcon,
 } from "@heroicons/react/24/outline";
 
 import { BiUserVoice } from "react-icons/bi";
@@ -90,6 +91,11 @@ export default function LayoutDashboard({ children, account }: P) {
       name: t("dashboard-page:navigation.chunking-tool"),
       href: "/dashboard/chunking-tool",
       icon: PuzzlePieceIcon,
+    },
+    {
+      name: t("dashboard-page:navigation.prompts"),
+      href: "/dashboard/prompts",
+      icon: RectangleGroupIcon,
     },
     // {
     //   name: t("dashboard-page:navigation.text-to-speech"),
