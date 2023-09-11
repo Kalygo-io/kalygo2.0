@@ -66,23 +66,26 @@ export default function CustomRequest(p: P) {
                 }
               })}
 
-            {customRequest.mode === ScanningMode.EACH_FILE_OVERALL &&
-              customRequest?.completionResponse.map((i: any, idx: any) => {
-                return (
-                  <div key={i.file}>
-                    <span>
-                      {/* <InformationCircleIcon className="h-4 w-4 inline" /> */}
-                      <h3 className="text-lg">
-                        <b>{i.file}</b>
-                      </h3>
-                    </span>
-                    <ReactMarkdown className="custom-request-markdown">
-                      {i.finalCompletionForFile}
-                    </ReactMarkdown>
-                    <br />
-                  </div>
-                );
-              })}
+            {customRequest.mode === ScanningMode.EACH_FILE_OVERALL && (
+              <>
+                {customRequest?.completionResponse.map((i: any, idx: any) => {
+                  return (
+                    <div key={i.file}>
+                      <span>
+                        {/* <InformationCircleIcon className="h-4 w-4 inline" /> */}
+                        <h3 className="text-lg">
+                          <b>{i.file}</b>
+                        </h3>
+                      </span>
+                      <ReactMarkdown className="custom-request-markdown">
+                        {i.finalCompletionForFile}
+                      </ReactMarkdown>
+                      <br />
+                    </div>
+                  );
+                })}
+              </>
+            )}
 
             {customRequest.mode === ScanningMode.OVERALL &&
               customRequest?.completionResponse.map((i: any, idx: any) => {
@@ -268,7 +271,7 @@ export default function CustomRequest(p: P) {
                 <dt className="text-sm font-medium leading-6 text-gray-900">
                   {t("dashboard-page:custom-request.prompt")}:
                 </dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0 truncate">
                   {customRequest?.prompt}
                 </dd>
               </div>

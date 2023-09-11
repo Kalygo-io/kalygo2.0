@@ -102,14 +102,13 @@ export default function CustomRequestResult() {
       </Head>
       <LayoutDashboard>
         <div className="p-4 pb-0 sm:p-6 lg:p-8  sm:pb-0 lg:pb-0">
-          <div className="sm:flex sm:items-center">
-            <div className="sm:flex-auto">
-              <h1 className="text-base font-semibold leading-7 text-gray-900">
-                {t("dashboard-page:custom-request.title")}
-              </h1>
-            </div>
+          <div className="sm:flex sm:items-center xl:pr-96">
+            <p className="text-3xl font-bold leading-7 text-gray-900 sm:text-3xl break-words">
+              {/* {t("dashboard-page:custom-request.title")} */}
+              {customRequest?.val?.prompt}
+            </p>
           </div>
-          <div className="mt-8 flow-root">
+          <div className="mt-6 flow-root">
             <div className="inline-block min-w-full py-2 align-middle">
               {jsx}
             </div>
