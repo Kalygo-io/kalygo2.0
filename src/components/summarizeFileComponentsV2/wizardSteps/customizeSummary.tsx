@@ -18,6 +18,8 @@ import {
   PlusIcon,
 } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
+import { enoughUsageCreditsToUsePaidFeatures } from "@/utility/guards/enoughUsageCreditsToUsePaidFeatures";
+import get from "lodash.get";
 
 interface Props {
   account: any;
@@ -404,7 +406,9 @@ export function CustomizeSummary(props: Props) {
                                           </option>
                                           <option
                                             disabled={
-                                              !account.stripeDefaultSource
+                                              !enoughUsageCreditsToUsePaidFeatures(
+                                                get(account, "usageCredits", 0)
+                                              )
                                             }
                                             value={"gpt-4"}
                                           >

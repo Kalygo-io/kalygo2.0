@@ -20,6 +20,8 @@ import { EachFileOverallPrompts } from "./customizeRequestComponents/EachFileOve
 import { EachFileInChunksPrompts } from "./customizeRequestComponents/EachFileInChunksPrompts";
 import { OverallPrompts } from "./customizeRequestComponents/OverallPrompts";
 import { EachFilePerPagePrompts } from "./customizeRequestComponents/EachFilePerPagePrompts";
+import { enoughUsageCreditsToUsePaidFeatures } from "@/utility/guards/enoughUsageCreditsToUsePaidFeatures";
+import get from "lodash.get";
 
 interface Props {
   account: any;
@@ -318,7 +320,11 @@ export function CustomizeRequest(props: Props) {
                                   GPT-3 (4k)
                                 </option>
                                 <option
-                                  disabled={!account?.stripeDefaultSource}
+                                  disabled={
+                                    !enoughUsageCreditsToUsePaidFeatures(
+                                      get(account, "usageCredits", 0)
+                                    )
+                                  }
                                   value={"gpt-4"}
                                 >
                                   GPT-4 (8k)

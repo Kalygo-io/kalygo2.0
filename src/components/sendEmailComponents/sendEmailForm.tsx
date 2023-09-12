@@ -19,16 +19,20 @@ export const SendEmailForm = () => {
     defaultValues: {
       recipientEmails: "tad@cmdlabs.io",
       subject: "A hyper-customized message...",
-      messageAsText: "Message as text...",
       emailPreviewText: "Message Preview",
       logoOnclickUrl: "https://kalygo.io",
       logoImageUrl: "https://kalygo.io/kalygo_new_logo-192x192.png",
       greeting: "Hello,",
       paragraph1: "asdfasdf",
+      includeParagraph2: true,
       paragraph2: "",
+      includeParagraph3: true,
       paragraph3: "",
+      includeParagraph4: false,
       paragraph4: "",
+      includeParagraph5: false,
       paragraph5: "",
+      includeParagraph6: false,
       paragraph6: "",
       ending: "Sincerely,",
       endingSignature: "Tad Duval",
@@ -40,7 +44,6 @@ export const SendEmailForm = () => {
       const {
         recipientEmails,
         subject,
-        messageAsText,
         emailPreviewText,
         logoOnclickUrl,
         logoImageUrl,
@@ -68,7 +71,6 @@ export const SendEmailForm = () => {
         data: {
           recipientEmails: recipientEmailsAsArray,
           subject,
-          messageAsText,
           emailPreviewText,
           logoOnclickUrl,
           logoImageUrl,
@@ -94,6 +96,12 @@ export const SendEmailForm = () => {
       errorReporter(e);
     }
   };
+
+  watch("includeParagraph2");
+  watch("includeParagraph3");
+  watch("includeParagraph4");
+  watch("includeParagraph5");
+  watch("includeParagraph6");
 
   return (
     <>
@@ -150,30 +158,6 @@ export const SendEmailForm = () => {
                     }`}
                   />
                 </div>
-              </div>
-            </div>
-            {/*  */}
-            <div>
-              <label
-                htmlFor="messageAsText"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                {t("forms:send-email.message-as-text")}
-              </label>
-              <div className="mt-2">
-                <textarea
-                  {...register("messageAsText", {
-                    required: true,
-                  })}
-                  id="messageAsText"
-                  name="messageAsText"
-                  rows={4}
-                  autoComplete="messageAsText"
-                  placeholder={t("forms:send-email.enter-message-as-text")!}
-                  className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
-                    errors["messageAsText"] && "ring-red-700 focus:ring-red-500"
-                  }`}
-                />
               </div>
             </div>
             {/*  */}
@@ -293,105 +277,185 @@ export const SendEmailForm = () => {
               </div>
             </div>
             {/*  */}
-            <div>
+            <div className="pt-2">
               <label
-                htmlFor="paragraph2"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                htmlFor="includeParagraph2"
+                className="text-sm font-medium text-gray-700"
               >
-                {t("forms:send-email.paragraph-2")}
+                Include Paragraph 2?
               </label>
-              <div className="mt-2">
-                <textarea
-                  {...register("paragraph2", {})}
-                  rows={4}
-                  name="paragraph2"
-                  id="paragraph2"
-                  placeholder={t("forms:send-email.enter-paragraph-2")!}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                  defaultValue={""}
-                />
-              </div>
+              <input
+                id="includeParagraph2"
+                className="ml-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                type="checkbox"
+                {...register("includeParagraph2")}
+              />
             </div>
+            {getValues("includeParagraph2") === true && (
+              <div>
+                <label
+                  htmlFor="paragraph2"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  {t("forms:send-email.paragraph-2")}
+                </label>
+                <div className="mt-2">
+                  <textarea
+                    {...register("paragraph2", {})}
+                    rows={4}
+                    name="paragraph2"
+                    id="paragraph2"
+                    placeholder={t("forms:send-email.enter-paragraph-2")!}
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                    defaultValue={""}
+                  />
+                </div>
+              </div>
+            )}
             {/*  */}
-            <div>
+            <div className="pt-2">
               <label
-                htmlFor="paragraph3"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                htmlFor="includeParagraph3"
+                className="text-sm font-medium text-gray-700"
               >
-                {t("forms:send-email.paragraph-3")}
+                Include Paragraph 3?
               </label>
-              <div className="mt-2">
-                <textarea
-                  {...register("paragraph3", {})}
-                  rows={4}
-                  name="paragraph3"
-                  id="paragraph3"
-                  placeholder={t("forms:send-email.enter-paragraph-3")!}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                  defaultValue={""}
-                />
-              </div>
+              <input
+                id="includeParagraph3"
+                className="ml-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                type="checkbox"
+                {...register("includeParagraph3")}
+              />
             </div>
+            {getValues("includeParagraph3") === true && (
+              <div>
+                <label
+                  htmlFor="paragraph3"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  {t("forms:send-email.paragraph-3")}
+                </label>
+                <div className="mt-2">
+                  <textarea
+                    {...register("paragraph3", {})}
+                    rows={4}
+                    name="paragraph3"
+                    id="paragraph3"
+                    placeholder={t("forms:send-email.enter-paragraph-3")!}
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                    defaultValue={""}
+                  />
+                </div>
+              </div>
+            )}
             {/*  */}
-            <div>
+            <div className="pt-2">
               <label
-                htmlFor="paragraph4"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                htmlFor="includeParagraph4"
+                className="text-sm font-medium text-gray-700"
               >
-                {t("forms:send-email.paragraph-4")}
+                Include Paragraph 4?
               </label>
-              <div className="mt-2">
-                <textarea
-                  {...register("paragraph4", {})}
-                  rows={4}
-                  name="paragraph4"
-                  id="paragraph4"
-                  placeholder={t("forms:send-email.enter-paragraph-4")!}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                  defaultValue={""}
-                />
-              </div>
+              <input
+                id="includeParagraph4"
+                className="ml-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                type="checkbox"
+                {...register("includeParagraph4")}
+              />
             </div>
+            {getValues("includeParagraph4") === true && (
+              <div>
+                <label
+                  htmlFor="paragraph4"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  {t("forms:send-email.paragraph-4")}
+                </label>
+                <div className="mt-2">
+                  <textarea
+                    {...register("paragraph4", {})}
+                    rows={4}
+                    name="paragraph4"
+                    id="paragraph4"
+                    placeholder={t("forms:send-email.enter-paragraph-4")!}
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                    defaultValue={""}
+                  />
+                </div>
+              </div>
+            )}
             {/*  */}
-            <div>
+            <div className="pt-2">
               <label
-                htmlFor="paragraph5"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                htmlFor="includeParagraph5"
+                className="text-sm font-medium text-gray-700"
               >
-                {t("forms:send-email.paragraph-5")}
+                Include Paragraph 5?
               </label>
-              <div className="mt-2">
-                <textarea
-                  {...register("paragraph5", {})}
-                  rows={4}
-                  name="paragraph5"
-                  id="paragraph5"
-                  placeholder={t("forms:send-email.enter-paragraph-5")!}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                  defaultValue={""}
-                />
-              </div>
+              <input
+                id="includeParagraph5"
+                className="ml-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                type="checkbox"
+                {...register("includeParagraph5")}
+              />
             </div>
+            {getValues("includeParagraph5") === true && (
+              <div>
+                <label
+                  htmlFor="paragraph5"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  {t("forms:send-email.paragraph-5")}
+                </label>
+                <div className="mt-2">
+                  <textarea
+                    {...register("paragraph5", {})}
+                    rows={4}
+                    name="paragraph5"
+                    id="paragraph5"
+                    placeholder={t("forms:send-email.enter-paragraph-5")!}
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                    defaultValue={""}
+                  />
+                </div>
+              </div>
+            )}
             {/*  */}
-            <div>
+            <div className="pt-2">
               <label
-                htmlFor="paragraph6"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                htmlFor="includeParagraph6"
+                className="text-sm font-medium text-gray-700"
               >
-                {t("forms:send-email.paragraph-6")}
+                Include Paragraph 6?
               </label>
-              <div className="mt-2">
-                <textarea
-                  {...register("paragraph6", {})}
-                  rows={4}
-                  name="paragraph6"
-                  id="paragraph6"
-                  placeholder={t("forms:send-email.enter-paragraph-6")!}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                  defaultValue={""}
-                />
-              </div>
+              <input
+                id="includeParagraph6"
+                className="ml-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                type="checkbox"
+                {...register("includeParagraph6")}
+              />
             </div>
+            {getValues("includeParagraph6") === true && (
+              <div>
+                <label
+                  htmlFor="paragraph6"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  {t("forms:send-email.paragraph-6")}
+                </label>
+                <div className="mt-2">
+                  <textarea
+                    {...register("paragraph6", {})}
+                    rows={4}
+                    name="paragraph6"
+                    id="paragraph6"
+                    placeholder={t("forms:send-email.enter-paragraph-6")!}
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                    defaultValue={""}
+                  />
+                </div>
+              </div>
+            )}
             {/*  */}
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-3">
