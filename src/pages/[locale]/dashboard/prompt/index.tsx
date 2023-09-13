@@ -46,7 +46,7 @@ export default function PromptPage() {
         prompt={prompt.val}
         refresh={refresh}
         refreshCount={refreshCount}
-        showSharing={true}
+        showSharing
       />
     );
   } else {
@@ -65,24 +65,6 @@ export default function PromptPage() {
               <h1 className="text-base font-semibold leading-7 text-gray-900">
                 {t("dashboard-page:prompt.title")}
               </h1>
-              <div className="mx-auto flex justify-end space-x-2 max-w-2xl">
-                <button
-                  onClick={() => {
-                    // navigator.clipboard.writeText(
-                    //   `${process.env.NEXT_PUBLIC_HOSTNAME}/dashboard/custom-request-result/share?custom-request-id=${customRequest.id}`
-                    // );
-                  }}
-                >
-                  <LinkIcon className="h-6 w-6" />
-                </button>
-                <button
-                  onClick={() => {
-                    // setShareModalOpen(true);
-                  }}
-                >
-                  <ShareIcon className="h-6 w-6" />
-                </button>
-              </div>
             </div>
           </div>
 

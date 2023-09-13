@@ -10,13 +10,13 @@ interface P {
   open: boolean;
   cb: (isOpen: boolean) => void;
   account: any;
-  customRequest: any;
+  prompt: any;
   refresh: any;
   refreshCount: number;
 }
 
 export const ShareModal = (p: P) => {
-  const { open, cb, account, customRequest, refresh, refreshCount } = p;
+  const { open, cb, account, prompt, refresh, refreshCount } = p;
   const { t } = useTranslation();
   const [panel, setPanel] = useState<"individual" | "group">("individual");
 
@@ -101,7 +101,7 @@ export const ShareModal = (p: P) => {
                   />
                 ) : (
                   <ToGroupForm
-                    customRequest={customRequest}
+                    prompt={prompt}
                     accessGroups={account.accessGroups}
                     cb={(isOpen: boolean) => {
                       console.log("--- _ Group _ ---");
