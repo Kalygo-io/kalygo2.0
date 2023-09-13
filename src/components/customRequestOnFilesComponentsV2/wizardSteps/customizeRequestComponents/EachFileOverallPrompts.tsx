@@ -9,34 +9,34 @@ interface P {
   values: {
     mode: string;
     model: "gpt-3.5-turbo" | "gpt-4";
-    prompt: string | undefined;
-    includeFinalPrompt: boolean | undefined;
-    finalPrompt: string | undefined;
-    overallPrompt: string | undefined;
+    prompt: string;
+    includeFinalPrompt: boolean;
+    finalPrompt: string;
+    overallPrompt: string;
   };
   register: UseFormRegister<{
     mode: string;
     model: "gpt-3.5-turbo" | "gpt-4";
-    prompt: string | undefined;
-    includeFinalPrompt: boolean | undefined;
-    finalPrompt: string | undefined;
-    overallPrompt: string | undefined;
+    prompt: string;
+    includeFinalPrompt: boolean;
+    finalPrompt: string;
+    overallPrompt: string;
   }>;
   trigger: UseFormTrigger<{
     mode: string;
     model: "gpt-3.5-turbo" | "gpt-4";
-    prompt: string | undefined;
-    includeFinalPrompt: boolean | undefined;
-    finalPrompt: string | undefined;
-    overallPrompt: string | undefined;
+    prompt: string;
+    includeFinalPrompt: boolean;
+    finalPrompt: string;
+    overallPrompt: string;
   }>;
   setValue: UseFormSetValue<{
     mode: string;
     model: "gpt-3.5-turbo" | "gpt-4";
-    prompt: string | undefined;
-    includeFinalPrompt: boolean | undefined;
-    finalPrompt: string | undefined;
-    overallPrompt: string | undefined;
+    prompt: string;
+    includeFinalPrompt: boolean;
+    finalPrompt: string;
+    overallPrompt: string;
   }>;
 }
 

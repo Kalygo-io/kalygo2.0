@@ -16,8 +16,9 @@ import { viewQueue } from "@/services/viewQueue";
 import get from "lodash.get";
 import { useGetAccount } from "@/utility/hooks/getAccount";
 import { PromptTemplateList } from "@/components/promptTemplateComponents/promptTemplateList";
-import { getPromptsFactory } from "@/serviceFactory/getPrompts";
+import { getPromptsFactory } from "@/serviceFactory/getPromptsFactory";
 import { PromptsList } from "@/components/promptTemplateComponents/promptsList";
+import { useGetPromptsWithAccessGroups } from "@/utility/hooks/getPromptsWithAccessGroups";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -34,39 +35,8 @@ export default function Prompts() {
   const { state, dispatch } = useAppContext();
   const { t } = useTranslation();
   const { account } = useGetAccount();
-  const [prompts, setPrompts] = useState<{
-    val: any[];
-    loading: boolean;
-    err: any;
-  }>({
-    val: [],
-    loading: true,
-    err: null,
-  });
 
-  useEffect(() => {
-    async function fetch() {
-      try {
-        const getPromptsRequest = getPromptsFactory();
-        const getPromptsResponse = await getPromptsRequest;
-        console.log("getPromptsResponse", getPromptsResponse);
-
-        setPrompts({
-          loading: false,
-          val: get(getPromptsResponse, "data", []),
-          err: null,
-        });
-      } catch (e) {
-        setPrompts({
-          loading: false,
-          val: [],
-          err: e,
-        });
-      }
-    }
-
-    fetch();
-  }, []);
+  const { prompts, refresh, refreshCount } = useGetPromptsWithAccessGroups();
 
   let jsx = null;
 
@@ -75,12 +45,12 @@ export default function Prompts() {
   } else if (prompts.err) {
     jsx = <>Error loading prompts</>;
   } else if (prompts.val) {
-    // jsx = <PromptTemplateList />;
-    jsx = <PromptsList prompts={prompts.val || []} />;
-    // jsx = <PromptsList prompts={[]} />;
+    jsx = <PromptsList prompts={prompts.val || []} refresh={refresh} />;
   } else {
     jsx = <>Unknown error</>;
   }
+
+  console.log("RENDER PROMPTS");
 
   return (
     <>
@@ -97,10 +67,9 @@ export default function Prompts() {
             </div>
           </div>
           <div className="mt-8 flow-root">
-            <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="mx-2 my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                 {jsx}
-                {/* Coming Soon... */}
               </div>
             </div>
           </div>

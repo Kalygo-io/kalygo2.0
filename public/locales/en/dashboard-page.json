@@ -191,6 +191,9 @@
     "title": "Prompts",
     "no-prompts-yet": "No prompts yet"
   },
+  "prompt": {
+    "title": "Prompt"
+  },
   "queue": {
     "title": "My Requests",
     "nothing-found": "Nothing found",

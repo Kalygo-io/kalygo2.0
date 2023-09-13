@@ -2,11 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-.section-loading-animation {
-  /* position: relative;
-  top: 50%;
-  left: 50%; */
+@layer utilities {
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
 
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+  }
+}
+
+.section-loading-animation {
   position: relative;
   left: 0;
   right: 0;
@@ -14,11 +25,6 @@
   bottom: 0;
   margin: auto;
 
-  /* width: 120px; */
-  /* height: 120px; */
-
-  /* margin: -60px 0 0 -60px; */
-  /* margin: auto; */
   -webkit-animation: spin 4s linear infinite;
   -moz-animation: spin 4s linear infinite;
   animation: spin 4s linear infinite;

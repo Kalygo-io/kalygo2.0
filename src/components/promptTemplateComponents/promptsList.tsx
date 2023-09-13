@@ -1,65 +1,32 @@
 import { classNames } from "@/utility/misc/classNames";
-import React, { Fragment } from "react";
+import React, { Dispatch, Fragment, SetStateAction } from "react";
 
-import { CloudIcon, EllipsisVerticalIcon } from "@heroicons/react/24/outline";
+import {
+  ClipboardDocumentIcon,
+  EllipsisVerticalIcon,
+  LinkIcon,
+  PencilSquareIcon,
+  ShareIcon,
+  TrashIcon,
+} from "@heroicons/react/24/outline";
+import { GrView } from "react-icons/gr";
 import { Menu, Transition } from "@headlessui/react";
 import { useTranslation } from "next-i18next";
-
-const actions = [
-  {
-    title: "Request time off",
-    href: "#",
-    icon: CloudIcon,
-    iconForeground: "text-teal-700",
-    iconBackground: "bg-teal-50",
-  },
-  {
-    title: "Benefits",
-    href: "#",
-    icon: CloudIcon,
-    iconForeground: "text-purple-700",
-    iconBackground: "bg-purple-50",
-  },
-  {
-    title: "Schedule a one-on-one",
-    href: "#",
-    icon: CloudIcon,
-    iconForeground: "text-sky-700",
-    iconBackground: "bg-sky-50",
-  },
-  {
-    title: "Payroll",
-    href: "#",
-    icon: CloudIcon,
-    iconForeground: "text-yellow-700",
-    iconBackground: "bg-yellow-50",
-  },
-  {
-    title: "Submit an expense",
-    href: "#",
-    icon: CloudIcon,
-    iconForeground: "text-rose-700",
-    iconBackground: "bg-rose-50",
-  },
-  {
-    title: "Training",
-    href: "#",
-    icon: CloudIcon,
-    iconForeground: "text-blue-700",
-    iconBackground: "bg-blue-50",
-  },
-];
+import { deletePrompt } from "@/serviceFactory/deletePrompt";
+import { useRouter } from "next/router";
 
 interface P {
   prompts: any[];
+  refresh: Dispatch<SetStateAction<number>>;
 }
 
 export const PromptsList = (p: P) => {
   const { t } = useTranslation();
-  const { prompts } = p;
+  const router = useRouter();
+  const { prompts, refresh } = p;
 
   return prompts.length > 0 ? (
-    <div className="p-4 divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
+    <div className="p-4 divide-y divide-gray-200 overflow-y-scroll no-scrollbar rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
       {prompts.map((prompt, actionIdx) => (
         <div
           key={prompt.id}
@@ -103,36 +70,54 @@ export const PromptsList = (p: P) => {
                     style={{ zIndex: 100 }}
                     className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                   >
-                    <div className="py-1">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <span
-                            className={classNames(
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
-                            )}
-                          >
-                            Use
-                          </span>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <span
-                            className={classNames(
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700",
-                              "block px-4 py-2 text-sm"
-                            )}
-                          >
-                            Share
-                          </span>
-                        )}
-                      </Menu.Item>
-                    </div>
+                    {[
+                      {
+                        text: "Copy Prompt",
+                        onClick: () => {
+                          navigator.clipboard.writeText(prompt.prompt);
+                        },
+                        icon: <ClipboardDocumentIcon className="h-6 w-6" />,
+                      },
+                      {
+                        text: "Edit",
+                        onClick: () => {
+                          router.push(
+                            `/dashboard/prompt?prompt-id=${prompt.id}`
+                          );
+                        },
+                        icon: <PencilSquareIcon className="h-6 w-6" />,
+                      },
+                      {
+                        text: "Delete",
+                        onClick: async () => {
+                          console.log("deleting prompt...", prompt);
+
+                          await deletePrompt(prompt.id);
+                          console.log("prompt deleted");
+                          refresh((val: any) => val + 1);
+                        },
+                        icon: <TrashIcon className="h-6 w-6" />,
+                      },
+                    ].map((i, idx) => {
+                      return (
+                        <Menu.Item key={idx}>
+                          {({ active }) => (
+                            <span
+                              onClick={i.onClick}
+                              className={classNames(
+                                active
+                                  ? "bg-gray-100 text-gray-900"
+                                  : "text-gray-700",
+                                "px-4 py-2 text-sm flex justify-center items-center cursor-pointer"
+                              )}
+                            >
+                              {i.text}&nbsp;
+                              {i.icon}
+                            </span>
+                          )}
+                        </Menu.Item>
+                      );
+                    })}
                   </Menu.Items>
                 </Transition>
               </Menu>

@@ -1,13 +1,7 @@
 import {
-  ArrowDownIcon,
-  ArrowUpIcon,
   BeakerIcon,
-  CreditCardIcon,
-  CursorArrowRaysIcon,
   DocumentMagnifyingGlassIcon,
-  EnvelopeOpenIcon,
   LifebuoyIcon,
-  UsersIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";

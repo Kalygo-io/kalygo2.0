@@ -10,6 +10,7 @@ import {
   EllipsisVerticalIcon,
   EnvelopeIcon,
   GlobeAltIcon,
+  LinkIcon,
   ShareIcon,
 } from "@heroicons/react/24/outline";
 import get from "lodash.get";
@@ -143,7 +144,7 @@ export default function CustomRequest(p: P) {
                   );
                 }}
               >
-                <GlobeAltIcon className="h-6 w-6" />
+                <LinkIcon className="h-6 w-6" />
               </button>
               <button
                 onClick={() => {
