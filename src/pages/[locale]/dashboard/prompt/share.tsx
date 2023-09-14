@@ -67,7 +67,7 @@ export default function Page() {
   if (record.loading) {
     jsx = <WindowLoader></WindowLoader>;
   } else if (record.val) {
-    jsx = <Prompt prompt={record.val} />;
+    jsx = <Prompt prompt={record.val} showSharing={false} />;
   } else {
     if (record?.err?.response?.status === 403) {
       jsx = <UnauthorizedErrorInDashboard />;

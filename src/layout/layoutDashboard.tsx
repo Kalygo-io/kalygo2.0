@@ -25,6 +25,7 @@ import {
   PuzzlePieceIcon,
   EnvelopeIcon,
   RectangleGroupIcon,
+  UserGroupIcon,
 } from "@heroicons/react/24/outline";
 
 import { BiUserVoice } from "react-icons/bi";
@@ -109,6 +110,11 @@ export default function LayoutDashboard({ children, account }: P) {
     },
     ...(isAdmin
       ? [
+          {
+            name: t("dashboard-page:navigation.access-groups"),
+            href: "/dashboard/access-groups",
+            icon: UserGroupIcon,
+          },
           {
             name: t("dashboard-page:navigation.send-email"),
             href: "/dashboard/send-email",

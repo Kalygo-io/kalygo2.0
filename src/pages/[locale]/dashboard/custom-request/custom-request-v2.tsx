@@ -40,9 +40,9 @@ export default function CustomRequest() {
 
   const { account } = useGetAccount();
 
-  const [summary, setSummaryState] = useState<{
+  const [customRequest, setCustomRequest] = useState<{
     val: {
-      summary: string[];
+      customRequest: string[];
       fileName: string;
       originalLength: number;
       condensedLength: number;
@@ -59,9 +59,9 @@ export default function CustomRequest() {
     useState<boolean>(false);
 
   let jsx = null;
-  if (summary.loading) {
+  if (customRequest.loading) {
     jsx = <WindowLoader></WindowLoader>;
-  } else if (summary.err) {
+  } else if (customRequest.err) {
     jsx = <CustomRequestError />;
   } else if (showPaymentMethodRequiredModal) {
     jsx = (

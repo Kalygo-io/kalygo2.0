@@ -66,9 +66,9 @@ export default function CustomRequest() {
     fetch();
   }, []);
 
-  const [summary, setSummaryState] = useState<{
+  const [customRequest, setCustomRequest] = useState<{
     val: {
-      summary: string[];
+      customRequest: string[];
       fileName: string;
       originalLength: number;
       condensedLength: number;
@@ -85,9 +85,9 @@ export default function CustomRequest() {
     useState<boolean>(false);
 
   let jsx = null;
-  if (summary.loading) {
+  if (customRequest.loading) {
     jsx = <WindowLoader></WindowLoader>;
-  } else if (summary.err) {
+  } else if (customRequest.err) {
     jsx = <CustomRequestOnFilesError />;
   } else if (showPaymentMethodRequiredModal) {
     jsx = (
@@ -105,7 +105,7 @@ export default function CustomRequest() {
           setShowPaymentMethodRequiredModal(showModal);
         }}
         onError={(err) => {
-          setSummaryState({
+          setCustomRequest({
             val: null,
             loading: false,
             err: err,

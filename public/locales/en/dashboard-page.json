@@ -15,7 +15,8 @@
     "buy-credits": "Buy Credits",
     "send-email": "Send Email",
     "text-to-speech": "Text-to-Speech",
-    "prompts": "Prompts"
+    "prompts": "Prompts",
+    "access-groups": "Access Groups"
   },
   "user-nav": {
     "settings": "Settings",
@@ -236,6 +237,16 @@
       "title": "Share",
       "email": "Email"
     }
+  },
+  "access-groups": {
+    "title": "Access Groups",
+    "description": "All the groups you own",
+    "no-groups-found": "No groups found",
+    "view": "View",
+    "delete": "Delete",
+    "create": "Create",
+    "name": "Name",
+    "new-access-group": "New Access Group"
   },
   "admin": {
     "title": "Overview",
