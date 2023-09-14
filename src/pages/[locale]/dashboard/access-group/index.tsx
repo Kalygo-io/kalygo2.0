@@ -1,13 +1,26 @@
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import LayoutDashboard from "@/layout/layoutDashboard";
-import { PaperClipIcon } from "@heroicons/react/20/solid";
 import axios from "axios";
 import { useTranslation } from "next-i18next";
-import { Head } from "next/document";
+import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
+import { AccessGroup } from "@/components/accessGroupComponents/accessGroup";
 
-export default function AccessGroup() {
+const getStaticProps = makeStaticProps([
+  "seo",
+  "navbar",
+  "common",
+  "contract-list",
+  "error",
+  "dashboard-page",
+  "toast-messages",
+]);
+export { getStaticPaths, getStaticProps };
+
+export default function AccessGroupPage() {
   const { t } = useTranslation();
   const router = useRouter();
   const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
@@ -51,21 +64,13 @@ export default function AccessGroup() {
   }, []);
 
   let jsx = null;
-  //   if (accessGroup.loading) {
-  //     jsx = <WindowLoader></WindowLoader>;
-  //   } else if (accessGroup.val) {
-  //     jsx = (
-  //       <Access
-  //         account={account.val}
-  //         customRequest={customRequest.val}
-  //         refresh={refresh}
-  //         refreshCount={refreshCount}
-  //         showSharing={true}
-  //       />
-  //     );
-  //   } else {
-  //     jsx = <ErrorInDashboard />;
-  //   }
+  if (accessGroup.loading) {
+    jsx = <WindowLoader></WindowLoader>;
+  } else if (accessGroup.val) {
+    jsx = <AccessGroup accessGroup={accessGroup.val} />;
+  } else {
+    jsx = <ErrorInDashboard />;
+  }
 
   return (
     <>
@@ -74,20 +79,6 @@ export default function AccessGroup() {
       </Head>
       <LayoutDashboard>
         <div className="p-4 pb-0 sm:p-6 lg:p-8 sm:pb-0 lg:pb-0">
-          <div className="flex flex-col tems-center xl:pr-96">
-            <p className="text-3xl font-bold leading-7 text-gray-900 sm:text-3xl break-words">
-              {/* {customRequest?.val?.prompt} */}
-            </p>
-            <div className="mt-4 relative xl:pr-96">
-              <div
-                className="absolute inset-0 flex items-center"
-                aria-hidden="true"
-              >
-                <div className="w-full border-t border-gray-100" />
-              </div>
-            </div>
-          </div>
-
           <div className="mt-4 flow-root">
             <div className="inline-block min-w-full align-middle">{jsx}</div>
           </div>
@@ -96,3 +87,5 @@ export default function AccessGroup() {
     </>
   );
 }
+
+AccessGroupPage.requireAuth = true;
