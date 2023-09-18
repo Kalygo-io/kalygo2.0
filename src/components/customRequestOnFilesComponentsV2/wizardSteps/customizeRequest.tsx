@@ -321,7 +321,19 @@ export function CustomizeRequest(props: Props) {
                                 <option
                                   disabled={
                                     !enoughUsageCreditsToUsePaidFeatures(
-                                      get(account, "usageCredits", 0)
+                                      get(account, "usageCredits", 0),
+                                      "gpt-3.5-turbo-16k"
+                                    )
+                                  }
+                                  value={"gpt-3.5-turbo-16k"}
+                                >
+                                  GPT-3 (16k)
+                                </option>
+                                <option
+                                  disabled={
+                                    !enoughUsageCreditsToUsePaidFeatures(
+                                      get(account, "usageCredits", 0),
+                                      "gpt-4"
                                     )
                                   }
                                   value={"gpt-4"}
