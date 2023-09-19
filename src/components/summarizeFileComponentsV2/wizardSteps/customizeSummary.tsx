@@ -426,7 +426,11 @@ export function CustomizeSummary(props: Props) {
                                           >
                                             GPT-4 (8k)
                                           </option>
-                                          <option disabled value={"llama-2"}>
+                                          <option
+                                            value={
+                                              "meta/llama-2-70b-chat:02e509c789964a7ea8736978a43525956ef40397be9033abf9fd2badfe68c9e3"
+                                            }
+                                          >
                                             LLaMa 2
                                           </option>
                                         </select>

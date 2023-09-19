@@ -83,7 +83,11 @@ export function Review(props: Props) {
                   {customizations ? (
                     <ul className="m-4">
                       {Object.keys(customizations).map((c, idx) => {
-                        return <li key={c}> {customizations[c]}</li>;
+                        return (
+                          <li key={c} className="truncate text-ellipsis">
+                            {customizations[c]}
+                          </li>
+                        );
                       })}
                     </ul>
                   ) : (

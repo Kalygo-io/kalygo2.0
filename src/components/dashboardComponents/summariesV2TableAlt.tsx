@@ -75,7 +75,7 @@ export function SummariesV2TableAlt(p: P) {
                     <dl className="font-normal lg:hidden">
                       <dt className="sr-only">Model</dt>
                       <dd className="mt-1 truncate text-gray-700">
-                        {summary.model}
+                        {summary.model.slice(0, 16)}
                       </dd>
                       <dt className="sr-only sm:hidden">Mode</dt>
                       <dd className="mt-1 truncate text-gray-500 sm:hidden">
@@ -84,7 +84,9 @@ export function SummariesV2TableAlt(p: P) {
                     </dl>
                   </td>
                   <td className="hidden px-3 py-4 text-sm text-gray-500 lg:table-cell">
-                    {summary.model}
+                    {summary.model.length > 24
+                      ? `${summary.model.slice(0, 24)}...`
+                      : summary.model}
                   </td>
                   <td className="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">
                     {summary.mode}

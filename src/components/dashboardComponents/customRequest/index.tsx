@@ -260,7 +260,7 @@ export default function CustomRequest(p: P) {
                 <dt className="text-sm font-medium leading-6 text-gray-900">
                   {t("dashboard-page:summary-v2.model")}:
                 </dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0 truncate">
                   {customRequest?.model}
                 </dd>
               </div>
