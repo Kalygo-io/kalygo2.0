@@ -2,11 +2,15 @@ import { errorReporter } from "@/utility/error/reporter";
 import { infoToast } from "@/utility/toasts";
 import axios from "axios";
 import { useTranslation } from "next-i18next";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { ShareModal } from "./prefillEmailFormModal";
 
 export const SendEmailForm = () => {
   const { t } = useTranslation();
+
+  const [showPrefillFormModal, setShowPrefillFormModal] =
+    useState<boolean>(false);
 
   const {
     register,
@@ -28,9 +32,9 @@ export const SendEmailForm = () => {
       paragraph2: "",
       includeParagraph3: true,
       paragraph3: "",
-      includeParagraph4: false,
+      includeParagraph4: true,
       paragraph4: "",
-      includeParagraph5: false,
+      includeParagraph5: true,
       paragraph5: "",
       includeParagraph6: false,
       paragraph6: "",
@@ -109,6 +113,15 @@ export const SendEmailForm = () => {
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-5xl">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+              <div
+                className="col-span-6 text-blue-600 text-sm cursor-pointer"
+                onClick={() => {
+                  // console.log("");
+                  setShowPrefillFormModal(true);
+                }}
+              >
+                Prefill form
+              </div>
               <div className="sm:col-span-3">
                 <label
                   htmlFor="recipientEmails"
@@ -515,6 +528,39 @@ export const SendEmailForm = () => {
           </form>
         </div>
       </div>
+      <ShareModal
+        open={showPrefillFormModal}
+        cb={(json: Record<string, any> | null, isOpen: boolean) => {
+          console.log("callback");
+          if (json) {
+            try {
+              setValue("subject", json.subject);
+            } catch (e) {}
+            try {
+              setValue("emailPreviewText", json.emailPreviewText);
+            } catch (e) {}
+            try {
+              setValue("greeting", json.greeting);
+            } catch (e) {}
+            try {
+              setValue("paragraph1", json.paragraph1);
+            } catch (e) {}
+            try {
+              setValue("paragraph2", json.paragraph2);
+            } catch (e) {}
+            try {
+              setValue("paragraph3", json.paragraph3);
+            } catch (e) {}
+            try {
+              setValue("paragraph4", json.paragraph4);
+            } catch (e) {}
+            try {
+              setValue("paragraph5", json.paragraph5);
+            } catch (e) {}
+          }
+          setShowPrefillFormModal(isOpen);
+        }}
+      />
     </>
   );
 };
