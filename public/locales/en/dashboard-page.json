@@ -253,6 +253,20 @@
     "accounts": {
       "title": "Accounts"
     },
+    "account": {
+      "title": "Account",
+      "credits": {
+        "title": "Credits",
+        "summary": "Summary",
+        "summaries": "Summaries",
+        "custom-request": "Custom Request",
+        "custom-requests": "Custom Requests",
+        "vector-search": "Vector Search",
+        "vector-searches": "Vector Searches",
+        "usage-credit": "Usage Credit",
+        "usage-credits": "Usage Credits"
+      }
+    },
     "logins": {
       "title": "Logins"
     },

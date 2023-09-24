@@ -26,9 +26,7 @@ export { getStaticPaths, getStaticProps };
 
 export default function CustomRequestResult() {
   const router = useRouter();
-
   const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
-
   const customRequestId = searchParams.get("custom-request-id") || "";
   const { t } = useTranslation();
   const { account, refresh, refreshCount } = useGetAccountWithAccessGroups();
