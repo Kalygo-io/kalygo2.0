@@ -48,12 +48,12 @@ export function Credits(p: P) {
       value: customRequestCredits,
     },
     {
-      id: 3,
+      id: 4,
       name:
         usageCredits === 1
           ? t("dashboard-page:admin.account.credits.usage-credit")
           : t("dashboard-page:admin.account.credits.usage-credits"),
-      value: usageCredits.toFixed(2),
+      value: usageCredits?.toFixed(2),
     },
   ];
 
