@@ -106,13 +106,13 @@ export default function LayoutDashboard({ children, account }: P) {
       href: "/dashboard/queue",
       icon: QueueListIcon,
     },
+    {
+      name: t("dashboard-page:navigation.access-groups"),
+      href: "/dashboard/access-groups",
+      icon: UserGroupIcon,
+    },
     ...(isAdmin
       ? [
-          {
-            name: t("dashboard-page:navigation.access-groups"),
-            href: "/dashboard/access-groups",
-            icon: UserGroupIcon,
-          },
           {
             name: t("dashboard-page:navigation.send-email"),
             href: "/dashboard/send-email",
