@@ -20,7 +20,7 @@ export function ChargesTable(p: P) {
             Charges
           </h3>
           <p className="mt-2 text-sm text-gray-700">
-            A list of all the account's charges in Stripe
+            A list of all the charges in Stripe for this account
           </p>
         </div>
       </div>
