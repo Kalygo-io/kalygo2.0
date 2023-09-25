@@ -122,7 +122,7 @@ export const ShareModal = (p: P) => {
                 ) : (
                   <ToGroupForm
                     summary={summary}
-                    accessGroups={account.accessGroups}
+                    account={account}
                     cb={(isOpen: boolean) => {
                       console.log("--- _ Group _ ---");
                       cb(isOpen);
