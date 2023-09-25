@@ -4,7 +4,7 @@ import { Personal } from "./personal";
 import { Divider } from "@/components/shared/Divider";
 import { ActivityTable } from "./activity";
 import { Context } from "./context";
-import { ChargesTable } from "./chargesTable";
+import { Billing } from "./billing";
 
 const subAccountNavigation: {
   name: "General" | "Activity" | "Context" | "Billing";
@@ -58,14 +58,13 @@ export function AccountOverview(p: P) {
           <Credits account={account} />
         </>
       )}
-
       {tab === "Activity" && (
         <>
           <ActivityTable activity={account.activity || []} />
         </>
       )}
       {tab === "Context" && <Context />}
-      {tab === "Billing" && <ChargesTable />}
+      {tab === "Billing" && <Billing />}
     </main>
   );
 }

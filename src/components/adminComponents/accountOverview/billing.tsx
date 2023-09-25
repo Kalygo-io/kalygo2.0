@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 import { ChargesTable } from "./chargesTable";
 
 export function Billing() {
-  const [context, setContext] = useState<{
+  const [charges, setCharges] = useState<{
     loading: boolean;
     val: any[];
     err: any;
@@ -31,7 +31,7 @@ export function Billing() {
         // const getAccountResponse = await getAccountRequest;
         // console.log("getAccountResponse", getAccountResponse);
 
-        setContext({
+        setCharges({
           loading: false,
           //   val: getAccountResponse?.data,
           val: [],
@@ -41,7 +41,7 @@ export function Billing() {
         console.log("getAccountChargeHistory");
       } catch (e) {
         // console.error(e);
-        setContext({
+        setCharges({
           loading: false,
           val: [],
           err: e,
@@ -52,10 +52,10 @@ export function Billing() {
   }, []);
 
   let jsx = null;
-  if (context.loading) {
+  if (charges.loading) {
     jsx = <WindowLoader></WindowLoader>;
-  } else if (context.val) {
-    jsx = <ChargesTable documents={context.val} />;
+  } else if (charges.val) {
+    jsx = <ChargesTable charges={charges.val} />;
   } else {
     jsx = <ErrorInDashboard />;
   }
