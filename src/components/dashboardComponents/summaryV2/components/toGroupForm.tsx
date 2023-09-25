@@ -91,8 +91,8 @@ export const ToGroupForm = (p: P) => {
             </option>
             {account?.accessGroups.map((ag: any) => {
               return (
-                <option key={ag?.accessGroup.name} value={ag?.accessGroup.id}>
-                  {ag?.accessGroup.name}
+                <option key={ag?.name} value={ag?.id}>
+                  {ag?.name}
                 </option>
               );
             })}
