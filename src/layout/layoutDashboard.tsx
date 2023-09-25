@@ -28,8 +28,6 @@ import {
   UserGroupIcon,
 } from "@heroicons/react/24/outline";
 
-import { BiUserVoice } from "react-icons/bi";
-
 import { signOut } from "@/services/signOut";
 import { useTranslation } from "next-i18next";
 import { classNames } from "@/utility/misc/classNames";

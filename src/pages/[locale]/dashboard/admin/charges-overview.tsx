@@ -63,14 +63,14 @@ export default function PaidAccountsOverview() {
           err: null,
         });
 
-        const requestB = getChargesFactory(
+        const request = getChargesFactory(
           columnDirectionsB.columnToSort,
           columnDirectionsB.state[columnDirectionsB.columnToSort],
           tableStateB.page - 1,
           tableStateB.perPage
         );
 
-        const response = await requestB;
+        const response = await request;
 
         setCharges({
           loading: false,

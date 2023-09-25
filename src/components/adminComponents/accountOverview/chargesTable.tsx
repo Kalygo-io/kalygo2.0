@@ -20,7 +20,7 @@ export function ChargesTable(p: P) {
             Charges
           </h3>
           <p className="mt-2 text-sm text-gray-700">
-            A list of all the charges in Stripe
+            A list of all the account's charges in Stripe
           </p>
         </div>
       </div>
@@ -66,9 +66,9 @@ export function ChargesTable(p: P) {
                   >
                     <div className="group inline-flex">Refunded</div>
                   </th>
-                  <th scope="col" className="relative py-3.5 pl-3 pr-0">
+                  {/* <th scope="col" className="relative py-3.5 pl-3 pr-0">
                     <span className="sr-only">View</span>
-                  </th>
+                  </th> */}
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 bg-white">
@@ -98,14 +98,14 @@ export function ChargesTable(p: P) {
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {record.refunded ? "T" : "F"}
                       </td>
-                      <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-0">
+                      {/* <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-0">
                         <button
                           type="button"
                           className="text-blue-600 hover:text-blue-900"
                         >
                           View<span className="sr-only">, {record.id}</span>
                         </button>
-                      </td>
+                      </td> */}
                     </tr>
                   ))}
               </tbody>

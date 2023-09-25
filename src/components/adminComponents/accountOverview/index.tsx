@@ -63,8 +63,8 @@ export function AccountOverview(p: P) {
           <ActivityTable activity={account.activity || []} />
         </>
       )}
-      {tab === "Context" && <Context />}
-      {tab === "Billing" && <Billing />}
+      {tab === "Context" && <Context account={account} />}
+      {tab === "Billing" && <Billing account={account} />}
     </main>
   );
 }

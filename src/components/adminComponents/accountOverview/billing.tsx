@@ -12,35 +12,43 @@ import { AccountTableColumns } from "@/types/AccountTableColumns";
 import { getAccountByIdFactory } from "@/serviceFactory/getAccountByIdFactory";
 import { useRouter } from "next/router";
 import { ChargesTable } from "./chargesTable";
+import { getAccountChargesFactory } from "@/serviceFactory/getAccountChargesFactory";
 
-export function Billing() {
+interface P {
+  account: any;
+}
+
+export function Billing(p: P) {
   const [charges, setCharges] = useState<{
     loading: boolean;
     val: any[];
     err: any;
   }>({
-    loading: false,
+    loading: true,
     val: [],
     err: null,
   });
 
+  const { account } = p;
+
   useEffect(() => {
     async function getAccountChargeHistory() {
       try {
-        // const getAccountRequest = getAccountByIdFactory(accountId);
-        // const getAccountResponse = await getAccountRequest;
-        // console.log("getAccountResponse", getAccountResponse);
+        // debugger;
+        const request = getAccountChargesFactory(account.id);
+        const response = await request;
+
+        console.log("response.data", response?.data);
 
         setCharges({
           loading: false,
-          //   val: getAccountResponse?.data,
-          val: [],
+          val: response?.data?.stripeCharges || [],
           err: null,
         });
 
         console.log("getAccountChargeHistory");
       } catch (e) {
-        // console.error(e);
+        console.error(e);
         setCharges({
           loading: false,
           val: [],
@@ -48,8 +56,8 @@ export function Billing() {
         });
       }
     }
-    getAccountChargeHistory();
-  }, []);
+    account && getAccountChargeHistory();
+  }, [account]);
 
   let jsx = null;
   if (charges.loading) {

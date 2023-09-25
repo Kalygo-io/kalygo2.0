@@ -47,7 +47,7 @@ export const Personal = (p: P) => {
               <input
                 type="text"
                 readOnly
-                value={account.firstName}
+                value={account.firstName || ""}
                 name="first-name"
                 id="first-name"
                 autoComplete="given-name"
@@ -67,7 +67,7 @@ export const Personal = (p: P) => {
               <input
                 type="text"
                 readOnly
-                value={account.lastName}
+                value={account.lastName || ""}
                 name="last-name"
                 id="last-name"
                 autoComplete="family-name"
@@ -87,7 +87,7 @@ export const Personal = (p: P) => {
               <input
                 id="email"
                 readOnly
-                value={account.email}
+                value={account.email || ""}
                 name="email"
                 type="email"
                 autoComplete="email"

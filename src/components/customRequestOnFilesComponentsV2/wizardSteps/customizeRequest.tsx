@@ -84,7 +84,6 @@ export function CustomizeRequest(props: Props) {
   const onSubmit = async (data: any) => {
     try {
       console.log("provideRequest submit", data);
-      debugger;
       setCustomizations(data);
       setStep(3);
     } catch (e: any) {}

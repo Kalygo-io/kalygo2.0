@@ -37,7 +37,8 @@ export default function Signin() {
         const isAuthedRequest = isAuthedFactory();
         const isAuthedResponse = await isAuthedRequest;
         console.log("isAuthedResponse", isAuthedResponse);
-        router.push(`/dashboard`);
+        const detectedLng = navigatorLangDetector();
+        router.push(`/${detectedLng}/dashboard`);
       } catch (e) {
         console.log("isAuthed FALSE");
       }

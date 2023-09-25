@@ -13,7 +13,13 @@ import { getAccountByIdFactory } from "@/serviceFactory/getAccountByIdFactory";
 import { useRouter } from "next/router";
 import { ContextDocumentTable } from "./contextDocumentTable";
 
-export function Context() {
+interface P {
+  account: any;
+}
+
+export function Context(p: P) {
+  const { account } = p;
+
   const [context, setContext] = useState<{
     loading: boolean;
     val: any[];
@@ -37,8 +43,6 @@ export function Context() {
           val: [],
           err: null,
         });
-
-        console.log("getAccountContextDocuments");
       } catch (e) {
         // console.error(e);
         setContext({
