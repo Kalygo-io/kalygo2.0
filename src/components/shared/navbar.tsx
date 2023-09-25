@@ -11,7 +11,6 @@ export function Navbar() {
   const { t } = useTranslation();
 
   const navigation = [
-    // { name: t("navbar:navbar-use-cases"), href: "/use-cases" },
     { name: t("navbar:navbar-about"), href: "/about" },
     { name: t("navbar:navbar-feedback"), href: "/feedback" },
     { name: t("navbar:navbar-blog"), href: "/blog" },
