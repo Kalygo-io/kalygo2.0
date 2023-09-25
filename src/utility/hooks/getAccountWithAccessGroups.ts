@@ -33,20 +33,28 @@ export function useGetAccountWithAccessGroups() {
 
   useEffect(() => {
     async function fetch() {
-      console.log("calling fetch...");
+      try {
+        console.log("calling fetch...");
 
-      const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account/get-account-with-access-groups`,
-        {
-          withCredentials: true,
-        }
-      );
+        const res = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/account/get-account-with-access-groups`,
+          {
+            withCredentials: true,
+          }
+        );
 
-      setAccount({
-        loading: false,
-        val: res.data,
-        err: null,
-      });
+        setAccount({
+          loading: false,
+          val: res.data,
+          err: null,
+        });
+      } catch (e) {
+        setAccount({
+          loading: false,
+          val: null,
+          err: e,
+        });
+      }
     }
 
     fetch();
