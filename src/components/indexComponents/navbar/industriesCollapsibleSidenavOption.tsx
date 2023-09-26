@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Disclosure, Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
-import { GoBook, GoLaw, GoHeart } from "react-icons/go";
+import { GoBook, GoLaw, GoHeart, GoSearch } from "react-icons/go";
 import { useTranslation } from "next-i18next";
 import { classNames } from "@/utility/misc/classNames";
 
@@ -16,6 +16,7 @@ export function IndustriesCollapsibleSidenavOption() {
     },
     { name: t("navbar:dropdown.higher-ed"), href: "/higher-ed", icon: GoBook },
     { name: t("navbar:dropdown.medical"), href: "/medical", icon: GoHeart },
+    { name: t("navbar:dropdown.research"), href: "/research", icon: GoSearch },
   ];
 
   return (
