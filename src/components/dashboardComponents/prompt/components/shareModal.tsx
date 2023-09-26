@@ -101,8 +101,8 @@ export const ShareModal = (p: P) => {
                   />
                 ) : (
                   <ToGroupForm
+                    account={account}
                     prompt={prompt}
-                    accessGroups={account.accessGroups}
                     cb={(isOpen: boolean) => {
                       console.log("--- _ Group _ ---");
                       cb(isOpen);

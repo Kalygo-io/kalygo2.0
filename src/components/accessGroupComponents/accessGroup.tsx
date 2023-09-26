@@ -2,6 +2,7 @@ import { PaperClipIcon } from "@heroicons/react/20/solid";
 import { MembersTable } from "./membersTable";
 import { SummariesTable } from "./summariesTable";
 import { CustomRequestsTable } from "./customRequestsTable";
+import { PromptsTable } from "./promptsTable";
 
 interface P {
   accessGroup: any;
@@ -39,6 +40,12 @@ export function AccessGroup(p: P) {
       <CustomRequestsTable
         accessGroup={accessGroup}
         customRequests={accessGroup.CustomRequestsAndAccessGroups}
+        refresh={refresh}
+      />
+
+      <PromptsTable
+        accessGroup={accessGroup}
+        prompts={accessGroup.PromptsAndAccessGroups}
         refresh={refresh}
       />
     </>

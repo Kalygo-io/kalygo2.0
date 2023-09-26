@@ -8,12 +8,12 @@ import { useForm } from "react-hook-form";
 
 interface P {
   cb: (isOpen: boolean) => void;
-  accessGroups: any[];
   prompt: any;
+  account: any;
 }
 
 export const ToGroupForm = (p: P) => {
-  const { cb, accessGroups, prompt } = p;
+  const { cb, prompt, account } = p;
   const { t } = useTranslation();
   const {
     register,
@@ -44,19 +44,14 @@ export const ToGroupForm = (p: P) => {
     }
   };
 
-  console.log("accessGroups", accessGroups);
   console.log("prompt", prompt);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-wrap w-full">
         <div className="py-4">
-          {prompt.PromptsAndAccessGroups?.filter((i: any) => {
-            return i?.accessGroup?.visible;
-          }).length > 0 && <b>Shared with:</b>}{" "}
-          {prompt.PromptsAndAccessGroups?.filter((i: any) => {
-            return i.accessGroup.visible;
-          }).map((i: any) => (
+          {prompt.PromptsAndAccessGroups?.length > 0 && <b>Shared with:</b>}{" "}
+          {prompt.PromptsAndAccessGroups?.map((i: any) => (
             <span
               key={i.accessGroup.id}
               className="inline-flex items-start gap-x-1 truncate"
@@ -90,18 +85,13 @@ export const ToGroupForm = (p: P) => {
                 <option value={""} className="text-gray-400">
                   Select Access Group
                 </option>
-                {accessGroups
-                  .filter((value) => value?.accessGroup?.visible)
-                  .map((g) => {
-                    return (
-                      <option
-                        key={g?.accessGroup.name}
-                        value={g?.accessGroup.id}
-                      >
-                        {g?.accessGroup.name}
-                      </option>
-                    );
-                  })}
+                {account.accessGroups.map((ag: any) => {
+                  return (
+                    <option key={ag?.name} value={ag?.id}>
+                      {ag?.name}
+                    </option>
+                  );
+                })}
               </select>
             </div>
           </div>

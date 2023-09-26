@@ -93,7 +93,7 @@ export function MembersTable(p: P) {
                           refresh((val: number) => val + 1);
                         }}
                       >
-                        Delete
+                        Remove
                       </button>
                     </td>
                   </tr>

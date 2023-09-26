@@ -21,7 +21,7 @@ export const Prompt = (p: P) => {
   const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
 
   return (
-    <div className="mx-auto max-w-2xl text-center">
+    <div className="py-2 mx-auto max-w-2xl text-center">
       <div className="mx-auto flex justify-end space-x-2 max-w-2xl">
         {showSharing && (
           <>
@@ -44,7 +44,7 @@ export const Prompt = (p: P) => {
           </>
         )}
       </div>
-      <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+      <h2 className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
         {prompt.prompt}
       </h2>
       <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600">
