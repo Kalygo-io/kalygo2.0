@@ -15,7 +15,8 @@
     "buy-credits": "Acheter des crédits",
     "send-email": "Envoyer un e-mail",
     "text-to-speech": "Texte pour parler",
-    "prompts": "Instructions"
+    "prompts": "Instructions",
+    "access-groups": "Groupes d'accès"
   },
   "user-nav": {
     "settings": "Paramètres",
@@ -189,6 +190,9 @@
     "title": "Instructions",
     "no-prompts-yet": "Aucune invite pour l'instant"
   },
+  "prompt": {
+    "title": "Rapide"
+  },
   "queue": {
     "title": "File d'attente",
     "job-status": "Statut du travail",
@@ -227,10 +231,28 @@
       "email": "E-mail"
     }
   },
+  "access-groups": {
+    "title": "Groupes d'accès",
+    "description": "Tous les groupes que vous possédez",
+    "no-groups-found": "Aucun groupe trouvé",
+    "view": "Voir",
+    "delete": "Supprimer",
+    "create": "Créer",
+    "name": "Nom",
+    "new-access-group": "Nouveau groupe d'accès"
+  },
   "admin": {
     "title": "Aperçu",
     "accounts": {
       "title": "Comptes"
+    },
+    "account": {
+      "title": "Compte",
+      "credits": {
+        "title": "Crédits",
+        "summary": "Résumé",
+        "summaries": "Résumés"
+      }
     },
     "logins": {
       "title": "Connexions"

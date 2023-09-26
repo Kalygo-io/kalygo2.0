@@ -26,6 +26,13 @@
       "typewriter-word-2": "Homework made easy",
       "typewriter-word-3": "Grading done fast",
       "typewriter-word-4": "Education made intuitive"
+    },
+    "research": {
+      "landing-page-subheadline": "Professional Researchers Need Kalygo",
+      "typewriter-word-1": "Research done fast",
+      "typewriter-word-2": "Insights gleaned quickly",
+      "typewriter-word-3": "Shareable insights",
+      "typewriter-word-4": "Tailored to your timelines"
     }
   },
   "landing-page-subheadline": "Upload data and leverage cutting edge software that includes customizable prompting, summarization across documents, and collaboration workflows",

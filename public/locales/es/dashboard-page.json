@@ -15,7 +15,8 @@
     "buy-credits": "Compra creditos",
     "send-email": "Enviar correo electrónico",
     "text-to-speech": "Texto a voz",
-    "prompts": "Indicaciones"
+    "prompts": "Indicaciones",
+    "access-groups": "Grupos de acceso"
   },
   "user-nav": {
     "settings": "Ajustes",
@@ -191,6 +192,9 @@
     "title": "Indicaciones",
     "no-prompts-yet": "Aún no hay mensajes"
   },
+  "prompt": {
+    "title": "Inmediato"
+  },
   "queue": {
     "title": "Mis solicitudes",
     "nothing-found": "Nada Encontrado",
@@ -233,10 +237,34 @@
       "email": "Correo electrónico"
     }
   },
+  "access-groups": {
+    "title": "Grupos de acceso",
+    "description": "Todos los grupos que posees",
+    "no-groups-found": "No se encontraron grupos",
+    "view": "Vista",
+    "delete": "Borrar",
+    "create": "Crear",
+    "name": "Nombre",
+    "new-access-group": "Nuevo grupo de acceso"
+  },
   "admin": {
     "title": "Descripción general",
     "accounts": {
       "title": "Cuentas"
+    },
+    "account": {
+      "title": "Cuenta",
+      "credits": {
+        "title": "Créditos",
+        "summary": "Resumen",
+        "summaries": "Resúmenes",
+        "custom-request": "Solicitud personalizada",
+        "custom-requests": "Solicitudes personalizadas",
+        "vector-search": "Búsqueda de vectores",
+        "vector-searches": "Búsquedas vectoriales",
+        "usage-credit": "Crédito de uso",
+        "usage-credits": "Créditos de uso"
+      }
     },
     "logins": {
       "title": "Inicios de sesión"

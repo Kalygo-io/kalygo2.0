@@ -37,6 +37,17 @@
       "persona-3": "Profesores",
       "persona-3-subtitle": "Profesores y Asistentes Técnicos de las Artes y las Ciencias"
     },
+    "research": {
+      "description-1": "La investigación ha requerido y siempre requerirá",
+      "description-2": "pensamiento crítico y pensamiento independiente",
+      "description-3": "pero ahora es el momento de aceptar flujos de trabajo de documentos acelerados.",
+      "persona-1": "Analistas de mercado",
+      "persona-1-subtitle": "Observadores del mercado y analistas del lado de las ventas",
+      "persona-2": "Investigadores",
+      "persona-2-subtitle": "Ya sea legal o médico",
+      "persona-3": "Almas curiosas",
+      "persona-3-subtitle": "La aventura se encuentra con la investigación"
+    },
     "law": {
       "description-1": "El mundo legal está lleno de",
       "description-2": "cantidades inmanejables de documentos",

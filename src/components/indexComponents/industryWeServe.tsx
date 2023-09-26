@@ -2,7 +2,7 @@ import { useTranslation } from "next-i18next";
 import Image from "next/image";
 
 interface P {
-  industry: "medical" | "law" | "higher-ed";
+  industry: "medical" | "law" | "higher-ed" | "research";
 }
 
 export default function IndustryWeServe(p: P) {
@@ -171,6 +171,56 @@ export default function IndustryWeServe(p: P) {
           {t("common:industries-we-serve.law.description-1")}{" "}
           <b>{t("common:industries-we-serve.law.description-2")}</b>{" "}
           {t("common:industries-we-serve.law.description-3")}
+        </p>
+      );
+      break;
+    case "research":
+      profiles = [
+        {
+          title: t("common:industries-we-serve.research.persona-1"),
+          subtitle: t("common:industries-we-serve.research.persona-1-subtitle"),
+          image: (
+            <Image
+              src="/Market_Analyst.gif"
+              width={500}
+              height={500}
+              alt=""
+              className="object-fit rounded-2xl object-center opacity-100 group-hover:opacity-50 mx-auto"
+            />
+          ),
+        },
+        {
+          title: t("common:industries-we-serve.research.persona-2"),
+          subtitle: t("common:industries-we-serve.research.persona-2-subtitle"),
+          image: (
+            <Image
+              src="/Search.gif"
+              width={500}
+              height={500}
+              alt=""
+              className="object-fit rounded-2xl object-center opacity-100 group-hover:opacity-50 mx-auto"
+            />
+          ),
+        },
+        {
+          title: t("common:industries-we-serve.research.persona-3"),
+          subtitle: t("common:industries-we-serve.research.persona-3-subtitle"),
+          image: (
+            <Image
+              src="/Contemplating.gif"
+              width={500}
+              height={500}
+              alt=""
+              className="object-fit rounded-2xl object-center opacity-100 group-hover:opacity-50 mx-auto"
+            />
+          ),
+        },
+      ];
+      subtitle = (
+        <p className="mt-6 text-lg leading-8 text-white text-center">
+          {t("common:industries-we-serve.research.description-1")}{" "}
+          <b>{t("common:industries-we-serve.research.description-2")}</b>{" "}
+          {t("common:industries-we-serve.research.description-3")}
         </p>
       );
       break;

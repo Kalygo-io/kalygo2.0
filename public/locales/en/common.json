@@ -37,6 +37,17 @@
       "persona-3": "Professors",
       "persona-3-subtitle": "Teachers and TAs of the Arts and Sciences"
     },
+    "research": {
+      "description-1": "Research has and will always require",
+      "description-2": "critical thinking and independent thought",
+      "description-3": "but the time for coming to terms with accelerated document workflows is now.",
+      "persona-1": "Market Analysts",
+      "persona-1-subtitle": "Market Watchers and Sell-side Analysts",
+      "persona-2": "Researchers",
+      "persona-2-subtitle": "Whether it's legal or medical",
+      "persona-3": "Inquisitive Souls",
+      "persona-3-subtitle": "Adventure meets research"
+    },
     "law": {
       "description-1": "The legal world is filled with",
       "description-2": "unmanageable amounts of documents",

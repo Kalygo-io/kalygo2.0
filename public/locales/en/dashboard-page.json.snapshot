@@ -15,7 +15,8 @@
     "buy-credits": "Buy Credits",
     "send-email": "Send Email",
     "text-to-speech": "Text-to-Speech",
-    "prompts": "Prompts"
+    "prompts": "Prompts",
+    "access-groups": "Access Groups"
   },
   "user-nav": {
     "settings": "Settings",
@@ -191,6 +192,9 @@
     "title": "Prompts",
     "no-prompts-yet": "No prompts yet"
   },
+  "prompt": {
+    "title": "Prompt"
+  },
   "queue": {
     "title": "My Requests",
     "nothing-found": "Nothing found",
@@ -233,10 +237,34 @@
       "email": "Email"
     }
   },
+  "access-groups": {
+    "title": "Access Groups",
+    "description": "All the groups you own",
+    "no-groups-found": "No groups found",
+    "view": "View",
+    "delete": "Delete",
+    "create": "Create",
+    "name": "Name",
+    "new-access-group": "New Access Group"
+  },
   "admin": {
     "title": "Overview",
     "accounts": {
       "title": "Accounts"
+    },
+    "account": {
+      "title": "Account",
+      "credits": {
+        "title": "Credits",
+        "summary": "Summary",
+        "summaries": "Summaries",
+        "custom-request": "Custom Request",
+        "custom-requests": "Custom Requests",
+        "vector-search": "Vector Search",
+        "vector-searches": "Vector Searches",
+        "usage-credit": "Usage Credit",
+        "usage-credits": "Usage Credits"
+      }
     },
     "logins": {
       "title": "Logins"

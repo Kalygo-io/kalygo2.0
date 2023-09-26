@@ -6,7 +6,7 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import Link from "../shared/Link";
 
 interface P {
-  industry: "medical" | "law" | "higher-ed";
+  industry: "medical" | "law" | "higher-ed" | "research";
 }
 
 export const IndustryHero = (p: P) => {
@@ -48,6 +48,17 @@ export const IndustryHero = (p: P) => {
       ];
       subHeadline = t(
         "landing-page:industries.higher-ed.landing-page-subheadline"
+      );
+      break;
+    case "research":
+      typewriterCopy = [
+        t("landing-page:industries.research.typewriter-word-1"),
+        t("landing-page:industries.research.typewriter-word-2"),
+        t("landing-page:industries.research.typewriter-word-3"),
+        t("landing-page:industries.research.typewriter-word-4"),
+      ];
+      subHeadline = t(
+        "landing-page:industries.research.landing-page-subheadline"
       );
       break;
   }
