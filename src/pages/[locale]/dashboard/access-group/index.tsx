@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
 import { AccessGroup } from "@/components/accessGroupComponents/accessGroup";
+import { useGetAccessGroups } from "@/utility/hooks/getAccessGroups";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -26,48 +27,13 @@ export default function AccessGroupPage() {
   const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
   const accessGroupId = searchParams.get("access-group-id") || "";
 
-  const [accessGroup, setAccessGroup] = useState<{
-    val: any;
-    loading: boolean;
-    err: any;
-  }>({
-    val: null,
-    loading: true,
-    err: null,
-  });
-
-  useEffect(() => {
-    async function fetch() {
-      try {
-        const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/access-group/${accessGroupId}`,
-          {
-            withCredentials: true,
-          }
-        );
-
-        setAccessGroup({
-          loading: false,
-          val: res.data,
-          err: null,
-        });
-      } catch (e) {
-        setAccessGroup({
-          loading: false,
-          val: null,
-          err: e,
-        });
-      }
-    }
-
-    fetch();
-  }, []);
+  const { accessGroup, refresh } = useGetAccessGroups(accessGroupId);
 
   let jsx = null;
   if (accessGroup.loading) {
     jsx = <WindowLoader></WindowLoader>;
   } else if (accessGroup.val) {
-    jsx = <AccessGroup accessGroup={accessGroup.val} />;
+    jsx = <AccessGroup accessGroup={accessGroup.val} refresh={refresh} />;
   } else {
     jsx = <ErrorInDashboard />;
   }

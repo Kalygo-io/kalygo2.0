@@ -51,12 +51,10 @@ export const ToGroupForm = (p: P) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-wrap w-full">
         <div className="py-4">
-          {customRequest.CustomRequestsAndAccessGroups?.filter((i: any) => {
-            return i?.accessGroup?.visible;
-          }).length > 0 && <b>Shared with:</b>}{" "}
-          {customRequest.CustomRequestsAndAccessGroups?.filter((i: any) => {
-            return i.accessGroup.visible;
-          }).map((i: any) => (
+          {customRequest.CustomRequestsAndAccessGroups?.length > 0 && (
+            <b>Shared with:</b>
+          )}{" "}
+          {customRequest.CustomRequestsAndAccessGroups?.map((i: any) => (
             <span
               key={i.accessGroup.id}
               className="inline-flex items-start gap-x-1 truncate"
@@ -78,32 +76,25 @@ export const ToGroupForm = (p: P) => {
           ))}
         </div>
         <fieldset className="relative w-full flex flex-col max-w-lg">
-          <div className="">
-            <div className="space-x-2 flex justify-between">
-              <select
-                {...register("shareToGroup")}
-                id="shareToGroup"
-                name="shareToGroup"
-                autoComplete="shareToGroup"
-                className="mt-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6"
-              >
-                <option value={""} className="text-gray-400">
-                  Select Access Group
-                </option>
-                {accessGroups
-                  .filter((value) => value?.accessGroup?.visible)
-                  .map((g) => {
-                    return (
-                      <option
-                        key={g?.accessGroup.name}
-                        value={g?.accessGroup.id}
-                      >
-                        {g?.accessGroup.name}
-                      </option>
-                    );
-                  })}
-              </select>
-            </div>
+          <div className="space-x-2 flex justify-between">
+            <select
+              {...register("shareToGroup")}
+              id="shareToGroup"
+              name="shareToGroup"
+              autoComplete="shareToGroup"
+              className="mt-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+            >
+              <option value={""} className="text-gray-400">
+                Select Access Group
+              </option>
+              {accessGroups.map((ag) => {
+                return (
+                  <option key={ag?.name} value={ag?.id}>
+                    {ag?.name}
+                  </option>
+                );
+              })}
+            </select>
           </div>
         </fieldset>
       </div>
