@@ -4,7 +4,7 @@ import axios from "axios";
 import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { DateTimePicker } from "react-rainbow-components";
+// import { DateTimePicker } from "react-rainbow-components";
 import { ShareModal } from "./prefillEmailFormModal";
 
 export const SendEmailForm = () => {
@@ -127,7 +127,7 @@ export const SendEmailForm = () => {
               >
                 Prefill form
               </div>
-              <div className="col-span-6">
+              {/* <div className="col-span-6">
                 <Controller
                   name="scheduledAt"
                   control={control}
@@ -142,7 +142,7 @@ export const SendEmailForm = () => {
                     />
                   )}
                 />
-              </div>
+              </div> */}
               <div className="col-span-6 sm:col-span-3">
                 <label
                   htmlFor="recipientEmails"
