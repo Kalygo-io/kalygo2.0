@@ -122,7 +122,7 @@ export const SendEmailForm = () => {
               >
                 Prefill form
               </div>
-              <div className="sm:col-span-3">
+              <div className="col-span-6 sm:col-span-3">
                 <label
                   htmlFor="recipientEmails"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -149,7 +149,7 @@ export const SendEmailForm = () => {
                   />
                 </div>
               </div>
-              <div className="sm:col-span-3">
+              <div className="col-span-6 sm:col-span-3">
                 <label
                   htmlFor="subject"
                   className="block text-sm font-medium leading-6 text-gray-900"

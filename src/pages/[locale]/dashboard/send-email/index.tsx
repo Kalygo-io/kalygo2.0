@@ -7,11 +7,8 @@ import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
-import { useState } from "react";
-import { infoToast, errorToast } from "@/utility/toasts";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { SendEmailForm } from "@/components/sendEmailComponents/sendEmailForm";
-import { usePurchaseHistory } from "@/utility/hooks/getPurchaseHistory";
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
 
 const getStaticProps = makeStaticProps([
