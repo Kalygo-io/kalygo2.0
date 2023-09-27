@@ -3,7 +3,8 @@ import { infoToast } from "@/utility/toasts";
 import axios from "axios";
 import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
+import { DateTimePicker } from "react-rainbow-components";
 import { ShareModal } from "./prefillEmailFormModal";
 
 export const SendEmailForm = () => {
@@ -19,8 +20,10 @@ export const SendEmailForm = () => {
     formState: { errors },
     setValue,
     watch,
+    control,
   } = useForm({
     defaultValues: {
+      scheduledAt: new Date(),
       recipientEmails: "tad@cmdlabs.io",
       subject: "A hyper-customized message...",
       emailPreviewText: "Message Preview",
@@ -61,6 +64,8 @@ export const SendEmailForm = () => {
         ending,
         endingSignature,
       } = data;
+
+      console.log("data", data);
 
       const recipientEmailsAsArray = (recipientEmails as string).split(",");
 
@@ -121,6 +126,22 @@ export const SendEmailForm = () => {
                 }}
               >
                 Prefill form
+              </div>
+              <div className="col-span-6">
+                <Controller
+                  name="scheduledAt"
+                  control={control}
+                  render={(props) => (
+                    <DateTimePicker
+                      {...props.field}
+                      className="max-w-xs cursor-pointer"
+                      onChange={(date) => {
+                        console.log("date", date);
+                        setValue("scheduledAt", date);
+                      }}
+                    />
+                  )}
+                />
               </div>
               <div className="col-span-6 sm:col-span-3">
                 <label
