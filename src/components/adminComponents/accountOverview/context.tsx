@@ -11,7 +11,8 @@ import { ColumnDirection } from "@/types/ColumnDirection";
 import { AccountTableColumns } from "@/types/AccountTableColumns";
 import { getAccountByIdFactory } from "@/serviceFactory/getAccountByIdFactory";
 import { useRouter } from "next/router";
-import { ContextDocumentTable } from "./contextDocumentTable";
+import { ContextDocumentsTable } from "./contextDocumentTable";
+import { getAccountContextDocumentsFactory } from "@/serviceFactory/getAccountContextDocumentsFactory";
 
 interface P {
   account: any;
@@ -19,6 +20,8 @@ interface P {
 
 export function Context(p: P) {
   const { account } = p;
+
+  const [refreshCount, refresh] = useState(0);
 
   const [context, setContext] = useState<{
     loading: boolean;
@@ -33,14 +36,13 @@ export function Context(p: P) {
   useEffect(() => {
     async function getAccountContextDocuments() {
       try {
-        // const getAccountRequest = getAccountByIdFactory(accountId);
-        // const getAccountResponse = await getAccountRequest;
-        // console.log("getAccountResponse", getAccountResponse);
+        const request = getAccountContextDocumentsFactory(account?.id);
+        const response = await request;
 
         setContext({
           loading: false,
-          //   val: getAccountResponse?.data,
-          val: [],
+          val: response?.data?.AccountContext,
+          // val: [],
           err: null,
         });
       } catch (e) {
@@ -53,13 +55,19 @@ export function Context(p: P) {
       }
     }
     getAccountContextDocuments();
-  }, []);
+  }, [refreshCount]);
 
   let jsx = null;
   if (context.loading) {
     jsx = <WindowLoader></WindowLoader>;
   } else if (context.val) {
-    jsx = <ContextDocumentTable documents={context.val} />;
+    jsx = (
+      <ContextDocumentsTable
+        account={account}
+        documents={context.val}
+        refresh={refresh}
+      />
+    );
   } else {
     jsx = <ErrorInDashboard />;
   }

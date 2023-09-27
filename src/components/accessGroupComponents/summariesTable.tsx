@@ -9,9 +9,8 @@ interface P {
 }
 
 export function SummariesTable(p: P) {
-  let { accessGroup, summaries, refresh } = p;
+  let { summaries, refresh } = p;
   const { t } = useTranslation();
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
   summaries = summaries.slice(0, 10);
 
   return (
