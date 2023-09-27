@@ -24,7 +24,7 @@ export const SendEmailForm = () => {
     control,
   } = useForm({
     defaultValues: {
-      scheduledAt: moment().add("10", "m"),
+      scheduledAt: moment().add("0", "m"),
       campaign: "Kalygo_Send_Email_Tool",
       recipientEmails: "tad@cmdlabs.io",
       subject: "A hyper-customized message...",
