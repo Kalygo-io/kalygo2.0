@@ -1,5 +1,6 @@
 "use client";
 
+import "react-datetime/css/react-datetime.css";
 import "@/styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import "@/styles/summarizeFileForm.css";

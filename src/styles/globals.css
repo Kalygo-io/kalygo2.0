@@ -92,3 +92,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.rdtPicker {
+  border: 1px solid #2463eb;
+}

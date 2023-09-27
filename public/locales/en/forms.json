@@ -13,6 +13,10 @@
   "paragraph1": "Paragraph 1",
   "ending": "Ending",
   "send-email": {
+    "scheduled-at-date-and-time": "Scheduled at Date & Time",
+    "scheduled-at": "Scheduled at",
+    "campaign": "Campaign",
+    "enter-campaign-id": "Enter Campaign ID",
     "recipient-emails": "Recipient email address",
     "enter-recipient-emails": "Enter recipient email address",
     "subject": "Subject of email",

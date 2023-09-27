@@ -2,9 +2,10 @@ import { errorReporter } from "@/utility/error/reporter";
 import { infoToast } from "@/utility/toasts";
 import axios from "axios";
 import { useTranslation } from "next-i18next";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-// import { DateTimePicker } from "react-rainbow-components";
+import moment from "moment-timezone";
+import Datetime from "react-datetime";
 import { ShareModal } from "./prefillEmailFormModal";
 
 export const SendEmailForm = () => {
@@ -23,7 +24,8 @@ export const SendEmailForm = () => {
     control,
   } = useForm({
     defaultValues: {
-      scheduledAt: new Date(),
+      scheduledAt: moment().add("10", "m"),
+      campaign: "Kalygo_Send_Email_Tool",
       recipientEmails: "tad@cmdlabs.io",
       subject: "A hyper-customized message...",
       emailPreviewText: "Message Preview",
@@ -46,9 +48,13 @@ export const SendEmailForm = () => {
     },
   });
 
+  const inputElScheduledAt = useRef<Datetime>(null);
+
   const onSubmit = async (data: any) => {
     try {
       const {
+        scheduledAt,
+        campaign,
         recipientEmails,
         subject,
         emailPreviewText,
@@ -65,7 +71,10 @@ export const SendEmailForm = () => {
         endingSignature,
       } = data;
 
+      const scheduledAtUnixMilliseconds = scheduledAt.unix() * 1000;
+
       console.log("data", data);
+      console.log("scheduledAt", scheduledAt);
 
       const recipientEmailsAsArray = (recipientEmails as string).split(",");
 
@@ -78,6 +87,8 @@ export const SendEmailForm = () => {
           "Content-Type": "application/json",
         },
         data: {
+          scheduledAtUnixMilliseconds,
+          campaign,
           recipientEmails: recipientEmailsAsArray,
           subject,
           emailPreviewText,
@@ -127,22 +138,69 @@ export const SendEmailForm = () => {
               >
                 Prefill form
               </div>
-              {/* <div className="col-span-6">
-                <Controller
-                  name="scheduledAt"
-                  control={control}
-                  render={(props) => (
-                    <DateTimePicker
-                      {...props.field}
-                      className="max-w-xs cursor-pointer"
-                      onChange={(date) => {
-                        console.log("date", date);
-                        setValue("scheduledAt", date);
-                      }}
-                    />
-                  )}
-                />
-              </div> */}
+              <div className="col-span-6 sm:col-span-3">
+                <label
+                  htmlFor="scheduledAt"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  {t("forms:send-email.scheduled-at")}
+                </label>
+                <div className="mt-2">
+                  <Datetime
+                    timeFormat={true}
+                    input={true}
+                    ref={inputElScheduledAt}
+                    initialValue={getValues("scheduledAt")}
+                    onChange={(e: any) => {
+                      console.log("--- e.unix() ---", e.unix());
+                      e = moment(e.unix() * 1000);
+                      setValue("scheduledAt", e);
+                    }}
+                    renderInput={(props, openCalendar, closeCalendar) => (
+                      <input
+                        {...register("scheduledAt", {
+                          required: true,
+                        })}
+                        className={`max-w-lg block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
+                          errors["scheduledAt"] &&
+                          "ring-red-700 focus:ring-red-500"
+                        }`}
+                        type="text"
+                        inputMode="none"
+                        value={getValues("scheduledAt").toString()}
+                        placeholder="mm/dd/yyyy"
+                        onFocus={(e: any) => {
+                          openCalendar();
+                          // closeOtherCalendars("inspectPeriodStart");
+                        }}
+                      />
+                    )}
+                  />
+                </div>
+              </div>
+              <div className="col-span-6 sm:col-span-3">
+                <label
+                  htmlFor="campaign"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  {t("forms:send-email.campaign")}
+                </label>
+                <div className="mt-2">
+                  <input
+                    {...register("campaign", {
+                      required: true,
+                    })}
+                    id="campaign"
+                    name="campaign"
+                    type="text"
+                    autoComplete="campaign"
+                    placeholder={t("forms:send-email.enter-campaign-id")!}
+                    className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
+                      errors["campaign"] && "ring-red-700 focus:ring-red-500"
+                    }`}
+                  />
+                </div>
+              </div>
               <div className="col-span-6 sm:col-span-3">
                 <label
                   htmlFor="recipientEmails"
@@ -553,7 +611,13 @@ export const SendEmailForm = () => {
         open={showPrefillFormModal}
         cb={(json: Record<string, any> | null, isOpen: boolean) => {
           console.log("callback");
+
+          console.log("moment", moment.now());
+
           if (json) {
+            try {
+              setValue("scheduledAt", json.scheduledAt);
+            } catch (e) {}
             try {
               setValue("subject", json.subject);
             } catch (e) {}
