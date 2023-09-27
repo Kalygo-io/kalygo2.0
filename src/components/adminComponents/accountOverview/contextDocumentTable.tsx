@@ -20,7 +20,6 @@ export function ContextDocumentsTable(p: P) {
   let { account, documents, refresh } = p;
   const { t } = useTranslation();
 
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleChange = async function (e: any) {
@@ -39,8 +38,6 @@ export function ContextDocumentsTable(p: P) {
       errorReporter(e);
     }
   };
-
-  console.log("documents", documents);
 
   documents = documents.slice(0, 10);
 

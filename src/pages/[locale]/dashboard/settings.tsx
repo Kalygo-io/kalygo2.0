@@ -68,7 +68,7 @@ export default function Settings() {
   } else if (account.val) {
     jsx = (
       <>
-        <Personal account={account.val!} />
+        <Personal account={account.val!} refresh={refresh} />
         <Divider />
         <FreeCredits account={account.val!} />
         <Divider />

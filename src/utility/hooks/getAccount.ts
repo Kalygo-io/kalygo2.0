@@ -12,6 +12,7 @@ export function useGetAccount() {
   const [refreshCount, refresh] = useState(0);
   const [account, setAccount] = useState<{
     val: {
+      id: number;
       email: string;
       firstName: string;
       lastName: string;
@@ -21,6 +22,7 @@ export function useGetAccount() {
       vectorSearchCredits: number;
       customRequestCredits: number;
       usageCredits: number;
+      profilePicture: string;
     } | null;
     loading: boolean;
     err: any;
@@ -47,7 +49,7 @@ export function useGetAccount() {
     }
 
     fetch();
-  }, []);
+  }, [refreshCount]);
 
   return {
     account,
