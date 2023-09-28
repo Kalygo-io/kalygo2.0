@@ -7,6 +7,7 @@ import { useForm, Controller } from "react-hook-form";
 import moment from "moment-timezone";
 import Datetime from "react-datetime";
 import { ShareModal } from "./prefillEmailFormModal";
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
 
 export const SendEmailForm = () => {
   const { t } = useTranslation();
@@ -141,9 +142,15 @@ export const SendEmailForm = () => {
               <div className="col-span-6 sm:col-span-3">
                 <label
                   htmlFor="scheduledAt"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="flex text-sm font-medium leading-6 text-gray-900"
                 >
-                  {t("forms:send-email.scheduled-at")}
+                  {t("forms:send-email.scheduled-at")}&nbsp;
+                  <ArrowPathIcon
+                    className="inline h-5 w-5 cursor-pointer"
+                    onClick={() => {
+                      setValue("scheduledAt", moment());
+                    }}
+                  />
                 </label>
                 <div className="mt-2">
                   <Datetime
@@ -616,7 +623,7 @@ export const SendEmailForm = () => {
 
           if (json) {
             try {
-              setValue("scheduledAt", json.scheduledAt);
+              setValue("scheduledAt", moment(json.scheduledAt));
             } catch (e) {}
             try {
               setValue("subject", json.subject);

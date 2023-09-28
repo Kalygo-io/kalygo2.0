@@ -58,6 +58,17 @@
       "persona-2-subtitle": "Contractors and Legal Assistants",
       "persona-3": "Courts",
       "persona-3-subtitle": "Judges, Jurors, and Clerks"
+    },
+    "marketing": {
+      "description-1": "The marketing world is filled with",
+      "description-2": "unmanageable amounts of data",
+      "description-3": "and Kalygo is here to facilitate a better experience in the name of sales.",
+      "persona-1": "Marketing teams",
+      "persona-1-subtitle": "Collaborate with your team to increase ROI",
+      "persona-2": "Email Marketers",
+      "persona-2-subtitle": "Amplify and customize your sequences",
+      "persona-3": "Indie Marketers",
+      "persona-3-subtitle": "Expand your capacity with A.I. assistance"
     }
   },
   "pricing": {

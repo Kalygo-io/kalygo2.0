@@ -13,6 +13,9 @@
   "paragraph1": "Parágrafo 1",
   "ending": "Final",
   "send-email": {
+    "scheduled-at-date-and-time": "Agendado em data e hora",
+    "scheduled-at": "Agendado em",
+    "campaign": "Campanha",
     "recipient-emails": "Endereço de e-mail do destinatário",
     "enter-recipient-emails": "Insira o endereço de e-mail do destinatário",
     "subject": "Assunto do e-mail",

@@ -53,6 +53,15 @@
       "description-3": "e Kalygo está aqui para facilitar uma experiência melhor em nome da Justiça.",
       "persona-1": "Escritórios de advocacia",
       "persona-1-subtitle": "Sócios, associados e paralegais"
+    },
+    "marketing": {
+      "description-1": "O mundo do marketing está repleto de",
+      "description-2": "quantidades incontroláveis de dados",
+      "description-3": "e a Kalygo está aqui para facilitar uma melhor experiência em nome das vendas.",
+      "persona-1": "Equipes de marketing",
+      "persona-1-subtitle": "Colabore com sua equipe para aumentar o ROI",
+      "persona-2": "Profissionais de marketing por e-mail",
+      "persona-2-subtitle": "Amplifique e personalize suas sequências"
     }
   },
   "pricing": {

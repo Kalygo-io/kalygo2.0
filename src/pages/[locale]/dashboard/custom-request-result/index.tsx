@@ -50,6 +50,8 @@ export default function CustomRequestResult() {
           }
         );
 
+        debugger;
+
         setCustomRequest({
           loading: false,
           val: res.data,
@@ -90,9 +92,11 @@ export default function CustomRequestResult() {
         <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
       <LayoutDashboard>
-        <div className="p-4 pb-0 sm:p-6 lg:p-8 sm:pb-0 lg:pb-0">
-          <div className="flex flex-col tems-center xl:pr-96">
-            <p className="text-3xl font-bold leading-7 text-gray-900 sm:text-3xl break-words">
+        {/* <div className="p-4 pb-0 sm:p-6 lg:p-8 sm:pb-0 lg:pb-0"> */}
+        <div className="">
+          {/* <div className="flex flex-col tems-center xl:pr-96"> */}
+          <div className="flex flex-col tems-center">
+            <p className="p-4 pb-0 text-3xl font-bold leading-7 text-gray-900 sm:text-3xl break-words">
               {customRequest?.val?.prompt}
             </p>
             <div className="mt-4 relative xl:pr-96">
@@ -105,8 +109,10 @@ export default function CustomRequestResult() {
             </div>
           </div>
 
-          <div className="mt-4 flow-root">
-            <div className="inline-block min-w-full align-middle">{jsx}</div>
+          <div className="mt-4 flow-root overflow-x-scroll no-scrollbar">
+            <div className="inline-block min-w-full align-middle p-4 pb-0">
+              {jsx}
+            </div>
           </div>
         </div>
       </LayoutDashboard>

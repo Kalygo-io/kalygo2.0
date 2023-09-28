@@ -252,6 +252,10 @@
         "title": "Crédits",
         "summary": "Résumé",
         "summaries": "Résumés"
+      },
+      "context": {
+        "add": "Ajouter",
+        "upload": "Télécharger"
       }
     },
     "logins": {

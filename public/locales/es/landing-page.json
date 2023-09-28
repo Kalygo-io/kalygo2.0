@@ -33,6 +33,13 @@
       "typewriter-word-2": "Información obtenida rápidamente",
       "typewriter-word-3": "Información compartible",
       "typewriter-word-4": "Adaptado a sus cronogramas"
+    },
+    "marketing": {
+      "landing-page-subheadline": "Los especialistas en marketing necesitan Kalygo",
+      "typewriter-word-1": "Secuencias hechas rápido",
+      "typewriter-word-2": "Mensajería personalizada",
+      "typewriter-word-3": "Información compartible",
+      "typewriter-word-4": "Coordina tus campañas"
     }
   },
   "landing-page-subheadline": "Cargue datos y aproveche el software de vanguardia que incluye indicaciones personalizables, resúmenes en todos los documentos y flujos de trabajo de colaboración",
@@ -40,5 +47,6 @@
   "its-free": "es gratis",
   "log-in": "Acceso",
   "try-kalygo-for-free": "Prueba gratis",
+  "upload": "Subir",
   "sign-up-with-google": "Inscribirse"
 }

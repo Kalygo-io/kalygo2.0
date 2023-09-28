@@ -33,6 +33,13 @@
       "typewriter-word-2": "Insights gleaned quickly",
       "typewriter-word-3": "Shareable insights",
       "typewriter-word-4": "Tailored to your timelines"
+    },
+    "marketing": {
+      "landing-page-subheadline": "Marketers need Kalygo",
+      "typewriter-word-1": "Sequences done fast",
+      "typewriter-word-2": "Customized messaging",
+      "typewriter-word-3": "Shareable insights",
+      "typewriter-word-4": "Coordinate your campaigns"
     }
   },
   "landing-page-subheadline": "Upload data and leverage cutting edge software that includes customizable prompting, summarization across documents, and collaboration workflows",
@@ -40,5 +47,6 @@
   "its-free": "it's free",
   "log-in": "Log in",
   "try-kalygo-for-free": "Try for free",
+  "upload": "Upload",
   "sign-up-with-google": "Sign up"
 }

@@ -58,6 +58,17 @@
       "persona-2-subtitle": "Contratistas y asistentes legales",
       "persona-3": "Tribunales",
       "persona-3-subtitle": "Jueces, jurados y secretarios"
+    },
+    "marketing": {
+      "description-1": "El mundo del marketing está lleno de",
+      "description-2": "cantidades inmanejables de datos",
+      "description-3": "y Kalygo está aquí para facilitar una mejor experiencia en nombre de las ventas.",
+      "persona-1": "equipos de marketing",
+      "persona-1-subtitle": "Colabora con tu equipo para aumentar el ROI",
+      "persona-2": "Comercializadores de correo electrónico",
+      "persona-2-subtitle": "Amplifica y personaliza tus secuencias",
+      "persona-3": "Comercializadores independientes",
+      "persona-3-subtitle": "Amplíe su capacidad con A.I. asistencia"
     }
   },
   "pricing": {

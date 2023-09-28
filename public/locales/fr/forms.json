@@ -13,6 +13,8 @@
   "paragraph1": "Paragraphe 1",
   "ending": "Fin",
   "send-email": {
+    "scheduled-at-date-and-time": "Programmé à la date et à l'heure",
+    "scheduled-at": "Prévu à",
     "recipient-emails": "Adresse courriel du destinataire",
     "enter-recipient-emails": "Saisissez l'adresse e-mail du destinataire",
     "subject": "Objet de l'e-mail",

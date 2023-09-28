@@ -257,6 +257,10 @@
         "custom-request": "Solicitação personalizada",
         "custom-requests": "Solicitações personalizadas",
         "vector-search": "Pesquisa vetorial"
+      },
+      "context": {
+        "add": "Adicionar",
+        "upload": "Carregar"
       }
     },
     "logins": {

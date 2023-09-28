@@ -13,6 +13,10 @@
   "paragraph1": "Párrafo 1",
   "ending": "Finalizando",
   "send-email": {
+    "scheduled-at-date-and-time": "Programado en fecha y hora",
+    "scheduled-at": "Programado en",
+    "campaign": "Campaña",
+    "enter-campaign-id": "Ingrese el ID de la campaña",
     "recipient-emails": "Dirección de Correo Electrónico del Destinatario",
     "enter-recipient-emails": "Introduzca la dirección de correo electrónico del destinatario",
     "subject": "Asunto del correo electrónico",

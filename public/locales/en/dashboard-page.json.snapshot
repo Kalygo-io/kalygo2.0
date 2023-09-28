@@ -264,6 +264,10 @@
         "vector-searches": "Vector Searches",
         "usage-credit": "Usage Credit",
         "usage-credits": "Usage Credits"
+      },
+      "context": {
+        "add": "Add",
+        "upload": "Upload"
       }
     },
     "logins": {

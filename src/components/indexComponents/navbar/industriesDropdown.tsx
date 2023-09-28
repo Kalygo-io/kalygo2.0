@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { GoBook, GoLaw, GoHeart, GoSearch } from "react-icons/go";
+import { GoBook, GoLaw, GoHeart, GoSearch, GoRocket } from "react-icons/go";
 import { useTranslation } from "next-i18next";
 
 export function IndustriesDropdown() {
@@ -19,6 +19,11 @@ export function IndustriesDropdown() {
       name: t("navbar:dropdown.research"),
       href: "/research",
       icon: GoSearch,
+    },
+    {
+      name: t("navbar:dropdown.marketing"),
+      href: "/marketing",
+      icon: GoRocket,
     },
   ];
 

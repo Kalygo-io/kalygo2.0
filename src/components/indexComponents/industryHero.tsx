@@ -6,7 +6,7 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import Link from "../shared/Link";
 
 interface P {
-  industry: "medical" | "law" | "higher-ed" | "research";
+  industry: "medical" | "law" | "higher-ed" | "research" | "marketing";
 }
 
 export const IndustryHero = (p: P) => {
@@ -61,6 +61,18 @@ export const IndustryHero = (p: P) => {
         "landing-page:industries.research.landing-page-subheadline"
       );
       break;
+
+    case "marketing":
+      typewriterCopy = [
+        t("landing-page:industries.marketing.typewriter-word-1"),
+        t("landing-page:industries.marketing.typewriter-word-2"),
+        t("landing-page:industries.marketing.typewriter-word-3"),
+        t("landing-page:industries.marketing.typewriter-word-4"),
+      ];
+      subHeadline = t(
+        "landing-page:industries.marketing.landing-page-subheadline"
+      );
+      break;
   }
 
   return (
@@ -89,7 +101,7 @@ export const IndustryHero = (p: P) => {
               href="/signup"
               className="rounded-md bg-blue-600 mr-2 px-4 py-3.5 text-lg font-semibold text-white shadow-md hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
             >
-              &nbsp;{t("landing-page:try-kalygo-for-free")}&nbsp;
+              &nbsp;{t("landing-page:upload")}&nbsp;
             </Link>
             <Link
               href="/signup"
