@@ -48,7 +48,7 @@ export const Prompt = (p: P) => {
       {/* <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600">
         Created: {new Date(prompt.updatedAt).toLocaleString()}
       </p> */}
-      <div className="mx-auto mt-4 flex items-center justify-center gap-x-6 w-40">
+      <div className="mt-4 flex gap-x-6 w-40">
         <RadioGroupStars
           rating={get(prompt, "Ratings.0.rating", null)}
           maxRating={get(prompt, "Ratings.0.maxRating", null)}

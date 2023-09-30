@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
-import { PromptTemplateList } from "@/components/promptsComponents/promptTemplateList";
+// import { PromptTemplateList } from "@/components/promptsComponents/promptTemplateList";
 
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
@@ -37,9 +37,7 @@ export default function Dashboard() {
         <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
       <LayoutDashboard>
-        <div className="p-4 sm:p-6 lg:p-8">
-          <PromptTemplateList />
-        </div>
+        <div className="p-4 sm:p-6 lg:p-8">{/* <PromptTemplateList /> */}</div>
       </LayoutDashboard>
     </>
   );
