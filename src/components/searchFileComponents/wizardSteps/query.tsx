@@ -230,7 +230,7 @@ export function Query(props: Props) {
   return (
     <div className="flex min-h-full flex-col">
       <div className="m-4 lg:grid grid-cols-3 flex flex-col grid-rows-1">
-        <div className="py-4 flex justify-center max-w-full mx-auto lg:order-1 order-2 col-span-2">
+        <div className="py-4 flex justify-center mx-auto lg:order-1 order-2 col-span-2">
           {viewer}
         </div>
 

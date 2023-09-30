@@ -18,7 +18,7 @@ export function AccessGroup(p: P) {
     <>
       <div className="px-4 sm:px-0">
         <h2 className="text-2xl font-bold leading-7 text-gray-900">
-          {accessGroup.name} ({accessGroup.id})
+          {accessGroup.name}
         </h2>
         <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
           Created at: {new Date(accessGroup.createdAt).toLocaleString()}
