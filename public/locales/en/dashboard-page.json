@@ -190,7 +190,8 @@
   },
   "prompts": {
     "title": "Prompts",
-    "no-prompts-yet": "No prompts yet"
+    "no-prompts-yet": "No prompts yet",
+    "no-prompts-found": "No prompts found"
   },
   "prompt": {
     "title": "Prompt"

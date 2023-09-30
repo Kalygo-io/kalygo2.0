@@ -5,12 +5,14 @@ import get from "lodash.get";
 
 export function useGetPromptsWithAccessGroups() {
   const [refreshCount, refresh] = useState<number>(0);
+  const [query, setQuery] = useState<string>("");
   const [prompts, setPrompts] = useState<{
     val:
       | {
           id: number;
           ownerId: number;
           prompt: string;
+          updatedAt: number;
         }[]
       | null;
     loading: boolean;
@@ -47,7 +49,10 @@ export function useGetPromptsWithAccessGroups() {
 
   return {
     prompts,
+    setPrompts,
     refresh,
     refreshCount,
+    query,
+    setQuery,
   };
 }

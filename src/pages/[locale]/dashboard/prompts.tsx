@@ -15,9 +15,8 @@ import { JobList } from "@/components/queueComponents/jobList";
 import { viewQueue } from "@/services/viewQueue";
 import get from "lodash.get";
 import { useGetAccount } from "@/utility/hooks/getAccount";
-import { PromptTemplateList } from "@/components/promptTemplateComponents/promptTemplateList";
 import { getPromptsFactory } from "@/serviceFactory/getPromptsFactory";
-import { PromptsList } from "@/components/promptTemplateComponents/promptsList";
+import { PromptsWidget } from "@/components/promptsComponents/promptsWidget";
 import { useGetPromptsWithAccessGroups } from "@/utility/hooks/getPromptsWithAccessGroups";
 
 const getStaticProps = makeStaticProps([
@@ -36,21 +35,27 @@ export default function Prompts() {
   const { t } = useTranslation();
   const { account } = useGetAccount();
 
-  const { prompts, refresh, refreshCount } = useGetPromptsWithAccessGroups();
+  const { prompts, setPrompts, refresh, refreshCount, query, setQuery } =
+    useGetPromptsWithAccessGroups();
 
   let jsx = null;
-
   if (prompts.loading) {
     jsx = <WindowLoader></WindowLoader>;
   } else if (prompts.err) {
     jsx = <>Error loading prompts</>;
   } else if (prompts.val) {
-    jsx = <PromptsList prompts={prompts.val || []} refresh={refresh} />;
+    jsx = (
+      <PromptsWidget
+        prompts={prompts.val || []}
+        refresh={refresh}
+        setPrompts={setPrompts}
+        query={query}
+        setQuery={setQuery}
+      />
+    );
   } else {
     jsx = <>Unknown error</>;
   }
-
-  console.log("RENDER PROMPTS");
 
   return (
     <>
@@ -67,12 +72,12 @@ export default function Prompts() {
             </div>
           </div>
 
-          <div className="mt-8 flow-root">
-            <div className="mx-2 my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-              <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                {jsx}
-              </div>
-            </div>
+          <div className="mt-4 flow-root">
+            {/* <div className="mx-2 my-2 overflow-x-auto sm:-mx-6 lg:-mx-8"> */}
+            {/* <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8"> */}
+            {jsx}
+            {/* </div> */}
+            {/* </div> */}
           </div>
         </div>
       </LayoutDashboard>

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
-import { PromptTemplateList } from "@/components/promptTemplateComponents/promptTemplateList";
+import { PromptTemplateList } from "@/components/promptsComponents/promptTemplateList";
 
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
