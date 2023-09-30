@@ -94,22 +94,7 @@ export default function Page() {
       <Head>
         <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
-      <LayoutDashboard>
-        <div className="p-4 pb-0 sm:p-6 sm:pb-0 lg:p-8 lg:pb-0">
-          <div className="sm:flex sm:items-center">
-            <div className="sm:flex-auto">
-              <h1 className="text-base font-semibold leading-7 text-gray-900">
-                {t("dashboard-page:summary.title")}
-              </h1>
-            </div>
-          </div>
-          <div className="mt-8 flow-root">
-            <div className="inline-block min-w-full py-2 align-middle">
-              {jsx}
-            </div>
-          </div>
-        </div>
-      </LayoutDashboard>
+      <LayoutDashboard>{jsx}</LayoutDashboard>
     </>
   );
 }

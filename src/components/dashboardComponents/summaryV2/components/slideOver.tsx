@@ -6,15 +6,16 @@ import { RadioGroupStars } from "@/components/shared/RatingComponent";
 import get from "lodash.get";
 import { rateCustomRequestFactory } from "@/serviceFactory/rateCustomRequestFactory";
 import { errorReporter } from "@/utility/error/reporter";
+import { rateSummaryFactory } from "@/serviceFactory/rateSummaryFactory";
 
 interface P {
   showOpen: boolean;
   setShowOpen: Dispatch<SetStateAction<boolean>>;
-  customRequest: any;
+  summary: any;
 }
 
 export function SlideOver(p: P) {
-  const { showOpen, setShowOpen, customRequest } = p;
+  const { showOpen, setShowOpen, summary } = p;
 
   const { t } = useTranslation();
 
@@ -40,7 +41,7 @@ export function SlideOver(p: P) {
                     <div className="bg-blue-600 px-4 py-6 sm:px-6">
                       <div className="flex items-center justify-between">
                         <Dialog.Title className="text-base font-semibold leading-6 text-white">
-                          Custom Request
+                          Summary
                         </Dialog.Title>
                         <div className="ml-3 flex h-7 items-center">
                           <button
@@ -55,9 +56,7 @@ export function SlideOver(p: P) {
                         </div>
                       </div>
                       <div className="mt-1">
-                        <p className="text-sm text-white">
-                          {customRequest.mode}
-                        </p>
+                        <p className="text-sm text-white">{summary.mode}</p>
                       </div>
                     </div>
                     <div className="relative flex-1 px-4 py-6 sm:px-6">
@@ -68,8 +67,8 @@ export function SlideOver(p: P) {
                             {t("dashboard-page:summary.requested")}
                           </dt>
                           <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
-                            {customRequest?.createdAt
-                              ? `${new Date(customRequest.createdAt)}`
+                            {summary?.createdAt
+                              ? `${new Date(summary.createdAt)}`
                               : t(
                                   "dashboard-page:summary.time-requested-unknown"
                                 )}
@@ -80,7 +79,7 @@ export function SlideOver(p: P) {
                             {t("dashboard-page:summary-v2.mode")}
                           </dt>
                           <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
-                            {customRequest?.mode}
+                            {summary?.mode}
                           </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -90,13 +89,9 @@ export function SlideOver(p: P) {
                           <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
                             <div className="flex items-end">
                               <RadioGroupStars
-                                rating={get(
-                                  customRequest,
-                                  "Ratings.0.rating",
-                                  null
-                                )}
+                                rating={get(summary, "Ratings.0.rating", null)}
                                 maxRating={get(
-                                  customRequest,
+                                  summary,
                                   "Ratings.0.maxRating",
                                   null
                                 )}
@@ -106,7 +101,7 @@ export function SlideOver(p: P) {
                                 ) => {
                                   try {
                                     // prettier-ignore
-                                    const rateSummaryRequest = rateCustomRequestFactory(customRequest.id, rating, ratingMax);
+                                    const rateSummaryRequest = rateSummaryFactory(summary.id, rating, ratingMax);
                                     // prettier-ignore
                                     const rateSummaryResponse = await rateSummaryRequest;
                                     // prettier-ignore
@@ -119,24 +114,24 @@ export function SlideOver(p: P) {
                             </div>
                           </dd>
                         </div>
-                        {customRequest.model && (
+                        {summary.model && (
                           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                             <dt className="text-sm font-medium leading-6 text-gray-900">
                               {t("dashboard-page:summary-v2.model")}
                             </dt>
                             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0 truncate">
-                              {customRequest?.model}
+                              {summary?.model}
                             </dd>
                           </div>
                         )}
 
-                        {customRequest.prompt && (
+                        {summary.prompt && (
                           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                             <dt className="text-sm font-medium leading-6 text-gray-900">
                               {t("dashboard-page:custom-request.prompt")}
                             </dt>
                             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0 truncate">
-                              {customRequest?.prompt}
+                              {summary?.prompt}
                             </dd>
                           </div>
                         )}

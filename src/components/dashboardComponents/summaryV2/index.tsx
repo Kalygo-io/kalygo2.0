@@ -7,6 +7,7 @@ import { classNames } from "@/utility/misc/classNames";
 import { Menu, Transition } from "@headlessui/react";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
 import {
+  Bars3Icon,
   EllipsisVerticalIcon,
   GlobeAltIcon,
   LinkIcon,
@@ -17,6 +18,7 @@ import { useTranslation } from "next-i18next";
 import { Fragment, MouseEventHandler, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { ShareModal } from "./components/shareModal";
+import { SlideOver } from "./components/slideOver";
 
 interface P {
   summary: any;
@@ -31,110 +33,128 @@ export default function SummaryV2(p: P) {
   const { t } = useTranslation();
 
   const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
+  const [slideOverOpen, setSlideOverOpen] = useState(false);
 
   return (
-    <div>
-      <div className="min-h-screen" id="summary-v2-main">
-        <div className="xl:pr-96">
-          {/* Main area */}
-          <div className="mt-1 text-sm leading-6 text-gray-700 sm:mt-0">
-            {/* <ReactMarkdown>{summary?.completionResponse}</ReactMarkdown> */}
-            {summary.mode === SummaryMode.PRIOR_TO_TRACKING_MODE &&
-              JSON.stringify(summary.summary, null, 2)}
-
-            {/* {summary.mode === SummaryMode.EACH_FILE_PER_PAGE &&
-              JSON.stringify(summary.summary, null, 2)} */}
-
-            {summary.mode === SummaryMode.EACH_FILE_OVERALL &&
-              summary?.summary.map((i: any, idx: any) => {
-                return (
-                  <div key={i.file}>
-                    <span>
-                      <h3 className="text-lg">
-                        <b>{i.file}</b>
-                      </h3>
-                    </span>
-                    <ReactMarkdown className="summary-v2-markdown">
-                      {i.summary}
-                    </ReactMarkdown>
-                    <br />
-                  </div>
-                );
-              })}
-            {summary.mode === SummaryMode.OVERALL && (
-              <h3 className="text-lg">
-                <b>{summary.title}</b>
-              </h3>
-            )}
-            {summary.mode === SummaryMode.OVERALL &&
-              summary?.summary.map((i: any, idx: any) => {
-                return (
-                  <div key={idx}>
-                    {summary?.summary.length > 1 && `(Part ${i.part + 1})`}
-                    <ReactMarkdown className="summary-v2-markdown">
-                      {i.summary}
-                    </ReactMarkdown>
-                    <br />
-                  </div>
-                );
-              })}
-            {summary.mode === SummaryMode.EACH_FILE_IN_CHUNKS &&
-              summary?.summary.map((i: any, idx: any) => {
-                {
-                  return (
-                    <div key={idx}>
-                      <h3 className="text-lg">
-                        <b>{i.file}</b>
-                      </h3>
-                      <ul>
-                        {i?.summary?.map((j: any, idx: any) => {
-                          return (
-                            <li key={idx} className="mt-2">
-                              {i?.summary.length > 1 && `(Part ${j.chunk + 1})`}
-                              <ReactMarkdown className="summary-v2-markdown">
-                                {j.chunkSummary}
-                              </ReactMarkdown>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-                  );
-                }
-              })}
-
-            {summary.mode === SummaryMode.EACH_FILE_PER_PAGE &&
-              summary?.summary.map((i: any, idx: any) => {
-                {
-                  return (
-                    <div key={idx}>
-                      <h3 className="text-lg my-4">
-                        <b>{i.file}</b>
-                      </h3>
-                      <ul>
-                        {i?.summariesOfTheParts?.map((j: any, idx: any) => {
-                          //
-                          // console.log("i", i);
-                          // console.log("j", j);
-                          //
-                          return (
-                            <li key={idx} className="mt-2">
-                              {i?.summariesOfTheParts.length > 1 &&
-                                `(Page ${idx + 1})`}
-
-                              <ReactMarkdown className="summary-v2-markdown">
-                                {j}
-                              </ReactMarkdown>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-                  );
-                }
-              })}
+    <div className="xl:pr-96">
+      {/* Main area */}
+      <div className="w-full flex justify-between fixed bg-white lg:pr-[calc(18rem)] xl:pr-[calc(42rem)] shadow-sm">
+        <h3 className="p-4 text-3xl font-bold text-gray-900 whitespace-nowrap truncate">
+          Summary
+        </h3>
+        {showSharing && (
+          <div className="flex justify-center mr-4 xl:hidden">
+            <button
+              onClick={() => {
+                setSlideOverOpen(true);
+              }}
+            >
+              <Bars3Icon className="h-8 w-8" />
+            </button>
           </div>
-        </div>
+        )}
+        {/* <div className="m-4 relative">
+            <div
+              className="absolute inset-0 flex items-center"
+              aria-hidden="true"
+            >
+              <div className="w-full border-t border-gray-100" />
+            </div>
+          </div> */}
+      </div>
+
+      <div className="px-4 pt-[calc(6.25rem)] text-sm leading-6 text-gray-700 overflow-x-scroll min-h-screen">
+        {summary.mode === SummaryMode.PRIOR_TO_TRACKING_MODE &&
+          JSON.stringify(summary.summary, null, 2)}
+
+        {summary.mode === SummaryMode.EACH_FILE_OVERALL &&
+          summary?.summary.map((i: any, idx: any) => {
+            return (
+              <div key={i.file}>
+                <span>
+                  <h3 className="text-lg">
+                    <b>{i.file}</b>
+                  </h3>
+                </span>
+                <ReactMarkdown className="summary-v2-markdown">
+                  {i.summary}
+                </ReactMarkdown>
+                <br />
+              </div>
+            );
+          })}
+        {summary.mode === SummaryMode.OVERALL && (
+          <h3 className="text-lg">
+            <b>{summary.title}</b>
+          </h3>
+        )}
+        {summary.mode === SummaryMode.OVERALL &&
+          summary?.summary.map((i: any, idx: any) => {
+            return (
+              <div key={idx}>
+                {summary?.summary.length > 1 && `(Part ${i.part + 1})`}
+                <ReactMarkdown className="summary-v2-markdown">
+                  {i.summary}
+                </ReactMarkdown>
+                <br />
+              </div>
+            );
+          })}
+        {summary.mode === SummaryMode.EACH_FILE_IN_CHUNKS &&
+          summary?.summary.map((i: any, idx: any) => {
+            {
+              return (
+                <div key={idx}>
+                  <h3 className="text-lg">
+                    <b>{i.file}</b>
+                  </h3>
+                  <ul>
+                    {i?.summary?.map((j: any, idx: any) => {
+                      return (
+                        <li key={idx} className="mt-2">
+                          {i?.summary.length > 1 && `(Part ${j.chunk + 1})`}
+                          <ReactMarkdown className="summary-v2-markdown">
+                            {j.chunkSummary}
+                          </ReactMarkdown>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              );
+            }
+          })}
+
+        {summary.mode === SummaryMode.EACH_FILE_PER_PAGE &&
+          summary?.summary.map((i: any, idx: any) => {
+            {
+              return (
+                <div key={idx}>
+                  <h3 className="text-lg my-4">
+                    <b>{i.file}</b>
+                  </h3>
+                  <ul>
+                    {i?.summariesOfTheParts?.map((j: any, idx: any) => {
+                      //
+                      // console.log("i", i);
+                      // console.log("j", j);
+                      //
+                      return (
+                        <li key={idx} className="mt-2">
+                          {i?.summariesOfTheParts.length > 1 &&
+                            `(Page ${idx + 1})`}
+
+                          <ReactMarkdown className="summary-v2-markdown">
+                            {j}
+                          </ReactMarkdown>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              );
+            }
+          })}
       </div>
 
       <div
@@ -165,7 +185,7 @@ export default function SummaryV2(p: P) {
           <dl className="divide-y divide-gray-100 space-y-10">
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
               <dt className="text-sm font-medium leading-6 text-gray-900">
-                {t("dashboard-page:summary.requested")}:
+                {t("dashboard-page:summary.requested")}
               </dt>
               <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
                 {summary?.createdAt
@@ -175,7 +195,7 @@ export default function SummaryV2(p: P) {
             </div>
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
               <dt className="text-sm font-medium leading-6 text-gray-900">
-                {t("dashboard-page:summary-v2.mode")}:
+                {t("dashboard-page:summary-v2.mode")}
               </dt>
               <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
                 {summary?.mode}
@@ -209,7 +229,7 @@ export default function SummaryV2(p: P) {
             {summary.model && (
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">
-                  {t("dashboard-page:summary-v2.model")}:
+                  {t("dashboard-page:summary-v2.model")}
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0 truncate">
                   {summary?.model}
@@ -220,7 +240,7 @@ export default function SummaryV2(p: P) {
             {summary.language && (
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">
-                  {t("dashboard-page:summary-v2.language")}:
+                  {t("dashboard-page:summary-v2.language")}
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
                   {summary?.language}
@@ -231,7 +251,7 @@ export default function SummaryV2(p: P) {
             {summary.format && (
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">
-                  {t("dashboard-page:summary-v2.format")}:
+                  {t("dashboard-page:summary-v2.format")}
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
                   {summary?.format}
@@ -250,6 +270,11 @@ export default function SummaryV2(p: P) {
         cb={(isOpen: boolean) => {
           setShareModalOpen(isOpen);
         }}
+      />
+      <SlideOver
+        showOpen={slideOverOpen}
+        setShowOpen={setSlideOverOpen}
+        summary={summary}
       />
     </div>
   );

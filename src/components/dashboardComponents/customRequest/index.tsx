@@ -31,25 +31,23 @@ export default function CustomRequest(p: P) {
 
   return (
     <div className="xl:mr-96">
-      {/* <div id="custom-request-main" className="min-h-screen m-0 p-0"> */}
-      <div>
-        {/* Main area */}
-        <div className="w-full flex fixed bg-white lg:pr-[calc(18rem)] xl:pr-[calc(42rem)] shadow-sm">
-          <h3 className="p-4 text-3xl font-bold text-gray-900 whitespace-nowrap truncate">
-            {customRequest?.prompt}
-          </h3>
-          {showSharing && (
-            <div className="flex justify-center mr-4 xl:hidden">
-              <button
-                onClick={() => {
-                  setSlideOverOpen(true);
-                }}
-              >
-                <Bars3Icon className="h-8 w-8" />
-              </button>
-            </div>
-          )}
-          {/* <div className="m-4 relative">
+      {/* Main area */}
+      <div className="w-full flex justify-between fixed bg-white lg:pr-[calc(18rem)] xl:pr-[calc(42rem)] shadow-sm">
+        <h3 className="p-4 text-3xl font-bold text-gray-900 whitespace-nowrap truncate">
+          {customRequest?.prompt}
+        </h3>
+        {showSharing && (
+          <div className="flex mr-4 xl:hidden">
+            <button
+              onClick={() => {
+                setSlideOverOpen(true);
+              }}
+            >
+              <Bars3Icon className="h-8 w-8" />
+            </button>
+          </div>
+        )}
+        {/* <div className="m-4 relative">
             <div
               className="absolute inset-0 flex items-center"
               aria-hidden="true"
@@ -57,96 +55,95 @@ export default function CustomRequest(p: P) {
               <div className="w-full border-t border-gray-100" />
             </div>
           </div> */}
-        </div>
-        <div className="px-4 pt-[calc(6.25rem)] text-sm leading-6 text-gray-700 overflow-x-scroll min-h-screen">
-          {customRequest.mode === ScanningMode.PRIOR_TO_TRACKING_MODE &&
-            JSON.stringify(customRequest.completionResponse, null, 2)}
+      </div>
+      <div className="px-4 pt-[calc(6.25rem)] text-sm leading-6 text-gray-700 overflow-x-scroll min-h-screen">
+        {customRequest.mode === ScanningMode.PRIOR_TO_TRACKING_MODE &&
+          JSON.stringify(customRequest.completionResponse, null, 2)}
 
-          {customRequest.mode === ScanningMode.EACH_FILE_IN_CHUNKS &&
-            customRequest?.completionResponse.map((i: any, idx: any) => {
-              {
-                return (
-                  <div key={idx}>
+        {customRequest.mode === ScanningMode.EACH_FILE_IN_CHUNKS &&
+          customRequest?.completionResponse.map((i: any, idx: any) => {
+            {
+              return (
+                <div key={idx}>
+                  <h3 className="text-lg">
+                    <b>{i.file}</b>
+                  </h3>
+                  <ul>
+                    {i?.summary?.map((j: any, idx: any) => {
+                      return (
+                        <li key={idx} className="mt-2">
+                          {i?.summary.length > 1 && `(Part ${j.chunk + 1})`}
+                          <ReactMarkdown className="custom-request-markdown">
+                            {j.chunkSummary}
+                          </ReactMarkdown>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              );
+            }
+          })}
+
+        {customRequest.mode === ScanningMode.EACH_FILE_OVERALL && (
+          <>
+            {customRequest?.completionResponse.map((i: any, idx: any) => {
+              return (
+                <div key={i.file}>
+                  <span>
                     <h3 className="text-lg">
                       <b>{i.file}</b>
                     </h3>
-                    <ul>
-                      {i?.summary?.map((j: any, idx: any) => {
-                        return (
-                          <li key={idx} className="mt-2">
-                            {i?.summary.length > 1 && `(Part ${j.chunk + 1})`}
-                            <ReactMarkdown className="custom-request-markdown">
-                              {j.chunkSummary}
-                            </ReactMarkdown>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                );
-              }
-            })}
-
-          {customRequest.mode === ScanningMode.EACH_FILE_OVERALL && (
-            <>
-              {customRequest?.completionResponse.map((i: any, idx: any) => {
-                return (
-                  <div key={i.file}>
-                    <span>
-                      <h3 className="text-lg">
-                        <b>{i.file}</b>
-                      </h3>
-                    </span>
-                    <ReactMarkdown className="custom-request-markdown">
-                      {i.finalCompletionForFile}
-                    </ReactMarkdown>
-                    <br />
-                  </div>
-                );
-              })}
-            </>
-          )}
-
-          {customRequest.mode === ScanningMode.OVERALL &&
-            customRequest?.completionResponse.map((i: any, idx: any) => {
-              return (
-                <div key={idx}>
-                  {customRequest?.completionResponse.length > 1 &&
-                    `(Part ${i.part + 1})`}
+                  </span>
                   <ReactMarkdown className="custom-request-markdown">
-                    {i.overallCompletion}
+                    {i.finalCompletionForFile}
                   </ReactMarkdown>
                   <br />
                 </div>
               );
             })}
+          </>
+        )}
 
-          {customRequest.mode === ScanningMode.EACH_FILE_PER_PAGE &&
-            customRequest?.completionResponse.map((i: any, idx: any) => {
-              {
-                return (
-                  <div key={idx}>
-                    <h3 className="text-lg">
-                      <b>{i.file}</b>
-                    </h3>
-                    <ul>
-                      {i?.completionsForTheParts?.map((j: any, idx: any) => {
-                        return (
-                          <li key={idx} className="mt-2">
-                            {i?.completionsForTheParts.length > 1 &&
-                              `(Page ${idx + 1})`}
-                            <ReactMarkdown className="custom-request-markdown">
-                              {j}
-                            </ReactMarkdown>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                );
-              }
-            })}
-        </div>
+        {customRequest.mode === ScanningMode.OVERALL &&
+          customRequest?.completionResponse.map((i: any, idx: any) => {
+            return (
+              <div key={idx}>
+                {customRequest?.completionResponse.length > 1 &&
+                  `(Part ${i.part + 1})`}
+                <ReactMarkdown className="custom-request-markdown">
+                  {i.overallCompletion}
+                </ReactMarkdown>
+                <br />
+              </div>
+            );
+          })}
+
+        {customRequest.mode === ScanningMode.EACH_FILE_PER_PAGE &&
+          customRequest?.completionResponse.map((i: any, idx: any) => {
+            {
+              return (
+                <div key={idx}>
+                  <h3 className="text-lg">
+                    <b>{i.file}</b>
+                  </h3>
+                  <ul>
+                    {i?.completionsForTheParts?.map((j: any, idx: any) => {
+                      return (
+                        <li key={idx} className="mt-2">
+                          {i?.completionsForTheParts.length > 1 &&
+                            `(Page ${idx + 1})`}
+                          <ReactMarkdown className="custom-request-markdown">
+                            {j}
+                          </ReactMarkdown>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              );
+            }
+          })}
       </div>
 
       <div
@@ -243,7 +240,6 @@ export default function CustomRequest(p: P) {
           </dl>
         </div>
       </div>
-
       <ShareModal
         account={account}
         refresh={refresh}
@@ -254,7 +250,6 @@ export default function CustomRequest(p: P) {
           setShareModalOpen(isOpen);
         }}
       />
-
       <SlideOver
         showOpen={slideOverOpen}
         setShowOpen={setSlideOverOpen}
