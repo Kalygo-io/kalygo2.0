@@ -29,6 +29,33 @@ export const PromptsList = (p: P) => {
   return (
     <>
       {/* <PromptsSearchBar /> */}
+      <div className="max-w-md mx-auto my-4">
+        <div className="relative flex items-center w-full h-12 rounded-lg shadow-md bg-white overflow-hidden">
+          <div className="grid place-items-center h-full w-12 text-gray-300 outline-none">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 outline-none"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
+
+          <input
+            className="h-full w-full text-sm text-gray-700 border-0"
+            type="text"
+            id="search"
+            placeholder="Search prompts..."
+          />
+        </div>
+      </div>
       {prompts.length > 0 ? (
         <div className="p-4 divide-y divide-gray-200 overflow-y-scroll no-scrollbar rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
           {prompts.map((prompt, actionIdx) => (

@@ -21,8 +21,8 @@ export const Prompt = (p: P) => {
   const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
 
   return (
-    <div className="py-2 mx-auto max-w-2xl text-center">
-      <div className="mx-auto flex justify-end space-x-2 max-w-2xl">
+    <div className="py-2 mx-auto max-w-4xl">
+      <div className="mx-auto flex justify-end space-x-2 max-w-4xl">
         {showSharing && (
           <>
             <button
@@ -44,12 +44,10 @@ export const Prompt = (p: P) => {
           </>
         )}
       </div>
-      <h2 className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
-        {prompt.prompt}
-      </h2>
-      <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600">
+      <p className="text-3xl tracking-tight text-gray-700">{prompt.prompt}</p>
+      {/* <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600">
         Created: {new Date(prompt.updatedAt).toLocaleString()}
-      </p>
+      </p> */}
       <div className="mx-auto mt-4 flex items-center justify-center gap-x-6 w-40">
         <RadioGroupStars
           rating={get(prompt, "Ratings.0.rating", null)}
