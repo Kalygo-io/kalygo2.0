@@ -26,7 +26,7 @@ export function AccessGroupsTable(p: P) {
 
   return (
     <>
-      <div className="px-1 my-2 sm:px-6 lg:px-4 overflow-y-scroll no-scrollbar min-h-screen">
+      <div className="p-2 my-2 sm:px-6 lg:px-4 overflow-y-scroll no-scrollbar min-h-screen">
         <div className="sm:flex sm:items-center">
           {/* <div className="sm:flex-auto">
             <h1 className="text-base font-semibold leading-6 text-gray-900">
