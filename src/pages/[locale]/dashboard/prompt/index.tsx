@@ -58,21 +58,7 @@ export default function PromptPage() {
       <Head>
         <title>{t("seo:dashboard-page-seo-meta-title")}</title>
       </Head>
-      <LayoutDashboard>
-        <div className="p-4 pb-0 sm:p-6 lg:p-8 sm:pb-0 lg:pb-0">
-          <div className="sm:flex sm:items-center">
-            <div className="sm:flex-auto">
-              <h1 className="text-base font-semibold leading-7 text-gray-900">
-                {t("dashboard-page:prompt.title")}
-              </h1>
-            </div>
-          </div>
-
-          <div className="mt-4 flow-root">
-            <div className="inline-block min-w-full align-middle">{jsx}</div>
-          </div>
-        </div>
-      </LayoutDashboard>
+      <LayoutDashboard>{jsx}</LayoutDashboard>
     </>
   );
 }
