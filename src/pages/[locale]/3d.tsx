@@ -27,10 +27,7 @@ export default function Feedback() {
     <>
       <Head>
         <title>{t("seo:3d-page-seo-title")}</title>
-        <meta
-          name="description"
-          content={t("seo:3d-page-seo-meta-description")!}
-        />
+        <meta name="description" content={t("seo:3d-page-seo-description")!} />
       </Head>
       <Layout1 disableStickyTopNav>
         <div style={{ width: "96vw", height: "100vh", margin: "0 auto" }}>
