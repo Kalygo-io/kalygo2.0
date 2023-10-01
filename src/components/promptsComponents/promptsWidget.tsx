@@ -2,6 +2,7 @@ import { classNames } from "@/utility/misc/classNames";
 import React, { Dispatch, Fragment, SetStateAction } from "react";
 
 import {
+  ArrowPathIcon,
   ClipboardDocumentIcon,
   EllipsisVerticalIcon,
   LinkIcon,
@@ -19,6 +20,7 @@ import { errorReporter } from "@/utility/error/reporter";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useGetPromptsWithAccessGroups } from "@/utility/hooks/getPromptsWithAccessGroups";
+import { similaritySearchForPrompts } from "@/serviceFactory/similaritySearchForPrompts";
 
 interface P {
   prompts: any;
@@ -49,18 +51,14 @@ export const PromptsWidget = (p: P) => {
 
   const onSubmit = async (data: any) => {
     console.log("---", data);
-
     try {
       console.log("---", data);
-
       setPrompts({
         val: [],
         loading: true,
         error: null,
       });
-
       const { query } = data;
-
       const config = {
         method: "post",
         url: `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/prompts/search`,
@@ -72,17 +70,13 @@ export const PromptsWidget = (p: P) => {
         },
         withCredentials: true,
       };
-
       let resp = await axios(config);
-
       setQuery(query);
-
       setPrompts({
         val: resp.data,
         loading: false,
         error: null,
       });
-
       console.log("resp", resp);
     } catch (e) {
       setPrompts({
@@ -97,7 +91,7 @@ export const PromptsWidget = (p: P) => {
 
   return (
     <>
-      <div className="max-w-sm py-4 flex items-center">
+      <div className="max-w-sm py-4 flex items-center space-x-1">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="relative rounded-md shadow-sm">
             <MagnifyingGlassIcon className="absolute top-0 bottom-0 w-6 h-6 my-auto text-gray-400 left-3" />
@@ -198,13 +192,39 @@ export const PromptsWidget = (p: P) => {
                               ),
                             },
                             {
-                              text: "Edit",
+                              text: "View/Edit",
                               onClick: () => {
                                 router.push(
                                   `/dashboard/prompt?prompt-id=${prompt.id}`
                                 );
                               },
                               icon: <PencilSquareIcon className="h-6 w-6" />,
+                            },
+                            {
+                              text: "More like this",
+                              onClick: async () => {
+                                setPrompts({
+                                  val: [],
+                                  loading: true,
+                                  error: null,
+                                });
+
+                                // prettier-ignore
+                                const resp = await similaritySearchForPrompts(
+                                  prompt.prompt
+                                );
+                                console.log(
+                                  "similaritySearchForPrompts RESULTS",
+                                  resp
+                                );
+                                setPrompts({
+                                  val: resp?.data,
+                                  loading: false,
+                                  error: null,
+                                });
+                                // refresh((val: any) => val + 1);
+                              },
+                              icon: <ArrowPathIcon className="h-6 w-6" />,
                             },
                             {
                               text: "Delete",

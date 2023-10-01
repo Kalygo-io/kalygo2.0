@@ -70,6 +70,16 @@ export default function LayoutDashboard({ children, account }: P) {
       icon: HomeIcon,
     },
     {
+      name: t("dashboard-page:navigation.prompts"),
+      href: "/dashboard/prompts",
+      icon: RectangleGroupIcon,
+    },
+    {
+      name: t("dashboard-page:navigation.custom-request"),
+      href: "/dashboard/custom-request/custom-request-v2",
+      icon: BeakerIcon,
+    },
+    {
       name: t("dashboard-page:navigation.summarize"),
       // href: "/dashboard/summarize",
       href: "/dashboard/summarize/summarize-v2",
@@ -82,19 +92,9 @@ export default function LayoutDashboard({ children, account }: P) {
       icon: DocumentMagnifyingGlassIcon,
     },
     {
-      name: t("dashboard-page:navigation.custom-request"),
-      href: "/dashboard/custom-request/custom-request-v2",
-      icon: BeakerIcon,
-    },
-    {
       name: t("dashboard-page:navigation.chunking-tool"),
       href: "/dashboard/chunking-tool",
       icon: PuzzlePieceIcon,
-    },
-    {
-      name: t("dashboard-page:navigation.prompts"),
-      href: "/dashboard/prompts",
-      icon: RectangleGroupIcon,
     },
     // {
     //   name: t("dashboard-page:navigation.text-to-speech"),
