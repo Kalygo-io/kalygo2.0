@@ -16,7 +16,7 @@
     "send-email": "Enviar correo electrónico",
     "text-to-speech": "Texto a voz",
     "prompts": "Indicaciones",
-    "access-groups": "Grupos de acceso"
+    "access-groups": "Grupos"
   },
   "user-nav": {
     "settings": "Ajustes",
@@ -190,7 +190,8 @@
   },
   "prompts": {
     "title": "Indicaciones",
-    "no-prompts-yet": "Aún no hay mensajes"
+    "no-prompts-yet": "Aún no hay mensajes",
+    "no-prompts-found": "No se encontraron mensajes"
   },
   "prompt": {
     "title": "Inmediato"

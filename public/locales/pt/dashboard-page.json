@@ -16,7 +16,7 @@
     "send-email": "Enviar email",
     "text-to-speech": "Texto para fala",
     "prompts": "Comandos",
-    "access-groups": "Grupos de acesso"
+    "access-groups": "Grupos"
   },
   "user-nav": {
     "settings": "Configurações",
@@ -190,7 +190,8 @@
   },
   "prompts": {
     "title": "Comandos",
-    "no-prompts-yet": "Ainda não há avisos"
+    "no-prompts-yet": "Ainda não há avisos",
+    "no-prompts-found": "Nenhum prompt encontrado"
   },
   "prompt": {
     "title": "Incitar"

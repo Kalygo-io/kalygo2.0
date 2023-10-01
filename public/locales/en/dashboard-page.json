@@ -16,7 +16,7 @@
     "send-email": "Send Email",
     "text-to-speech": "Text-to-Speech",
     "prompts": "Prompts",
-    "access-groups": "Access Groups"
+    "access-groups": "Groups"
   },
   "user-nav": {
     "settings": "Settings",
@@ -240,14 +240,14 @@
     }
   },
   "access-groups": {
-    "title": "Access Groups",
-    "description": "All the groups you own",
+    "title": "Groups",
+    "description": "A group is a collection of documents, A.I. outputs, and prompts. Any email associated with the group can view all the data in the group but only the creator of a particular piece of data in the group can edit it.",
     "no-groups-found": "No groups found",
     "view": "View",
     "delete": "Delete",
-    "create": "Create",
+    "create": "Create new group",
     "name": "Name",
-    "new-access-group": "New Access Group"
+    "new-access-group": "New Group"
   },
   "admin": {
     "title": "Overview",

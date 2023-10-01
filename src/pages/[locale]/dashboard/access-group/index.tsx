@@ -46,7 +46,7 @@ export default function AccessGroupPage() {
       <LayoutDashboard>
         <div className="p-4 pb-0 sm:p-6 lg:p-8 sm:pb-0 lg:pb-0">
           <div className="mt-4 flow-root">
-            <div className="inline-block min-w-full align-middle">{jsx}</div>
+            <div className="mx-auto w-full max-w-7xl">{jsx}</div>
           </div>
         </div>
       </LayoutDashboard>

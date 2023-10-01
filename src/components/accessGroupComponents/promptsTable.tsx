@@ -21,7 +21,7 @@ export function PromptsTable(p: P) {
           <h1 className="text-base font-semibold leading-6 text-gray-900">
             Prompts
           </h1>
-          <p className="mt-2 text-sm text-gray-700">
+          <p className="mt-2 text-sm text-gray-500">
             Prompts in this access group
           </p>
         </div>
@@ -35,13 +35,13 @@ export function PromptsTable(p: P) {
                   scope="col"
                   className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
                 >
-                  Added at
+                  Prompt ID
                 </th>
                 <th
                   scope="col"
                   className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell"
                 >
-                  Summary ID
+                  Added at
                 </th>
                 <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-0">
                   <span className="sr-only">Delete</span>
@@ -50,25 +50,31 @@ export function PromptsTable(p: P) {
             </thead>
             <tbody className="divide-y divide-gray-200 bg-white">
               {prompts.map((prompt) => {
+                console.log("!!! prompt !!!", prompt);
+
                 return (
-                  <tr key={prompt.summaryId}>
+                  <tr key={prompt.promptId}>
                     <td className="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-0">
-                      <p>
-                        <time
-                          dateTime={new Date(prompt.createdAt).toLocaleString()}
-                        >
-                          {new Date(prompt.createdAt).toLocaleString()}
-                        </time>
-                      </p>
+                      <p>{prompt.promptId}</p>
                       <dl className="font-normal lg:hidden">
-                        <dt className="sr-only">Summary ID</dt>
+                        <dt className="sr-only">Prompt ID</dt>
                         <dd className="mt-1 truncate text-gray-700">
-                          {prompt.summaryId}
+                          <time
+                            dateTime={new Date(
+                              prompt.createdAt
+                            ).toLocaleString()}
+                          >
+                            {new Date(prompt.createdAt).toLocaleString()}
+                          </time>
                         </dd>
                       </dl>
                     </td>
                     <td className="hidden px-3 py-4 text-sm text-gray-500 lg:table-cell">
-                      {prompt.summaryId}
+                      <time
+                        dateTime={new Date(prompt.createdAt).toLocaleString()}
+                      >
+                        {new Date(prompt.createdAt).toLocaleString()}
+                      </time>
                     </td>
                     <td className="py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                       <button

@@ -90,7 +90,7 @@ export function AddMemberToAccessGroupModal(p: P) {
                       className="text-base font-semibold leading-6 text-gray-900"
                     >
                       {/* {t("dashboard-page:access-groups.new-access-group")} */}
-                      Add Email To Access Group
+                      Add Email To Group
                     </Dialog.Title>
                   </div>
                 </div>

@@ -20,7 +20,7 @@ export function SummariesTable(p: P) {
           <h1 className="text-base font-semibold leading-6 text-gray-900">
             Summaries
           </h1>
-          <p className="mt-2 text-sm text-gray-700">
+          <p className="mt-2 text-sm text-gray-500">
             Summaries in this access group
           </p>
         </div>
@@ -34,13 +34,13 @@ export function SummariesTable(p: P) {
                   scope="col"
                   className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
                 >
-                  Added at
+                  Summary ID
                 </th>
                 <th
                   scope="col"
                   className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell"
                 >
-                  Summary ID
+                  Added at
                 </th>
                 <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-0">
                   <span className="sr-only">Delete</span>
@@ -52,24 +52,26 @@ export function SummariesTable(p: P) {
                 return (
                   <tr key={summary.summaryId}>
                     <td className="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-0">
-                      <p>
-                        <time
-                          dateTime={new Date(
-                            summary.createdAt
-                          ).toLocaleString()}
-                        >
-                          {new Date(summary.createdAt).toLocaleString()}
-                        </time>
-                      </p>
+                      <p>{summary.summaryId}</p>
                       <dl className="font-normal lg:hidden">
                         <dt className="sr-only">Summary ID</dt>
                         <dd className="mt-1 truncate text-gray-700">
-                          {summary.summaryId}
+                          <time
+                            dateTime={new Date(
+                              summary.createdAt
+                            ).toLocaleString()}
+                          >
+                            {new Date(summary.createdAt).toLocaleString()}
+                          </time>
                         </dd>
                       </dl>
                     </td>
                     <td className="hidden px-3 py-4 text-sm text-gray-500 lg:table-cell">
-                      {summary.summaryId}
+                      <time
+                        dateTime={new Date(summary.createdAt).toLocaleString()}
+                      >
+                        {new Date(summary.createdAt).toLocaleString()}
+                      </time>
                     </td>
                     <td className="py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                       <button

@@ -16,7 +16,7 @@
     "send-email": "Envoyer un e-mail",
     "text-to-speech": "Texte pour parler",
     "prompts": "Instructions",
-    "access-groups": "Groupes d'accès"
+    "access-groups": "Groupes"
   },
   "user-nav": {
     "settings": "Paramètres",
@@ -188,7 +188,8 @@
   },
   "prompts": {
     "title": "Instructions",
-    "no-prompts-yet": "Aucune invite pour l'instant"
+    "no-prompts-yet": "Aucune invite pour l'instant",
+    "no-prompts-found": "Aucune invite trouvée"
   },
   "prompt": {
     "title": "Rapide"

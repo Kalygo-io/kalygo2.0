@@ -16,7 +16,7 @@
     "send-email": "Send Email",
     "text-to-speech": "Text-to-Speech",
     "prompts": "Prompts",
-    "access-groups": "Access Groups"
+    "access-groups": "Groups"
   },
   "user-nav": {
     "settings": "Settings",
@@ -190,7 +190,8 @@
   },
   "prompts": {
     "title": "Prompts",
-    "no-prompts-yet": "No prompts yet"
+    "no-prompts-yet": "No prompts yet",
+    "no-prompts-found": "No prompts found"
   },
   "prompt": {
     "title": "Prompt"

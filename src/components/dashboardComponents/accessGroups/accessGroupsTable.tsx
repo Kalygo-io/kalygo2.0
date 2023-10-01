@@ -26,16 +26,8 @@ export function AccessGroupsTable(p: P) {
 
   return (
     <>
-      <div className="p-2 my-2 sm:px-6 lg:px-4 overflow-y-scroll no-scrollbar min-h-screen">
+      <div className="p-2 overflow-y-scroll no-scrollbar min-h-screen">
         <div className="sm:flex sm:items-center">
-          {/* <div className="sm:flex-auto">
-            <h1 className="text-base font-semibold leading-6 text-gray-900">
-              {t("dashboard-page:access-groups.title")}
-            </h1>
-            <p className="mt-2 text-sm text-gray-700">
-              {t("dashboard-page:access-groups.description")}
-            </p>
-          </div> */}
           <div className="mt-4 sm:mt-0 sm:flex-none">
             <button
               onClick={() => {
@@ -57,13 +49,13 @@ export function AccessGroupsTable(p: P) {
                     scope="col"
                     className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
                   >
-                    Created at
+                    Group name
                   </th>
                   <th
                     scope="col"
                     className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
                   >
-                    Name
+                    Created at
                   </th>
                   <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-0">
                     <span className="sr-only">View</span>
@@ -74,7 +66,10 @@ export function AccessGroupsTable(p: P) {
                 {groups.map((group) => {
                   return (
                     <tr key={group.id}>
-                      <td className="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-0">
+                      <td className="px-3 py-4 text-sm font-medium text-gray-900">
+                        {group.name}
+                      </td>
+                      <td className="w-full max-w-0 py-4 pl-4 pr-3 text-sm text-gray-500 sm:w-auto sm:max-w-none sm:pl-0">
                         <p>
                           <time
                             dateTime={new Date(
@@ -84,10 +79,6 @@ export function AccessGroupsTable(p: P) {
                             {new Date(group.createdAt).toLocaleString()}
                           </time>
                         </p>
-                      </td>
-
-                      <td className="px-3 py-4 text-sm text-gray-500">
-                        {group.name}
                       </td>
                       <td className="py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                         <Menu
