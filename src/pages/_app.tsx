@@ -57,7 +57,7 @@ const App = function ({ Component, pageProps }: CustomAppProps) {
         <link rel="apple-touch-icon" href="/kalygo_new_logo-192x192.png" />
         <meta
           name="description"
-          content="Kalygo is an open source, cloud-agnostic platform for A.I. assisted Legal eDiscovery."
+          content="Kalygo is an open source, cloud-agnostic platform for A.I. assisted eDiscovery."
         />
         <meta
           name="keywords"
