@@ -26,6 +26,7 @@ import {
   EnvelopeIcon,
   RectangleGroupIcon,
   UserGroupIcon,
+  FolderIcon,
 } from "@heroicons/react/24/outline";
 
 import { signOut } from "@/services/signOut";
@@ -105,6 +106,11 @@ export default function LayoutDashboard({ children, account }: P) {
       name: t("dashboard-page:navigation.queue"),
       href: "/dashboard/queue",
       icon: QueueListIcon,
+    },
+    {
+      name: t("dashboard-page:navigation.my-documents"),
+      href: "/dashboard/my-documents",
+      icon: FolderIcon,
     },
     {
       name: t("dashboard-page:navigation.access-groups"),
