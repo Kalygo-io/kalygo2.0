@@ -21,9 +21,9 @@ export const DefaultHero = () => {
         id="landing-page-hero"
       >
         <h1 className="title text-7xl font-bold tracking-tight text-gray-900">
-          <span className="text-center">
+          {/* <span className="text-center">
             {t("landing-page:landing-page-headline-prefix")}&nbsp;
-          </span>
+          </span> */}
           <Typewriter
             options={{
               strings: [
@@ -46,7 +46,7 @@ export const DefaultHero = () => {
               href="/signup"
               className="rounded-md bg-blue-600 mr-2 px-4 py-3.5 text-lg font-semibold text-white shadow-md hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
             >
-              &nbsp;{t("landing-page:upload")}&nbsp;
+              &nbsp;{t("landing-page:discover")}&nbsp;
             </Link>
             <Link
               href="/signup"

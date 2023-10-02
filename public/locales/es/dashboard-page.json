@@ -16,7 +16,7 @@
     "send-email": "Enviar correo electrónico",
     "text-to-speech": "Texto a voz",
     "prompts": "Indicaciones",
-    "access-groups": "Grupos"
+    "access-groups": "Asuntos"
   },
   "user-nav": {
     "settings": "Ajustes",
@@ -239,14 +239,14 @@
     }
   },
   "access-groups": {
-    "title": "Grupos de acceso",
-    "description": "Todos los grupos que posees",
-    "no-groups-found": "No se encontraron grupos",
+    "title": "Asuntos",
+    "description": "Un asunto es una colección de documentos, A.I. salidas y avisos. Cualquier correo electrónico asociado con el asunto puede ver todos los datos del asunto, pero solo el creador de un dato particular del asunto puede editarlo.",
+    "no-groups-found": "No se encontraron asuntos",
     "view": "Vista",
     "delete": "Borrar",
-    "create": "Crear",
+    "create": "crear nueva materia",
     "name": "Nombre",
-    "new-access-group": "Nuevo grupo de acceso"
+    "new-access-group": "Materia nueva"
   },
   "admin": {
     "title": "Descripción general",

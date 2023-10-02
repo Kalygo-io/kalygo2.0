@@ -16,7 +16,7 @@
     "send-email": "Send Email",
     "text-to-speech": "Text-to-Speech",
     "prompts": "Prompts",
-    "access-groups": "Groups"
+    "access-groups": "Matters"
   },
   "user-nav": {
     "settings": "Settings",
@@ -239,14 +239,14 @@
     }
   },
   "access-groups": {
-    "title": "Access Groups",
-    "description": "All the groups you own",
-    "no-groups-found": "No groups found",
+    "title": "Matters",
+    "description": "A matter is a collection of documents, A.I. outputs, and prompts. Any email associated with the matter can view all the data in the matter but only the creator of a particular piece of data in the matter can edit it.",
+    "no-groups-found": "No matters found",
     "view": "View",
     "delete": "Delete",
-    "create": "Create",
+    "create": "Create new matter",
     "name": "Name",
-    "new-access-group": "New Access Group"
+    "new-access-group": "New Matter"
   },
   "admin": {
     "title": "Overview",

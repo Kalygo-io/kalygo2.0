@@ -1,9 +1,10 @@
 {
   "landing-page-headline": "Documentos simplificados",
   "landing-page-headline-prefix": "Documentos feitos",
-  "typewriter-word-1": "simples",
-  "typewriter-word-2": "fácil",
-  "typewriter-word-3": "rápido",
+  "typewriter-word-1": "Descoberta eletrônica legal facilitada",
+  "typewriter-word-2": "Privilégio advogado-cliente preservado",
+  "typewriter-word-3": "IA examinada assistência",
+  "typewriter-word-4": "Controle seu caso",
   "industries": {
     "medical": {
       "landing-page-subheadline": "Kalygo ajuda empresas médicas, grandes e pequenas, com soluções personalizadas de gerenciamento de documentos locais, aceleradas por IA.",
@@ -39,7 +40,7 @@
       "typewriter-word-3": "Informações compartilháveis"
     }
   },
-  "landing-page-subheadline": "Carregue dados e aproveite o software de ponta que inclui solicitação personalizável, resumo entre documentos e fluxos de trabalho de colaboração",
+  "landing-page-subheadline": "Faça upload de dados e aproveite software de ponta que inclui OCR, solicitações personalizáveis, resumo de documentos e fluxos de trabalho de colaboração",
   "sign-up": "Obter Kalygo",
   "its-free": "é grátis",
   "log-in": "Log in",

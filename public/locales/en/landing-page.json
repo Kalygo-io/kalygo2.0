@@ -1,10 +1,10 @@
 {
   "landing-page-headline": "Docs made simple",
   "landing-page-headline-prefix": "Docs made",
-  "typewriter-word-1": "simple",
-  "typewriter-word-2": "easy",
-  "typewriter-word-3": "fast",
-  "typewriter-word-4": "intuitive",
+  "typewriter-word-1": "Legal eDiscovery made easy",
+  "typewriter-word-2": "Attorney-client privilege preserved",
+  "typewriter-word-3": "Vetted A.I. assistance",
+  "typewriter-word-4": "Control your case",
   "industries": {
     "medical": {
       "landing-page-subheadline": "Kalygo helps medical players both big and small with tailored on-prem document management solutions accelerated by A.I.",
@@ -42,11 +42,12 @@
       "typewriter-word-4": "Coordinate your campaigns"
     }
   },
-  "landing-page-subheadline": "Upload data and leverage cutting edge software that includes customizable prompting, summarization across documents, and collaboration workflows",
+  "landing-page-subheadline": "Upload data and leverage cutting edge software that includes OCR, customizable prompting, summarization across documents, and collaboration workflows",
   "sign-up": "Get Kalygo",
   "its-free": "it's free",
   "log-in": "Log in",
   "try-kalygo-for-free": "Try for free",
   "upload": "Upload",
+  "discover": "Discover",
   "sign-up-with-google": "Sign up"
 }

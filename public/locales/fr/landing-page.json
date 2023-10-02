@@ -1,10 +1,10 @@
 {
   "landing-page-headline": "Documents simplifiés",
   "landing-page-headline-prefix": "Documents créés",
-  "typewriter-word-1": "simple",
-  "typewriter-word-2": "facile",
-  "typewriter-word-3": "rapide",
-  "typewriter-word-4": "intuitif",
+  "typewriter-word-1": "La découverte électronique juridique simplifiée",
+  "typewriter-word-2": "Le privilège avocat-client préservé",
+  "typewriter-word-3": "Une IA vérifiée assistance",
+  "typewriter-word-4": "Contrôlez votre dossier",
   "industries": {
     "medical": {
       "landing-page-subheadline": "Kalygo aide les acteurs médicaux, petits et grands, avec des solutions de gestion de documents sur site sur mesure accélérées par l'IA.",
@@ -41,7 +41,7 @@
       "typewriter-word-4": "Coordonnez vos campagnes"
     }
   },
-  "landing-page-subheadline": "Téléchargez des données et tirez parti d'un logiciel de pointe qui inclut des invites personnalisables, des résumés de documents et des workflows de collaboration",
+  "landing-page-subheadline": "Téléchargez des données et exploitez un logiciel de pointe qui inclut l'OCR, des invites personnalisables, la synthèse dans les documents et des flux de travail de collaboration.",
   "sign-up": "Obtenez Kalygo",
   "its-free": "C'est gratuit",
   "log-in": "Connexion",

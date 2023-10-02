@@ -16,7 +16,7 @@
     "send-email": "Enviar email",
     "text-to-speech": "Texto para fala",
     "prompts": "Comandos",
-    "access-groups": "Grupos"
+    "access-groups": "Assuntos"
   },
   "user-nav": {
     "settings": "Configurações",
@@ -235,14 +235,14 @@
     }
   },
   "access-groups": {
-    "title": "Grupos de acesso",
-    "description": "Todos os grupos que você possui",
-    "no-groups-found": "Nenhum grupo encontrado",
+    "title": "Assuntos",
+    "description": "Um assunto é uma coleção de documentos, A.I. saídas e prompts. Qualquer e-mail associado ao caso pode visualizar todos os dados do caso, mas somente o criador de um dado específico do caso pode editá-lo.",
+    "no-groups-found": "Nenhum caso encontrado",
     "view": "Visualizar",
     "delete": "Excluir",
-    "create": "Criar",
+    "create": "Criar novo assunto",
     "name": "Nome",
-    "new-access-group": "Novo grupo de acesso"
+    "new-access-group": "Novo assunto"
   },
   "admin": {
     "title": "Visão geral",
