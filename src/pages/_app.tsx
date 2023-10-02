@@ -26,11 +26,6 @@ import type { NextComponentType } from "next"; //Import Component type
 import { pdfjs } from "react-pdf";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { AdminGuard } from "@/guards/AdminGuard";
-import { setChonkyDefaults } from "chonky";
-import { ChonkyIconFA } from "chonky-icon-fontawesome";
-
-// Somewhere in your `index.ts`:
-setChonkyDefaults({ iconComponent: ChonkyIconFA });
 
 pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.js`;
 
