@@ -50,13 +50,17 @@ const App = function ({ Component, pageProps }: CustomAppProps) {
         <meta property="og:title" content="Kalygo" />
         <meta
           property="og:description"
-          content="Kalygo supports high-quality document summarization, vector search, multi-document based prompting, and collaboration. All code on the platform is open source, reusable, and free. Ease and insight is what Kalygo aims to leave you with."
+          content="Kalygo is an open source, cloud-agnostic platform for A.I. assisted Legal eDiscovery."
         />
         <meta property="og:image" content="/kalygo_new_logo-512x512.png" />
         <link rel="apple-touch-icon" href="/kalygo_new_logo-192x192.png" />
         <meta
           name="description"
-          content="Kalygo is a platform for managing your contracts with insight and ease."
+          content="Kalygo is an open source, cloud-agnostic platform for A.I. assisted Legal eDiscovery."
+        />
+        <meta
+          name="keywords"
+          content="eDiscovery, Legal eDiscovery, eDiscovery software, eDiscovery platform, Legal tech solutions, eDiscovery collection, eDiscovery processing, eDiscovery review, eDiscovery production, eDiscovery presentation, Litigation support software, Legal data management, Legal case management, Legal data analytics, Cloud-based eDiscovery, On-premise eDiscovery, AI-powered eDiscovery, eDiscovery automation, eDiscovery OCR (Optical Character Recognition), Legal document review software, GDPR eDiscovery, FRCP (Federal Rules of Civil Procedure) compliance, eDiscovery best practices, Data retention policies, Reducing eDiscovery costs, eDiscovery for small firms, eDiscovery scalability, eDiscovery data security, Efficient eDiscovery workflow"
         />
       </Head>
 

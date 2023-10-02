@@ -138,13 +138,13 @@ export default function AccessGroups() {
                         scope="col"
                         className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
                       >
-                        Group name
+                        Matter name
                       </th>
                       <th
                         scope="col"
                         className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell"
                       >
-                        Requested at
+                        Created at
                       </th>
                       <th
                         scope="col"

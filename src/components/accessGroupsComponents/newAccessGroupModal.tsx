@@ -106,7 +106,7 @@ export function NewAccessGroupModal(p: P) {
                       className="rounded-md pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
                       type="text"
                       name="name"
-                      placeholder="Group name"
+                      placeholder="Matter name"
                     />
                   </label>
                 </form>
