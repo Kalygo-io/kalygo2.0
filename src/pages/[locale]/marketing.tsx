@@ -36,7 +36,7 @@ export default function MarketingLandingPage(props: any) {
       </Head>
       <Layout1>
         <IndustryHero industry="marketing" />
-        <Stats />
+        {/* <Stats /> */}
         <Industry industry="marketing" />
         <Pricing />
         <EnterprisePricing />

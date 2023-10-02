@@ -36,7 +36,7 @@ export default function MedicalLandingPage(props: any) {
       </Head>
       <Layout1>
         <IndustryHero industry="medical" />
-        <Stats />
+        {/* <Stats /> */}
         <Industry industry="medical" />
         <Pricing />
         <EnterprisePricing />

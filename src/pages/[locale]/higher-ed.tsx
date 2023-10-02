@@ -36,7 +36,7 @@ export default function HigherEdLandingPage(props: any) {
       </Head>
       <Layout1>
         <IndustryHero industry="higher-ed" />
-        <Stats />
+        {/* <Stats /> */}
         <Industry industry="higher-ed" />
         <Pricing />
         <EnterprisePricing />

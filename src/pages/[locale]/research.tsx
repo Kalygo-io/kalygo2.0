@@ -36,7 +36,7 @@ export default function ResearchLandingPage(props: any) {
       </Head>
       <Layout1>
         <IndustryHero industry="research" />
-        <Stats />
+        {/* <Stats /> */}
         <Industry industry="research" />
         <Pricing />
         <EnterprisePricing />
