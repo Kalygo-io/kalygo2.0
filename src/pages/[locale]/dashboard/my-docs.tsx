@@ -82,7 +82,7 @@ export default function MyDocuments() {
   } else if (docs.err) {
     jsx = <ErrorInDashboard />;
   } else if (docs.val) {
-    jsx = <DocsTable docs={docs.val} refresh={refresh} />;
+    jsx = <DocsTable docs={docs.val} refresh={refresh} account={account.val} />;
   }
 
   return (

@@ -1,8 +1,11 @@
 import { NewDocModal } from "@/components/dashboardComponents/myDocs/newDocModal";
+import { deleteFileFactory } from "@/serviceFactory/deleteFileFactory";
+import { downloadFileFactory } from "@/serviceFactory/downloadFile";
 import { errorReporter } from "@/utility/error/reporter";
 import { classNames } from "@/utility/misc/classNames";
 import { Menu, Transition } from "@headlessui/react";
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
+import saveAs from "file-saver";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import React, { Dispatch, Fragment, SetStateAction, useState } from "react";
@@ -10,10 +13,11 @@ import React, { Dispatch, Fragment, SetStateAction, useState } from "react";
 interface P {
   docs: any[];
   refresh: Dispatch<SetStateAction<number>>;
+  account: any;
 }
 
 export const DocsTable = (p: P) => {
-  let { docs, refresh } = p;
+  let { docs, refresh, account } = p;
   const router = useRouter();
   const { t } = useTranslation();
 
@@ -41,8 +45,9 @@ export const DocsTable = (p: P) => {
                 onClick={() => {
                   setNewDocOpen(true);
                 }}
+                disabled
                 type="button"
-                className="opacity-100 block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                className="opacity-50 block rounded-md bg-blue-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               >
                 {t("dashboard-page:docs-table.new-doc")}
               </button>
@@ -115,17 +120,23 @@ export const DocsTable = (p: P) => {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <span
-                                      onClick={() => {
+                                      onClick={async () => {
                                         console.log("DOWNLOAD");
-                                        // router.push(
-                                        //   `/dashboard/doc?doc-id=${doc.id}`
-                                        // );
+                                        const request = downloadFileFactory(
+                                          doc.id
+                                        );
+                                        const response = await request;
+
+                                        debugger;
+
+                                        const blob = new Blob([response?.data]);
+                                        saveAs(blob, doc.originalName);
                                       }}
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
                                           : "text-gray-700",
-                                        "block px-4 py-2 text-sm"
+                                        "block px-4 py-2 text-sm cursor-pointer"
                                       )}
                                     >
                                       Download
@@ -137,11 +148,9 @@ export const DocsTable = (p: P) => {
                                     <span
                                       onClick={async () => {
                                         try {
-                                          //   const request =
-                                          //     await deleteAccessGroupFactory(
-                                          //       group.id
-                                          //     );
-                                          //   const response = await request;
+                                          const request =
+                                            await deleteFileFactory(doc.id);
+                                          const response = await request;
                                           refresh((val) => val + 1);
                                         } catch (e) {
                                           errorReporter(e);
