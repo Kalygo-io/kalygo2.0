@@ -126,10 +126,7 @@ export function Query(props: Props) {
     jsx = <WindowLoader></WindowLoader>;
   } else if (searchResults.val) {
     jsx = (
-      <ul
-        role="list"
-        className="divide-y divide-gray-100 max-h-screen overflow-y-scroll"
-      >
+      <ul role="list" className="divide-y divide-gray-100">
         {documents.map((i, idx) => (
           <li key={idx} className="flex gap-x-4 py-5">
             <div className="flex-auto">
@@ -210,7 +207,12 @@ export function Query(props: Props) {
             onLoadSuccess={onDocumentLoadSuccess}
             options={options}
           >
-            <Page key={`page_${page}`} width={size?.width} pageNumber={page} />
+            <Page
+              key={`page_${page}`}
+              width={size?.width}
+              pageNumber={page}
+              className="w-full max-h-screen"
+            />
           </Document>
         </div>
       );
