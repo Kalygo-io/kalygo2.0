@@ -107,11 +107,11 @@ export default function LayoutDashboard({ children, account }: P) {
       href: "/dashboard/queue",
       icon: QueueListIcon,
     },
-    // {
-    //   name: t("dashboard-page:navigation.my-documents"),
-    //   href: "/dashboard/my-documents",
-    //   icon: FolderIcon,
-    // },
+    {
+      name: t("dashboard-page:navigation.my-documents"),
+      href: "/dashboard/my-docs",
+      icon: FolderIcon,
+    },
     {
       name: t("dashboard-page:navigation.access-groups"),
       href: "/dashboard/access-groups",

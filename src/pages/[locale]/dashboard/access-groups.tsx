@@ -1,18 +1,14 @@
 "use client";
 
 import Head from "next/head";
-
 import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
-
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import { WindowLoader } from "@/components/shared/WindowLoader";
-
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
-
 import { useGetAccount } from "@/utility/hooks/getAccount";
 import { AccessGroupsTable } from "@/components/dashboardComponents/accessGroups/accessGroupsTable";
 import { NewAccessGroupModal } from "@/components/accessGroupsComponents/newAccessGroupModal";
@@ -22,16 +18,6 @@ import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 import { classNames } from "@/utility/misc/classNames";
 import { deleteAccessGroupFactory } from "@/serviceFactory/deleteAccessGroupFactory";
 import { errorReporter } from "@/utility/error/reporter";
-
-const people = [
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  // More people...
-];
 
 const getStaticProps = makeStaticProps([
   "seo",

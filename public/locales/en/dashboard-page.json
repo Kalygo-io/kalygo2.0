@@ -250,6 +250,15 @@
     "name": "Name",
     "new-access-group": "New Matter"
   },
+  "docs-table": {
+    "no-docs-found": "No docs found",
+    "new-doc": "New doc",
+    "new-doc-modal": {
+      "title": "New doc",
+      "name": "Name of file?",
+      "name-placeholder": "This will be a drag-N-drop area"
+    }
+  },
   "admin": {
     "title": "Overview",
     "accounts": {
