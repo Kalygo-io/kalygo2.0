@@ -68,6 +68,7 @@ export function Query(props: Props) {
 
   const onSubmit = async (data: any) => {
     try {
+      console.log("loading...");
       console.log("onSubmit", data);
       console.log("file", file);
 
@@ -229,13 +230,57 @@ export function Query(props: Props) {
 
   return (
     <div className="flex min-h-full flex-col">
-      <div className="m-4 lg:grid grid-cols-3 flex flex-col grid-rows-1">
+      {/* 3 column wrapper */}
+      <div className="mx-auto w-full max-w-7xl grow lg:flex xl:px-2">
+        {/* Left sidebar & main wrapper */}
+        {/* <div className="flex-1 basis-2/3 xl:flex"> */}
+        <div className="flex-1 xl:flex">
+          <div className="border-b border-gray-200 px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:border-b-0 xl:border-r xl:pl-6">
+            {/* Left column area */}
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="flex flex-col justify-center items-center"
+            >
+              <textarea
+                {...register("query", { required: true })}
+                rows={1}
+                id="query"
+                placeholder="Similarity search"
+                className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
+                  errors["query"] && "ring-red-700 focus:ring-red-500"
+                }`}
+              />
+
+              <div>
+                <button
+                  disabled={!file}
+                  className="inline-flex items-center gap-x-2 rounded-md bg-blue-600 m-2 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                >
+                  <MagnifyingGlassIcon className="h-4 w-4" />
+                </button>
+              </div>
+            </form>
+            {jsx}
+          </div>
+
+          <div className="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
+            {/* Main area */}
+            {viewer}
+          </div>
+        </div>
+
+        {/* <div className="shrink-0 border-t border-gray-200 px-4 py-6 sm:px-6 lg:w-96 lg:border-l lg:border-t-0 lg:pr-8 xl:pr-6"> */}
+        <div className="m-4 shrink-0 px-4 py-6 sm:px-6 lg:flex-1 lg:pr-8 xl:pr-6 border-t border-gray-200 lg:border-l lg:border-t-0">
+          {/* Right column area */}
+        </div>
+      </div>
+
+      {/* <div className="m-4 lg:grid grid-cols-3 flex flex-col grid-rows-1">
         <div className="py-4 flex justify-center mx-auto lg:order-1 order-2 col-span-2">
           {viewer}
         </div>
 
         <div className="m-4 px-4 py-6 shrink-0 border-b lg:border-gray-200 lg:border-l lg:border-b-0 lg:pr-8 xl:pr-4 lg:order-2 order-1 col-span-1 overflow-scroll">
-          {/* Right column area */}
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col justify-center items-center w-full"
@@ -261,7 +306,7 @@ export function Query(props: Props) {
           </form>
           {jsx}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -31,6 +31,7 @@
 }
 
 .window-loading-animation {
+  z-index: 100;
   position: absolute;
   left: 0;
   right: 0;
