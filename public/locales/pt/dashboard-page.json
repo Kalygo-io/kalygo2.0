@@ -13,6 +13,7 @@
     "admin": "Administrador",
     "custom-request": "Solicitação personalizada",
     "chunking-tool": "Ferramenta de fragmentação",
+    "rag": "R.A.G.",
     "buy-credits": "Compre créditos",
     "send-email": "Enviar email",
     "text-to-speech": "Texto para fala",
@@ -179,6 +180,31 @@
     "select": "Selecione",
     "not-this-one": "Esse não"
   },
+  "rag": {
+    "title": "R.A.G.",
+    "description": "'Retrieval Augmented Generation' permite que você coloque bases de conhecimento sobre o LLM desejado. Carregue um arquivo CSV com duas colunas, ou seja: Col #{{undefined}} - 'PROMPT' e Col #{{undefined}} - 'RESPONSE'",
+    "customizations": "Personalizações",
+    "query": "Consulta",
+    "choose-file": "Escolher arquivo",
+    "provide-request": "Customizar",
+    "run": "Solicitar",
+    "review": "Análise",
+    "response": "Resposta",
+    "send": "Enviar",
+    "select-file": "Selecione",
+    "upload-limits": "Arquivo TXT ou PDF",
+    "save": "Salvar",
+    "next": "Próximo",
+    "prompt": "Incitar",
+    "prompt-placeholder-text": "Edite ou personalize a solicitação que será aplicada aos seus arquivos aqui",
+    "chosen-file": "Arquivo escolhido",
+    "suggested-requests": "Sugerido",
+    "provided-request": "Solicitação fornecida",
+    "open-options": "Opções abertas",
+    "more-like-this": "Mais como isso",
+    "select": "Selecione",
+    "not-this-one": "Esse não"
+  },
   "chunking-tool": {
     "title": "Ferramenta de fragmentação",
     "description": "A 'Ferramenta Chunking' permite selecionar um arquivo e especificar o modelo que você gostaria de usar para processar seu arquivo. Depois de fornecer esses detalhes, Kalygo extrairá o texto e cortará o arquivo para que cada parte dele possa ser assimilada pela IA. modelo especificado.",
@@ -235,6 +261,22 @@
       "email": "E-mail"
     }
   },
+  "rag-result": {
+    "title": "R.A.G.",
+    "prompt": "Incitar",
+    "mode": "Modo",
+    "model": "Modelo",
+    "language": "Linguagem",
+    "format": "Formatar",
+    "share-modal": {
+      "title": "Compartilhar",
+      "email": "E-mail"
+    },
+    "requested": "Requeridos",
+    "filename": "Nome do arquivo",
+    "download": "Download",
+    "kb": "Base de Conhecimento"
+  },
   "access-groups": {
     "title": "Assuntos",
     "description": "Um assunto é uma coleção de documentos, A.I. saídas e prompts. Qualquer e-mail associado ao caso pode visualizar todos os dados do caso, mas somente o criador de um dado específico do caso pode editá-lo.",
@@ -244,6 +286,9 @@
     "create": "Criar novo assunto",
     "name": "Nome",
     "new-access-group": "Novo assunto"
+  },
+  "docs-table": {
+    "new-doc-modal": {}
   },
   "admin": {
     "title": "Visão geral",

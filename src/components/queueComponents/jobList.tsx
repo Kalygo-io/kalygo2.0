@@ -6,6 +6,7 @@ import { SummaryJob } from "./jsxForJobType/summary";
 import { CustomRequest } from "./jsxForJobType/customRequest";
 import { VectorSearch } from "./jsxForJobType/vectorSearch";
 import { SummaryV2Job } from "./jsxForJobType/summaryV2";
+import { RagRequest } from "./jsxForJobType/ragRequest";
 
 interface P {
   jobs: any[];
@@ -63,6 +64,16 @@ export const JobList = (p: P) => {
           case "CustomRequest":
             jobTypeJsx = (
               <CustomRequest
+                job={i}
+                router={router}
+                triggerFetch={triggerFetch}
+                fetchCounter={fetchCounter}
+              />
+            );
+            break;
+          case "RagRequest":
+            jobTypeJsx = (
+              <RagRequest
                 job={i}
                 router={router}
                 triggerFetch={triggerFetch}

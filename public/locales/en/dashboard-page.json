@@ -13,6 +13,7 @@
     "admin": "Admin",
     "custom-request": "Custom Request",
     "chunking-tool": "Chunking Tool",
+    "rag": "R.A.G.",
     "buy-credits": "Buy Credits",
     "send-email": "Send Email",
     "text-to-speech": "Text-to-Speech",
@@ -179,6 +180,31 @@
     "select": "Select",
     "not-this-one": "Not this one"
   },
+  "rag": {
+    "title": "R.A.G.",
+    "description": "'Retrieval Augmented Generation' allows you to layer knowledge bases on top of your desired LLM. Upload a CSV file with two columns ie: Col #1 - 'PROMPT' & Col #2 - 'RESPONSE'",
+    "customizations": "Customizations",
+    "query": "Query",
+    "choose-file": "Choose file",
+    "provide-request": "Customize",
+    "run": "Request",
+    "review": "Review",
+    "response": "Response",
+    "send": "Send",
+    "select-file": "Select",
+    "upload-limits": "TXT or PDF file",
+    "save": "Save",
+    "next": "Next",
+    "prompt": "Prompt",
+    "prompt-placeholder-text": "Edit or customize the request that will be applied to your files here",
+    "chosen-file": "Chosen file",
+    "suggested-requests": "Suggested",
+    "provided-request": "Provided Prompt",
+    "open-options": "Open options",
+    "more-like-this": "More like this",
+    "select": "Select",
+    "not-this-one": "Not this one"
+  },
   "chunking-tool": {
     "title": "Chunking Tool",
     "description": "The 'Chunking Tool' allows you to select a file and specify the model you would like use to process your file. After providing these details, Kalygo will extract the text and cut up the file so that each part of it is ingestable into the A.I. model specified.",
@@ -239,6 +265,22 @@
       "title": "Share",
       "email": "Email"
     }
+  },
+  "rag-result": {
+    "title": "R.A.G.",
+    "prompt": "Prompt",
+    "mode": "Mode",
+    "model": "Model",
+    "language": "Language",
+    "format": "Format",
+    "share-modal": {
+      "title": "Share",
+      "email": "Email"
+    },
+    "requested": "Requested",
+    "filename": "File name",
+    "download": "Download",
+    "kb": "Knowledge Base"
   },
   "access-groups": {
     "title": "Matters",

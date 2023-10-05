@@ -13,6 +13,7 @@
     "admin": "Administración",
     "custom-request": "Solicitud personalizada",
     "chunking-tool": "Herramienta de fragmentación",
+    "rag": "TRAPO.",
     "buy-credits": "Compra creditos",
     "send-email": "Enviar correo electrónico",
     "text-to-speech": "Texto a voz",
@@ -179,6 +180,31 @@
     "select": "Seleccionar",
     "not-this-one": "Este no"
   },
+  "rag": {
+    "title": "TRAPO.",
+    "description": "La 'Generación Aumentada de Recuperación' le permite superponer bases de conocimientos sobre su LLM deseado. Cargue un archivo CSV con dos columnas, es decir: Col #{{undefined}} - 'PROMPT' y Col #{{undefined}} - 'RESPUESTA'",
+    "customizations": "Personalizaciones",
+    "query": "Consulta",
+    "choose-file": "Elija el archivo",
+    "provide-request": "Personalizar",
+    "run": "Pedido",
+    "review": "Revisar",
+    "response": "Respuesta",
+    "send": "Enviar",
+    "select-file": "Seleccionar",
+    "upload-limits": "Archivo TXT o PDF",
+    "save": "Ahorrar",
+    "next": "Próximo",
+    "prompt": "Inmediato",
+    "prompt-placeholder-text": "Edite o personalice la solicitud que se aplicará a sus archivos aquí",
+    "chosen-file": "Archivo elegido",
+    "suggested-requests": "Sugirió",
+    "provided-request": "Aviso proporcionado",
+    "open-options": "Opciones abiertas",
+    "more-like-this": "Más como esto",
+    "select": "Seleccionar",
+    "not-this-one": "Este no"
+  },
   "chunking-tool": {
     "title": "Herramienta de fragmentación",
     "description": "La 'Herramienta de fragmentación' le permite seleccionar un archivo y especificar el modelo que le gustaría usar para procesar su archivo. Después de proporcionar estos detalles, Kalygo extraerá el texto y cortará el archivo para que cada parte sea ingerible en el sistema de I.A. modelo especificado.",
@@ -239,6 +265,21 @@
       "email": "Correo electrónico"
     }
   },
+  "rag-result": {
+    "title": "TRAPO.",
+    "prompt": "Inmediato",
+    "mode": "Modo",
+    "model": "Modelo",
+    "language": "Idioma",
+    "format": "Formato",
+    "share-modal": {
+      "title": "Compartir",
+      "email": "Correo electrónico"
+    },
+    "requested": "Solicitado",
+    "filename": "Nombre del archivo",
+    "download": "Descargar"
+  },
   "access-groups": {
     "title": "Asuntos",
     "description": "Un asunto es una colección de documentos, A.I. salidas y avisos. Cualquier correo electrónico asociado con el asunto puede ver todos los datos del asunto, pero solo el creador de un dato particular del asunto puede editarlo.",
@@ -248,6 +289,15 @@
     "create": "crear nueva materia",
     "name": "Nombre",
     "new-access-group": "Materia nueva"
+  },
+  "docs-table": {
+    "no-docs-found": "No se encontraron documentos",
+    "new-doc": "Nuevo documento",
+    "new-doc-modal": {
+      "title": "Nuevo documento",
+      "name": "¿Nombre del archivo?",
+      "name-placeholder": "Esta será un área de arrastrar y soltar"
+    }
   },
   "admin": {
     "title": "Descripción general",

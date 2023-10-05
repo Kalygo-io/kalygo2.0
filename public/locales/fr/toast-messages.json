@@ -10,6 +10,7 @@
   "you-joined-the-mailing-list": "Vous avez rejoint la liste de diffusion !",
   "vector-search-is-processing": "Votre recherche est en cours de traitement...",
   "custom-request-is-processing": "Votre demande est en cours de traitement...",
+  "rag-request-is-processing": "Votre R.A.G. la demande est en cours de traitement...",
   "custom-summary-is-processing": "Votre résumé est en cours de traitement...",
   "chunking-is-processing": "Des morceaux sont générés...",
   "summary-v2-is-processing": "Votre résumé est en cours de traitement...",

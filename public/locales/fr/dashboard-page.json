@@ -13,6 +13,7 @@
     "admin": "Administrateur",
     "custom-request": "Demande personnalisée",
     "chunking-tool": "Outil de regroupement",
+    "rag": "CHIFFON.",
     "buy-credits": "Acheter des crédits",
     "send-email": "Envoyer un e-mail",
     "text-to-speech": "Texte pour parler",
@@ -177,6 +178,31 @@
     "select": "Sélectionner",
     "not-this-one": "Pas celui-ci"
   },
+  "rag": {
+    "title": "CHIFFON.",
+    "description": "« Retrieval Augmented Generation » vous permet de superposer des bases de connaissances au-dessus du LLM souhaité. Téléchargez un fichier CSV avec deux colonnes, c'est-à-dire : Col #{{undefined}} – 'PROMPT' & Col #{{undefined}} – 'RESPONSE'",
+    "customizations": "Personnalisations",
+    "query": "Requête",
+    "choose-file": "Choisir le fichier",
+    "provide-request": "Personnaliser",
+    "run": "Demande",
+    "review": "Revoir",
+    "response": "Réponse",
+    "send": "Envoyer",
+    "select-file": "Sélectionner",
+    "upload-limits": "Fichier TXT ou PDF",
+    "save": "Sauvegarder",
+    "next": "Suivant",
+    "prompt": "Rapide",
+    "prompt-placeholder-text": "Modifiez ou personnalisez la demande qui sera appliquée à vos fichiers ici",
+    "chosen-file": "Fichier choisi",
+    "suggested-requests": "Suggéré",
+    "provided-request": "Invite fournie",
+    "open-options": "Options ouvertes",
+    "more-like-this": "Plus comme ça",
+    "select": "Sélectionner",
+    "not-this-one": "Pas celui-ci"
+  },
   "chunking-tool": {
     "title": "Outil de regroupement",
     "description": "Le « Chunking Tool » vous permet de sélectionner un fichier et de spécifier le modèle que vous souhaitez utiliser pour traiter votre fichier. Après avoir fourni ces détails, Kalygo extraira le texte et découpera le fichier afin que chaque partie soit ingérable dans l'IA. modèle spécifié.",
@@ -233,6 +259,20 @@
       "email": "E-mail"
     }
   },
+  "rag-result": {
+    "title": "CHIFFON.",
+    "prompt": "Rapide",
+    "mode": "Mode",
+    "model": "Modèle",
+    "language": "Langue",
+    "format": "Format",
+    "share-modal": {
+      "title": "Partager",
+      "email": "E-mail"
+    },
+    "requested": "Demandé",
+    "filename": "Nom de fichier"
+  },
   "access-groups": {
     "title": "Importe",
     "description": "Une affaire est un ensemble de documents, A.I. sorties et invites. Tout e-mail associé au sujet peut afficher toutes les données du sujet, mais seul le créateur d'une donnée particulière du sujet peut la modifier.",
@@ -242,6 +282,10 @@
     "create": "Créer un nouveau sujet",
     "name": "Nom",
     "new-access-group": "Nouveau groupe d'accès"
+  },
+  "docs-table": {
+    "no-docs-found": "Aucun document trouvé",
+    "new-doc-modal": {}
   },
   "admin": {
     "title": "Aperçu",

@@ -127,8 +127,6 @@ export const DocsTable = (p: P) => {
                                         );
                                         const response = await request;
 
-                                        debugger;
-
                                         const blob = new Blob([response?.data]);
                                         saveAs(blob, doc.originalName);
                                       }}

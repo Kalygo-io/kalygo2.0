@@ -10,6 +10,7 @@
   "you-joined-the-mailing-list": "¡Te uniste a la lista de correo!",
   "vector-search-is-processing": "Su búsqueda se está procesando...",
   "custom-request-is-processing": "Su solicitud se está procesando...",
+  "rag-request-is-processing": "Tu R.A.G. la solicitud se está procesando...",
   "custom-summary-is-processing": "Tu resumen se está procesando...",
   "chunking-is-processing": "Se están generando fragmentos...",
   "summary-v2-is-processing": "Su resumen se está procesando...",
