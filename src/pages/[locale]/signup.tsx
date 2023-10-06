@@ -68,6 +68,9 @@ export default function Signup() {
     defaultValues: {
       email: "",
       password: "",
+      tos: false,
+      referralCodeCheckbox: true,
+      referralCode: "MUJICA",
     },
   });
 
@@ -225,6 +228,73 @@ export default function Signup() {
                     required: true,
                     minLength: 7,
                   })}
+                />
+              </div>
+            </div>
+
+            <div>
+              <div className="mt-1">
+                <label
+                  htmlFor="saveCard"
+                  className="text-sm font-medium text-gray-700"
+                >
+                  Terms of Service
+                </label>
+                <input
+                  {...register("tos")}
+                  type="checkbox"
+                  name="tos"
+                  id="tos"
+                  autoComplete="tos"
+                  className="ml-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            <div>
+              <div className="mt-1">
+                <label
+                  htmlFor="referralCodeCheckbox"
+                  className="text-sm font-medium text-gray-700"
+                >
+                  Have a referral code?
+                </label>
+                <input
+                  {...register("referralCodeCheckbox")}
+                  type="checkbox"
+                  name="referralCodeCheckbox"
+                  id="referralCodeCheckbox"
+                  autoComplete="referralCodeCheckbox"
+                  className="ml-2 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="referralCode"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                {/* {t("forms:email-address")} */}
+                Referal Code
+              </label>
+              <div className="mt-2">
+                <input
+                  {...register("referralCode", {
+                    required: true,
+                    pattern: new RegExp(
+                      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/ // email regex
+                    ),
+                  })}
+                  id="referralCode"
+                  name="referralCode"
+                  type="referralCode"
+                  formNoValidate
+                  autoComplete="referralCode"
+                  placeholder={t("forms:enter-referral-code")!}
+                  className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
+                    errors["referralCode"] && "ring-red-700 focus:ring-red-500"
+                  }`}
                 />
               </div>
             </div>
