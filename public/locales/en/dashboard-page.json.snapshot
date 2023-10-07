@@ -375,6 +375,22 @@
       "email": "Email",
       "save": "Save"
     },
+    "referral-code": {
+      "title": "Referral code",
+      "code": "Code",
+      "first-name": "First name",
+      "last-name": "Last name",
+      "email": "Email",
+      "save": "Save",
+      "generate": "Generate",
+      "view-your-referral-codes": "View your referral codes",
+      "description": "Here are all the referral codes you have generated"
+    },
+    "referral-codes": {
+      "title": "Referral codes",
+      "description": "Here are all the referral codes you have generated",
+      "link": "Copy link"
+    },
     "payment": {
       "title": "Payment",
       "no-card": "No Card",

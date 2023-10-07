@@ -340,6 +340,20 @@
       "email": "E-mail",
       "save": "Sauvegarder"
     },
+    "referral-code": {
+      "title": "Code de Parrainage",
+      "code": "Code",
+      "first-name": "Prénom",
+      "last-name": "Nom de famille",
+      "email": "E-mail",
+      "save": "Sauvegarder",
+      "generate": "Générer",
+      "view-your-referral-codes": "Consultez vos codes de parrainage",
+      "description": "Voici tous les codes de parrainage que vous avez générés"
+    },
+    "referral-codes": {
+      "title": "Codes de parrainage"
+    },
     "payment": {
       "title": "Paiement",
       "no-card": "Pas de carte",

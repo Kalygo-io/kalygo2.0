@@ -344,6 +344,22 @@
       "email": "E-mail",
       "save": "Salvar"
     },
+    "referral-code": {
+      "title": "Código de Referencia",
+      "code": "Código",
+      "first-name": "Primeiro nome",
+      "last-name": "Sobrenome",
+      "email": "E-mail",
+      "save": "Salvar",
+      "generate": "Gerar",
+      "view-your-referral-codes": "Veja seus códigos de referência",
+      "description": "Aqui estão todos os códigos de referência que você gerou"
+    },
+    "referral-codes": {
+      "title": "Códigos de referência",
+      "description": "Aqui estão todos os códigos de referência que você gerou",
+      "link": "Link de cópia"
+    },
     "payment": {
       "title": "Pagamento",
       "no-card": "Nenhum cartão",

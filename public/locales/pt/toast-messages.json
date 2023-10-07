@@ -15,6 +15,7 @@
   "chunking-is-processing": "Pedaços estão sendo gerados...",
   "summary-v2-is-processing": "Seu resumo está sendo processado...",
   "send-email-success": "A solicitação para enviar e-mail foi processada",
+  "create-referral-code-success": "Código de referência criado com sucesso",
   "error": {
     "something-unexpected-happened": "Something unexpected happened"
   }

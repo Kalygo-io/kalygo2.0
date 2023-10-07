@@ -164,9 +164,6 @@ export default function Signup() {
 
   watch("referralCodeCheckbox");
 
-  console.log("errors", errors);
-  console.log("isValid", isValid);
-
   return (
     <>
       <Head>

@@ -374,6 +374,22 @@
       "email": "Correo electrónico",
       "save": "Ahorrar"
     },
+    "referral-code": {
+      "title": "Código de referencia",
+      "code": "Código",
+      "first-name": "Nombre de pila",
+      "last-name": "Apellido",
+      "email": "Correo electrónico",
+      "save": "Ahorrar",
+      "generate": "Generar",
+      "view-your-referral-codes": "Ver sus códigos de referencia",
+      "description": "Aquí están todos los códigos de referencia que ha generado."
+    },
+    "referral-codes": {
+      "title": "Códigos de referencia",
+      "description": "Aquí están todos los códigos de referencia que ha generado.",
+      "link": "Copiar link"
+    },
     "payment": {
       "title": "Pago",
       "no-card": "Sin tarjeta",
