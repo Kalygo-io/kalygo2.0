@@ -25,6 +25,7 @@ import { WindowLoader } from "@/components/shared/WindowLoader";
 
 import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import { PasswordInput } from "@/components/forms/signUpForm/passwordInput";
+import { InformationCircleIcon } from "@heroicons/react/24/outline";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -61,7 +62,7 @@ export default function Signup() {
     register,
     handleSubmit,
     getValues,
-    formState: { errors },
+    formState: { errors, isValid },
     setValue,
     watch,
   } = useForm({
@@ -69,8 +70,8 @@ export default function Signup() {
       email: "",
       password: "",
       tos: false,
-      referralCodeCheckbox: true,
-      referralCode: "MUJICA",
+      referralCodeCheckbox: false,
+      referralCode: "",
     },
   });
 
@@ -149,6 +150,11 @@ export default function Signup() {
   };
 
   const locale = router.query.locale;
+
+  watch("referralCodeCheckbox");
+
+  console.log("errors", errors);
+  console.log("isValid", isValid);
 
   return (
     <>
@@ -236,12 +242,25 @@ export default function Signup() {
               <div className="mt-1">
                 <label
                   htmlFor="saveCard"
-                  className="text-sm font-medium text-gray-700"
+                  className="flex text-sm font-medium text-gray-700"
                 >
-                  Terms of Service
+                  {t("forms:terms-of-service")}
+                  <sup
+                    className=""
+                    onClick={() => {
+                      window.open(
+                        `${process.env.NEXT_PUBLIC_HOSTNAME}/terms-of-service`,
+                        "_blank"
+                      );
+                    }}
+                  >
+                    <InformationCircleIcon className="h-4 w-4 text-blue-500 hover:text-blue-600 cursor-pointer" />
+                  </sup>
                 </label>
                 <input
-                  {...register("tos")}
+                  {...register("tos", {
+                    required: true,
+                  })}
                   type="checkbox"
                   name="tos"
                   id="tos"
@@ -255,9 +274,9 @@ export default function Signup() {
               <div className="mt-1">
                 <label
                   htmlFor="referralCodeCheckbox"
-                  className="text-sm font-medium text-gray-700"
+                  className="flex flex-col text-sm font-medium text-gray-700"
                 >
-                  Have a referral code?
+                  {t("forms:have-a-referral-code")}
                 </label>
                 <input
                   {...register("referralCodeCheckbox")}
@@ -269,45 +288,50 @@ export default function Signup() {
                 />
               </div>
             </div>
-
-            <div>
-              <label
-                htmlFor="referralCode"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                {/* {t("forms:email-address")} */}
-                Referal Code
-              </label>
-              <div className="mt-2">
-                <input
-                  {...register("referralCode", {
-                    required: true,
-                    pattern: new RegExp(
-                      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/ // email regex
-                    ),
-                  })}
-                  id="referralCode"
-                  name="referralCode"
-                  type="referralCode"
-                  formNoValidate
-                  autoComplete="referralCode"
-                  placeholder={t("forms:enter-referral-code")!}
-                  className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
-                    errors["referralCode"] && "ring-red-700 focus:ring-red-500"
-                  }`}
-                />
+            {getValues("referralCodeCheckbox") === true && (
+              <div>
+                <label
+                  htmlFor="referralCode"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  {t("forms:referral-code")}
+                </label>
+                <div className="mt-2">
+                  <input
+                    {...register("referralCode", {
+                      required:
+                        getValues("referralCodeCheckbox") === true
+                          ? true
+                          : false,
+                    })}
+                    id="referralCode"
+                    name="referralCode"
+                    type="referralCode"
+                    formNoValidate
+                    autoComplete="referralCode"
+                    placeholder={t("forms:enter-referral-code")!}
+                    className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
+                      errors["referralCode"] &&
+                      "ring-red-700 focus:ring-red-500"
+                    }`}
+                  />
+                </div>
               </div>
-            </div>
+            )}
 
             <div>
-              <button className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+              <button
+                className={`${
+                  isValid ? "opacity-100" : "opacity-50"
+                } flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
+              >
                 {t("forms:sign-up")!}
               </button>
             </div>
           </form>
 
           <div>
-            <div className="relative mt-10">
+            <div className="relative mt-6">
               <div
                 className="absolute inset-0 flex items-center"
                 aria-hidden="true"
