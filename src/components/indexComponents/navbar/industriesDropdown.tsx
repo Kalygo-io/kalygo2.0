@@ -40,7 +40,7 @@ export function IndustriesDropdown() {
         as="a"
         className="cursor-pointer inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
       >
-        <span>{t("navbar:dropdown.industries")}</span>
+        <span>{t("navbar:dropdown.specialties")}</span>
         <ChevronDownIcon className="h-5 w-5" aria-hidden="true" />
       </Popover.Button>
       <Transition
