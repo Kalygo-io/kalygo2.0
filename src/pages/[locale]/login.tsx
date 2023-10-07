@@ -209,7 +209,7 @@ export default function Signin() {
           </form>
 
           <div>
-            <div className="relative mt-10">
+            <div className="relative mt-6">
               <div
                 className="absolute inset-0 flex items-center"
                 aria-hidden="true"
