@@ -27,6 +27,7 @@ import {
   RectangleGroupIcon,
   UserGroupIcon,
   FolderIcon,
+  EyeIcon,
 } from "@heroicons/react/24/outline";
 
 import { PiBrain } from "react-icons/pi";
@@ -93,6 +94,12 @@ export default function LayoutDashboard({ children, account }: P) {
       // href: "/dashboard/vector-search/vector-search-v2",
       href: "/dashboard/vector-search",
       icon: DocumentMagnifyingGlassIcon,
+    },
+    {
+      name: t("dashboard-page:navigation.ocr"),
+      // href: "/dashboard/vector-search/vector-search-v2",
+      href: "/dashboard/ocr",
+      icon: EyeIcon,
     },
     {
       name: t("dashboard-page:navigation.chunking-tool"),

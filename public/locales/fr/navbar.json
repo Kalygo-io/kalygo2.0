@@ -6,6 +6,9 @@
   "navbar-login": "Se connecter",
   "navbar-blog": "Blog",
   "dropdown": {
-    "industries": "les industries"
+    "industries": "les industries",
+    "personal-injury": "Blessure personnelle",
+    "family-law": "Droit de la famille",
+    "civil-litigation": "Litige civil"
   }
 }

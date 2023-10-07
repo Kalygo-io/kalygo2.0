@@ -8,6 +8,7 @@
     "templates": "Prompts",
     "settings": "Settings",
     "vector-search": "Smart Search",
+    "ocr": "O.C.R.",
     "queue": "My Requests",
     "my-documents": "My Documents",
     "admin": "Admin",
@@ -138,6 +139,16 @@
   },
   "vector-search": {
     "title": "Smart Search",
+    "requested": "Requested",
+    "time-requested-unknown": "The time the search was requested is unknown",
+    "filename": "Filename",
+    "original-file": "Original file",
+    "download": "Download",
+    "query": "Query",
+    "matched-chunk": "Matched Chunk"
+  },
+  "ocr": {
+    "title": "O.C.R.",
     "requested": "Requested",
     "time-requested-unknown": "The time the search was requested is unknown",
     "filename": "Filename",

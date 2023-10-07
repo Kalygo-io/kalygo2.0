@@ -11,6 +11,9 @@
     "medical": "Médico",
     "higher-ed": "Educación superior",
     "research": "Investigación",
-    "marketing": "Marketing"
+    "marketing": "Marketing",
+    "personal-injury": "Lesiones personales",
+    "family-law": "Ley familiar",
+    "civil-litigation": "Juicio civil"
   }
 }

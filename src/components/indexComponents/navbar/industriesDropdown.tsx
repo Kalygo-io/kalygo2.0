@@ -2,28 +2,35 @@ import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { GoBook, GoLaw, GoHeart, GoSearch, GoRocket } from "react-icons/go";
+
+import { MdFamilyRestroom, MdOutlinePersonalInjury } from "react-icons/md";
 import { useTranslation } from "next-i18next";
 
 export function IndustriesDropdown() {
   const { t } = useTranslation();
 
   const industries = [
+    // {
+    //   name: t("navbar:dropdown.law"),
+    //   href: "/law",
+    //   icon: GoLaw,
+    // },
+    // { name: t("navbar:dropdown.higher-ed"), href: "/higher-ed", icon: GoBook },
+    // { name: t("navbar:dropdown.medical"), href: "/medical", icon: GoHeart },
     {
-      name: t("navbar:dropdown.law"),
+      name: t("navbar:dropdown.personal-injury"),
+      href: "/law",
+      icon: MdOutlinePersonalInjury,
+    },
+    {
+      name: t("navbar:dropdown.family-law"),
+      href: "/law",
+      icon: MdFamilyRestroom,
+    },
+    {
+      name: t("navbar:dropdown.civil-litigation"),
       href: "/law",
       icon: GoLaw,
-    },
-    { name: t("navbar:dropdown.higher-ed"), href: "/higher-ed", icon: GoBook },
-    { name: t("navbar:dropdown.medical"), href: "/medical", icon: GoHeart },
-    {
-      name: t("navbar:dropdown.research"),
-      href: "/research",
-      icon: GoSearch,
-    },
-    {
-      name: t("navbar:dropdown.marketing"),
-      href: "/marketing",
-      icon: GoRocket,
     },
   ];
 

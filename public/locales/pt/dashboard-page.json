@@ -8,6 +8,7 @@
     "templates": "Comandos",
     "settings": "Configurações",
     "vector-search": "Busca inteligente",
+    "ocr": "O.C.R.",
     "queue": "Minhas solicitações",
     "my-documents": "Meus documentos",
     "admin": "Administrador",
@@ -145,6 +146,15 @@
     "download": "Download",
     "query": "Consulta",
     "matched-chunk": "Pedaço correspondente"
+  },
+  "ocr": {
+    "title": "O.C.R.",
+    "requested": "Requeridos",
+    "time-requested-unknown": "A hora em que a pesquisa foi solicitada é desconhecida",
+    "filename": "Nome do arquivo",
+    "original-file": "Arquivo original",
+    "download": "Download",
+    "query": "Consulta"
   },
   "custom-request": {
     "select-files": "Selecionar arquivos",

@@ -8,6 +8,7 @@
     "templates": "Instructions",
     "settings": "Paramètres",
     "vector-search": "Recherche intelligente",
+    "ocr": "O.C.R.",
     "queue": "Mes demandes",
     "my-documents": "Mes documents",
     "admin": "Administrateur",
@@ -143,6 +144,16 @@
     "original-file": "Fichier d'origine",
     "download": "Télécharger",
     "query": "Mettre en doute",
+    "matched-chunk": "Morceau correspondant"
+  },
+  "ocr": {
+    "title": "O.C.R.",
+    "requested": "Demandé",
+    "time-requested-unknown": "L'heure à laquelle la recherche a été demandée est inconnue",
+    "filename": "Nom de fichier",
+    "original-file": "Fichier d'origine",
+    "download": "Télécharger",
+    "query": "Requête",
     "matched-chunk": "Morceau correspondant"
   },
   "custom-request": {

@@ -8,6 +8,7 @@
     "templates": "Indicaciones",
     "settings": "Ajustes",
     "vector-search": "Busqueda inteligente",
+    "ocr": "LOC.",
     "queue": "Mis solicitudes",
     "my-documents": "Mis documentos",
     "admin": "Administración",
@@ -145,6 +146,16 @@
     "download": "Descargar",
     "query": "Consulta",
     "matched-chunk": "Fragmento coincidente"
+  },
+  "ocr": {
+    "title": "LOC.",
+    "requested": "Solicitado",
+    "time-requested-unknown": "Se desconoce la hora en que se solicitó la búsqueda",
+    "filename": "Nombre del archivo",
+    "original-file": "Archivo original",
+    "download": "Descargar",
+    "query": "Consulta",
+    "matched-chunk": "Trozo emparejado"
   },
   "custom-request": {
     "select-files": "Selecciona archivos",
