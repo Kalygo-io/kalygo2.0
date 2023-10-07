@@ -58,6 +58,11 @@ export default function Signup() {
     val: null,
   });
 
+  const router = useRouter();
+
+  const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
+  const referralCodeFromParams = searchParams.get("referral-code") || "";
+
   const {
     register,
     handleSubmit,
@@ -70,18 +75,24 @@ export default function Signup() {
       email: "",
       password: "",
       tos: false,
-      referralCodeCheckbox: false,
-      referralCode: "",
+      referralCodeCheckbox: referralCodeFromParams ? true : false,
+      referralCode: referralCodeFromParams || "",
     },
   });
+
+  watch("referralCode");
 
   const googleLogin = useGoogleLogin({
     onSuccess: async (credentialResponse) => {
       try {
+        console.log("referralCode", getValues("referralCode"));
+
         const { access_token } = credentialResponse;
         await axios.post(
           `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/auth/google-sign-up`,
-          {},
+          {
+            referralCode: getValues("referralCode") || "",
+          },
           {
             headers: {
               Authorization: `Bearer ${access_token}`,
@@ -89,6 +100,7 @@ export default function Signup() {
             withCredentials: true,
           }
         );
+
         const detectedLng = navigatorLangDetector();
         router.push(`/${detectedLng}/dashboard`);
       } catch (e) {
@@ -101,11 +113,9 @@ export default function Signup() {
     },
   });
 
-  const router = useRouter();
-
   const onSubmit = async (data: any) => {
     try {
-      const { email, password } = data;
+      const { email, password, referralCode } = data;
 
       const config = {
         method: "post",
@@ -116,6 +126,7 @@ export default function Signup() {
         data: {
           email,
           password,
+          referralCode: referralCode || "",
         },
       };
 

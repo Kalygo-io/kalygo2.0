@@ -24,6 +24,7 @@ import { FreeCredits } from "@/components/accountSettingsComponents/freeCredits"
 import get from "lodash.get";
 import { useGetAccount } from "@/utility/hooks/getAccount";
 import { UsageCredits } from "@/components/accountSettingsComponents/usageCredits";
+import { ReferralCode } from "@/components/accountSettingsComponents/referralCode";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -34,6 +35,7 @@ const getStaticProps = makeStaticProps([
   "dashboard-page",
   "toast-messages",
   "image-alt-tags",
+  "forms",
 ]);
 export { getStaticPaths, getStaticProps };
 
@@ -87,6 +89,8 @@ export default function Settings() {
             refresh((val) => val + 1);
           }}
         />
+        <Divider />
+        <ReferralCode account={account.val!} refresh={refresh} />
         <Divider />
         {/* <ChangePassword /> */}
         <DeleteAccount />
