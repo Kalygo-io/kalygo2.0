@@ -1,6 +1,10 @@
 {
   "email-address": "Dirección de correo electrónico",
   "enter-email": "Ingrese correo electrónico",
+  "enter-referral-code": "Ingrese el código de referencia",
+  "terms-of-service": "Términos de servicio",
+  "have-a-referral-code": "¿Tiene un código de referencia?",
+  "referral-code": "Código de referencia",
   "password": "Contraseña",
   "new-password": "Nueva contraseña",
   "enter-password": "Introducir la contraseña",

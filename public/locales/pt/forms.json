@@ -1,6 +1,9 @@
 {
   "email-address": "Endereço de email",
   "enter-email": "Digite o e-mail",
+  "enter-referral-code": "Insira o código de referência",
+  "terms-of-service": "Termos de serviço",
+  "have-a-referral-code": "Tem um código de referência?",
   "password": "Senha",
   "new-password": "Nova Senha",
   "enter-password": "Digite a senha",
