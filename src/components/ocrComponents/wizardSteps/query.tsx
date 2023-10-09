@@ -81,7 +81,7 @@ export function Query(props: Props) {
       infoToast("OCR successfully completed");
 
       setOcrResult({
-        val: null,
+        val: response?.data,
         loading: false,
         err: null,
       });
@@ -104,7 +104,7 @@ export function Query(props: Props) {
   } else if (ocrResult.val) {
     jsx = (
       <ul role="list" className="divide-y divide-gray-100">
-        <pre>{ocrResult?.val}</pre>
+        <p>{ocrResult?.val}</p>
       </ul>
     );
   }
