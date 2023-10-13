@@ -10,6 +10,7 @@ import Image from "next/image";
 import Link from "@/components/shared/Link";
 import { useTranslation } from "next-i18next";
 import { IndustriesDropdown } from "../indexComponents/navbar/industriesDropdown";
+import { FlyoutMenu } from "../indexComponents/navbar/flyoutMenu";
 import { IndustriesCollapsibleSidenavOption } from "../indexComponents/navbar/industriesCollapsibleSidenavOption";
 import { GoBook, GoHeart, GoLaw } from "react-icons/go";
 import { classNames } from "@/utility/misc/classNames";
@@ -149,7 +150,8 @@ export function NavbarCenteredLogo(p: P) {
                   {item.name}
                 </a>
               ))}
-              <IndustriesDropdown />
+              {/* <IndustriesDropdown /> */}
+              <FlyoutMenu />
             </div>
             <div className="flex lg:hidden">
               <button
