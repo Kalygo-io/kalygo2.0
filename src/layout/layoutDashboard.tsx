@@ -68,9 +68,14 @@ export default function LayoutDashboard({ children, account }: P) {
   const current = segments[segments.length - 1];
 
   const navigation = [
+    // {
+    //   name: t("dashboard-page:navigation.overview"),
+    //   href: "/dashboard",
+    //   icon: HomeIcon,
+    // },
     {
-      name: t("dashboard-page:navigation.overview"),
-      href: "/dashboard",
+      name: t("dashboard-page:navigation.my-documents"),
+      href: "/dashboard/my-docs",
       icon: HomeIcon,
     },
     {
@@ -79,7 +84,7 @@ export default function LayoutDashboard({ children, account }: P) {
       icon: RectangleGroupIcon,
     },
     {
-      name: t("dashboard-page:navigation.custom-request"),
+      name: t("dashboard-page:navigation.results"),
       href: "/dashboard/custom-request/custom-request-v2",
       icon: BeakerIcon,
     },
@@ -121,11 +126,11 @@ export default function LayoutDashboard({ children, account }: P) {
       href: "/dashboard/queue",
       icon: QueueListIcon,
     },
-    {
-      name: t("dashboard-page:navigation.my-documents"),
-      href: "/dashboard/my-docs",
-      icon: FolderIcon,
-    },
+    // {
+    //   name: t("dashboard-page:navigation.my-documents"),
+    //   href: "/dashboard/my-docs",
+    //   icon: FolderIcon,
+    // },
     {
       name: t("dashboard-page:navigation.access-groups"),
       href: "/dashboard/access-groups",
