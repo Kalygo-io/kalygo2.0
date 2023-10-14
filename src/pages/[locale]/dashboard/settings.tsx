@@ -17,6 +17,7 @@ import { SectionLoader } from "@/components/shared/SectionLoader";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { Plan } from "@/components/accountSettingsComponents/plan";
 import { DeleteAccount } from "@/components/accountSettingsComponents/deleteAccount";
+import { ApiKeys } from "@/components/accountSettingsComponents/apiKeys";
 import { ChangePassword } from "@/components/accountSettingsComponents/changePassword";
 import { Divider } from "@/components/shared/Divider";
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
@@ -91,6 +92,8 @@ export default function Settings() {
         />
         <Divider />
         <ReferralCode account={account.val!} refresh={refresh} />
+        <Divider />
+        <ApiKeys account={account.val!} refresh={refresh} />
         <Divider />
         {/* <ChangePassword /> */}
         <DeleteAccount />

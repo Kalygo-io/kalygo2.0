@@ -17,6 +17,7 @@
   "send-email-success": "Request to send email has been processed",
   "create-referral-code-success": "Successfully created referral code",
   "sending-email": "Sending email...",
+  "store-api-key-success": "Successfully stored API keys",
   "error": {
     "something-unexpected-happened": "Something unexpected happened"
   }

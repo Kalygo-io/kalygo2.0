@@ -420,6 +420,10 @@
         "cancel": "Cancel"
       }
     },
+    "api-keys": {
+      "title": "API Keys",
+      "save": "Save"
+    },
     "subscription": {
       "title": "Subscription",
       "change": "Change",
