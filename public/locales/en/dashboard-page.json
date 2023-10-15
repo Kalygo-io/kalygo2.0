@@ -422,7 +422,13 @@
     },
     "api-keys": {
       "title": "API Keys",
-      "save": "Save"
+      "save": "Save",
+      "your-api-keys": "Your API keys",
+      "your-api-keys-desc": "When you use various tools in Kalygo's suite your API keys can be used. This reduces your costs and increases your data throughput as well. We store your API keys encrypted at rest using AWS Secrets Manager and your API keys are pulled in dynamically when needed to protect them from being compromised. We can provide an access audit of your API keys upon request.",
+      "OPEN_AI_API_KEY": "OPEN_AI_API_KEY",
+      "OPEN_AI_API_KEY-placeholder": "Your OPEN_AI_API_KEY",
+      "AWS_SES_API_KEY": "AWS_SES_API_KEY",
+      "AWS_SES_API_KEY-placeholder": "Your AWS_ACCESS_KEY for SES"
     },
     "subscription": {
       "title": "Subscription",

@@ -115,15 +115,10 @@ export function ApiKeys(p: P) {
           <div className="space-y-12 sm:space-y-16">
             <div>
               <h2 className="text-base font-semibold leading-7 text-gray-900">
-                Your API keys
+                {t("dashboard-page:settings.api-keys.your-api-keys")}
               </h2>
               <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-600">
-                When you use various tools in Kalygo's suite your API keys will
-                be used. This reduces your costs and increases your data
-                throughput as well. We store your API keys encrypted at rest
-                using AWS Secrets Manager and your API keys are pulled in
-                dynamically when needed to protect them from being compromised.
-                We can provide an access audit of your API keys upon request.
+                {t("dashboard-page:settings.api-keys.your-api-keys-desc")}
               </p>
 
               <div className="mt-10 space-y-8 border-b border-gray-900/10 pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:border-t sm:pb-0">
@@ -132,7 +127,7 @@ export function ApiKeys(p: P) {
                     htmlFor="open-ai-api-key"
                     className="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5"
                   >
-                    OPEN_AI_API_KEY
+                    {t("dashboard-page:settings.api-keys.OPEN_AI_API_KEY")}
                   </label>
                   <div className="mt-2 sm:col-span-2 sm:mt-0">
                     <input
@@ -140,7 +135,11 @@ export function ApiKeys(p: P) {
                       name="open-ai-api-key"
                       id="open-ai-api-key"
                       autoComplete="open-ai-api-key"
-                      placeholder="Your OPEN_AI_API_KEY"
+                      placeholder={
+                        t(
+                          "dashboard-page:settings.api-keys.OPEN_AI_API_KEY-placeholder"
+                        )!
+                      }
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -151,7 +150,7 @@ export function ApiKeys(p: P) {
                     htmlFor="last-name"
                     className="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5"
                   >
-                    AWS_SES_API_KEY
+                    {t("dashboard-page:settings.api-keys.AWS_SES_API_KEY")}
                   </label>
                   <div className="mt-2 sm:col-span-2 sm:mt-0">
                     <input
@@ -159,7 +158,11 @@ export function ApiKeys(p: P) {
                       name="aws-ses-api-key"
                       id="aws-ses-api-key"
                       autoComplete="aws-ses-api-key"
-                      placeholder="Your AWS_ACCESS_KEY for SES"
+                      placeholder={
+                        t(
+                          "dashboard-page:settings.api-keys.AWS_SES_API_KEY-placeholder"
+                        )!
+                      }
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6"
                     />
                   </div>
