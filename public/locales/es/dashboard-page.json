@@ -13,6 +13,8 @@
     "my-documents": "Mis documentos",
     "admin": "Administración",
     "custom-request": "Solicitud personalizada",
+    "results": "Resultados",
+    "my-results": "Mis resultados",
     "chunking-tool": "Herramienta de fragmentación",
     "rag": "TRAPO.",
     "buy-credits": "Compra creditos",
@@ -29,8 +31,11 @@
     "free-credit": "Crédito gratis",
     "free-credits": "Créditos gratis"
   },
+  "my-results": {
+    "title": "Mis resultados"
+  },
   "index": {
-    "title": "Panel",
+    "title": "Resultados",
     "no-documents-yet": "¡No hay documentos todavía!",
     "no-summaries-v1-yet": "Después de solicitar resúmenes (v1), se enumerarán aquí",
     "no-summaries-v2-yet": "Después de solicitar resúmenes (v2), se enumerarán aquí",
@@ -416,6 +421,16 @@
         "save": "Ahorrar",
         "cancel": "Cancelar"
       }
+    },
+    "api-keys": {
+      "title": "Claves API",
+      "save": "Ahorrar",
+      "your-api-keys": "Tus claves API",
+      "your-api-keys-desc": "Cuando utiliza varias herramientas en la suite de Kalygo, se pueden utilizar sus claves API. Esto reduce sus costos y también aumenta el rendimiento de sus datos. Almacenamos sus claves API cifradas en reposo mediante AWS Secrets Manager y sus claves API se extraen dinámicamente cuando es necesario para protegerlas de verse comprometidas. Podemos proporcionar una auditoría de acceso de sus claves API si lo solicita.",
+      "OPEN_AI_API_KEY": "OPEN_AI_API_KEY",
+      "OPEN_AI_API_KEY-placeholder": "Tu OPEN_AI_API_KEY",
+      "AWS_SES_API_KEY": "AWS_SES_API_KEY",
+      "AWS_SES_API_KEY-placeholder": "Su AWS_ACCESS_KEY para SES"
     },
     "subscription": {
       "title": "Suscripción",

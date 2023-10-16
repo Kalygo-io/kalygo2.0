@@ -31,6 +31,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 import { PiBrain } from "react-icons/pi";
+import { VscOutput } from "react-icons/vsc";
 
 import { signOut } from "@/services/signOut";
 import { useTranslation } from "next-i18next";
@@ -84,7 +85,7 @@ export default function LayoutDashboard({ children, account }: P) {
       icon: RectangleGroupIcon,
     },
     {
-      name: t("dashboard-page:navigation.results"),
+      name: t("dashboard-page:navigation.custom-request"),
       href: "/dashboard/custom-request/custom-request-v2",
       icon: BeakerIcon,
     },
@@ -125,6 +126,11 @@ export default function LayoutDashboard({ children, account }: P) {
       name: t("dashboard-page:navigation.queue"),
       href: "/dashboard/queue",
       icon: QueueListIcon,
+    },
+    {
+      name: t("dashboard-page:navigation.my-results"),
+      href: "/dashboard",
+      icon: VscOutput,
     },
     // {
     //   name: t("dashboard-page:navigation.my-documents"),

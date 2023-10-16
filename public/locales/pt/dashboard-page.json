@@ -13,6 +13,8 @@
     "my-documents": "Meus documentos",
     "admin": "Administrador",
     "custom-request": "Solicitação personalizada",
+    "results": "Resultados",
+    "my-results": "Meus resultados",
     "chunking-tool": "Ferramenta de fragmentação",
     "rag": "R.A.G.",
     "buy-credits": "Compre créditos",
@@ -29,8 +31,11 @@
     "free-credit": "Crédito Grátis",
     "free-credits": "Créditos Grátis"
   },
+  "my-results": {
+    "title": "Meus resultados"
+  },
   "index": {
-    "title": "Painel",
+    "title": "Resultados",
     "no-documents-yet": "Ainda sem Documentos!",
     "no-summaries-v1-yet": "Após solicitar resumos (v1) eles serão listados aqui",
     "no-summaries-v2-yet": "Após solicitar resumos (v2) eles serão listados aqui",
@@ -385,6 +390,14 @@
         "save": "Salvar",
         "cancel": "Cancelar"
       }
+    },
+    "api-keys": {
+      "title": "Chaves de API",
+      "save": "Salvar",
+      "your-api-keys": "Suas chaves de API",
+      "your-api-keys-desc": "Quando você usa várias ferramentas do pacote Kalygo, suas chaves de API podem ser usadas. Isso reduz seus custos e também aumenta o rendimento de dados. Armazenamos suas chaves de API criptografadas em repouso usando o AWS Secrets Manager e suas chaves de API são extraídas dinamicamente quando necessário para protegê-las contra comprometimento. Podemos fornecer uma auditoria de acesso de suas chaves de API mediante solicitação.",
+      "OPEN_AI_API_KEY": "OPEN_AI_API_KEY",
+      "OPEN_AI_API_KEY-placeholder": "Seu OPEN_AI_API_KEY"
     },
     "subscription": {
       "title": "Inscrição",

@@ -17,6 +17,7 @@
   "send-email-success": "La solicitud para enviar un correo electrónico ha sido procesada.",
   "create-referral-code-success": "Código de referencia creado con éxito",
   "sending-email": "Enviando correo electrónico...",
+  "store-api-key-success": "Claves API almacenadas correctamente",
   "error": {
     "something-unexpected-happened": "sucedió algo inesperado"
   }

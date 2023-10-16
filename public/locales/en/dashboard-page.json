@@ -14,6 +14,7 @@
     "admin": "Admin",
     "custom-request": "Custom Request",
     "results": "Results",
+    "my-results": "My Results",
     "chunking-tool": "Chunking Tool",
     "rag": "R.A.G.",
     "buy-credits": "Buy Credits",
@@ -30,8 +31,11 @@
     "free-credit": "Free Credit",
     "free-credits": "Free Credits"
   },
+  "my-results": {
+    "title": "My Results"
+  },
   "index": {
-    "title": "Dashboard",
+    "title": "Results",
     "no-documents-yet": "No Documents Yet!",
     "no-summaries-v1-yet": "After requesting summaries (v1) they will be listed here",
     "no-summaries-v2-yet": "After requesting summaries (v2) they will be listed here",

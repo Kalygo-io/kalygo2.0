@@ -16,6 +16,7 @@
   "summary-v2-is-processing": "Seu resumo está sendo processado...",
   "send-email-success": "A solicitação para enviar e-mail foi processada",
   "create-referral-code-success": "Código de referência criado com sucesso",
+  "store-api-key-success": "Chaves de API armazenadas com sucesso",
   "error": {
     "something-unexpected-happened": "Something unexpected happened"
   }

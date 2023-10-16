@@ -16,6 +16,7 @@
   "summary-v2-is-processing": "Votre résumé est en cours de traitement...",
   "send-email-success": "La demande d'envoi d'e-mail a été traitée",
   "create-referral-code-success": "Code de parrainage créé avec succès",
+  "store-api-key-success": "Clés API stockées avec succès",
   "error": {
     "something-unexpected-happened": "Something unexpected happened"
   }

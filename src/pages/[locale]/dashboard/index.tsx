@@ -246,7 +246,7 @@ export default function Dashboard() {
                   </h2>
                 ) : (
                   <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
-                    {t("dashboard-page:index.title")}
+                    {t("dashboard-page:my-results.title")}
                   </h2>
                 ))}
             </div>

@@ -13,6 +13,8 @@
     "my-documents": "Mes documents",
     "admin": "Administrateur",
     "custom-request": "Demande personnalisée",
+    "results": "Résultats",
+    "my-results": "Mes résultats",
     "chunking-tool": "Outil de regroupement",
     "rag": "CHIFFON.",
     "buy-credits": "Acheter des crédits",
@@ -29,8 +31,11 @@
     "free-credit": "Crédit gratuit",
     "free-credits": "Crédits gratuits"
   },
+  "my-results": {
+    "title": "Mes résultats"
+  },
   "index": {
-    "title": "Tableau de bord",
+    "title": "Résultats",
     "no-documents-yet": "Aucun document pour le moment !",
     "no-summaries-v1-yet": "Après avoir demandé des résumés (v1), ils seront répertoriés ici",
     "no-summaries-v2-yet": "Après avoir demandé des résumés (v2), ils seront répertoriés ici",
@@ -380,6 +385,15 @@
         "save": "Sauvegarder",
         "cancel": "Annuler"
       }
+    },
+    "api-keys": {
+      "title": "Clés API",
+      "save": "Sauvegarder",
+      "your-api-keys": "Vos clés API",
+      "your-api-keys-desc": "Lorsque vous utilisez divers outils de la suite Kalygo, vos clés API peuvent être utilisées. Cela réduit vos coûts et augmente également votre débit de données. Nous stockons vos clés API chiffrées au repos à l'aide d'AWS Secrets Manager et vos clés API sont extraites dynamiquement lorsque cela est nécessaire pour les protéger contre toute compromission. Nous pouvons réaliser un audit d’accès à vos clés API sur demande.",
+      "OPEN_AI_API_KEY": "OPEN_AI_API_KEY",
+      "OPEN_AI_API_KEY-placeholder": "Votre OPEN_AI_API_KEY",
+      "AWS_SES_API_KEY": "AWS_SES_API_KEY"
     },
     "subscription": {
       "title": "Abonnement",
