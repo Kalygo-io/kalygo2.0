@@ -67,6 +67,15 @@ export default function SummaryV2(p: P) {
         {summary.mode === SummaryMode.PRIOR_TO_TRACKING_MODE &&
           JSON.stringify(summary.summary, null, 2)}
 
+        {summary.mode === SummaryMode.FILE_OVERALL && (
+          <div>
+            <ReactMarkdown className="summary-v2-markdown">
+              {summary?.summary}
+            </ReactMarkdown>
+            <br />
+          </div>
+        )}
+
         {summary.mode === SummaryMode.EACH_FILE_OVERALL &&
           summary?.summary.map((i: any, idx: any) => {
             return (
