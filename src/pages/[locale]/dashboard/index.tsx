@@ -21,6 +21,7 @@ import { SummariesV2TableAlt } from "@/components/dashboardComponents/summariesV
 // import { CustomRequestsTable } from "@/components/dashboardComponents/customRequestsTable";
 import { CustomRequestsTableAlt } from "@/components/dashboardComponents/customRequestsTableAlt";
 import { useGetAccount } from "@/utility/hooks/getAccount";
+import { SummariesV3TableAlt } from "@/components/dashboardComponents/summariesV3TableAlt";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -67,6 +68,16 @@ export default function Dashboard() {
     err: null,
   });
 
+  const [summariesV3, setSummariesV3] = useState<{
+    val: any[];
+    loading: boolean;
+    err: any;
+  }>({
+    val: [],
+    loading: true,
+    err: null,
+  });
+
   const [customRequests, setCustomRequests] = useState<{
     val: any[];
     loading: boolean;
@@ -88,7 +99,6 @@ export default function Dashboard() {
             withCredentials: true,
           }
         );
-
         setSummaries({
           loading: false,
           val: res1.data,
@@ -101,7 +111,6 @@ export default function Dashboard() {
             withCredentials: true,
           }
         );
-
         setVectorSearches({
           loading: false,
           val: res2.data,
@@ -129,6 +138,18 @@ export default function Dashboard() {
         setCustomRequests({
           loading: false,
           val: res4.data,
+          err: null,
+        });
+
+        const res5 = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/summaries-v3`,
+          {
+            withCredentials: true,
+          }
+        );
+        setSummariesV3({
+          loading: false,
+          val: res5.data,
           err: null,
         });
       } catch (e) {
@@ -184,8 +205,22 @@ export default function Dashboard() {
     jsx = (
       <>
         {summariesV2.val?.length > 0 && (
-          // <SummariesV2Table summaries={summariesV2.val} />
-          <SummariesV2TableAlt summaries={summariesV2.val} />
+          <SummariesV3TableAlt summaries={summariesV3.val} />
+        )}
+
+        {summariesV3.val?.length > 0 && (
+          <>
+            <div className="relative px-4 py-24 sm:p-6 lg:p-12">
+              <div
+                className="absolute inset-0 flex items-center"
+                aria-hidden="true"
+              >
+                <div className="w-full border-t border-gray-300" />
+              </div>
+            </div>
+            {/* <SummariesV2Table summaries={summariesV2.val} /> */}
+            <SummariesV2TableAlt summaries={summariesV2.val} />
+          </>
         )}
 
         {/* {summaries.val?.length > 0 && (

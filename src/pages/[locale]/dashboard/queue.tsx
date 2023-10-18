@@ -6,7 +6,6 @@ import { useAppContext } from "@/context/AppContext";
 import LayoutDashboard from "@/layout/layoutDashboard";
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
-
 import Link from "@/components/shared/Link"; // monkey patch Link for multi-lang support on static next.js export
 import { useEffect, useState } from "react";
 import axios from "axios";

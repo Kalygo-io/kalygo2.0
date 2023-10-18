@@ -64,6 +64,19 @@
       }
     },
     "summaries-v2": {
+      "title": "Summaries (v2)",
+      "subtitle": "An overview of your summaries",
+      "view-all": "View all",
+      "table": {
+        "id": "Id",
+        "filename": "File name",
+        "processed-length": "Processed Length",
+        "date": "Date",
+        "edit": "Edit",
+        "view": "View"
+      }
+    },
+    "summaries-v3": {
       "title": "Summaries",
       "subtitle": "An overview of your summaries",
       "view-all": "View all",
@@ -251,7 +264,6 @@
     "retry": "Retry",
     "view": "View",
     "job-type": "Type",
-
     "vector-search": {
       "query": "Query"
     },
@@ -259,6 +271,9 @@
       "prompt": "Prompt"
     },
     "summary-v2": {
+      "mode": "Mode"
+    },
+    "summary-v3": {
       "mode": "Mode"
     }
   },
@@ -277,6 +292,19 @@
     "model": "Model",
     "language": "Language",
     "format": "Format",
+    "share-modal": {
+      "title": "Share",
+      "email": "Email"
+    }
+  },
+  "summary-v3": {
+    "prompt": "Prompt",
+    "mode": "Mode",
+    "model": "Model",
+    "language": "Language",
+    "format": "Format",
+    "batch-id": "Batch ID",
+    "view-batch": "View Batch",
     "share-modal": {
       "title": "Share",
       "email": "Email"
