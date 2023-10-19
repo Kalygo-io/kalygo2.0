@@ -113,7 +113,6 @@ export function MembersTable(p: P) {
         accessGroupId={accessGroup.id}
         open={modalOpen}
         cb={(isOpen: boolean) => {
-          console.log("--- ___ ---");
           setModalOpen(isOpen);
           refresh((val: number) => val + 1);
         }}

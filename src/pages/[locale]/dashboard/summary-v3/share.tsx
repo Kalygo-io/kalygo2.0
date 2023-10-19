@@ -86,8 +86,6 @@ export default function Page() {
     }
   }
 
-  console.log("---");
-
   return (
     <>
       <Head>
