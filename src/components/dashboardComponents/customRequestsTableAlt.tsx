@@ -35,7 +35,7 @@ export function CustomRequestsTableAlt(p: P) {
           </button>
         </div> */}
       </div>
-      <div className="-mx-4 mt-8 sm:-mx-0">
+      <div className="-mx-4 mt-4 sm:-mx-0">
         <table className="min-w-full divide-y divide-gray-300">
           <thead>
             {/* <tr>

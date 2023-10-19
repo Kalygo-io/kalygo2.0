@@ -102,7 +102,7 @@ export function SummariesV3TableAlt(p: P) {
                       : summary.mode === ScanningMode.OVERALL
                       ? `${summary.summary[0].summary.slice(0, 16)}...`
                       : summary.mode === ScanningMode.FILE_OVERALL
-                      ? `${summary.summary.slice(0, 16)}...`
+                      ? `${summary?.summary.slice(0, 16)}...`
                       : `TODO`}
                   </td>
                   <td className="py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">

@@ -64,7 +64,20 @@
       }
     },
     "summaries-v2": {
-      "title": "Résumés",
+      "title": "Résumés (v{{undefined}})",
+      "subtitle": "Un aperçu de vos résumés",
+      "view-all": "Voir tout",
+      "table": {
+        "id": "Identifiant",
+        "filename": "Nom de fichier",
+        "processed-length": "Longueur traitée",
+        "date": "Date",
+        "edit": "Modifier",
+        "view": "Voir"
+      }
+    },
+    "summaries-v3": {
+      "title": "Résumés (v{{undefined}})",
       "subtitle": "Un aperçu de vos résumés",
       "view-all": "Voir tout",
       "table": {
@@ -101,6 +114,10 @@
         "view": "Voir"
       }
     }
+  },
+  "batch": {
+    "title": "Lot",
+    "description": "Tous les travaux de ce lot"
   },
   "summarize": {
     "title": "Résumer",
@@ -253,6 +270,9 @@
     "custom-request": {},
     "summary-v2": {
       "mode": "Mode"
+    },
+    "summary-v3": {
+      "mode": "Mode"
     }
   },
   "summary": {
@@ -270,6 +290,19 @@
     "model": "Modèle",
     "language": "Langue",
     "format": "Format",
+    "share-modal": {
+      "title": "Partager",
+      "email": "E-mail"
+    }
+  },
+  "summary-v3": {
+    "prompt": "Rapide",
+    "mode": "Mode",
+    "model": "Modèle",
+    "language": "Langue",
+    "format": "Format",
+    "batch-id": "ID de lot",
+    "view-batch": "Voir le lot",
     "share-modal": {
       "title": "Partager",
       "email": "E-mail"
@@ -302,6 +335,10 @@
   "docs-table": {
     "no-docs-found": "Aucun document trouvé",
     "new-doc-modal": {}
+  },
+  "jobs-table": {
+    "no-jobs-found": "Aucun emploi trouvé",
+    "new-job-modal": {}
   },
   "admin": {
     "title": "Aperçu",

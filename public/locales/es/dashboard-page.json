@@ -64,7 +64,20 @@
       }
     },
     "summaries-v2": {
-      "title": "resúmenes",
+      "title": "Resúmenes (v{{undefined}})",
+      "subtitle": "Una visión general de sus resúmenes",
+      "view-all": "Ver todo",
+      "table": {
+        "id": "Identificación",
+        "filename": "Nombre del archivo",
+        "processed-length": "Longitud procesada",
+        "date": "Fecha",
+        "edit": "Editar",
+        "view": "Vista"
+      }
+    },
+    "summaries-v3": {
+      "title": "Resúmenes (v{{undefined}})",
       "subtitle": "Una visión general de sus resúmenes",
       "view-all": "Ver todo",
       "table": {
@@ -101,6 +114,10 @@
         "view": "Vista"
       }
     }
+  },
+  "batch": {
+    "title": "Lote",
+    "description": "Todos los trabajos de este lote."
   },
   "summarize": {
     "title": "Resumir",
@@ -259,6 +276,9 @@
     },
     "summary-v2": {
       "mode": "Modo"
+    },
+    "summary-v3": {
+      "mode": "Modo"
     }
   },
   "summary": {
@@ -276,6 +296,19 @@
     "model": "Modelo",
     "language": "Idioma",
     "format": "Formato",
+    "share-modal": {
+      "title": "Compartir",
+      "email": "Correo electrónico"
+    }
+  },
+  "summary-v3": {
+    "prompt": "Inmediato",
+    "mode": "Modo",
+    "model": "Modelo",
+    "language": "Idioma",
+    "format": "Formato",
+    "batch-id": "ID del lote",
+    "view-batch": "Ver lote",
     "share-modal": {
       "title": "Compartir",
       "email": "Correo electrónico"
@@ -313,6 +346,13 @@
       "title": "Nuevo documento",
       "name": "¿Nombre del archivo?",
       "name-placeholder": "Esta será un área de arrastrar y soltar"
+    }
+  },
+  "jobs-table": {
+    "no-jobs-found": "No se encontraron trabajos",
+    "new-job": "Nuevo trabajo",
+    "new-job-modal": {
+      "title": "Nuevo trabajo"
     }
   },
   "admin": {

@@ -64,8 +64,21 @@
       }
     },
     "summaries-v2": {
-      "title": "Resumos",
+      "title": "Resumos (v{{undefined}})",
       "subtitle": "Uma visão geral dos seus resumos",
+      "view-all": "Ver tudo",
+      "table": {
+        "id": "Eu ia",
+        "filename": "Nome do arquivo",
+        "processed-length": "Comprimento Processado",
+        "date": "Data",
+        "edit": "Editar",
+        "view": "Visualizar"
+      }
+    },
+    "summaries-v3": {
+      "title": "Resumos (v{{undefined}})",
+      "subtitle": "Uma visão geral de seus resumos",
       "view-all": "Ver tudo",
       "table": {
         "id": "Eu ia",
@@ -101,6 +114,10 @@
         "view": "Visualizar"
       }
     }
+  },
+  "batch": {
+    "title": "Lote",
+    "description": "Todos os trabalhos neste lote"
   },
   "summarize": {
     "title": "Resumir",
@@ -254,6 +271,9 @@
     "custom-request": {},
     "summary-v2": {
       "mode": "Modo"
+    },
+    "summary-v3": {
+      "mode": "Modo"
     }
   },
   "summary": {
@@ -271,6 +291,19 @@
     "model": "Modelo",
     "language": "Linguagem",
     "format": "Formatar",
+    "share-modal": {
+      "title": "Compartilhar",
+      "email": "E-mail"
+    }
+  },
+  "summary-v3": {
+    "prompt": "Incitar",
+    "mode": "Modo",
+    "model": "Modelo",
+    "language": "Linguagem",
+    "format": "Formatar",
+    "batch-id": "ID do lote",
+    "view-batch": "Ver lote",
     "share-modal": {
       "title": "Compartilhar",
       "email": "E-mail"
@@ -304,6 +337,11 @@
   },
   "docs-table": {
     "new-doc-modal": {}
+  },
+  "jobs-table": {
+    "no-jobs-found": "Nenhuma vaga encontrada",
+    "new-job": "Novo emprego",
+    "new-job-modal": {}
   },
   "admin": {
     "title": "Visão geral",

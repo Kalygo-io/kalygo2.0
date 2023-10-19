@@ -8,8 +8,8 @@ import { useTranslation } from "next-i18next";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { ShareModal } from "./components/shareModal";
-import { SlideOver } from "./components/slideOver";
 import { useRouter } from "next/router";
+import { SlideOver } from "./components/slideOver";
 
 interface P {
   summary: any;
@@ -265,7 +265,9 @@ export default function SummaryV3(p: P) {
                   {summary?.batchId}&nbsp;
                   <button
                     onClick={() => {
-                      router.push(`/dashboard/batch`);
+                      router.push(
+                        `/dashboard/batch?batch-id=${summary?.batchId}`
+                      );
                     }}
                     className="mt-1 p-0.5 text-sm leading-6 text-blue-600 hover:text-blue-500 cursor-pointer"
                   >

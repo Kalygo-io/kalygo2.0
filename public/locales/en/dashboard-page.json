@@ -77,7 +77,7 @@
       }
     },
     "summaries-v3": {
-      "title": "Summaries",
+      "title": "Summaries (v3)",
       "subtitle": "An overview of your summaries",
       "view-all": "View all",
       "table": {
@@ -114,6 +114,10 @@
         "view": "View"
       }
     }
+  },
+  "batch": {
+    "title": "Batch",
+    "description": "All the jobs in this batch"
   },
   "summarize": {
     "title": "Summarize",
@@ -343,6 +347,13 @@
       "title": "New doc",
       "name": "Name of file?",
       "name-placeholder": "This will be a drag-N-drop area"
+    }
+  },
+  "jobs-table": {
+    "no-jobs-found": "No jobs found",
+    "new-job": "New job",
+    "new-job-modal": {
+      "title": "New job"
     }
   },
   "admin": {

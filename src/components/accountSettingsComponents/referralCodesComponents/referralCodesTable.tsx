@@ -18,7 +18,7 @@ export function ReferralCodesTable(p: P) {
 
   return (
     <div className="px-4 sm:px-6 lg:px-8">
-      <div className="-mx-4 mt-8 sm:-mx-0">
+      <div className="-mx-4 mt-4 sm:-mx-0">
         {referralCodes?.length > 0 ? (
           <table className="min-w-full divide-y divide-gray-300">
             <thead>

@@ -7,6 +7,7 @@ import get from "lodash.get";
 import { rateCustomRequestFactory } from "@/serviceFactory/rateCustomRequestFactory";
 import { errorReporter } from "@/utility/error/reporter";
 import { rateSummaryFactory } from "@/serviceFactory/rateSummaryFactory";
+import { useRouter } from "next/router";
 
 interface P {
   showOpen: boolean;
@@ -18,6 +19,7 @@ export function SlideOver(p: P) {
   const { showOpen, setShowOpen, summary } = p;
 
   const { t } = useTranslation();
+  const router = useRouter();
 
   return (
     <Transition.Root show={showOpen} as={Fragment}>
@@ -142,7 +144,17 @@ export function SlideOver(p: P) {
                               {t("dashboard-page:summary-v3.batch-id")}
                             </dt>
                             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
-                              {summary?.batchId}
+                              {summary?.batchId}&nbsp;
+                              <button
+                                onClick={() => {
+                                  router.push(
+                                    `/dashboard/batch?batch-id=${summary?.batchId}`
+                                  );
+                                }}
+                                className="mt-1 p-0.5 text-sm leading-6 text-blue-600 hover:text-blue-500 cursor-pointer"
+                              >
+                                {t("dashboard-page:summary-v3.view-batch")}
+                              </button>
                             </dd>
                           </div>
                         )}
