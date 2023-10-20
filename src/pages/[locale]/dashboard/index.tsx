@@ -203,54 +203,23 @@ export default function Dashboard() {
     customRequests.val?.length > 0
   ) {
     jsx = (
-      <>
+      <div className="divide-y divide-gray-100 space-y-8">
         {summariesV3.val?.length > 0 && (
           <SummariesV3TableAlt summaries={summariesV3.val} />
         )}
 
         {summariesV2.val?.length > 0 && (
-          <>
-            <div className="relative px-4 py-24 sm:p-6 lg:p-12">
-              <div
-                className="absolute inset-0 flex items-center"
-                aria-hidden="true"
-              >
-                <div className="w-full border-t border-gray-300" />
-              </div>
-            </div>
-            {/* <SummariesV2Table summaries={summariesV2.val} /> */}
-            <SummariesV2TableAlt summaries={summariesV2.val} />
-          </>
+          <SummariesV2TableAlt summaries={summariesV2.val} />
         )}
 
         {/* {summaries.val?.length > 0 && (
-          <>
-            <div className="relative px-4 py-24 sm:p-6 lg:p-12">
-              <div
-                className="absolute inset-0 flex items-center"
-                aria-hidden="true"
-              >
-                <div className="w-full border-t border-gray-300" />
-              </div>
-            </div>
-            <SummariesTable summaries={summaries.val} />
-          </>
+          <SummariesTable summaries={summaries.val} />
         )} */}
 
         {customRequests.val?.length > 0 && (
-          <>
-            <div className="relative px-4 py-24 sm:p-6 lg:p-12">
-              <div
-                className="absolute inset-0 flex items-center"
-                aria-hidden="true"
-              >
-                <div className="w-full border-t border-gray-300" />
-              </div>
-            </div>
-            <CustomRequestsTableAlt customRequests={customRequests.val} />
-          </>
+          <CustomRequestsTableAlt customRequests={customRequests.val} />
         )}
-      </>
+      </div>
     );
   } else if (isWelcomeUI) {
     jsx = (
