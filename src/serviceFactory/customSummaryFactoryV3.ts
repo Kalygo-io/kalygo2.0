@@ -23,6 +23,7 @@ export async function customSummaryFactoryV3(
     formData.set("length", customizations["length"]);
     formData.set("language", customizations["language"]);
     formData.set("model", customizations["model"]);
+    formData.set("chunkTokenOverlap", customizations["chunkTokenOverlap"]);
 
     const config = {
       method: "post",

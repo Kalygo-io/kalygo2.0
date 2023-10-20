@@ -83,9 +83,6 @@ const creditAmountPresets = [
 export function SelectCredits(props: Props) {
   const { creditsAmount, setCreditsAmount, setStep } = props;
   const { t } = useTranslation();
-  const [dragActive, setDragActive] = useState(false);
-  const [filesLocal, setFilesLocal] = useState<File[] | null>();
-  const inputRef = useRef<HTMLInputElement>(null);
 
   const {
     register,
