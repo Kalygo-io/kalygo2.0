@@ -204,11 +204,11 @@ export default function Dashboard() {
   ) {
     jsx = (
       <>
-        {summariesV2.val?.length > 0 && (
+        {summariesV3.val?.length > 0 && (
           <SummariesV3TableAlt summaries={summariesV3.val} />
         )}
 
-        {summariesV3.val?.length > 0 && (
+        {summariesV2.val?.length > 0 && (
           <>
             <div className="relative px-4 py-24 sm:p-6 lg:p-12">
               <div
