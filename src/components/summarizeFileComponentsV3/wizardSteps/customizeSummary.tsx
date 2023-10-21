@@ -169,10 +169,10 @@ export function CustomizeSummary(props: Props) {
                           <option value={SummaryMode.FILE_OVERALL}>
                             File Overall
                           </option>
-                          {/* <option value={SummaryMode.EACH_FILE_IN_CHUNKS}>
-                            Each In Chunks
+                          <option value={SummaryMode.FILE_IN_CHUNKS}>
+                            File In Chunks
                           </option>
-                          <option value={SummaryMode.OVERALL}>Overall</option>
+                          {/* <option value={SummaryMode.OVERALL}>Overall</option>
                           <option
                             disabled={disablePerPageMode}
                             value={SummaryMode.EACH_FILE_PER_PAGE}

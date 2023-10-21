@@ -164,9 +164,6 @@ export function CustomizeSummary(props: Props) {
                           <option value={SummaryMode.EACH_FILE_OVERALL}>
                             Each Overall
                           </option>
-                          <option value={SummaryMode.FILE_OVERALL}>
-                            File Overall
-                          </option>
                           <option value={SummaryMode.EACH_FILE_IN_CHUNKS}>
                             Each In Chunks
                           </option>

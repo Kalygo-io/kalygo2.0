@@ -44,14 +44,6 @@ export default function SummaryV3(p: P) {
             </button>
           </div>
         )}
-        {/* <div className="m-4 relative">
-            <div
-              className="absolute inset-0 flex items-center"
-              aria-hidden="true"
-            >
-              <div className="w-full border-t border-gray-100" />
-            </div>
-          </div> */}
       </div>
 
       <div className="px-4 pt-[calc(6.25rem)] text-sm leading-6 text-gray-700 overflow-x-scroll min-h-screen">
@@ -60,7 +52,7 @@ export default function SummaryV3(p: P) {
 
         {summary.mode === SummaryMode.FILE_OVERALL && (
           <div>
-            <ReactMarkdown className="summary-v2-markdown">
+            <ReactMarkdown className="summary-v3-markdown">
               {summary?.summary}
             </ReactMarkdown>
             <br />
@@ -76,7 +68,7 @@ export default function SummaryV3(p: P) {
                     <b>{i.file}</b>
                   </h3>
                 </span>
-                <ReactMarkdown className="summary-v2-markdown">
+                <ReactMarkdown className="summary-v3-markdown">
                   {i.summary}
                 </ReactMarkdown>
                 <br />
@@ -93,37 +85,30 @@ export default function SummaryV3(p: P) {
             return (
               <div key={idx}>
                 {summary?.summary.length > 1 && `(Part ${i.part + 1})`}
-                <ReactMarkdown className="summary-v2-markdown">
+                <ReactMarkdown className="summary-v3-markdown">
                   {i.summary}
                 </ReactMarkdown>
                 <br />
               </div>
             );
           })}
-        {summary.mode === SummaryMode.EACH_FILE_IN_CHUNKS &&
-          summary?.summary.map((i: any, idx: any) => {
-            {
-              return (
-                <div key={idx}>
-                  <h3 className="text-lg">
-                    <b>{i.file}</b>
-                  </h3>
-                  <ul>
-                    {i?.summary?.map((j: any, idx: any) => {
-                      return (
-                        <li key={idx} className="mt-2">
-                          {i?.summary.length > 1 && `(Part ${j.chunk + 1})`}
-                          <ReactMarkdown className="summary-v2-markdown">
-                            {j.chunkSummary}
-                          </ReactMarkdown>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              );
-            }
-          })}
+        {summary.mode === SummaryMode.FILE_IN_CHUNKS && summary?.summary && (
+          <div>
+            <ul>
+              {summary?.summary?.summary?.map((j: any, idx: any) => {
+                return (
+                  <li key={idx} className="mt-2">
+                    {summary?.summary.summary?.length > 1 &&
+                      `(Part ${j.chunk + 1})`}
+                    <ReactMarkdown className="summary-v3-markdown">
+                      {j.chunkSummary}
+                    </ReactMarkdown>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
 
         {summary.mode === SummaryMode.EACH_FILE_PER_PAGE &&
           summary?.summary.map((i: any, idx: any) => {
@@ -144,7 +129,7 @@ export default function SummaryV3(p: P) {
                           {i?.summariesOfTheParts.length > 1 &&
                             `(Page ${idx + 1})`}
 
-                          <ReactMarkdown className="summary-v2-markdown">
+                          <ReactMarkdown className="summary-v3-markdown">
                             {j}
                           </ReactMarkdown>
                         </li>

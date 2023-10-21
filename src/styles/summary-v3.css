@@ -1,0 +1,13 @@
+#summary-v3-aside::-webkit-scrollbar {
+  display: none;
+}
+
+#summary-v3-aside {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+#summary-v3-main {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
