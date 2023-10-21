@@ -95,9 +95,9 @@ export function Pricing() {
                       <span className="text-5xl font-bold tracking-tight text-gray-900">
                         {tier.price.monthly}
                       </span>
-                      {/* <span className="text-sm font-semibold leading-6 text-gray-600">
-                        /{t("common:pricing.premium-feature")}
-                      </span> */}
+                      <span className="text-sm font-semibold leading-6 text-gray-600">
+                        /{t("common:pricing.month")}
+                      </span>
                     </>
                   )}
                   {tier.id === "tier-premium" && (
@@ -105,9 +105,9 @@ export function Pricing() {
                       <span className="text-5xl font-bold tracking-tight text-gray-900">
                         {tier.price.monthly}
                       </span>
-                      {/* <span className="text-sm font-semibold leading-6 text-gray-600">
+                      <span className="text-sm font-semibold leading-6 text-gray-600">
                         /{t("common:pricing.month")}
-                      </span> */}
+                      </span>
                     </>
                   )}
                 </p>
