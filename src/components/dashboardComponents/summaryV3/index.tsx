@@ -47,10 +47,10 @@ export default function SummaryV3(p: P) {
       </div>
 
       <div className="px-4 pt-[calc(6.25rem)] text-sm leading-6 text-gray-700 overflow-x-scroll min-h-screen">
-        {summary.mode === ScanningMode.PRIOR_TO_TRACKING_MODE &&
+        {summary.scanMode === ScanningMode.PRIOR_TO_TRACKING_MODE &&
           JSON.stringify(summary.summary, null, 2)}
 
-        {summary.mode === ScanningMode.FILE_OVERALL && (
+        {summary.scanMode === ScanningMode.FILE_OVERALL && (
           <div>
             <ReactMarkdown className="summary-v3-markdown">
               {summary?.summary}
@@ -59,7 +59,7 @@ export default function SummaryV3(p: P) {
           </div>
         )}
 
-        {summary.mode === ScanningMode.EACH_FILE_OVERALL &&
+        {summary.scanMode === ScanningMode.EACH_FILE_OVERALL &&
           summary?.summary.map((i: any, idx: any) => {
             return (
               <div key={i.file}>
@@ -75,12 +75,12 @@ export default function SummaryV3(p: P) {
               </div>
             );
           })}
-        {summary.mode === ScanningMode.OVERALL && (
+        {summary.scanMode === ScanningMode.OVERALL && (
           <h3 className="text-lg">
             <b>{summary.title}</b>
           </h3>
         )}
-        {summary.mode === ScanningMode.OVERALL &&
+        {summary.scanMode === ScanningMode.OVERALL &&
           summary?.summary.map((i: any, idx: any) => {
             return (
               <div key={idx}>
@@ -92,25 +92,26 @@ export default function SummaryV3(p: P) {
               </div>
             );
           })}
-        {summary.mode === ScanningMode.FILE_IN_CHUNKS && summary?.summary && (
-          <div>
-            <ul>
-              {summary?.summary?.summary?.map((j: any, idx: any) => {
-                return (
-                  <li key={idx} className="mt-2">
-                    {summary?.summary.summary?.length > 1 &&
-                      `(Part ${j.chunk + 1})`}
-                    <ReactMarkdown className="summary-v3-markdown">
-                      {j.chunkSummary}
-                    </ReactMarkdown>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        )}
+        {summary.scanMode === ScanningMode.FILE_IN_CHUNKS &&
+          summary?.summary && (
+            <div>
+              <ul>
+                {summary?.summary?.summary?.map((j: any, idx: any) => {
+                  return (
+                    <li key={idx} className="mt-2">
+                      {summary?.summary.summary?.length > 1 &&
+                        `(Part ${j.chunk + 1})`}
+                      <ReactMarkdown className="summary-v3-markdown">
+                        {j.chunkSummary}
+                      </ReactMarkdown>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
 
-        {summary.mode === ScanningMode.FILE_PER_PAGE && (
+        {summary.scanMode === ScanningMode.FILE_PER_PAGE && (
           <div>
             <h3 className="text-lg my-4">
               <b>{summary?.file}</b>

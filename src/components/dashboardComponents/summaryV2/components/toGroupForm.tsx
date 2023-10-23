@@ -44,9 +44,6 @@ export const ToGroupForm = (p: P) => {
     }
   };
 
-  console.log("account", account);
-  console.log("summary", summary);
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-wrap w-full">
