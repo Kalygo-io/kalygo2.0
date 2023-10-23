@@ -149,6 +149,21 @@
     "upload-limits": "TXT & PDF files",
     "loading": "Loading..."
   },
+  "summarize-v3": {
+    "title": "Summarize",
+    "description": "'Summarize' allows you to upload 1 to 10 documents (.txt or .pdf). Free Tier uploads are limited to 1MB while Paid Tier uploads are limited to 40MB. Summarize them with the customization options you specify in step 2.",
+    "choose-files": "Choose files",
+    "customize-summary": "Customize",
+    "chosen-files": "Chosen files",
+    "customizations": "Customizations",
+    "run": "Run",
+    "summarize": "Summarize",
+    "request": "Request",
+    "review": "Review",
+    "select-files": "Select",
+    "upload-limits": "TXT, PDF, and CSV files",
+    "loading": "Loading..."
+  },
   "perform-vector-search": {
     "title": "Vector Search",
     "choose-file": "Choose file",

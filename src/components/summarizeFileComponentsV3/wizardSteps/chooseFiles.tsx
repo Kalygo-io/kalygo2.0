@@ -55,9 +55,10 @@ export function ChooseFiles(props: Props) {
 
     if (e.type === "dragenter" || e.type === "dragover") {
       const dataTransferItems = e.dataTransfer?.items;
+
       for (let i = 0; i < dataTransferItems.length; i++) {
         if (
-          !["application/pdf", "text/plain"].includes(
+          !["application/pdf", "text/plain", "text/csv"].includes(
             dataTransferItems[i]?.type
           )
         ) {
@@ -80,7 +81,7 @@ export function ChooseFiles(props: Props) {
       if (
         e.dataTransfer.files &&
         e.dataTransfer.files[0] && // TODO needs to be updated to check all files
-        ["application/pdf", "text/plain"].includes(
+        ["application/pdf", "text/plain", "text/csv"].includes(
           e.dataTransfer?.items["0"]?.type
         )
       ) {
@@ -168,14 +169,14 @@ export function ChooseFiles(props: Props) {
                               inputRef.current?.click();
                             }}
                           >
-                            {t("dashboard-page:summarize-v2.select-files")}
+                            {t("dashboard-page:summarize-v3.select-files")}
                             <input
                               ref={inputRef}
                               type="file"
                               id="input-file-upload"
                               multiple={true}
                               onChange={handleChange}
-                              accept=".pdf,.txt"
+                              accept=".pdf,.txt,.csv"
                               className="sr-only"
                             />
                           </button>
@@ -191,7 +192,7 @@ export function ChooseFiles(props: Props) {
                         ></div>
                       )}
                       <p className="text-xs leading-5 text-gray-600">
-                        {t("dashboard-page:summarize-v2.upload-limits")}
+                        {t("dashboard-page:summarize-v3.upload-limits")}
                       </p>
                     </div>
                   </div>

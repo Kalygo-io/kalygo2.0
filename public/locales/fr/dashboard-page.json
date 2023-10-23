@@ -148,6 +148,12 @@
     "upload-limits": "Fichiers TXT et PDF",
     "loading": "Chargement..."
   },
+  "summarize-v3": {
+    "title": "Résumer",
+    "description": "'Résumer' vous permet de télécharger {{undefined}} à {{undefined}} documents (.txt ou .pdf). Les téléchargements du niveau gratuit sont limités à {{undefined}} Mo tandis que les téléchargements du niveau payant sont limités à {{undefined}} Mo. Résumez-les avec les options de personnalisation que vous spécifiez à l'étape {{undefined}}.",
+    "choose-files": "Choisir des fichiers",
+    "customize-summary": "Personnaliser"
+  },
   "perform-vector-search": {
     "title": "Recherche de vecteur",
     "choose-file": "Choisir le fichier",

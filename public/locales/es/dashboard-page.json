@@ -149,6 +149,17 @@
     "upload-limits": "Archivos TXT y PDF",
     "loading": "Cargando..."
   },
+  "summarize-v3": {
+    "title": "Resumir",
+    "description": "'Resumir' le permite cargar de {{undefined}} a {{undefined}} documentos (.txt o .pdf). Las cargas del nivel gratuito están limitadas a {{undefined}} MB, mientras que las cargas del nivel pago están limitadas a {{undefined}} MB. Resúmelos con las opciones de personalización que especifiques en el paso {{undefined}}.",
+    "choose-files": "Seleccionar archivos",
+    "customize-summary": "Personalizar",
+    "chosen-files": "Archivos elegidos",
+    "customizations": "Personalizaciones",
+    "run": "Correr",
+    "summarize": "Resumir",
+    "request": "Pedido"
+  },
   "perform-vector-search": {
     "title": "Búsqueda de vectores",
     "choose-file": "Elija el archivo",
