@@ -4,7 +4,6 @@ import { errorToast, infoToast } from "@/utility/toasts";
 import { useForm } from "react-hook-form";
 import { navigatorLangDetector } from "@/lib/languageDetector";
 import { useRouter } from "next/router";
-import { customRequestFactory } from "@/serviceFactory/customRequestFactory";
 import { Layout3ColumnAndFooterWrapper } from "../sharedComponents/layout3ColumnAndFooterWrapper";
 import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
 import { LeftAreaAndMainWrapper } from "../sharedComponents/leftAreaAndMainWrapper";
@@ -12,11 +11,6 @@ import { LeftArea } from "../sharedComponents/leftArea";
 import { MainArea } from "../sharedComponents/mainArea";
 import { RightArea } from "../sharedComponents/rightArea";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
-import { SummaryMode } from "@/types/SummaryMode";
-import { EachFileInChunksPrompts } from "./reviewComponents/EachFileInChunksPrompts";
-import { EachFileOverallPrompts } from "./reviewComponents/EachFileOverallPrompts";
-import { OverallPrompts } from "./reviewComponents/OverallPrompts";
-import { EachFilePerPagePrompts } from "./reviewComponents/EachFilePerPagePrompts";
 import { ragRequestWithQueueFactory } from "@/serviceFactory/ragRequestWithQueueFactory";
 
 interface Props {

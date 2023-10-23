@@ -11,7 +11,7 @@ import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
 import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
-import { SummaryMode } from "@/types/SummaryMode";
+import { ScanningMode } from "@/types/ScanningMode";
 import {
   InformationCircleIcon,
   MinusIcon,
@@ -161,81 +161,20 @@ export function CustomizeSummary(props: Props) {
                           autoComplete="mode"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6"
                         >
-                          <option value={SummaryMode.EACH_FILE_OVERALL}>
+                          <option value={ScanningMode.EACH_FILE_OVERALL}>
                             Each Overall
                           </option>
-                          <option value={SummaryMode.EACH_FILE_IN_CHUNKS}>
+                          <option value={ScanningMode.EACH_FILE_IN_CHUNKS}>
                             Each In Chunks
                           </option>
-                          <option value={SummaryMode.OVERALL}>Overall</option>
+                          <option value={ScanningMode.OVERALL}>Overall</option>
                           <option
                             disabled={disablePerPageMode}
-                            value={SummaryMode.EACH_FILE_PER_PAGE}
+                            value={ScanningMode.EACH_FILE_PER_PAGE}
                           >
                             Each Per Page
                           </option>
                         </select>
-
-                        {/* <div className="flex items-center gap-x-2">
-                          <input
-                            {...register("mode")}
-                            id="overall-data"
-                            type="radio"
-                            value={SummaryMode.EACH_FILE_OVERALL}
-                            className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
-                          />
-                          <label
-                            htmlFor="overall-data"
-                            className="block text-sm font-medium leading-6 text-gray-900"
-                          >
-                            Each Overall
-                          </label>
-                        </div>
-                        <div className="flex items-center gap-x-2">
-                          <input
-                            {...register("mode")}
-                            id="each-part-of-data"
-                            type="radio"
-                            value={SummaryMode.EACH_FILE_IN_CHUNKS}
-                            className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
-                          />
-                          <label
-                            htmlFor="each-part-of-data"
-                            className="block text-sm font-medium leading-6 text-gray-900"
-                          >
-                            Each In Chunks
-                          </label>
-                        </div>
-                        <div className="flex items-center gap-x-2">
-                          <input
-                            {...register("mode")}
-                            id="overall"
-                            type="radio"
-                            value={SummaryMode.OVERALL}
-                            className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
-                          />
-                          <label
-                            htmlFor="overall"
-                            className="block text-sm font-medium leading-6 text-gray-900"
-                          >
-                            Overall
-                          </label>
-                        </div>
-                        <div className="flex items-center gap-x-2">
-                          <input
-                            {...register("mode")}
-                            id="per_page"
-                            type="radio"
-                            value={SummaryMode.PER_PAGE}
-                            className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
-                          />
-                          <label
-                            htmlFor="per_page"
-                            className="block text-sm font-medium leading-6 text-gray-900"
-                          >
-                            Per Page
-                          </label>
-                        </div> */}
                       </div>
                     </div>
                   </div>
@@ -336,12 +275,6 @@ export function CustomizeSummary(props: Props) {
                 </div>
               </fieldset>
               <div className="sm:grid sm:grid-cols-1 sm:items-baseline sm:gap-4 sm:py-6">
-                {/* <label
-                  htmlFor="language"
-                  className="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5"
-                >
-                  Language
-                </label> */}
                 <div className="mt-1 sm:col-span-3 sm:mt-0">
                   <div className="max-w-lg">
                     <Disclosure>

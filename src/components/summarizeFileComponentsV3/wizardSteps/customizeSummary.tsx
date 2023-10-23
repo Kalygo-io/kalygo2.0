@@ -1,17 +1,10 @@
-import React, {
-  Dispatch,
-  RefObject,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { Dispatch, RefObject, SetStateAction } from "react";
 import { Disclosure, Transition } from "@headlessui/react";
 import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
 import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
-import { SummaryMode } from "@/types/SummaryMode";
+import { ScanningMode } from "@/types/ScanningMode";
 import {
   InformationCircleIcon,
   MinusIcon,
@@ -79,6 +72,8 @@ export function CustomizeSummary(props: Props) {
       batchId: customizations?.batchId || "",
     },
   });
+
+  watch("mode");
 
   return (
     <div className="flex min-h-full flex-col">
@@ -153,6 +148,7 @@ export function CustomizeSummary(props: Props) {
                       <InformationCircleIcon className="h-4 w-4 text-blue-500 hover:text-blue-600 cursor-pointer" />
                     </sup>
                   </div>
+
                   <div className="mt-1 sm:col-span-2 sm:mt-0">
                     <div className="max-w-lg">
                       <div className="mt-6 space-x-2 flex flex-wrap justify-between mx-auto">
@@ -163,84 +159,20 @@ export function CustomizeSummary(props: Props) {
                           autoComplete="mode"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6"
                         >
-                          {/* <option value={SummaryMode.EACH_FILE_OVERALL}>
-                            Each Overall
-                          </option> */}
-                          <option value={SummaryMode.FILE_OVERALL}>
+                          <option value={ScanningMode.FILE_OVERALL}>
                             File Overall
                           </option>
-                          <option value={SummaryMode.FILE_IN_CHUNKS}>
+                          <option value={ScanningMode.FILE_IN_CHUNKS}>
                             File In Chunks
                           </option>
-                          <option value={SummaryMode.OVERALL}>Overall</option>
-                          {/* <option
+                          <option value={ScanningMode.OVERALL}>Overall</option>
+                          <option
                             disabled={disablePerPageMode}
-                            value={SummaryMode.EACH_FILE_PER_PAGE}
+                            value={ScanningMode.FILE_PER_PAGE}
                           >
-                            Each Per Page
-                          </option> */}
+                            File Per Page
+                          </option>
                         </select>
-
-                        {/* <div className="flex items-center gap-x-2">
-                          <input
-                            {...register("mode")}
-                            id="overall-data"
-                            type="radio"
-                            value={SummaryMode.EACH_FILE_OVERALL}
-                            className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
-                          />
-                          <label
-                            htmlFor="overall-data"
-                            className="block text-sm font-medium leading-6 text-gray-900"
-                          >
-                            Each Overall
-                          </label>
-                        </div>
-                        <div className="flex items-center gap-x-2">
-                          <input
-                            {...register("mode")}
-                            id="each-part-of-data"
-                            type="radio"
-                            value={SummaryMode.EACH_FILE_IN_CHUNKS}
-                            className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
-                          />
-                          <label
-                            htmlFor="each-part-of-data"
-                            className="block text-sm font-medium leading-6 text-gray-900"
-                          >
-                            Each In Chunks
-                          </label>
-                        </div>
-                        <div className="flex items-center gap-x-2">
-                          <input
-                            {...register("mode")}
-                            id="overall"
-                            type="radio"
-                            value={SummaryMode.OVERALL}
-                            className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
-                          />
-                          <label
-                            htmlFor="overall"
-                            className="block text-sm font-medium leading-6 text-gray-900"
-                          >
-                            Overall
-                          </label>
-                        </div>
-                        <div className="flex items-center gap-x-2">
-                          <input
-                            {...register("mode")}
-                            id="per_page"
-                            type="radio"
-                            value={SummaryMode.PER_PAGE}
-                            className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
-                          />
-                          <label
-                            htmlFor="per_page"
-                            className="block text-sm font-medium leading-6 text-gray-900"
-                          >
-                            Per Page
-                          </label>
-                        </div> */}
                       </div>
                     </div>
                   </div>
@@ -435,59 +367,62 @@ export function CustomizeSummary(props: Props) {
                                 </div>
                               </div>
                             </fieldset>
-                            <fieldset>
-                              <legend className="sr-only">
-                                Chunk Token Overlap
-                              </legend>
-                              <div className="sm:grid sm:grid-cols-3 sm:items-baseline sm:gap-4 sm:py-2">
-                                <label
-                                  htmlFor="chunkTokenOverlap"
-                                  className="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5"
-                                >
+                            {getValues("mode") ===
+                            ScanningMode.OVERALL ? null : (
+                              <fieldset>
+                                <legend className="sr-only">
                                   Chunk Token Overlap
-                                </label>
-                                <div className="mt-1 sm:col-span-2 sm:mt-0">
-                                  <div className="mt-4 space-y-2">
-                                    <input
-                                      {...register("chunkTokenOverlap", {})}
-                                      className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                                      type="range"
-                                      name="chunkTokenOverlap"
-                                      autoComplete="chunkTokenOverlap"
-                                      min={0}
-                                      max={1024}
-                                      onChange={(event) => {
-                                        const val = Number.parseInt(
-                                          event.target.value
-                                        );
-                                        setValue("chunkTokenOverlap", val);
-                                      }}
-                                    />
-
-                                    <input
-                                      {...register("chunkTokenOverlap", {})}
-                                      className="block rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 bg-slate-100"
-                                      type="input"
-                                      name="chunkTokenOverlap"
-                                      autoComplete="chunkTokenOverlap"
-                                      min={0}
-                                      max={1024}
-                                      onChange={(event) => {
-                                        let val;
-                                        if (event.target.value) {
-                                          val = Number.parseInt(
+                                </legend>
+                                <div className="sm:grid sm:grid-cols-3 sm:items-baseline sm:gap-4 sm:py-2">
+                                  <label
+                                    htmlFor="chunkTokenOverlap"
+                                    className="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5"
+                                  >
+                                    Chunk Token Overlap
+                                  </label>
+                                  <div className="mt-1 sm:col-span-2 sm:mt-0">
+                                    <div className="mt-6 space-y-2">
+                                      <input
+                                        {...register("chunkTokenOverlap", {})}
+                                        className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                        type="range"
+                                        name="chunkTokenOverlap"
+                                        autoComplete="chunkTokenOverlap"
+                                        min={0}
+                                        max={1024}
+                                        onChange={(event) => {
+                                          const val = Number.parseInt(
                                             event.target.value
                                           );
                                           setValue("chunkTokenOverlap", val);
-                                        } else {
-                                          setValue("chunkTokenOverlap", 0);
-                                        }
-                                      }}
-                                    />
+                                        }}
+                                      />
+
+                                      <input
+                                        {...register("chunkTokenOverlap", {})}
+                                        className="block rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 bg-slate-100"
+                                        type="input"
+                                        name="chunkTokenOverlap"
+                                        autoComplete="chunkTokenOverlap"
+                                        min={0}
+                                        max={1024}
+                                        onChange={(event) => {
+                                          let val;
+                                          if (event.target.value) {
+                                            val = Number.parseInt(
+                                              event.target.value
+                                            );
+                                            setValue("chunkTokenOverlap", val);
+                                          } else {
+                                            setValue("chunkTokenOverlap", 0);
+                                          }
+                                        }}
+                                      />
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                            </fieldset>
+                              </fieldset>
+                            )}
                             <fieldset>
                               <legend className="sr-only">Batch ID</legend>
                               <div className="sm:grid sm:grid-cols-3 sm:items-baseline sm:gap-4 sm:py-2">

@@ -12,7 +12,7 @@ import { LeftArea } from "../sharedComponents/leftArea";
 import { MainArea } from "../sharedComponents/mainArea";
 import { RightArea } from "../sharedComponents/rightArea";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
-import { SummaryMode } from "@/types/SummaryMode";
+import { ScanningMode } from "@/types/ScanningMode";
 import { EachFileInChunksPrompts } from "./reviewComponents/EachFileInChunksPrompts";
 import { EachFileOverallPrompts } from "./reviewComponents/EachFileOverallPrompts";
 import { OverallPrompts } from "./reviewComponents/OverallPrompts";
@@ -97,7 +97,8 @@ export function Review(props: Props) {
               <div className="col-span-full">
                 <form>
                   <div className="mt-2">
-                    {customizations?.mode === SummaryMode.EACH_FILE_OVERALL && (
+                    {customizations?.mode ===
+                      ScanningMode.EACH_FILE_OVERALL && (
                       <EachFileOverallPrompts
                         includeFinalPrompt={
                           customizations.includeFinalPrompt as boolean
@@ -107,12 +108,12 @@ export function Review(props: Props) {
                       />
                     )}
                     {customizations?.mode ===
-                      SummaryMode.EACH_FILE_IN_CHUNKS && (
+                      ScanningMode.EACH_FILE_IN_CHUNKS && (
                       <EachFileInChunksPrompts
                         prompt={customizations.prompt as string}
                       />
                     )}
-                    {customizations?.mode === SummaryMode.OVERALL && (
+                    {customizations?.mode === ScanningMode.OVERALL && (
                       <OverallPrompts
                         prompt={customizations.prompt as string}
                         finalPrompt={customizations.finalPrompt as string}
@@ -121,7 +122,7 @@ export function Review(props: Props) {
                     )}
 
                     {customizations?.mode ===
-                      SummaryMode.EACH_FILE_PER_PAGE && (
+                      ScanningMode.EACH_FILE_PER_PAGE && (
                       <EachFilePerPagePrompts
                         prompt={customizations.prompt as string}
                       />

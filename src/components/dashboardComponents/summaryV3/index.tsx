@@ -1,6 +1,6 @@
 import { RadioGroupStars } from "@/components/shared/RatingComponent";
 import { rateSummaryFactory } from "@/serviceFactory/rateSummaryFactory";
-import { SummaryMode } from "@/types/SummaryMode";
+import { ScanningMode } from "@/types/ScanningMode";
 import { errorReporter } from "@/utility/error/reporter";
 import { Bars3Icon, LinkIcon, ShareIcon } from "@heroicons/react/24/outline";
 import get from "lodash.get";
@@ -47,10 +47,10 @@ export default function SummaryV3(p: P) {
       </div>
 
       <div className="px-4 pt-[calc(6.25rem)] text-sm leading-6 text-gray-700 overflow-x-scroll min-h-screen">
-        {summary.mode === SummaryMode.PRIOR_TO_TRACKING_MODE &&
+        {summary.mode === ScanningMode.PRIOR_TO_TRACKING_MODE &&
           JSON.stringify(summary.summary, null, 2)}
 
-        {summary.mode === SummaryMode.FILE_OVERALL && (
+        {summary.mode === ScanningMode.FILE_OVERALL && (
           <div>
             <ReactMarkdown className="summary-v3-markdown">
               {summary?.summary}
@@ -59,7 +59,7 @@ export default function SummaryV3(p: P) {
           </div>
         )}
 
-        {summary.mode === SummaryMode.EACH_FILE_OVERALL &&
+        {summary.mode === ScanningMode.EACH_FILE_OVERALL &&
           summary?.summary.map((i: any, idx: any) => {
             return (
               <div key={i.file}>
@@ -75,12 +75,12 @@ export default function SummaryV3(p: P) {
               </div>
             );
           })}
-        {summary.mode === SummaryMode.OVERALL && (
+        {summary.mode === ScanningMode.OVERALL && (
           <h3 className="text-lg">
             <b>{summary.title}</b>
           </h3>
         )}
-        {summary.mode === SummaryMode.OVERALL &&
+        {summary.mode === ScanningMode.OVERALL &&
           summary?.summary.map((i: any, idx: any) => {
             return (
               <div key={idx}>
@@ -92,7 +92,7 @@ export default function SummaryV3(p: P) {
               </div>
             );
           })}
-        {summary.mode === SummaryMode.FILE_IN_CHUNKS && summary?.summary && (
+        {summary.mode === ScanningMode.FILE_IN_CHUNKS && summary?.summary && (
           <div>
             <ul>
               {summary?.summary?.summary?.map((j: any, idx: any) => {
@@ -110,7 +110,7 @@ export default function SummaryV3(p: P) {
           </div>
         )}
 
-        {summary.mode === SummaryMode.EACH_FILE_PER_PAGE &&
+        {summary.mode === ScanningMode.EACH_FILE_PER_PAGE &&
           summary?.summary.map((i: any, idx: any) => {
             {
               return (
@@ -120,10 +120,6 @@ export default function SummaryV3(p: P) {
                   </h3>
                   <ul>
                     {i?.summariesOfTheParts?.map((j: any, idx: any) => {
-                      //
-                      // console.log("i", i);
-                      // console.log("j", j);
-                      //
                       return (
                         <li key={idx} className="mt-2">
                           {i?.summariesOfTheParts.length > 1 &&

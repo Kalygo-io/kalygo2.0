@@ -1,15 +1,11 @@
 import { RadioGroupStars } from "@/components/shared/RatingComponent";
 import { rateCustomRequestFactory } from "@/serviceFactory/rateCustomRequestFactory";
-import { rateSummaryFactory } from "@/serviceFactory/rateSummaryFactory";
 import { ScanningMode } from "@/types/ScanningMode";
-import { SummaryMode } from "@/types/SummaryMode";
 import { errorReporter } from "@/utility/error/reporter";
-import { classNames } from "@/utility/misc/classNames";
-import { Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, LinkIcon, ShareIcon } from "@heroicons/react/24/outline";
 import get from "lodash.get";
 import { useTranslation } from "next-i18next";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { ShareModal } from "../customRequest/components/shareModal";
 import { SlideOver } from "./components/slideOver";

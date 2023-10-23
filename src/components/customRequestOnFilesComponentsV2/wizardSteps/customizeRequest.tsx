@@ -1,8 +1,4 @@
-import {
-  EllipsisVerticalIcon,
-  MinusIcon,
-  PlusIcon,
-} from "@heroicons/react/24/outline";
+import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 import React, { Dispatch, Fragment, RefObject, SetStateAction } from "react";
 import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
@@ -15,7 +11,7 @@ import { MainArea } from "../sharedComponents/mainArea";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
 import { RightArea } from "../sharedComponents/rightArea";
 import { classNames } from "@/utility/misc/classNames";
-import { SummaryMode } from "@/types/SummaryMode";
+import { ScanningMode } from "@/types/ScanningMode";
 import { EachFileOverallPrompts } from "./customizeRequestComponents/EachFileOverallPrompts";
 import { EachFileInChunksPrompts } from "./customizeRequestComponents/EachFileInChunksPrompts";
 import { OverallPrompts } from "./customizeRequestComponents/OverallPrompts";
@@ -184,86 +180,25 @@ export function CustomizeRequest(props: Props) {
                             autoComplete="mode"
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-full sm:text-sm sm:leading-6"
                           >
-                            <option value={SummaryMode.EACH_FILE_OVERALL}>
+                            <option value={ScanningMode.EACH_FILE_OVERALL}>
                               Each Overall
                             </option>
-                            <option value={SummaryMode.EACH_FILE_IN_CHUNKS}>
+                            <option value={ScanningMode.EACH_FILE_IN_CHUNKS}>
                               Each In Chunks
                             </option>
-                            <option value={SummaryMode.OVERALL}>Overall</option>
+                            <option value={ScanningMode.OVERALL}>
+                              Overall
+                            </option>
                             <option
                               disabled={disablePerPageMode}
-                              value={SummaryMode.EACH_FILE_PER_PAGE}
+                              value={ScanningMode.EACH_FILE_PER_PAGE}
                             >
                               Each Per Page
                             </option>
                           </select>
-                          {/* <div className="flex items-center gap-x-2">
-                              <input
-                                {...register("mode")}
-                                id="overall-data"
-                                type="radio"
-                                onChange={(e) => {
-                                  setValue("mode", e.target.value);
-                                  resetField("prompt");
-                                  resetField("finalPrompt");
-                                  resetField("overallPrompt");
-                                }}
-                                value={SummaryMode.EACH_FILE_OVERALL}
-                                className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
-                              />
-                              <label
-                                htmlFor="overall-data"
-                                className="block text-sm font-medium leading-6 text-gray-900"
-                              >
-                                Each Overall
-                              </label>
-                            </div>
-                            <div className="flex items-center gap-x-2">
-                              <input
-                                {...register("mode")}
-                                id="each-part-of-data"
-                                type="radio"
-                                onChange={(e) => {
-                                  setValue("mode", e.target.value);
-                                  resetField("prompt");
-                                  resetField("finalPrompt");
-                                  resetField("overallPrompt");
-                                }}
-                                value={SummaryMode.EACH_FILE_IN_CHUNKS}
-                                className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
-                              />
-                              <label
-                                htmlFor="each-part-of-data"
-                                className="block text-sm font-medium leading-6 text-gray-900"
-                              >
-                                Each In Chunks
-                              </label>
-                            </div>
-                            <div className="flex items-center gap-x-2">
-                              <input
-                                {...register("mode")}
-                                id="overall"
-                                type="radio"
-                                onChange={(e) => {
-                                  setValue("mode", e.target.value);
-                                  resetField("prompt");
-                                  resetField("finalPrompt");
-                                  resetField("overallPrompt");
-                                }}
-                                value={SummaryMode.OVERALL}
-                                className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-600"
-                              />
-                              <label
-                                htmlFor="overall"
-                                className="block text-sm font-medium leading-6 text-gray-900"
-                              >
-                                Overall
-                              </label>
-                            </div> */}
                         </div>
 
-                        {mode === SummaryMode.EACH_FILE_OVERALL && (
+                        {mode === ScanningMode.EACH_FILE_OVERALL && (
                           <EachFileOverallPrompts
                             values={getValues()}
                             register={register}
@@ -272,7 +207,7 @@ export function CustomizeRequest(props: Props) {
                           />
                         )}
 
-                        {mode === SummaryMode.EACH_FILE_IN_CHUNKS && (
+                        {mode === ScanningMode.EACH_FILE_IN_CHUNKS && (
                           <EachFileInChunksPrompts
                             register={register}
                             trigger={trigger}
@@ -280,7 +215,7 @@ export function CustomizeRequest(props: Props) {
                           />
                         )}
 
-                        {mode === SummaryMode.OVERALL && (
+                        {mode === ScanningMode.OVERALL && (
                           <OverallPrompts
                             register={register}
                             trigger={trigger}
@@ -288,7 +223,7 @@ export function CustomizeRequest(props: Props) {
                           />
                         )}
 
-                        {mode === SummaryMode.EACH_FILE_PER_PAGE && (
+                        {mode === ScanningMode.EACH_FILE_PER_PAGE && (
                           <EachFilePerPagePrompts
                             register={register}
                             trigger={trigger}
