@@ -92,14 +92,14 @@ export function SummariesV2TableAlt(p: P) {
                     {summary.mode}
                   </td>
                   <td className="px-3 py-4 text-sm text-gray-500">
-                    {summary.mode === ScanningMode.EACH_FILE_IN_CHUNKS
+                    {summary.scanMode === ScanningMode.EACH_FILE_IN_CHUNKS
                       ? `${summary?.summary[0]?.summary[0]?.chunkSummary?.slice(
                           0,
                           16
                         )}...`
-                      : summary.mode === ScanningMode.EACH_FILE_OVERALL
+                      : summary.scanMode === ScanningMode.EACH_FILE_OVERALL
                       ? `${summary.summary[0].summary.slice(0, 16)}...`
-                      : summary.mode === ScanningMode.OVERALL
+                      : summary.scanMode === ScanningMode.OVERALL
                       ? `${summary.summary[0].summary.slice(0, 16)}...`
                       : `TODO`}
                   </td>

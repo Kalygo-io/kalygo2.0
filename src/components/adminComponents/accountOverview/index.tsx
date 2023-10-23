@@ -60,7 +60,8 @@ export function AccountOverview(p: P) {
       )}
       {tab === "Activity" && (
         <>
-          <ActivityTable activity={account.activity || []} />
+          Coming soon...
+          {/* <ActivityTable activity={account.activity || []} /> */}
         </>
       )}
       {tab === "Context" && <Context account={account} />}

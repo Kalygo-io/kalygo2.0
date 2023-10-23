@@ -54,10 +54,10 @@ export default function SummaryV2(p: P) {
       </div>
 
       <div className="px-4 pt-[calc(6.25rem)] text-sm leading-6 text-gray-700 overflow-x-scroll min-h-screen">
-        {summary.mode === ScanningMode.PRIOR_TO_TRACKING_MODE &&
+        {summary.scanMode === ScanningMode.PRIOR_TO_TRACKING_MODE &&
           JSON.stringify(summary.summary, null, 2)}
 
-        {summary.mode === ScanningMode.FILE_OVERALL && (
+        {summary.scanMode === ScanningMode.FILE_OVERALL && (
           <div>
             <ReactMarkdown className="summary-v2-markdown">
               {summary?.summary}
@@ -66,7 +66,7 @@ export default function SummaryV2(p: P) {
           </div>
         )}
 
-        {summary.mode === ScanningMode.EACH_FILE_OVERALL &&
+        {summary.scanMode === ScanningMode.EACH_FILE_OVERALL &&
           summary?.summary.map((i: any, idx: any) => {
             return (
               <div key={i.file}>
@@ -82,12 +82,12 @@ export default function SummaryV2(p: P) {
               </div>
             );
           })}
-        {summary.mode === ScanningMode.OVERALL && (
+        {summary.scanMode === ScanningMode.OVERALL && (
           <h3 className="text-lg">
             <b>{summary.title}</b>
           </h3>
         )}
-        {summary.mode === ScanningMode.OVERALL &&
+        {summary.scanMode === ScanningMode.OVERALL &&
           summary?.summary.map((i: any, idx: any) => {
             return (
               <div key={idx}>
@@ -99,7 +99,7 @@ export default function SummaryV2(p: P) {
               </div>
             );
           })}
-        {summary.mode === ScanningMode.EACH_FILE_IN_CHUNKS &&
+        {summary.scanMode === ScanningMode.EACH_FILE_IN_CHUNKS &&
           summary?.summary.map((i: any, idx: any) => {
             {
               return (
@@ -124,7 +124,7 @@ export default function SummaryV2(p: P) {
             }
           })}
 
-        {summary.mode === ScanningMode.EACH_FILE_PER_PAGE &&
+        {summary.scanMode === ScanningMode.EACH_FILE_PER_PAGE &&
           summary?.summary.map((i: any, idx: any) => {
             {
               return (
@@ -193,7 +193,7 @@ export default function SummaryV2(p: P) {
                 {t("dashboard-page:summary-v2.mode")}
               </dt>
               <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
-                {summary?.mode}
+                {summary?.scanMode}
               </dd>
             </div>
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
