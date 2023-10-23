@@ -1,5 +1,4 @@
 import { RadioGroupStars } from "@/components/shared/RatingComponent";
-import { rateSummaryFactory } from "@/serviceFactory/rateSummaryFactory";
 import { ScanningMode } from "@/types/ScanningMode";
 import { errorReporter } from "@/utility/error/reporter";
 import { Bars3Icon, LinkIcon, ShareIcon } from "@heroicons/react/24/outline";
@@ -10,6 +9,7 @@ import ReactMarkdown from "react-markdown";
 import { ShareModal } from "./components/shareModal";
 import { useRouter } from "next/router";
 import { SlideOver } from "./components/slideOver";
+import { rateSummaryV3Factory } from "@/serviceFactory/rateSummaryV3Factory";
 
 interface P {
   summary: any;
@@ -137,7 +137,7 @@ export default function SummaryV3(p: P) {
       </div>
 
       <div
-        id="summary-v2-aside"
+        id="summary-v3-aside"
         className="fixed inset-y-0 right-0 hidden w-96 overflow-y-auto border-l border-gray-200 px-4 pt-20 pb-6 sm:px-6 lg:px-8 xl:block bg-white"
       >
         <div className="mt-6">
@@ -192,7 +192,7 @@ export default function SummaryV3(p: P) {
                     recordRating={async (rating: number, ratingMax: number) => {
                       try {
                         // prettier-ignore
-                        const rateSummaryRequest = rateSummaryFactory(summary.id, rating, ratingMax);
+                        const rateSummaryRequest = rateSummaryV3Factory(summary.id, rating, ratingMax);
                         // prettier-ignore
                         const rateSummaryResponse = await rateSummaryRequest;
                         // prettier-ignore
