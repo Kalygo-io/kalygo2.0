@@ -56,7 +56,7 @@ export function SlideOver(p: P) {
                         </div>
                       </div>
                       <div className="mt-1">
-                        <p className="text-sm text-white">{summary.mode}</p>
+                        <p className="text-sm text-white">{summary.scanMode}</p>
                       </div>
                     </div>
                     <div className="relative flex-1 px-4 py-6 sm:px-6">
@@ -79,7 +79,7 @@ export function SlideOver(p: P) {
                             {t("dashboard-page:summary-v2.mode")}
                           </dt>
                           <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
-                            {summary?.mode}
+                            {summary?.scanMode}
                           </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">

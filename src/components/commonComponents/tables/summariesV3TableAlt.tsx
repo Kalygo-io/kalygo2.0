@@ -1,5 +1,6 @@
 import { useAppContext } from "@/context/AppContext";
 import { ScanningMode } from "@/types/ScanningMode";
+import get from "lodash.get";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 
@@ -92,17 +93,21 @@ export function SummariesV3TableAlt(p: P) {
                     {summary.scanMode}
                   </td>
                   <td className="px-3 py-4 text-sm text-gray-500">
-                    {summary.scanMode === ScanningMode.EACH_FILE_IN_CHUNKS
+                    {summary.scanMode === ScanningMode.FILE_IN_CHUNKS
                       ? `${summary?.summary[0]?.summary[0]?.chunkSummary?.slice(
                           0,
                           16
                         )}...`
-                      : summary.scanMode === ScanningMode.EACH_FILE_OVERALL
-                      ? `${summary.summary[0].summary.slice(0, 16)}...`
                       : summary.scanMode === ScanningMode.OVERALL
                       ? `${summary.summary[0].summary.slice(0, 16)}...`
                       : summary.scanMode === ScanningMode.FILE_OVERALL
                       ? `${summary?.summary.slice(0, 16)}...`
+                      : summary.scanMode === ScanningMode.FILE_PER_PAGE
+                      ? `${get(
+                          summary,
+                          "summary.summariesOfTheParts.0",
+                          "N/A"
+                        ).slice(0, 16)}...`
                       : `TODO`}
                   </td>
                   <td className="py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">

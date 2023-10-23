@@ -79,7 +79,7 @@ export function SummariesV2TableAlt(p: P) {
                       </dd>
                       <dt className="sr-only sm:hidden">Mode</dt>
                       <dd className="mt-1 truncate text-gray-500 sm:hidden">
-                        {summary.mode}
+                        {summary.scanMode}
                       </dd>
                     </dl>
                   </td>
@@ -89,7 +89,7 @@ export function SummariesV2TableAlt(p: P) {
                       : summary.model}
                   </td>
                   <td className="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">
-                    {summary.mode}
+                    {summary.scanMode}
                   </td>
                   <td className="px-3 py-4 text-sm text-gray-500">
                     {summary.scanMode === ScanningMode.EACH_FILE_IN_CHUNKS

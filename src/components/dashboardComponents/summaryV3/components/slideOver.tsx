@@ -81,7 +81,7 @@ export function SlideOver(p: P) {
                             {t("dashboard-page:summary-v3.mode")}
                           </dt>
                           <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
-                            {summary?.mode}
+                            {summary?.scanMode}
                           </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">

@@ -21,7 +21,7 @@ import { SummariesV2TableAlt } from "@/components/dashboardComponents/summariesV
 // import { CustomRequestsTable } from "@/components/dashboardComponents/customRequestsTable";
 import { CustomRequestsTableAlt } from "@/components/dashboardComponents/customRequestsTableAlt";
 import { useGetAccount } from "@/utility/hooks/getAccount";
-import { SummariesV3TableAlt } from "@/components/dashboardComponents/summariesV3TableAlt";
+import { SummariesV3TableAlt } from "@/components/commonComponents/tables/summariesV3TableAlt";
 
 const getStaticProps = makeStaticProps([
   "seo",
