@@ -110,32 +110,29 @@ export default function SummaryV3(p: P) {
           </div>
         )}
 
-        {summary.mode === ScanningMode.EACH_FILE_PER_PAGE &&
-          summary?.summary.map((i: any, idx: any) => {
-            {
-              return (
-                <div key={idx}>
-                  <h3 className="text-lg my-4">
-                    <b>{i.file}</b>
-                  </h3>
-                  <ul>
-                    {i?.summariesOfTheParts?.map((j: any, idx: any) => {
-                      return (
-                        <li key={idx} className="mt-2">
-                          {i?.summariesOfTheParts.length > 1 &&
-                            `(Page ${idx + 1})`}
+        {summary.mode === ScanningMode.FILE_PER_PAGE && (
+          <div>
+            <h3 className="text-lg my-4">
+              <b>{summary?.file}</b>
+            </h3>
+            <ul>
+              {summary?.summary?.summariesOfTheParts?.map(
+                (j: any, idx: any) => {
+                  return (
+                    <li key={idx} className="mt-2">
+                      {summary?.summary?.summariesOfTheParts.length > 1 &&
+                        `(Page ${idx + 1})`}
 
-                          <ReactMarkdown className="summary-v3-markdown">
-                            {j}
-                          </ReactMarkdown>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              );
-            }
-          })}
+                      <ReactMarkdown className="summary-v3-markdown">
+                        {j}
+                      </ReactMarkdown>
+                    </li>
+                  );
+                }
+              )}
+            </ul>
+          </div>
+        )}
       </div>
 
       <div

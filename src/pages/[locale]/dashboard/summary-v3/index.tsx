@@ -32,7 +32,7 @@ export { getStaticPaths, getStaticProps };
 export default function Page() {
   const router = useRouter();
   const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
-  const summaryV2Id = searchParams.get("summary-v3-id") || "";
+  const summaryV3Id = searchParams.get("summary-v3-id") || "";
   const { t } = useTranslation();
   const { account, refresh, refreshCount } = useGetAccountWithAccessGroups();
   const [summary, setSummary] = useState<{
@@ -49,7 +49,7 @@ export default function Page() {
     async function fetch() {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/get-summary-v3/${summaryV2Id}`,
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/get-summary-v3/${summaryV3Id}`,
           {
             withCredentials: true,
           }
