@@ -32,7 +32,7 @@ export default function ResearchLandingPage(props: any) {
   return (
     <>
       <Head>
-        <title>{t("seo:landing-page-seo-medical-title")}</title>
+        <title>{t("seo:landing-page-seo-research-title")}</title>
       </Head>
       <Layout1>
         <IndustryHero industry="research" />
