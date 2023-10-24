@@ -181,6 +181,9 @@ export default function Signup() {
             alt={t("image-alt-tags:kalygo_new_logo-192x192")}
             width={192}
             height={192}
+            onClick={() => {
+              router.push("/");
+            }}
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             {t("sign-up-page:sign-up")}
