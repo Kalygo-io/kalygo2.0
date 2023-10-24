@@ -53,10 +53,10 @@ export default function CustomRequest(p: P) {
           </div> */}
       </div>
       <div className="px-4 pt-[calc(6.25rem)] text-sm leading-6 text-gray-700 overflow-x-scroll min-h-screen">
-        {customRequest.scanMode === ScanningMode.PRIOR_TO_TRACKING_MODE &&
+        {customRequest.mode === ScanningMode.PRIOR_TO_TRACKING_MODE &&
           JSON.stringify(customRequest.completionResponse, null, 2)}
 
-        {customRequest.scanMode === ScanningMode.EACH_FILE_IN_CHUNKS &&
+        {customRequest.mode === ScanningMode.EACH_FILE_IN_CHUNKS &&
           customRequest?.completionResponse.map((i: any, idx: any) => {
             {
               return (
@@ -81,7 +81,7 @@ export default function CustomRequest(p: P) {
             }
           })}
 
-        {customRequest.scanMode === ScanningMode.EACH_FILE_OVERALL && (
+        {customRequest.mode === ScanningMode.EACH_FILE_OVERALL && (
           <>
             {customRequest?.completionResponse.map((i: any, idx: any) => {
               return (
@@ -101,7 +101,7 @@ export default function CustomRequest(p: P) {
           </>
         )}
 
-        {customRequest.scanMode === ScanningMode.OVERALL &&
+        {customRequest.mode === ScanningMode.OVERALL &&
           customRequest?.completionResponse.map((i: any, idx: any) => {
             return (
               <div key={idx}>
@@ -115,7 +115,7 @@ export default function CustomRequest(p: P) {
             );
           })}
 
-        {customRequest.scanMode === ScanningMode.EACH_FILE_PER_PAGE &&
+        {customRequest.mode === ScanningMode.EACH_FILE_PER_PAGE &&
           customRequest?.completionResponse.map((i: any, idx: any) => {
             {
               return (
@@ -184,7 +184,7 @@ export default function CustomRequest(p: P) {
                 {t("dashboard-page:summary-v2.mode")}
               </dt>
               <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
-                {customRequest?.scanMode}
+                {customRequest?.mode}
               </dd>
             </div>
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
