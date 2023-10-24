@@ -27,7 +27,7 @@ export default function TermsOfService() {
               Terms of Service
             </h1>
             <p className="mt-6 text-xl leading-8"></p>
-            <div className="mt-10 max-w-2xl">
+            <div className="mt-10 max-w-2xl mx-auto">
               <p>
                 This Terms of Service for the various SaaS products owned and
                 developed by CMD Software, Inc. (&quot;Company&quot;,
@@ -189,7 +189,7 @@ export default function TermsOfService() {
                 records.
               </p>
             </div>
-            <div className="mt-16 max-w-2xl">
+            <div className="mt-16 max-w-2xl mx-auto">
               <h2 className="text-2xl font-bold tracking-tight text-gray-900">
                 Table of Contents
               </h2>
