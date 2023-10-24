@@ -1,5 +1,5 @@
-import { addSummaryToAccessGroupFactory } from "@/serviceFactory/addSummaryToAccessGroupFactory";
-import { removeSummaryFromAccessGroupFactory } from "@/serviceFactory/removeSummaryFromAccessGroupFactory";
+import { addSummaryV3ToAccessGroupFactory } from "@/serviceFactory/addSummaryV3ToAccessGroupFactory";
+import { removeSummaryV3FromAccessGroupFactory } from "@/serviceFactory/removeSummaryV3FromAccessGroupFactory";
 import { errorReporter } from "@/utility/error/reporter";
 import { XCircleIcon } from "@heroicons/react/24/outline";
 import { useTranslation } from "next-i18next";
@@ -32,7 +32,7 @@ export const ToGroupForm = (p: P) => {
     try {
       console.log("data", data);
 
-      const request = addSummaryToAccessGroupFactory(
+      const request = addSummaryV3ToAccessGroupFactory(
         summary.id,
         Number.parseInt(data.shareToGroup)
       );
@@ -64,7 +64,7 @@ export const ToGroupForm = (p: P) => {
                 className="h-6 w-6 cursor-pointer"
                 onClick={async () => {
                   console.log("___ --- ___");
-                  const request = removeSummaryFromAccessGroupFactory(
+                  const request = removeSummaryV3FromAccessGroupFactory(
                     summary.id,
                     Number.parseInt(i.accessGroup.id)
                   );

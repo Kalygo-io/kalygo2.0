@@ -12,12 +12,12 @@ import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import SummaryV2 from "@/components/dashboardComponents/summaryV2";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
 import { useGetAccountWithAccessGroups } from "@/utility/hooks/getAccountWithAccessGroups";
 import LayoutDashboardNoAdmin from "@/layout/layoutDashboardNoAdmin";
 import { UnauthorizedErrorInDashboard } from "@/components/shared/unauthorizedErrorInDashboard";
+import SummaryV3 from "@/components/dashboardComponents/summaryV3";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -34,7 +34,7 @@ export { getStaticPaths, getStaticProps };
 export default function Page() {
   const router = useRouter();
   const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
-  const summaryV2Id = searchParams.get("summary-v2-id") || "";
+  const summaryV3Id = searchParams.get("summary-v3-id") || "";
   const { t } = useTranslation();
   //   const { account, refresh, refreshCount } = useGetAccountWithAccessGroups();
   const [summary, setSummary] = useState<{
@@ -51,7 +51,7 @@ export default function Page() {
     async function fetch() {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/get-public-summary-v2/${summaryV2Id}`
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/get-public-summary-v3/${summaryV3Id}`
         );
 
         setSummary({
@@ -75,7 +75,7 @@ export default function Page() {
   if (summary.loading) {
     jsx = <WindowLoader></WindowLoader>;
   } else if (summary.val) {
-    jsx = <SummaryV2 summary={summary.val} />;
+    jsx = <SummaryV3 summary={summary.val} />;
   } else {
     console.log("--- --- ---", summary.err);
 

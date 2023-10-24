@@ -1,5 +1,5 @@
-import { addSummaryToAccessGroupFactory } from "@/serviceFactory/addSummaryToAccessGroupFactory";
-import { removeSummaryFromAccessGroupFactory } from "@/serviceFactory/removeSummaryFromAccessGroupFactory";
+import { addSummaryV2ToAccessGroupFactory } from "@/serviceFactory/addSummaryV2ToAccessGroupFactory";
+import { removeSummaryV2FromAccessGroupFactory } from "@/serviceFactory/removeSummaryV2FromAccessGroupFactory";
 import { errorReporter } from "@/utility/error/reporter";
 import { XCircleIcon } from "@heroicons/react/24/outline";
 import { useTranslation } from "next-i18next";
@@ -32,7 +32,7 @@ export const ToGroupForm = (p: P) => {
     try {
       console.log("data", data);
 
-      const request = addSummaryToAccessGroupFactory(
+      const request = addSummaryV2ToAccessGroupFactory(
         summary.id,
         Number.parseInt(data.shareToGroup)
       );
@@ -54,7 +54,7 @@ export const ToGroupForm = (p: P) => {
               <br />
             </>
           )}{" "}
-          {summary?.SummariesAndAccessGroups?.map((i: any) => (
+          {summary?.SummaryV2sAndAccessGroups?.map((i: any) => (
             <span
               key={i.accessGroup.id}
               className="pl-1 inline-flex items-start gap-x-1 truncate"
@@ -64,7 +64,7 @@ export const ToGroupForm = (p: P) => {
                 className="h-6 w-6 cursor-pointer"
                 onClick={async () => {
                   console.log("___ --- ___");
-                  const request = removeSummaryFromAccessGroupFactory(
+                  const request = removeSummaryV2FromAccessGroupFactory(
                     summary.id,
                     Number.parseInt(i.accessGroup.id)
                   );
