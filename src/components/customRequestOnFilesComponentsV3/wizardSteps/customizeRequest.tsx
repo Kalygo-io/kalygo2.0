@@ -180,21 +180,21 @@ export function CustomizeRequest(props: Props) {
                             autoComplete="mode"
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-full sm:text-sm sm:leading-6"
                           >
-                            <option value={ScanningMode.FILE_OVERALL}>
+                            {/* <option value={ScanningMode.FILE_OVERALL}>
                               Each Overall
-                            </option>
+                            </option> */}
                             <option value={ScanningMode.FILE_IN_CHUNKS}>
                               Each In Chunks
                             </option>
-                            <option value={ScanningMode.OVERALL}>
+                            {/* <option value={ScanningMode.OVERALL}>
                               Overall
-                            </option>
-                            <option
+                            </option> */}
+                            {/* <option
                               disabled={disablePerPageMode}
                               value={ScanningMode.FILE_PER_PAGE}
                             >
                               Each Per Page
-                            </option>
+                            </option> */}
                           </select>
                         </div>
 
