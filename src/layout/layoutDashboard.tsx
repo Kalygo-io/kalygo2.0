@@ -86,7 +86,7 @@ export default function LayoutDashboard({ children, account }: P) {
     },
     {
       name: t("dashboard-page:navigation.custom-request"),
-      href: "/dashboard/custom-request/custom-request-v2",
+      href: "/dashboard/custom-request-v3",
       icon: BeakerIcon,
     },
     {

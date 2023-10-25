@@ -7,8 +7,7 @@ import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import CustomRequest from "@/components/dashboardComponents/customRequest";
-
+import CustomRequestV3 from "@/components/dashboardComponents/customRequestV3";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
 import { useGetAccountWithAccessGroups } from "@/utility/hooks/getAccountWithAccessGroups";
@@ -32,7 +31,7 @@ export { getStaticPaths, getStaticProps };
 export default function CustomRequestV3Result() {
   const router = useRouter();
   const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
-  const customRequestId = searchParams.get("custom-request-id") || "";
+  const customRequestV3Id = searchParams.get("custom-request-v3-id") || "";
   const { t } = useTranslation();
   const { account, refresh, refreshCount } = useGetAccountWithAccessGroups();
   const [customRequest, setCustomRequest] = useState<{
@@ -49,13 +48,11 @@ export default function CustomRequestV3Result() {
     async function fetch() {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/custom-request/${customRequestId}`,
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/custom-request-v3/${customRequestV3Id}`,
           {
             withCredentials: true,
           }
         );
-
-        // await sleep(4000);
 
         setCustomRequest({
           loading: false,
@@ -79,7 +76,7 @@ export default function CustomRequestV3Result() {
     jsx = <WindowLoader></WindowLoader>;
   } else if (customRequest.val) {
     jsx = (
-      <CustomRequest
+      <CustomRequestV3
         account={account.val}
         customRequest={customRequest.val}
         refresh={refresh}

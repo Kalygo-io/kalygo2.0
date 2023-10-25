@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { SummaryJob } from "./jsxForJobType/summary";
 import { CustomRequest } from "./jsxForJobType/customRequest";
+import { CustomRequestV3 } from "./jsxForJobType/customRequestV3";
 import { VectorSearch } from "./jsxForJobType/vectorSearch";
 import { SummaryV2Job } from "./jsxForJobType/summaryV2";
 import { SummaryV3Job } from "./jsxForJobType/summaryV3";
@@ -75,6 +76,16 @@ export const JobList = (p: P) => {
           case "CustomRequest":
             jobTypeJsx = (
               <CustomRequest
+                job={i}
+                router={router}
+                triggerFetch={triggerFetch}
+                fetchCounter={fetchCounter}
+              />
+            );
+            break;
+          case "CustomRequestV3":
+            jobTypeJsx = (
+              <CustomRequestV3
                 job={i}
                 router={router}
                 triggerFetch={triggerFetch}

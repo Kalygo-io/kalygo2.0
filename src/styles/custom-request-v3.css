@@ -1,8 +1,8 @@
-#custom-request-aside::-webkit-scrollbar {
+#custom-request-v3-aside::-webkit-scrollbar {
   display: none;
 }
 
-#custom-request-aside {
+#custom-request-v3-aside {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }

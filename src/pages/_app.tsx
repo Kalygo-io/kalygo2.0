@@ -11,6 +11,7 @@ import "@/styles/summary-v2.css";
 import "@/styles/summary-v3-markdown.scss";
 import "@/styles/summary-v3.css";
 import "@/styles/custom-request-markdown.scss";
+import "@/styles/custom-request-v3-markdown.scss";
 import "@/styles/custom-request.css";
 
 import type { AppProps } from "next/app";

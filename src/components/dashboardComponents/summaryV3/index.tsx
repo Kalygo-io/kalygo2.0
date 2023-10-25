@@ -76,22 +76,23 @@ export default function SummaryV3(p: P) {
             );
           })}
         {summary.scanMode === ScanningMode.OVERALL && (
-          <h3 className="text-lg">
-            <b>{summary.title}</b>
-          </h3>
+          <>
+            <h3 className="text-lg">
+              <b>{summary.title}</b>
+            </h3>
+            {summary?.summary.map((i: any, idx: any) => {
+              return (
+                <div key={idx}>
+                  {summary?.summary.length > 1 && `(Part ${i.part + 1})`}
+                  <ReactMarkdown className="summary-v3-markdown">
+                    {i.summary}
+                  </ReactMarkdown>
+                  <br />
+                </div>
+              );
+            })}
+          </>
         )}
-        {summary.scanMode === ScanningMode.OVERALL &&
-          summary?.summary.map((i: any, idx: any) => {
-            return (
-              <div key={idx}>
-                {summary?.summary.length > 1 && `(Part ${i.part + 1})`}
-                <ReactMarkdown className="summary-v3-markdown">
-                  {i.summary}
-                </ReactMarkdown>
-                <br />
-              </div>
-            );
-          })}
         {summary.scanMode === ScanningMode.FILE_IN_CHUNKS &&
           summary?.summary && (
             <div>
