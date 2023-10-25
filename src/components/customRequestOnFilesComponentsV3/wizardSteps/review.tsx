@@ -164,7 +164,10 @@ export function Review(props: Props) {
           }}
           disabled={files.length === 0 || customizations?.prompt === ""}
           className={`${
-            files.length === 0 || customizations?.prompt === ""
+            !files ||
+            files.length === 0 ||
+            !customizations ||
+            customizations?.prompt === ""
               ? "opacity-50"
               : "opacity-100"
           } mt-2 flex justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600`}
