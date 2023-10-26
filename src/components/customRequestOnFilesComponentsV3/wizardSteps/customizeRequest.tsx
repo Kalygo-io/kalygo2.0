@@ -189,12 +189,12 @@ export function CustomizeRequest(props: Props) {
                             <option value={ScanningMode.OVERALL}>
                               Overall
                             </option>
-                            {/* <option
+                            <option
                               disabled={disablePerPageMode}
                               value={ScanningMode.FILE_PER_PAGE}
                             >
                               Each Per Page
-                            </option> */}
+                            </option>
                           </select>
                         </div>
 

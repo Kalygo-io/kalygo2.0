@@ -111,31 +111,28 @@ export default function CustomRequestV3(p: P) {
             );
           })}
 
-        {customRequest.scanMode === ScanningMode.FILE_PER_PAGE &&
-          customRequest?.completionResponse.map((i: any, idx: any) => {
-            {
-              return (
-                <div key={idx}>
-                  <h3 className="text-lg">
-                    <b>{i.file}</b>
-                  </h3>
-                  <ul>
-                    {i?.completionsForTheParts?.map((j: any, idx: any) => {
-                      return (
-                        <li key={idx} className="mt-2">
-                          {i?.completionsForTheParts.length > 1 &&
-                            `(Page ${idx + 1})`}
-                          <ReactMarkdown className="custom-request-v3-markdown">
-                            {j}
-                          </ReactMarkdown>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              );
-            }
-          })}
+        {customRequest.scanMode === ScanningMode.FILE_PER_PAGE && (
+          <div>
+            <h3 className="text-lg">
+              <b>{customRequest?.completionResponse.file}</b>
+            </h3>
+            <ul>
+              {customRequest?.completionResponse?.completionsForTheParts?.map(
+                (j: any, idx: any) => {
+                  return (
+                    <li key={idx} className="mt-2">
+                      {customRequest?.completionResponse?.completionsForTheParts
+                        .length > 1 && `(Page ${idx + 1})`}
+                      <ReactMarkdown className="custom-request-v3-markdown">
+                        {j}
+                      </ReactMarkdown>
+                    </li>
+                  );
+                }
+              )}
+            </ul>
+          </div>
+        )}
       </div>
 
       <div
