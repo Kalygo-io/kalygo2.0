@@ -112,11 +112,6 @@ export default function LayoutDashboard({ children, account }: P) {
       href: "/dashboard/chunking-tool",
       icon: PuzzlePieceIcon,
     },
-    {
-      name: t("dashboard-page:navigation.rag"),
-      href: "/dashboard/rag",
-      icon: PiBrain,
-    },
     // {
     //   name: t("dashboard-page:navigation.text-to-speech"),
     //   href: "/dashboard/queue",
@@ -144,6 +139,11 @@ export default function LayoutDashboard({ children, account }: P) {
     },
     ...(isAdmin
       ? [
+          {
+            name: t("dashboard-page:navigation.rag"),
+            href: "/dashboard/rag",
+            icon: PiBrain,
+          },
           {
             name: t("dashboard-page:navigation.send-email"),
             href: "/dashboard/send-email",
