@@ -217,6 +217,29 @@
     "select": "Sélectionner",
     "not-this-one": "Pas celui-ci"
   },
+  "custom-request-v3": {
+    "customizations": "Personnalisations",
+    "choose-files": "Choisir des fichiers",
+    "provide-request": "Personnaliser",
+    "title": "Demande personnalisée",
+    "description": "« Demande personnalisée » vous donne le plus de contrôle sur vos documents. Tout d'abord, téléchargez {{undefined}} à {{undefined}} documents (.txt ou .pdf) avec lesquels Kalygo doit interagir. Les téléchargements du niveau gratuit sont limités à {{undefined}} Mo tandis que les téléchargements du niveau payant sont limités à {{undefined}} Mo. Ensuite, dans la deuxième étape, vous pouvez utiliser la zone de texte pour écrire comment et ce que Kalygo doit faire avec vos fichiers ou vous pouvez essayer une requête suggérée.",
+    "run": "Demande",
+    "review": "Revoir",
+    "send": "Envoyer",
+    "select-files": "Sélectionner",
+    "upload-limits": "Fichiers TXT, PDF et CSV",
+    "save": "Sauvegarder",
+    "next": "Suivant",
+    "prompt": "Rapide",
+    "prompt-placeholder-text": "Modifiez ou personnalisez la demande qui sera appliquée à vos fichiers ici",
+    "chosen-files": "Fichiers choisis",
+    "suggested-requests": "Suggéré",
+    "provided-request": "Invite fournie",
+    "open-options": "Options ouvertes",
+    "more-like-this": "Plus comme ça",
+    "select": "Sélectionner",
+    "not-this-one": "Pas celui-ci"
+  },
   "rag": {
     "title": "CHIFFON.",
     "description": "« Retrieval Augmented Generation » vous permet de superposer des bases de connaissances au-dessus du LLM souhaité. Téléchargez un fichier CSV avec deux colonnes, c'est-à-dire : Col #{{undefined}} – 'PROMPT' & Col #{{undefined}} – 'RESPONSE'",
@@ -274,11 +297,16 @@
       "query": "Mettre en doute"
     },
     "custom-request": {},
+    "custom-request-v3": {
+      "prompt": "Rapide",
+      "scan-mode": "Mode de balayage"
+    },
     "summary-v2": {
       "mode": "Mode"
     },
     "summary-v3": {
-      "mode": "Mode"
+      "mode": "Mode",
+      "scan-mode": "Mode de balayage"
     }
   },
   "summary": {
@@ -313,6 +341,14 @@
       "title": "Partager",
       "email": "E-mail"
     }
+  },
+  "custom-request-v3-result": {
+    "title": "Demande personnalisée",
+    "requested": "Demandé",
+    "time-requested-unknown": "L'heure demandée est inconnue",
+    "filename": "Nom de fichier",
+    "original-length": "Longueur originale",
+    "condensed-length": "Longueur condensée"
   },
   "rag-result": {
     "title": "CHIFFON.",

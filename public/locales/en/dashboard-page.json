@@ -312,11 +312,16 @@
     "custom-request": {
       "prompt": "Prompt"
     },
+    "custom-request-v3": {
+      "prompt": "Prompt",
+      "scan-mode": "Scan Mode"
+    },
     "summary-v2": {
       "mode": "Mode"
     },
     "summary-v3": {
-      "mode": "Mode"
+      "mode": "Mode",
+      "scan-mode": "Scan Mode"
     }
   },
   "summary": {

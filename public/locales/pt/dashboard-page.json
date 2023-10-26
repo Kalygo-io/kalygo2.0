@@ -227,6 +227,29 @@
     "select": "Selecione",
     "not-this-one": "Esse não"
   },
+  "custom-request-v3": {
+    "customizations": "Personalizações",
+    "choose-files": "Escolher os arquivos",
+    "provide-request": "Customizar",
+    "title": "Solicitação personalizada",
+    "description": "'Solicitação personalizada' oferece maior controle sobre seus documentos. Primeiro, carregue de {{undefined}} a {{undefined}} documentos (.txt ou .pdf) com os quais deseja que o Kalygo interaja. Os uploads do nível gratuito são limitados a {{undefined}} MB, enquanto os uploads do nível pago são limitados a {{undefined}} MB. Então, na segunda etapa, você pode usar a caixa de texto para escrever como e o que o Kalygo deve fazer com seus arquivos ou pode tentar uma solicitação sugerida.",
+    "run": "Solicitar",
+    "review": "Análise",
+    "send": "Enviar",
+    "select-files": "Selecione",
+    "upload-limits": "Arquivos TXT, PDF e CSV",
+    "save": "Salvar",
+    "next": "Próximo",
+    "prompt": "Incitar",
+    "prompt-placeholder-text": "Edite ou personalize a solicitação que será aplicada aos seus arquivos aqui",
+    "chosen-files": "Arquivos escolhidos",
+    "suggested-requests": "Sugerido",
+    "provided-request": "Solicitação fornecida",
+    "open-options": "Opções abertas",
+    "more-like-this": "Mais como isso",
+    "select": "Selecione",
+    "not-this-one": "Esse não"
+  },
   "rag": {
     "title": "R.A.G.",
     "description": "'Retrieval Augmented Generation' permite que você coloque bases de conhecimento sobre o LLM desejado. Carregue um arquivo CSV com duas colunas, ou seja: Col #{{undefined}} - 'PROMPT' e Col #{{undefined}} - 'RESPONSE'",
@@ -284,11 +307,16 @@
       "query": "Consulta"
     },
     "custom-request": {},
+    "custom-request-v3": {
+      "prompt": "Incitar",
+      "scan-mode": "Modo de digitalização"
+    },
     "summary-v2": {
       "mode": "Modo"
     },
     "summary-v3": {
-      "mode": "Modo"
+      "mode": "Modo",
+      "scan-mode": "Modo de digitalização"
     }
   },
   "summary": {
@@ -323,6 +351,15 @@
       "title": "Compartilhar",
       "email": "E-mail"
     }
+  },
+  "custom-request-v3-result": {
+    "title": "Solicitação personalizada",
+    "requested": "Requeridos",
+    "time-requested-unknown": "O horário solicitado é desconhecido",
+    "filename": "Nome do arquivo",
+    "original-length": "Comprimento original",
+    "condensed-length": "Comprimento Condensado",
+    "content": "Contente"
   },
   "rag-result": {
     "title": "R.A.G.",

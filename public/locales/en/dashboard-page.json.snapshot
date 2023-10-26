@@ -228,6 +228,29 @@
     "select": "Select",
     "not-this-one": "Not this one"
   },
+  "custom-request-v3": {
+    "customizations": "Customizations",
+    "choose-files": "Choose files",
+    "provide-request": "Customize",
+    "title": "Custom Request",
+    "description": "'Custom Request' gives you the most control over your documents. First, upload 1 to 10 documents (.txt or .pdf) you want Kalygo to interact with. Free Tier uploads are limited to 1MB while Paid Tier uploads are limited to 40MB. Then in the second step you can use the text box to write out how and what Kalygo should do with your files or you can try out a suggested request.",
+    "run": "Request",
+    "review": "Review",
+    "send": "Send",
+    "select-files": "Select",
+    "upload-limits": "TXT, PDF, and CSV files",
+    "save": "Save",
+    "next": "Next",
+    "prompt": "Prompt",
+    "prompt-placeholder-text": "Edit or customize the request that will be applied to your files here",
+    "chosen-files": "Chosen files",
+    "suggested-requests": "Suggested",
+    "provided-request": "Provided Prompt",
+    "open-options": "Open options",
+    "more-like-this": "More like this",
+    "select": "Select",
+    "not-this-one": "Not this one"
+  },
   "rag": {
     "title": "R.A.G.",
     "description": "'Retrieval Augmented Generation' allows you to layer knowledge bases on top of your desired LLM. Upload a CSV file with two columns ie: Col #1 - 'PROMPT' & Col #2 - 'RESPONSE'",
@@ -289,11 +312,16 @@
     "custom-request": {
       "prompt": "Prompt"
     },
+    "custom-request-v3": {
+      "prompt": "Prompt",
+      "scan-mode": "Scan Mode"
+    },
     "summary-v2": {
       "mode": "Mode"
     },
     "summary-v3": {
-      "mode": "Mode"
+      "mode": "Mode",
+      "scan-mode": "Scan Mode"
     }
   },
   "summary": {
@@ -328,6 +356,18 @@
       "title": "Share",
       "email": "Email"
     }
+  },
+  "custom-request-v3-result": {
+    "title": "Custom Request",
+    "requested": "Requested",
+    "time-requested-unknown": "Time requested is unknown",
+    "filename": "File name",
+    "original-length": "Original Length",
+    "condensed-length": "Condensed Length",
+    "content": "Content",
+    "scan-mode": "Scan Mode",
+    "model": "Model",
+    "prompt": "Prompt"
   },
   "rag-result": {
     "title": "R.A.G.",
