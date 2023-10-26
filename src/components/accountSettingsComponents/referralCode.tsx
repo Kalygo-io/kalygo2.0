@@ -11,6 +11,7 @@ import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
 interface P {
+  id: string;
   account: {
     id: number;
     email: string;
@@ -31,6 +32,7 @@ export function ReferralCode(p: P) {
     account: { email, id },
     account,
     refresh,
+    id: divId,
   } = p;
 
   const router = useRouter();
@@ -76,7 +78,10 @@ export function ReferralCode(p: P) {
 
   return (
     <>
-      <div className="grid max-w-full grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8">
+      <div
+        id={divId}
+        className="grid max-w-full grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8"
+      >
         <div>
           <h2 className="text-base font-semibold leading-7 text-black">
             {t("dashboard-page:settings.referral-code.title")}

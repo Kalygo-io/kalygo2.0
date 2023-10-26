@@ -22,13 +22,12 @@ import { WindowLoader } from "@/components/shared/WindowLoader";
 const products = [
   {
     id: 1,
-    name: "Kalygo Premium Subscription",
-    price: "$89.99",
+    name: "Kalygo Starter Subscription",
+    price: "$19.99",
     detail1: "w/ 14-day FREE trial",
     detail2: "",
-    imageSrc: "/kalygo_new_logo-192x192.png",
-    imageAlt:
-      "Moss green canvas compact backpack with double top zipper, zipper front pouch, and matching carry handle and backpack straps.",
+    imageSrc: "/kalygo_new_logo-192x192_dark_blue.png",
+    imageAlt: "Kalygo",
   },
   // More products...
 ];
@@ -192,7 +191,7 @@ export default function Signup() {
               <dl className="hidden space-y-6 border-t border-gray-200 pt-6 text-sm font-medium text-gray-900 lg:block">
                 <div className="flex items-center justify-between">
                   <dt className="text-gray-600">Subtotal</dt>
-                  <dd>$89.99</dd>
+                  <dd>$19.99</dd>
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -202,7 +201,7 @@ export default function Signup() {
 
                 <div className="flex items-center justify-between border-t border-gray-200 pt-6">
                   <dt className="text-base">Total</dt>
-                  <dd className="text-base">$89.99</dd>
+                  <dd className="text-base">$19.99</dd>
                 </div>
               </dl>
 
@@ -445,7 +444,7 @@ export default function Signup() {
               <div className="mt-10 border-t border-gray-200 pt-6 sm:flex sm:items-center sm:justify-between">
                 <button
                   type="submit"
-                  className="w-full rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:order-last sm:ml-6 sm:w-auto"
+                  className="w-full rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:order-last sm:w-auto"
                 >
                   Sign up
                 </button>

@@ -104,15 +104,27 @@ export function PaymentRequiredModal(p: P) {
                         <div className="-mx-2 text-sm text-gray-700">
                           <div
                             className={classNames(
-                              "flex cursor-default select-none items-center rounded-md p-2"
+                              "flex flex-col cursor-default select-none items-center rounded-md p-2"
                             )}
                           >
                             <div className="flex justify-center font-semibold items-center gap-6">
-                              Coming Soon!
-                              {/* <a
-                                className="text-blue-600 hover:text-blue-700"
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  router.push(
+                                    "/dashboard/settings#referral-section"
+                                  );
+                                }}
+                                className="mt-6 w-full rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                              >
+                                Generate a Referral link
+                              </button>
+                            </div>
+                            <div className="mt-6 flex justify-center font-semibold items-center gap-6">
+                              <a
+                                className="text-gray-600 hover:text-gray-700"
                                 aria-label="Visit LinkedIn"
-                                href=""
+                                href="https://www.linkedin.com/"
                                 target="_blank"
                               >
                                 <svg
@@ -128,9 +140,9 @@ export function PaymentRequiredModal(p: P) {
                               </a>
 
                               <a
-                                className="text-blue-600 hover:text-blue-700"
+                                className="text-gray-600 hover:text-gray-700"
                                 aria-label="Visit Facebook"
-                                href=""
+                                href="https://www.facebook.com/"
                                 target="_blank"
                               >
                                 <svg
@@ -145,9 +157,9 @@ export function PaymentRequiredModal(p: P) {
                                 </svg>
                               </a>
                               <a
-                                className="text-blue-600 hover:text-blue-700"
+                                className="text-gray-600 hover:text-gray-700"
                                 aria-label="Visit Instagram"
-                                href=""
+                                href="https://www.instagram.com/"
                                 target="_blank"
                               >
                                 <svg
@@ -162,9 +174,9 @@ export function PaymentRequiredModal(p: P) {
                                 </svg>
                               </a>
                               <a
-                                className="text-blue-600 hover:text-blue-700"
+                                className="text-gray-600 hover:text-gray-700"
                                 aria-label="Visit Twitter"
-                                href=""
+                                href="https://twitter.com/"
                                 target="_blank"
                               >
                                 <svg
@@ -177,7 +189,7 @@ export function PaymentRequiredModal(p: P) {
                                     d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
                                   ></path>
                                 </svg>
-                              </a> */}
+                              </a>
                             </div>
                           </div>
                         </div>

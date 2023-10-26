@@ -91,7 +91,11 @@ export default function Settings() {
           }}
         />
         <Divider />
-        <ReferralCode account={account.val!} refresh={refresh} />
+        <ReferralCode
+          id="referral-section"
+          account={account.val!}
+          refresh={refresh}
+        />
         <Divider />
         <ApiKeys account={account.val!} refresh={refresh} />
         <Divider />

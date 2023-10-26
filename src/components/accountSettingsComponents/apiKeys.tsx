@@ -147,20 +147,43 @@ export function ApiKeys(p: P) {
 
                 <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6">
                   <label
-                    htmlFor="last-name"
+                    htmlFor="aws-ses-access-key"
                     className="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5"
                   >
-                    {t("dashboard-page:settings.api-keys.AWS_SES_API_KEY")}
+                    {t("dashboard-page:settings.api-keys.AWS_SES_ACCESS_KEY")}
                   </label>
                   <div className="mt-2 sm:col-span-2 sm:mt-0">
                     <input
                       type="text"
-                      name="aws-ses-api-key"
-                      id="aws-ses-api-key"
-                      autoComplete="aws-ses-api-key"
+                      name="aws-ses-access-key"
+                      id="aws-ses-access-key"
+                      autoComplete="aws-ses-access-key"
                       placeholder={
                         t(
-                          "dashboard-page:settings.api-keys.AWS_SES_API_KEY-placeholder"
+                          "dashboard-page:settings.api-keys.AWS_SES_ACCESS_KEY-placeholder"
+                        )!
+                      }
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+
+                <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6">
+                  <label
+                    htmlFor="aws-ses-secret-key"
+                    className="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5"
+                  >
+                    {t("dashboard-page:settings.api-keys.AWS_SES_SECRET_KEY")}
+                  </label>
+                  <div className="mt-2 sm:col-span-2 sm:mt-0">
+                    <input
+                      type="text"
+                      name="aws-ses-secret-key"
+                      id="aws-ses-secret-key"
+                      autoComplete="aws-ses-secret-key"
+                      placeholder={
+                        t(
+                          "dashboard-page:settings.api-keys.AWS_SES_SECRET_KEY-placeholder"
                         )!
                       }
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6"
