@@ -186,9 +186,9 @@ export function CustomizeRequest(props: Props) {
                             <option value={ScanningMode.FILE_IN_CHUNKS}>
                               Each In Chunks
                             </option>
-                            {/* <option value={ScanningMode.OVERALL}>
+                            <option value={ScanningMode.OVERALL}>
                               Overall
-                            </option> */}
+                            </option>
                             {/* <option
                               disabled={disablePerPageMode}
                               value={ScanningMode.FILE_PER_PAGE}
