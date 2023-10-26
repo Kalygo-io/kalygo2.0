@@ -81,21 +81,19 @@ export default function CustomRequestV3(p: P) {
 
         {customRequest.scanMode === ScanningMode.FILE_OVERALL && (
           <>
-            {customRequest?.completionResponse.map((i: any, idx: any) => {
-              return (
-                <div key={i.file}>
-                  <span>
-                    <h3 className="text-lg">
-                      <b>{i.file}</b>
-                    </h3>
-                  </span>
-                  <ReactMarkdown className="custom-request-v3-markdown">
-                    {i.finalCompletionForFile}
-                  </ReactMarkdown>
-                  <br />
-                </div>
-              );
-            })}
+            {
+              <div>
+                <span>
+                  <h3 className="text-lg">
+                    <b>{customRequest?.completionResponse?.file}</b>
+                  </h3>
+                </span>
+                <ReactMarkdown className="custom-request-v3-markdown">
+                  {customRequest?.completionResponse?.finalCompletionForFile}
+                </ReactMarkdown>
+                <br />
+              </div>
+            }
           </>
         )}
 

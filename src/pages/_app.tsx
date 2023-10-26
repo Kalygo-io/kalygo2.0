@@ -13,6 +13,7 @@ import "@/styles/summary-v3.css";
 import "@/styles/custom-request-markdown.scss";
 import "@/styles/custom-request-v3-markdown.scss";
 import "@/styles/custom-request.css";
+import "@/styles/custom-request-v3.css";
 
 import type { AppProps } from "next/app";
 import { appWithTranslation } from "next-i18next";
