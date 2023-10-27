@@ -1,6 +1,7 @@
 import { SupportedApiKeys } from "@/types/SupportedApiKeys";
 import { errorReporter } from "@/utility/error/reporter";
 import { successToast } from "@/utility/toasts";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
@@ -109,43 +110,6 @@ export function ApiKeys(p: P) {
             {t("dashboard-page:settings.api-keys.title")}
           </h2>
         </div>
-
-        {/* <form onSubmit={handleSubmit(onSubmit)} className="md:col-span-2">
-          <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
-            <div className="col-span-full">
-              <label
-                htmlFor="code"
-                className="block text-sm font-medium leading-6 text-black"
-              >
-                {t("dashboard-page:settings.referral-code.code")}
-              </label>
-              <div className="mt-2">
-                <input
-                  {...register("code", {
-                    required: true,
-                  })}
-                  placeholder={t("forms:enter-desired-referral-code")!}
-                  id="code"
-                  name="code"
-                  type="code"
-                  //   className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-black shadow-md ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
-                  className={`bg-white block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 ${
-                    errors["code"] && "ring-red-700 focus:ring-red-500"
-                  }`}
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 flex">
-            <button
-              type="submit"
-              className="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
-            >
-              {t("dashboard-page:settings.api-keys.save")}
-            </button>
-          </div>
-        </form> */}
         <form onSubmit={handleSubmit(onSubmit)} className="md:col-span-2">
           <div className="space-y-12 sm:space-y-16">
             <div>
@@ -164,7 +128,7 @@ export function ApiKeys(p: P) {
                   >
                     {t("dashboard-page:settings.api-keys.OPEN_AI_API_KEY")}
                   </label>
-                  <div className="mt-2 sm:col-span-2 sm:mt-0">
+                  <div className="mt-2 sm:col-span-2 sm:mt-0 flex">
                     <input
                       {...register("openAiApiKey", {})}
                       type="text"
@@ -178,6 +142,21 @@ export function ApiKeys(p: P) {
                       }
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6"
                     />
+                    <div className="right-0 flex items-center">
+                      <label htmlFor="clear" className="sr-only">
+                        Clear
+                      </label>
+                      <button
+                        id="clear"
+                        name="clear"
+                        className="h-full rounded-md border-0 bg-transparent py-2 pl-2 pr-2 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm"
+                        onClick={() => {
+                          console.log("!!!");
+                        }}
+                      >
+                        <XMarkIcon className="top-0 bottom-0 w-6 h-6 my-auto text-gray-400" />
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -188,7 +167,7 @@ export function ApiKeys(p: P) {
                   >
                     {t("dashboard-page:settings.api-keys.AWS_SES_ACCESS_KEY")}
                   </label>
-                  <div className="mt-2 sm:col-span-2 sm:mt-0">
+                  <div className="mt-2 sm:col-span-2 sm:mt-0 flex">
                     <input
                       {...register("awsSesAccessKey", {})}
                       type="text"
@@ -202,6 +181,19 @@ export function ApiKeys(p: P) {
                       }
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6"
                     />
+                    <div className="right-0 flex items-center">
+                      <label htmlFor="clear" className="sr-only">
+                        Clear
+                      </label>
+                      <button
+                        id="clear"
+                        name="clear"
+                        className="h-full rounded-md border-0 bg-transparent py-2 pl-2 pr-2 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm"
+                        onClick={() => {}}
+                      >
+                        <XMarkIcon className="top-0 bottom-0 w-6 h-6 my-auto text-gray-400" />
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -212,7 +204,7 @@ export function ApiKeys(p: P) {
                   >
                     {t("dashboard-page:settings.api-keys.AWS_SES_SECRET_KEY")}
                   </label>
-                  <div className="mt-2 sm:col-span-2 sm:mt-0">
+                  <div className="mt-2 sm:col-span-2 sm:mt-0 flex">
                     <input
                       {...register("awsSesSecretKey", {})}
                       type="text"
@@ -226,6 +218,21 @@ export function ApiKeys(p: P) {
                       }
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6"
                     />
+                    <div className="right-0 flex items-center">
+                      <label htmlFor="clear" className="sr-only">
+                        Clear
+                      </label>
+                      <button
+                        id="clear"
+                        name="clear"
+                        className="h-full rounded-md border-0 bg-transparent py-2 pl-2 pr-2 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm"
+                        onClick={() => {
+                          console.log("!!!");
+                        }}
+                      >
+                        <XMarkIcon className="top-0 bottom-0 w-6 h-6 my-auto text-gray-400" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
