@@ -1,3 +1,4 @@
+import { SupportedApiKeys } from "@/types/SupportedApiKeys";
 import { errorReporter } from "@/utility/error/reporter";
 import { successToast } from "@/utility/toasts";
 import axios from "axios";
@@ -13,8 +14,16 @@ interface P {
     firstName: string;
     lastName: string;
     profilePicture: string;
+    AwsSecretsManagerApiKey: {
+      accountId: number;
+      id: number;
+      secretId: string;
+      type: SupportedApiKeys;
+      preview: string;
+    }[];
   };
   refresh: any;
+  id: string;
 }
 
 export function ApiKeys(p: P) {
@@ -25,6 +34,7 @@ export function ApiKeys(p: P) {
     account: { email, id },
     account,
     refresh,
+    id: divId,
   } = p;
 
   const router = useRouter();
@@ -38,13 +48,24 @@ export function ApiKeys(p: P) {
     watch,
   } = useForm({
     defaultValues: {
-      code: "",
+      openAiApiKey:
+        account?.AwsSecretsManagerApiKey.find(
+          (i) => i.type === SupportedApiKeys.OPEN_AI_API_KEY
+        )?.preview || "",
+      awsSesAccessKey:
+        account?.AwsSecretsManagerApiKey.find(
+          (i) => i.type === SupportedApiKeys.AWS_SES_ACCESS_KEY
+        )?.preview || "",
+      awsSesSecretKey:
+        account?.AwsSecretsManagerApiKey.find(
+          (i) => i.type === SupportedApiKeys.AWS_SES_SECRET_KEY
+        )?.preview || "",
     },
   });
 
   const onSubmit = async (data: any) => {
     try {
-      const { code } = data;
+      const { openAiApiKey, awsSesAccessKey, awsSesSecretKey } = data;
 
       var config = {
         method: "post",
@@ -52,9 +73,20 @@ export function ApiKeys(p: P) {
         headers: {
           "Content-Type": "application/json",
         },
-        data: {
-          code,
-        },
+        data: [
+          {
+            type: SupportedApiKeys.OPEN_AI_API_KEY,
+            value: openAiApiKey,
+          },
+          {
+            type: SupportedApiKeys.AWS_SES_ACCESS_KEY,
+            value: awsSesAccessKey,
+          },
+          {
+            type: SupportedApiKeys.AWS_SES_SECRET_KEY,
+            value: awsSesSecretKey,
+          },
+        ],
         withCredentials: true,
       };
 
@@ -68,7 +100,10 @@ export function ApiKeys(p: P) {
 
   return (
     <>
-      <div className="grid max-w-full grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8">
+      <div
+        id={divId}
+        className="grid max-w-full grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8"
+      >
         <div>
           <h2 className="text-base font-semibold leading-7 text-black">
             {t("dashboard-page:settings.api-keys.title")}
@@ -124,17 +159,18 @@ export function ApiKeys(p: P) {
               <div className="mt-10 space-y-8 border-b border-gray-900/10 pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:border-t sm:pb-0">
                 <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6">
                   <label
-                    htmlFor="open-ai-api-key"
+                    htmlFor="openAiApiKey"
                     className="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5"
                   >
                     {t("dashboard-page:settings.api-keys.OPEN_AI_API_KEY")}
                   </label>
                   <div className="mt-2 sm:col-span-2 sm:mt-0">
                     <input
+                      {...register("openAiApiKey", {})}
                       type="text"
-                      name="open-ai-api-key"
-                      id="open-ai-api-key"
-                      autoComplete="open-ai-api-key"
+                      name="openAiApiKey"
+                      id="openAiApiKey"
+                      autoComplete="openAiApiKey"
                       placeholder={
                         t(
                           "dashboard-page:settings.api-keys.OPEN_AI_API_KEY-placeholder"
@@ -147,17 +183,18 @@ export function ApiKeys(p: P) {
 
                 <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6">
                   <label
-                    htmlFor="aws-ses-access-key"
+                    htmlFor="awsSesAccessKey"
                     className="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5"
                   >
                     {t("dashboard-page:settings.api-keys.AWS_SES_ACCESS_KEY")}
                   </label>
                   <div className="mt-2 sm:col-span-2 sm:mt-0">
                     <input
+                      {...register("awsSesAccessKey", {})}
                       type="text"
-                      name="aws-ses-access-key"
-                      id="aws-ses-access-key"
-                      autoComplete="aws-ses-access-key"
+                      name="awsSesAccessKey"
+                      id="awsSesAccessKey"
+                      autoComplete="awsSesAccessKey"
                       placeholder={
                         t(
                           "dashboard-page:settings.api-keys.AWS_SES_ACCESS_KEY-placeholder"
@@ -170,17 +207,18 @@ export function ApiKeys(p: P) {
 
                 <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6">
                   <label
-                    htmlFor="aws-ses-secret-key"
+                    htmlFor="awsSesSecretKey"
                     className="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5"
                   >
                     {t("dashboard-page:settings.api-keys.AWS_SES_SECRET_KEY")}
                   </label>
                   <div className="mt-2 sm:col-span-2 sm:mt-0">
                     <input
+                      {...register("awsSesSecretKey", {})}
                       type="text"
-                      name="aws-ses-secret-key"
-                      id="aws-ses-secret-key"
-                      autoComplete="aws-ses-secret-key"
+                      name="awsSesSecretKey"
+                      id="awsSesSecretKey"
+                      autoComplete="awsSesSecretKey"
                       placeholder={
                         t(
                           "dashboard-page:settings.api-keys.AWS_SES_SECRET_KEY-placeholder"

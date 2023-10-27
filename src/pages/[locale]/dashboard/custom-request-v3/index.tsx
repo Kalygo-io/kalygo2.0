@@ -56,7 +56,7 @@ export default function CustomRequestV3() {
   });
 
   const [showPaymentMethodRequiredModal, setShowPaymentMethodRequiredModal] =
-    useState<boolean>(true);
+    useState<boolean>(false);
 
   let jsx = null;
   if (customRequest.loading) {

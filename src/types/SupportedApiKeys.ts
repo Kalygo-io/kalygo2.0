@@ -1,0 +1,5 @@
+export enum SupportedApiKeys {
+  OPEN_AI_API_KEY = "OPEN_AI_API_KEY",
+  AWS_SES_ACCESS_KEY = "AWS_SES_ACCESS_KEY",
+  AWS_SES_SECRET_KEY = "AWS_SES_SECRET_KEY",
+}

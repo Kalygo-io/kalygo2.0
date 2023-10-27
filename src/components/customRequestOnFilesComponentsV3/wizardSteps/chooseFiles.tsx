@@ -120,8 +120,6 @@ export function ChooseFiles(props: Props) {
     }
   };
 
-  console.log("filesLocal", filesLocal);
-
   return (
     <Layout3ColumnAndFooterWrapper>
       <_3ColumnWrapper>

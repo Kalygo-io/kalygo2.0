@@ -19,15 +19,8 @@ export async function getStripeCards(cb: any) {
 
     let resp = await axios(config);
 
-    console.log("resp", resp);
-
-    // const detectedLng = languageDetector.detect();
-    const detectedLng = navigatorLangDetector();
-
     cb(resp.data, null);
   } catch (e) {
-    // errorReporter(e);
-
     cb(null, e);
   }
 }

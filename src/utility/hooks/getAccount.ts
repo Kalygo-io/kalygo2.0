@@ -7,6 +7,7 @@ import React, {
   Ref,
 } from "react";
 import axios from "axios";
+import { SupportedApiKeys } from "@/types/SupportedApiKeys";
 
 export function useGetAccount() {
   const [refreshCount, refresh] = useState(0);
@@ -23,6 +24,13 @@ export function useGetAccount() {
       customRequestCredits: number;
       usageCredits: number;
       profilePicture: string;
+      AwsSecretsManagerApiKey: {
+        accountId: number;
+        id: number;
+        secretId: string;
+        type: SupportedApiKeys;
+        preview: string;
+      }[];
     } | null;
     loading: boolean;
     err: any;

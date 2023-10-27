@@ -97,7 +97,7 @@ export default function Settings() {
           refresh={refresh}
         />
         <Divider />
-        <ApiKeys account={account.val!} refresh={refresh} />
+        <ApiKeys id="api-keys" account={account.val!} refresh={refresh} />
         <Divider />
         {/* <ChangePassword /> */}
         <DeleteAccount />
