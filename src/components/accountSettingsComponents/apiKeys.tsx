@@ -1,3 +1,5 @@
+import { deleteApiKeyFactory } from "@/serviceFactory/deleteApiKey";
+import { AwsSecret } from "@/types/AwsSecret";
 import { SupportedApiKeys } from "@/types/SupportedApiKeys";
 import { errorReporter } from "@/utility/error/reporter";
 import { successToast } from "@/utility/toasts";
@@ -15,13 +17,7 @@ interface P {
     firstName: string;
     lastName: string;
     profilePicture: string;
-    AwsSecretsManagerApiKey: {
-      accountId: number;
-      id: number;
-      secretId: string;
-      type: SupportedApiKeys;
-      preview: string;
-    }[];
+    AwsSecretsManagerApiKey: AwsSecret[];
   };
   refresh: any;
   id: string;
@@ -150,8 +146,20 @@ export function ApiKeys(p: P) {
                         id="clear"
                         name="clear"
                         className="h-full rounded-md border-0 bg-transparent py-2 pl-2 pr-2 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm"
-                        onClick={() => {
-                          console.log("!!!");
+                        onClick={async (e) => {
+                          e.preventDefault();
+
+                          const awsSecret: AwsSecret | undefined =
+                            account?.AwsSecretsManagerApiKey.find(
+                              (i) => i.type === SupportedApiKeys.OPEN_AI_API_KEY
+                            );
+
+                          awsSecret &&
+                            (await deleteApiKeyFactory(awsSecret?.secretId!));
+
+                          successToast(
+                            t("toast-messages:deleted-api-key-success")
+                          );
                         }}
                       >
                         <XMarkIcon className="top-0 bottom-0 w-6 h-6 my-auto text-gray-400" />
@@ -189,7 +197,22 @@ export function ApiKeys(p: P) {
                         id="clear"
                         name="clear"
                         className="h-full rounded-md border-0 bg-transparent py-2 pl-2 pr-2 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm"
-                        onClick={() => {}}
+                        onClick={async (e) => {
+                          e.preventDefault();
+
+                          const awsSecret: AwsSecret | undefined =
+                            account?.AwsSecretsManagerApiKey.find(
+                              (i) =>
+                                i.type === SupportedApiKeys.AWS_SES_ACCESS_KEY
+                            );
+
+                          awsSecret &&
+                            (await deleteApiKeyFactory(awsSecret?.secretId!));
+
+                          successToast(
+                            t("toast-messages:deleted-api-key-success")
+                          );
+                        }}
                       >
                         <XMarkIcon className="top-0 bottom-0 w-6 h-6 my-auto text-gray-400" />
                       </button>
@@ -226,8 +249,21 @@ export function ApiKeys(p: P) {
                         id="clear"
                         name="clear"
                         className="h-full rounded-md border-0 bg-transparent py-2 pl-2 pr-2 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm"
-                        onClick={() => {
-                          console.log("!!!");
+                        onClick={async (e) => {
+                          e.preventDefault();
+
+                          const awsSecret: AwsSecret | undefined =
+                            account?.AwsSecretsManagerApiKey.find(
+                              (i) =>
+                                i.type === SupportedApiKeys.AWS_SES_SECRET_KEY
+                            );
+
+                          awsSecret &&
+                            (await deleteApiKeyFactory(awsSecret?.secretId!));
+
+                          successToast(
+                            t("toast-messages:deleted-api-key-success")
+                          );
                         }}
                       >
                         <XMarkIcon className="top-0 bottom-0 w-6 h-6 my-auto text-gray-400" />
