@@ -1,5 +1,7 @@
 import { addCustomRequestToAccessGroupFactory } from "@/serviceFactory/addCustomRequestToAccessGroupFactory";
+import { addCustomRequestV3ToAccessGroupFactory } from "@/serviceFactory/addCustomRequestV3ToAccessGroupFactory";
 import { removeCustomRequestFromAccessGroupFactory } from "@/serviceFactory/removeCustomRequestFromAccessGroupFactory";
+import { removeCustomRequestV3FromAccessGroupFactory } from "@/serviceFactory/removeCustomRequestV3FromAccessGroupFactory";
 import { errorReporter } from "@/utility/error/reporter";
 import { XCircleIcon } from "@heroicons/react/24/outline";
 import { useTranslation } from "next-i18next";
@@ -9,11 +11,11 @@ import { useForm } from "react-hook-form";
 interface P {
   cb: (isOpen: boolean) => void;
   accessGroups: any[];
-  customRequest: any;
+  customRequestV3: any;
 }
 
 export const ToGroupForm = (p: P) => {
-  const { cb, accessGroups, customRequest } = p;
+  const { cb, accessGroups, customRequestV3 } = p;
   const { t } = useTranslation();
   const {
     register,
@@ -32,8 +34,8 @@ export const ToGroupForm = (p: P) => {
     try {
       console.log("data", data);
 
-      const request = addCustomRequestToAccessGroupFactory(
-        customRequest.id,
+      const request = addCustomRequestV3ToAccessGroupFactory(
+        customRequestV3.id,
         Number.parseInt(data.shareToGroup)
       );
 
@@ -45,16 +47,16 @@ export const ToGroupForm = (p: P) => {
   };
 
   console.log("accessGroups", accessGroups);
-  console.log("customRequest", customRequest);
+  console.log("customRequestV3", customRequestV3);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-wrap w-full">
         <div className="py-4">
-          {customRequest.CustomRequestsAndAccessGroups?.length > 0 && (
+          {customRequestV3.CustomRequestV3sAndAccessGroups?.length > 0 && (
             <b>Shared with:</b>
           )}{" "}
-          {customRequest.CustomRequestsAndAccessGroups?.map((i: any) => (
+          {customRequestV3.CustomRequestV3sAndAccessGroups?.map((i: any) => (
             <span
               key={i.accessGroup.id}
               className="inline-flex items-start gap-x-1 truncate"
@@ -64,8 +66,8 @@ export const ToGroupForm = (p: P) => {
                 className="h-6 w-6 cursor-pointer"
                 onClick={async () => {
                   console.log("___ --- ___");
-                  const request = removeCustomRequestFromAccessGroupFactory(
-                    customRequest.id,
+                  const request = removeCustomRequestV3FromAccessGroupFactory(
+                    customRequestV3.id,
                     Number.parseInt(i.accessGroup.id)
                   );
                   const response = await request;

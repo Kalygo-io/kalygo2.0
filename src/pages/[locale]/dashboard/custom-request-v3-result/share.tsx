@@ -17,7 +17,7 @@ import { WindowLoader } from "@/components/shared/WindowLoader";
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
 import LayoutDashboardNoAdmin from "@/layout/layoutDashboardNoAdmin";
 import { UnauthorizedErrorInDashboard } from "@/components/shared/unauthorizedErrorInDashboard";
-import CustomRequest from "@/components/dashboardComponents/customRequest";
+import CustomRequestV3 from "@/components/dashboardComponents/customRequestV3";
 
 const getStaticProps = makeStaticProps([
   "seo",
@@ -34,7 +34,7 @@ export { getStaticPaths, getStaticProps };
 export default function Page() {
   const router = useRouter();
   const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
-  const recordId = searchParams.get("custom-request-id") || "";
+  const recordId = searchParams.get("custom-request-v3-id") || "";
   const { t } = useTranslation();
   //   const { account, refresh, refreshCount } = useGetAccountWithAccessGroups();
   const [record, setRecord] = useState<{
@@ -51,7 +51,7 @@ export default function Page() {
     async function fetch() {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/get-public-custom-request/${recordId}`
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/get-public-custom-request-v3/${recordId}`
         );
 
         setRecord({
@@ -75,7 +75,7 @@ export default function Page() {
   if (record.loading) {
     jsx = <WindowLoader></WindowLoader>;
   } else if (record.val) {
-    jsx = <CustomRequest customRequest={record.val} />;
+    jsx = <CustomRequestV3 customRequest={record.val} />;
   } else {
     console.log("--- --- ---", record.err);
     if (record?.err?.response?.status === 403) {

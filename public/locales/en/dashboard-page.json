@@ -101,6 +101,13 @@
         "view": "View"
       }
     },
+    "custom-requests-v3": {
+      "title": "Custom Requests (v3)",
+      "subtitle": "An overview of your custom requests",
+      "table": {
+        "view": "View"
+      }
+    },
     "vector-searches": {
       "title": "Smart Searches",
       "subtitle": "An overview of your searches",

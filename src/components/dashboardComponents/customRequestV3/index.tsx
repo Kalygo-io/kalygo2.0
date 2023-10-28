@@ -1,5 +1,5 @@
 import { RadioGroupStars } from "@/components/shared/RatingComponent";
-import { rateCustomRequestFactory } from "@/serviceFactory/rateCustomRequestFactory";
+import { rateCustomRequestV3Factory } from "@/serviceFactory/rateCustomRequestV3Factory";
 import { ScanningMode } from "@/types/ScanningMode";
 import { errorReporter } from "@/utility/error/reporter";
 import { Bars3Icon, LinkIcon, ShareIcon } from "@heroicons/react/24/outline";
@@ -7,7 +7,7 @@ import get from "lodash.get";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { ShareModal } from "../customRequest/components/shareModal";
+import { ShareModal } from "../customRequestV3/components/shareModal";
 import { SlideOver } from "./components/slideOver";
 
 interface P {
@@ -194,7 +194,7 @@ export default function CustomRequestV3(p: P) {
                     recordRating={async (rating: number, ratingMax: number) => {
                       try {
                         // prettier-ignore
-                        const rateSummaryRequest = rateCustomRequestFactory(customRequest.id, rating, ratingMax);
+                        const rateSummaryRequest = rateCustomRequestV3Factory(customRequest.id, rating, ratingMax);
                         // prettier-ignore
                         const rateSummaryResponse = await rateSummaryRequest;
                         // prettier-ignore
@@ -235,7 +235,7 @@ export default function CustomRequestV3(p: P) {
         account={account}
         refresh={refresh}
         refreshCount={refreshCount || 0}
-        customRequest={customRequest}
+        customRequestV3={customRequest}
         open={shareModalOpen}
         cb={(isOpen: boolean) => {
           setShareModalOpen(isOpen);

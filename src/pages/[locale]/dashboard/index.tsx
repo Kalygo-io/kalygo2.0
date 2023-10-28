@@ -20,6 +20,7 @@ import { Credits } from "@/components/dashboardComponents/index/credits";
 import { SummariesV2TableAlt } from "@/components/dashboardComponents/summariesV2TableAlt";
 // import { CustomRequestsTable } from "@/components/dashboardComponents/customRequestsTable";
 import { CustomRequestsTableAlt } from "@/components/dashboardComponents/customRequestsTableAlt";
+import { CustomRequestsV3TableAlt } from "@/components/commonComponents/tables/customRequestsV3TableAlt";
 import { useGetAccount } from "@/utility/hooks/getAccount";
 import { SummariesV3TableAlt } from "@/components/commonComponents/tables/summariesV3TableAlt";
 
@@ -79,6 +80,16 @@ export default function Dashboard() {
   });
 
   const [customRequests, setCustomRequests] = useState<{
+    val: any[];
+    loading: boolean;
+    err: any;
+  }>({
+    val: [],
+    loading: true,
+    err: null,
+  });
+
+  const [customRequestsV3, setCustomRequestsV3] = useState<{
     val: any[];
     loading: boolean;
     err: any;
@@ -152,6 +163,18 @@ export default function Dashboard() {
           val: res5.data,
           err: null,
         });
+
+        const res6 = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_HOSTNAME}/api/v1/custom-requests-v3`,
+          {
+            withCredentials: true,
+          }
+        );
+        setCustomRequestsV3({
+          loading: false,
+          val: res6.data,
+          err: null,
+        });
       } catch (e) {
         setSummaries({
           loading: false,
@@ -218,6 +241,10 @@ export default function Dashboard() {
 
         {customRequests.val?.length > 0 && (
           <CustomRequestsTableAlt customRequests={customRequests.val} />
+        )}
+
+        {customRequestsV3.val?.length > 0 && (
+          <CustomRequestsV3TableAlt customRequestsV3={customRequestsV3.val} />
         )}
       </div>
     );
