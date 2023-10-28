@@ -29,9 +29,9 @@ const marketing = [
 ];
 
 const higherEd = [
-  { name: "Exam Generation", href: "/higher-ed", icon: PiExam },
-  { name: "Research", href: "/higher-ed", icon: GiArchiveResearch },
-  { name: "Essay Drafting", href: "/higher-ed", icon: TbWriting },
+  { name: "Exam Generation", href: "/highered", icon: PiExam },
+  { name: "Research", href: "/highered", icon: GiArchiveResearch },
+  { name: "Essay Drafting", href: "/highered", icon: TbWriting },
 ];
 
 const medical = [
