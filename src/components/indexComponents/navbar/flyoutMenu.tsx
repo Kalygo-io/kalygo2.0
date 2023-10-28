@@ -10,6 +10,7 @@ import { IoShareSocialOutline } from "react-icons/io5";
 import { GoBook, GoLaw, GoHeart, GoSearch, GoRocket } from "react-icons/go";
 import { BiShieldPlus, BiBuildingHouse } from "react-icons/bi";
 import { MdFamilyRestroom, MdOutlinePersonalInjury } from "react-icons/md";
+import { PiExam } from "react-icons/pi";
 import { GiArchiveResearch } from "react-icons/gi";
 
 import { TbWriting } from "react-icons/tb";
@@ -28,6 +29,7 @@ const marketing = [
 ];
 
 const higherEd = [
+  { name: "Exam Generation", href: "/higher-ed", icon: PiExam },
   { name: "Research", href: "/higher-ed", icon: GiArchiveResearch },
   { name: "Essay Drafting", href: "/higher-ed", icon: TbWriting },
 ];
