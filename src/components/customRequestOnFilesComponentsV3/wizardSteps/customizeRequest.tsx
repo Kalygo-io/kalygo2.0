@@ -63,6 +63,12 @@ const preBuiltPrompts = [
     prompt:
       "Summarize the following data and return the summary as a list of bullet points. Please return the bullet points as a valid JSON formatted array.",
   },
+  {
+    id: 4,
+    name: "Generate Resolution",
+    prompt:
+      "Scan the terms of this escrow agreement and take into account the buyer's and renter's final arguments and generate a fair resolution for this dispute.",
+  },
 ];
 
 export function CustomizeRequest(props: Props) {
@@ -108,7 +114,7 @@ export function CustomizeRequest(props: Props) {
     mode: "onChange",
     reValidateMode: "onChange",
     defaultValues: {
-      mode: customizations?.mode || "FILE_OVERALL",
+      mode: customizations?.mode || "OVERALL",
       model: customizations?.model || "gpt-3.5-turbo",
       prompt: customizations?.prompt || "",
       includeFinalPrompt: customizations?.includeFinalPrompt || false,
