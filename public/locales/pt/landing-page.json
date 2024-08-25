@@ -2,9 +2,9 @@
   "landing-page-headline": "Documentos simplificados",
   "landing-page-headline-prefix": "Documentos feitos",
   "typewriter-word-1": "Aprender",
-  "typewriter-word-2": "Crescer",
-  "typewriter-word-3": "Melhorar",
-  "typewriter-word-4": "Melhorar",
+  "typewriter-word-2": "Jogar",
+  "typewriter-word-3": "Aprender",
+  "typewriter-word-4": "Jogar",
   "industries": {
     "medical": {
       "landing-page-subheadline": "Kalygo ajuda empresas médicas, grandes e pequenas, com soluções personalizadas de gerenciamento de documentos locais, aceleradas por IA.",
@@ -34,7 +34,7 @@
       "typewriter-word-3": "Informações compartilháveis"
     }
   },
-  "landing-page-subheadline": "Faça upload de dados e aproveite software de ponta que inclui OCR, solicitações personalizáveis, resumo de documentos e fluxos de trabalho de colaboração",
+  "landing-page-subheadline": "O playground da I.A.",
   "sign-up": "Obter Kalygo",
   "its-free": "é grátis",
   "log-in": "Log in",

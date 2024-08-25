@@ -9,11 +9,6 @@ export function IndustriesCollapsibleSidenavOption() {
   const { t } = useTranslation();
 
   const industries = [
-    {
-      name: t("navbar:dropdown.law"),
-      href: "/law",
-      icon: GoLaw,
-    },
     { name: t("navbar:dropdown.higher-ed"), href: "/highered", icon: GoBook },
     { name: t("navbar:dropdown.medical"), href: "/medical", icon: GoHeart },
     { name: t("navbar:dropdown.research"), href: "/research", icon: GoSearch },

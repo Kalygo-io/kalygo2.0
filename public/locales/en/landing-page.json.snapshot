@@ -2,9 +2,9 @@
   "landing-page-headline": "Docs made simple",
   "landing-page-headline-prefix": "Docs made",
   "typewriter-word-1": "Learn",
-  "typewriter-word-2": "Grow",
-  "typewriter-word-3": "Improve",
-  "typewriter-word-4": "Enhance",
+  "typewriter-word-2": "Play",
+  "typewriter-word-3": "Learn",
+  "typewriter-word-4": "Play",
   "industries": {
     "medical": {
       "landing-page-subheadline": "Kalygo helps medical players both big and small with tailored on-prem document management solutions accelerated by A.I.",
@@ -35,7 +35,7 @@
       "typewriter-word-4": "Coordinate your campaigns"
     }
   },
-  "landing-page-subheadline": "Upload data and leverage cutting edge software that includes OCR, customizable prompting, summarization across documents, and collaboration workflows",
+  "landing-page-subheadline": "THEE A.I. playground.",
   "sign-up": "Get Kalygo",
   "its-free": "it's free",
   "log-in": "Log in",
