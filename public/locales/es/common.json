@@ -7,11 +7,11 @@
     "headline": "Los documentos no necesitan ser complicados",
     "subheadline": "Kalygo te permite aprender a través de una experiencia práctica.",
     "stat1_headline": "Aprender",
-    "stat1_subheadline": "Kalygo es una plataforma que te permite aprender haciendo. Es una experiencia práctica que te ayudará a comprender el poder de la IA y el software.",
+    "stat1_subheadline": "Kalygo es una plataforma que te permite aprender haciendo.",
     "stat2_headline": "Crecer",
-    "stat2_subheadline": "Tu comprensión de la IA y el software aumentará a medida que uses Kalygo. Podrás aprovechar estas herramientas para aumentar tu productividad y la de tu equipo.",
+    "stat2_subheadline": "Su comprensión de la IA y el software aumentará a medida que utilice Kalygo.",
     "stat3_headline": "Divertido",
-    "stat3_subheadline": "Kalygo es una forma divertida y atractiva de aprender sobre IA y software. Podrás ver los resultados de tu trabajo en tiempo real, lo que resulta gratificante y motivador."
+    "stat3_subheadline": "Kalygo es una forma divertida y atractiva de aprender sobre IA y software."
   },
   "industries-we-serve": {
     "title": "Industria a la que servimos",
@@ -63,7 +63,7 @@
   "pricing": {
     "title": "Precios",
     "tier1_name": "Gratis",
-    "tier1_description": "Funciones limitadas",
+    "tier1_description": "Solo funciones gratuitas",
     "tier1_feature0": "3 créditos gratuitos emitidos al registrarte para que puedas probar la plataforma",
     "tier1_feature1": "Cuentas son gratis",
     "tier1_feature2": "GPT-3",
@@ -96,8 +96,8 @@
   },
   "enterprise-pricing": {
     "title": "Empresa",
-    "tier1_name": "PrivadoGPT",
-    "tier1_description": "LLM alojados",
+    "tier1_name": "Costumbre",
+    "tier1_description": "Desarrollo de IA personalizado",
     "tier1_feature1": "Mantenga sus datos privados",
     "tier1_feature2": "Llama 2",
     "tier1_feature3": "Contáctenos para asistencia",

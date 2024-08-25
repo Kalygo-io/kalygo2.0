@@ -18,31 +18,31 @@ export function Pricing() {
       price: { summary: "$0", monthly: "$0" },
       description: t("common:pricing.tier1_description"),
       features: [
-        t("common:pricing.tier1_feature0"),
+        // t("common:pricing.tier1_feature0"),
         t("common:pricing.tier1_feature1"),
-        t("common:pricing.tier1_feature2"),
-        t("common:pricing.tier1_feature3"),
+        // t("common:pricing.tier1_feature2"),
+        // t("common:pricing.tier1_feature3"),
         t("common:pricing.tier1_feature4"),
       ],
       enabled: true,
     },
-    {
-      name: t("common:pricing.tier2_name"),
-      id: "tier-standard",
-      href: "/signup",
-      price: { summary: "+50¢", monthly: "$19.99" },
-      description: t("common:pricing.tier2_description"),
-      features: [
-        t("common:pricing.tier2_feature0"),
-        t("common:pricing.tier2_feature1"),
-        t("common:pricing.tier2_feature2"),
-        t("common:pricing.tier2_feature3"),
-        t("common:pricing.tier2_feature4"),
-        t("common:pricing.tier2_feature5"),
-        // t("common:pricing.tier2_feature6"),
-      ],
-      enabled: true,
-    },
+    // {
+    //   name: t("common:pricing.tier2_name"),
+    //   id: "tier-standard",
+    //   href: "/signup",
+    //   price: { summary: "+50¢", monthly: "$19.99" },
+    //   description: t("common:pricing.tier2_description"),
+    //   features: [
+    //     // t("common:pricing.tier2_feature0"),
+    //     t("common:pricing.tier2_feature1"),
+    //     t("common:pricing.tier2_feature2"),
+    //     // t("common:pricing.tier2_feature3"),
+    //     // t("common:pricing.tier2_feature4"),
+    //     // t("common:pricing.tier2_feature5"),
+    //     // t("common:pricing.tier2_feature6"),
+    //   ],
+    //   enabled: true,
+    // },
     {
       name: t("common:pricing.tier3_name"),
       id: "tier-premium",
@@ -50,12 +50,12 @@ export function Pricing() {
       price: { summary: "ø", monthly: "$49.99" },
       description: t("common:pricing.tier3_description"),
       features: [
-        t("common:pricing.tier3_feature0"),
+        // t("common:pricing.tier3_feature0"),
         t("common:pricing.tier3_feature1"),
         t("common:pricing.tier3_feature2"),
-        t("common:pricing.tier3_feature3"),
-        t("common:pricing.tier3_feature4"),
-        t("common:pricing.tier3_feature5"),
+        // t("common:pricing.tier3_feature3"),
+        // t("common:pricing.tier3_feature4"),
+        // t("common:pricing.tier3_feature5"),
       ],
       enabled: true,
     },
@@ -70,7 +70,7 @@ export function Pricing() {
           </h2>
         </div>
         <div className="mt-20 flow-root">
-          <div className="isolate grid max-w-lg grid-cols-1 gap-y-16 gap-x-8 divide-y divide-gray-100 sm:mx-auto lg:max-w-7xl lg:grid-cols-3 lg:divide-y-0 mx-auto">
+          <div className="isolate grid max-w-lg grid-cols-1 gap-y-16 gap-x-8 divide-y divide-gray-100 sm:mx-auto lg:max-w-7xl lg:grid-cols-2 lg:divide-y-0 mx-auto">
             {tiers.map((tier) => (
               <div
                 key={tier.id}

@@ -21,7 +21,7 @@ export const DefaultHero = () => {
         id="landing-page-hero"
       >
         {/* <h1 className="title text-7xl font-bold tracking-tight text-gray-900"> */}
-        <h1 className="title text-6xl min-h-[13.5rem] xs:min-h-[9rem] md:min-h-0 md:text-7xl font-bold tracking-tight text-gray-900 text-center">
+        <h1 className="title text-6xl min-h-[8rem] xs:min-h-[9rem] md:min-h-0 md:text-7xl font-bold tracking-tight text-gray-900 text-center">
           {/* <span className="text-center">
             {t("landing-page:landing-page-headline-prefix")}&nbsp;
           </span> */}

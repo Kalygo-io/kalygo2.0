@@ -60,24 +60,26 @@ const creditAmountPresets = [
   {
     id: 1,
     title: "500 credits",
-    description: "~1,039 pages with GPT-3 & ~40 pages with GPT-4",
+    // description: "~1,039 pages with GPT-3 & ~40 pages with GPT-4",
+    description: "",
     creditsAmount: 500,
     price: "$8.17",
   },
   {
     id: 2,
     title: "1,000 credits",
-    description: "~2,078 pages with GPT-3 & ~81 pages with GPT-4",
+    // description: "~2,078 pages with GPT-3 & ~81 pages with GPT-4",
+    description: "",
     creditsAmount: 1000,
     price: "$15.88",
   },
-  {
-    id: 3,
-    title: "Custom amount",
-    description: "",
-    creditsAmount: -1,
-    price: "TBD",
-  },
+  // {
+  //   id: 3,
+  //   title: "Custom amount",
+  //   description: "",
+  //   creditsAmount: -1,
+  //   price: "TBD",
+  // },
 ];
 
 export function SelectCredits(props: Props) {
@@ -222,7 +224,7 @@ export function SelectCredits(props: Props) {
                 </RadioGroup>
               )}
             />
-            {selectedCreditAmountPreset.id === 3 && (
+            {/* {selectedCreditAmountPreset.id === 3 && (
               <div className="mt-6">
                 <div className="col-span-4">
                   <label
@@ -276,7 +278,7 @@ export function SelectCredits(props: Props) {
                   </div>
                 </div>
               </div>
-            )}
+            )} */}
           </div>
           {/* Order summary */}
           <div className="mt-10 lg:mt-0">

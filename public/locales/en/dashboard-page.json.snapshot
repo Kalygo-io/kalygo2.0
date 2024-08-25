@@ -21,7 +21,7 @@
     "send-email": "Send Email",
     "text-to-speech": "Text-to-Speech",
     "prompts": "Prompts",
-    "access-groups": "Matters"
+    "access-groups": "Access Groups"
   },
   "user-nav": {
     "settings": "Settings",
@@ -393,14 +393,14 @@
     "kb": "Knowledge Base"
   },
   "access-groups": {
-    "title": "Matters",
-    "description": "A matter is a collection of documents, A.I. outputs, and prompts. Any email associated with the matter can view all the data in the matter but only the creator of a particular piece of data in the matter can edit it.",
-    "no-groups-found": "No matters found",
+    "title": "Access Groups",
+    "description": "An access group is a collection of documents, A.I. outputs, and prompts. Any email associated with the group can view all the data in the accessg group but only the creator of a particular piece of data in the group can edit it.",
+    "no-groups-found": "No groups found",
     "view": "View",
     "delete": "Delete",
-    "create": "Create new matter",
+    "create": "Create new group",
     "name": "Name",
-    "new-access-group": "New Matter"
+    "new-access-group": "New Group"
   },
   "docs-table": {
     "no-docs-found": "No docs found",

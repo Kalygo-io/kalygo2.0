@@ -1,12 +1,8 @@
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
-import LinkComponent from "../shared/Link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-import { useRef } from "react";
-import { useInView } from "framer-motion";
 
 export function EnterprisePricing() {
-  const router = useRouter();
   const { t } = useTranslation();
 
   const tiers = [
@@ -19,7 +15,7 @@ export function EnterprisePricing() {
       description: t("common:enterprise-pricing.tier1_description"),
       features: [
         t("common:enterprise-pricing.tier1_feature1"),
-        t("common:enterprise-pricing.tier1_feature2"),
+        // t("common:enterprise-pricing.tier1_feature2"),
         t("common:enterprise-pricing.tier1_feature3"),
         t("common:enterprise-pricing.tier1_feature4"),
       ],
@@ -42,13 +38,13 @@ export function EnterprisePricing() {
                 key={tier.id}
                 className="rounded-2xl bg-gray-100 p-16 lg:px-8 xl:px-14 flex flex-col justify-start items-center shadow-xl"
               >
-                <h3
+                {/* <h3
                   id={tier.id}
                   className="text-base font-semibold leading-7 text-gray-900"
                 >
                   {tier.name}
-                </h3>
-                <p className="mt-6 flex items-baseline gap-x-1">
+                </h3> */}
+                <p className="mt-0 flex items-baseline gap-x-1">
                   {tier.id === "tier-enterprise" && (
                     <>
                       <span className="text-5xl font-bold tracking-tight text-gray-900">

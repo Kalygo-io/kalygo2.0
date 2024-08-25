@@ -21,7 +21,7 @@
     "send-email": "Enviar email",
     "text-to-speech": "Texto para fala",
     "prompts": "Comandos",
-    "access-groups": "Assuntos"
+    "access-groups": "Grupos de acesso"
   },
   "user-nav": {
     "settings": "Configurações",
@@ -385,14 +385,14 @@
     "kb": "Base de Conhecimento"
   },
   "access-groups": {
-    "title": "Assuntos",
-    "description": "Um assunto é uma coleção de documentos, A.I. saídas e prompts. Qualquer e-mail associado ao caso pode visualizar todos os dados do caso, mas somente o criador de um dado específico do caso pode editá-lo.",
-    "no-groups-found": "Nenhum caso encontrado",
+    "title": "Grupos de acesso",
+    "description": "Um grupo de acesso é uma coleção de documentos, saídas de I.A. e prompts. Qualquer e-mail associado ao grupo pode visualizar todos os dados no grupo de acesso, mas somente o criador de um dado específico no grupo pode editá-lo.",
+    "no-groups-found": "Nenhum grupo encontrado",
     "view": "Visualizar",
     "delete": "Excluir",
-    "create": "Criar novo assunto",
+    "create": "Criar novo grupo",
     "name": "Nome",
-    "new-access-group": "Novo assunto"
+    "new-access-group": "Novo Grupo"
   },
   "docs-table": {
     "new-doc-modal": {}

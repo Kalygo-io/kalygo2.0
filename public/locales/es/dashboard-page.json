@@ -21,7 +21,7 @@
     "send-email": "Enviar correo electrónico",
     "text-to-speech": "Texto a voz",
     "prompts": "Indicaciones",
-    "access-groups": "Asuntos"
+    "access-groups": "Grupos de acceso"
   },
   "user-nav": {
     "settings": "Ajustes",
@@ -388,14 +388,14 @@
     "download": "Descargar"
   },
   "access-groups": {
-    "title": "Asuntos",
-    "description": "Un asunto es una colección de documentos, A.I. salidas y avisos. Cualquier correo electrónico asociado con el asunto puede ver todos los datos del asunto, pero solo el creador de un dato particular del asunto puede editarlo.",
-    "no-groups-found": "No se encontraron asuntos",
+    "title": "Grupos de acceso",
+    "description": "Un grupo de acceso es una colección de documentos, resultados de IA y avisos. Cualquier correo electrónico asociado con el grupo puede ver todos los datos del grupo de acceso, pero solo el creador de un dato en particular del grupo puede editarlo.",
+    "no-groups-found": "No se encontraron grupos",
     "view": "Vista",
     "delete": "Borrar",
-    "create": "crear nueva materia",
+    "create": "Crear nuevo grupo",
     "name": "Nombre",
-    "new-access-group": "Materia nueva"
+    "new-access-group": "Nuevo grupo"
   },
   "docs-table": {
     "no-docs-found": "No se encontraron documentos",

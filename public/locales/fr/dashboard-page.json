@@ -21,7 +21,7 @@
     "send-email": "Envoyer un e-mail",
     "text-to-speech": "Texte pour parler",
     "prompts": "Instructions",
-    "access-groups": "Importe"
+    "access-groups": "Groupes d'accès"
   },
   "user-nav": {
     "settings": "Paramètres",
@@ -372,12 +372,12 @@
     "filename": "Nom de fichier"
   },
   "access-groups": {
-    "title": "Importe",
-    "description": "Une affaire est un ensemble de documents, A.I. sorties et invites. Tout e-mail associé au sujet peut afficher toutes les données du sujet, mais seul le créateur d'une donnée particulière du sujet peut la modifier.",
-    "no-groups-found": "Aucun sujet trouvé",
+    "title": "Groupes d'accès",
+    "description": "Un groupe d'accès est un ensemble de documents, de sorties d'IA et d'invites. Tout e-mail associé au groupe peut afficher toutes les données du groupe d'accès, mais seul le créateur d'une donnée particulière du groupe peut la modifier.",
+    "no-groups-found": "Aucun groupe trouvé",
     "view": "Voir",
     "delete": "Supprimer",
-    "create": "Créer un nouveau sujet",
+    "create": "Créer un nouveau groupe",
     "name": "Nom",
     "new-access-group": "Nouveau groupe d'accès"
   },
