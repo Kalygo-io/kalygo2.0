@@ -55,7 +55,7 @@ const App = function ({ Component, pageProps }: CustomAppProps) {
         <meta property="og:title" content="Kalygo" />
         <meta
           property="og:description"
-          content="Kalygo is an open source, cloud-agnostic platform for A.I. assisted eDiscovery."
+          content="Kalygo is an open source, agnostic platform for exploring new software techniques and applications."
         />
         <meta property="og:image" content="/kalygo_new_logo-512x512.png" />
         <link rel="apple-touch-icon" href="/kalygo_new_logo-192x192.png" />
@@ -65,7 +65,7 @@ const App = function ({ Component, pageProps }: CustomAppProps) {
         />
         <meta
           name="keywords"
-          content="eDiscovery, Legal eDiscovery, eDiscovery software, eDiscovery platform, Legal tech solutions, eDiscovery collection, eDiscovery processing, eDiscovery review, eDiscovery production, eDiscovery presentation, Litigation support software, Legal data management, Legal case management, Legal data analytics, Cloud-based eDiscovery, On-premise eDiscovery, AI-powered eDiscovery, eDiscovery automation, eDiscovery OCR (Optical Character Recognition), Legal document review software, GDPR eDiscovery, FRCP (Federal Rules of Civil Procedure) compliance, eDiscovery best practices, Data retention policies, Reducing eDiscovery costs, eDiscovery for small firms, eDiscovery scalability, eDiscovery data security, Efficient eDiscovery workflow"
+          content="eDiscovery, eDiscovery software, eDiscovery platform, eDiscovery collection, eDiscovery processing, eDiscovery review, eDiscovery production, eDiscovery presentation, Litigation support software, Legal data management, Legal case management, Legal data analytics, Cloud-based eDiscovery, On-premise eDiscovery, AI-powered eDiscovery, eDiscovery automation, eDiscovery OCR (Optical Character Recognition), Legal document review software, GDPR eDiscovery, FRCP (Federal Rules of Civil Procedure) compliance, eDiscovery best practices, Data retention policies, Reducing eDiscovery costs, eDiscovery for small firms, eDiscovery scalability, eDiscovery data security, Efficient eDiscovery workflow"
         />
       </Head>
 

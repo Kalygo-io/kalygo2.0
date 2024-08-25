@@ -18,6 +18,7 @@
   "create-referral-code-success": "Código de referencia creado con éxito",
   "sending-email": "Enviando correo electrónico...",
   "store-api-key-success": "Claves API almacenadas correctamente",
+  "deleted-api-key-success": "Clave API eliminada exitosamente",
   "error": {
     "something-unexpected-happened": "sucedió algo inesperado"
   }

@@ -101,6 +101,13 @@
         "view": "Visualizar"
       }
     },
+    "custom-requests-v3": {
+      "title": "Solicitações personalizadas (v{{undefined}})",
+      "subtitle": "Uma visão geral de suas solicitações personalizadas",
+      "table": {
+        "view": "Visualizar"
+      }
+    },
     "vector-searches": {
       "title": "Pesquisas Inteligentes",
       "subtitle": "Uma visão geral de suas pesquisas",
@@ -487,7 +494,11 @@
       "your-api-keys": "Suas chaves de API",
       "your-api-keys-desc": "Quando você usa várias ferramentas do pacote Kalygo, suas chaves de API podem ser usadas. Isso reduz seus custos e também aumenta o rendimento de dados. Armazenamos suas chaves de API criptografadas em repouso usando o AWS Secrets Manager e suas chaves de API são extraídas dinamicamente quando necessário para protegê-las contra comprometimento. Podemos fornecer uma auditoria de acesso de suas chaves de API mediante solicitação.",
       "OPEN_AI_API_KEY": "OPEN_AI_API_KEY",
-      "OPEN_AI_API_KEY-placeholder": "Seu OPEN_AI_API_KEY"
+      "OPEN_AI_API_KEY-placeholder": "Seu OPEN_AI_API_KEY",
+      "AWS_SES_ACCESS_KEY": "Chave de acesso AWS_SES",
+      "AWS_SES_ACCESS_KEY-placeholder": "Sua AWS_ACCESS_KEY para SES",
+      "AWS_SES_SECRET_KEY": "Chave_secreta_do_AWS_SES",
+      "AWS_SES_SECRET_KEY-placeholder": "Sua AWS_SECRET_KEY para SES"
     },
     "subscription": {
       "title": "Inscrição",

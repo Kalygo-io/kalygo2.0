@@ -5,8 +5,9 @@ const sourceFolderPath = "public/locales/en";
 const outputPath = "public/locales";
 
 // personal credentials, update before pushing to production
-const projectId = "kalygo";
-const keyFilename = "kalygo-24cb52e94470.json";
+const projectId = "kalygo-v3";
+// const keyFilename = "kalygo-24cb52e94470.json";
+const keyFilename = "kalygo-v3-b968050dd583.json";
 const targetLanguages = ["es", "pt", "fr"];
 
 const translate = new Translate({ projectId, keyFilename });

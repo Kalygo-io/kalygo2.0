@@ -18,6 +18,7 @@
   "create-referral-code-success": "Successfully created referral code",
   "sending-email": "Sending email...",
   "store-api-key-success": "Successfully stored API keys",
+  "deleted-api-key-success": "Successfully deleted API key",
   "error": {
     "something-unexpected-happened": "Something unexpected happened"
   }
