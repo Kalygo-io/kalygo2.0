@@ -8,12 +8,9 @@
   "dropdown": {
     "industries": "Indústrias",
     "specialties": "Especialidades",
-    "law": "Lei",
     "medical": "Médico",
     "higher-ed": "Educação superior",
     "research": "Pesquisar",
-    "marketing": "Marketing",
-    "personal-injury": "Lesões Pessoais",
-    "family-law": "Lei de família"
+    "marketing": "Marketing"
   }
 }
