@@ -5,13 +5,13 @@
   "open-main-menu": "Ouvrir le menu principal",
   "stats": {
     "headline": "Les documents n'ont pas besoin d'être compliqués",
-    "subheadline": "Kalygo vous fait gagner du temps pour que vous puissiez vous concentrer sur l'essentiel",
-    "stat1_headline": "Servir\nClientèle",
-    "stat1_subheadline": "Kalygo vous permet de restructurer vos workflows de révision de documents pour qu'ils soient 10x, voire 100x plus rapides que les pratiques standards.",
-    "stat2_headline": "Organiser\nImporte",
-    "stat2_subheadline": "Cela signifie plus de temps pour votre famille, vos amis, l'exercice, les activités parascolaires, le développement commercial, le soleil et bien plus encore.",
-    "stat3_headline": "Booster\nProductivité",
-    "stat3_subheadline": "Tirez parti simultanément des logiciels, de l'IA et de la collaboration pour augmenter votre productivité ou celle de votre équipe dès aujourd'hui."
+    "subheadline": "Kalygo vous permet d'apprendre par la pratique.",
+    "stat1_headline": "Apprendre",
+    "stat1_subheadline": "Kalygo est une plateforme qui vous permet d'apprendre en faisant. C'est une expérience pratique qui vous aidera à comprendre le pouvoir de l'IA et des logiciels",
+    "stat2_headline": "Grandir",
+    "stat2_subheadline": "Votre compréhension de l'IA et des logiciels s'améliorera à mesure que vous utiliserez Kalygo. Vous pourrez exploiter ces outils pour augmenter votre productivité ainsi que celle de votre équipe.",
+    "stat3_headline": "Amusant",
+    "stat3_subheadline": "Kalygo est une façon ludique et engageante d'apprendre l'IA et les logiciels. Vous pourrez voir les résultats de votre travail en temps réel, ce qui est à la fois gratifiant et motivant."
   },
   "industries-we-serve": {
     "title": "Industrie que nous servons",

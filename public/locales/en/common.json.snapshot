@@ -5,13 +5,13 @@
   "open-main-menu": "Open main menu",
   "stats": {
     "headline": "Documents don't need to be complicated",
-    "subheadline": "Kalygo saves you time so you can focus on what matters",
-    "stat1_headline": "Serve\nClients",
-    "stat1_subheadline": "Kalygo allows you to restructure your document review workflows to be 10x or even 100x faster than standard practices",
-    "stat2_headline": "Organize\nMatters",
-    "stat2_subheadline": "That means more time for your family, friends, exercise, extracurriculars, business development, sunshine, and much more",
-    "stat3_headline": "Win\nCases",
-    "stat3_subheadline": "Leverage software, AI, and collaboration all at once to boost you and your team's productivity today"
+    "subheadline": "Kalygo allows you to learn via a hands-on experience.",
+    "stat1_headline": "Learn",
+    "stat1_subheadline": "Kalygo is a platform that allows you to learn by doing. It's a hands-on experience that will help you understand the power of AI and software",
+    "stat2_headline": "Grow",
+    "stat2_subheadline": "Your understanding of AI and software will grow as you use Kalygo. You'll be able to leverage these tools to boost your productivity as well as your team's",
+    "stat3_headline": "Fun",
+    "stat3_subheadline": "Kalygo is a fun and engaging way to learn about AI and software. You'll be able to see the results of your work in real-time, which is both rewarding and motivating"
   },
   "industries-we-serve": {
     "title": "Industry we serve",
