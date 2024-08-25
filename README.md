@@ -1,6 +1,6 @@
 # Kalygo 2.0
 
-Contracts redefined for the masses...
+Open source playground...
 
 ## Getting Started
 
