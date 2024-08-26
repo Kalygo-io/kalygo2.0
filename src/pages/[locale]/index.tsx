@@ -36,7 +36,7 @@ export default function Home(props: any) {
       <Layout1>
         <DefaultHero />
         <Stats />
-        <Pricing />
+        {/* <Pricing /> */}
         <EnterprisePricing />
         <Mailing />
       </Layout1>

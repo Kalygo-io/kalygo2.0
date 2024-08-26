@@ -24,14 +24,15 @@ export function EnterprisePricing() {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-white py-24 pb-8 pt-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl sm:text-center">
           <h2 className="p-8 text-center text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl">
             {t("common:enterprise-pricing.title")}
           </h2>
         </div>
-        <div className="mt-20 flow-root">
+
+        <div className="mt-10 flow-root">
           <div className="isolate flex max-w-sm justify-center divide-y divide-gray-100 sm:mx-auto lg:max-w-lg lg:divide-y-0 mx-auto">
             {tiers.map((tier) => (
               <div

@@ -6,10 +6,10 @@
   "stats": {
     "headline": "Los documentos no necesitan ser complicados",
     "subheadline": "Kalygo te permite aprender a través de una experiencia práctica.",
-    "stat1_headline": "Aprender",
-    "stat1_subheadline": "Definitivamente aprenderás algo.",
+    "stat1_headline": "Producir",
+    "stat1_subheadline": "Produzca resultados digitales como nunca antes.",
     "stat2_headline": "Crecer",
-    "stat2_subheadline": "Definitivamente crecerás en tu apreciación del software.",
+    "stat2_subheadline": "Definitivamente crecerás en tu apreciación de lo que la creatividad combinada con lo accesible.",
     "stat3_headline": "Divertido",
     "stat3_subheadline": "Y seguro que también te divertirás mucho."
   },
@@ -95,9 +95,9 @@
     "premium-feature": "característica"
   },
   "enterprise-pricing": {
-    "title": "Empresa",
+    "title": "Precios",
     "tier1_name": "Costumbre",
-    "tier1_description": "Desarrollo de IA personalizado",
+    "tier1_description": "Transformaciones digitales personalizadas",
     "tier1_feature1": "Mantenga sus datos privados",
     "tier1_feature2": "Llama 2",
     "tier1_feature3": "Contáctenos para asistencia",

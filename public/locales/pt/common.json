@@ -6,10 +6,10 @@
   "stats": {
     "headline": "Documentos não precisam ser complicados",
     "subheadline": "O Kalygo permite que você aprenda por meio de uma experiência prática.",
-    "stat1_headline": "Aprender",
-    "stat1_subheadline": "Você definitivamente aprenderá alguma coisa.",
+    "stat1_headline": "Produzir",
+    "stat1_subheadline": "Produza resultados digitais de uma forma que você nunca fez antes.",
     "stat2_headline": "Crescer",
-    "stat2_subheadline": "Você certamente aumentará sua apreciação por software.",
+    "stat2_subheadline": "Você certamente aumentará sua apreciação do que a criatividade combinada com acessibilidade.",
     "stat3_headline": "Diversão",
     "stat3_subheadline": "E você definitivamente vai se divertir muito também."
   },
@@ -90,9 +90,9 @@
     "premium-feature": "recurso"
   },
   "enterprise-pricing": {
-    "title": "Empreendimento",
+    "title": "Preços",
     "tier1_name": "Personalizado",
-    "tier1_description": "Desenvolvimento de I.A. personalizado",
+    "tier1_description": "Transformações Digitais Personalizadas",
     "tier1_feature1": "Mantenha seus dados privados",
     "tier1_feature2": "chamadas",
     "summary": "resumo",

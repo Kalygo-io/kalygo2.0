@@ -6,10 +6,10 @@
   "stats": {
     "headline": "Documents don't need to be complicated",
     "subheadline": "Kalygo allows you to learn via a hands-on experience.",
-    "stat1_headline": "Learn",
-    "stat1_subheadline": "You will definitely learn something.",
+    "stat1_headline": "Produce",
+    "stat1_subheadline": "Produce digital output in a way you never have before.",
     "stat2_headline": "Grow",
-    "stat2_subheadline": "You will definitely grow in your appreciation of software.",
+    "stat2_subheadline": "You will definitely grow in your appreciation of what creativity combined with accessible.",
     "stat3_headline": "Fun",
     "stat3_subheadline": "And you are definitely are going to have a lot of fun too."
   },
@@ -95,9 +95,9 @@
     "premium-feature": "feature"
   },
   "enterprise-pricing": {
-    "title": "Enterprise",
+    "title": "Pricing",
     "tier1_name": "Custom",
-    "tier1_description": "Custom A.I. development",
+    "tier1_description": "Custom Digital Transformations",
     "tier1_feature1": "Keep your data private",
     "tier1_feature2": "Llama 2",
     "tier1_feature3": "Contact us for assistance",

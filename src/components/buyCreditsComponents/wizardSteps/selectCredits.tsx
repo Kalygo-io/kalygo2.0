@@ -1,29 +1,9 @@
-import {
-  CheckCircleIcon,
-  CircleStackIcon,
-  DocumentDuplicateIcon,
-  XCircleIcon,
-} from "@heroicons/react/24/outline";
-import React, {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { CheckCircleIcon, CircleStackIcon } from "@heroicons/react/24/outline";
+import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { useTranslation } from "next-i18next";
-import { getAccountPaymentMethodsFactory } from "@/serviceFactory/getAccountPaymentMethodsFactory";
-import isNumber from "lodash.isnumber";
-import get from "lodash.get";
-import { errorReporter } from "@/utility/error/reporter";
 import { Layout3ColumnAndFooterWrapper } from "../sharedComponents/layout3ColumnAndFooterWrapper";
 import { _3ColumnWrapper } from "../sharedComponents/3ColumnWrapper";
-import { LeftAreaAndMainWrapper } from "../sharedComponents/leftAreaAndMainWrapper";
-import { LeftArea } from "../sharedComponents/leftArea";
-import { MainArea } from "../sharedComponents/mainArea";
-import { RightArea } from "../sharedComponents/rightArea";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
-import { enoughUsageCreditsToUsePaidFeatures } from "@/utility/guards/enoughUsageCreditsToUsePaidFeatures";
 import { Controller, useForm } from "react-hook-form";
 import { RadioGroup } from "@headlessui/react";
 import { infoToast } from "@/utility/toasts";
@@ -58,20 +38,12 @@ interface Props {
 
 const creditAmountPresets = [
   {
-    id: 1,
-    title: "500 credits",
-    // description: "~1,039 pages with GPT-3 & ~40 pages with GPT-4",
-    description: "",
-    creditsAmount: 500,
-    price: "$8.17",
-  },
-  {
     id: 2,
-    title: "1,000 credits",
+    title: "4,000 credits",
     // description: "~2,078 pages with GPT-3 & ~81 pages with GPT-4",
     description: "",
-    creditsAmount: 1000,
-    price: "$15.88",
+    creditsAmount: 4000,
+    price: "$40.00",
   },
   // {
   //   id: 3,
@@ -97,7 +69,7 @@ export function SelectCredits(props: Props) {
     control,
   } = useForm({
     defaultValues: {
-      credits: 1000,
+      credits: 4000,
       selectedCreditAmountPreset: creditsAmount?.selectedCreditAmountPreset || {
         id: 2,
         title: "Custom",
@@ -137,7 +109,7 @@ export function SelectCredits(props: Props) {
                 <RadioGroup
                   {...props.field}
                   onChange={(value) => {
-                    if (value.id === 1) {
+                    if (value.id === 2) {
                       // prettier-ignore
                       setValue("selectedCreditAmountPreset", creditAmountPresets[0]);
                       // prettier-ignore
@@ -146,7 +118,7 @@ export function SelectCredits(props: Props) {
                       // prettier-ignore
                       setValue("selectedCreditAmountPreset", creditAmountPresets[1]);
                       // prettier-ignore
-                      setValue("credits", creditAmountPresets[1].creditsAmount);
+                      setValue("credits", creditAmountPresets[1]?.creditsAmount);
                     } else {
                       setValue(
                         "selectedCreditAmountPreset",
@@ -301,7 +273,7 @@ export function SelectCredits(props: Props) {
                       <div className="min-w-0 flex-1">
                         <h4 className="text-sm">Credits</h4>
                         <p className="mt-1 text-sm text-gray-500">
-                          {credits.toLocaleString()}
+                          {credits?.toLocaleString()}
                         </p>
                       </div>
                     </div>
