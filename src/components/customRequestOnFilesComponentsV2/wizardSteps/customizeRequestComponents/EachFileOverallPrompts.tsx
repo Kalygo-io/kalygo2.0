@@ -8,7 +8,7 @@ import {
 interface P {
   values: {
     mode: string;
-    model: "gpt-3.5-turbo" | "gpt-4";
+    model: "gpt-3.5-turbo" | "gpt-4o" | "gpt-4o-mini";
     prompt: string;
     includeFinalPrompt: boolean;
     finalPrompt: string;
@@ -16,7 +16,7 @@ interface P {
   };
   register: UseFormRegister<{
     mode: string;
-    model: "gpt-3.5-turbo" | "gpt-4";
+    model: "gpt-3.5-turbo" | "gpt-4o" | "gpt-4o-mini";
     prompt: string;
     includeFinalPrompt: boolean;
     finalPrompt: string;
@@ -24,7 +24,7 @@ interface P {
   }>;
   trigger: UseFormTrigger<{
     mode: string;
-    model: "gpt-3.5-turbo" | "gpt-4";
+    model: "gpt-3.5-turbo" | "gpt-4o" | "gpt-4o-mini";
     prompt: string;
     includeFinalPrompt: boolean;
     finalPrompt: string;
@@ -32,7 +32,7 @@ interface P {
   }>;
   setValue: UseFormSetValue<{
     mode: string;
-    model: "gpt-3.5-turbo" | "gpt-4";
+    model: "gpt-3.5-turbo" | "gpt-4o" | "gpt-4o-mini";
     prompt: string;
     includeFinalPrompt: boolean;
     finalPrompt: string;

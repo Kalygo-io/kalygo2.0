@@ -18,7 +18,7 @@ export function CustomRequestWizard(props: Props) {
   const [files, setFiles] = useState<File[] | null>(null);
   const [customizations, setCustomizations] = useState<{
     mode: string;
-    model: "gpt-3.5-turbo" | "gpt-4";
+    model: "gpt-3.5-turbo" | "gpt-4o" | "gpt-4o-mini";
     prompt?: string;
     finalPrompt?: string;
     overallPrompt?: string;

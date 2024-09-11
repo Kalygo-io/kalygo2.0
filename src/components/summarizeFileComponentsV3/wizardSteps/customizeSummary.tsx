@@ -348,10 +348,10 @@ export function CustomizeSummary(props: Props) {
                                         disabled={
                                           !enoughUsageCreditsToUsePaidFeatures(
                                             get(account, "usageCredits", 0),
-                                            "gpt-4"
+                                            "gpt-4o-mini"
                                           )
                                         }
-                                        value={"gpt-4"}
+                                        value={"gpt-4o-mini"}
                                       >
                                         GPT-4 (8k)
                                       </option>

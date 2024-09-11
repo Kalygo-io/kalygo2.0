@@ -2,7 +2,11 @@ import model_pricing from "@/config/model_pricing";
 
 export function enoughUsageCreditsToUsePaidFeatures(
   usageCredits: number,
-  model: "gpt-3.5-turbo" | "gpt-4" | "gpt-3.5-turbo-16k" = "gpt-3.5-turbo"
+  model:
+    | "gpt-3.5-turbo"
+    | "gpt-4o"
+    | "gpt-4o-mini"
+    | "gpt-3.5-turbo-16k" = "gpt-4o-mini"
 ) {
   // console.log("enoughUsageCreditsToUsePaidFeatures", usageCredits);
   // console.log(
@@ -17,7 +21,8 @@ export function enoughUsageCreditsToUsePaidFeatures(
   // );
 
   // in pennies
-  if (usageCredits > model_pricing.models[model].minimumCreditsRequired) {
+
+  if (usageCredits >= model_pricing.models[model].minimumCreditsRequired) {
     return true;
   }
   {

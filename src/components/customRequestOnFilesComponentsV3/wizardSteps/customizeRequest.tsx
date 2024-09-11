@@ -24,7 +24,7 @@ interface Props {
   files: File[];
   customizations: {
     mode: string;
-    model: "gpt-3.5-turbo" | "gpt-4";
+    model: "gpt-3.5-turbo" | "gpt-4o" | "gpt-4o-mini";
     prompt?: string;
     finalPrompt?: string;
     overallPrompt?: string;
@@ -34,7 +34,7 @@ interface Props {
   setCustomizations: Dispatch<
     SetStateAction<{
       mode: string;
-      model: "gpt-3.5-turbo" | "gpt-4";
+      model: "gpt-3.5-turbo" | "gpt-4o" | "gpt-4o-mini";
       prompt?: string;
       finalPrompt?: string;
       overallPrompt?: string;
@@ -262,23 +262,23 @@ export function CustomizeRequest(props: Props) {
                                   disabled={
                                     !enoughUsageCreditsToUsePaidFeatures(
                                       get(account, "usageCredits", 0),
-                                      "gpt-3.5-turbo-16k"
+                                      "gpt-4o"
                                     )
                                   }
-                                  value={"gpt-3.5-turbo-16k"}
+                                  value={"gpt-4o"}
                                 >
-                                  GPT-3 (16k)
+                                  gpt-4o (128k)
                                 </option>
                                 <option
                                   disabled={
                                     !enoughUsageCreditsToUsePaidFeatures(
                                       get(account, "usageCredits", 0),
-                                      "gpt-4"
+                                      "gpt-4o-mini"
                                     )
                                   }
-                                  value={"gpt-4"}
+                                  value={"gpt-4o-mini"}
                                 >
-                                  GPT-4 (8k)
+                                  gpt-4o-mini (128k)
                                 </option>
                                 <option disabled value={"llama-2"}>
                                   LLaMa 2
