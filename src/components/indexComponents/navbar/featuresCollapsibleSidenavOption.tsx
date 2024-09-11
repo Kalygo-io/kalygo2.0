@@ -5,7 +5,7 @@ import { GoBook, GoLaw, GoHeart, GoSearch, GoRocket } from "react-icons/go";
 import { useTranslation } from "next-i18next";
 import { classNames } from "@/utility/misc/classNames";
 
-export function IndustriesCollapsibleSidenavOption() {
+export function FeaturesCollapsibleSidenavOption() {
   const { t } = useTranslation();
 
   const industries = [

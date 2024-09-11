@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "@/components/shared/Link";
 import { useTranslation } from "next-i18next";
 import { FlyoutMenu } from "../indexComponents/navbar/flyoutMenu";
-import { IndustriesCollapsibleSidenavOption } from "../indexComponents/navbar/industriesCollapsibleSidenavOption";
+import { FeaturesCollapsibleSidenavOption } from "../indexComponents/navbar/featuresCollapsibleSidenavOption";
 
 interface P {
   disableStickyTopNav?: boolean;
@@ -108,7 +108,7 @@ export function NavbarCenteredLogo(p: P) {
                             </li>
                           ))}
                           <li>
-                            <IndustriesCollapsibleSidenavOption />
+                            <FeaturesCollapsibleSidenavOption />
                           </li>
                         </ul>
                       </li>

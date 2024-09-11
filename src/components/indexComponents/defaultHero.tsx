@@ -2,7 +2,7 @@ import { useInView } from "framer-motion";
 import { useTranslation } from "next-i18next";
 import React, { useRef } from "react";
 import Typewriter from "typewriter-effect";
-import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon, LightBulbIcon } from "@heroicons/react/24/outline";
 import Link from "../shared/Link";
 
 export const DefaultHero = () => {
@@ -89,19 +89,12 @@ export const DefaultHero = () => {
             </Link>
           </div>
         </div>
-        <img
-          src="/Documents.svg"
-          alt="Icon of a stack of documents"
-          className="image-1"
-        />
+
+        <LightBulbIcon className="image-1" />
         <div className="arrow flex justify-center items-center">
           <ArrowRightIcon className="icon text-gray-500" aria-hidden="true" />
         </div>
-        <img
-          src="/hero-product-photo-v2.png"
-          alt="Icon of a stack of documents"
-          className="image-2"
-        />
+        <LightBulbIcon className="text-yellow-300 image-2" />
       </div>
       <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32" />
     </div>
