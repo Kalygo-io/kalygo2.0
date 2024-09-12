@@ -12,7 +12,7 @@ export const FileInChunksPrompts = (props: P) => {
       <div className="py-2">
         <label
           htmlFor="prompt"
-          className="block text-md font-medium leading-6 text-gray-900"
+          className="block text-md font-medium leading-6 text-white"
         >
           Prompt
         </label>

@@ -92,10 +92,11 @@ export default function CustomRequestV3() {
         <div className="p-4 sm:p-6 lg:p-8">
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
-              <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+              {/* <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"> */}
+              <h2 className="text-2xl font-bold leading-7 text-white sm:truncate sm:text-3xl sm:tracking-tight">
                 {t("dashboard-page:custom-request-v3.title")}
               </h2>
-              <p className="mt-1 text-sm leading-6 text-gray-400">
+              <p className="mt-1 text-sm leading-6 text-white">
                 {t("dashboard-page:custom-request-v3.description")}
               </p>
             </div>

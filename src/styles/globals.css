@@ -97,3 +97,8 @@
 .rdtPicker {
   border: 1px solid #2463eb;
 }
+
+body {
+  background-color: black;
+  color: white;
+}

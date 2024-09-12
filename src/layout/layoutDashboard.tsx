@@ -177,7 +177,7 @@ export default function LayoutDashboard({ children, account }: P) {
 
   const totalCredits = account ? (
     <>
-      <span className="text-sm text-gray-700">
+      <span className="text-sm text-white">
         {account.vectorSearchCredits +
           account.summaryCredits +
           account.customRequestCredits}{" "}
@@ -197,7 +197,7 @@ export default function LayoutDashboard({ children, account }: P) {
   const usageCredits =
     account && account.usageCredits ? (
       <>
-        <span className="text-sm text-gray-700">
+        <span className="text-sm text-white">
           {account.usageCredits.toLocaleString(navigator.language, {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
@@ -269,12 +269,13 @@ export default function LayoutDashboard({ children, account }: P) {
                     </div>
                   </Transition.Child>
                   {/* Sidebar component, swap this element with another sidebar if you like */}
-                  <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-blue-600 px-6 pb-4">
+                  <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-red-600 px-6 pb-4">
                     <div className="flex h-16 shrink-0 items-center">
                       <Link href="/">
                         <Image
                           className="h-8 w-auto"
-                          src="/kalygo_new_logo-192x192.png"
+                          // src="/kalygo_new_logo-192x192.png"
+                          src="/swarms-logo.svg"
                           alt="Kalygo logo"
                           width={16}
                           height={16}
@@ -293,8 +294,8 @@ export default function LayoutDashboard({ children, account }: P) {
                                     item.href.split("/")[
                                       item.href.split("/").length - 1
                                     ] === current
-                                      ? "bg-blue-700 text-white"
-                                      : "text-blue-200 hover:text-white hover:bg-blue-700",
+                                      ? "bg-red-700 text-white"
+                                      : "text-blue-200 hover:text-white hover:bg-red-700",
                                     "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                                   )}
                                 >
@@ -321,8 +322,8 @@ export default function LayoutDashboard({ children, account }: P) {
                               href="/dashboard/buy-credits"
                               className={classNames(
                                 "buy-credits" === current
-                                  ? "bg-blue-700 text-white"
-                                  : "text-blue-200 hover:text-white hover:bg-blue-700",
+                                  ? "bg-red-700 text-white"
+                                  : "text-blue-200 hover:text-white hover:bg-red-700",
                                 "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                               )}
                             >
@@ -338,8 +339,8 @@ export default function LayoutDashboard({ children, account }: P) {
                               href="/dashboard/settings"
                               className={classNames(
                                 "settings" === current
-                                  ? "bg-blue-700 text-white"
-                                  : "text-blue-200 hover:text-white hover:bg-blue-700",
+                                  ? "bg-red-700 text-white"
+                                  : "text-blue-200 hover:text-white hover:bg-red-700",
                                 "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                               )}
                             >
@@ -363,12 +364,13 @@ export default function LayoutDashboard({ children, account }: P) {
         {/* Static sidebar for desktop */}
         <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-72 lg:flex-col">
           {/* Sidebar component, swap this element with another sidebar if you like */}
-          <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-blue-600 px-6 pb-4 z-0">
+          <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-red-600 px-6 pb-4 z-0">
             <Link className="mt-2 p-1" href="/">
               <div className="flex h-16 shrink-0 items-center">
                 <Image
                   className="h-8 w-auto"
-                  src="/kalygo_new_logo-192x192.png"
+                  // src="/kalygo_new_logo-192x192.png"
+                  src="/swarms-logo.svg"
                   alt="Kalygo logo"
                   height={16}
                   width={16}
@@ -391,8 +393,8 @@ export default function LayoutDashboard({ children, account }: P) {
                             item.href.split("/")[
                               item.href.split("/").length - 1
                             ] === current
-                              ? "bg-blue-700 text-white"
-                              : "text-blue-200 hover:text-white hover:bg-blue-700",
+                              ? "bg-red-700 text-white"
+                              : "text-blue-200 hover:text-white hover:bg-red-700",
                             "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                           )}
                         >
@@ -419,8 +421,8 @@ export default function LayoutDashboard({ children, account }: P) {
                       href="/dashboard/buy-credits"
                       className={classNames(
                         "buy-credits" === current
-                          ? "bg-blue-700 text-white"
-                          : "text-blue-200 hover:text-white hover:bg-blue-700",
+                          ? "bg-red-700 text-white"
+                          : "text-blue-200 hover:text-white hover:bg-red-700",
                         "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                       )}
                     >
@@ -436,8 +438,8 @@ export default function LayoutDashboard({ children, account }: P) {
                       href="/dashboard/settings"
                       className={classNames(
                         "settings" === current
-                          ? "bg-blue-700 text-white"
-                          : "text-blue-200 hover:text-white hover:bg-blue-700",
+                          ? "bg-red-700 text-white"
+                          : "text-blue-200 hover:text-white hover:bg-red-700",
                         "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                       )}
                     >
@@ -457,7 +459,8 @@ export default function LayoutDashboard({ children, account }: P) {
         <div className="lg:pl-72">
           <div
             id="dashboard-sticky-top-nav"
-            className="sticky top-0 z-10 flex h-16 shrink-0 items-center gap-x-4 border-0 border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8"
+            // className="sticky top-0 z-10 flex h-16 shrink-0 items-center gap-x-4 border-0 border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8"
+            className="sticky top-0 z-10 flex h-16 shrink-0 items-center gap-x-4 border-0 border-gray-200 bg-black px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8"
           >
             <button
               type="button"

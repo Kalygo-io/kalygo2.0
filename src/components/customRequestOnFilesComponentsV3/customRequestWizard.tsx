@@ -18,7 +18,11 @@ export function CustomRequestWizard(props: Props) {
   const [files, setFiles] = useState<File[] | null>(null);
   const [customizations, setCustomizations] = useState<{
     mode: string;
-    model: "gpt-3.5-turbo" | "gpt-4o" | "gpt-4o-mini";
+    model:
+      | "gpt-3.5-turbo"
+      | "gpt-4o"
+      | "gpt-4o-mini"
+      | "claude-3-5-sonnet-20240620";
     prompt?: string;
     finalPrompt?: string;
     overallPrompt?: string;
@@ -99,7 +103,7 @@ export function CustomRequestWizard(props: Props) {
                         aria-hidden="true"
                       />
                     </span>
-                    <span className="ml-4 text-sm font-medium text-gray-900">
+                    <span className="ml-4 text-sm font-medium text-white">
                       {s.name}
                     </span>
                   </span>
@@ -120,11 +124,11 @@ export function CustomRequestWizard(props: Props) {
                 <span className="group flex items-center">
                   <span className="flex items-center px-6 py-4 text-sm font-medium">
                     <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-gray-300 group-hover:border-gray-400">
-                      <span className="text-gray-500 group-hover:text-gray-900">
+                      <span className="text-gray-500 group-hover:text-white">
                         {s.id}
                       </span>
                     </span>
-                    <span className="ml-4 text-sm font-medium text-gray-500 group-hover:text-gray-900">
+                    <span className="ml-4 text-sm font-medium text-gray-500 group-hover:text-white">
                       {s.name}
                     </span>
                   </span>

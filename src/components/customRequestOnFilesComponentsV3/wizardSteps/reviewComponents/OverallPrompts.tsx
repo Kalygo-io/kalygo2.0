@@ -18,7 +18,7 @@ export const OverallPrompts = (props: P) => {
       <div className="py-2">
         <label
           htmlFor="prompt"
-          className="block text-md font-medium leading-6 text-gray-900"
+          className="block text-md font-medium leading-6 text-white"
         >
           Prompt
         </label>
@@ -39,7 +39,7 @@ export const OverallPrompts = (props: P) => {
       {/* <div className="py-2">
         <label
           htmlFor="final-prompt"
-          className="block text-md font-medium leading-6 text-gray-900"
+          className="block text-md font-medium leading-6 text-white"
         >
           Final File Prompt
         </label>
@@ -60,7 +60,7 @@ export const OverallPrompts = (props: P) => {
       <div className="py-2">
         <label
           htmlFor="overall-prompt"
-          className="block text-md font-medium leading-6 text-gray-900"
+          className="block text-md font-medium leading-6 text-white"
         >
           Overall Prompt
         </label>

@@ -18,13 +18,15 @@ import { OverallPrompts } from "./customizeRequestComponents/OverallPrompts";
 import { FilePerPagePrompts } from "./customizeRequestComponents/FilePerPagePrompts";
 import { enoughUsageCreditsToUsePaidFeatures } from "@/utility/guards/enoughUsageCreditsToUsePaidFeatures";
 import get from "lodash.get";
+import { SupportedOpenAiModels } from "@/types/SupportedOpenAiModels";
+import { SupportedAnthropicModels } from "@/types/SupportedAnthropicModels";
 
 interface Props {
   account: any;
   files: File[];
   customizations: {
     mode: string;
-    model: "gpt-3.5-turbo" | "gpt-4o" | "gpt-4o-mini";
+    model: SupportedOpenAiModels | SupportedAnthropicModels;
     prompt?: string;
     finalPrompt?: string;
     overallPrompt?: string;
@@ -34,7 +36,7 @@ interface Props {
   setCustomizations: Dispatch<
     SetStateAction<{
       mode: string;
-      model: "gpt-3.5-turbo" | "gpt-4o" | "gpt-4o-mini";
+      model: SupportedOpenAiModels | SupportedAnthropicModels;
       prompt?: string;
       finalPrompt?: string;
       overallPrompt?: string;
@@ -134,7 +136,7 @@ export function CustomizeRequest(props: Props) {
       <_3ColumnWrapper>
         <LeftAreaAndMainWrapper>
           <LeftArea>
-            <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight">
+            <h2 className="text-lg font-bold text-white sm:truncate sm:text-2xl sm:tracking-tight">
               {t("dashboard-page:custom-request-v3.chosen-files")!}
             </h2>
             {files.length > 0 ? (
@@ -146,7 +148,7 @@ export function CustomizeRequest(props: Props) {
                       className="flex items-center justify-between gap-x-6 py-5"
                     >
                       <div className="flex items-start gap-x-3 truncate">
-                        <p className="text-sm font-semibold leading-6 text-gray-900 truncate">
+                        <p className="text-sm font-semibold leading-6 text-white truncate">
                           {files[index].name}
                         </p>
                       </div>
@@ -162,7 +164,7 @@ export function CustomizeRequest(props: Props) {
           </LeftArea>
 
           <MainArea>
-            <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl text-center">
+            <h2 className="text-lg font-bold text-white sm:truncate sm:text-2xl text-center">
               {t("dashboard-page:custom-request-v3.customizations")}
             </h2>
             <div className="grid grid-cols-1 gap-x-6 gap-y-8">
@@ -174,7 +176,7 @@ export function CustomizeRequest(props: Props) {
                         <legend className="sr-only">Mode</legend>
                         <label
                           htmlFor="mode"
-                          className="block text-md font-medium leading-6 text-gray-900"
+                          className="block text-md font-medium leading-6 text-white"
                         >
                           Mode
                         </label>
@@ -184,7 +186,7 @@ export function CustomizeRequest(props: Props) {
                             id="mode"
                             name="mode"
                             autoComplete="mode"
-                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-full sm:text-sm sm:leading-6"
+                            className="block w-full rounded-md border-0 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-full sm:text-sm sm:leading-6"
                           >
                             <option value={ScanningMode.FILE_OVERALL}>
                               Each Overall
@@ -242,7 +244,7 @@ export function CustomizeRequest(props: Props) {
                         <div className="py-6">
                           <label
                             htmlFor="model"
-                            className="block text-md font-medium leading-6 text-gray-900 sm:pt-1.5"
+                            className="block text-md font-medium leading-6 text-white sm:pt-1.5"
                           >
                             A.I. model
                           </label>
@@ -253,7 +255,7 @@ export function CustomizeRequest(props: Props) {
                                 id="model"
                                 name="model"
                                 autoComplete="model"
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-full sm:text-sm sm:leading-6"
+                                className="block w-full rounded-md border-0 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-full sm:text-sm sm:leading-6"
                               >
                                 <option value={"gpt-3.5-turbo"}>
                                   GPT-3 (4k)
@@ -300,7 +302,7 @@ export function CustomizeRequest(props: Props) {
         </LeftAreaAndMainWrapper>
 
         <RightArea>
-          <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight underline-offset-4 text-center">
+          <h2 className="text-lg font-bold text-white sm:truncate sm:text-2xl sm:tracking-tight underline-offset-4 text-center">
             {t("dashboard-page:custom-request-v3.suggested-requests")!}
           </h2>
           {preBuiltPrompts.map((prompt) => (
@@ -316,14 +318,14 @@ export function CustomizeRequest(props: Props) {
                   }}
                   className="flex items-start gap-x-3 cursor-pointer"
                 >
-                  <p className="text-sm font-semibold leading-6 text-gray-900">
+                  <p className="text-sm font-semibold leading-6 text-white">
                     {prompt.name}
                   </p>
                 </div>
               </div>
               <div className="flex flex-none items-center gap-x-4">
                 <Menu as="div" className="relative flex-none cursor-pointer">
-                  <Menu.Button className="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900">
+                  <Menu.Button className="-m-2.5 block p-2.5 text-gray-500 hover:text-white">
                     <span className="sr-only">
                       {t("dashboard-page:custom-request-v3.open-options")}
                     </span>
@@ -347,7 +349,7 @@ export function CustomizeRequest(props: Props) {
                           <div
                             className={classNames(
                               active ? "bg-gray-50" : "",
-                              "block px-3 py-1 text-sm leading-6 text-gray-300"
+                              "block px-3 py-1 text-sm leading-6 text-gray-800"
                             )}
                           >
                             {t(
@@ -366,7 +368,7 @@ export function CustomizeRequest(props: Props) {
                             }}
                             className={classNames(
                               active ? "bg-gray-50" : "",
-                              "block px-3 py-1 text-sm leading-6 text-gray-900"
+                              "block px-3 py-1 text-sm leading-6 text-gray-800"
                             )}
                           >
                             {t("dashboard-page:custom-request-v3.select")}
@@ -379,7 +381,7 @@ export function CustomizeRequest(props: Props) {
                           <div
                             className={classNames(
                               active ? "bg-gray-50" : "",
-                              "block px-3 py-1 text-sm leading-6 text-gray-300"
+                              "block px-3 py-1 text-sm leading-6 text-gray-800"
                             )}
                           >
                             {t("dashboard-page:custom-request-v3.not-this-one")}

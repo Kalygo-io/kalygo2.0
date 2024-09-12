@@ -20,7 +20,7 @@ export function CustomRequestSuccess(p: P) {
   return (
     <div className="px-4 sm:px-6 lg:px-8 flex flex-col flex-center justify-center">
       <div className="min-w-0 flex-1">
-        <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:tracking-tight">
+        <h2 className="text-2xl font-bold leading-7 text-white sm:text-3xl sm:tracking-tight">
           {query}
         </h2>
       </div>
@@ -50,7 +50,7 @@ export function CustomRequestSuccess(p: P) {
                 /> */}
                 <div className="flex-auto">
                   <div className="flex items-baseline justify-between gap-x-4">
-                    <p className="text-sm font-semibold leading-6 text-gray-900">
+                    <p className="text-sm font-semibold leading-6 text-white">
                       Chunk {get(metadatas, `${idx}.index`)}
                     </p>
                     <p className="flex-none text-xs text-gray-600">

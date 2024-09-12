@@ -1,3 +1,5 @@
+import { SupportedAnthropicModels } from "@/types/SupportedAnthropicModels";
+import { SupportedOpenAiModels } from "@/types/SupportedOpenAiModels";
 import React from "react";
 import {
   UseFormRegister,
@@ -8,7 +10,7 @@ import {
 interface P {
   register: UseFormRegister<{
     mode: string;
-    model: "gpt-3.5-turbo" | "gpt-4o" | "gpt-4o-mini";
+    model: SupportedOpenAiModels | SupportedAnthropicModels;
     prompt: string;
     includeFinalPrompt: boolean;
     finalPrompt: string;
@@ -16,7 +18,7 @@ interface P {
   }>;
   trigger: UseFormTrigger<{
     mode: string;
-    model: "gpt-3.5-turbo" | "gpt-4o" | "gpt-4o-mini";
+    model: SupportedOpenAiModels | SupportedAnthropicModels;
     prompt: string;
     includeFinalPrompt: boolean;
     finalPrompt: string;
@@ -24,7 +26,7 @@ interface P {
   }>;
   setValue: UseFormSetValue<{
     mode: string;
-    model: "gpt-3.5-turbo" | "gpt-4o" | "gpt-4o-mini";
+    model: SupportedOpenAiModels | SupportedAnthropicModels;
     prompt: string;
     includeFinalPrompt: boolean;
     finalPrompt: string;
@@ -36,11 +38,11 @@ export const FileInChunksPrompts = (props: P) => {
   const { register, trigger, setValue } = props;
 
   return (
-    <div className="bg-slate-100 rounded-md p-4 my-2">
+    <div className="bg-gray-800 rounded-md p-4 my-2">
       <div className="py-2">
         <label
           htmlFor="prompt"
-          className="block text-md font-medium leading-6 text-gray-900"
+          className="block text-md font-medium leading-6 text-white"
         >
           Prompt
         </label>
@@ -58,7 +60,7 @@ export const FileInChunksPrompts = (props: P) => {
             name="prompt"
             rows={4}
             placeholder="Prompt..."
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+            className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
           />
         </div>
       </div>

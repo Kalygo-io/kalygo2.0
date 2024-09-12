@@ -17,11 +17,13 @@ import { FileOverallPrompts } from "./reviewComponents/FileOverallPrompts";
 import { OverallPrompts } from "./reviewComponents/OverallPrompts";
 import { FilePerPagePrompts } from "./reviewComponents/FilePerPagePrompts";
 import { customRequestV3Factory } from "@/serviceFactory/customRequestV3Factory";
+import { SupportedOpenAiModels } from "@/types/SupportedOpenAiModels";
+import { SupportedAnthropicModels } from "@/types/SupportedAnthropicModels";
 
 interface Props {
   customizations: {
     mode: string;
-    model: "gpt-3.5-turbo" | "gpt-4o" | "gpt-4o-mini";
+    model: SupportedOpenAiModels | SupportedAnthropicModels;
     prompt?: string;
     finalPrompt?: string;
     overallPrompt?: string;
@@ -63,7 +65,7 @@ export function Review(props: Props) {
       <_3ColumnWrapper>
         <LeftAreaAndMainWrapper>
           <LeftArea>
-            <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight">
+            <h2 className="text-lg font-bold text-white sm:truncate sm:text-2xl sm:tracking-tight">
               {t("dashboard-page:custom-request-v3.chosen-files")!}
             </h2>
             {files.length > 0 ? (
@@ -75,7 +77,7 @@ export function Review(props: Props) {
                       className="flex items-center justify-between gap-x-6 py-5"
                     >
                       <div className="flex items-start gap-x-3 truncate">
-                        <p className="text-sm font-semibold leading-6 text-gray-900 truncate">
+                        <p className="text-sm font-semibold leading-6 text-white truncate">
                           {files[index].name}
                         </p>
                       </div>
@@ -90,7 +92,7 @@ export function Review(props: Props) {
             )}
           </LeftArea>
           <MainArea>
-            <h2 className="text-lg font-bold text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight text-center">
+            <h2 className="text-lg font-bold text-white sm:truncate sm:text-2xl sm:tracking-tight text-center">
               {t("dashboard-page:custom-request-v3.customizations")!}
             </h2>
             <div className="grid grid-cols-1 gap-x-6 gap-y-8">

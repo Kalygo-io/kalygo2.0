@@ -1,16 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Head from "next/head";
-import { useTranslation } from "next-i18next";
-import LayoutDashboard from "@/layout/layoutDashboard";
-import { getStaticPaths, makeStaticProps } from "@/lib/getStatic";
-import { AccountOverview } from "@/components/adminComponents/accountOverview/index";
-import { getAccountsFactory } from "@/serviceFactory/getAccountsFactory";
 import { WindowLoader } from "@/components/shared/WindowLoader";
 import { ErrorInDashboard } from "@/components/shared/errorInDashboard";
-import { ColumnDirection } from "@/types/ColumnDirection";
-import { AccountTableColumns } from "@/types/AccountTableColumns";
-import { getAccountByIdFactory } from "@/serviceFactory/getAccountByIdFactory";
-import { useRouter } from "next/router";
 import { ChargesTable } from "./chargesTable";
 import { getAccountChargesFactory } from "@/serviceFactory/getAccountChargesFactory";
 
