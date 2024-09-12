@@ -205,7 +205,7 @@ export default function LayoutDashboard({ children, account }: P) {
           {" Credits"}
         </span>
         <CircleStackIcon
-          className="text-blue-600 h-6 w-6"
+          className="text-red-600 h-6 w-6"
           aria-label="Usage Credits Icon"
         />
       </>
@@ -295,7 +295,7 @@ export default function LayoutDashboard({ children, account }: P) {
                                       item.href.split("/").length - 1
                                     ] === current
                                       ? "bg-red-700 text-white"
-                                      : "text-blue-200 hover:text-white hover:bg-red-700",
+                                      : "text-white hover:text-white hover:bg-red-700",
                                     "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                                   )}
                                 >
@@ -305,7 +305,7 @@ export default function LayoutDashboard({ children, account }: P) {
                                         item.href.split("/").length - 1
                                       ] === current
                                         ? "text-white"
-                                        : "text-blue-200 group-hover:text-white",
+                                        : "text-white group-hover:text-white",
                                       "h-6 w-6 shrink-0"
                                     )}
                                     aria-hidden="true"
@@ -323,12 +323,12 @@ export default function LayoutDashboard({ children, account }: P) {
                               className={classNames(
                                 "buy-credits" === current
                                   ? "bg-red-700 text-white"
-                                  : "text-blue-200 hover:text-white hover:bg-red-700",
+                                  : "text-white hover:text-white hover:bg-red-700",
                                 "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                               )}
                             >
                               <CreditCardIcon
-                                className="h-6 w-6 shrink-0 text-blue-200 group-hover:text-white"
+                                className="h-6 w-6 shrink-0 text-white group-hover:text-white"
                                 aria-hidden="true"
                               />
                               {t("dashboard-page:navigation.buy-credits")}
@@ -340,12 +340,12 @@ export default function LayoutDashboard({ children, account }: P) {
                               className={classNames(
                                 "settings" === current
                                   ? "bg-red-700 text-white"
-                                  : "text-blue-200 hover:text-white hover:bg-red-700",
+                                  : "text-white hover:text-white hover:bg-red-700",
                                 "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                               )}
                             >
                               <Cog6ToothIcon
-                                className="h-6 w-6 shrink-0 text-blue-200 group-hover:text-white"
+                                className="h-6 w-6 shrink-0 text-white group-hover:text-white"
                                 aria-hidden="true"
                               />
                               {t("dashboard-page:navigation.settings")}
@@ -394,7 +394,7 @@ export default function LayoutDashboard({ children, account }: P) {
                               item.href.split("/").length - 1
                             ] === current
                               ? "bg-red-700 text-white"
-                              : "text-blue-200 hover:text-white hover:bg-red-700",
+                              : "text-white hover:text-white hover:bg-red-700",
                             "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                           )}
                         >
@@ -404,7 +404,7 @@ export default function LayoutDashboard({ children, account }: P) {
                                 item.href.split("/").length - 1
                               ] === current
                                 ? "text-white"
-                                : "text-blue-200 group-hover:text-white",
+                                : "text-white group-hover:text-white",
                               "h-6 w-6 shrink-0"
                             )}
                             aria-hidden="true"
@@ -422,12 +422,12 @@ export default function LayoutDashboard({ children, account }: P) {
                       className={classNames(
                         "buy-credits" === current
                           ? "bg-red-700 text-white"
-                          : "text-blue-200 hover:text-white hover:bg-red-700",
+                          : "text-white hover:text-white hover:bg-red-700",
                         "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                       )}
                     >
                       <CreditCardIcon
-                        className="h-6 w-6 shrink-0 text-blue-200 group-hover:text-white"
+                        className="h-6 w-6 shrink-0 text-white group-hover:text-white"
                         aria-hidden="true"
                       />
                       {t("dashboard-page:navigation.buy-credits")}
@@ -439,12 +439,12 @@ export default function LayoutDashboard({ children, account }: P) {
                       className={classNames(
                         "settings" === current
                           ? "bg-red-700 text-white"
-                          : "text-blue-200 hover:text-white hover:bg-red-700",
+                          : "text-white hover:text-white hover:bg-red-700",
                         "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                       )}
                     >
                       <Cog6ToothIcon
-                        className="h-6 w-6 shrink-0 text-blue-200 group-hover:text-white"
+                        className="h-6 w-6 shrink-0 text-white group-hover:text-white"
                         aria-hidden="true"
                       />
                       {t("dashboard-page:navigation.settings")}

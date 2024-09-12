@@ -28,8 +28,8 @@ export default function CustomRequestV3(p: P) {
   return (
     <div className="xl:mr-96">
       {/* Main area */}
-      <div className="w-full flex justify-between fixed bg-white lg:pr-[calc(18rem)] xl:pr-[calc(42rem)] shadow-sm">
-        <h3 className="p-4 text-3xl font-bold text-gray-900 whitespace-nowrap truncate">
+      <div className="w-full flex justify-between fixed bg-gray-800 lg:pr-[calc(18rem)] xl:pr-[calc(42rem)] shadow-sm">
+        <h3 className="p-4 text-3xl font-bold text-white whitespace-nowrap truncate">
           {customRequest?.prompt}
         </h3>
         {showSharing && (
@@ -137,7 +137,7 @@ export default function CustomRequestV3(p: P) {
 
       <div
         id="custom-request-v3-aside"
-        className="fixed inset-y-0 right-0 hidden w-96 overflow-y-auto border-l border-gray-200 px-4 pt-20 pb-6 xl:block bg-white"
+        className="fixed inset-y-0 right-0 hidden w-96 overflow-y-auto border-l border-gray-200 px-4 pt-20 pb-6 xl:block bg-gray-800"
       >
         <div className="mt-6">
           {showSharing && (
@@ -161,12 +161,12 @@ export default function CustomRequestV3(p: P) {
             </div>
           )}
 
-          <dl className="divide-y divide-gray-100 space-y-10">
+          <dl className="divide-y divide-gray-100 space-y-10 text-white">
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt className="text-sm font-medium leading-6 text-gray-900">
+              <dt className="text-sm font-medium leading-6">
                 {t("dashboard-page:custom-request-v3-result.requested")}
               </dt>
-              <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+              <dd className="mt-1 text-sm leading-6 sm:col-span-2 sm:m-0 p-0">
                 {customRequest?.createdAt
                   ? `${new Date(customRequest.createdAt)}`
                   : t(
@@ -175,18 +175,16 @@ export default function CustomRequestV3(p: P) {
               </dd>
             </div>
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt className="text-sm font-medium leading-6 text-gray-900">
+              <dt className="text-sm font-medium leading-6">
                 {t("dashboard-page:custom-request-v3-result.scan-mode")}
               </dt>
-              <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+              <dd className="mt-1 text-sm leading-6 sm:col-span-2 sm:m-0 p-0">
                 {customRequest?.scanMode}
               </dd>
             </div>
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt className="text-sm font-medium leading-6 text-gray-900">
-                Rating
-              </dt>
-              <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+              <dt className="text-sm font-medium leading-6">Rating</dt>
+              <dd className="mt-1 text-sm leading-6 sm:col-span-2 sm:m-0 p-0">
                 <div className="flex items-end">
                   <RadioGroupStars
                     rating={get(customRequest, "Ratings.0.rating", null)}
@@ -209,10 +207,10 @@ export default function CustomRequestV3(p: P) {
             </div>
             {customRequest.model && (
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt className="text-sm font-medium leading-6 text-gray-900">
+                <dt className="text-sm font-medium leading-6">
                   {t("dashboard-page:custom-request-v3-result.model")}
                 </dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0 truncate">
+                <dd className="mt-1 text-sm leading-6 sm:col-span-2 sm:m-0 p-0 truncate">
                   {customRequest?.model}
                 </dd>
               </div>
@@ -220,10 +218,10 @@ export default function CustomRequestV3(p: P) {
 
             {customRequest.prompt && (
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt className="text-sm font-medium leading-6 text-gray-900">
+                <dt className="text-sm font-medium leading-6 ">
                   {t("dashboard-page:custom-request-v3-result.prompt")}
                 </dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+                <dd className="mt-1 text-sm leading-6 sm:col-span-2 sm:m-0 p-0">
                   {customRequest?.prompt}
                 </dd>
               </div>

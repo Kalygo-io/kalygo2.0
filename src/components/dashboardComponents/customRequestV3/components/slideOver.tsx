@@ -36,8 +36,8 @@ export function SlideOver(p: P) {
                 leaveTo="translate-x-full"
               >
                 <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
-                  <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-2xl">
-                    <div className="bg-blue-600 px-4 py-6 sm:px-6">
+                  <div className="flex h-full flex-col overflow-y-scroll bg-gray-800 shadow-2xl">
+                    <div className="bg-red-600 px-4 py-6 sm:px-6">
                       <div className="flex items-center justify-between">
                         <Dialog.Title className="text-base font-semibold leading-6 text-white">
                           {t("dashboard-page:custom-request-v3-result.title")}
@@ -64,12 +64,12 @@ export function SlideOver(p: P) {
                       {/* Your content */}
                       <dl className="divide-y divide-gray-100 space-y-10">
                         <div className="px-2 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                          <dt className="text-sm font-medium leading-6 text-gray-900">
+                          <dt className="text-sm font-medium leading-6 text-white">
                             {t(
                               "dashboard-page:custom-request-v3-result.requested"
                             )}
                           </dt>
-                          <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+                          <dd className="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:m-0 p-0">
                             {customRequest?.createdAt
                               ? `${new Date(customRequest.createdAt)}`
                               : t(
@@ -78,20 +78,20 @@ export function SlideOver(p: P) {
                           </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                          <dt className="text-sm font-medium leading-6 text-gray-900">
+                          <dt className="text-sm font-medium leading-6 text-white">
                             {t(
                               "dashboard-page:custom-request-v3-result.scan-mode"
                             )}
                           </dt>
-                          <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+                          <dd className="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:m-0 p-0">
                             {customRequest?.scanMode}
                           </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                          <dt className="text-sm font-medium leading-6 text-gray-900">
+                          <dt className="text-sm font-medium leading-6 text-white">
                             Rating
                           </dt>
-                          <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
+                          <dd className="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:m-0 p-0">
                             <div className="flex items-end">
                               <RadioGroupStars
                                 rating={get(
@@ -125,12 +125,12 @@ export function SlideOver(p: P) {
                         </div>
                         {customRequest.model && (
                           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt className="text-sm font-medium leading-6 text-gray-900">
+                            <dt className="text-sm font-medium leading-6 text-white">
                               {t(
                                 "dashboard-page:custom-request-v3-result.model"
                               )}
                             </dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0 truncate">
+                            <dd className="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:m-0 p-0 truncate">
                               {customRequest?.model}
                             </dd>
                           </div>
@@ -138,12 +138,12 @@ export function SlideOver(p: P) {
 
                         {customRequest.prompt && (
                           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt className="text-sm font-medium leading-6 text-gray-900">
+                            <dt className="text-sm font-medium leading-6 text-white">
                               {t(
                                 "dashboard-page:custom-request-v3-result.prompt"
                               )}
                             </dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0 truncate">
+                            <dd className="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:m-0 p-0 truncate">
                               {customRequest?.prompt}
                             </dd>
                           </div>
