@@ -313,6 +313,7 @@
     "retry": "Retry",
     "view": "View",
     "job-type": "Type",
+    "model": "Model",
     "vector-search": {
       "query": "Query"
     },

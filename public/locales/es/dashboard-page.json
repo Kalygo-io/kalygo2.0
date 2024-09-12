@@ -309,6 +309,7 @@
     "retry": "Rever",
     "view": "Vista",
     "job-type": "Tipo",
+    "model": "Modelo",
     "vector-search": {
       "query": "Consulta"
     },

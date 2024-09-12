@@ -310,6 +310,7 @@
     "retry": "Tentar novamente",
     "view": "Visualizar",
     "job-type": "Tipo",
+    "model": "Modelo",
     "vector-search": {
       "query": "Consulta"
     },
