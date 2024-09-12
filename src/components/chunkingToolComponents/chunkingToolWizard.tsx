@@ -5,6 +5,7 @@ import { Review } from "./wizardSteps/review";
 import { ErrorInDashboard } from "../shared/errorInDashboard";
 import { useTranslation } from "next-i18next";
 import { CheckIcon } from "@heroicons/react/24/outline";
+import { SupportedOpenAiModels } from "@/types/SupportedOpenAiModels";
 
 interface Props {
   account: any;
@@ -17,7 +18,7 @@ export function ChunkingToolWizard(props: Props) {
   const [files, setFiles] = useState<File[] | null>(null);
   const [customizations, setCustomizations] = useState<{
     mode: string;
-    model: "gpt-3.5-turbo" | "gpt-4";
+    model: SupportedOpenAiModels;
     prompt?: string;
     finalPrompt?: string;
     overallPrompt?: string;

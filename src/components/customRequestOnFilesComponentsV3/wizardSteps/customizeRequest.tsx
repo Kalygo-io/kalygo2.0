@@ -280,6 +280,9 @@ export function CustomizeRequest(props: Props) {
                                 >
                                   gpt-4o-mini (128k)
                                 </option>
+                                <option value={"claude-3-5-sonnet-20240620"}>
+                                  Claude 3.5 Sonnet
+                                </option>
                                 <option disabled value={"llama-2"}>
                                   LLaMa 2
                                 </option>

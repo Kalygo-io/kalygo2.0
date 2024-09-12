@@ -14,13 +14,14 @@ import { LeftArea } from "../sharedComponents/leftArea";
 import { MainArea } from "../sharedComponents/mainArea";
 import { FooterWrapper } from "../sharedComponents/FooterWrapper";
 import { RightArea } from "../sharedComponents/rightArea";
+import { SupportedOpenAiModels } from "@/types/SupportedOpenAiModels";
 
 interface Props {
   account: any;
   files: File[];
   customizations: {
     mode: string;
-    model: "gpt-3.5-turbo" | "gpt-4";
+    model: SupportedOpenAiModels;
     prompt?: string;
     finalPrompt?: string;
     overallPrompt?: string;
@@ -30,7 +31,7 @@ interface Props {
   setCustomizations: Dispatch<
     SetStateAction<{
       mode: string;
-      model: "gpt-3.5-turbo" | "gpt-4";
+      model: SupportedOpenAiModels;
       prompt?: string;
       finalPrompt?: string;
       overallPrompt?: string;

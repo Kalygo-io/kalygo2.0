@@ -10,7 +10,7 @@
     "gt": "node scripts/generateTranslations"
   },
   "dependencies": {
-    "@dqbd/tiktoken": "^1.0.7",
+    "@dqbd/tiktoken": "^1.0.16",
     "@google-cloud/translate": "^7.2.2",
     "@headlessui/react": "^1.7.15",
     "@heroicons/react": "^2.0.18",

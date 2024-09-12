@@ -223,7 +223,7 @@ export default function CustomRequestV3(p: P) {
                 <dt className="text-sm font-medium leading-6 text-gray-900">
                   {t("dashboard-page:custom-request-v3-result.prompt")}
                 </dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0 truncate">
+                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:m-0 p-0">
                   {customRequest?.prompt}
                 </dd>
               </div>

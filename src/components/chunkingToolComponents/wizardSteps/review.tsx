@@ -17,11 +17,12 @@ import { makeChunksSmaller } from "../utils/makeChunksSmaller";
 import { convertFileToTxtFile } from "../utils/convertFileToTxtFile";
 import { classNames } from "@/utility/misc/classNames";
 import { saveAs } from "file-saver";
+import { SupportedOpenAiModels } from "@/types/SupportedOpenAiModels";
 
 interface Props {
   customizations: {
     mode: string;
-    model: "gpt-3.5-turbo" | "gpt-4";
+    model: SupportedOpenAiModels;
     prompt?: string;
     finalPrompt?: string;
     overallPrompt?: string;

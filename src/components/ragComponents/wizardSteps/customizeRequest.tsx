@@ -156,7 +156,7 @@ export function CustomizeRequest(props: Props) {
                                   disabled={
                                     !enoughUsageCreditsToUsePaidFeatures(
                                       get(account, "usageCredits", 0),
-                                      "gpt-4"
+                                      "gpt-4o"
                                     )
                                   }
                                   value={"gpt-4"}
