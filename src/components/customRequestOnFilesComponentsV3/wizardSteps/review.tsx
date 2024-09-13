@@ -28,6 +28,7 @@ interface Props {
     finalPrompt?: string;
     overallPrompt?: string;
     includeFinalPrompt?: boolean;
+    chunkSize?: number;
   } | null;
   files: File[];
   wizardStepsRef: RefObject<HTMLElement>;

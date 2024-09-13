@@ -21,6 +21,8 @@ import get from "lodash.get";
 import { SupportedOpenAiModels } from "@/types/SupportedOpenAiModels";
 import { SupportedAnthropicModels } from "@/types/SupportedAnthropicModels";
 
+import model_pricing from "@/config/model_pricing";
+
 interface Props {
   account: any;
   files: File[];
@@ -31,6 +33,7 @@ interface Props {
     finalPrompt?: string;
     overallPrompt?: string;
     includeFinalPrompt?: boolean;
+    chunkSize?: number;
   } | null;
   setStep: Dispatch<SetStateAction<number>>;
   setCustomizations: Dispatch<
@@ -41,6 +44,7 @@ interface Props {
       finalPrompt?: string;
       overallPrompt?: string;
       includeFinalPrompt?: boolean;
+      chunkSize?: number;
     } | null>
   >;
   wizardStepsRef: RefObject<HTMLElement>;
@@ -117,11 +121,15 @@ export function CustomizeRequest(props: Props) {
     reValidateMode: "onChange",
     defaultValues: {
       mode: customizations?.mode || "OVERALL",
-      model: customizations?.model || "gpt-3.5-turbo",
+      model: customizations?.model || "gpt-4o-mini",
       prompt: customizations?.prompt || "",
       includeFinalPrompt: customizations?.includeFinalPrompt || false,
       finalPrompt: customizations?.finalPrompt || "",
       overallPrompt: customizations?.overallPrompt || "",
+      // chunkSize: customizations?.chunkSize || 2000,
+      chunkSize:
+        customizations?.chunkSize ||
+        model_pricing.models[customizations?.model || "gpt-4o-mini"].context,
     },
   });
 
@@ -130,6 +138,7 @@ export function CustomizeRequest(props: Props) {
   watch("includeFinalPrompt");
   watch("finalPrompt");
   watch("overallPrompt");
+  watch("model");
 
   return (
     <Layout3ColumnAndFooterWrapper>
@@ -257,8 +266,16 @@ export function CustomizeRequest(props: Props) {
                                 autoComplete="model"
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-full sm:text-sm sm:leading-6"
                               >
-                                <option value={"gpt-3.5-turbo"}>
-                                  GPT-3 (4k)
+                                <option
+                                  // disabled={
+                                  //   !enoughUsageCreditsToUsePaidFeatures(
+                                  //     get(account, "usageCredits", 0),
+                                  //     "gpt-4o-mini"
+                                  //   )
+                                  // }
+                                  value={"gpt-4o-mini"}
+                                >
+                                  gpt-4o-mini (128k)
                                 </option>
                                 <option
                                   disabled={
@@ -271,17 +288,9 @@ export function CustomizeRequest(props: Props) {
                                 >
                                   gpt-4o (128k)
                                 </option>
-                                <option
-                                  disabled={
-                                    !enoughUsageCreditsToUsePaidFeatures(
-                                      get(account, "usageCredits", 0),
-                                      "gpt-4o-mini"
-                                    )
-                                  }
-                                  value={"gpt-4o-mini"}
-                                >
-                                  gpt-4o-mini (128k)
-                                </option>
+                                {/* <option value={"gpt-3.5-turbo"}>
+                                  GPT-3 (4k)
+                                </option> */}
                                 <option value={"claude-3-5-sonnet-20240620"}>
                                   Claude 3.5 Sonnet
                                 </option>
@@ -293,6 +302,60 @@ export function CustomizeRequest(props: Props) {
                           </div>
                         </div>
                       </fieldset>
+                      {getValues("mode") === ScanningMode.OVERALL ? (
+                        <fieldset>
+                          <legend className="sr-only">Chunk Size</legend>
+                          <div className="sm:grid sm:grid-cols-3 sm:items-baseline sm:gap-4 sm:py-2">
+                            <label
+                              htmlFor="chunkSize"
+                              className="block text-sm font-medium leading-6 text-white sm:pt-1.5"
+                            >
+                              Chunk Size
+                            </label>
+                            <div className="mt-1 sm:col-span-2 sm:mt-0">
+                              <div className="mt-6 space-y-2">
+                                <input
+                                  {...register("chunkSize", {})}
+                                  className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                                  type="range"
+                                  name="chunkSize"
+                                  autoComplete="chunkSize"
+                                  min={0}
+                                  // @ts-ignore
+                                  max={
+                                    model_pricing.models[getValues("model")]
+                                      .context
+                                  }
+                                  onChange={(event) => {
+                                    const val = Number.parseInt(
+                                      event.target.value
+                                    );
+                                    setValue("chunkSize", val);
+                                  }}
+                                />
+                                <input
+                                  {...register("chunkSize", {})}
+                                  className="block rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 bg-slate-100"
+                                  type="input"
+                                  name="chunkSize"
+                                  autoComplete="chunkSize"
+                                  min={0}
+                                  max={4000}
+                                  onChange={(event) => {
+                                    let val;
+                                    if (event.target.value) {
+                                      val = Number.parseInt(event.target.value);
+                                      setValue("chunkSize", val);
+                                    } else {
+                                      setValue("chunkSize", 0);
+                                    }
+                                  }}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      ) : null}
                     </div>
                   </div>
                 </form>

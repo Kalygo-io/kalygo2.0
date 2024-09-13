@@ -15,6 +15,7 @@ interface P {
     includeFinalPrompt: boolean;
     finalPrompt: string;
     overallPrompt: string;
+    chunkSize: number;
   }>;
   trigger: UseFormTrigger<{
     mode: string;
@@ -23,6 +24,7 @@ interface P {
     includeFinalPrompt: boolean;
     finalPrompt: string;
     overallPrompt: string;
+    chunkSize: number;
   }>;
   setValue: UseFormSetValue<{
     mode: string;
@@ -31,6 +33,7 @@ interface P {
     includeFinalPrompt: boolean;
     finalPrompt: string;
     overallPrompt: string;
+    chunkSize: number;
   }>;
 }
 export const OverallPrompts = (props: P) => {

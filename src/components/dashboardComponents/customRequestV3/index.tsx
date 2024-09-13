@@ -52,7 +52,7 @@ export default function CustomRequestV3(p: P) {
             </div>
           </div> */}
       </div>
-      <div className="px-4 pt-[calc(6.25rem)] text-sm leading-6 text-gray-700 overflow-x-scroll min-h-screen">
+      <div className="px-4 pt-[calc(6.25rem)] text-sm leading-6 text-gray-700 min-h-screen">
         {customRequest.scanMode === ScanningMode.PRIOR_TO_TRACKING_MODE &&
           JSON.stringify(customRequest.completionResponse, null, 2)}
 

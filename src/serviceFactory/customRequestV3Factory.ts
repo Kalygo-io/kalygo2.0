@@ -4,7 +4,7 @@ import get from "lodash.get";
 import { errorReporter } from "@/utility/error/reporter";
 
 export async function customRequestV3Factory(
-  customizations: Record<string, string | boolean> | null,
+  customizations: Record<string, string | boolean | number> | null,
   fileList: File[]
 ) {
   try {
@@ -21,6 +21,7 @@ export async function customRequestV3Factory(
     formData.set("finalPrompt", customizations?.finalPrompt! as string);
     formData.set("overallPrompt", customizations?.overallPrompt! as string);
     formData.set("model", customizations?.model! as string);
+    formData.set("chunkSize", customizations?.chunkSize! as string);
 
     // console.log("formData", formData);
     // console.log("formData", formData.get("documents"));
